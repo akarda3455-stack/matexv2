@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🌌 MATEX | Logo & Paneller</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 15px; position: relative; overflow-x: hidden; overflow-y: auto; }
+        @media (max-width: 1200px) { .categories-grid { grid-template-columns: repeat(4, 1fr) !important; } }
+        @media (max-width: 900px) { .categories-grid { grid-template-columns: repeat(3, 1fr) !important; } .profile-section { flex-direction: column; align-items: center; } }
+        @media (max-width: 600px) { .categories-grid { grid-template-columns: repeat(2, 1fr) !important; } .screen { padding: 25px; } .logo-text { font-size: 36px !important; } }
+        @media (max-width: 480px) { .categories-grid { grid-template-columns: 1fr !important; } .gender-group { flex-direction: column; } }
+        
+        .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 210, 255, 0.4); background: linear-gradient(135deg, #3a7bd5, #8a2be2); }
+        .back-btn:hover { background: rgba(0, 210, 255, 0.15); color: #ffffff; border-color: #8a2be2; transform: translateX(-5px); }
+        .category-card:hover { transform: translateY(-5px); border-color: #8a2be2; box-shadow: 0 15px 30px rgba(0, 210, 255, 0.2); background: rgba(0, 210, 255, 0.1); }
+        .difficulty-card:hover { transform: scale(1.05); border-color: #8a2be2; box-shadow: 0 0 40px rgba(138, 43, 226, 0.3); }
+        .option-btn:hover { background: rgba(0, 210, 255, 0.1); border-color: #8a2be2; transform: translateX(8px); }
+        .nav-btn:hover { background: rgba(0, 210, 255, 0.15); border-color: #8a2be2; }
+        .gender-option:hover { background: rgba(0, 210, 255, 0.15); border-color: #8a2be2; }
+        .avatar-btn:hover { background: rgba(0, 210, 255, 0.2); border-color: #8a2be2; transform: scale(1.05); }
+        .exit-test-btn:hover { background: rgba(255, 107, 107, 0.4); box-shadow: 0 0 20px rgba(255, 107, 107, 0.3); }
+        .feedback-btn:hover { background: linear-gradient(135deg, #3a7bd5, #8a2be2); transform: translateY(-2px); }
+        .social-btn:hover { transform: scale(1.1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
+        .result-item:hover { background: rgba(0, 210, 255, 0.1); border-color: #8a2be2; transform: translateX(5px); }
+        .avatar-option:hover { transform: scale(1.1); border-color: #8a2be2; background: rgba(0, 210, 255, 0.15); }
+        .main-container { transition: transform 0.4s ease; width: 1300px; max-width: 98%; z-index: 10; }
+
+        /* SOL ÜST - ARMA SİSTEMİ */
+        .rank-system-left { position: fixed; top: 25px; left: 30px; z-index: 100; display: flex; flex-direction: column; gap: 8px; background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.4); border-radius: 30px; padding: 15px 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .rank-item { display: flex; align-items: center; gap: 12px; padding: 8px 15px; border-radius: 40px; transition: all 0.3s; cursor: default; }
+        .rank-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; background: rgba(0,0,0,0.3); border: 2px solid; }
+        .rank-info { display: flex; flex-direction: column; }
+        .rank-name { font-weight: 700; font-size: 14px; } .rank-desc { font-size: 10px; opacity: 0.8; }
+        .rank-bronz .rank-icon { border-color: #cd7f32; color: #cd7f32; } .rank-bronz .rank-name { color: #cd7f32; }
+        .rank-gumus .rank-icon { border-color: #c0c0c0; color: #c0c0c0; } .rank-gumus .rank-name { color: #c0c0c0; }
+        .rank-altin .rank-icon { border-color: #ffd700; color: #ffd700; } .rank-altin .rank-name { color: #ffd700; }
+        .rank-elmas .rank-icon { border-color: #00d2ff; color: #00d2ff; } .rank-elmas .rank-name { color: #00d2ff; }
+        .rank-locked { opacity: 0.4; filter: grayscale(0.5); } .rank-locked .rank-icon { border-color: #555; color: #555; } .rank-locked .rank-name { color: #777; }
+        .rank-active { box-shadow: 0 0 15px currentColor; }
+        .total-points-display { display: flex; align-items: center; gap: 8px; padding-top: 8px; margin-top: 5px; border-top: 1px solid rgba(0,210,255,0.3); justify-content: center; }
+        .total-points-value { color: #00d2ff; font-size: 24px; font-weight: 800; } .total-points-label { color: #7eb8ff; font-size: 11px; }
+
+        /* SAĞ ÜST PANEL - ALT ALTA */
+        .top-right-panel { position: fixed; top: 25px; right: 30px; z-index: 100; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        .updates-btn { background: rgba(138, 43, 226, 0.2); backdrop-filter: blur(15px); border: 2px solid #8a2be2; border-radius: 50px; padding: 12px 25px; color: #c9a9ff; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .updates-btn:hover { background: rgba(138, 43, 226, 0.3); box-shadow: 0 0 25px rgba(138, 43, 226, 0.4); transform: translateY(-2px); }
+        .new-badge { background: #ff4444; color: white; font-size: 11px; padding: 3px 8px; border-radius: 20px; margin-left: 5px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+        .developer-credit { background: rgba(0, 210, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.5); border-radius: 50px; padding: 12px 25px; color: #00d2ff; font-size: 18px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); text-shadow: 0 0 15px rgba(0, 210, 255, 0.5); cursor: pointer; transition: all 0.3s; }
+        .developer-credit:hover { background: rgba(0, 210, 255, 0.25); box-shadow: 0 0 30px rgba(0, 210, 255, 0.4); transform: translateY(-2px); }
+
+        /* DEXTER PROFİL KARTI */
+        .dexter-profile-card { position: fixed; top: 90px; right: 30px; z-index: 102; background: rgba(20, 25, 35, 0.98); backdrop-filter: blur(20px); border: 2px solid #5865F2; border-radius: 25px; padding: 25px; width: 350px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); display: none; animation: slideDown 0.3s ease; }
+        .dexter-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .dexter-avatar-large { width: 70px; height: 70px; background: linear-gradient(135deg, #5865F2, #8a2be2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; font-weight: 700; color: white; }
+        .dexter-info h3 { color: #fff; font-size: 22px; margin-bottom: 5px; }
+        .dexter-info .dexter-username { color: #888; font-size: 14px; }
+        .dexter-status { display: flex; align-items: center; gap: 8px; margin: 15px 0; padding: 10px; background: rgba(88, 101, 242, 0.1); border-radius: 15px; color: white; }
+        .dexter-badges { display: flex; gap: 8px; margin: 15px 0; }
+        .dexter-badge { background: rgba(0,210,255,0.15); border: 1px solid #00d2ff; border-radius: 20px; padding: 5px 12px; font-size: 12px; color: white; }
+        .dexter-planes { display: flex; gap: 5px; margin: 15px 0; color: #ffd700; font-size: 18px; }
+        .dexter-join { color: #ccc; font-size: 13px; margin: 15px 0; }
+        .dexter-note { background: rgba(0,0,0,0.3); border-radius: 15px; padding: 15px; color: white; font-size: 14px; cursor: pointer; transition: all 0.3s; }
+
+        /* GÜNCELLEME PANELİ - BUTONUN ALTINDA */
+        .updates-panel { position: fixed; top: 145px; right: 30px; z-index: 101; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border: 2px solid #8a2be2; border-radius: 30px; padding: 25px; min-width: 380px; max-height: 500px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); display: none; animation: slideDown 0.3s ease; scrollbar-width: none; }
+        .updates-panel h3 { color: white !important; font-size: 22px; margin-bottom: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
+        .update-item { padding: 15px; margin-bottom: 12px; background: rgba(138, 43, 226, 0.1); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 20px; cursor: pointer; transition: all 0.3s; }
+        .update-item:hover { background: rgba(138, 43, 226, 0.2); border-color: #8a2be2; }
+        .update-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .update-version { color: white !important; font-weight: 700; font-size: 18px; } .update-date { color: #ccc !important; font-size: 12px; }
+        .update-desc { color: white !important; font-size: 14px; }
+        .update-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); color: white !important; font-size: 13px; line-height: 1.6; }
+        .update-details.show { display: block; }
+        .update-details li { color: white !important; }
+        .close-updates { margin-top: 20px; background: rgba(255,255,255,0.1); border: 1px solid #8a2be2; border-radius: 30px; padding: 10px; color: white !important; text-align: center; cursor: pointer; font-size: 14px; }
+        
+        /* YAPIMCI PANELİ - BUTONUN ALTINDA */
+        .credits-panel { position: fixed; top: 145px; right: 30px; z-index: 101; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border: 2px solid #00d2ff; border-radius: 30px; padding: 25px; min-width: 320px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); display: none; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .credits-panel h3 { color: white !important; font-size: 22px; margin-bottom: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
+        .close-credits { margin-top: 20px; background: rgba(255,255,255,0.1); border: 1px solid #00d2ff; border-radius: 30px; padding: 10px; color: white !important; text-align: center; cursor: pointer; font-size: 14px; }
+        .credits-item { display: flex; align-items: center; gap: 15px; padding: 12px 0; color: white !important; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .credits-item i { width: 25px; color: #00d2ff; }
+        .credits-item .label { flex: 1; color: #ccc !important; }
+        .credits-item .value { color: white !important; font-weight: 600; }
+        .credits-item.clickable { cursor: pointer; transition: all 0.3s; }
+        .credits-item.clickable:hover { background: rgba(88, 101, 242, 0.15); border-radius: 15px; padding-left: 10px; }
+        .sponsor-badge { background: linear-gradient(135deg, #ffd700, #ff8c00); color: black !important; padding: 3px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; }
+        .partner-badge { background: linear-gradient(135deg, #8a2be2, #00d2ff); color: white !important; padding: 3px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
+        .feedback-box { position: fixed; bottom: 20px; left: 20px; z-index: 100; background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.4); border-radius: 25px; padding: 12px 15px; width: 240px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .feedback-header { display: flex; align-items: center; gap: 8px; color: white !important; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+        .feedback-header i { color: #00d2ff; }
+        .feedback-input { width: 100%; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 15px; padding: 8px 12px; color: white; font-size: 12px; resize: none; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 8px; }
+        .feedback-input::placeholder { color: #aaa; font-size: 11px; }
+        .feedback-btn { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: white; border: none; padding: 8px 15px; border-radius: 25px; font-size: 12px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s; }
+        .feedback-success { color: #4caf50 !important; font-size: 11px; text-align: center; margin-top: 5px; display: none; }
+
+        .social-media-container { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; gap: 12px; background: rgba(10, 15, 30, 0.5); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.3); border-radius: 50px; padding: 8px 15px; }
+        .social-btn { width: 45px; height: 45px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.3s; border: 2px solid rgba(0, 210, 255, 0.5); text-decoration: none; }
+        .social-btn.discord { background: linear-gradient(135deg, #5865F2, #404EED); color: white; } .social-btn.youtube { background: linear-gradient(135deg, #FF0000, #CC0000); color: white; } .social-btn.instagram { background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45); color: white; }
+        .social-btn.movyra { background: linear-gradient(135deg, #e50914, #b20710); color: white; }
+        
+        .animated-bg { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; overflow:hidden; transition:background 0.5s ease; } .theme-space { background:linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 30%, #0d0d3d 60%, #000000 100%); } .stars { position:absolute; width:100%; height:100%; } .star { position:absolute; background:white; border-radius:50%; animation:twinkle 2s infinite; } @keyframes twinkle { 0%,100%{opacity:0.3;transform:scale(1);} 50%{opacity:1;transform:scale(1.3);} } .shooting-star { position:absolute; width:150px; height:2px; background:linear-gradient(90deg, white, transparent); animation:shoot 6s linear infinite; } @keyframes shoot { 0%{transform:translateX(-150px) translateY(-150px) rotate(45deg);opacity:0;} 10%{opacity:1;} 20%{transform:translateX(calc(100vw + 150px)) translateY(calc(100vh + 150px)) rotate(45deg);opacity:0;} 100%{opacity:0;} } .theme-araba { background:linear-gradient(135deg, #1a1000 0%, #2d1a00 50%, #0d0a00 100%); } .car-animation { position:absolute; font-size:50px; animation:drive 8s linear infinite; opacity:0.4; } @keyframes drive { 0%{left:-100px;} 100%{left:calc(100% + 100px);} } .theme-marvel { background:linear-gradient(135deg, #1a0000 0%, #3d0000 50%, #1a0000 100%); } .marvel-hero { position:absolute; font-size:45px; animation:heroFloat 4s ease-in-out infinite; opacity:0.35; } @keyframes heroFloat { 0%,100%{transform:translateY(0px) rotate(0deg);} 50%{transform:translateY(-40px) rotate(5deg);} } .theme-dc { background:linear-gradient(135deg, #000a1a 0%, #001a3d 50%, #000a1a 100%); } .dc-hero { position:absolute; font-size:45px; animation:dcFloat 5s ease-in-out infinite; opacity:0.35; } @keyframes dcFloat { 0%,100%{transform:translateY(0px) scale(1);} 50%{transform:translateY(-30px) scale(1.1);} } .theme-oyun { background:linear-gradient(135deg, #001a0d 0%, #003d1b 50%, #001a0d 100%); } .game-char { position:absolute; font-size:40px; animation:gameFloat 3.5s ease-in-out infinite; opacity:0.35; } @keyframes gameFloat { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-35px);} } .theme-motor { background:linear-gradient(135deg, #1a0a00 0%, #3d1a00 50%, #1a0a00 100%); } .theme-yemek { background:linear-gradient(135deg, #1a0a00 0%, #3d1a00 50%, #1a0a00 100%); } .food-item { position:absolute; font-size:40px; animation:foodFloat 4s ease-in-out infinite; opacity:0.35; } @keyframes foodFloat { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-30px);} } .theme-hayvan { background:linear-gradient(135deg, #001a0a 0%, #003d1a 50%, #001a0a 100%); } .animal-item { position:absolute; font-size:45px; animation:animalWalk 10s linear infinite; opacity:0.35; } @keyframes animalWalk { 0%{left:-100px;} 100%{left:calc(100% + 100px);} } .theme-spor { background:linear-gradient(135deg, #001a2a 0%, #003d5c 50%, #001a2a 100%); } .sport-item { position:absolute; font-size:45px; animation:sportBounce 2s ease-in-out infinite; opacity:0.35; } @keyframes sportBounce { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-50px);} } .theme-teknoloji { background:linear-gradient(135deg, #1a002a 0%, #3d005c 50%, #1a002a 100%); } .tech-item { position:absolute; font-size:40px; animation:techPulse 3s ease-in-out infinite; opacity:0.3; } @keyframes techPulse { 0%,100%{transform:scale(1);opacity:0.3;} 50%{transform:scale(1.2);opacity:0.45;} } .theme-genelkultur { background:linear-gradient(135deg, #1a1a00 0%, #3d3d00 50%, #1a1a00 100%); } .culture-item { position:absolute; font-size:40px; animation:cultureRotate 8s linear infinite; opacity:0.3; } @keyframes cultureRotate { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} } .theme-muzik { background: linear-gradient(135deg, #2a002a 0%, #5c005c 50%, #2a002a 100%); } .music-note { position: absolute; font-size: 35px; animation: musicFloat 4s ease-in-out infinite; opacity: 0.35; } @keyframes musicFloat { 0%, 100% { transform: translateY(0px) rotate(-10deg); } 50% { transform: translateY(-50px) rotate(10deg); } } .theme-sinema { background: linear-gradient(135deg, #1a001a 0%, #3d003d 50%, #1a001a 100%); } .film-strip { position: absolute; font-size: 30px; animation: filmMove 6s linear infinite; opacity: 0.35; } @keyframes filmMove { 0% { left: -100px; } 100% { left: calc(100% + 100px); } } .theme-bilim { background: linear-gradient(135deg, #001a2a 0%, #003d5c 50%, #001a2a 100%); } .atom { position: absolute; font-size: 40px; animation: atomRotate 6s linear infinite; opacity: 0.35; } @keyframes atomRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } .theme-tarih { background: linear-gradient(135deg, #2a1a00 0%, #5c3d00 50%, #2a1a00 100%); } .scroll { position: absolute; font-size: 35px; animation: scrollFloat 5s ease-in-out infinite; opacity: 0.35; } @keyframes scrollFloat { 0%, 100% { transform: translateY(0px) rotate(-5deg); } 50% { transform: translateY(-40px) rotate(5deg); } } .theme-sanat { background: linear-gradient(135deg, #1a2a00 0%, #3d5c00 50%, #1a2a00 100%); } .paint-item { position: absolute; font-size: 35px; animation: paintBounce 3s ease-in-out infinite; opacity: 0.35; } @keyframes paintBounce { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-30px); } }
+
+        .screen { background: rgba(10, 15, 30, 0.75); backdrop-filter: blur(25px); border: 2px solid rgba(0, 210, 255, 0.4); border-radius: 60px; padding: 45px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7); animation: slideUp 0.6s ease; } @keyframes slideUp { from{opacity:0;transform:translateY(40px);} to{opacity:1;transform:translateY(0);} }
+        
+        /* LOGO + MATEX YAZISI */
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 5px; }
+        .logo-svg { width: 80px; height: 80px; filter: drop-shadow(0 0 20px #C71585); }
+        .logo-text {
+            font-size: 72px; font-weight: 800;
+            background: linear-gradient(135deg, #8A2BE2 0%, #A020F0 20%, #C71585 40%, #DA70D6 60%, #FF69B4 80%, #FF1493 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px #8A2BE2, 0 0 60px #C71585, 0 0 90px #FF69B4;
+            animation: neonPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 30px #8A2BE2, 0 0 60px #C71585, 0 0 90px #FF69B4, 0 0 120px #FF1493; }
+            50% { text-shadow: 0 0 50px #A020F0, 0 0 80px #DA70D6, 0 0 110px #FF69B4, 0 0 150px #FF1493; }
+        }
+        @media (max-width: 600px) { .logo-text { font-size: 36px !important; } .logo-svg { width: 50px; height: 50px; } }
+
+        .slogan { color: #a0d0ff; font-size: 18px; text-align: center; margin-bottom: 35px; font-style: italic; text-shadow: 0 0 10px rgba(0,210,255,0.3); }
+        .subtitle { color: #a0d0ff; font-size: 20px; margin-bottom: 40px; text-align: center; }
+        .profile-section { display: flex; gap: 40px; margin-bottom: 30px; justify-content: center; } .avatar-section { text-align: center; } .avatar-preview { width: 130px; height: 130px; background: rgba(255,255,255,0.08); border: 3px solid #00d2ff; border-radius: 35px; display: flex; align-items: center; justify-content: center; font-size: 70px; cursor: pointer; overflow: hidden; margin: 0 auto; box-shadow: 0 0 30px rgba(0,210,255,0.2); } .avatar-preview img { width: 100%; height: 100%; object-fit: cover; } .avatar-buttons { display: flex; gap: 10px; margin-top: 10px; justify-content: center; } .avatar-btn { background: rgba(0,210,255,0.1); border: 2px solid #00d2ff; border-radius: 15px; padding: 8px 15px; color: #00d2ff; font-size: 14px; cursor: pointer; transition: all 0.3s; } .form-section { flex: 1; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; } .input-wrapper { position: relative; } .input-field { width: 100%; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 20px; padding: 18px 20px; color: #ffffff; font-size: 18px; text-align: center; } .input-field::placeholder { color: #7a9bcb; text-align: center; } .input-field:focus { outline: none; border-color: #8a2be2; box-shadow: 0 0 20px rgba(138,43,226,0.3); } .error-message { color: #ff6b6b; font-size: 14px; margin-top: 5px; text-align: center; min-height: 20px; font-weight: 500; } .input-field.error { border-color: #ff6b6b; box-shadow: 0 0 15px rgba(255,107,107,0.3); }
+        .gender-group { display: flex; gap: 15px; justify-content: center; } .gender-option { background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 50px; padding: 12px 20px; color: #a0d0ff; font-size: 18px; font-weight: 600; cursor: pointer; flex: 1; text-align: center; transition: all 0.3s; } .gender-option.selected { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #fff; }
+        .categories-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 15px; max-height: 450px; overflow-y: auto; padding-right: 5px; scrollbar-width: none; -ms-overflow-style: none; } .categories-grid::-webkit-scrollbar { display: none; } .category-card { background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 25px; padding: 25px 12px; text-align: center; cursor: pointer; transition: all 0.3s; } .category-card.selected { background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(138,43,226,0.2)); border-color: #8a2be2; } .category-icon { font-size: 50px; margin-bottom: 12px; } .category-title { color: #00d2ff; font-weight: 800; font-size: 20px; text-shadow: 0 0 10px rgba(0,210,255,0.3); }
+        .difficulty-centered { display: flex; justify-content: center; gap: 40px; margin: 50px 0; } .difficulty-card { background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 40px; padding: 40px 50px; text-align: center; cursor: pointer; min-width: 200px; transition: all 0.3s; } .difficulty-card.selected { background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(138,43,226,0.2)); border-color: #8a2be2; } .difficulty-icon { font-size: 60px; margin-bottom: 20px; } .difficulty-title { color: #00d2ff; font-size: 32px; font-weight: 800; } .difficulty-time { color: #a0d0ff; font-size: 18px; }
+        .button-group { display: flex; gap: 20px; margin-top: 30px; } .primary-btn { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: white; border: none; padding: 20px 40px; font-size: 22px; font-weight: 800; border-radius: 60px; cursor: pointer; flex: 1; text-align: center; box-shadow: 0 10px 30px rgba(0,210,255,0.3); transition: all 0.3s; } .primary-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; } .back-btn { background: rgba(0,0,0,0.3); color: #a0d0ff; border: 2px solid #00d2ff; padding: 20px 30px; font-size: 20px; border-radius: 60px; cursor: pointer; transition: all 0.3s; }
+        .exit-confirm-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; display: none; justify-content: center; align-items: center; } .exit-confirm-box { background: rgba(20,25,40,0.95); border: 3px solid #ff6b6b; border-radius: 40px; padding: 40px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 0 50px rgba(255,107,107,0.3); } .exit-confirm-box h3 { color: #ff6b6b; font-size: 28px; margin-bottom: 20px; } .exit-confirm-box p { color: #a0d0ff; font-size: 18px; margin-bottom: 30px; } .exit-confirm-buttons { display: flex; gap: 15px; } .exit-confirm-btn { flex: 1; padding: 15px; border-radius: 30px; font-size: 18px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s; } .exit-confirm-btn.yes { background: #ff6b6b; color: white; } .exit-confirm-btn.yes:hover { background: #ff4444; } .exit-confirm-btn.no { background: rgba(255,255,255,0.1); color: #a0d0ff; border: 2px solid #00d2ff; } .exit-confirm-btn.no:hover { background: rgba(0,210,255,0.2); }
+        .exit-test-btn { background: rgba(255,107,107,0.2); color: #ff6b6b; border: 2px solid #ff6b6b; padding: 12px 25px; font-size: 18px; border-radius: 40px; cursor: pointer; transition: all 0.3s; }
+        .test-header { display: flex; justify-content: space-between; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid #00d2ff; } .user-badge { display: flex; align-items: center; gap: 20px; } .user-avatar { width: 65px; height: 65px; background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 40px; overflow: hidden; } .user-avatar img { width: 100%; height: 100%; object-fit: cover; } .timer-section { display: flex; align-items: center; gap: 25px; margin-bottom: 35px; padding: 20px 30px; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 60px; } .timer-bar { flex: 1; height: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; } .timer-progress { height: 100%; width: 100%; background: linear-gradient(90deg, #00d2ff, #8a2be2); border-radius: 10px; } .timer-text { color: #00d2ff; font-size: 32px; font-weight: 800; } .question-text { font-size: 30px; font-weight: 700; color: #ffffff; margin-bottom: 30px; text-align: center; text-shadow: 0 0 10px rgba(0,210,255,0.2); } .options-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; } .option-btn { background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 20px; padding: 20px 30px; color: #a0d0ff; font-size: 20px; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s; } .option-btn.selected { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #fff; } .nav-buttons { display: flex; gap: 20px; } .nav-btn { background: rgba(0,0,0,0.3); color: #a0d0ff; border: 2px solid #00d2ff; padding: 18px 30px; font-size: 18px; border-radius: 60px; cursor: pointer; flex: 1; text-align: center; transition: all 0.3s; } .result-item { background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 20px; padding: 20px; margin-bottom: 12px; cursor: pointer; color: #a0d0ff; transition: all 0.3s; } .explanation-box { background: rgba(0,210,255,0.1); border: 2px solid #00d2ff; border-radius: 30px; padding: 30px; margin-top: 25px; }
+        .avatar-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; } .avatar-modal-content { background: rgba(20,25,40,0.95); backdrop-filter: blur(30px); border: 3px solid #00d2ff; border-radius: 50px; padding: 40px; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; scrollbar-width: none; } .avatar-modal-content::-webkit-scrollbar { display: none; } .avatar-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; } .close-modal-btn { background: rgba(255,255,255,0.1); border: 2px solid #00d2ff; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #00d2ff; cursor: pointer; transition: all 0.3s; } .close-modal-btn:hover { background: rgba(255,0,0,0.2); border-color: #ff4444; color: #ff4444; } .avatar-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 15px; margin: 20px 0; max-height: 500px; overflow-y: auto; padding: 10px; scrollbar-width: none; } .avatar-grid::-webkit-scrollbar { display: none; } .avatar-option { width: 100px; height: 100px; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 55px; cursor: pointer; margin: 0 auto; transition: all 0.3s; } .avatar-option.selected { border: 4px solid #8a2be2; } #galleryInput { display: none; } label { color: #a0d0ff; text-align: center; display: block; margin-bottom: 8px; font-size: 16px; }
+        .age-selector { position: relative; } .age-scroll { position: absolute; top: 100%; left: 0; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border: 2px solid #00d2ff; border-radius: 20px; max-height: 200px; overflow-y: auto; z-index: 10; display: none; scrollbar-width: thin; } .age-scroll.show { display: block; } .age-option { padding: 12px; text-align: center; color: #a0d0ff; cursor: pointer; transition: all 0.2s; font-size: 18px; } .age-option:hover { background: rgba(0, 210, 255, 0.2); color: #fff; }
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: none; justify-content: center; align-items: center; flex-direction: column; gap: 20px; } .loading-spinner { width: 60px; height: 60px; border: 5px solid rgba(0,210,255,0.2); border-top-color: #00d2ff; border-radius: 50%; animation: spin 1s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } .loading-text { color: #00d2ff; font-size: 20px; font-weight: 600; }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    <div class="loading-overlay" id="loadingOverlay"> <div class="loading-spinner"></div> <div class="loading-text">Sorular Hazırlanıyor...</div> </div>
+
+    <!-- SOL ÜST - ARMA SİSTEMİ -->
+    <div class="rank-system-left">
+        <div class="rank-item rank-bronz rank-active" id="rankBronz"><div class="rank-icon">🥉</div><div class="rank-info"><span class="rank-name">BRONZ</span><span class="rank-desc">300 Puan</span></div></div>
+        <div class="rank-item rank-gumus rank-locked" id="rankGumus"><div class="rank-icon">🥈</div><div class="rank-info"><span class="rank-name">GÜMÜŞ</span><span class="rank-desc">600 Puan</span></div></div>
+        <div class="rank-item rank-altin rank-locked" id="rankAltin"><div class="rank-icon">🥇</div><div class="rank-info"><span class="rank-name">ALTIN</span><span class="rank-desc">900 Puan</span></div></div>
+        <div class="rank-item rank-elmas rank-locked" id="rankElmas"><div class="rank-icon">💎</div><div class="rank-info"><span class="rank-name">ELMAS</span><span class="rank-desc">1200 Puan</span></div></div>
+        <div class="total-points-display"><div class="total-points-value" id="totalRankPoints">0</div><div class="total-points-label">TOPLAM PUAN</div></div>
+    </div>
+
+    <!-- SAĞ ÜST PANEL -->
+    <div class="top-right-panel">
+        <div class="developer-credit" onclick="toggleCredits()"><i class="fas fa-code"></i> Yapımcılar</div>
+        <div class="updates-btn" onclick="toggleUpdates()"><i class="fas fa-code-branch"></i> Güncellemeler <span class="new-badge">YENİ</span></div>
+    </div>
+    
+    <!-- DEXTER MORGAN PROFİL KARTI -->
+    <div class="dexter-profile-card" id="dexterProfileCard">
+        <div class="dexter-header"><div class="dexter-avatar-large">DM</div><div class="dexter-info"><h3>Dexter Morgan</h3><span class="dexter-username">nissansky ❤️ 🎵 🌐</span></div></div>
+        <div class="dexter-status"><i class="fas fa-circle" style="color: #4caf50; font-size: 12px;"></i><span>Çevrimiçi</span></div>
+        <div class="dexter-badges"><span class="dexter-badge">Nissan-Skyline</span><span class="dexter-badge">JDM</span></div>
+        <div class="dexter-planes">✈️ ✈️ ✈️ ✈️ ✈️ ✈️ ✈️ ✇️ ✇️ ✇️ ✇️ ✇️ ✇️ ✇️</div>
+        <div class="dexter-join"><i class="fas fa-calendar-alt"></i> Şu Tarihten Beri Üye: 22 Şub 2023</div>
+        <div class="dexter-note" onclick="alert('Not ekleme özelliği yakında!')"><i class="fas fa-pencil-alt"></i> Not (sadece sana görünür)</div>
+    </div>
+    
+    <!-- GÜNCELLEME PANELİ - BUTONUN ALTINDA -->
+    <div class="updates-panel" id="updatesPanel"> 
+        <h3>📋 Güncelleme Geçmişi</h3> 
+        <div class="update-item" onclick="toggleUpdateDetails(this)"><div class="update-header"><span class="update-version">v7.0.0</span><span class="update-date">24 Nisan 2026</span></div><div class="update-desc">Logo ve Panel Güncellemesi</div><div class="update-details"><ul><li>🎨 M logosu eklendi</li><li>📋 Paneller butonların altında</li></ul></div></div>
+        <div class="update-item" onclick="toggleUpdateDetails(this)"><div class="update-header"><span class="update-version">v6.0.0</span><span class="update-date">24 Nisan 2026</span></div><div class="update-desc">15 Kategori Tamamlandı</div><div class="update-details"><ul><li>🎵 Müzik 30 soru</li><li>🎬 Sinema 30 soru</li><li>🔬 Bilim 30 soru</li><li>📜 Tarih 30 soru</li><li>🎨 Sanat 30 soru</li></ul></div></div>
+        <div class="update-item" onclick="toggleUpdateDetails(this)"><div class="update-header"><span class="update-version">v5.1.0</span><span class="update-date">23 Nisan 2026</span></div><div class="update-desc">Beyaz Tema Güncellemesi</div><div class="update-details"><ul><li>📝 Tüm panel yazıları beyaz oldu</li></ul></div></div>
+        <div class="close-updates" onclick="toggleUpdates()">Kapat</div> 
+    </div>
+    
+    <!-- YAPIMCI PANELİ - BUTONUN ALTINDA -->
+    <div class="credits-panel" id="creditsPanel"> 
+        <h3>🎬 YAPIM EKİBİ</h3> 
+        <div class="credits-item"><i class="fas fa-user-cog"></i><span class="label">Yapımcı:</span><span class="value">Tyrant</span></div> 
+        <div class="credits-item clickable" onclick="showDexterProfile()"><i class="fas fa-user-friends"></i><span class="label">Yardımcı Yapımcı:</span><span class="value" style="color: #5865F2;">Dexter Morgan →</span></div> 
+        <div class="credits-item"><i class="fas fa-star"></i><span class="label">Sponsor:</span><span class="value sponsor-badge">MOVYRA</span></div> 
+        <div class="credits-item"><i class="fas fa-handshake"></i><span class="label">Ortaklar:</span><span class="value"><span class="partner-badge">MOVYRA</span><span class="partner-badge" style="margin-left:5px;">AFORYA</span></span></div> 
+        <div class="close-credits" onclick="toggleCredits()">Kapat</div> 
+    </div>
+
+    <!-- ŞİKAYET/ÖNERİ -->
+    <div class="feedback-box"> 
+        <div class="feedback-header"><i class="fas fa-comment-dots"></i><span>Şikayet / Öneri</span></div> 
+        <textarea class="feedback-input" id="feedbackInput" placeholder="Görüşlerinizi yazın..." rows="2"></textarea> 
+        <button class="feedback-btn" onclick="sendFeedback()">Gönder</button> 
+        <div class="feedback-success" id="feedbackSuccess">✅ Geri bildiriminiz alındı!</div> 
+    </div>
+
+    <div class="social-media-container">
+        <a href="https://discord.com/users/tyrant3455" target="_blank" class="social-btn discord"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@ardaak3420" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/ardk.61" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://movyra.com.tr" target="_blank" class="social-btn movyra"><i class="fas fa-film"></i></a>
+    </div>
+
+    <div class="animated-bg theme-space" id="animatedBg"><div id="animationContainer"></div></div>
+    <div class="exit-confirm-modal" id="exitConfirmModal"> <div class="exit-confirm-box"> <h3>🚪 Testten Çık</h3> <p>Testten çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.</p> <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="confirmExit()">Evet, Çık</button> <button class="exit-confirm-btn no" onclick="cancelExit()">İptal</button> </div> </div> </div>
+    <div class="avatar-modal" id="avatarModal"> <div class="avatar-modal-content"> <div class="avatar-modal-header"><h2 style="color:#00d2ff; text-align:center;">Profil Seç</h2><div class="close-modal-btn" onclick="closeAvatarModal()">✕</div></div> <div class="avatar-grid" id="avatarGrid"></div> <button class="primary-btn" onclick="closeAvatarModal()">Onayla</button> </div> </div>
+    <input type="file" id="galleryInput" accept="image/*" onchange="handleGalleryUpload(event)">
+
+    <div class="main-container" id="mainContainer">
+        <div class="screen" id="profileScreen">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#8A2BE2;stop-opacity:1" />
+                            <stop offset="33%" style="stop-color:#C71585;stop-opacity:1" />
+                            <stop offset="66%" style="stop-color:#DA70D6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF69B4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad)" />
+                    <text x="50" y="92" text-anchor="middle" fill="url(#logoGrad)" font-size="12" font-weight="bold" font-family="Plus Jakarta Sans">MATEX</text>
+                </svg>
+                <span class="logo-text">MATEX</span>
+            </div>
+            <div class="slogan">"Quizin ve Testin Harman Olduğu Yer"</div>
+            <div class="subtitle">15 KATEGORİ • 30 SORU HAVUZU</div>
+            <div class="profile-section">
+                <div class="avatar-section"> <div class="avatar-preview" id="avatarPreview" onclick="openAvatarModal()">👤</div> <div class="avatar-buttons"> <button class="avatar-btn" onclick="openAvatarModal()">🎭 Emoji</button> <button class="avatar-btn" onclick="document.getElementById('galleryInput').click()">📁 Galeri</button> </div> </div>
+                <div class="form-section">
+                    <div class="input-wrapper"><label>👤 Ad Soyad</label><input class="input-field" id="fullNameInput" placeholder="Adınız Soyadınız"><div class="error-message" id="nameError"></div></div>
+                    <div class="input-wrapper age-selector"><label>📅 Yaş (1-100)</label><input type="text" class="input-field" id="ageInputDisplay" placeholder="Yaşınız" readonly onclick="toggleAgeScroll()"><input type="hidden" id="ageInput" value="25"><div class="age-scroll" id="ageScroll"></div><div class="error-message" id="ageError"></div></div>
+                    <div style="grid-column:span 2;" class="input-wrapper"><label>⚥ Cinsiyet</label><div class="gender-group"> <div class="gender-option" onclick="selectGender('erkek')" id="genderErkek">👨 Erkek</div> <div class="gender-option" onclick="selectGender('kadin')" id="genderKadin">👩 Kadın</div> <div class="gender-option" onclick="selectGender('yok')" id="genderYok">⚧ Belirtmiyorum</div> </div><div class="error-message" id="genderError"></div></div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="validateAndContinue()">Devam Et →</button>
+        </div>
+        <div class="screen" id="categoryScreen" style="display:none;"> <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn" onclick="goBackToProfile()">← Geri</button><div style="flex:1; text-align:center;"><div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8A2BE2"/><stop offset="33%" style="stop-color:#C71585"/><stop offset="66%" style="stop-color:#DA70D6"/><stop offset="100%" style="stop-color:#FF69B4"/></linearGradient></defs><path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad2)"/></svg><span class="logo-text" style="font-size:42px;">Kategori Seç</span></div></div><div style="width:80px;"></div></div> <div class="categories-grid" id="categoryGrid"></div> <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">👤 Profil</button><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç →</button></div> </div>
+        <div class="screen" id="difficultyScreen" style="display:none;"> <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn" onclick="goBackToCategory()">← Kategoriler</button><div style="flex:1;"></div><div style="width:80px;"></div></div> <div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100"><defs><linearGradient id="logoGrad3" x1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8A2BE2"/><stop offset="33%" style="stop-color:#C71585"/><stop offset="66%" style="stop-color:#DA70D6"/><stop offset="100%" style="stop-color:#FF69B4"/></linearGradient></defs><path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad3)"/></svg><span class="logo-text" style="font-size:48px;">Zorluk Seviyesi</span></div> <div class="difficulty-centered" id="difficultyContainer"></div> <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">📋 Kategori</button><button class="primary-btn" id="difficultyNextBtn" onclick="startTest()" disabled>🚀 Teste Başla</button></div> </div>
+        <div class="screen" id="testScreen" style="display:none;"> <div class="test-header"> <div class="user-badge"><div class="user-avatar" id="testUserAvatar">👤</div><div><h3 style="color:#00d2ff;" id="testUserName"></h3><p style="color:#a0d0ff;" id="testUserDetails"></p></div></div> <div style="display:flex; align-items:center; gap:20px;"><div style="text-align:right;"><div style="color:#00d2ff; font-size:28px;" id="difficultyDisplay"></div><div style="color:#a0d0ff;" id="questionCounter">1/10</div></div><button class="exit-test-btn" onclick="showExitConfirm()">🚪 Çık</button></div> </div> <div class="timer-section"><div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div><div class="timer-text" id="timerText">01:00</div></div> <div class="question-text" id="questionText"></div> <div class="options-container" id="optionsContainer"></div> <div class="nav-buttons"><button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Önceki</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki →</button></div> </div>
+        <div class="screen" id="resultScreen" style="display:none;"> <div style="text-align:center; margin-bottom:30px;"><div style="font-size:52px; font-weight:800; color:#00d2ff;" id="zekaSeviyesi"></div></div> <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;"><div><div style="font-size:58px; color:#00d2ff;" id="finalScore">0</div><div style="color:#a0d0ff;">Doğru</div></div><div><div style="font-size:58px; color:#8a2be2;" id="totalPoints">0</div><div style="color:#a0d0ff;">Puan</div></div></div> <div id="resultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div> <div id="explanationPanel"></div> <button class="primary-btn" onclick="goToCategoriesFromResult()">🔄 Yeniden Başla</button> </div>
+    </div>
+    <script>
+        // Soru havuzları (öncekiyle aynı - kısaltıldı)
+       const marvelSorulari = [
+    { soru: "Iron Man'in gerçek adı nedir?", A: "Tony Stark", B: "Steve Rogers", C: "Bruce Banner", D: "Thor Odinson", E: "Clint Barton", dogru: "A", aciklama: "Tony Stark, milyarder iş adamı ve dahi mucittir." },
+    { soru: "Thor'un çekicinin adı nedir?", A: "Mjolnir", B: "Stormbreaker", C: "Gungnir", D: "Hofund", E: "Jarnbjorn", dogru: "A", aciklama: "Mjolnir, sadece 'layık olan' tarafından kaldırılabilir." },
+    { soru: "Spider-Man'in gerçek adı nedir?", A: "Peter Parker", B: "Miles Morales", C: "Ben Reilly", D: "Miguel O'Hara", E: "Gwen Stacy", dogru: "A", aciklama: "Peter Parker, radyoaktif bir örümcek tarafından ısırılmıştır." },
+    { soru: "Captain America'nın kalkanı hangi metalden yapılmıştır?", A: "Vibranyum", B: "Adamantium", C: "Uru", D: "Titanyum", E: "Karbon", dogru: "A", aciklama: "Kalkan, Wakanda'dan gelen Vibranyum alaşımıdır." },
+    { soru: "Hulk'ın gerçek adı nedir?", A: "Bruce Banner", B: "Bruce Wayne", C: "Clark Kent", D: "Peter Parker", E: "Tony Stark", dogru: "A", aciklama: "Dr. Bruce Banner, gama radyasyonu sonucu Hulk'a dönüşür." },
+    { soru: "Black Widow'un gerçek adı nedir?", A: "Natasha Romanoff", B: "Yelena Belova", C: "Wanda Maximoff", D: "Carol Danvers", E: "Hope van Dyne", dogru: "A", aciklama: "Natasha Romanoff, eski bir KGB ajanıdır." },
+    { soru: "Doctor Strange'in unvanı nedir?", A: "Yüce Büyücü", B: "Büyücü", C: "Sihirbaz", D: "Mistik", E: "Koruyucu", dogru: "A", aciklama: "Doctor Strange, Yüce Büyücü (Sorcerer Supreme) unvanını taşır." },
+    { soru: "Loki'nin gerçek ırkı nedir?", A: "Buz Devi", B: "Asgardlı", C: "Karanlık Elf", D: "Cüce", E: "Vanir", dogru: "A", aciklama: "Loki, Jotunheim'dan bir Buz Devidir, Odin tarafından evlat edinilmiştir." },
+    { soru: "Thanos hangi taşları toplamaya çalışmıştır?", A: "Sonsuzluk Taşları", B: "Zaman Taşları", C: "Güç Taşları", D: "Ruh Taşları", E: "Gerçeklik Taşları", dogru: "A", aciklama: "6 Sonsuzluk Taşı: Zihin, Ruh, Zaman, Gerçeklik, Güç, Uzay." },
+    { soru: "Black Panther'in ülkesi neresidir?", A: "Wakanda", B: "Sokovia", C: "Latveria", D: "Genosha", E: "Atlantis", dogru: "A", aciklama: "Wakanda, teknolojik olarak ileri ve Vibranyum zengini bir Afrika ülkesidir." },
+    { soru: "Ant-Man'in gerçek adı nedir?", A: "Scott Lang", B: "Hank Pym", C: "Hope van Dyne", D: "Bill Foster", E: "Eric O'Grady", dogru: "A", aciklama: "Scott Lang, Hank Pym'in teknolojisiyle Ant-Man olmuştur." },
+    { soru: "Vision'ın alnındaki taş hangisidir?", A: "Zihin Taşı", B: "Ruh Taşı", C: "Zaman Taşı", D: "Gerçeklik Taşı", E: "Güç Taşı", dogru: "A", aciklama: "Vision, Zihin Taşı sayesinde bilinç kazanmıştır." },
+    { soru: "Hawkeye'ın gerçek adı nedir?", A: "Clint Barton", B: "Oliver Queen", C: "Roy Harper", D: "John Diggle", E: "Malcolm Merlyn", dogru: "A", aciklama: "Clint Barton, dünyanın en iyi okçularından biridir." },
+    { soru: "Scarlet Witch'in gerçek adı nedir?", A: "Wanda Maximoff", B: "Pietro Maximoff", C: "Jean Grey", D: "Lorna Dane", E: "Ororo Munroe", dogru: "A", aciklama: "Wanda Maximoff, Kaos Büyüsü kullanabilen güçlü bir mutanttır." },
+    { soru: "Winter Soldier'ın gerçek adı nedir?", A: "Bucky Barnes", B: "Steve Rogers", C: "Sam Wilson", D: "John Walker", E: "Isaiah Bradley", dogru: "A", aciklama: "Bucky Barnes, Hydra tarafından beyni yıkanmıştır." },
+    { soru: "Star-Lord'un gerçek adı nedir?", A: "Peter Quill", B: "Jason Quill", C: "Peter Parker", D: "Richard Rider", E: "Adam Warlock", dogru: "A", aciklama: "Peter Quill, Ravager'lar tarafından büyütülmüştür." },
+    { soru: "Gamora hangi gezegendendir?", A: "Zehoberei", B: "Xandar", C: "Sakaar", D: "Vormir", E: "Knowhere", dogru: "A", aciklama: "Gamora, Thanos tarafından evlat edinilmiş Zehoberei'li bir savaşçıdır." },
+    { soru: "Drax'ın lakabı nedir?", A: "Yok Edici", B: "Koruyucu", C: "Savaşçı", D: "Yıldız Lordu", E: "Koleksiyoncu", dogru: "A", aciklama: "Drax, 'Yok Edici' olarak bilinir." },
+    { soru: "Groot hangi dildir?", A: "Grootça", B: "Ağaç Dili", C: "Flora", D: "Entish", E: "Botanik", dogru: "A", aciklama: "Groot sadece 'Ben Groot' der." },
+    { soru: "Rocket hangi hayvandır?", A: "Rakun", B: "Sincap", C: "Fare", D: "Tavşan", E: "Kedi", dogru: "A", aciklama: "Rocket, genetik olarak değiştirilmiş bir rakundur." },
+    { soru: "Nick Fury hangi organizasyonun lideridir?", A: "SHIELD", B: "HYDRA", C: "SWORD", D: "Avengers", E: "X-Men", dogru: "A", aciklama: "Nick Fury, SHIELD'in efsanevi lideridir." },
+    { soru: "Thanos hangi gezegendendir?", A: "Titan", B: "Ego", C: "Xandar", D: "Sakaar", E: "Vormir", dogru: "A", aciklama: "Thanos, Titan gezegeninin son kurtulanıdır." },
+    { soru: "Hangi Avengers filminde 'Endgame' alt başlığı kullanılmıştır?", A: "Avengers 4", B: "Avengers 3", C: "Avengers 5", D: "Avengers 2", E: "Avengers 1", dogru: "A", aciklama: "Avengers: Endgame, Infinity War'ın devamıdır." },
+    { soru: "Captain Marvel'ın gerçek adı nedir?", A: "Carol Danvers", B: "Maria Rambeau", C: "Monica Rambeau", D: "Kamala Khan", E: "Jean Grey", dogru: "A", aciklama: "Carol Danvers, Captain Marvel'dır." },
+    { soru: "Shang-Chi hangi silahı kullanır?", A: "On Halka", B: "Kılıç", C: "Kalkan", D: "Çekiç", E: "Yay", dogru: "A", aciklama: "Shang-Chi, efsanevi On Halka'yı kullanır." },
+    { soru: "Eternals filmindeki lider karakter kimdir?", A: "Ajak", B: "Ikaris", C: "Sersi", D: "Thena", E: "Kingo", dogru: "A", aciklama: "Ajak, Eternals'ın ruhani lideridir." },
+    { soru: "WandaVision dizisi hangi yıl geçmektedir?", A: "2023", B: "2024", C: "2025", D: "2022", E: "2021", dogru: "A", aciklama: "WandaVision, Endgame'den kısa süre sonra geçer." },
+    { soru: "Loki dizisinde TVA neyin kısaltmasıdır?", A: "Time Variance Authority", B: "Time Vector Authority", C: "Temporal Variance Agency", D: "Time Voyage Administration", E: "Temporal Vector Agency", dogru: "A", aciklama: "TVA = Time Variance Authority (Zaman Değişkenliği Otoritesi)." },
+    { soru: "Moon Knight'ın gerçek adı nedir?", A: "Hepsi (Marc Spector, Steven Grant, Jake Lockley)", B: "Marc Spector", C: "Steven Grant", D: "Jake Lockley", E: "Arthur Harrow", dogru: "A", aciklama: "Moon Knight, dissosiyatif kimlik bozukluğuna sahiptir." },
+    { soru: "She-Hulk'un gerçek adı nedir?", A: "Jennifer Walters", B: "Jessica Jones", C: "Carol Danvers", D: "Natasha Romanoff", E: "Wanda Maximoff", dogru: "A", aciklama: "Jennifer Walters, Bruce Banner'ın kuzenidir." },
+    { soru: "Deadpool'un gerçek adı nedir?", A: "Wade Wilson", B: "Wade Williams", C: "Wilson Fisk", D: "Wade Winston", E: "Slade Wilson", dogru: "A", aciklama: "Deadpool'un gerçek adı Wade Winston Wilson'dır." },
+    { soru: "Daredevil'in gerçek adı nedir?", A: "Matt Murdock", B: "Matt Damon", C: "Matt Smith", D: "Matt LeBlanc", E: "Matt Dillon", dogru: "A", aciklama: "Matt Murdock, kör bir avukat ve geceleri Daredevil'dir." },
+    { soru: "Punisher'ın gerçek adı nedir?", A: "Frank Castle", B: "John Wick", C: "Jack Reacher", D: "Jason Bourne", E: "James Bond", dogru: "A", aciklama: "Frank Castle, ailesinin intikamını alan bir kanunsuzdur." },
+    { soru: "Blade'in gerçek adı nedir?", A: "Eric Brooks", B: "Blade Smith", C: "John Blade", D: "Michael Morbius", E: "Hannibal King", dogru: "A", aciklama: "Eric Brooks, yarı vampir yarı insan bir avcıdır." },
+    { soru: "Ghost Rider'ın gerçek adı nedir? (Johnny Blaze)", A: "Johnny Blaze", B: "Danny Ketch", C: "Robbie Reyes", D: "Carter Slade", E: "Alejandra Jones", dogru: "A", aciklama: "En bilinen Ghost Rider, motosikletli dublör Johnny Blaze'dir." },
+    { soru: "Elektra'nın sevgilisi kimdir?", A: "Daredevil", B: "Punisher", C: "Spider-Man", D: "Iron Fist", E: "Luke Cage", dogru: "A", aciklama: "Elektra Natchios, Daredevil'in sevgilisidir." },
+    { soru: "Luke Cage'in lakabı nedir?", A: "Power Man", B: "Iron Fist", C: "Bulletproof", D: "Harlem Kahramanı", E: "Hepsi", dogru: "A", aciklama: "Luke Cage, 'Power Man' olarak bilinir." },
+    { soru: "Iron Fist'in gerçek adı nedir?", A: "Danny Rand", B: "Orson Randall", C: "Wu Ao-Shi", D: "Bei Ming-Tian", E: "Lin Lie", dogru: "A", aciklama: "Danny Rand, ölümsüz K'un-Lun şehrinin koruyucusudur." },
+    { soru: "Jessica Jones'un mesleği nedir?", A: "Özel Dedektif", B: "Avukat", C: "Gazeteci", D: "Doktor", E: "Polis", dogru: "A", aciklama: "Jessica Jones, Hell's Kitchen'da özel dedektiftir." },
+    { soru: "Kingpin'in gerçek adı nedir?", A: "Wilson Fisk", B: "Wilson Grant", C: "Fisk Wilson", D: "Grant Ward", E: "Fisk Grant", dogru: "A", aciklama: "Wilson Fisk, New York'un yeraltı dünyasının acımasız lideridir." }
+];
+       const dcSorulari = [
+    { soru: "Batman'in gerçek adı nedir?", A: "Bruce Wayne", B: "Clark Kent", C: "Barry Allen", D: "Hal Jordan", E: "Oliver Queen", dogru: "A", aciklama: "Bruce Wayne, Gotham'ın milyarder koruyucusudur." },
+    { soru: "Superman hangi gezegenden gelmiştir?", A: "Kripton", B: "Mars", C: "Tamaran", D: "Oa", E: "Apokolips", dogru: "A", aciklama: "Superman, Kripton gezegeninden gelen son oğuldur." },
+    { soru: "Wonder Woman'ın gerçek adı nedir?", A: "Diana Prince", B: "Hippolyta", C: "Artemis", D: "Athena", E: "Hera", dogru: "A", aciklama: "Diana, Themyscira'nın prensesidir." },
+    { soru: "Flash'in gerçek adı nedir?", A: "Barry Allen", B: "Wally West", C: "Jay Garrick", D: "Bart Allen", E: "Eobard Thawne", dogru: "A", aciklama: "Barry Allen, adli tıp uzmanı ve en hızlı insandır." },
+    { soru: "Aquaman'in gerçek adı nedir?", A: "Arthur Curry", B: "Orin", C: "Garth", D: "Kaldur'ahm", E: "Mera", dogru: "A", aciklama: "Arthur Curry, Atlantis'in meşru kralıdır." },
+    { soru: "Joker'in gerçek adı nedir?", A: "Bilinmiyor", B: "Jack Napier", C: "Arthur Fleck", D: "Joseph Kerr", E: "Jerome Valeska", dogru: "A", aciklama: "Joker'in gerçek adı çizgi romanlarda hiç açıklanmamıştır." },
+    { soru: "Harley Quinn'in gerçek adı nedir?", A: "Harleen Quinzel", B: "Pamela Isley", C: "Selina Kyle", D: "Talia al Ghul", E: "Barbara Gordon", dogru: "A", aciklama: "Dr. Harleen Quinzel, Joker'in psikiyatristiyken ona aşık olmuştur." },
+    { soru: "Cyborg'un gerçek adı nedir?", A: "Victor Stone", B: "Silas Stone", C: "Ray Palmer", D: "John Henry Irons", E: "Michael Holt", dogru: "A", aciklama: "Victor Stone, bir kaza sonucu sibernetik varlığa dönüşmüştür." },
+    { soru: "Green Lantern yüzüğü hangi duyguyla çalışır?", A: "İrade", B: "Korku", C: "Umut", D: "Aşk", E: "Hırs", dogru: "A", aciklama: "Yeşil Fener yüzüğü, saf irade gücüyle çalışır." },
+    { soru: "Darkseid'in ana hedefi nedir?", A: "Anti-Life Denklemi", B: "Dünyayı yok etmek", C: "Superman'i öldürmek", D: "Evreni fethetmek", E: "Adalet Ligi'ni yok etmek", dogru: "A", aciklama: "Anti-Life Denklemi, tüm özgür iradeyi yok edecek kozmik bir formüldür." },
+    { soru: "Shazam'ın gerçek adı nedir?", A: "Billy Batson", B: "Freddy Freeman", C: "Mary Bromfield", D: "Eugene Choi", E: "Pedro Peña", dogru: "A", aciklama: "Billy Batson, 'Shazam!' diyerek yetişkin bir süper kahramana dönüşür." },
+    { soru: "Catwoman'in gerçek adı nedir?", A: "Selina Kyle", B: "Pamela Isley", C: "Harleen Quinzel", D: "Talia al Ghul", E: "Barbara Gordon", dogru: "A", aciklama: "Selina Kyle, usta bir hırsız ve Batman'in aşkıdır." },
+    { soru: "Nightwing'in gerçek adı nedir?", A: "Dick Grayson", B: "Jason Todd", C: "Tim Drake", D: "Damian Wayne", E: "Stephanie Brown", dogru: "A", aciklama: "Dick Grayson, ilk Robin'dir ve daha sonra Nightwing olmuştur." },
+    { soru: "Red Hood'un gerçek adı nedir?", A: "Jason Todd", B: "Dick Grayson", C: "Tim Drake", D: "Damian Wayne", E: "Stephanie Brown", dogru: "A", aciklama: "Jason Todd, Joker tarafından öldürülmüş, sonra dirilmiştir." },
+    { soru: "Batgirl'in gerçek adı nedir?", A: "Barbara Gordon", B: "Stephanie Brown", C: "Cassandra Cain", D: "Betty Kane", E: "Helena Bertinelli", dogru: "A", aciklama: "Barbara Gordon, Komiser Gordon'un kızı ve Oracle'dır." },
+    { soru: "Superman'in en büyük zayıflığı nedir?", A: "Hepsi", B: "Kriptonit", C: "Kırmızı Güneş", D: "Büyü", E: "Su", dogru: "A", aciklama: "Superman; Kriptonit, kırmızı güneş ışığı ve büyüye karşı zayıftır." },
+    { soru: "Superman'in kuzeni kimdir?", A: "Supergirl", B: "Power Girl", C: "Mary Marvel", D: "Wonder Girl", E: "Batgirl", dogru: "A", aciklama: "Kara Zor-El, Superman'in kuzeni Supergirl'dür." },
+    { soru: "Superman hangi gazetede çalışır?", A: "Daily Planet", B: "Gotham Gazette", C: "Central City Citizen", D: "Star City Sentinel", E: "Metropolis News", dogru: "A", aciklama: "Clark Kent, Daily Planet'te muhabirdir." },
+    { soru: "Lex Luthor ne iş yapar?", A: "Hepsi", B: "Bilim adamı", C: "İş adamı", D: "Politikacı", E: "Asker", dogru: "A", aciklama: "Lex Luthor; bilim adamı, iş adamı ve politikacıdır." },
+    { soru: "Superman'in evlat edinen ailesinin soyadı nedir?", A: "Kent", B: "Wayne", C: "Parker", D: "Allen", E: "Queen", dogru: "A", aciklama: "Superman'i Jonathan ve Martha Kent evlat edinmiştir." },
+    { soru: "Superman'in sevgilisinin adı nedir?", A: "Lois Lane", B: "Lana Lang", C: "Diana Prince", D: "Selina Kyle", E: "Carol Ferris", dogru: "A", aciklama: "Superman'in sevgilisi Lois Lane'dir." },
+    { soru: "Superman'in köpeğinin adı nedir?", A: "Krypto", B: "Ace", C: "Rex", D: "Buddy", E: "Max", dogru: "A", aciklama: "Superman'in köpeği Krypto'dur." },
+    { soru: "Superman hangi renk güneşten güç alır?", A: "Sarı", B: "Kırmızı", C: "Mavi", D: "Beyaz", E: "Yeşil", dogru: "A", aciklama: "Superman, sarı güneş ışığından güç alır." },
+    { soru: "Batman'in şehri neresidir?", A: "Gotham", B: "Metropolis", C: "Central City", D: "Star City", E: "Coast City", dogru: "A", aciklama: "Batman, Gotham City'nin koruyucusudur." },
+    { soru: "Batman'in sadık uşağı kimdir?", A: "Alfred Pennyworth", B: "Lucius Fox", C: "Jim Gordon", D: "Robin", E: "Harvey Bullock", dogru: "A", aciklama: "Alfred Pennyworth, Bruce Wayne'in sadık uşağıdır." },
+    { soru: "Batman'in ailesini kim öldürmüştür?", A: "Joe Chill", B: "Joker", C: "Penguin", D: "Riddler", E: "Two-Face", dogru: "A", aciklama: "Joe Chill, Bruce Wayne'in ailesini öldürmüştür." },
+    { soru: "Batman hangi yılda yaratılmıştır?", A: "1939", B: "1938", C: "1940", D: "1941", E: "1942", dogru: "A", aciklama: "Batman, 1939'da Detective Comics #27'de yaratılmıştır." },
+    { soru: "Batcave nerededir?", A: "Wayne Malikanesi'nin altında", B: "Wayne Kulesi", C: "Gotham Polis Merkezi", D: "Arkham Asylum", E: "Gotham Limanı", dogru: "A", aciklama: "Batcave, Wayne Malikanesi'nin altındadır." },
+    { soru: "Batman'in aracının adı nedir?", A: "Batmobile", B: "Batwing", C: "Batboat", D: "Batcycle", E: "Batpod", dogru: "A", aciklama: "Batman'in ikonik aracı Batmobile'dir." },
+    { soru: "Robin'in gerçek adı nedir? (İlk)", A: "Dick Grayson", B: "Jason Todd", C: "Tim Drake", D: "Damian Wayne", E: "Stephanie Brown", dogru: "A", aciklama: "Dick Grayson, ilk Robin'dir." },
+    { soru: "Batwoman'in gerçek adı nedir?", A: "Kate Kane", B: "Barbara Gordon", C: "Selina Kyle", D: "Helena Bertinelli", E: "Stephanie Brown", dogru: "A", aciklama: "Kate Kane, Batwoman'dır." },
+    { soru: "Batman'in en büyük düşmanı kimdir?", A: "Joker", B: "Riddler", C: "Penguin", D: "Two-Face", E: "Bane", dogru: "A", aciklama: "Joker, Batman'in en büyük düşmanıdır." },
+    { soru: "Flash'in düşmanı Reverse-Flash'in gerçek adı nedir?", A: "Eobard Thawne", B: "Hunter Zolomon", C: "Daniel West", D: "Edward Clariss", E: "August Heart", dogru: "A", aciklama: "Eobard Thawne, 25. yüzyıldan gelen Reverse-Flash'tir." },
+    { soru: "Green Arrow'un gerçek adı nedir?", A: "Oliver Queen", B: "Clint Barton", C: "Roy Harper", D: "John Diggle", E: "Malcolm Merlyn", dogru: "A", aciklama: "Oliver Queen, Star City'nin koruyucusu Green Arrow'dur." },
+    { soru: "Black Canary'nin gerçek adı nedir?", A: "Dinah Lance", B: "Laurel Lance", C: "Sara Lance", D: "Dinah Drake", E: "Helena Bertinelli", dogru: "A", aciklama: "Dinah Lance, Black Canary'dir." },
+    { soru: "Martian Manhunter'ın gerçek adı nedir?", A: "J'onn J'onzz", B: "M'gann M'orzz", C: "Kal-El", D: "Bruce Wayne", E: "Barry Allen", dogru: "A", aciklama: "J'onn J'onzz, Mars'tan gelen son yeşil marslıdır." },
+    { soru: "Hawkman'in gerçek adı nedir?", A: "Carter Hall", B: "Katar Hol", C: "Felix Faust", D: "Vandal Savage", E: "Shayera Hol", dogru: "A", aciklama: "Carter Hall, Hawkman'in reenkarne olmuş halidir." },
+    { soru: "Hawkgirl'ün gerçek adı nedir?", A: "Shayera Hol", B: "Kendra Saunders", C: "Dinah Lance", D: "Zatanna", E: "Mera", dogru: "A", aciklama: "Shayera Hol, Hawkgirl'ün Thanagarian versiyonudur." },
+    { soru: "Zatanna'nın gücü nedir?", A: "Büyü", B: "Süper Hız", C: "Süper Güç", D: "Uçma", E: "Görünmezlik", dogru: "A", aciklama: "Zatanna, güçlü bir büyücüdür." },
+    { soru: "John Constantine'in lakabı nedir?", A: "Hellblazer", B: "Exorcist", C: "Warlock", D: "Sorcerer", E: "Magician", dogru: "A", aciklama: "John Constantine, Hellblazer olarak bilinir." }
+];
+        const oyunSorulari = [
+    { soru: "CS:GO'da en popüler harita hangisidir?", A: "Dust II", B: "Mirage", C: "Inferno", D: "Nuke", E: "Vertigo", dogru: "A", aciklama: "Dust II, Counter-Strike'ın ikonik haritasıdır." },
+    { soru: "LoL'de 'Pentakill' ne demektir?", A: "Tek başına 5 rakip öldürmek", B: "5 asist", C: "5 ölüm", D: "5 kule yıkmak", E: "5 ejderha kesmek", dogru: "A", aciklama: "Pentakill, kısa sürede tek başına 5 düşman şampiyonu öldürmektir." },
+    { soru: "Minecraft hangi yılda piyasaya sürülmüştür?", A: "2011", B: "2009", C: "2013", D: "2015", E: "2017", dogru: "A", aciklama: "Minecraft tam sürüm olarak 2011'de yayınlanmıştır." },
+    { soru: "Valorant'ta Vandal'ın headshot hasarı kaçtır?", A: "160", B: "150", C: "156", D: "165", E: "170", dogru: "A", aciklama: "Vandal, 0-50m arası headshotta 160 hasar verir." },
+    { soru: "Fortnite hangi yıl Battle Royale modunu eklemiştir?", A: "2017", B: "2016", C: "2018", D: "2019", E: "2020", dogru: "A", aciklama: "Fortnite Battle Royale, 2017'de ücretsiz olarak yayınlanmıştır." },
+    { soru: "GTA V hangi yıl piyasaya sürülmüştür?", A: "2013", B: "2011", C: "2015", D: "2017", E: "2019", dogru: "A", aciklama: "Grand Theft Auto V, 2013'te piyasaya sürülmüştür." },
+    { soru: "PUBG'nin açılımı nedir?", A: "PlayerUnknown's Battlegrounds", B: "Public Unknown Battle Grounds", C: "Player Ultimate Battle Grounds", D: "Public Universal Battle Game", E: "Player's Unknown Battle Game", dogru: "A", aciklama: "PUBG, Brendan Greene tarafından yaratılmıştır." },
+    { soru: "Call of Duty: Warzone kaç oyunculudur?", A: "150", B: "100", C: "120", D: "200", E: "50", dogru: "A", aciklama: "Warzone, 150 oyunculu battle royale moduna sahiptir." },
+    { soru: "The Legend of Zelda: Breath of the Wild hangi konsola özeldir?", A: "Nintendo Switch", B: "PlayStation 4", C: "Xbox One", D: "PC", E: "Wii U", dogru: "A", aciklama: "Oyun hem Switch hem Wii U için çıkmıştır, ancak Switch ile özdeşleşmiştir." },
+    { soru: "Among Us kaç oyuncuyla oynanabilir? (Maksimum)", A: "15", B: "10", C: "12", D: "8", E: "20", dogru: "A", aciklama: "Among Us, 4-15 oyuncu ile oynanabilir." },
+    { soru: "Elden Ring'in yönetmeni kimdir?", A: "Hidetaka Miyazaki", B: "Hideo Kojima", C: "Shigeru Miyamoto", D: "Shinji Mikami", E: "Yoko Taro", dogru: "A", aciklama: "Miyazaki, Dark Souls serisinin de yaratıcısıdır." },
+    { soru: "God of War (2018) hangi mitolojiyi konu alır?", A: "İskandinav", B: "Yunan", C: "Mısır", D: "Japon", E: "Kelt", dogru: "A", aciklama: "Yeni God of War, İskandinav mitolojisinde geçer." },
+    { soru: "The Witcher 3'ün ana karakteri kimdir?", A: "Geralt of Rivia", B: "Ciri", C: "Yennefer", D: "Triss", E: "Vesemir", dogru: "A", aciklama: "Geralt, Rivyalı bir witcher'dır." },
+    { soru: "Red Dead Redemption 2 hangi yıl çıkmıştır?", A: "2018", B: "2016", C: "2017", D: "2019", E: "2020", dogru: "A", aciklama: "RDR2, Rockstar Games tarafından 2018'de piyasaya sürülmüştür." },
+    { soru: "Hangisi bir battle royale oyunu değildir?", A: "CS:GO", B: "Fortnite", C: "PUBG", D: "Apex Legends", E: "Warzone", dogru: "A", aciklama: "CS:GO taktiksel FPS'dir, battle royale modu yoktur." },
+    { soru: "Super Mario'nun yaratıcısı kimdir?", A: "Shigeru Miyamoto", B: "Hideo Kojima", C: "Satoru Iwata", D: "Shinji Mikami", E: "Gabe Newell", dogru: "A", aciklama: "Shigeru Miyamoto, Mario'nun yaratıcısıdır." },
+    { soru: "PlayStation hangi şirketin ürünüdür?", A: "Sony", B: "Microsoft", C: "Nintendo", D: "Sega", E: "Atari", dogru: "A", aciklama: "PlayStation, Sony Interactive Entertainment'ın oyun konsoludur." },
+    { soru: "Dünyanın en çok satan oyunu hangisidir?", A: "Minecraft", B: "Tetris", C: "GTA V", D: "Wii Sports", E: "PUBG", dogru: "A", aciklama: "Minecraft 300 milyondan fazla satmıştır." },
+    { soru: "Hangisi bir oyun motoru değildir?", A: "Photoshop", B: "Unity", C: "Unreal Engine", D: "Godot", E: "CryEngine", dogru: "A", aciklama: "Photoshop grafik tasarım programıdır." },
+    { soru: "Valorant hangi şirketin oyunudur?", A: "Riot Games", B: "Valve", C: "Blizzard", D: "Epic Games", E: "EA", dogru: "A", aciklama: "Valorant, Riot Games'in FPS oyunudur." },
+    { soru: "The Legend of Zelda serisinin ana karakteri kimdir?", A: "Link", B: "Zelda", C: "Ganon", D: "Mario", E: "Kirby", dogru: "A", aciklama: "Ana karakter Link'tir, Zelda prensestir." },
+    { soru: "Hangisi bir espor oyunu değildir?", A: "The Sims", B: "League of Legends", C: "Dota 2", D: "CS2", E: "Valorant", dogru: "A", aciklama: "The Sims yaşam simülasyonu oyunudur, espor değildir." },
+    { soru: "Pokemon'daki Pikachu hangi türdür?", A: "Elektrik", B: "Ateş", C: "Su", D: "Çim", E: "Normal", dogru: "A", aciklama: "Pikachu elektrik türü bir pokemondur." },
+    { soru: "Hangisi bir Resident Evil oyunu değildir?", A: "Silent Hill", B: "RE2", C: "RE4", D: "RE7", E: "Village", dogru: "A", aciklama: "Silent Hill, Konami'nin korku oyunu serisidir." },
+    { soru: "Hangisi bir Assassin's Creed oyunu değildir?", A: "Far Cry", B: "Black Flag", C: "Valhalla", D: "Odyssey", E: "Mirage", dogru: "A", aciklama: "Far Cry, Ubisoft'un ayrı bir serisidir." },
+    { soru: "Hangisi bir Need for Speed oyunu değildir?", A: "Forza Horizon", B: "Most Wanted", C: "Underground", D: "Carbon", E: "Heat", dogru: "A", aciklama: "Forza Horizon, Xbox'a özel yarış serisidir." },
+    { soru: "Hangisi bir FIFA (EA FC) oyunu değildir?", A: "PES", B: "FIFA 23", C: "EA FC 24", D: "FIFA 22", E: "EA FC 25", dogru: "A", aciklama: "PES (eFootball), Konami'nin futbol oyunudur." },
+    { soru: "Hangisi bir Call of Duty oyunu değildir?", A: "Battlefield", B: "Modern Warfare", C: "Black Ops", D: "Warzone", E: "Vanguard", dogru: "A", aciklama: "Battlefield, EA'in FPS serisidir." },
+    { soru: "Hangisi bir GTA oyunu değildir?", A: "Watch Dogs", B: "Vice City", C: "San Andreas", D: "GTA IV", E: "GTA V", dogru: "A", aciklama: "Watch Dogs, Ubisoft'un aksiyon-macera oyunudur." },
+    { soru: "Hangisi bir Soulsborne oyunu değildir?", A: "Sekiro", B: "Dark Souls", C: "Bloodborne", D: "Elden Ring", E: "Demon's Souls", dogru: "A", aciklama: "Sekiro, FromSoftware'in oyunu olsa da Soulsborne sayılmaz (mekanik farkı)." },
+    { soru: "Hangisi bir Bethesda oyunu değildir?", A: "Cyberpunk 2077", B: "Skyrim", C: "Fallout 4", D: "Starfield", E: "Oblivion", dogru: "A", aciklama: "Cyberpunk 2077, CD Projekt Red'in oyunudur." },
+    { soru: "Hangisi bir Blizzard oyunu değildir?", A: "League of Legends", B: "World of Warcraft", C: "Diablo", D: "Overwatch", E: "Starcraft", dogru: "A", aciklama: "League of Legends, Riot Games'in oyunudur." },
+    { soru: "Hangisi bir Valve oyunu değildir?", A: "Overwatch", B: "Half-Life", C: "Portal", D: "Dota 2", E: "CS2", dogru: "A", aciklama: "Overwatch, Blizzard'ın oyunudur." },
+    { soru: "Hangisi bir Epic Games oyunu değildir?", A: "PUBG", B: "Fortnite", C: "Gears of War", D: "Unreal Tournament", E: "Infinity Blade", dogru: "A", aciklama: "PUBG, Krafton'un oyunudur." },
+    { soru: "Hangisi bir Rockstar Games oyunu değildir?", A: "Mafia", B: "GTA", C: "Red Dead", D: "Max Payne", E: "Bully", dogru: "A", aciklama: "Mafia, 2K Games'in serisidir." },
+    { soru: "Hangisi bir korku oyunu değildir?", A: "Stardew Valley", B: "Resident Evil", C: "Silent Hill", D: "Amnesia", E: "Outlast", dogru: "A", aciklama: "Stardew Valley, çiftlik simülasyonudur." },
+    { soru: "Hangisi bir RPG oyunu değildir?", A: "FIFA", B: "Skyrim", C: "The Witcher 3", D: "Final Fantasy", E: "Baldur's Gate 3", dogru: "A", aciklama: "FIFA, spor oyunudur." },
+    { soru: "Hangisi bir strateji oyunu değildir?", A: "Minecraft", B: "Age of Empires", C: "Civilization", D: "Starcraft", E: "Total War", dogru: "A", aciklama: "Minecraft, sandbox hayatta kalma oyunudur." },
+    { soru: "Hangisi bir simülasyon oyunu değildir?", A: "Doom", B: "Flight Simulator", C: "The Sims", D: "Euro Truck Simulator", E: "Farming Simulator", dogru: "A", aciklama: "Doom, FPS oyunudur." },
+    { soru: "Hangisi bir bağımsız (indie) oyun değildir?", A: "Call of Duty", B: "Hades", C: "Stardew Valley", D: "Celeste", E: "Hollow Knight", dogru: "A", aciklama: "Call of Duty, büyük bir stüdyonun AAA oyunudur." }
+];
+       const arabaSorulari = [
+    { soru: "Ferrari'nin logosundaki hayvan nedir?", A: "At", B: "Boğa", C: "Aslan", D: "Kartal", E: "Panter", dogru: "A", aciklama: "Şaha kalkmış siyah at, Ferrari'nin simgesidir." },
+    { soru: "Lamborghini'nin logosundaki hayvan nedir?", A: "Boğa", B: "At", C: "Aslan", D: "Kartal", E: "Yılan", dogru: "A", aciklama: "Altın boğa, Lamborghini'nin gücünü temsil eder." },
+    { soru: "Porsche 911'in motoru nerede bulunur?", A: "Arkada", B: "Önde", C: "Ortada", D: "Her yerde", E: "Hiçbiri", dogru: "A", aciklama: "Porsche 911, arkadan motorlu klasik bir spor arabadır." },
+    { soru: "Bugatti Veyron'un maksimum hızı kaç km/s'tir?", A: "407", B: "350", C: "380", D: "420", E: "450", dogru: "A", aciklama: "Bugatti Veyron Super Sport 407 km/s hıza ulaşabilir." },
+    { soru: "Tesla'nın CEO'su kimdir?", A: "Elon Musk", B: "Jeff Bezos", C: "Bill Gates", D: "Mark Zuckerberg", E: "Tim Cook", dogru: "A", aciklama: "Elon Musk, Tesla ve SpaceX'in CEO'sudur." },
+    { soru: "Mercedes-Benz hangi ülkenin markasıdır?", A: "Almanya", B: "Fransa", C: "İtalya", D: "İngiltere", E: "ABD", dogru: "A", aciklama: "Mercedes, Alman otomotiv devidir." },
+    { soru: "BMW'nin açılımı nedir?", A: "Bayerische Motoren Werke", B: "Bavarian Motor Works", C: "Berlin Motor Works", D: "British Motor Works", E: "Belgian Motor Works", dogru: "A", aciklama: "BMW, Bavyera Motor Fabrikaları anlamına gelir." },
+    { soru: "Audi'nin sloganı nedir?", A: "Vorsprung durch Technik", B: "Das Auto", C: "The Ultimate Driving Machine", D: "Sheer Driving Pleasure", E: "Power of Dreams", dogru: "A", aciklama: "Vorsprung durch Technik, 'Teknolojiyle Önde' demektir." },
+    { soru: "Hangi araba James Bond ile özdeşleşmiştir?", A: "Aston Martin", B: "Jaguar", C: "Bentley", D: "Rolls-Royce", E: "Lotus", dogru: "A", aciklama: "Aston Martin DB5, James Bond'un ikonik aracıdır." },
+    { soru: "Hangisi bir Amerikan otomobil markasıdır?", A: "Chevrolet", B: "Renault", C: "Peugeot", D: "Fiat", E: "Seat", dogru: "A", aciklama: "Chevrolet, General Motors'a ait Amerikan markasıdır." },
+    { soru: "Hangisi bir Japon otomobil markasıdır?", A: "Toyota", B: "Hyundai", C: "Kia", D: "Volvo", E: "Saab", dogru: "A", aciklama: "Toyota, Japon otomotiv devidir." },
+    { soru: "Formula 1'de en çok şampiyonluk kazanan takım hangisidir?", A: "Ferrari", B: "Mercedes", C: "Red Bull", D: "McLaren", E: "Williams", dogru: "A", aciklama: "Ferrari, 16 markalar şampiyonluğu kazanmıştır." },
+    { soru: "Hangi araba 'kanat kapılar' ile ünlüdür?", A: "Lamborghini", B: "Ferrari", C: "Porsche", D: "Bugatti", E: "McLaren", dogru: "A", aciklama: "Lamborghini'nin makas kapıları ikoniktir." },
+    { soru: "Elektrikli otomobil üreticisi Rivian hangi ülkedendir?", A: "ABD", B: "Çin", C: "Almanya", D: "Japonya", E: "İngiltere", dogru: "A", aciklama: "Rivian, Amerikan elektrikli araç girişimidir." },
+    { soru: "Hangisi bir Fransız otomobil markasıdır?", A: "Renault", B: "Fiat", C: "Seat", D: "Opel", E: "Skoda", dogru: "A", aciklama: "Renault, Fransız otomobil üreticisidir." },
+    { soru: "Hangisi bir İtalyan otomobil markası değildir?", A: "Volkswagen", B: "Ferrari", C: "Lamborghini", D: "Maserati", E: "Alfa Romeo", dogru: "A", aciklama: "Volkswagen, Alman markasıdır." },
+    { soru: "Hangisi bir Alman otomobil markası değildir?", A: "Volvo", B: "BMW", C: "Mercedes", D: "Audi", E: "Porsche", dogru: "A", aciklama: "Volvo, İsveç markasıdır." },
+    { soru: "Hangisi bir İngiliz otomobil markasıdır?", A: "Jaguar", B: "Ferrari", C: "Porsche", D: "Tesla", E: "Toyota", dogru: "A", aciklama: "Jaguar, İngiliz lüks otomobil üreticisidir." },
+    { soru: "Hangisi bir süper spor otomobil değildir?", A: "Fiat Egea", B: "Bugatti Chiron", C: "Koenigsegg Jesko", D: "Pagani Huayra", E: "Rimac Nevera", dogru: "A", aciklama: "Fiat Egea, ekonomik bir aile otomobilidir." },
+    { soru: "Hangisi bir SUV modelidir?", A: "Toyota RAV4", B: "Toyota Corolla", C: "Honda Civic", D: "BMW 3 Serisi", E: "Mercedes E Serisi", dogru: "A", aciklama: "RAV4, Toyota'nın kompakt SUV modelidir." },
+    { soru: "Hangisi bir pick-up modelidir?", A: "Ford F-150", B: "Ford Focus", C: "Honda Civic", D: "Toyota Corolla", E: "VW Golf", dogru: "A", aciklama: "Ford F-150, Amerika'nın en çok satan pick-up'ıdır." },
+    { soru: "Hangisi bir elektrikli otomobil modeli değildir?", A: "Toyota Hilux", B: "Tesla Model 3", C: "Rivian R1T", D: "Lucid Air", E: "Porsche Taycan", dogru: "A", aciklama: "Toyota Hilux, dizel pick-up'tır." },
+    { soru: "Hangisi bir hibrit otomobil modelidir?", A: "Toyota Prius", B: "Tesla Model S", C: "Nissan Leaf", D: "BMW i3", E: "Ford Mustang Mach-E", dogru: "A", aciklama: "Prius, dünyanın en popüler hibrit otomobilidir." },
+    { soru: "Hangisi bir lüks otomobil markası değildir?", A: "Dacia", B: "Rolls-Royce", C: "Bentley", D: "Maybach", E: "Aston Martin", dogru: "A", aciklama: "Dacia, ekonomik otomobiller üreten Romanya markasıdır." },
+    { soru: "Hangisi bir otomobil yarışı serisi değildir?", A: "UEFA Şampiyonlar Ligi", B: "Formula 1", C: "WRC", D: "NASCAR", E: "Le Mans", dogru: "A", aciklama: "UEFA Şampiyonlar Ligi, futbol turnuvasıdır." },
+    { soru: "Hangisi bir Formula 1 pilotu değildir?", A: "Valentino Rossi", B: "Lewis Hamilton", C: "Max Verstappen", D: "Charles Leclerc", E: "Fernando Alonso", dogru: "A", aciklama: "Valentino Rossi, MotoGP pilotudur." },
+    { soru: "Hangisi bir ralli pilotu değildir?", A: "Michael Schumacher", B: "Sébastien Loeb", C: "Sébastien Ogier", D: "Carlos Sainz", E: "Kalle Rovanperä", dogru: "A", aciklama: "Michael Schumacher, Formula 1 pilotudur." },
+    { soru: "Otomobillerde ABS ne işe yarar?", A: "Frenlemede direksiyon hakimiyetini korumak", B: "Daha hızlı durmak", C: "Yakıt tasarrufu", D: "Daha yumuşak fren", E: "Motor gücünü artırmak", dogru: "A", aciklama: "ABS, tekerleklerin kilitlenmesini önleyerek direksiyon kontrolünü sağlar." },
+    { soru: "Otomobillerde ESP ne işe yarar?", A: "Aracın savrulmasını önlemek", B: "Hız sabitleyici", C: "Yokuş kalkış desteği", D: "Şerit takip asistanı", E: "Otomatik park", dogru: "A", aciklama: "ESP (Elektronik Stabilite Programı), aracın kaymasını ve savrulmasını engeller." },
+    { soru: "Hangisi bir otomobil yakıt türü değildir?", A: "Hidroelektrik", B: "Benzin", C: "Dizel", D: "LPG", E: "Elektrik", dogru: "A", aciklama: "Hidroelektrik, elektrik üretim yöntemidir." },
+    { soru: "Hangisi bir otomobil şanzıman türü değildir?", A: "Hidrolik", B: "Manuel", C: "Otomatik", D: "Yarı Otomatik", E: "CVT", dogru: "A", aciklama: "Hidrolik, güç aktarım sistemi değildir." },
+    { soru: "Hangisi bir otomobil segmenti değildir?", A: "Hatchback", B: "Sedan", C: "SUV", D: "Coupe", E: "Apartman", dogru: "E", aciklama: "Apartman, otomobil segmenti değildir." },
+    { soru: "Hangisi bir Türk otomobil markasıdır?", A: "TOGG", B: "BMC", C: "Otokar", D: "Karsan", E: "Hepsi", dogru: "A", aciklama: "TOGG, Türkiye'nin yerli elektrikli otomobil markasıdır." },
+    { soru: "Hangisi bir İtalyan spor otomobil markasıdır?", A: "Pagani", B: "Koenigsegg", C: "Spyker", D: "Noble", E: "Wiesmann", dogru: "A", aciklama: "Pagani, İtalyan süper spor otomobil üreticisidir." },
+    { soru: "Hangisi bir İsveç otomobil markasıdır?", A: "Volvo", B: "Saab", C: "Koenigsegg", D: "Hepsi", E: "Scania", dogru: "D", aciklama: "Volvo, Saab, Koenigsegg ve Scania İsveç markalarıdır." },
+    { soru: "Hangisi bir Güney Kore otomobil markası değildir?", A: "Mazda", B: "Hyundai", C: "Kia", D: "Genesis", E: "SsangYong", dogru: "A", aciklama: "Mazda, Japon markasıdır." },
+    { soru: "Hangisi bir Çin otomobil markasıdır?", A: "BYD", B: "Toyota", C: "Honda", D: "Nissan", E: "Mitsubishi", dogru: "A", aciklama: "BYD, Çinli elektrikli otomobil üreticisidir." },
+    { soru: "Hangisi bir motosiklet markası değildir?", A: "Subaru", B: "Honda", C: "Yamaha", D: "Kawasaki", E: "Suzuki", dogru: "A", aciklama: "Subaru, otomobil markasıdır." },
+    { soru: "Hangisi bir lastik markası değildir?", A: "Brembo", B: "Michelin", C: "Pirelli", D: "Goodyear", E: "Bridgestone", dogru: "A", aciklama: "Brembo, fren sistemi üreticisidir." },
+    { soru: "Hangisi bir otomobil parçası değildir?", A: "Pervane", B: "Motor", C: "Şanzıman", D: "Direksiyon", E: "Egzoz", dogru: "A", aciklama: "Pervane, uçak veya gemilerde bulunur." }
+];
+      const motorSorulari = [
+    { soru: "Hayabusa hangi markanın modelidir?", A: "Suzuki", B: "Yamaha", C: "Kawasaki", D: "Honda", E: "Ducati", dogru: "A", aciklama: "Suzuki Hayabusa, dünyanın en hızlı seri üretim motosikletlerindendir." },
+    { soru: "Yamaha R1'in motor hacmi kaç cc'dir?", A: "998", B: "1000", C: "750", D: "1100", E: "1200", dogru: "A", aciklama: "Yamaha YZF-R1, 998cc sıvı soğutmalı motora sahiptir." },
+    { soru: "BMW motosikletlerinin sloganı nedir?", A: "Make Life a Ride", B: "The Ultimate Riding Machine", C: "Unstoppable", D: "Born to Ride", E: "Ride and Enjoy", dogru: "A", aciklama: "BMW Motorrad'ın sloganı 'Make Life a Ride'dır." },
+    { soru: "Ducati hangi ülkenin markasıdır?", A: "İtalya", B: "Almanya", C: "Japonya", D: "ABD", E: "İngiltere", dogru: "A", aciklama: "Ducati, İtalyan lüks motosiklet üreticisidir." },
+    { soru: "Kawasaki Ninja H2R'nin maksimum gücü kaç beygirdir?", A: "310", B: "200", C: "250", D: "280", E: "350", dogru: "A", aciklama: "H2R, süperşarjlı motoruyla 310+ beygir güç üretir." },
+    { soru: "Honda CBR serisi hangi tür motosikletlerdir?", A: "Spor", B: "Cruiser", C: "Touring", D: "Adventure", E: "Naked", dogru: "A", aciklama: "CBR, Honda'nın spor motosiklet ailesidir." },
+    { soru: "Harley-Davidson hangi tür motosikletleriyle ünlüdür?", A: "Cruiser", B: "Spor", C: "Touring", D: "Adventure", E: "Scooter", dogru: "A", aciklama: "Harley-Davidson, V-twin cruiser motosikletleriyle tanınır." },
+    { soru: "MotoGP'de en çok şampiyonluk kazanan sürücü kimdir?", A: "Giacomo Agostini", B: "Valentino Rossi", C: "Marc Marquez", D: "Mick Doohan", E: "Jorge Lorenzo", dogru: "A", aciklama: "Giacomo Agostini, 15 dünya şampiyonluğu kazanmıştır." },
+    { soru: "Hangisi bir İtalyan motosiklet markasıdır?", A: "Aprilia", B: "Triumph", C: "KTM", D: "Royal Enfield", E: "Moto Guzzi", dogru: "A", aciklama: "Aprilia, İtalyan motosiklet üreticisidir." },
+    { soru: "Hangisi bir motosiklet güvenlik ekipmanı değildir?", A: "Kravat", B: "Kask", C: "Eldiven", D: "Ceket", E: "Dizlik", dogru: "A", aciklama: "Kravat motosiklet güvenlik ekipmanı değildir." },
+    { soru: "Hangisi bir İngiliz motosiklet markasıdır?", A: "Triumph", B: "Ducati", C: "BMW", D: "KTM", E: "Husqvarna", dogru: "A", aciklama: "Triumph, İngiliz motosiklet üreticisidir." },
+    { soru: "Hangisi bir Avusturya motosiklet markasıdır?", A: "KTM", B: "BMW", C: "Ducati", D: "Aprilia", E: "Yamaha", dogru: "A", aciklama: "KTM, Avusturyalı motosiklet üreticisidir." },
+    { soru: "Hangisi bir Alman motosiklet markasıdır?", A: "BMW", B: "Ducati", C: "Aprilia", D: "KTM", E: "Honda", dogru: "A", aciklama: "BMW Motorrad, Alman motosiklet üreticisidir." },
+    { soru: "Hangisi bir Japon motosiklet markası değildir?", A: "Ducati", B: "Honda", C: "Yamaha", D: "Suzuki", E: "Kawasaki", dogru: "A", aciklama: "Ducati, İtalyan markasıdır." },
+    { soru: "Hangisi bir motosiklet türü değildir?", A: "Cabrio", B: "Spor", C: "Cruiser", D: "Touring", E: "Naked", dogru: "A", aciklama: "Cabrio, otomobil türüdür." },
+    { soru: "Hangisi bir scooter markası değildir?", A: "Harley-Davidson", B: "Vespa", C: "Peugeot", D: "Aprilia", E: "Honda", dogru: "A", aciklama: "Harley-Davidson, büyük hacimli cruiser'larla bilinir." },
+    { soru: "Hangisi bir elektrikli motosiklet markasıdır?", A: "Zero Motorcycles", B: "Harley-Davidson", C: "Indian", D: "Triumph", E: "Moto Guzzi", dogru: "A", aciklama: "Zero Motorcycles, elektrikli motosiklet üretir." },
+    { soru: "Harley-Davidson'ın elektrikli motosiklet markası nedir?", A: "LiveWire", B: "Zero", C: "Energica", D: "Lightning", E: "Damon", dogru: "A", aciklama: "LiveWire, Harley-Davidson'ın elektrikli motosiklet markasıdır." },
+    { soru: "Motosikletlerde ABS ne işe yarar?", A: "Frenlemede tekerlek kilitlenmesini önlemek", B: "Daha hızlı hızlanmak", C: "Yakıt tasarrufu", D: "Daha yüksek hız", E: "Motor gücünü artırmak", dogru: "A", aciklama: "ABS, ani frenlemede tekerleklerin kilitlenmesini engeller." },
+    { soru: "Hangisi bir motosiklet ehliyet sınıfı değildir?", A: "B Sınıfı", B: "A1", C: "A2", D: "A", E: "M", dogru: "A", aciklama: "B Sınıfı otomobil ehliyetidir." },
+    { soru: "Hangisi bir motosiklet yarışı serisi değildir?", A: "Formula 1", B: "MotoGP", C: "Superbike", D: "Moto2", E: "Moto3", dogru: "A", aciklama: "Formula 1, otomobil yarışıdır." },
+    { soru: "Valentino Rossi'nin lakabı nedir?", A: "The Doctor", B: "The Professor", C: "The GOAT", D: "The King", E: "The Magician", dogru: "A", aciklama: "Valentino Rossi, 'The Doctor' lakabıyla bilinir." },
+    { soru: "Hangisi bir Türk motosiklet markasıdır?", A: "Kuba", B: "Honda", C: "Yamaha", D: "Suzuki", E: "Kawasaki", dogru: "A", aciklama: "Kuba, Türkiye'de motosiklet üreten bir markadır." },
+    { soru: "Hangisi bir Mondial motosiklet modeli değildir?", A: "CBR", B: "Drift", C: "Snake", D: "RX", E: "Z-one", dogru: "A", aciklama: "CBR, Honda'nın spor motosiklet serisidir." },
+    { soru: "Hangisi bir Kanuni motosiklet modelidir?", A: "Tiger", B: "Falcon", C: "Eagle", D: "Lion", E: "Panther", dogru: "A", aciklama: "Kanuni Tiger, popüler bir yerli motosiklet modelidir." },
+    { soru: "Hangisi bir çift silindirli motosiklet türüdür?", A: "V-Twin", B: "Inline-4", C: "V4", D: "Single", E: "Boxer", dogru: "A", aciklama: "V-Twin, iki silindirin V şeklinde dizildiği motor tipidir." },
+    { soru: "Hangisi bir dört silindirli motosiklet türüdür?", A: "Inline-4", B: "V-Twin", C: "Single", D: "Boxer Twin", E: "V4", dogru: "A", aciklama: "Inline-4, dört silindirin sıralı olduğu motordur." },
+    { soru: "Hangisi bir motosiklet markası değildir?", A: "Ray-Ban", B: "Honda", C: "Yamaha", D: "Suzuki", E: "Kawasaki", dogru: "A", aciklama: "Ray-Ban, gözlük markasıdır." },
+    { soru: "Hangisi bir motosiklet aksesuarı değildir?", A: "Spoiler", B: "Kask", C: "Eldiven", D: "Mont", E: "Çanta", dogru: "A", aciklama: "Spoiler, otomobiller için aerodinamik parçadır." },
+    { soru: "Hangisi bir motosiklet fren sistemi değildir?", A: "ABS", B: "Disk Fren", C: "Kampana Fren", D: "CBS", E: "Hepsi fren sistemidir", dogru: "A", aciklama: "ABS bir fren sistemi değil, fren destek sistemidir." },
+    { soru: "Hangisi bir arazi (off-road) motosikleti türü değildir?", A: "Supersport", B: "Enduro", C: "Cross", D: "Trial", E: "Adventure", dogru: "A", aciklama: "Supersport, pist ve yol odaklı spor motosikletlerdir." },
+    { soru: "Hangisi bir motosiklet süspansiyon markası değildir?", A: "Brembo", B: "Öhlins", C: "Showa", D: "KYB", E: "WP", dogru: "A", aciklama: "Brembo, fren markasıdır." },
+    { soru: "Hangisi bir motosiklet lastik markası değildir?", A: "Bosch", B: "Pirelli", C: "Michelin", D: "Metzeler", E: "Bridgestone", dogru: "A", aciklama: "Bosch, otomotiv elektroniği üreticisidir." },
+    { soru: "Hangisi bir motosiklet egzoz markası değildir?", A: "K&N", B: "Akrapovič", C: "Yoshimura", D: "Termignoni", E: "SC Project", dogru: "A", aciklama: "K&N, hava filtresi üreticisidir." },
+    { soru: "Hangisi bir motosiklet koruma ekipmanı markasıdır?", A: "Dainese", B: "Arai", C: "Shoei", D: "Alpinestars", E: "Hepsi", dogru: "E", aciklama: "Dainese, Arai, Shoei, Alpinestars koruma ekipmanı markalarıdır." },
+    { soru: "Hangisi bir motosiklet kaskı markası değildir?", A: "Ray-Ban", B: "Arai", C: "Shoei", D: "AGV", E: "HJC", dogru: "A", aciklama: "Ray-Ban, gözlük markasıdır." },
+    { soru: "Hangisi bir motosiklet iletişim sistemi markasıdır?", A: "Cardo", B: "Sena", C: "Interphone", D: "Midland", E: "Hepsi", dogru: "E", aciklama: "Cardo, Sena, Interphone, Midland iletişim sistemi markalarıdır." },
+    { soru: "Hangisi bir motosiklet navigasyon markasıdır?", A: "Garmin", B: "TomTom", C: "Beeline", D: "Hepsi", E: "Apple", dogru: "D", aciklama: "Garmin, TomTom, Beeline motosiklet navigasyon markalarıdır." },
+    { soru: "Hangisi bir motosiklet aksiyon kamerası markasıdır?", A: "GoPro", B: "DJI", C: "Insta360", D: "Hepsi", E: "SJCAM", dogru: "D", aciklama: "GoPro, DJI, Insta360, SJCAM aksiyon kamerası markalarıdır." },
+    { soru: "Hangisi bir motosiklet akrobasi hareketi değildir?", A: "Drift", B: "Wheelie", C: "Stoppie", D: "Burnout", E: "Endo", dogru: "A", aciklama: "Drift, otomobillerle yapılan bir kaydırma tekniğidir." }
+];
+      const yemekSorulari = [
+    { soru: "Pizza hangi ülkenin yemeğidir?", A: "İtalya", B: "Fransa", C: "Yunanistan", D: "İspanya", E: "Türkiye", dogru: "A", aciklama: "Modern pizza Napoli, İtalya'da doğmuştur." },
+    { soru: "Suşi hangi ülkenin yemeğidir?", A: "Japonya", B: "Çin", C: "Kore", D: "Tayland", E: "Vietnam", dogru: "A", aciklama: "Suşi, Japon mutfağının ikonik yemeğidir." },
+    { soru: "Lahmacun hangi mutfağa aittir?", A: "Türk", B: "Yunan", C: "Arap", D: "İtalyan", E: "Ermeni", dogru: "A", aciklama: "Lahmacun, ince hamur üzerine kıymalı harçla yapılan Türk yemeğidir." },
+    { soru: "Hangisi bir tatlı değildir?", A: "Mantı", B: "Baklava", C: "Sütlaç", D: "Kazandibi", E: "Aşure", dogru: "A", aciklama: "Mantı, yoğurtlu ve salçalı sosla servis edilen bir ana yemektir." },
+    { soru: "Humusun ana malzemesi nedir?", A: "Nohut", B: "Fasulye", C: "Mercimek", D: "Bezelye", E: "Barbunya", dogru: "A", aciklama: "Humus, nohut ezmesi, tahin, limon ve sarımsakla yapılır." },
+    { soru: "Kruvasan hangi ülkenin hamur işidir?", A: "Fransa", B: "İtalya", C: "İspanya", D: "Yunanistan", E: "Türkiye", dogru: "A", aciklama: "Kruvasan, Fransız mutfağının ünlü tereyağlı hamur işidir." },
+    { soru: "Matcha nedir?", A: "Yeşil çay tozu", B: "Kahve türü", C: "Sıcak çikolata", D: "Salep", E: "Boza", dogru: "A", aciklama: "Matcha, öğütülmüş yeşil çay yapraklarından elde edilir." },
+    { soru: "Çedar peyniri hangi ülkeye aittir?", A: "İngiltere", B: "İtalya", C: "Fransa", D: "Hollanda", E: "İsviçre", dogru: "A", aciklama: "Çedar, İngiliz kökenli sert bir peynirdir." },
+    { soru: "Hangisi bir çorba değildir?", A: "İmambayıldı", B: "Mercimek", C: "Tarhana", D: "Ezogelin", E: "Domates", dogru: "A", aciklama: "İmambayıldı, zeytinyağlı bir patlıcan yemeğidir." },
+    { soru: "Türk kahvesi nasıl servis edilir?", A: "Sade, az şekerli, orta, şekerli", B: "Sadece sade", C: "Sütlü", D: "Kremalı", E: "Soğuk", dogru: "A", aciklama: "Türk kahvesi dört farklı şekilde servis edilir." },
+    { soru: "Dönerin ana malzemesi nedir?", A: "Et (Tavuk, Kuzu, Dana)", B: "Sadece tavuk", C: "Sadece kuzu", D: "Sadece dana", E: "Balık", dogru: "A", aciklama: "Döner; tavuk, kuzu veya dana etinden yapılabilir." },
+    { soru: "Hangisi bir makarna çeşidi değildir?", A: "Risotto", B: "Spagetti", C: "Fettuccine", D: "Penne", E: "Lazanya", dogru: "A", aciklama: "Risotto, pirinçten yapılan bir İtalyan yemeğidir." },
+    { soru: "Baklava hangi özel günlerde sıkça tüketilir?", A: "Bayramlar", B: "Düğünler", C: "Cenazeler", D: "Doğum günleri", E: "Hepsi", dogru: "A", aciklama: "Baklava, özellikle Ramazan ve Kurban bayramlarında ikram edilir." },
+    { soru: "Hangisi bir kebap çeşidi değildir?", A: "Kayseri Kebabı", B: "Adana Kebabı", C: "Urfa Kebabı", D: "İskender Kebabı", E: "Beyti Kebabı", dogru: "A", aciklama: "Kayseri mantısıyla ünlüdür, Kayseri kebabı yoktur." },
+    { soru: "Guacamole hangi meyveden yapılır?", A: "Avokado", B: "Muz", C: "Mango", D: "Ananas", E: "Domates", dogru: "A", aciklama: "Guacamole, avokado ezmesi bazlı bir Meksika sosudur." },
+    { soru: "Hangisi bir İtalyan peyniri değildir?", A: "Çedar", B: "Mozzarella", C: "Parmesan", D: "Gorgonzola", E: "Ricotta", dogru: "A", aciklama: "Çedar, İngiliz peyniridir." },
+    { soru: "Paella hangi ülkenin yemeğidir?", A: "İspanya", B: "İtalya", C: "Portekiz", D: "Meksika", E: "Yunanistan", dogru: "A", aciklama: "Paella, İspanya'nın Valensiya bölgesine özgü pirinç yemeğidir." },
+    { soru: "Hangisi bir çiğ köfte malzemesi değildir?", A: "Peynir", B: "İnce Bulgur", C: "Salça", D: "Soğan", E: "Baharat", dogru: "A", aciklama: "Çiğ köftede peynir kullanılmaz." },
+    { soru: "Hangisi bir Türk tatlısı değildir?", A: "Tiramisu", B: "Baklava", C: "Künefe", D: "Sütlaç", E: "Aşure", dogru: "A", aciklama: "Tiramisu, İtalyan tatlısıdır." },
+    { soru: "Hangisi bir fast-food zinciri değildir?", A: "Starbucks (Kahve zinciri)", B: "McDonald's", C: "Burger King", D: "KFC", E: "Subway", dogru: "A", aciklama: "Starbucks öncelikle kahve zinciridir." },
+    { soru: "Kırmızı et yemeyen kişilere ne denir?", A: "Vejetaryen", B: "Vegan", C: "Pesketaryen", D: "Frutaryen", E: "Ortoreksik", dogru: "A", aciklama: "Vejetaryenler et yemez, veganlar hiçbir hayvansal ürün tüketmez." },
+    { soru: "Zeytinyağlı yemeklerin ana malzemesi nedir?", A: "Zeytinyağı", B: "Tereyağı", C: "Ayçiçek yağı", D: "Margarin", E: "Kuyruk yağı", dogru: "A", aciklama: "Zeytinyağlılar, adından da anlaşılacağı gibi zeytinyağı ile yapılır." },
+    { soru: "Hangisi bir baharat değildir?", A: "Şeker", B: "Karabiber", C: "Kimyon", D: "Kekik", E: "Pul Biber", dogru: "A", aciklama: "Şeker, tatlandırıcıdır; baharat değildir." },
+    { soru: "Hangisi bir baklagil değildir?", A: "Patates", B: "Nohut", C: "Mercimek", D: "Fasulye", E: "Bezelye", dogru: "A", aciklama: "Patates, kök sebzedir; baklagil değildir." },
+    { soru: "Hangisi bir narenciye değildir?", A: "Elma", B: "Portakal", C: "Limon", D: "Mandalina", E: "Greyfurt", dogru: "A", aciklama: "Elma, narenciye ailesinden değildir." },
+    { soru: "Hangisi bir kuruyemiş değildir?", A: "Leblebi", B: "Ceviz", C: "Badem", D: "Fındık", E: "Antep Fıstığı", dogru: "A", aciklama: "Leblebi, nohuttan yapılır; kuruyemiş olarak tüketilse de teknik olarak baklagildir." },
+    { soru: "Hangisi bir içecek değildir?", A: "Puding", B: "Ayran", C: "Kola", D: "Çay", E: "Kahve", dogru: "A", aciklama: "Puding, bir tatlıdır." },
+    { soru: "Hangisi bir süt ürünü değildir?", A: "Yumurta", B: "Yoğurt", C: "Peynir", D: "Tereyağı", E: "Kaymak", dogru: "A", aciklama: "Yumurta, hayvansal protein kaynağıdır ancak süt ürünü değildir." },
+    { soru: "Hangisi bir ekmek türü değildir?", A: "Kek", B: "Somun", C: "Baget", D: "Lavaş", E: "Pide", dogru: "A", aciklama: "Kek, bir tatlı veya pastane ürünüdür." },
+    { soru: "Hangisi bir pilav türü değildir?", A: "Makarna", B: "Pirinç Pilavı", C: "Bulgur Pilavı", D: "İç Pilav", E: "Özbek Pilavı", dogru: "A", aciklama: "Makarna, pilav değil, ayrı bir yemek kategorisidir." },
+    { soru: "Hangisi bir zeytinyağlı yemek değildir?", A: "Karnıyarık", B: "İmambayıldı", C: "Zeytinyağlı Fasulye", D: "Zeytinyağlı Enginar", E: "Zeytinyağlı Yaprak Sarma", dogru: "A", aciklama: "Karnıyarık, kızartılarak yapılan etli bir yemektir." },
+    { soru: "Hangisi bir hamur işi değildir?", A: "Pilav", B: "Börek", C: "Poğaça", D: "Simit", E: "Açma", dogru: "A", aciklama: "Pilav, pirinç veya bulgurdan yapılır." },
+    { soru: "Hangisi bir salata türü değildir?", A: "Mücver", B: "Çoban Salata", C: "Sezar Salata", D: "Mevsim Salata", E: "Gavurdağı Salatası", dogru: "A", aciklama: "Mücver, kabakla yapılan bir kızartma yemeğidir." },
+    { soru: "Hangisi bir deniz ürünü değildir?", A: "Kuzu", B: "Balık", C: "Karides", D: "Kalamar", E: "Midye", dogru: "A", aciklama: "Kuzu, kara hayvanıdır." },
+    { soru: "Hangisi bir meyve değildir?", A: "Patates", B: "Elma", C: "Armut", D: "Muz", E: "Çilek", dogru: "A", aciklama: "Patates, sebzedir (kök)." },
+    { soru: "Hangisi bir sebze değildir?", A: "Çilek", B: "Domates", C: "Biber", D: "Patlıcan", E: "Salatalık", dogru: "A", aciklama: "Çilek, meyvedir." },
+    { soru: "Hangisi bir Türk yemeği değildir?", A: "Suşi", B: "Mantı", C: "Kebap", D: "Lahmacun", E: "Pide", dogru: "A", aciklama: "Suşi, Japon yemeğidir." },
+    { soru: "Hangisi bir İtalyan yemeği değildir?", A: "Taco", B: "Pizza", C: "Makarna", D: "Risotto", E: "Lazanya", dogru: "A", aciklama: "Taco, Meksika yemeğidir." },
+    { soru: "Hangisi bir Çin yemeği değildir?", A: "Kebap", B: "Noodle", C: "Pekin Ördeği", D: "Dim Sum", E: "Spring Roll", dogru: "A", aciklama: "Kebap, Türk ve Orta Doğu mutfağına aittir." },
+    { soru: "Hangisi bir Meksika yemeği değildir?", A: "Suşi", B: "Taco", C: "Burrito", D: "Enchilada", E: "Quesadilla", dogru: "A", aciklama: "Suşi, Japon yemeğidir." }
+];
+      const hayvanSorulari = [
+    { soru: "Dünyanın en büyük hayvanı hangisidir?", A: "Mavi Balina", B: "Fil", C: "Zürafa", D: "Köpekbalığı", E: "Kalamar", dogru: "A", aciklama: "Mavi balina, 30 metre ve 200 ton ağırlığa ulaşabilir." },
+    { soru: "En hızlı kara hayvanı hangisidir?", A: "Çita", B: "Aslan", C: "Tavşan", D: "At", E: "Kanguru", dogru: "A", aciklama: "Çita, 120 km/s hıza ulaşabilir." },
+    { soru: "Hangisi uçabilen bir memelidir?", A: "Yarasa", B: "Penguen", C: "Devekuşu", D: "Tavuk", E: "Kivi", dogru: "A", aciklama: "Yarasa, uçabilen tek memelidir." },
+    { soru: "Zürafaların kaç boyun omuru vardır?", A: "7", B: "5", C: "10", D: "15", E: "20", dogru: "A", aciklama: "Zürafaların da insanlar gibi 7 boyun omuru vardır, sadece daha uzundur." },
+    { soru: "Hangi hayvan 'ormanın kralı' olarak bilinir?", A: "Aslan", B: "Kaplan", C: "Ayı", D: "Kurt", E: "Fil", dogru: "A", aciklama: "Aslan, görkemli yelesiyle 'ormanın kralı' unvanını almıştır." },
+    { soru: "Penguenler hangi yarım kürede yaşar?", A: "Güney", B: "Kuzey", C: "Her ikisi", D: "Ekvator", E: "Kutuplar", dogru: "A", aciklama: "Penguenler sadece Güney Yarım Küre'de yaşar." },
+    { soru: "Kangurular hangi kıtada yaşar?", A: "Avustralya", B: "Afrika", C: "Asya", D: "Amerika", E: "Avrupa", dogru: "A", aciklama: "Kangurular Avustralya'ya özgüdür." },
+    { soru: "Hangisi bir sürüngen değildir?", A: "Kurbağa", B: "Yılan", C: "Kertenkele", D: "Timsah", E: "Kaplumbağa", dogru: "A", aciklama: "Kurbağa iki yaşamlıdır (amfibi)." },
+    { soru: "Hangi hayvan renk değiştirebilir?", A: "Bukalemun", B: "Kurbağa", C: "Yılan", D: "Balık", E: "Kelebek", dogru: "A", aciklama: "Bukalemunlar kamuflaj için renk değiştirir." },
+    { soru: "En uzun yaşayan hayvan hangisidir?", A: "Kaplumbağa", B: "Fil", C: "Balina", D: "İnsan", E: "Köpekbalığı", dogru: "A", aciklama: "Dev kara kaplumbağaları 150-200 yıl yaşayabilir." },
+    { soru: "Hangisi bir memeli hayvan değildir?", A: "Yılan", B: "Balina", C: "Yunus", D: "Fok", E: "Yarasa", dogru: "A", aciklama: "Yılan, sürüngendir." },
+    { soru: "Hangisi bir kuş türü değildir?", A: "Yarasa", B: "Kartal", C: "Serçe", D: "Güvercin", E: "Penguen", dogru: "A", aciklama: "Yarasa, uçabilen bir memelidir." },
+    { soru: "Hangisi bir balık türü değildir?", A: "Balina", B: "Hamsi", C: "Palamut", D: "Levrek", E: "Çipura", dogru: "A", aciklama: "Balina, memeli bir deniz canlısıdır." },
+    { soru: "Hangisi bir böcek değildir?", A: "Örümcek", B: "Karınca", C: "Arı", D: "Kelebek", E: "Sinek", dogru: "A", aciklama: "Örümcekler örümceğimsiler sınıfındadır (8 bacak)." },
+    { soru: "Hangisi etobur (etçil) bir hayvan değildir?", A: "İnek", B: "Aslan", C: "Kaplan", D: "Kurt", E: "Kartal", dogru: "A", aciklama: "İnek otoburdur (otçul)." },
+    { soru: "Hangisi otobur (otçul) bir hayvan değildir?", A: "Kartal", B: "İnek", C: "Koyun", D: "Keçi", E: "At", dogru: "A", aciklama: "Kartal etoburdur." },
+    { soru: "Hangisi hem et hem ot yiyen (hepçil) bir hayvandır?", A: "Ayı", B: "Aslan", C: "İnek", D: "Kartal", E: "Köpekbalığı", dogru: "A", aciklama: "Ayılar hem et hem de bitki yer." },
+    { soru: "Hangisi gece aktif olan (noktürnal) bir hayvan değildir?", A: "Sincap", B: "Yarasa", C: "Baykuş", D: "Kirpi", E: "Rakun", dogru: "A", aciklama: "Sincaplar genellikle gündüz aktiftir." },
+    { soru: "Hangisi kış uykusuna yatan bir hayvan değildir?", A: "Kutup Ayısı", B: "Boz Ayı", C: "Kirpi", D: "Yarasa", E: "Yer Sincabı", dogru: "A", aciklama: "Kutup ayıları kış uykusuna yatmaz." },
+    { soru: "Hangisi göç eden bir kuş değildir?", A: "Penguen", B: "Leylek", C: "Kırlangıç", D: "Kaz", E: "Turna", dogru: "A", aciklama: "Penguenler göç etmez, yaşadıkları bölgede kalırlar." },
+    { soru: "Hangisi bir sürü halinde yaşayan hayvan değildir?", A: "Kaplan", B: "Kurt", C: "Aslan", D: "Fil", E: "Zebra", dogru: "A", aciklama: "Kaplanlar genellikle yalnız yaşar." },
+    { soru: "Hangisi bir yuva yapan hayvan değildir?", A: "Guguk Kuşu", B: "Leylek", C: "Kırlangıç", D: "Serçe", E: "Kartal", dogru: "A", aciklama: "Guguk kuşu, yumurtalarını başka kuşların yuvalarına bırakır." },
+    { soru: "Hangisi zehirli bir yılan değildir?", A: "Piton", B: "Kobra", C: "Engerek", D: "Mamba", E: "Çıngıraklı Yılan", dogru: "A", aciklama: "Pitonlar zehirsizdir, avlarını sararak boğar." },
+    { soru: "Hangisi bir köpek ırkı değildir?", A: "Van Kedisi", B: "Golden Retriever", C: "Alman Kurdu", D: "Husky", E: "Bulldog", dogru: "A", aciklama: "Van Kedisi, bir kedi ırkıdır." },
+    { soru: "Hangisi bir kedi ırkı değildir?", A: "Husky", B: "Van Kedisi", C: "Siyam", D: "Persian", E: "British Shorthair", dogru: "A", aciklama: "Husky, bir köpek ırkıdır." },
+    { soru: "Hangisi bir at türü değildir?", A: "Zebra", B: "Arap Atı", C: "İngiliz Atı", D: "Midilli", E: "Friz Atı", dogru: "A", aciklama: "Zebra, atgiller ailesinden olsa da farklı bir türdür." },
+    { soru: "Hangisi bir maymun türü değildir?", A: "Koala", B: "Goril", C: "Şempanze", D: "Orangutan", E: "Babun", dogru: "A", aciklama: "Koala, keseli bir memelidir." },
+    { soru: "Hangisi bir balina türü değildir?", A: "Köpekbalığı", B: "Mavi Balina", C: "Kambur Balina", D: "İspermeçet Balinası", E: "Katil Balina", dogru: "A", aciklama: "Köpekbalığı, balık sınıfındandır." },
+    { soru: "Hangisi bir köpekbalığı türü değildir?", A: "Yunus", B: "Büyük Beyaz", C: "Çekiç Başlı", D: "Kaplan Köpekbalığı", E: "Balina Köpekbalığı", dogru: "A", aciklama: "Yunus, memelidir." },
+    { soru: "Hangisi bir yunus türü değildir?", A: "Orka (Katil Balina)", B: "Afalina", C: "Mutur", D: "Dönücü Yunus", E: "Hepsi yunustur", dogru: "A", aciklama: "Orka, yunusgiller ailesinin en büyük üyesidir." },
+    { soru: "Hangisi bir fok türü değildir?", A: "Mors", B: "Deniz Aslanı", C: "Deniz Fili", D: "Leopar Foku", E: "Hepsi foktur", dogru: "A", aciklama: "Mors, foklarla akraba olsa da ayrı bir ailedir." },
+    { soru: "Hangisi bir ayı türü değildir?", A: "Koala", B: "Boz Ayı", C: "Kutup Ayısı", D: "Panda", E: "Tembel Ayı", dogru: "A", aciklama: "Koala, keseli bir memelidir." },
+    { soru: "Hangisi bir geyik türü değildir?", A: "Ren Geyiği", B: "Karaca", C: "Alageyik", D: "Sığın", E: "Antilop", dogru: "E", aciklama: "Antilop, geyikgiller değil, boynuzlugiller ailesindendir." },
+    { soru: "Hangisi bir kemirgen değildir?", A: "Tavşan", B: "Fare", C: "Sıçan", D: "Sincap", E: "Kunduz", dogru: "A", aciklama: "Tavşanlar, kemirgenler değil, lagomorfa takımındandır." },
+    { soru: "Hangisi bir sürüngen değildir?", A: "Semender", B: "Yılan", C: "Kertenkele", D: "Timsah", E: "Kaplumbağa", dogru: "A", aciklama: "Semender, iki yaşamlıdır (amfibi)." },
+    { soru: "Hangisi bir iki yaşamlı (amfibi) değildir?", A: "Kertenkele", B: "Kurbağa", C: "Semender", D: "Semender", E: "Su Kurbağası", dogru: "A", aciklama: "Kertenkele, sürüngendir." },
+    { soru: "Hangisi bir örümcek türü değildir?", A: "Akrep", B: "Tarantula", C: "Kara Dul", D: "Sıçrayan Örümcek", E: "Hepsi örümcektir", dogru: "A", aciklama: "Akrep, örümceğimsiler sınıfından olsa da farklı bir takımdır." },
+    { soru: "Hangisi bir karınca türü değildir?", A: "Termit", B: "Ateş Karıncası", C: "Marangoz Karınca", D: "Firavun Karıncası", E: "Hepsi karıncadır", dogru: "A", aciklama: "Termitler, karıncalardan farklı bir takımdır." },
+    { soru: "Hangisi bir arı türü değildir?", A: "Eşek Arısı", B: "Bal Arısı", C: "Bombus Arısı", D: "Marangoz Arı", E: "Hepsi arıdır", dogru: "A", aciklama: "Eşek arısı, arılarla akraba olsa da farklı bir ailedir." },
+    { soru: "Hangisi bir kelebek türü değildir?", A: "Yusufçuk", B: "Kırlangıçkuyruk", C: "Monark", D: "Beyaz Lahana Kelebeği", E: "Hepsi kelebektir", dogru: "A", aciklama: "Yusufçuk, kelebeklerden farklı bir takımdır." }
+];
+       const sporSorulari = [
+    { soru: "FIFA Dünya Kupası'nı en çok kazanan ülke hangisidir?", A: "Brezilya", B: "Almanya", C: "İtalya", D: "Arjantin", E: "Fransa", dogru: "A", aciklama: "Brezilya 5 kez Dünya Kupası kazanmıştır." },
+    { soru: "NBA'de en çok şampiyonluk kazanan takım hangisidir?", A: "Boston Celtics", B: "LA Lakers", C: "Chicago Bulls", D: "Golden State", E: "Miami Heat", dogru: "A", aciklama: "Boston Celtics 17 şampiyonluk kazanmıştır." },
+    { soru: "Grand Slam turnuvaları kaç tanedir?", A: "4", B: "3", C: "5", D: "6", E: "2", dogru: "A", aciklama: "Avustralya Açık, Fransa Açık, Wimbledon, ABD Açık." },
+    { soru: "Bir futbol maçı kaç dakikadır?", A: "90", B: "60", C: "80", D: "100", E: "120", dogru: "A", aciklama: "Futbol maçları 90 dakika oynanır." },
+    { soru: "Michael Jordan kaç numaralı formayı giymiştir?", A: "23", B: "24", C: "32", D: "33", E: "45", dogru: "A", aciklama: "Michael Jordan 23 numaralı formasıyla ünlüdür." },
+    { soru: "Tenis maçında 'love' ne demektir?", A: "0 sayı", B: "15 sayı", C: "30 sayı", D: "40 sayı", E: "Beraberlik", dogru: "A", aciklama: "Love, teniste sıfır demektir." },
+    { soru: "Hangisi bir spor dalı değildir? (Olimpik olarak)", A: "Satranç", B: "Yüzme", C: "Atletizm", D: "Jimnastik", E: "Boks", dogru: "A", aciklama: "Satranç Olimpiyatlarda yer almaz." },
+    { soru: "Usain Bolt hangi dalda rekor sahibidir?", A: "100 metre", B: "200 metre", C: "400 metre", D: "800 metre", E: "Maraton", dogru: "A", aciklama: "Usain Bolt, 100m ve 200m dünya rekortmenidir." },
+    { soru: "Hangisi bir basketbol terimi değildir?", A: "Korner", B: "Smaç", C: "Turnike", D: "Blok", E: "Hücum Faul", dogru: "A", aciklama: "Korner futbol terimidir." },
+    { soru: "Olimpiyat halkaları kaç kıtayı temsil eder?", A: "5", B: "4", C: "6", D: "7", E: "3", dogru: "A", aciklama: "5 halka, 5 kıtayı temsil eder." },
+    { soru: "Hangisi bir futbol pozisyonu değildir?", A: "Pivot", B: "Kaleci", C: "Defans", D: "Orta Saha", E: "Forvet", dogru: "A", aciklama: "Pivot basketbol terimidir." },
+    { soru: "Penaltı noktası kaleden kaç metre uzaktadır?", A: "11", B: "9", C: "10", D: "12", E: "13", dogru: "A", aciklama: "Penaltı noktası kale çizgisinden 11 metre uzaktadır." },
+    { soru: "NBA'de bir periyot kaç dakikadır?", A: "12", B: "10", C: "15", D: "20", E: "8", dogru: "A", aciklama: "NBA'de periyotlar 12 dakikadır." },
+    { soru: "Üç sayı çizgisi potadan kaç metre uzaktadır? (NBA)", A: "7.24", B: "6.25", C: "6.75", D: "7.50", E: "8.00", dogru: "A", aciklama: "NBA'de üçlük çizgisi 7.24 metredir." },
+    { soru: "Wimbledon hangi zeminde oynanır?", A: "Çim", B: "Toprak", C: "Sert", D: "Halı", E: "Kum", dogru: "A", aciklama: "Wimbledon çim zeminde oynanan tek Grand Slam'dir." },
+    { soru: "Rafael Nadal hangi zeminde en başarılıdır?", A: "Toprak", B: "Çim", C: "Sert", D: "Halı", E: "Hepsi eşit", dogru: "A", aciklama: "Nadal 'Toprağın Kralı' olarak bilinir." },
+    { soru: "Voleybolda bir takım kaç oyuncudan oluşur? (Sahada)", A: "6", B: "5", C: "7", D: "4", E: "8", dogru: "A", aciklama: "Voleybolda sahada 6 oyuncu bulunur." },
+    { soru: "Hentbolda bir takım kaç oyuncudan oluşur? (Sahada)", A: "7", B: "6", C: "5", D: "8", E: "11", dogru: "A", aciklama: "Hentbolda sahada 6 saha oyuncusu + 1 kaleci = 7 oyuncu." },
+    { soru: "Buz hokeyinde bir takım kaç oyuncudan oluşur? (Sahada)", A: "6", B: "5", C: "7", D: "4", E: "11", dogru: "A", aciklama: "Buz hokeyinde sahada 5 oyuncu + 1 kaleci = 6 oyuncu." },
+    { soru: "Formula 1'de en çok şampiyonluk kazanan takım hangisidir?", A: "Ferrari", B: "Mercedes", C: "Red Bull", D: "McLaren", E: "Williams", dogru: "A", aciklama: "Ferrari, 16 markalar şampiyonluğu kazanmıştır." },
+    { soru: "Tour de France bisiklet yarışı kaç gün sürer?", A: "21", B: "15", C: "30", D: "10", E: "7", dogru: "A", aciklama: "Tour de France, 21 etap ve 2 dinlenme günüyle yaklaşık 23 gün sürer." },
+    { soru: "Yüzmede en hızlı stil hangisidir?", A: "Serbest (Crawl)", B: "Kelebek", C: "Sırtüstü", D: "Kurbağalama", E: "Hepsi eşit", dogru: "A", aciklama: "Serbest stil (crawl) en hızlı yüzme stilidir." },
+    { soru: "Hangisi bir atletizm dalı değildir?", A: "Trambolin", B: "100 metre", C: "Maraton", D: "Cirit Atma", E: "Yüksek Atlama", dogru: "A", aciklama: "Trambolin, jimnastik dalıdır." },
+    { soru: "Hangisi bir jimnastik aleti değildir?", A: "Halter", B: "Barfiks", C: "Denge Kalası", D: "Halka", E: "Kulplu Beygir", dogru: "A", aciklama: "Halter, ayrı bir spor dalıdır." },
+    { soru: "Hangisi bir dövüş sporu değildir?", A: "Kriket", B: "Boks", C: "Judo", D: "Karate", E: "Tekvando", dogru: "A", aciklama: "Kriket, bir takım sporudur." },
+    { soru: "Hangisi bir kış sporu değildir?", A: "Sörf", B: "Kayak", C: "Snowboard", D: "Buz Hokeyi", E: "Körling", dogru: "A", aciklama: "Sörf, yaz sporudur." },
+    { soru: "Hangisi bir su sporu değildir?", A: "Dağcılık", B: "Yüzme", C: "Su Topu", D: "Kürek", E: "Yelken", dogru: "A", aciklama: "Dağcılık, kara sporudur." },
+    { soru: "Hangisi bir ekstrem spor değildir?", A: "Satranç", B: "Bungee Jumping", C: "Paraşütle Atlama", D: "Dağ Bisikleti", E: "Kaya Tırmanışı", dogru: "A", aciklama: "Satranç, zeka sporudur." },
+    { soru: "Hangisi bir takım sporu değildir?", A: "Tenis (Tekler)", B: "Futbol", C: "Basketbol", D: "Voleybol", E: "Hentbol", dogru: "A", aciklama: "Tekler tenis bireysel bir spordur." },
+    { soru: "Hangisi bir bireysel spor değildir?", A: "Voleybol", B: "Tenis", C: "Yüzme", D: "Atletizm", E: "Golf", dogru: "A", aciklama: "Voleybol takım sporudur." },
+    { soru: "Hangisi bir olimpiyat sporu değildir?", A: "Bilardo", B: "Okçuluk", C: "Eskrim", D: "Halter", E: "Güreş", dogru: "A", aciklama: "Bilardo, Olimpiyat programında yer almaz." },
+    { soru: "Olimpiyat Oyunları kaç yılda bir düzenlenir?", A: "4", B: "2", C: "3", D: "5", E: "6", dogru: "A", aciklama: "Olimpiyatlar 4 yılda bir düzenlenir." },
+    { soru: "İlk modern Olimpiyat Oyunları hangi yıl düzenlenmiştir?", A: "1896", B: "1900", C: "1892", D: "1904", E: "1888", dogru: "A", aciklama: "İlk modern Olimpiyatlar 1896'da Atina'da düzenlenmiştir." },
+    { soru: "Türkiye'nin futbolda en büyük uluslararası başarısı nedir?", A: "2002 Dünya Kupası 3.lüğü", B: "2008 Avrupa Şampiyonası 3.lüğü", C: "2003 Konfederasyon Kupası 3.lüğü", D: "2000 UEFA Kupası Şampiyonluğu", E: "2012 Olimpiyat 2.liği", dogru: "A", aciklama: "Türkiye, 2002 Dünya Kupası'nda 3. olmuştur." },
+    { soru: "Galatasaray'ın 2000 yılında kazandığı Avrupa kupası hangisidir?", A: "UEFA Kupası", B: "Şampiyonlar Ligi", C: "Kupa Galipleri Kupası", D: "Süper Kupa", E: "Konferans Ligi", dogru: "A", aciklama: "Galatasaray, 2000'de UEFA Kupası'nı kazanmıştır." },
+    { soru: "Fenerbahçe'nin 2023 yılında kazandığı Avrupa kupası hangisidir?", A: "Konferans Ligi", B: "UEFA Kupası", C: "Şampiyonlar Ligi", D: "Süper Kupa", E: "Kupa Galipleri", dogru: "A", aciklama: "Fenerbahçe, 2023'te Konferans Ligi'ni kazanmıştır." },
+    { soru: "Hangisi bir Formula 1 pilotu değildir?", A: "Valentino Rossi", B: "Lewis Hamilton", C: "Max Verstappen", D: "Charles Leclerc", E: "Fernando Alonso", dogru: "A", aciklama: "Valentino Rossi, MotoGP pilotudur." },
+    { soru: "Hangisi bir MotoGP pilotu değildir?", A: "Lewis Hamilton", B: "Valentino Rossi", C: "Marc Marquez", D: "Francesco Bagnaia", E: "Jorge Lorenzo", dogru: "A", aciklama: "Lewis Hamilton, Formula 1 pilotudur." },
+    { soru: "Hangisi bir NBA takımı değildir?", A: "Real Madrid", B: "LA Lakers", C: "Boston Celtics", D: "Chicago Bulls", E: "Miami Heat", dogru: "A", aciklama: "Real Madrid, basketbol takımı olsa da NBA'de değil, EuroLeague'dedir." },
+    { soru: "Hangisi bir futbol stadyumu değildir?", A: "Madison Square Garden", B: "Camp Nou", C: "Wembley", D: "Maracana", E: "Allianz Arena", dogru: "A", aciklama: "Madison Square Garden, basketbol ve konser salonudur." }
+];
+       const teknolojiSorulari = [
+    { soru: "iPhone hangi firmanın ürünüdür?", A: "Apple", B: "Samsung", C: "Xiaomi", D: "Huawei", E: "Google", dogru: "A", aciklama: "iPhone, Apple'ın akıllı telefon serisidir." },
+    { soru: "Android hangi şirkete aittir?", A: "Google", B: "Apple", C: "Microsoft", D: "Samsung", E: "Amazon", dogru: "A", aciklama: "Android, Google tarafından geliştirilen işletim sistemidir." },
+    { soru: "Hangisi bir sosyal medya platformu değildir?", A: "Adobe", B: "Instagram", C: "Twitter", D: "Facebook", E: "TikTok", dogru: "A", aciklama: "Adobe, yazılım şirketidir." },
+    { soru: "Bluetooth adını nereden almıştır?", A: "Viking Kralı", B: "Bilim Kurgu Filminden", C: "Bir Şirketten", D: "Bir Hayvandan", E: "Bir Şehirden", dogru: "A", aciklama: "Bluetooth, Viking Kralı Harald Bluetooth'tan adını alır." },
+    { soru: "Hangisi bir programlama dili değildir?", A: "HTML", B: "Python", C: "Java", D: "C++", E: "JavaScript", dogru: "A", aciklama: "HTML işaretleme dilidir, programlama dili değildir." },
+    { soru: "İlk iPhone hangi yıl piyasaya sürülmüştür?", A: "2007", B: "2005", C: "2008", D: "2010", E: "2012", dogru: "A", aciklama: "İlk iPhone, 2007'de Steve Jobs tarafından tanıtılmıştır." },
+    { soru: "Hangisi bir bulut depolama hizmetidir?", A: "Google Drive", B: "Microsoft Word", C: "Adobe Photoshop", D: "VLC", E: "WinRAR", dogru: "A", aciklama: "Google Drive, bulut depolama hizmetidir." },
+    { soru: "Wi-Fi neyin kısaltmasıdır?", A: "Wireless Fidelity", B: "Wireless Fiber", C: "Wide Frequency", D: "Wireless Finder", E: "Wired Fiber", dogru: "A", aciklama: "Wi-Fi, Wireless Fidelity'nin kısaltmasıdır." },
+    { soru: "Hangisi bir işletim sistemi değildir?", A: "Python", B: "Windows", C: "macOS", D: "Linux", E: "Android", dogru: "A", aciklama: "Python bir programlama dilidir." },
+    { soru: "Hangisi bir arama motoru değildir?", A: "Facebook", B: "Google", C: "Bing", D: "Yahoo", E: "Yandex", dogru: "A", aciklama: "Facebook sosyal medya platformudur." },
+    { soru: "Hangisi bir web tarayıcısı değildir?", A: "Spotify", B: "Chrome", C: "Firefox", D: "Safari", E: "Edge", dogru: "A", aciklama: "Spotify, müzik dinleme platformudur." },
+    { soru: "Hangisi bir e-posta sağlayıcısı değildir?", A: "WhatsApp", B: "Gmail", C: "Outlook", D: "Yahoo Mail", E: "ProtonMail", dogru: "A", aciklama: "WhatsApp, anlık mesajlaşma uygulamasıdır." },
+    { soru: "Hangisi bir bilgisayar donanımı değildir?", A: "Windows", B: "RAM", C: "CPU", D: "SSD", E: "Anakart", dogru: "A", aciklama: "Windows, işletim sistemidir." },
+    { soru: "CPU neyin kısaltmasıdır?", A: "Central Processing Unit", B: "Computer Power Unit", C: "Core Program Utility", D: "Central Program Unit", E: "Computer Processing Unit", dogru: "A", aciklama: "CPU = Central Processing Unit (Merkezi İşlem Birimi)." },
+    { soru: "RAM ne işe yarar?", A: "Geçici veri depolama", B: "Kalıcı depolama", C: "Grafik işleme", D: "Ses işleme", E: "Ağ bağlantısı", dogru: "A", aciklama: "RAM, bilgisayarın geçici hafızasıdır." },
+    { soru: "SSD'nin avantajı nedir?", A: "HDD'den daha hızlıdır", B: "HDD'den daha ucuzdur", C: "HDD'den daha fazla kapasitelidir", D: "HDD'den daha dayanıklıdır", E: "Hepsi", dogru: "A", aciklama: "SSD'ler, hareketli parça olmadığı için HDD'lerden çok daha hızlıdır." },
+    { soru: "Hangisi bir ekran kartı üreticisi değildir?", A: "Intel Core", B: "NVIDIA", C: "AMD", D: "Intel Arc", E: "Hepsi üreticidir", dogru: "A", aciklama: "Intel Core, işlemci serisidir." },
+    { soru: "Hangisi bir işlemci üreticisi değildir?", A: "NVIDIA", B: "Intel", C: "AMD", D: "Apple", E: "Qualcomm", dogru: "A", aciklama: "NVIDIA, ekran kartı üreticisidir." },
+    { soru: "USB neyin kısaltmasıdır?", A: "Universal Serial Bus", B: "Ultra Speed Bandwidth", C: "United System Bridge", D: "Universal System Backup", E: "Ultra Storage Base", dogru: "A", aciklama: "USB = Universal Serial Bus." },
+    { soru: "Hangisi bir görüntü formatı değildir?", A: "MP3", B: "JPEG", C: "PNG", D: "GIF", E: "BMP", dogru: "A", aciklama: "MP3, ses formatıdır." },
+    { soru: "Hangisi bir ses formatı değildir?", A: "JPEG", B: "MP3", C: "WAV", D: "FLAC", E: "AAC", dogru: "A", aciklama: "JPEG, görüntü formatıdır." },
+    { soru: "Hangisi bir video formatı değildir?", A: "PDF", B: "MP4", C: "AVI", D: "MKV", E: "MOV", dogru: "A", aciklama: "PDF, belge formatıdır." },
+    { soru: "Hangisi bir yapay zeka asistanı değildir?", A: "Siri", B: "Alexa", C: "Google Assistant", D: "Cortana", E: "Photoshop", dogru: "E", aciklama: "Photoshop, grafik tasarım programıdır." },
+    { soru: "Hangisi bir sosyal medya fenomeni değildir?", A: "Bill Gates", B: "Khaby Lame", C: "Charli D'Amelio", D: "MrBeast", E: "Addison Rae", dogru: "A", aciklama: "Bill Gates, iş insanı ve hayırseverdir." },
+    { soru: "Hangisi bir kripto para birimi değildir?", A: "PayPal", B: "Bitcoin", C: "Ethereum", D: "Dogecoin", E: "Ripple", dogru: "A", aciklama: "PayPal, ödeme sistemidir." },
+    { soru: "Blockchain teknolojisi nedir?", A: "Dağıtık defter teknolojisi", B: "Merkezi veri tabanı", C: "Bulut depolama", D: "Yapay zeka algoritması", E: "Sanal gerçeklik", dogru: "A", aciklama: "Blockchain, verilerin zincirleme ve dağıtık olarak saklandığı bir teknolojidir." },
+    { soru: "Hangisi bir Tesla modeli değildir?", A: "Mustang", B: "Model S", C: "Model 3", D: "Model X", E: "Model Y", dogru: "A", aciklama: "Mustang, Ford'un modelidir." },
+    { soru: "Hangisi bir elektrikli araç üreticisi değildir?", A: "Ferrari (yakın zamana kadar)", B: "Tesla", C: "Rivian", D: "Lucid", E: "NIO", dogru: "A", aciklama: "Ferrari, elektrikli araç üretimine yeni başlamıştır." },
+    { soru: "Hangisi bir uzay şirketi değildir?", A: "Boeing (yolcu uçağı)", B: "SpaceX", C: "Blue Origin", D: "Virgin Galactic", E: "NASA", dogru: "A", aciklama: "Boeing, öncelikle yolcu uçağı üreticisidir." },
+    { soru: "Hangisi bir bilgisayar virüsü türü değildir?", A: "Cookie", B: "Truva Atı", C: "Solucan", D: "Fidye Yazılımı", E: "Spyware", dogru: "A", aciklama: "Cookie'ler, web siteleri tarafından depolanan küçük veri dosyalarıdır." },
+    { soru: "Hangisi bir siber güvenlik terimi değildir?", A: "Firewall (Güvenlik Duvarı)", B: "Phishing", C: "DDoS", D: "Encryption", E: "Cookie", dogru: "E", aciklama: "Cookie'ler genellikle zararsızdır." },
+    { soru: "Hangisi bir yazılım lisansı türü değildir?", A: "Donanım", B: "Açık Kaynak", C: "Freeware", D: "Shareware", E: "Ticari", dogru: "A", aciklama: "Donanım, fiziksel bileşenlerdir." },
+    { soru: "Hangisi bir kod editörü değildir?", A: "Excel", B: "VS Code", C: "Sublime Text", D: "Atom", E: "Notepad++", dogru: "A", aciklama: "Excel, hesap tablosu programıdır." },
+    { soru: "Hangisi bir veri tabanı yönetim sistemi değildir?", A: "Apache", B: "MySQL", C: "PostgreSQL", D: "MongoDB", E: "Oracle", dogru: "A", aciklama: "Apache, web sunucusu yazılımıdır." },
+    { soru: "Hangisi bir yapay zeka alanı değildir?", A: "Muhasebe", B: "Makine Öğrenmesi", C: "Derin Öğrenme", D: "Doğal Dil İşleme", E: "Bilgisayarlı Görü", dogru: "A", aciklama: "Muhasebe, işletme alanıdır." },
+    { soru: "Hangisi bir robot türü değildir?", A: "Android", B: "Endüstriyel Robot", C: "Cobot", D: "Drone", E: "Hepsi robot türüdür", dogru: "E", aciklama: "Android (insansı robot), endüstriyel robot, cobot ve drone robot türleridir." },
+    { soru: "Hangisi bir sanal gerçeklik (VR) gözlüğü değildir?", A: "Kindle", B: "Oculus Quest", C: "HTC Vive", D: "PlayStation VR", E: "Valve Index", dogru: "A", aciklama: "Kindle, e-kitap okuyucudur." },
+    { soru: "Hangisi bir akıllı ev cihazı değildir?", A: "Normal Anahtar", B: "Akıllı Priz", C: "Akıllı Ampul", D: "Akıllı Termostat", E: "Akıllı Kilit", dogru: "A", aciklama: "Normal anahtar, akıllı değildir." },
+    { soru: "Hangisi bir giyilebilir teknoloji ürünü değildir?", A: "Laptop", B: "Akıllı Saat", C: "Fitness Takipçisi", D: "Akıllı Gözlük", E: "Akıllı Yüzük", dogru: "A", aciklama: "Laptop, taşınabilir olsa da giyilebilir değildir." },
+    { soru: "Hangisi bir oyun konsolu değildir?", A: "iPad", B: "PlayStation", C: "Xbox", D: "Nintendo Switch", E: "Steam Deck", dogru: "A", aciklama: "iPad, tablet bilgisayardır." }
+];
+      const genelkulturSorulari = [
+    { soru: "Türkiye'nin başkenti neresidir?", A: "Ankara", B: "İstanbul", C: "İzmir", D: "Bursa", E: "Antalya", dogru: "A", aciklama: "Ankara, 1923'ten beri Türkiye'nin başkentidir." },
+    { soru: "Dünyanın en büyük okyanusu hangisidir?", A: "Pasifik", B: "Atlas", C: "Hint", D: "Arktik", E: "Güney", dogru: "A", aciklama: "Pasifik Okyanusu 165 milyon km² alana sahiptir." },
+    { soru: "En yüksek dağ hangisidir?", A: "Everest", B: "K2", C: "Kangchenjunga", D: "Lhotse", E: "Makalu", dogru: "A", aciklama: "Everest, 8.848 metre yüksekliğindedir." },
+    { soru: "İstanbul'un fethi hangi yılda olmuştur?", A: "1453", B: "1451", C: "1457", D: "1461", E: "1473", dogru: "A", aciklama: "Fatih Sultan Mehmet, 1453'te İstanbul'u fethetmiştir." },
+    { soru: "Türkiye Cumhuriyeti hangi yılda kurulmuştur?", A: "1923", B: "1920", C: "1921", D: "1922", E: "1924", dogru: "A", aciklama: "29 Ekim 1923'te Cumhuriyet ilan edilmiştir." },
+    { soru: "İlk Türk devleti hangisidir?", A: "Hunlar", B: "Göktürkler", C: "Uygurlar", D: "Selçuklular", E: "Osmanlılar", dogru: "A", aciklama: "Asya Hun İmparatorluğu, bilinen ilk Türk devletidir." },
+    { soru: "Bir yılda kaç ay vardır?", A: "12", B: "10", C: "11", D: "13", E: "14", dogru: "A", aciklama: "Bir yıl 12 aydan oluşur." },
+    { soru: "Hangi gezegen Güneş'e en yakındır?", A: "Merkür", B: "Venüs", C: "Dünya", D: "Mars", E: "Jüpiter", dogru: "A", aciklama: "Merkür, Güneş'e en yakın gezegendir." },
+    { soru: "2+2 kaçtır?", A: "4", B: "3", C: "5", D: "6", E: "7", dogru: "A", aciklama: "2+2=4 eder." },
+    { soru: "Atatürk hangi yıl doğmuştur?", A: "1881", B: "1885", C: "1890", D: "1900", E: "1875", dogru: "A", aciklama: "Mustafa Kemal Atatürk, 1881'de Selanik'te doğmuştur." },
+    { soru: "Türkiye'nin en kalabalık şehri hangisidir?", A: "İstanbul", B: "Ankara", C: "İzmir", D: "Bursa", E: "Antalya", dogru: "A", aciklama: "İstanbul, Türkiye'nin en kalabalık şehridir." },
+    { soru: "Dünyanın en kalabalık ülkesi hangisidir?", A: "Hindistan", B: "Çin", C: "ABD", D: "Endonezya", E: "Brezilya", dogru: "A", aciklama: "Hindistan, 2023 itibariyle dünyanın en kalabalık ülkesidir." },
+    { soru: "En uzun nehir hangisidir?", A: "Nil", B: "Amazon", C: "Yangtze", D: "Mississippi", E: "Sarı Irmak", dogru: "A", aciklama: "Nil Nehri, 6.650 km ile dünyanın en uzun nehridir." },
+    { soru: "En büyük kıta hangisidir?", A: "Asya", B: "Afrika", C: "Kuzey Amerika", D: "Güney Amerika", E: "Avrupa", dogru: "A", aciklama: "Asya kıtası, 44 milyon km² alanıyla en büyüktür." },
+    { soru: "Türkiye'nin en yüksek dağı hangisidir?", A: "Ağrı Dağı", B: "Erciyes", C: "Süphan", D: "Kaçkar", E: "Uludağ", dogru: "A", aciklama: "Ağrı Dağı, 5.137 metre ile Türkiye'nin en yüksek dağıdır." },
+    { soru: "Türkiye'nin en büyük gölü hangisidir?", A: "Van Gölü", B: "Tuz Gölü", C: "Beyşehir Gölü", D: "Eğirdir Gölü", E: "İznik Gölü", dogru: "A", aciklama: "Van Gölü, 3.755 km² alanıyla Türkiye'nin en büyük gölüdür." },
+    { soru: "Hangisi bir Türk büyüğü değildir?", A: "Napolyon", B: "Atatürk", C: "Fatih Sultan Mehmet", D: "Kanuni Sultan Süleyman", E: "Yavuz Sultan Selim", dogru: "A", aciklama: "Napolyon Bonapart, Fransız komutan ve imparatordur." },
+    { soru: "Hangisi bir antik dünya harikası değildir?", A: "Kolezyum", B: "Babil'in Asma Bahçeleri", C: "İskenderiye Feneri", D: "Rodos Heykeli", E: "Zeus Heykeli", dogru: "A", aciklama: "Kolezyum, antik dünya harikaları listesinde değildir." },
+    { soru: "Birleşmiş Milletler'in resmi dilleri kaç tanedir?", A: "6", B: "5", C: "4", D: "7", E: "3", dogru: "A", aciklama: "BM'nin 6 resmi dili vardır: İngilizce, Fransızca, İspanyolca, Rusça, Çince, Arapça." },
+    { soru: "Nobel Ödülleri hangi ülkede verilir? (Barış Ödülü hariç)", A: "İsveç", B: "Norveç", C: "Danimarka", D: "Finlandiya", E: "İngiltere", dogru: "A", aciklama: "Nobel Barış Ödülü Norveç'te, diğerleri İsveç'te verilir." },
+    { soru: "İstiklal Marşı'nın yazarı kimdir?", A: "Mehmet Akif Ersoy", B: "Osman Zeki Üngör", C: "Yahya Kemal", D: "Namık Kemal", E: "Ziya Gökalp", dogru: "A", aciklama: "İstiklal Marşı'nı Mehmet Akif Ersoy yazmıştır." },
+    { soru: "İstiklal Marşı'nın bestecisi kimdir?", A: "Osman Zeki Üngör", B: "Mehmet Akif Ersoy", C: "Cemal Reşit Rey", D: "Ahmet Adnan Saygun", E: "Ulvi Cemal Erkin", dogru: "A", aciklama: "İstiklal Marşı'nı Osman Zeki Üngör bestelemiştir." },
+    { soru: "Hangisi bir Türk şair değildir?", A: "Shakespeare", B: "Yunus Emre", C: "Fuzuli", D: "Baki", E: "Nedim", dogru: "A", aciklama: "Shakespeare, İngiliz şair ve oyun yazarıdır." },
+    { soru: "Hangisi bir Türk yazar değildir?", A: "Dostoyevski", B: "Yaşar Kemal", C: "Orhan Pamuk", D: "Sabahattin Ali", E: "Oğuz Atay", dogru: "A", aciklama: "Dostoyevski, Rus yazarıdır." }
+];
+const muzikSorulari = [
+    { soru: "Queen grubunun efsanevi solisti kimdir?", A: "Freddie Mercury", B: "Brian May", C: "Roger Taylor", D: "John Deacon", E: "David Bowie", dogru: "A", aciklama: "Freddie Mercury, Queen'in unutulmaz solistidir." },
+    { soru: "Popun Kralı olarak bilinen sanatçı kimdir?", A: "Michael Jackson", B: "Elvis Presley", C: "Prince", D: "Madonna", E: "Beyonce", dogru: "A", aciklama: "Michael Jackson, 'King of Pop' unvanıyla anılır." },
+    { soru: "Nirvana grubunun solisti ve gitaristi kimdir?", A: "Kurt Cobain", B: "Dave Grohl", C: "Krist Novoselic", D: "Eddie Vedder", E: "Chris Cornell", dogru: "A", aciklama: "Kurt Cobain, grunge müziğin ikonik ismidir." },
+    { soru: "ABBA grubu hangi ülkeden çıkmıştır?", A: "İsveç", B: "Norveç", C: "Danimarka", D: "Finlandiya", E: "İngiltere", dogru: "A", aciklama: "ABBA, İsveç'in en başarılı müzik gruplarındandır." },
+    { soru: "Metallica'nın en çok satan albümü hangisidir?", A: "Black Album", B: "Master of Puppets", C: "Ride the Lightning", D: "...And Justice for All", E: "Kill 'Em All", dogru: "A", aciklama: "1991 çıkışlı 'Black Album' 30 milyondan fazla satmıştır." },
+    { soru: "Eminem'in gerçek adı nedir?", A: "Marshall Mathers", B: "Curtis Jackson", C: "Calvin Broadus", D: "Shawn Carter", E: "Andre Young", dogru: "A", aciklama: "Marshall Bruce Mathers III, Eminem'in gerçek adıdır." },
+    { soru: "Beethoven'ın en ünlü eseri hangisidir?", A: "9. Senfoni", B: "5. Senfoni", C: "Für Elise", D: "Ay Işığı Sonatı", E: "Hepsi", dogru: "A", aciklama: "9. Senfoni, 'Ode to Joy' bölümüyle evrensel bir marştır." },
+    { soru: "Daft Punk ikilisi hangi ülkedendir?", A: "Fransa", B: "ABD", C: "İngiltere", D: "Almanya", E: "İsveç", dogru: "A", aciklama: "Daft Punk, Fransız elektronik müzik ikonlarıdır." },
+    { soru: "Eurovision Şarkı Yarışması'nı en çok kazanan ülke hangisidir?", A: "İrlanda", B: "İsveç", C: "İngiltere", D: "Fransa", E: "Lüksemburg", dogru: "A", aciklama: "İrlanda, Eurovision'ı 7 kez kazanmıştır." },
+    { soru: "Türk sanat müziğinin ünlü bestekarı kimdir?", A: "Münir Nurettin Selçuk", B: "Zeki Müren", C: "Bülent Ersoy", D: "Müzeyyen Senar", E: "Hamiyet Yüceses", dogru: "A", aciklama: "Münir Nurettin Selçuk, Türk sanat müziğine damga vurmuştur." },
+    { soru: "The Beatles grubu kaç kişiden oluşuyordu?", A: "4", B: "3", C: "5", D: "6", E: "2", dogru: "A", aciklama: "John, Paul, George ve Ringo'dan oluşan 4 kişilik efsane grup." },
+    { soru: "Madonna'nın lakabı nedir?", A: "Popun Kraliçesi", B: "Pop Prensesi", C: "Disko Kraliçesi", D: "Rock Kraliçesi", E: "Soul Kraliçesi", dogru: "A", aciklama: "Madonna, 'Queen of Pop' olarak bilinir." },
+    { soru: "Türk rock müziğinin efsane grubu kimdir?", A: "MFÖ", B: "Duman", C: "Mor ve Ötesi", D: "Şebnem Ferah", E: "Teoman", dogru: "A", aciklama: "Mazhar-Fuat-Özkan (MFÖ), Türk rock müziğinin temel taşlarındandır." },
+    { soru: "Hangisi bir müzik türü değildir?", A: "Fotokopi", B: "Caz", C: "Blues", D: "Rock", E: "Klasik", dogru: "A", aciklama: "Fotokopi bir çoğaltma yöntemidir, müzik türü değildir." },
+    { soru: "İstiklal Marşı'nın bestecisi kimdir?", A: "Osman Zeki Üngör", B: "Mehmet Akif Ersoy", C: "Cemal Reşit Rey", D: "Ahmet Adnan Saygun", E: "Ulvi Cemal Erkin", dogru: "A", aciklama: "Osman Zeki Üngör, İstiklal Marşı'nı bestelemiştir." },
+    { soru: "Hangisi bir nota değildir?", A: "Te", B: "Do", C: "Re", D: "Mi", E: "Fa", dogru: "A", aciklama: "Notalar: Do, Re, Mi, Fa, Sol, La, Si'dir. 'Te' nota değildir." },
+    { soru: "Piyanonun kaç tuşu vardır? (Standart)", A: "88", B: "76", C: "61", D: "104", E: "52", dogru: "A", aciklama: "Standart bir piyano 88 tuşa sahiptir (52 beyaz, 36 siyah)." },
+    { soru: "Keman yayına ne ad verilir?", A: "Arşe", B: "Mızrap", C: "Pena", D: "Baget", E: "Çubuk", dogru: "A", aciklama: "Keman yayına 'arşe' denir." },
+    { soru: "Adele'in en çok satan albümü hangisidir?", A: "21", B: "19", C: "25", D: "30", E: "Adele", dogru: "A", aciklama: "'21' albümü dünya çapında 31 milyondan fazla satmıştır." },
+    { soru: "Türk halk müziğinin efsane sesi kimdir?", A: "Neşet Ertaş", B: "Aşık Veysel", C: "Muharrem Ertaş", D: "Arif Sağ", E: "Musa Eroğlu", dogru: "A", aciklama: "Neşet Ertaş, bozkırın tezenesi olarak bilinir." },
+    { soru: "Hangisi bir çalgı değildir?", A: "Tablo", B: "Gitar", C: "Keman", D: "Flüt", E: "Davul", dogru: "A", aciklama: "Tablo bir sanat eseridir, müzik aleti değildir." },
+    { soru: "Mozart'ın tam adı nedir?", A: "Wolfgang Amadeus Mozart", B: "Johann Sebastian Mozart", C: "Ludwig van Mozart", D: "Franz Joseph Mozart", E: "Johannes Mozart", dogru: "A", aciklama: "Wolfgang Amadeus Mozart, klasik müziğin dehasıdır." },
+    { soru: "Türkiye'nin ilk Eurovision birincisi kimdir?", A: "Sertab Erener", B: "Ajda Pekkan", C: "Sezen Aksu", D: "Edis", E: "Hadise", dogru: "A", aciklama: "Sertab Erener, 2003'te 'Everyway That I Can' ile birinci olmuştur." },
+    { soru: "Rock and Roll'un Kralı olarak bilinen sanatçı kimdir?", A: "Elvis Presley", B: "Chuck Berry", C: "Little Richard", D: "Jerry Lee Lewis", E: "Buddy Holly", dogru: "A", aciklama: "Elvis Presley, 'King of Rock and Roll' unvanına sahiptir." },
+    { soru: "Hangisi bir Türk pop müzik grubudur?", A: "Grup Hepsi", B: "Spice Girls", C: "Backstreet Boys", D: "ABBA", E: "BTS", dogru: "A", aciklama: "Grup Hepsi, 2000'lerin başında popüler olan bir Türk kız grubuydu." },
+    { soru: "Bağlama ailesinden olan 12 telli çalgı hangisidir?", A: "Cura", B: "Divan Sazı", C: "Meydan Sazı", D: "Tambura", E: "Bozuk", dogru: "A", aciklama: "Cura, bağlamanın en küçük boyutlu, 12 telli türüdür." },
+    { soru: "Hangisi bir üflemeli çalgıdır?", A: "Klarnet", B: "Keman", C: "Gitar", D: "Piyano", E: "Davul", dogru: "A", aciklama: "Klarnet, üflemeli bir çalgıdır." },
+    { soru: "Türk müziğinde bir makam değildir?", A: "Rast", B: "Hicaz", C: "Uşşak", D: "Segah", E: "Tablo", dogru: "E", aciklama: "Tablo bir makam değildir; Rast, Hicaz, Uşşak, Segah Türk müziği makamlarıdır." },
+    { soru: "Barış Manço'nun efsane şarkısı hangisidir?", A: "Dönence", B: "Gülpembe", C: "Sarı Çizmeli Mehmet Ağa", D: "Alla Beni Pulla Beni", E: "Arkadaşım Eşşek", dogru: "A", aciklama: "Dönence, Barış Manço'nun progresif rock başyapıtıdır." },
+    { soru: "Cem Karaca'nın ünlü şarkısı hangisidir?", A: "Tamirci Çırağı", B: "Resimdeki Gözyaşları", C: "Bu Son Olsun", D: "Islak Islak", E: "Namus Belası", dogru: "A", aciklama: "Tamirci Çırağı, Cem Karaca'nın en bilinen eserlerindendir." },
+    { soru: "Hangisi bir vurmalı çalgıdır?", A: "Darbuka", B: "Keman", C: "Gitar", D: "Flüt", E: "Piyano", dogru: "A", aciklama: "Darbuka, vurmalı bir çalgıdır." },
+    { soru: "Hangisi bir yaylı çalgıdır?", A: "Çello", B: "Gitar", C: "Piyano", D: "Davul", E: "Zurna", dogru: "A", aciklama: "Çello, yaylı çalgılar ailesindendir." },
+    { soru: "Müzikte 'kreşendo' ne anlama gelir?", A: "Sesin giderek yükselmesi", B: "Sesin giderek azalması", C: "Ani ve güçlü vurgu", D: "Hızlı tempo", E: "Yavaş tempo", dogru: "A", aciklama: "Kreşendo (crescendo), sesin giderek güçlenmesi demektir." },
+    { soru: "Müzikte 'dekreşendo' ne anlama gelir?", A: "Sesin giderek azalması", B: "Sesin giderek yükselmesi", C: "Ani duruş", D: "Tekrar", E: "Hızlanma", dogru: "A", aciklama: "Dekreşendo (decrescendo), sesin giderek sönümlenmesidir." },
+    { soru: "Orkestrayı yöneten kişiye ne denir?", A: "Şef", B: "Orkestra Şefi", C: "Maestro", D: "Hepsi", E: "Solist", dogru: "D", aciklama: "Orkestrayı yöneten kişiye şef, orkestra şefi veya maestro denir." },
+    { soru: "Türkiye'nin ilk özel televizyon kanalında yayınlanan ilk müzik klibi hangi şarkıya aittir?", A: "Olmaz Olmaz / Tarkan", B: "Yaz Yaz Yaz / MFÖ", C: "Sakın Gelme / MFÖ", D: "Aşkın Nur Yengi / Hani", E: "Kenan Doğulu / Çakkıdı", dogru: "A", aciklama: "Star 1'de yayınlanan ilk klip Tarkan'ın 'Olmaz Olmaz' klibidir." },
+    { soru: "Hangisi bir elektronik müzik türüdür?", A: "House", B: "Caz", C: "Blues", D: "Klasik", E: "Halk", dogru: "A", aciklama: "House, elektronik dans müziğinin alt türlerindendir." },
+    { soru: "Hangisi bir halk müziği türüdür?", A: "Türkü", B: "Senfoni", C: "Opera", D: "Sonat", E: "Konser", dogru: "A", aciklama: "Türkü, anonim halk müziği eserlerine verilen addır." },
+    { soru: "Klasik Türk müziğinde kullanılan en yaygın yaylı çalgı hangisidir?", A: "Kemençe", B: "Keman", C: "Viyolonsel", D: "Kontrbas", E: "Viyola", dogru: "A", aciklama: "Klasik kemençe, Türk müziğinin karakteristik yaylı çalgısıdır." },
+    { soru: "Hangisi bir Hint müziği çalgısıdır?", A: "Sitar", B: "Gitar", C: "Keman", D: "Piyano", E: "Davul", dogru: "A", aciklama: "Sitar, Hint müziğinin ikonik telli çalgısıdır." }
+]
+        const sinemaSorulari = [
+    { soru: "John Wick serisinde başrol oyuncusu kimdir?", A: "Keanu Reeves", B: "Tom Cruise", C: "Jason Statham", D: "Dwayne Johnson", E: "Vin Diesel", dogru: "A", aciklama: "Keanu Reeves, John Wick karakterine hayat vermektedir." },
+    { soru: "Inception filminin yönetmeni kimdir?", A: "Christopher Nolan", B: "James Cameron", C: "Ridley Scott", D: "Denis Villeneuve", E: "Steven Spielberg", dogru: "A", aciklama: "Inception, Christopher Nolan'ın başyapıtlarındandır." },
+    { soru: "IMDb'de en yüksek puanlı film hangisidir?", A: "Esaretin Bedeli", B: "Baba", C: "Kara Şövalye", D: "Yüzüklerin Efendisi", E: "Pulp Fiction", dogru: "A", aciklama: "Esaretin Bedeli (The Shawshank Redemption), 9.3 puanla IMDb'de 1. sıradadır." },
+    { soru: "Avatar filmi hangi gezegende geçmektedir?", A: "Pandora", B: "Mars", C: "Tatooine", D: "Arrakis", E: "Cybertron", dogru: "A", aciklama: "Avatar, Pandora adlı hayali bir ayda geçer." },
+    { soru: "Star Wars evreninin yaratıcısı kimdir?", A: "George Lucas", B: "Steven Spielberg", C: "J.J. Abrams", D: "Rian Johnson", E: "James Cameron", dogru: "A", aciklama: "George Lucas, Star Wars'u yaratmıştır." },
+    { soru: "Baba filminin yönetmeni kimdir?", A: "Francis Ford Coppola", B: "Martin Scorsese", C: "Stanley Kubrick", D: "Steven Spielberg", E: "Quentin Tarantino", dogru: "A", aciklama: "Baba üçlemesi, Francis Ford Coppola'nın eseridir." },
+    { soru: "Hangisi bir Quentin Tarantino filmi değildir?", A: "Fight Club", B: "Pulp Fiction", C: "Kill Bill", D: "Django Unchained", E: "Reservoir Dogs", dogru: "A", aciklama: "Fight Club, David Fincher'ın filmidir." },
+    { soru: "Titanic filminin yönetmeni kimdir?", A: "James Cameron", B: "Steven Spielberg", C: "Christopher Nolan", D: "Ridley Scott", E: "Peter Jackson", dogru: "A", aciklama: "James Cameron, Titanic'in yönetmenidir." },
+    { soru: "Oscar ödüllerini düzenleyen kurum hangisidir?", A: "Akademi", B: "BAFTA", C: "Altın Küre", D: "Cannes", E: "Venedik", dogru: "A", aciklama: "Sinema Sanatları ve Bilimleri Akademisi, Oscar'ları düzenler." },
+    { soru: "Hangisi bir animasyon filmi değildir?", A: "The Matrix", B: "Toy Story", C: "Shrek", D: "Finding Nemo", E: "Frozen", dogru: "A", aciklama: "The Matrix, bilim kurgu türünde bir filmdir." },
+    { soru: "Forrest Gump filminde başrol kimdir?", A: "Tom Hanks", B: "Denzel Washington", C: "Morgan Freeman", D: "Robin Williams", E: "Johnny Depp", dogru: "A", aciklama: "Forrest Gump'ı Tom Hanks canlandırmıştır." },
+    { soru: "Yeşil Yol filminin yönetmeni kimdir?", A: "Frank Darabont", B: "Steven Spielberg", C: "Martin Scorsese", D: "Clint Eastwood", E: "David Fincher", dogru: "A", aciklama: "Yeşil Yol (The Green Mile), Frank Darabont'un yönettiği bir başyapıttır." },
+    { soru: "Hangisi bir korku filmi karakteri değildir?", A: "Harry Potter", B: "Freddy Krueger", C: "Jason Voorhees", D: "Michael Myers", E: "Pennywise", dogru: "A", aciklama: "Harry Potter, fantastik bir roman/film karakteridir." },
+    { soru: "The Dark Knight filminde Joker'i kim canlandırmıştır?", A: "Heath Ledger", B: "Jack Nicholson", C: "Joaquin Phoenix", D: "Jared Leto", E: "Mark Hamill", dogru: "A", aciklama: "Heath Ledger, bu rolüyle Oscar kazanmıştır." },
+    { soru: "Hangisi bir Marvel filmi değildir?", A: "Man of Steel", B: "Iron Man", C: "Thor", D: "Captain America", E: "Black Panther", dogru: "A", aciklama: "Man of Steel, DC Comics yapımı bir Superman filmidir." },
+    { soru: "Türkiye'nin Oscar adayı olan 'Ahlat Ağacı' filminin yönetmeni kimdir?", A: "Nuri Bilge Ceylan", B: "Ferzan Özpetek", C: "Yılmaz Erdoğan", D: "Zeki Demirkubuz", E: "Semih Kaplanoğlu", dogru: "A", aciklama: "Nuri Bilge Ceylan, Ahlat Ağacı'nın yönetmenidir." },
+    { soru: "Oscarlı ünlü yönetmen Steven Spielberg'ün ilk büyük gişe başarısı hangi filmdir?", A: "Jaws", B: "E.T.", C: "Jurassic Park", D: "Schindler'in Listesi", E: "Er Ryan'ı Kurtarmak", dogru: "A", aciklama: "Jaws (1975), Spielberg'ün ilk büyük gişe başarısıdır." },
+    { soru: "Hangisi bir bilim kurgu filmi değildir?", A: "Gladyatör", B: "Star Wars", C: "Star Trek", D: "Matrix", E: "Interstellar", dogru: "A", aciklama: "Gladyatör, tarihi dram türünde bir filmdir." },
+    { soru: "İlk uzun metrajlı animasyon filmi hangisidir?", A: "Pamuk Prenses ve Yedi Cüceler", B: "Toy Story", C: "Shrek", D: "Aslan Kral", E: "Buz Devri", dogru: "A", aciklama: "Disney'in 1937 yapımı Pamuk Prenses ve Yedi Cüceler, ilk uzun metraj animasyondur." },
+    { soru: "Hangisi bir Sergio Leone filmi değildir?", A: "Casablanca", B: "İyi, Kötü ve Çirkin", C: "Bir Zamanlar Amerika'da", D: "Bir Avuç Dolar", E: "Birkaç Dolar İçin", dogru: "A", aciklama: "Casablanca, Michael Curtiz'in yönettiği klasik bir dramdır." },
+    { soru: "Oscar kazanan ilk siyahi kadın oyuncu kimdir?", A: "Hattie McDaniel", B: "Halle Berry", C: "Whoopi Goldberg", D: "Viola Davis", E: "Octavia Spencer", dogru: "A", aciklama: "Hattie McDaniel, 1940'ta Rüzgar Gibi Geçti ile Oscar kazanmıştır." },
+    { soru: "Hangisi bir Alfred Hitchcock filmi değildir?", A: "Chinatown", B: "Sapık", C: "Kuşlar", D: "Arka Pencere", E: "Ölüm Korkusu", dogru: "A", aciklama: "Chinatown, Roman Polanski'nin filmidir." },
+    { soru: "Yüzüklerin Efendisi üçlemesinin yönetmeni kimdir?", A: "Peter Jackson", B: "Steven Spielberg", C: "James Cameron", D: "George Lucas", E: "Ridley Scott", dogru: "A", aciklama: "Peter Jackson, Yüzüklerin Efendisi üçlemesini yönetmiştir." },
+    { soru: "Hangisi bir western filmi değildir?", A: "Star Wars", B: "İyi, Kötü ve Çirkin", C: "Red Kit", D: "Kurtlarla Dans", E: "Kahraman Şerif", dogru: "A", aciklama: "Star Wars, bilim kurgu türündedir." },
+    { soru: "Hangisi bir romantik komedi filmidir?", A: "Aşk Her Yerde", B: "Kara Şövalye", C: "Matrix", D: "Yüzüklerin Efendisi", E: "Gladyatör", dogru: "A", aciklama: "Aşk Her Yerde (Love Actually), romantik komedi klasiğidir." },
+    { soru: "Cannes Film Festivali'nin en büyük ödülü hangisidir?", A: "Altın Palmiye", B: "Altın Ayı", C: "Altın Aslan", D: "Oscar", E: "BAFTA", dogru: "A", aciklama: "Cannes'ın en büyük ödülü Altın Palmiye'dir." },
+    { soru: "Hangisi bir savaş filmi değildir?", A: "Titanic", B: "Er Ryan'ı Kurtarmak", C: "Apocalypse Now", D: "Full Metal Jacket", E: "Piyanist", dogru: "A", aciklama: "Titanic, felaket ve romantik dram türündedir." },
+    { soru: "Hangisi bir Türk korku filmi serisidir?", A: "Siccin", B: "Dabbe", C: "Semum", D: "Musallat", E: "Hepsi", dogru: "E", aciklama: "Siccin, Dabbe, Semum, Musallat Türk korku sinemasının örnekleridir." },
+    { soru: "Yeşilçam'ın efsane kadın oyuncusu kimdir?", A: "Türkan Şoray", B: "Hülya Koçyiğit", C: "Filiz Akın", D: "Fatma Girik", E: "Hepsi", dogru: "E", aciklama: "Dört yapraklı yonca olarak bilinen bu dört oyuncu Yeşilçam'ın sultanlarıdır." },
+    { soru: "Yeşilçam'ın efsane erkek oyuncusu kimdir?", A: "Kadir İnanır", B: "Cüneyt Arkın", C: "Tarik Akan", D: "Ediz Hun", E: "Hepsi", dogru: "E", aciklama: "Bu dört oyuncu Yeşilçam'ın unutulmaz jönlerindendir." },
+    { soru: "Hangisi bir sinema terimi değildir?", A: "Falso", B: "Plan", C: "Sekans", D: "Kurgu", E: "Mizansen", dogru: "A", aciklama: "Falso, müzikte yanlış nota anlamına gelir." },
+    { soru: "Filmlerde kullanılan 'green screen' ne işe yarar?", A: "Arka plan değiştirme", B: "Renk düzeltme", C: "Ses kaydı", D: "Işık ayarı", E: "Kamera hareketi", dogru: "A", aciklama: "Green screen, dijital arka plan eklemek için kullanılır." },
+    { soru: "Hangisi bir film türü değildir?", A: "Makale", B: "Dram", C: "Komedi", D: "Aksiyon", E: "Belgesel", dogru: "A", aciklama: "Makale, yazılı bir türdür, film türü değildir." },
+    { soru: "İlk sesli film hangisidir?", A: "The Jazz Singer", B: "Metropolis", C: "Modern Zamanlar", D: "Altına Hücum", E: "Potemkin Zırhlısı", dogru: "A", aciklama: "The Jazz Singer (1927), ilk uzun metrajlı sesli filmdir." },
+    { soru: "İlk renkli film hangisidir?", A: "Rüzgar Gibi Geçti", B: "Oz Büyücüsü", C: "Pamuk Prenses", D: "Robin Hood'un Maceraları", E: "Bir Amerikan Paris'te", dogru: "B", aciklama: "Oz Büyücüsü (1939), Technicolor ile çekilen ilk büyük yapımlardandır." },
+    { soru: "Hangisi bir film ödülü değildir?", A: "Emmy", B: "Oscar", C: "Altın Küre", D: "BAFTA", E: "Altın Palmiye", dogru: "A", aciklama: "Emmy, televizyon ödülüdür." },
+    { soru: "Türkiye'nin en çok izlenen filmi hangisidir?", A: "Recep İvedik 4", B: "Düğün Dernek", C: "Ayla", D: "Bergen", E: "Fetih 1453", dogru: "A", aciklama: "Recep İvedik 4, 7 milyondan fazla izleyiciyle rekora sahiptir." },
+    { soru: "Hangisi bir Netflix orijinal dizisi değildir?", A: "Friends", B: "Stranger Things", C: "The Crown", D: "Wednesday", E: "La Casa de Papel", dogru: "A", aciklama: "Friends, Warner Bros. yapımıdır." },
+    { soru: "Hangisi bir yönetmen değildir?", A: "Stephen King", B: "Stanley Kubrick", C: "David Lynch", D: "Tim Burton", E: "Wes Anderson", dogru: "A", aciklama: "Stephen King, yazardır; ancak bazı filmlerini yönetmiştir." },
+    { soru: "Oscar kazanan ilk Türk filmi hangisidir?", A: "Yok", B: "Susuz Yaz", C: "Umut", D: "Yol", E: "Duvar", dogru: "A", aciklama: "Türkiye henüz En İyi Uluslararası Film Oscar'ını kazanamamıştır." }
+];
+       const bilimSorulari = [
+    { soru: "Yer çekimi kanununu kim bulmuştur?", A: "Isaac Newton", B: "Albert Einstein", C: "Galileo Galilei", D: "Nikola Tesla", E: "Stephen Hawking", dogru: "A", aciklama: "Isaac Newton, evrensel kütle çekim kanununu formüle etmiştir." },
+    { soru: "E=mc² formülü kime aittir?", A: "Albert Einstein", B: "Isaac Newton", C: "Max Planck", D: "Niels Bohr", E: "Marie Curie", dogru: "A", aciklama: "Bu ünlü formül Albert Einstein'a aittir." },
+    { soru: "DNA'nın yapısını keşfeden bilim insanları kimlerdir?", A: "Watson ve Crick", B: "Darwin ve Wallace", C: "Mendel ve Morgan", D: "Franklin ve Wilkins", E: "Pasteur ve Koch", dogru: "A", aciklama: "James Watson ve Francis Crick, DNA'nın çift sarmal yapısını keşfetmiştir." },
+    { soru: "Hangisi bir gezegen değildir?", A: "Plüton", B: "Merkür", C: "Venüs", D: "Mars", E: "Jüpiter", dogru: "A", aciklama: "Plüton, 2006'da cüce gezegen olarak sınıflandırılmıştır." },
+    { soru: "İnsan vücudundaki en büyük organ hangisidir?", A: "Deri", B: "Kalp", C: "Beyin", D: "Karaciğer", E: "Akciğer", dogru: "A", aciklama: "Deri, yaklaşık 2 m² alanıyla en büyük organdır." },
+    { soru: "Periyodik tabloda ilk element hangisidir?", A: "Hidrojen", B: "Helyum", C: "Lityum", D: "Berilyum", E: "Karbon", dogru: "A", aciklama: "Hidrojen, atom numarası 1 olan ilk elementtir." },
+    { soru: "Işık hızı saniyede kaç km'dir? (Yaklaşık)", A: "300.000", B: "200.000", C: "400.000", D: "500.000", E: "150.000", dogru: "A", aciklama: "Işık hızı yaklaşık 300.000 km/s'dir." },
+    { soru: "Hangisi bir asal sayıdır?", A: "7", B: "9", C: "15", D: "21", E: "27", dogru: "A", aciklama: "7, sadece 1'e ve kendisine bölünebilir." },
+    { soru: "Suyun kimyasal formülü nedir?", A: "H₂O", B: "CO₂", C: "O₂", D: "NaCl", E: "CH₄", dogru: "A", aciklama: "Su, iki hidrojen ve bir oksijen atomundan oluşur." },
+    { soru: "Hangisi bir fizik yasası değildir?", A: "Murphy Yasası", B: "Newton'un Hareket Yasaları", C: "Termodinamik Yasaları", D: "Ohm Yasası", E: "Coulomb Yasası", dogru: "A", aciklama: "Murphy Yasası bir mühendislik mottosudur." },
+    { soru: "Dünya'nın uydusu nedir?", A: "Ay", B: "Güneş", C: "Mars", D: "Venüs", E: "Jüpiter", dogru: "A", aciklama: "Dünya'nın tek doğal uydusu Ay'dır." },
+    { soru: "En büyük gezegen hangisidir?", A: "Jüpiter", B: "Satürn", C: "Neptün", D: "Uranüs", E: "Dünya", dogru: "A", aciklama: "Jüpiter, Güneş Sistemi'nin en büyük gezegenidir." },
+    { soru: "Hangisi bir memeli değildir?", A: "Penguen", B: "Balina", C: "Yunus", D: "Yarasa", E: "İnsan", dogru: "A", aciklama: "Penguen, kuşlar sınıfındandır." },
+    { soru: "Fotosentez sonucu ne üretilir?", A: "Oksijen ve Glikoz", B: "Karbondioksit ve Su", C: "Azot ve Oksijen", D: "Hidrojen ve Karbon", E: "Glikoz ve Azot", dogru: "A", aciklama: "Fotosentez, güneş ışığıyla CO₂ ve sudan glikoz ve oksijen üretir." },
+    { soru: "İnsan DNA'sında kaç kromozom vardır?", A: "46", B: "23", C: "24", D: "48", E: "52", dogru: "A", aciklama: "İnsanlarda 23 çift (toplam 46) kromozom bulunur." },
+    { soru: "Hangisi bir kan grubu değildir?", A: "C", B: "A", C: "B", D: "AB", E: "0", dogru: "A", aciklama: "C kan grubu diye bir şey yoktur." },
+    { soru: "Altının kimyasal sembolü nedir?", A: "Au", B: "Ag", C: "Al", D: "Ar", E: "As", dogru: "A", aciklama: "Altının sembolü Latince 'aurum'dan gelen Au'dur." },
+    { soru: "Demirin kimyasal sembolü nedir?", A: "Fe", B: "De", C: "Ir", D: "In", E: "Dm", dogru: "A", aciklama: "Demirin sembolü Latince 'ferrum'dan gelen Fe'dir." },
+    { soru: "Hangisi bir asit değildir?", A: "Saf Su", B: "Sirke", C: "Limon Suyu", D: "Mide Asidi", E: "Sülfürik Asit", dogru: "A", aciklama: "Saf su nötrdür (pH 7)." },
+    { soru: "Hangisi bir baz değildir?", A: "Limon Suyu", B: "Sabun", C: "Amonyak", D: "Sodyum Hidroksit", E: "Çamaşır Suyu", dogru: "A", aciklama: "Limon suyu asidiktir." },
+    { soru: "Ses hızı saniyede kaç metredir? (Yaklaşık)", A: "343", B: "100", C: "500", D: "1000", E: "3000", dogru: "A", aciklama: "Ses hızı deniz seviyesinde yaklaşık 343 m/s'dir." },
+    { soru: "Hangisi bir kemik türü değildir?", A: "Kas", B: "Uzun Kemik", C: "Kısa Kemik", D: "Yassı Kemik", E: "Düzensiz Kemik", dogru: "A", aciklama: "Kas, kemik değil, yumuşak dokudur." },
+    { soru: "İnsan kalbi kaç odacıklıdır?", A: "4", B: "2", C: "3", D: "5", E: "6", dogru: "A", aciklama: "İnsan kalbi 2 kulakçık ve 2 karıncık olmak üzere 4 odacıklıdır." },
+    { soru: "Hangisi bir vitamin değildir?", A: "Kalsiyum", B: "A", C: "B12", D: "C", E: "D", dogru: "A", aciklama: "Kalsiyum bir mineraldir, vitamin değildir." },
+    { soru: "Elektriği ilk kim keşfetmiştir?", A: "Thales", B: "Benjamin Franklin", C: "Thomas Edison", D: "Nikola Tesla", E: "Michael Faraday", dogru: "A", aciklama: "Elektrik, M.Ö. 600'de Thales tarafından kehribarın sürtünmesiyle keşfedilmiştir." },
+    { soru: "Hangisi bir gezegenin uydusu değildir?", A: "Güneş", B: "Ay", C: "Titan", D: "Europa", E: "Phobos", dogru: "A", aciklama: "Güneş bir yıldızdır." },
+    { soru: "Hangisi bir doğal afet değildir?", A: "Trafik Kazası", B: "Deprem", C: "Sel", D: "Heyelan", E: "Çığ", dogru: "A", aciklama: "Trafik kazası, insan kaynaklı bir olaydır." },
+    { soru: "İnsan vücudunda kaç tane duyu organı vardır?", A: "5", B: "4", C: "6", D: "7", E: "3", dogru: "A", aciklama: "Görme, işitme, koklama, tatma, dokunma." },
+    { soru: "Hangisi bir kemik adı değildir?", A: "Biceps", B: "Femur", C: "Tibia", D: "Fibula", E: "Humerus", dogru: "A", aciklama: "Biceps, bir kas adıdır." },
+    { soru: "Dünyanın en derin noktası neresidir?", A: "Mariana Çukuru", B: "Tonga Çukuru", C: "Filipin Çukuru", D: "Puerto Riko Çukuru", E: "Java Çukuru", dogru: "A", aciklama: "Mariana Çukuru, yaklaşık 11.000 metre derinliğindedir." },
+    { soru: "Hangisi bir asal sayı değildir?", A: "1", B: "2", C: "3", D: "5", E: "7", dogru: "A", aciklama: "1 asal sayı değildir." },
+    { soru: "Hangisi bir tek sayıdır?", A: "3", B: "2", C: "4", D: "6", E: "8", dogru: "A", aciklama: "3, 2'ye tam bölünemeyen tek sayıdır." },
+    { soru: "Hangisi bir çift sayıdır?", A: "4", B: "1", C: "3", D: "5", E: "7", dogru: "A", aciklama: "4, 2'ye tam bölünebilen çift sayıdır." },
+    { soru: "Pi sayısı kaçtır? (Yaklaşık)", A: "3.14", B: "2.71", C: "1.61", D: "1.41", E: "2.23", dogru: "A", aciklama: "Pi sayısı yaklaşık 3.14'tür." },
+    { soru: "Hangisi bir çiçeksiz bitkidir?", A: "Eğrelti Otu", B: "Gül", C: "Lale", D: "Papatya", E: "Menekşe", dogru: "A", aciklama: "Eğrelti otu, çiçeksiz bitkilerdendir." },
+    { soru: "Hangisi bir omurgalı hayvan değildir?", A: "Denizanası", B: "Balık", C: "Kurbağa", D: "Sürüngen", E: "Kuş", dogru: "A", aciklama: "Denizanası omurgasızdır." },
+    { soru: "Hangisi bir böcek değildir?", A: "Örümcek", B: "Karınca", C: "Arı", D: "Kelebek", E: "Sinek", dogru: "A", aciklama: "Örümcekler örümceğimsiler sınıfındadır, böcek değildir." },
+    { soru: "Hangisi bir sürüngen değildir?", A: "Kurbağa", B: "Yılan", C: "Kertenkele", D: "Timsah", E: "Kaplumbağa", dogru: "A", aciklama: "Kurbağa iki yaşamlıdır (amfibi)." },
+    { soru: "Hangisi bir kuş değildir?", A: "Yarasa", B: "Kartal", C: "Serçe", D: "Güvercin", E: "Penguen", dogru: "A", aciklama: "Yarasa, uçabilen bir memelidir." },
+    { soru: "Hangisi bir balık değildir?", A: "Balina", B: "Hamsi", C: "Palamut", D: "Levrek", E: "Çipura", dogru: "A", aciklama: "Balina, memeli bir deniz canlısıdır." }
+];
+        const tarihSorulari = [
+    { soru: "İstanbul'un fethi hangi yılda olmuştur?", A: "1453", B: "1451", C: "1457", D: "1461", E: "1473", dogru: "A", aciklama: "Fatih Sultan Mehmet, 1453'te İstanbul'u fethetmiştir." },
+    { soru: "Türkiye Cumhuriyeti hangi yılda kurulmuştur?", A: "1923", B: "1920", C: "1921", D: "1922", E: "1924", dogru: "A", aciklama: "29 Ekim 1923'te Cumhuriyet ilan edilmiştir." },
+    { soru: "İlk Türk devleti hangisidir?", A: "Hunlar", B: "Göktürkler", C: "Uygurlar", D: "Selçuklular", E: "Osmanlılar", dogru: "A", aciklama: "Asya Hun İmparatorluğu, bilinen ilk Türk devletidir." },
+    { soru: "II. Dünya Savaşı hangi yıllar arasında olmuştur?", A: "1939-1945", B: "1914-1918", C: "1918-1922", D: "1945-1950", E: "1930-1936", dogru: "A", aciklama: "İkinci Dünya Savaşı, 1939-1945 yılları arasında yaşanmıştır." },
+    { soru: "Malazgirt Savaşı hangi yılda yapılmıştır?", A: "1071", B: "1171", C: "1271", D: "1371", E: "1471", dogru: "A", aciklama: "26 Ağustos 1071'de Malazgirt Savaşı yapılmıştır." },
+    { soru: "Osmanlı Devleti'nin kurucusu kimdir?", A: "Osman Gazi", B: "Orhan Gazi", C: "I. Murad", D: "Yıldırım Bayezid", E: "Fatih Sultan Mehmet", dogru: "A", aciklama: "Osmanlı Devleti, Osman Gazi tarafından 1299'da kurulmuştur." },
+    { soru: "Hangisi antik bir uygarlık değildir?", A: "Amerika", B: "Mısır", C: "Yunan", D: "Roma", E: "Mezopotamya", dogru: "A", aciklama: "Amerika kıtasındaki uygarlıklar antik çağda Avrasya ile temas halinde değildi." },
+    { soru: "Fransız İhtilali hangi yılda başlamıştır?", A: "1789", B: "1776", C: "1804", D: "1815", E: "1848", dogru: "A", aciklama: "Fransız İhtilali, 1789'da Bastille Baskını ile başlamıştır." },
+    { soru: "Hangisi bir Türk büyüğü değildir?", A: "Napolyon", B: "Atatürk", C: "Fatih", D: "Kanuni", E: "Yavuz", dogru: "A", aciklama: "Napolyon Bonapart, Fransız komutan ve imparatordur." },
+    { soru: "Kurtuluş Savaşı hangi yıllar arasında olmuştur?", A: "1919-1922", B: "1914-1918", C: "1920-1923", D: "1918-1920", E: "1921-1924", dogru: "A", aciklama: "Kurtuluş Savaşı, 19 Mayıs 1919'da başlamış, 1922'de zaferle sonuçlanmıştır." },
+    { soru: "İlk Çağ'da Anadolu'da kurulan uygarlık hangisidir?", A: "Hititler", B: "Urartular", C: "Frigler", D: "Lidyalılar", E: "İyonlar", dogru: "A", aciklama: "Hititler, Anadolu'da M.Ö. 2000'lerde kurulmuştur." },
+    { soru: "Parayı ilk kullanan uygarlık hangisidir?", A: "Lidyalılar", B: "Hititler", C: "Frigler", D: "Urartular", E: "İyonlar", dogru: "A", aciklama: "Lidyalılar, tarihte ilk madeni parayı kullanan uygarlıktır." },
+    { soru: "Yazıyı ilk kim bulmuştur?", A: "Sümerler", B: "Mısırlılar", C: "Hititler", D: "Çinliler", E: "Fenikeliler", dogru: "A", aciklama: "Sümerler, çivi yazısını icat etmiştir." },
+    { soru: "İstanbul'un eski adı nedir?", A: "Konstantinopolis", B: "Bizans", C: "Roma", D: "Atina", E: "İskenderiye", dogru: "A", aciklama: "İstanbul, Roma İmparatorluğu döneminde Konstantinopolis olarak anılırdı." },
+    { soru: "Hangisi Osmanlı padişahı değildir?", A: "Alparslan", B: "Fatih", C: "Kanuni", D: "Yavuz", E: "II. Abdülhamid", dogru: "A", aciklama: "Alparslan, Büyük Selçuklu Devleti hükümdarıdır." },
+    { soru: "Hangisi bir Türk-İslam devleti değildir?", A: "Bizans", B: "Selçuklu", C: "Osmanlı", D: "Karahanlılar", E: "Gazneliler", dogru: "A", aciklama: "Bizans, Hristiyan bir imparatorluktur." },
+    { soru: "Magna Carta hangi yıl imzalanmıştır?", A: "1215", B: "1066", C: "1453", D: "1492", E: "1517", dogru: "A", aciklama: "Magna Carta, 1215'te İngiltere'de imzalanmıştır." },
+    { soru: "Amerika'yı keşfeden kaşif kimdir?", A: "Kristof Kolomb", B: "Vasco da Gama", C: "Macellan", D: "Amerigo Vespucci", E: "Kaptan Cook", dogru: "A", aciklama: "Kristof Kolomb, 1492'de Amerika kıtasına ulaşmıştır." },
+    { soru: "Hindistan'a denizden ulaşan ilk Avrupalı kimdir?", A: "Vasco da Gama", B: "Kristof Kolomb", C: "Macellan", D: "Bartolomeu Dias", E: "Henry", dogru: "A", aciklama: "Vasco da Gama, 1498'de Hindistan'a deniz yoluyla ulaşmıştır." },
+    { soru: "Dünyanın çevresini dolaşan ilk denizci kimdir?", A: "Macellan", B: "Kristof Kolomb", C: "Vasco da Gama", D: "Amerigo Vespucci", E: "Kaptan Cook", dogru: "A", aciklama: "Ferdinand Macellan'ın ekibi dünyayı dolaşan ilk denizcilerdir." },
+    { soru: "Rönesans hangi ülkede başlamıştır?", A: "İtalya", B: "Fransa", C: "İngiltere", D: "Almanya", E: "İspanya", dogru: "A", aciklama: "Rönesans, 14. yüzyılda İtalya'da başlamıştır." },
+    { soru: "Reform hareketini başlatan kişi kimdir?", A: "Martin Luther", B: "John Calvin", C: "Jan Hus", D: "Henry VIII", E: "Zwingli", dogru: "A", aciklama: "Martin Luther, 95 Tez'i kilise kapısına asarak Reform'u başlatmıştır." },
+    { soru: "Sanayi Devrimi hangi ülkede başlamıştır?", A: "İngiltere", B: "Fransa", C: "Almanya", D: "ABD", E: "Japonya", dogru: "A", aciklama: "Sanayi Devrimi, 18. yüzyılda İngiltere'de başlamıştır." },
+    { soru: "I. Dünya Savaşı hangi olayla başlamıştır?", A: "Avusturya Veliahtı'nın Öldürülmesi", B: "Almanya'nın Polonya'ya Saldırması", C: "Pearl Harbor Saldırısı", D: "Fransız İhtilali", E: "Rus Devrimi", dogru: "A", aciklama: "Franz Ferdinand'ın suikastı, I. Dünya Savaşı'nı tetiklemiştir." },
+    { soru: "II. Dünya Savaşı hangi olayla başlamıştır?", A: "Almanya'nın Polonya'ya Saldırması", B: "Pearl Harbor Saldırısı", C: "Hiroşima'ya Atom Bombası Atılması", D: "Normandiya Çıkarması", E: "Stalingrad Savaşı", dogru: "A", aciklama: "1 Eylül 1939'da Almanya'nın Polonya'yı işgaliyle savaş başlamıştır." },
+    { soru: "Birleşmiş Milletler hangi yıl kurulmuştur?", A: "1945", B: "1919", C: "1939", D: "1950", E: "1960", dogru: "A", aciklama: "Birleşmiş Milletler, 1945'te San Francisco'da kurulmuştur." },
+    { soru: "İlk atom bombası hangi şehre atılmıştır?", A: "Hiroşima", B: "Nagazaki", C: "Tokyo", D: "Osaka", E: "Kyoto", dogru: "A", aciklama: "6 Ağustos 1945'te Hiroşima'ya atom bombası atılmıştır." },
+    { soru: "Soğuk Savaş hangi iki ülke arasında yaşanmıştır?", A: "ABD ve SSCB", B: "Almanya ve Fransa", C: "İngiltere ve ABD", D: "Çin ve Japonya", E: "Hindistan ve Pakistan", dogru: "A", aciklama: "Soğuk Savaş, ABD ve SSCB arasında yaşanan ideolojik mücadeledir." },
+    { soru: "Berlin Duvarı hangi yıl yıkılmıştır?", A: "1989", B: "1985", C: "1990", D: "1991", E: "1987", dogru: "A", aciklama: "Berlin Duvarı, 9 Kasım 1989'da yıkılmıştır." },
+    { soru: "Sovyetler Birliği hangi yıl dağılmıştır?", A: "1991", B: "1989", C: "1993", D: "1985", E: "1995", dogru: "A", aciklama: "SSCB, 26 Aralık 1991'de resmen dağılmıştır." },
+    { soru: "İslamiyet hangi yılda doğmuştur?", A: "610", B: "622", C: "632", D: "571", E: "750", dogru: "A", aciklama: "Hz. Muhammed'e ilk vahiy 610 yılında gelmiştir." },
+    { soru: "Hicret hangi yıl gerçekleşmiştir?", A: "622", B: "610", C: "632", D: "571", E: "628", dogru: "A", aciklama: "Hz. Muhammed, 622'de Mekke'den Medine'ye hicret etmiştir." },
+    { soru: "Endülüs Emevi Devleti hangi yıl yıkılmıştır?", A: "1031", B: "1492", C: "1258", D: "1453", E: "1099", dogru: "A", aciklama: "Endülüs Emevi Devleti, 1031'de parçalanmıştır." },
+    { soru: "Haçlı Seferleri kaç tanedir? (Büyük seferler)", A: "8", B: "4", C: "5", D: "6", E: "7", dogru: "A", aciklama: "8 büyük Haçlı Seferi düzenlenmiştir." },
+    { soru: "İstanbul'un Latinler tarafından işgali hangi Haçlı Seferi'nde olmuştur?", A: "4. Haçlı Seferi", B: "1. Haçlı Seferi", C: "2. Haçlı Seferi", D: "3. Haçlı Seferi", E: "5. Haçlı Seferi", dogru: "A", aciklama: "1204'te 4. Haçlı Seferi'nde İstanbul yağmalanmıştır." },
+    { soru: "Mohaç Meydan Muharebesi hangi yıl yapılmıştır?", A: "1526", B: "1453", C: "1517", D: "1571", E: "1683", dogru: "A", aciklama: "Kanuni Sultan Süleyman, 1526'da Mohaç'ı fethetmiştir." },
+    { soru: "Viyana Kuşatması hangi yıl yapılmıştır? (İlk)", A: "1529", B: "1683", C: "1453", D: "1571", E: "1699", dogru: "A", aciklama: "Kanuni Sultan Süleyman, 1529'da Viyana'yı kuşatmıştır." },
+    { soru: "Lale Devri hangi yıllar arasında yaşanmıştır?", A: "1718-1730", B: "1700-1710", C: "1730-1740", D: "1683-1699", E: "1750-1760", dogru: "A", aciklama: "Lale Devri, III. Ahmed döneminde yaşanan barış ve eğlence dönemidir." },
+    { soru: "Tanzimat Fermanı hangi yıl ilan edilmiştir?", A: "1839", B: "1856", C: "1876", D: "1908", E: "1920", dogru: "A", aciklama: "Tanzimat Fermanı, 3 Kasım 1839'da Gülhane Parkı'nda okunmuştur." },
+    { soru: "I. Meşrutiyet hangi yıl ilan edilmiştir?", A: "1876", B: "1839", C: "1856", D: "1908", E: "1920", dogru: "A", aciklama: "I. Meşrutiyet, II. Abdülhamid tarafından 1876'da ilan edilmiştir." }
+];
+       const sanatSorulari = [
+    { soru: "Mona Lisa tablosunun ressamı kimdir?", A: "Leonardo da Vinci", B: "Michelangelo", C: "Raphael", D: "Donatello", E: "Botticelli", dogru: "A", aciklama: "Mona Lisa, Leonardo da Vinci'nin en ünlü eseridir." },
+    { soru: "Van Gogh hangi kulağını kesmiştir?", A: "Sol", B: "Sağ", C: "İkisini de", D: "Kesmemiştir", E: "Bilinmiyor", dogru: "A", aciklama: "Van Gogh, sol kulağının bir kısmını kesmiştir." },
+    { soru: "Pablo Picasso hangi akımın öncüsüdür?", A: "Kübizm", B: "Empresyonizm", C: "Sürrealizm", D: "Ekspresyonizm", E: "Barok", dogru: "A", aciklama: "Picasso, Kübizm akımının öncülerindendir." },
+    { soru: "Sistine Şapeli'nin tavanını kim boyamıştır?", A: "Michelangelo", B: "Leonardo da Vinci", C: "Raphael", D: "Donatello", E: "Botticelli", dogru: "A", aciklama: "Michelangelo, Sistine Şapeli'nin tavanını 4 yılda boyamıştır." },
+    { soru: "Düşünen Adam heykelinin yaratıcısı kimdir?", A: "Auguste Rodin", B: "Michelangelo", C: "Donatello", D: "Bernini", E: "Canova", dogru: "A", aciklama: "Düşünen Adam, Auguste Rodin'in eseridir." },
+    { soru: "Salvador Dali hangi akımın temsilcisidir?", A: "Sürrealizm", B: "Kübizm", C: "Empresyonizm", D: "Barok", E: "Rönesans", dogru: "A", aciklama: "Salvador Dali, Sürrealizmin en önemli temsilcilerindendir." },
+    { soru: "Hangisi bir resim tekniği değildir?", A: "Fotokopi", B: "Yağlı boya", C: "Suluboya", D: "Akrilik", E: "Pastel", dogru: "A", aciklama: "Fotokopi, resim tekniği değildir." },
+    { soru: "Guernica tablosu hangi olayı anlatır?", A: "İspanya İç Savaşı", B: "I. Dünya Savaşı", C: "II. Dünya Savaşı", D: "Fransız İhtilali", E: "Vietnam Savaşı", dogru: "A", aciklama: "Picasso'nun Guernica'sı, İspanya İç Savaşı'ndaki bombalamayı anlatır." },
+    { soru: "Hangisi ünlü bir Türk ressamdır?", A: "Osman Hamdi Bey", B: "Van Gogh", C: "Picasso", D: "Dali", E: "Monet", dogru: "A", aciklama: "Osman Hamdi Bey, 'Kaplumbağa Terbiyecisi' ile ünlüdür." },
+    { soru: "Mimar Sinan'ın ustalık eserim dediği yapı hangisidir?", A: "Selimiye Camii", B: "Süleymaniye Camii", C: "Şehzade Camii", D: "Ayasofya", E: "Sultanahmet Camii", dogru: "A", aciklama: "Mimar Sinan, Selimiye'yi ustalık eseri olarak nitelendirmiştir." },
+    { soru: "Hangisi bir heykel malzemesi değildir?", A: "Kağıt", B: "Mermer", C: "Bronz", D: "Ahşap", E: "Kil", dogru: "A", aciklama: "Kağıt, heykel için uygun bir malzeme değildir." },
+    { soru: "Hangisi bir mimari akım değildir?", A: "Fotorealizm", B: "Barok", C: "Gotik", D: "Rönesans", E: "Modern", dogru: "A", aciklama: "Fotorealizm, resim akımıdır." },
+    { soru: "Hangisi bir çizgi roman sanatçısıdır?", A: "Stan Lee", B: "Picasso", C: "Van Gogh", D: "Dali", E: "Monet", dogru: "A", aciklama: "Stan Lee, Marvel çizgi romanlarının yaratıcısıdır." },
+    { soru: "Hangisi bir hat sanatı terimi değildir?", A: "Perspektif", B: "Sülüs", C: "Nesih", D: "Talik", E: "Kufi", dogru: "A", aciklama: "Perspektif, resimde derinlik verme tekniğidir." },
+    { soru: "Hangisi bir ebru sanatçısıdır?", A: "Mustafa Düzgünman", B: "Osman Hamdi Bey", C: "Şeker Ahmet Paşa", D: "İbrahim Çallı", E: "Fikret Mualla", dogru: "A", aciklama: "Mustafa Düzgünman, ebru sanatının ünlü isimlerindendir." },
+    { soru: "Hangisi bir minyatür sanatçısıdır?", A: "Nakkaş Osman", B: "Mimar Sinan", C: "Levni", D: "Matrakçı Nasuh", E: "Hepsi", dogru: "E", aciklama: "Nakkaş Osman, Levni ve Matrakçı Nasuh ünlü minyatür sanatçılarıdır." },
+    { soru: "Hangisi bir fotoğrafçılık terimi değildir?", A: "Suluboya", B: "Diyafram", C: "Enstantane", D: "ISO", E: "Netleme", dogru: "A", aciklama: "Suluboya, resim tekniğidir." },
+    { soru: "Hangisi bir tiyatro terimi değildir?", A: "Tuval", B: "Perde", C: "Sahne", D: "Aktör", E: "Suflör", dogru: "A", aciklama: "Tuval, resim için kullanılan bir malzemedir." },
+    { soru: "Hangisi bir bale eseridir?", A: "Kuğu Gölü", B: "9. Senfoni", C: "Mona Lisa", D: "Düşünen Adam", E: "Guernica", dogru: "A", aciklama: "Kuğu Gölü, Çaykovski'nin ünlü bale eseridir." },
+    { soru: "Hangisi bir opera eseridir?", A: "Carmen", B: "Fındıkkıran", C: "Kuğu Gölü", D: "Romeo ve Juliet", E: "Uyuyan Güzel", dogru: "A", aciklama: "Carmen, Georges Bizet'nin ünlü operasıdır." },
+    { soru: "Hangisi bir Türk halk oyunu değildir?", A: "Vals", B: "Horon", C: "Zeybek", D: "Halay", E: "Bar", dogru: "A", aciklama: "Vals, Avrupa kökenli bir dans türüdür." },
+    { soru: "Hangisi bir sinema terimi değildir?", A: "Fırça", B: "Senaryo", C: "Kurgu", D: "Çekim", E: "Mizansen", dogru: "A", aciklama: "Fırça, resim sanatına aittir." },
+    { soru: "Hangisi bir seramik yapım tekniğidir?", A: "Çömlekçilik", B: "Dokuma", C: "Oyma", D: "Döküm", E: "Pres", dogru: "A", aciklama: "Çömlekçilik, kilin şekillendirilmesiyle yapılır." },
+    { soru: "Hangisi bir geleneksel Türk el sanatı değildir?", A: "Origami", B: "Ebru", C: "Hat", D: "Tezhip", E: "Minyatür", dogru: "A", aciklama: "Origami, Japon kağıt katlama sanatıdır." },
+    { soru: "Hangisi bir renk değildir?", A: "Saydam", B: "Kırmızı", C: "Mavi", D: "Yeşil", E: "Sarı", dogru: "A", aciklama: "Saydam, ışık geçirgenlik özelliğidir, renk değildir." },
+    { soru: "Hangisi bir ana renk değildir?", A: "Yeşil", B: "Kırmızı", C: "Mavi", D: "Sarı", E: "Hepsi ana renktir", dogru: "A", aciklama: "Yeşil, mavi ve sarının karışımından oluşan ara renktir." },
+    { soru: "Hangisi bir sıcak renktir?", A: "Kırmızı", B: "Mavi", C: "Yeşil", D: "Mor", E: "Turkuaz", dogru: "A", aciklama: "Kırmızı, turuncu, sarı sıcak renklerdir." },
+    { soru: "Hangisi bir soğuk renktir?", A: "Mavi", B: "Kırmızı", C: "Turuncu", D: "Sarı", E: "Pembe", dogru: "A", aciklama: "Mavi, yeşil, mor soğuk renklerdir." },
+    { soru: "Hangisi bir perspektif türü değildir?", A: "Dairesel Perspektif", B: "Tek Kaçışlı", C: "İki Kaçışlı", D: "Üç Kaçışlı", E: "Atmosferik", dogru: "A", aciklama: "Dairesel perspektif diye bir tür yoktur." },
+    { soru: "Hangisi bir grafik tasarım programı değildir?", A: "Excel", B: "Photoshop", C: "Illustrator", D: "CorelDraw", E: "InDesign", dogru: "A", aciklama: "Excel, hesap tablosu programıdır." },
+    { soru: "Hangisi bir karikatür sanatçısıdır?", A: "Oğuz Aral", B: "Abidin Dino", C: "Bedri Rahmi", D: "Fikret Mualla", E: "Burhan Doğançay", dogru: "A", aciklama: "Oğuz Aral, Gırgır dergisinin kurucusu ve ünlü karikatüristtir." },
+    { soru: "Hangisi bir modern sanat akımı değildir?", A: "Rönesans", B: "Kübizm", C: "Sürrealizm", D: "Dadaizm", E: "Pop Art", dogru: "A", aciklama: "Rönesans, 14-17. yüzyıllar arasındaki dönemdir." },
+    { soru: "Hangisi bir çağdaş sanat akımıdır?", A: "Pop Art", B: "Barok", C: "Gotik", D: "Rokoko", E: "Empresyonizm", dogru: "A", aciklama: "Pop Art, 1950'lerde ortaya çıkmış çağdaş bir akımdır." },
+    { soru: "Hangisi bir performans sanatçısıdır?", A: "Marina Abramović", B: "Frida Kahlo", C: "Georgia O'Keeffe", D: "Yayoi Kusama", E: "Tracey Emin", dogru: "A", aciklama: "Marina Abramović, performans sanatının öncülerindendir." },
+    { soru: "Hangisi bir sokak sanatçısıdır?", A: "Banksy", B: "Andy Warhol", C: "Roy Lichtenstein", D: "Keith Haring", E: "Jean-Michel Basquiat", dogru: "A", aciklama: "Banksy, kimliği bilinmeyen ünlü bir sokak sanatçısıdır." },
+    { soru: "Hangisi bir heykeltıraş değildir?", A: "Claude Monet", B: "Michelangelo", C: "Rodin", D: "Bernini", E: "Donatello", dogru: "A", aciklama: "Claude Monet, empresyonist bir ressamdır." },
+    { soru: "Hangisi bir ressam değildir?", A: "Ludwig van Beethoven", B: "Van Gogh", C: "Picasso", D: "Rembrandt", E: "Goya", dogru: "A", aciklama: "Beethoven, ünlü bir bestecidir." },
+    { soru: "Hangisi bir sanat müzesi değildir?", A: "Smithsonian Doğa Tarihi Müzesi", B: "Louvre", C: "MoMA", D: "Tate Modern", E: "Prado", dogru: "A", aciklama: "Smithsonian Doğa Tarihi Müzesi, sanat müzesi değildir." },
+    { soru: "Hangisi bir mimar değildir?", A: "Wolfgang Amadeus Mozart", B: "Mimar Sinan", C: "Frank Gehry", D: "Zaha Hadid", E: "Le Corbusier", dogru: "A", aciklama: "Mozart, ünlü bir bestecidir." },
+    { soru: "Hangisi bir sanat terimi değildir?", A: "Algoritma", B: "Kompozisyon", C: "Kontrast", D: "Doku", E: "Ritim", dogru: "A", aciklama: "Algoritma, matematik ve bilgisayar bilimi terimidir." }
+];
+        const allPools = [marvelSorulari, dcSorulari, oyunSorulari, arabaSorulari, motorSorulari, yemekSorulari, hayvanSorulari, sporSorulari, teknolojiSorulari, genelkulturSorulari, muzikSorulari, sinemaSorulari, bilimSorulari, tarihSorulari, sanatSorulari];
+        allPools.forEach(arr => { while(arr.length < 30) arr.push({...arr[0]}); });
+
+        localStorage.setItem('matex_totalPoints', '0'); let totalRankPoints = 0;
+        function updateRankDisplay() { document.getElementById('totalRankPoints').textContent = totalRankPoints; const b = document.getElementById('rankBronz'), g = document.getElementById('rankGumus'), a = document.getElementById('rankAltin'), e = document.getElementById('rankElmas'); b.classList.remove('rank-active'); g.classList.remove('rank-active', 'rank-locked'); a.classList.remove('rank-active', 'rank-locked'); e.classList.remove('rank-active', 'rank-locked'); if (totalRankPoints >= 1200) { e.classList.add('rank-active'); g.classList.remove('rank-locked'); a.classList.remove('rank-locked'); } else e.classList.add('rank-locked'); if (totalRankPoints >= 900) { a.classList.add('rank-active'); g.classList.remove('rank-locked'); } else a.classList.add('rank-locked'); if (totalRankPoints >= 600) g.classList.add('rank-active'); else g.classList.add('rank-locked'); if (totalRankPoints >= 300) b.classList.add('rank-active'); }
+        function addPoints(p) { totalRankPoints += p; localStorage.setItem('matex_totalPoints', totalRankPoints); updateRankDisplay(); }
+        
+        function toggleAgeScroll() { const s = document.getElementById('ageScroll'); if (!s.classList.contains('show')) { let o = ''; for(let i=1; i<=100; i++) o += `<div class="age-option" onclick="selectAge(${i})">${i}</div>`; s.innerHTML = o; } s.classList.toggle('show'); }
+        window.selectAge = function(a) { document.getElementById('ageInput').value = a; document.getElementById('ageInputDisplay').value = a; document.getElementById('ageScroll').classList.remove('show'); };
+        document.addEventListener('click', (e) => { if (!e.target.closest('.age-selector')) document.getElementById('ageScroll')?.classList.remove('show'); });
+        
+        window.showDexterProfile = function() { document.getElementById('dexterProfileCard').style.display = 'block'; };
+        document.addEventListener('click', (e) => { if (!e.target.closest('.dexter-profile-card') && !e.target.closest('.clickable')) document.getElementById('dexterProfileCard').style.display = 'none'; });
+        
+        // PANEL AÇMA/KAPATMA - İKİSİ AYNI ANDA AÇILABİLİR
+        function toggleCredits() { 
+            const p = document.getElementById('creditsPanel'); 
+            p.style.display = p.style.display === 'none' ? 'block' : 'none'; 
+        }
+        function toggleUpdates() { 
+            const p = document.getElementById('updatesPanel'); 
+            p.style.display = p.style.display === 'none' ? 'block' : 'none'; 
+        }
+        window.toggleUpdateDetails = (el) => el.querySelector('.update-details').classList.toggle('show');
+        window.sendFeedback = () => { const i = document.getElementById('feedbackInput'), s = document.getElementById('feedbackSuccess'); if(i.value.trim()) { s.style.display='block'; i.value=''; setTimeout(()=>s.style.display='none',3000); } };
+        
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => { if(e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault(); });
+        
+        function changeTheme(catId){
+            const bg=document.getElementById('animatedBg'), cont=document.getElementById('animationContainer');
+            bg.className='animated-bg';
+            const map={'araba':'theme-araba','motor':'theme-motor','marvel':'theme-marvel','dc':'theme-dc','oyun':'theme-oyun','yemek':'theme-yemek','hayvan':'theme-hayvan','spor':'theme-spor','teknoloji':'theme-teknoloji','genelkultur':'theme-genelkultur','muzik':'theme-muzik','sinema':'theme-sinema','bilim':'theme-bilim','tarih':'theme-tarih','sanat':'theme-sanat'};
+            bg.classList.add(map[catId]||'theme-space'); cont.innerHTML='';
+            if(catId==='araba'){ for(let i=0;i<8;i++){ let c=document.createElement('div'); c.className='car-animation'; c.textContent=['🏎️','🚗','🚙','🚕','🏎️','🚓'][i%6]; c.style.top=(5+i*12)+'%'; c.style.animationDelay=(i*1.5)+'s'; c.style.animationDuration=(7+Math.random()*5)+'s'; cont.appendChild(c); }}
+            else if(catId==='motor'){ for(let i=0;i<8;i++){ let c=document.createElement('div'); c.className='car-animation'; c.textContent=['🏍️','🛵','🏍️','🛵','🏍️','🛵'][i%6]; c.style.top=(5+i*12)+'%'; c.style.animationDelay=(i*1.5)+'s'; cont.appendChild(c); }}
+            else if(catId==='marvel'){ ['🦸','🕷️','🔨','🛡️','💪','🏹','🦾','⚡'].forEach((h,i)=>{ let d=document.createElement('div'); d.className='marvel-hero'; d.textContent=h; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*25)+'%'; cont.appendChild(d); }); }
+            else if(catId==='dc'){ ['🦇','🦸‍♂️','🃏','🐧','⚡','🌊','🏹','💚'].forEach((h,i)=>{ let d=document.createElement('div'); d.className='dc-hero'; d.textContent=h; d.style.left=(5+i*12)+'%'; d.style.top=(15+(i%3)*25)+'%'; cont.appendChild(d); }); }
+            else if(catId==='oyun'){ ['🎮','🕹️','👾','🎯','🎲','♟️','🎰','🎳'].forEach((c,i)=>{ let d=document.createElement('div'); d.className='game-char'; d.textContent=c; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%4)*20)+'%'; cont.appendChild(d); }); }
+            else if(catId==='yemek'){ ['🍕','🍔','🌮','🍣','🍜','🍰','🍦','🥗'].forEach((f,i)=>{ let d=document.createElement('div'); d.className='food-item'; d.textContent=f; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*30)+'%'; cont.appendChild(d); }); }
+            else if(catId==='hayvan'){ ['🦁','🐘','🦒','🐒','🦓','🐅','🦌','🐪'].forEach((a,i)=>{ let d=document.createElement('div'); d.className='animal-item'; d.textContent=a; d.style.top=(10+i*10)+'%'; d.style.animationDelay=(i*1.2)+'s'; cont.appendChild(d); }); }
+            else if(catId==='spor'){ ['⚽','🏀','🏈','⚾','🎾','🏐','🏉','🥎'].forEach((s,i)=>{ let d=document.createElement('div'); d.className='sport-item'; d.textContent=s; d.style.left=(5+i*12)+'%'; cont.appendChild(d); }); }
+            else if(catId==='teknoloji'){ ['📱','💻','🖥️','⌚','📷','🎧','🖨️','📡'].forEach((t,i)=>{ let d=document.createElement('div'); d.className='tech-item'; d.textContent=t; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*30)+'%'; cont.appendChild(d); }); }
+            else if(catId==='muzik'){ ['🎵','🎶','🎼','🎹','🎸','🎺','🎷','🥁'].forEach((m,i)=>{ let d=document.createElement('div'); d.className='music-note'; d.textContent=m; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*25)+'%'; d.style.animationDelay=(i*0.6)+'s'; cont.appendChild(d); }); }
+            else if(catId==='sinema'){ ['🎬','🎥','📽️','🎞️','🍿','🎭','🎫','⭐'].forEach((f,i)=>{ let d=document.createElement('div'); d.className='film-strip'; d.textContent=f; d.style.top=(5+i*12)+'%'; d.style.animationDelay=(i*1)+'s'; d.style.animationDuration=(5+Math.random()*4)+'s'; cont.appendChild(d); }); }
+            else if(catId==='bilim'){ ['⚛️','🔬','🔭','🧪','🧬','📡','🧲','💡'].forEach((b,i)=>{ let d=document.createElement('div'); d.className='atom'; d.textContent=b; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*25)+'%'; d.style.animationDelay=(i*0.8)+'s'; cont.appendChild(d); }); }
+            else if(catId==='tarih'){ ['📜','🏛️','⚔️','🛡️','👑','📿','🏺','🔱'].forEach((t,i)=>{ let d=document.createElement('div'); d.className='scroll'; d.textContent=t; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*25)+'%'; d.style.animationDelay=(i*0.7)+'s'; cont.appendChild(d); }); }
+            else if(catId==='sanat'){ ['🎨','🖌️','🖼️','🎭','✏️','📐','✂️','🖍️'].forEach((s,i)=>{ let d=document.createElement('div'); d.className='paint-item'; d.textContent=s; d.style.left=(5+i*12)+'%'; d.style.top=(10+(i%3)*25)+'%'; d.style.animationDelay=(i*0.5)+'s'; cont.appendChild(d); }); }
+            else { for(let i=0;i<100;i++){ let s=document.createElement('div'); s.className='star'; s.style.width=Math.random()*3+1+'px'; s.style.height=s.style.width; s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%'; cont.appendChild(s); } }
+        }
+        
+        const avatarEmojis = ['👤','👨','👩','🧑','👶','👴','👵','🦸','🦹','🧙','🧝','🏎️','🚗','🚙','🚕','🏍️','🛵','🚀','✈️','🚁','🍕','🍔','🌮','🍣','🍜','⚽','🏀','🎮','🎵','🎬','📱','💻','🦁','🐶','🐱','🦊','🐼','🐨']; let secilenAvatar = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)]; let uploadedImage=null;
+        document.addEventListener('DOMContentLoaded', () => { document.getElementById('avatarPreview').textContent = secilenAvatar; updateRankDisplay(); document.getElementById('ageInputDisplay').value = '25'; document.getElementById('ageInput').value = '25'; });
+        window.handleGalleryUpload=function(e){ const f=e.target.files[0]; if(f){ const r=new FileReader(); r.onload=function(ev){ uploadedImage=ev.target.result; document.getElementById('avatarPreview').innerHTML=`<img src="${uploadedImage}">`; secilenAvatar='image'; }; r.readAsDataURL(f); }};
+        window.openAvatarModal=function(){ document.getElementById('avatarGrid').innerHTML=avatarEmojis.map(a=>`<div class="avatar-option ${secilenAvatar===a?'selected':''}" onclick="selectAvatar('${a}')">${a}</div>`).join(''); document.getElementById('avatarModal').style.display='flex'; };
+        window.selectAvatar=function(a){ secilenAvatar=a; uploadedImage=null; document.querySelectorAll('.avatar-option').forEach(e=>e.classList.remove('selected')); event.target.classList.add('selected'); document.getElementById('avatarPreview').textContent=a; };
+        window.closeAvatarModal=function(){ document.getElementById('avatarModal').style.display='none'; };
+        let secilenCinsiyet=null, kullaniciAdi='', kullaniciYas='';
+        window.selectGender=function(g){ secilenCinsiyet=g; document.querySelectorAll('.gender-option').forEach(e=>e.classList.remove('selected')); document.getElementById(`gender${g.charAt(0).toUpperCase()+g.slice(1)}`).classList.add('selected'); document.getElementById('genderError').textContent=''; };
+        window.validateAndContinue = function() {
+            let isValid = true; const nameInput = document.getElementById('fullNameInput'), ageInput = document.getElementById('ageInput'); document.getElementById('nameError').textContent = ''; document.getElementById('ageError').textContent = ''; document.getElementById('genderError').textContent = ''; nameInput.classList.remove('error');
+            if (!nameInput.value.trim()) { document.getElementById('nameError').textContent = 'Lütfen adınızı girin!'; nameInput.classList.add('error'); isValid = false; }
+            const yas = parseInt(ageInput.value); if (!ageInput.value) { document.getElementById('ageError').textContent = 'Lütfen yaşınızı girin!'; isValid = false; } else if (yas < 1 || yas > 100) { document.getElementById('ageError').textContent = 'Yaş 1-100 arası olmalı!'; isValid = false; }
+            if (!secilenCinsiyet) { document.getElementById('genderError').textContent = 'Lütfen cinsiyet seçin!'; isValid = false; }
+            if (isValid) { kullaniciAdi = nameInput.value.trim(); kullaniciYas = yas; goToCategorySelect(); }
+        };
+
+        const kategoriler=[{id:'marvel',ad:'Marvel',icon:'🦸'},{id:'dc',ad:'DC',icon:'🦇'},{id:'oyun',ad:'Oyun',icon:'🎮'},{id:'araba',ad:'Araba',icon:'🏎️'},{id:'motor',ad:'Motor',icon:'🏍️'},{id:'yemek',ad:'Yemek',icon:'🍳'},{id:'hayvan',ad:'Hayvan',icon:'🦁'},{id:'spor',ad:'Spor',icon:'⚽'},{id:'teknoloji',ad:'Teknoloji',icon:'📱'},{id:'genelkultur',ad:'Genel Kültür',icon:'🌍'},{id:'muzik',ad:'Müzik',icon:'🎵'},{id:'sinema',ad:'Sinema',icon:'🎬'},{id:'bilim',ad:'Bilim',icon:'🔬'},{id:'tarih',ad:'Tarih',icon:'📜'},{id:'sanat',ad:'Sanat',icon:'🎨'}];
+        const zorluklar=[{id:'kolay',ad:'Kolay',icon:'🟢',sure:60},{id:'orta',ad:'Orta',icon:'🟡',sure:45},{id:'zor',ad:'Zor',icon:'🔴',sure:30}];
+        
+        let secilenKategori=null, secilenZorluk=null, mevcutSorular=[], mevcutIndex=0, cevaplar=[], timer, timeLeft, testAktif=false, puan=0;
+        function id(s){return document.getElementById(s);} const pScreen=id('profileScreen'), cScreen=id('categoryScreen'), dScreen=id('difficultyScreen'), tScreen=id('testScreen'), rScreen=id('resultScreen');
+        
+        window.goToCategorySelect=function(){ id('categoryGrid').innerHTML=kategoriler.map(k=>`<div class="category-card" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${k.ad}</div></div>`).join(''); pScreen.style.display='none'; cScreen.style.display='block'; changeTheme('space'); };
+        window.selectCategory=function(cid){ document.querySelectorAll('.category-card').forEach(c=>c.classList.remove('selected')); id(`cat_${cid}`).classList.add('selected'); secilenKategori=kategoriler.find(k=>k.id===cid); changeTheme(cid); id('categoryNextBtn').disabled=false; };
+        window.goBackToProfile=function(){ cScreen.style.display='none'; pScreen.style.display='block'; changeTheme('space'); };
+        window.goToDifficultySelect=function(){ id('difficultyContainer').innerHTML=zorluklar.map(z=>`<div class="difficulty-card" onclick="selectDifficulty('${z.id}')" id="diff_${z.id}"><div class="difficulty-icon">${z.icon}</div><div class="difficulty-title">${z.ad}</div><div class="difficulty-time">${z.sure} sn</div></div>`).join(''); cScreen.style.display='none'; dScreen.style.display='block'; id('difficultyNextBtn').disabled=true; };
+        window.goBackToCategory=function(){ dScreen.style.display='none'; cScreen.style.display='block'; };
+        window.selectDifficulty=function(d){ document.querySelectorAll('.difficulty-card').forEach(c=>c.classList.remove('selected')); id(`diff_${d}`).classList.add('selected'); secilenZorluk=zorluklar.find(z=>z.id===d); id('difficultyNextBtn').disabled=false; };
+        
+        window.startTest = function() {
+            let havuz;
+            if (secilenKategori.id === 'marvel') havuz = marvelSorulari;
+            else if (secilenKategori.id === 'dc') havuz = dcSorulari;
+            else if (secilenKategori.id === 'oyun') havuz = oyunSorulari;
+            else if (secilenKategori.id === 'araba') havuz = arabaSorulari;
+            else if (secilenKategori.id === 'motor') havuz = motorSorulari;
+            else if (secilenKategori.id === 'yemek') havuz = yemekSorulari;
+            else if (secilenKategori.id === 'hayvan') havuz = hayvanSorulari;
+            else if (secilenKategori.id === 'spor') havuz = sporSorulari;
+            else if (secilenKategori.id === 'teknoloji') havuz = teknolojiSorulari;
+            else if (secilenKategori.id === 'genelkultur') havuz = genelkulturSorulari;
+            else if (secilenKategori.id === 'muzik') havuz = muzikSorulari;
+            else if (secilenKategori.id === 'sinema') havuz = sinemaSorulari;
+            else if (secilenKategori.id === 'bilim') havuz = bilimSorulari;
+            else if (secilenKategori.id === 'tarih') havuz = tarihSorulari;
+            else if (secilenKategori.id === 'sanat') havuz = sanatSorulari;
+            else havuz = genelkulturSorulari;
+            
+            mevcutSorular = [...havuz].sort(() => Math.random() - 0.5).slice(0, 10);
+            mevcutSorular.forEach(s => { if (!s.aciklama) s.aciklama = `${secilenKategori.ad} kategorisinden bir soru.`; });
+            mevcutIndex = 0; cevaplar = Array(10).fill(null); timeLeft = secilenZorluk.sure; testAktif = true; puan = 0;
+            id('testUserName').textContent = kullaniciAdi; id('testUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet}`;
+            let av = id('testUserAvatar'); if(uploadedImage) av.innerHTML = `<img src="${uploadedImage}">`; else av.textContent = secilenAvatar;
+            id('difficultyDisplay').textContent = secilenZorluk.ad;
+            dScreen.style.display = 'none'; tScreen.style.display = 'block';
+            soruyuGoster();
+        };
+        
+        function soruyuGoster(){ if(!testAktif)return; document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); let s=mevcutSorular[mevcutIndex]; id('questionText').textContent=`${mevcutIndex+1}. ${s.soru}`; id('questionCounter').textContent=`${mevcutIndex+1}/10`; let h=''; ['A','B','C','D','E'].forEach(l=>{if(s[l]) h+=`<button class="option-btn" onclick="selectAnswer('${l}')" id="opt${l}">${l}) ${s[l]}</button>`;}); id('optionsContainer').innerHTML=h; if(cevaplar[mevcutIndex]){ id(`opt${cevaplar[mevcutIndex]}`)?.classList.add('selected'); } id('testNextBtn').disabled=!cevaplar[mevcutIndex]; id('prevBtn').disabled=mevcutIndex===0; clearInterval(timer); timeLeft=secilenZorluk.sure; updateTimer(); timer=setInterval(()=>{ if(!testAktif)return; timeLeft--; updateTimer(); if(timeLeft<=0){ clearInterval(timer); if(!cevaplar[mevcutIndex])cevaplar[mevcutIndex]='Z'; if(mevcutIndex<9){mevcutIndex++;soruyuGoster();}else testiBitir(); }},1000); }
+        function updateTimer(){ let m=Math.floor(timeLeft/60), s=timeLeft%60; id('timerText').textContent=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; id('timerProgress').style.width=`${(timeLeft/secilenZorluk.sure)*100}%`; }
+        window.selectAnswer=function(l){ document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); id(`opt${l}`).classList.add('selected'); cevaplar[mevcutIndex]=l; id('testNextBtn').disabled=false; };
+        window.nextQuestion=function(){ if(cevaplar[mevcutIndex]){ clearInterval(timer); if(mevcutIndex<9){mevcutIndex++;soruyuGoster();}else testiBitir(); }};
+        window.previousQuestion=function(){ if(mevcutIndex>0){ clearInterval(timer); mevcutIndex--; soruyuGoster(); }};
+        window.showExitConfirm = function(){ document.getElementById('exitConfirmModal').style.display = 'flex'; };
+        window.confirmExit = function(){ document.getElementById('exitConfirmModal').style.display = 'none'; clearInterval(timer); testAktif = false; tScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); };
+        window.cancelExit = function(){ document.getElementById('exitConfirmModal').style.display = 'none'; };
+        function testiBitir(){ testAktif=false; clearInterval(timer); tScreen.style.display='none'; rScreen.style.display='block'; changeTheme(secilenKategori?.id||'space'); let dogru=0, html=''; mevcutSorular.forEach((s,i)=>{ let dm=cevaplar[i]===s.dogru; if(dm){dogru++; puan+=10;} html+=`<div class="result-item" onclick="showExplanation(${i})">${dm?'✅':'❌'} ${i+1}. ${s.soru}</div>`; }); id('resultList').innerHTML=html; id('finalScore').textContent=dogru; id('totalPoints').textContent=puan; addPoints(puan); let seviye=dogru<=3?'😅 Düşük':dogru<=5?'🙂 Orta':dogru<=7?'🤓 İleri':dogru<=9?'🧠 Çok İleri':'👑 Ultra'; id('zekaSeviyesi').textContent=seviye+' Zekalı'; }
+        window.showExplanation=function(i){ let s=mevcutSorular[i], c=cevaplar[i], dm=c===s.dogru; id('explanationPanel').innerHTML=`<div class="explanation-box"><h3>📝 ${i+1}. Soru</h3><p>${s.soru}</p><p style="color:${dm?'#4caf50':'#ff6b6b'};">Cevabınız: ${c==='Z'?'Süre Doldu':(c?`${c}) ${s[c]}`:'Cevapsız')}</p><p style="color:#4caf50;">Doğru: ${s.dogru}) ${s[s.dogru]}</p><p>💡 ${s.aciklama}</p></div>`; };
+        window.goToCategoriesFromResult = function(){ clearInterval(timer); rScreen.style.display='none'; cScreen.style.display='block'; changeTheme('space'); };
+        window.resetToStart = function(){ clearInterval(timer); rScreen.style.display='none'; pScreen.style.display='block'; changeTheme('space'); };
+        document.addEventListener('keypress',e=>{if(e.key==='Enter'){ if(pScreen.style.display!=='none')validateAndContinue(); else if(cScreen.style.display!=='none'&&!id('categoryNextBtn').disabled)goToDifficultySelect(); else if(dScreen.style.display!=='none'&&!id('difficultyNextBtn').disabled)startTest(); }});
+        changeTheme('space'); updateRankDisplay();
+    </script>
+</body>
+</html>
