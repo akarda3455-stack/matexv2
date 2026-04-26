@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <title>MATEX</title>
+    <title>🌌 MATEX | Logo & Paneller</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -33,6 +28,15 @@
         .result-item:hover { background: rgba(0, 210, 255, 0.1); border-color: #8a2be2; transform: translateX(5px); }
         .avatar-option:hover { transform: scale(1.1); border-color: #8a2be2; background: rgba(0, 210, 255, 0.15); }
         .main-container { transition: transform 0.4s ease; width: 1300px; max-width: 98%; z-index: 10; }
+
+        .skip-btn { 
+          background: rgba(255, 165, 0, 0.2); 
+          color: #ffa500; 
+          border-color: #ffa500; 
+        }
+        .skip-btn:hover { 
+         background: rgba(255, 165, 0, 0.3); 
+        }
 
         /* SOL ÜST - ARMA SİSTEMİ */
         .rank-system-left { position: fixed; top: 25px; left: 30px; z-index: 100; display: flex; flex-direction: column; gap: 8px; background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.4); border-radius: 30px; padding: 15px 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
@@ -103,9 +107,25 @@
         .feedback-header i { color: #00d2ff; }
         .feedback-input { width: 100%; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 15px; padding: 8px 12px; color: white; font-size: 12px; resize: none; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 8px; }
         .feedback-input::placeholder { color: #aaa; font-size: 11px; }
+        .feedback-file-input { display: none; }
+        .feedback-file-trigger { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; padding: 8px 12px; background: rgba(0,0,0,0.2); border: 1px dashed rgba(0, 210, 255, 0.6); border-radius: 14px; color: #a0d0ff; font-size: 12px; cursor: pointer; transition: all 0.3s; }
+        .feedback-file-trigger:hover { background: rgba(0, 210, 255, 0.08); border-color: #8a2be2; color: #ffffff; }
+        .feedback-file-name { min-height: 16px; margin-bottom: 8px; color: #7eb8ff; font-size: 11px; text-align: center; word-break: break-word; }
         .feedback-btn { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: white; border: none; padding: 8px 15px; border-radius: 25px; font-size: 12px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s; }
         .feedback-success { color: #4caf50 !important; font-size: 11px; text-align: center; margin-top: 5px; display: none; }
 
+        .movyra-brand-card { position: fixed; bottom: 92px; right: 20px; z-index: 100; width: 320px; padding: 0; border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.08); background: linear-gradient(180deg, rgba(8, 8, 12, 0.98), rgba(22, 8, 10, 0.96)); box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45); overflow: hidden; }
+        .movyra-brand-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 30%, rgba(229, 9, 20, 0.18) 100%); pointer-events: none; }
+        .movyra-brand-hero { position: relative; padding: 18px 18px 14px; background: linear-gradient(135deg, rgba(0,0,0,0.18), rgba(229, 9, 20, 0.18)); }
+        .movyra-brand-label { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: #f5f5f5; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+        .movyra-brand-title { color: #ffffff; font-size: 30px; font-weight: 900; letter-spacing: 1px; margin-bottom: 6px; }
+        .movyra-brand-subtitle { color: rgba(255,255,255,0.82); font-size: 13px; line-height: 1.45; max-width: 260px; }
+        .movyra-brand-info { position: relative; display: flex; align-items: center; gap: 8px; padding: 0 18px 12px; color: rgba(255,255,255,0.8); font-size: 12px; }
+        .movyra-brand-badge { padding: 4px 8px; border-radius: 10px; background: rgba(255,255,255,0.08); color: #ffffff; font-weight: 700; }
+        .movyra-brand-actions { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 0 18px 18px; }
+        .movyra-brand-action { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.06); color: #ffffff; font-size: 12px; font-weight: 700; }
+        .movyra-brand-action.primary { background: linear-gradient(135deg, #ffffff, #cfcfcf); color: #111111; }
+        .movyra-brand-action.accent { border-color: rgba(229, 9, 20, 0.45); background: rgba(229, 9, 20, 0.16); }
         .social-media-container { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; gap: 12px; background: rgba(10, 15, 30, 0.5); backdrop-filter: blur(15px); border: 2px solid rgba(0, 210, 255, 0.3); border-radius: 50px; padding: 8px 15px; }
         .social-btn { width: 45px; height: 45px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.3s; border: 2px solid rgba(0, 210, 255, 0.5); text-decoration: none; }
         .social-btn.discord { background: linear-gradient(135deg, #5865F2, #404EED); color: white; } .social-btn.youtube { background: linear-gradient(135deg, #FF0000, #CC0000); color: white; } .social-btn.instagram { background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45); color: white; }
@@ -141,7 +161,7 @@
         .button-group { display: flex; gap: 20px; margin-top: 30px; } .primary-btn { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: white; border: none; padding: 20px 40px; font-size: 22px; font-weight: 800; border-radius: 60px; cursor: pointer; flex: 1; text-align: center; box-shadow: 0 10px 30px rgba(0,210,255,0.3); transition: all 0.3s; } .primary-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; } .back-btn { background: rgba(0,0,0,0.3); color: #a0d0ff; border: 2px solid #00d2ff; padding: 20px 30px; font-size: 20px; border-radius: 60px; cursor: pointer; transition: all 0.3s; }
         .exit-confirm-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; display: none; justify-content: center; align-items: center; } .exit-confirm-box { background: rgba(20,25,40,0.95); border: 3px solid #ff6b6b; border-radius: 40px; padding: 40px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 0 50px rgba(255,107,107,0.3); } .exit-confirm-box h3 { color: #ff6b6b; font-size: 28px; margin-bottom: 20px; } .exit-confirm-box p { color: #a0d0ff; font-size: 18px; margin-bottom: 30px; } .exit-confirm-buttons { display: flex; gap: 15px; } .exit-confirm-btn { flex: 1; padding: 15px; border-radius: 30px; font-size: 18px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s; } .exit-confirm-btn.yes { background: #ff6b6b; color: white; } .exit-confirm-btn.yes:hover { background: #ff4444; } .exit-confirm-btn.no { background: rgba(255,255,255,0.1); color: #a0d0ff; border: 2px solid #00d2ff; } .exit-confirm-btn.no:hover { background: rgba(0,210,255,0.2); }
         .exit-test-btn { background: rgba(255,107,107,0.2); color: #ff6b6b; border: 2px solid #ff6b6b; padding: 12px 25px; font-size: 18px; border-radius: 40px; cursor: pointer; transition: all 0.3s; }
-        .test-header { display: flex; justify-content: space-between; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid #00d2ff; } .user-badge { display: flex; align-items: center; gap: 20px; } .user-avatar { width: 65px; height: 65px; background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 40px; overflow: hidden; } .user-avatar img { width: 100%; height: 100%; object-fit: cover; } .timer-section { display: flex; align-items: center; gap: 25px; margin-bottom: 35px; padding: 20px 30px; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 60px; } .timer-bar { flex: 1; height: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; } .timer-progress { height: 100%; width: 100%; background: linear-gradient(90deg, #00d2ff, #8a2be2); border-radius: 10px; } .timer-text { color: #00d2ff; font-size: 32px; font-weight: 800; } .question-text { font-size: 30px; font-weight: 700; color: #ffffff; margin-bottom: 30px; text-align: center; text-shadow: 0 0 10px rgba(0,210,255,0.2); } .options-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; } .option-btn { background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 20px; padding: 20px 30px; color: #a0d0ff; font-size: 20px; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s; } .option-btn.selected { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #fff; } .nav-buttons { display: flex; gap: 20px; } .nav-btn { background: rgba(0,0,0,0.3); color: #a0d0ff; border: 2px solid #00d2ff; padding: 18px 30px; font-size: 18px; border-radius: 60px; cursor: pointer; flex: 1; text-align: center; transition: all 0.3s; } .result-item { background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 20px; padding: 20px; margin-bottom: 12px; cursor: pointer; color: #a0d0ff; transition: all 0.3s; } .explanation-box { background: rgba(0,210,255,0.1); border: 2px solid #00d2ff; border-radius: 30px; padding: 30px; margin-top: 25px; }
+        .test-header { display: flex; justify-content: space-between; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid #00d2ff; } .user-badge { display: flex; align-items: center; gap: 20px; } .user-avatar { width: 65px; height: 65px; background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 40px; overflow: hidden; } .user-avatar img { width: 100%; height: 100%; object-fit: cover; } .timer-section { display: flex; align-items: center; gap: 25px; margin-bottom: 35px; padding: 20px 30px; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 60px; } .timer-bar { flex: 1; height: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; } .timer-progress { height: 100%; width: 100%; background: linear-gradient(90deg, #00d2ff, #8a2be2); border-radius: 10px; } .timer-text { color: #00d2ff; font-size: 32px; font-weight: 800; } .question-text { font-size: 30px; font-weight: 700; color: #ffffff; margin-bottom: 16px; text-align: center; text-shadow: 0 0 10px rgba(0,210,255,0.2); } .question-status { min-height: 18px; margin-bottom: 18px; text-align: center; color: #7ef9ff; font-size: 14px; font-weight: 600; } .options-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; } .option-btn { background: rgba(0,0,0,0.3); border: 3px solid #00d2ff; border-radius: 20px; padding: 20px 30px; color: #a0d0ff; font-size: 20px; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.3s; } .option-btn.selected { background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #fff; } .nav-buttons { display: flex; gap: 20px; flex-wrap: wrap; } .nav-btn { background: rgba(0,0,0,0.3); color: #a0d0ff; border: 2px solid #00d2ff; padding: 18px 30px; font-size: 18px; border-radius: 60px; cursor: pointer; flex: 1; text-align: center; transition: all 0.3s; } .return-skipped-btn { display: none; background: rgba(126, 249, 255, 0.12); color: #7ef9ff; border-color: #7ef9ff; } .return-skipped-btn.show { display: block; } .result-item { background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 20px; padding: 20px; margin-bottom: 12px; cursor: pointer; color: #a0d0ff; transition: all 0.3s; } .explanation-box { background: rgba(0,210,255,0.1); border: 2px solid #00d2ff; border-radius: 30px; padding: 30px; margin-top: 25px; }
         .avatar-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; } .avatar-modal-content { background: rgba(20,25,40,0.95); backdrop-filter: blur(30px); border: 3px solid #00d2ff; border-radius: 50px; padding: 40px; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; scrollbar-width: none; } .avatar-modal-content::-webkit-scrollbar { display: none; } .avatar-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; } .close-modal-btn { background: rgba(255,255,255,0.1); border: 2px solid #00d2ff; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #00d2ff; cursor: pointer; transition: all 0.3s; } .close-modal-btn:hover { background: rgba(255,0,0,0.2); border-color: #ff4444; color: #ff4444; } .avatar-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 15px; margin: 20px 0; max-height: 500px; overflow-y: auto; padding: 10px; scrollbar-width: none; } .avatar-grid::-webkit-scrollbar { display: none; } .avatar-option { width: 100px; height: 100px; background: rgba(0,0,0,0.3); border: 2px solid #00d2ff; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 55px; cursor: pointer; margin: 0 auto; transition: all 0.3s; } .avatar-option.selected { border: 4px solid #8a2be2; } #galleryInput { display: none; } label { color: #a0d0ff; text-align: center; display: block; margin-bottom: 8px; font-size: 16px; }
         .age-selector { position: relative; } .age-scroll { position: absolute; top: 100%; left: 0; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border: 2px solid #00d2ff; border-radius: 20px; max-height: 200px; overflow-y: auto; z-index: 10; display: none; scrollbar-width: thin; } .age-scroll.show { display: block; } .age-option { padding: 12px; text-align: center; color: #a0d0ff; cursor: pointer; transition: all 0.2s; font-size: 18px; } .age-option:hover { background: rgba(0, 210, 255, 0.2); color: #fff; }
         .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: none; justify-content: center; align-items: center; flex-direction: column; gap: 20px; } .loading-spinner { width: 60px; height: 60px; border: 5px solid rgba(0,210,255,0.2); border-top-color: #00d2ff; border-radius: 50%; animation: spin 1s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } .loading-text { color: #00d2ff; font-size: 20px; font-weight: 600; }
@@ -198,9 +218,13 @@
     <div class="feedback-box"> 
         <div class="feedback-header"><i class="fas fa-comment-dots"></i><span>Şikayet / Öneri</span></div> 
         <textarea class="feedback-input" id="feedbackInput" placeholder="Görüşlerinizi yazın..." rows="2"></textarea> 
+        <label class="feedback-file-trigger" for="feedbackImageInput"><i class="fas fa-image"></i><span>Fotoğraf Ekle</span></label>
+        <input type="file" class="feedback-file-input" id="feedbackImageInput" accept="image/*" onchange="handleFeedbackImageUpload(event)">
+        <div class="feedback-file-name" id="feedbackFileName">Fotoğraf seçilmedi</div>
         <button class="feedback-btn" onclick="sendFeedback()">Gönder</button> 
         <div class="feedback-success" id="feedbackSuccess">✅ Geri bildiriminiz alındı!</div> 
     </div>
+
 
     <div class="social-media-container">
         <a href="https://discord.com/users/tyrant3455" target="_blank" class="social-btn discord"><i class="fab fa-discord"></i></a>
@@ -208,7 +232,7 @@
         <a href="https://instagram.com/ardk.61" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://movyra.com.tr" target="_blank" class="social-btn movyra"><i class="fas fa-film"></i></a>
     </div>
-
+     
     <div class="animated-bg theme-space" id="animatedBg"><div id="animationContainer"></div></div>
     <div class="exit-confirm-modal" id="exitConfirmModal"> <div class="exit-confirm-box"> <h3>🚪 Testten Çık</h3> <p>Testten çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.</p> <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="confirmExit()">Evet, Çık</button> <button class="exit-confirm-btn no" onclick="cancelExit()">İptal</button> </div> </div> </div>
     <div class="avatar-modal" id="avatarModal"> <div class="avatar-modal-content"> <div class="avatar-modal-header"><h2 style="color:#00d2ff; text-align:center;">Profil Seç</h2><div class="close-modal-btn" onclick="closeAvatarModal()">✕</div></div> <div class="avatar-grid" id="avatarGrid"></div> <button class="primary-btn" onclick="closeAvatarModal()">Onayla</button> </div> </div>
@@ -245,7 +269,7 @@
         </div>
         <div class="screen" id="categoryScreen" style="display:none;"> <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn" onclick="goBackToProfile()">← Geri</button><div style="flex:1; text-align:center;"><div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8A2BE2"/><stop offset="33%" style="stop-color:#C71585"/><stop offset="66%" style="stop-color:#DA70D6"/><stop offset="100%" style="stop-color:#FF69B4"/></linearGradient></defs><path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad2)"/></svg><span class="logo-text" style="font-size:42px;">Kategori Seç</span></div></div><div style="width:80px;"></div></div> <div class="categories-grid" id="categoryGrid"></div> <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">👤 Profil</button><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç →</button></div> </div>
         <div class="screen" id="difficultyScreen" style="display:none;"> <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn" onclick="goBackToCategory()">← Kategoriler</button><div style="flex:1;"></div><div style="width:80px;"></div></div> <div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100"><defs><linearGradient id="logoGrad3" x1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8A2BE2"/><stop offset="33%" style="stop-color:#C71585"/><stop offset="66%" style="stop-color:#DA70D6"/><stop offset="100%" style="stop-color:#FF69B4"/></linearGradient></defs><path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad3)"/></svg><span class="logo-text" style="font-size:48px;">Zorluk Seviyesi</span></div> <div class="difficulty-centered" id="difficultyContainer"></div> <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">📋 Kategori</button><button class="primary-btn" id="difficultyNextBtn" onclick="startTest()" disabled>🚀 Teste Başla</button></div> </div>
-        <div class="screen" id="testScreen" style="display:none;"> <div class="test-header"> <div class="user-badge"><div class="user-avatar" id="testUserAvatar">👤</div><div><h3 style="color:#00d2ff;" id="testUserName"></h3><p style="color:#a0d0ff;" id="testUserDetails"></p></div></div> <div style="display:flex; align-items:center; gap:20px;"><div style="text-align:right;"><div style="color:#00d2ff; font-size:28px;" id="difficultyDisplay"></div><div style="color:#a0d0ff;" id="questionCounter">1/10</div></div><button class="exit-test-btn" onclick="showExitConfirm()">🚪 Çık</button></div> </div> <div class="timer-section"><div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div><div class="timer-text" id="timerText">01:00</div></div> <div class="question-text" id="questionText"></div> <div class="options-container" id="optionsContainer"></div> <div class="nav-buttons"><button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Önceki</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki →</button></div> </div>
+        <div class="screen" id="testScreen" style="display:none;"> <div class="test-header"> <div class="user-badge"><div class="user-avatar" id="testUserAvatar">👤</div><div><h3 style="color:#00d2ff;" id="testUserName"></h3><p style="color:#a0d0ff;" id="testUserDetails"></p></div></div> <div style="display:flex; align-items:center; gap:20px;"><div style="text-align:right;"><div style="color:#00d2ff; font-size:28px;" id="difficultyDisplay"></div><div style="color:#a0d0ff;" id="questionCounter">1/10</div></div><button class="exit-test-btn" onclick="showExitConfirm()">🚪 Çık</button></div> </div> <div class="timer-section"><div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div><div class="timer-text" id="timerText">01:00</div></div> <div class="question-text" id="questionText"></div> <div class="question-status" id="questionStatus"></div> <div class="options-container" id="optionsContainer"></div> <div class="nav-buttons"><button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Önceki</button><button class="nav-btn skip-btn" id="skipBtn" onclick="skipQuestion()">⏭️ Boş Bırak</button><button class="nav-btn return-skipped-btn" id="returnSkippedBtn" onclick="goToSkippedQuestion()">↩️ Boş Soruya Dön</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki →</button></div> </div>
         <div class="screen" id="resultScreen" style="display:none;"> <div style="text-align:center; margin-bottom:30px;"><div style="font-size:52px; font-weight:800; color:#00d2ff;" id="zekaSeviyesi"></div></div> <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;"><div><div style="font-size:58px; color:#00d2ff;" id="finalScore">0</div><div style="color:#a0d0ff;">Doğru</div></div><div><div style="font-size:58px; color:#8a2be2;" id="totalPoints">0</div><div style="color:#a0d0ff;">Puan</div></div></div> <div id="resultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div> <div id="explanationPanel"></div> <button class="primary-btn" onclick="goToCategoriesFromResult()">🔄 Yeniden Başla</button> </div>
     </div>
     <script>
@@ -888,7 +912,26 @@ const muzikSorulari = [
             p.style.display = p.style.display === 'none' ? 'block' : 'none'; 
         }
         window.toggleUpdateDetails = (el) => el.querySelector('.update-details').classList.toggle('show');
-        window.sendFeedback = () => { const i = document.getElementById('feedbackInput'), s = document.getElementById('feedbackSuccess'); if(i.value.trim()) { s.style.display='block'; i.value=''; setTimeout(()=>s.style.display='none',3000); } };
+        let feedbackImageFile = null;
+        window.handleFeedbackImageUpload = function(e) {
+            const file = e.target.files[0];
+            feedbackImageFile = file || null;
+            document.getElementById('feedbackFileName').textContent = file ? file.name : 'Fotoğraf seçilmedi';
+        };
+        window.sendFeedback = () => {
+            const i = document.getElementById('feedbackInput');
+            const s = document.getElementById('feedbackSuccess');
+            const f = document.getElementById('feedbackImageInput');
+            const n = document.getElementById('feedbackFileName');
+            if(i.value.trim() || feedbackImageFile) {
+                s.style.display='block';
+                i.value='';
+                feedbackImageFile = null;
+                if (f) f.value = '';
+                if (n) n.textContent = 'Fotoğraf seçilmedi';
+                setTimeout(()=>s.style.display='none',3000);
+            }
+        };
         
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => { if(e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault(); });
@@ -934,8 +977,26 @@ const muzikSorulari = [
         const kategoriler=[{id:'marvel',ad:'Marvel',icon:'🦸'},{id:'dc',ad:'DC',icon:'🦇'},{id:'oyun',ad:'Oyun',icon:'🎮'},{id:'araba',ad:'Araba',icon:'🏎️'},{id:'motor',ad:'Motor',icon:'🏍️'},{id:'yemek',ad:'Yemek',icon:'🍳'},{id:'hayvan',ad:'Hayvan',icon:'🦁'},{id:'spor',ad:'Spor',icon:'⚽'},{id:'teknoloji',ad:'Teknoloji',icon:'📱'},{id:'genelkultur',ad:'Genel Kültür',icon:'🌍'},{id:'muzik',ad:'Müzik',icon:'🎵'},{id:'sinema',ad:'Sinema',icon:'🎬'},{id:'bilim',ad:'Bilim',icon:'🔬'},{id:'tarih',ad:'Tarih',icon:'📜'},{id:'sanat',ad:'Sanat',icon:'🎨'}];
         const zorluklar=[{id:'kolay',ad:'Kolay',icon:'🟢',sure:60},{id:'orta',ad:'Orta',icon:'🟡',sure:45},{id:'zor',ad:'Zor',icon:'🔴',sure:30}];
         
-        let secilenKategori=null, secilenZorluk=null, mevcutSorular=[], mevcutIndex=0, cevaplar=[], timer, timeLeft, testAktif=false, puan=0;
+        let secilenKategori=null, secilenZorluk=null, mevcutSorular=[], mevcutIndex=0, cevaplar=[], atlananSorular=new Set(), timer, timeLeft, testAktif=false, puan=0;
         function id(s){return document.getElementById(s);} const pScreen=id('profileScreen'), cScreen=id('categoryScreen'), dScreen=id('difficultyScreen'), tScreen=id('testScreen'), rScreen=id('resultScreen');
+        function getSkippedQuestionIndices(){ return Array.from(atlananSorular).sort((a,b)=>a-b); }
+        function findReturnableSkippedIndex(){ const skipped=getSkippedQuestionIndices().filter(index=>index!==mevcutIndex); return skipped.find(index=>index>mevcutIndex) ?? skipped[0] ?? -1; }
+        function updateSkippedQuestionUI(){
+            const waitingCount=getSkippedQuestionIndices().filter(index=>index!==mevcutIndex).length;
+            const returnBtn=id('returnSkippedBtn');
+            const status=id('questionStatus');
+            if(returnBtn){
+                const canReturn=findReturnableSkippedIndex()!==-1;
+                returnBtn.classList.toggle('show', canReturn);
+                returnBtn.disabled=!canReturn;
+            }
+            if(status){
+                if(atlananSorular.has(mevcutIndex)) status.textContent='Bu soruyu boş bırakmıştın. Şimdi geri dönüp çözebilirsin.';
+                else if(waitingCount>0) status.textContent=`${waitingCount} boş soru bekliyor. İstersen geri dönebilirsin.`;
+                else status.textContent='';
+            }
+        }
+        function goToQuestion(index){ if(index<0 || index>=mevcutSorular.length) return; clearInterval(timer); mevcutIndex=index; soruyuGoster(); }
         
         window.goToCategorySelect=function(){ id('categoryGrid').innerHTML=kategoriler.map(k=>`<div class="category-card" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${k.ad}</div></div>`).join(''); pScreen.style.display='none'; cScreen.style.display='block'; changeTheme('space'); };
         window.selectCategory=function(cid){ document.querySelectorAll('.category-card').forEach(c=>c.classList.remove('selected')); id(`cat_${cid}`).classList.add('selected'); secilenKategori=kategoriler.find(k=>k.id===cid); changeTheme(cid); id('categoryNextBtn').disabled=false; };
@@ -965,7 +1026,7 @@ const muzikSorulari = [
             
             mevcutSorular = [...havuz].sort(() => Math.random() - 0.5).slice(0, 10);
             mevcutSorular.forEach(s => { if (!s.aciklama) s.aciklama = `${secilenKategori.ad} kategorisinden bir soru.`; });
-            mevcutIndex = 0; cevaplar = Array(10).fill(null); timeLeft = secilenZorluk.sure; testAktif = true; puan = 0;
+            mevcutIndex = 0; cevaplar = Array(10).fill(null); atlananSorular = new Set(); timeLeft = secilenZorluk.sure; testAktif = true; puan = 0;
             id('testUserName').textContent = kullaniciAdi; id('testUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet}`;
             let av = id('testUserAvatar'); if(uploadedImage) av.innerHTML = `<img src="${uploadedImage}">`; else av.textContent = secilenAvatar;
             id('difficultyDisplay').textContent = secilenZorluk.ad;
@@ -973,11 +1034,13 @@ const muzikSorulari = [
             soruyuGoster();
         };
         
-        function soruyuGoster(){ if(!testAktif)return; document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); let s=mevcutSorular[mevcutIndex]; id('questionText').textContent=`${mevcutIndex+1}. ${s.soru}`; id('questionCounter').textContent=`${mevcutIndex+1}/10`; let h=''; ['A','B','C','D','E'].forEach(l=>{if(s[l]) h+=`<button class="option-btn" onclick="selectAnswer('${l}')" id="opt${l}">${l}) ${s[l]}</button>`;}); id('optionsContainer').innerHTML=h; if(cevaplar[mevcutIndex]){ id(`opt${cevaplar[mevcutIndex]}`)?.classList.add('selected'); } id('testNextBtn').disabled=!cevaplar[mevcutIndex]; id('prevBtn').disabled=mevcutIndex===0; clearInterval(timer); timeLeft=secilenZorluk.sure; updateTimer(); timer=setInterval(()=>{ if(!testAktif)return; timeLeft--; updateTimer(); if(timeLeft<=0){ clearInterval(timer); if(!cevaplar[mevcutIndex])cevaplar[mevcutIndex]='Z'; if(mevcutIndex<9){mevcutIndex++;soruyuGoster();}else testiBitir(); }},1000); }
+        function soruyuGoster(){ if(!testAktif)return; document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); let s=mevcutSorular[mevcutIndex]; id('questionText').textContent=`${mevcutIndex+1}. ${s.soru}`; id('questionCounter').textContent=`${mevcutIndex+1}/10`; let h=''; ['A','B','C','D','E'].forEach(l=>{if(s[l]) h+=`<button class="option-btn" onclick="selectAnswer('${l}')" id="opt${l}">${l}) ${s[l]}</button>`;}); id('optionsContainer').innerHTML=h; if(cevaplar[mevcutIndex]){ id(`opt${cevaplar[mevcutIndex]}`)?.classList.add('selected'); } id('testNextBtn').disabled=!cevaplar[mevcutIndex]; id('prevBtn').disabled=mevcutIndex===0; updateSkippedQuestionUI(); clearInterval(timer); timeLeft=secilenZorluk.sure; updateTimer(); timer=setInterval(()=>{ if(!testAktif)return; timeLeft--; updateTimer(); if(timeLeft<=0){ clearInterval(timer); if(!cevaplar[mevcutIndex]){ cevaplar[mevcutIndex]='Z'; atlananSorular.delete(mevcutIndex); } if(mevcutIndex<9){mevcutIndex++;soruyuGoster();}else{ const skippedIndex=findReturnableSkippedIndex(); if(skippedIndex!==-1){ mevcutIndex=skippedIndex; soruyuGoster(); } else testiBitir(); } }},1000); }
         function updateTimer(){ let m=Math.floor(timeLeft/60), s=timeLeft%60; id('timerText').textContent=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; id('timerProgress').style.width=`${(timeLeft/secilenZorluk.sure)*100}%`; }
-        window.selectAnswer=function(l){ document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); id(`opt${l}`).classList.add('selected'); cevaplar[mevcutIndex]=l; id('testNextBtn').disabled=false; };
-        window.nextQuestion=function(){ if(cevaplar[mevcutIndex]){ clearInterval(timer); if(mevcutIndex<9){mevcutIndex++;soruyuGoster();}else testiBitir(); }};
-        window.previousQuestion=function(){ if(mevcutIndex>0){ clearInterval(timer); mevcutIndex--; soruyuGoster(); }};
+        window.selectAnswer=function(l){ document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected')); id(`opt${l}`).classList.add('selected'); cevaplar[mevcutIndex]=l; atlananSorular.delete(mevcutIndex); id('testNextBtn').disabled=false; updateSkippedQuestionUI(); };
+        window.skipQuestion=function(){ if(!testAktif)return; atlananSorular.add(mevcutIndex); cevaplar[mevcutIndex]=null; if(mevcutIndex<9){ goToQuestion(mevcutIndex+1); } else { const skippedIndex=findReturnableSkippedIndex(); if(skippedIndex!==-1) goToQuestion(skippedIndex); else testiBitir(); } };
+        window.goToSkippedQuestion=function(){ const skippedIndex=findReturnableSkippedIndex(); if(skippedIndex!==-1) goToQuestion(skippedIndex); };
+        window.nextQuestion=function(){ if(cevaplar[mevcutIndex]){ if(mevcutIndex<9){ goToQuestion(mevcutIndex+1); } else { const skippedIndex=findReturnableSkippedIndex(); if(skippedIndex!==-1) goToQuestion(skippedIndex); else testiBitir(); } }};
+        window.previousQuestion=function(){ if(mevcutIndex>0){ goToQuestion(mevcutIndex-1); }};
         window.showExitConfirm = function(){ document.getElementById('exitConfirmModal').style.display = 'flex'; };
         window.confirmExit = function(){ document.getElementById('exitConfirmModal').style.display = 'none'; clearInterval(timer); testAktif = false; tScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); };
         window.cancelExit = function(){ document.getElementById('exitConfirmModal').style.display = 'none'; };
