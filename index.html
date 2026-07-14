@@ -1304,6 +1304,169 @@
             50% { transform: translateY(-45px) scale(1.12); }
         }
 
+        /* ===== 10 YENİ KATEGORİ ANİMASYONLU ARKA PLANLARI ===== */
+
+        .theme-mitoloji {
+            background: linear-gradient(135deg, #1a1030 0%, #3b0764 45%, #0f172a 100%);
+        }
+
+        .myth-item {
+            position: absolute;
+            font-size: 38px;
+            animation: mythFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes mythFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-35px) rotate(8deg); }
+        }
+
+        .theme-anime {
+            background: linear-gradient(135deg, #4a044e 0%, #831843 45%, #1e1b4b 100%);
+        }
+
+        .anime-item {
+            position: absolute;
+            font-size: 38px;
+            animation: animeFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes animeFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.1); }
+        }
+
+        .theme-futbol {
+            background: linear-gradient(135deg, #052e16 0%, #14532d 45%, #022c22 100%);
+        }
+
+        .futbol-item {
+            position: absolute;
+            font-size: 38px;
+            animation: futbolBounce 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes futbolBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
+        }
+
+        .theme-markalar {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 45%, #082f49 100%);
+        }
+
+        .brand-item {
+            position: absolute;
+            font-size: 38px;
+            animation: brandPulse 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes brandPulse {
+            0%, 100% { transform: scale(1); opacity: 0.35; }
+            50% { transform: scale(1.15); opacity: 0.5; }
+        }
+
+        .theme-bayraklar {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 45%, #172554 100%);
+        }
+
+        .flag-item {
+            position: absolute;
+            font-size: 38px;
+            animation: flagWave 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes flagWave {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-25px); }
+        }
+
+        .theme-matematik {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 45%, #0f172a 100%);
+        }
+
+        .math-item {
+            position: absolute;
+            font-size: 38px;
+            animation: mathSpin 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes mathSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .theme-dizi {
+            background: linear-gradient(135deg, #3b0764 0%, #581c87 45%, #1a0a2e 100%);
+        }
+
+        .series-item {
+            position: absolute;
+            font-size: 38px;
+            animation: seriesFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes seriesFloat {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(10px) translateY(-30px); }
+        }
+
+        .theme-moda {
+            background: linear-gradient(135deg, #500724 0%, #9d174d 45%, #2e1065 100%);
+        }
+
+        .fashion-item {
+            position: absolute;
+            font-size: 38px;
+            animation: fashionFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes fashionFloat {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-35px) rotate(4deg); }
+        }
+
+        .theme-felsefe {
+            background: linear-gradient(135deg, #292524 0%, #44403c 45%, #1c1917 100%);
+        }
+
+        .philo-item {
+            position: absolute;
+            font-size: 38px;
+            animation: philoFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes philoFloat {
+            0%, 100% { transform: translateY(0); opacity: 0.35; }
+            50% { transform: translateY(-30px); opacity: 0.5; }
+        }
+
+        .theme-doga {
+            background: linear-gradient(135deg, #052e16 0%, #166534 45%, #022c22 100%);
+        }
+
+        .nature-item {
+            position: absolute;
+            font-size: 38px;
+            animation: natureFloat 4s ease-in-out infinite;
+            opacity: 0.38;
+        }
+
+        @keyframes natureFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.08); }
+        }
+
         .screen {
             background: rgba(10, 15, 30, 0.75);
             backdrop-filter: blur(25px);
@@ -1686,6 +1849,56 @@
         .category-card--saglik {
             background: linear-gradient(135deg, rgba(248, 113, 113, 0.24), rgba(127, 29, 29, 0.9));
             border-color: #f87171;
+        }
+
+        .category-card--mitoloji {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(30, 10, 60, 0.95));
+            border-color: #a855f7;
+        }
+
+        .category-card--anime {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(88, 28, 135, 0.9));
+            border-color: #ec4899;
+        }
+
+        .category-card--futbol {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(6, 40, 20, 0.95));
+            border-color: #22c55e;
+        }
+
+        .category-card--markalar {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.24), rgba(12, 40, 70, 0.95));
+            border-color: #0ea5e9;
+        }
+
+        .category-card--bayraklar {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(15, 30, 70, 0.95));
+            border-color: #3b82f6;
+        }
+
+        .category-card--matematik {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(30, 27, 75, 0.95));
+            border-color: #6366f1;
+        }
+
+        .category-card--dizi {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.24), rgba(50, 20, 80, 0.95));
+            border-color: #c084fc;
+        }
+
+        .category-card--moda {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(80, 20, 60, 0.95));
+            border-color: #f472b6;
+        }
+
+        .category-card--felsefe {
+            background: linear-gradient(135deg, rgba(168, 162, 158, 0.22), rgba(40, 35, 30, 0.95));
+            border-color: #a8a29e;
+        }
+
+        .category-card--doga {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.24), rgba(10, 40, 20, 0.95));
+            border-color: #4ade80;
         }
 
         .category-icon {
@@ -2472,7 +2685,7 @@
                 <span class="logo-text">MATEX</span>
             </div>
             <div class="slogan">"Quizin ve Testin Harman Olduğu Yer"</div>
-            <div class="subtitle">20 KATEGORİ • 80 SORU HAVUZU</div>
+            <div class="subtitle">30 KATEGORİ • 40+ SORU / KATEGORİ</div>
             <div class="profile-shell">
                 <div class="profile-hero">
                     <div class="hero-badge">✨ Yeni Nesil Quiz</div>
@@ -2481,7 +2694,7 @@
                         oyna.</p>
                     <div class="feature-grid">
                         <div class="feature-pill">⚡ Hızlı Başlangıç</div>
-                        <div class="feature-pill">🧠 15+ Kategori</div>
+                        <div class="feature-pill">🧠 30 Kategori</div>
                         <div class="feature-pill">🎮 Arkadaşlarla Oyna</div>
                     </div>
                 </div>
@@ -3463,7 +3676,437 @@
             { soru: "Düzenli egzersizin faydalarından biri nedir?", A: "Kalp-damar sağlığını desteklemek", B: "Her zaman hastalık yaratmak", C: "Kemikleri eritmek", D: "Bağışıklığı tamamen yok etmek", E: "Uyku ihtiyacını sıfırlamak", dogru: "A", aciklama: "Egzersiz kardiyovasküler ve metabolik sağlığı iyileştirir." }
         ];
 
-        const allPools = [marvelSorulari, dcSorulari, oyunSorulari, arabaSorulari, motorSorulari, yemekSorulari, hayvanSorulari, sporSorulari, teknolojiSorulari, genelkulturSorulari, muzikSorulari, sinemaSorulari, bilimSorulari, tarihSorulari, sanatSorulari, astronomiSorulari, edebiyatSorulari, cografyaSorulari, siyasetSorulari, saglikSorulari];
+        const mitolojiSorulari = [
+            { soru: "Yunan mitolojisinde tanrıların kralı kimdir?", A: "Zeus", B: "Poseidon", C: "Hades", D: "Apollon", E: "Hermes", dogru: "A", aciklama: "Zeus, Olympos tanrılarının kralıdır." },
+            { soru: "Denizler tanrısı kimdir?", A: "Poseidon", B: "Zeus", C: "Hades", D: "Ares", E: "Hephaistos", dogru: "A", aciklama: "Poseidon denizlerin tanrısıdır." },
+            { soru: "Ölüler diyarının tanrısı kimdir?", A: "Hades", B: "Zeus", C: "Poseidon", D: "Thanatos", E: "Hermes", dogru: "A", aciklama: "Hades yeraltı dünyasının tanrısıdır." },
+            { soru: "Bilgelik tanrıçası kimdir?", A: "Athena", B: "Afrodit", C: "Hera", D: "Artemis", E: "Demeter", dogru: "A", aciklama: "Athena bilgelik ve savaş stratejisi tanrıçasıdır." },
+            { soru: "Aşk ve güzellik tanrıçası kimdir?", A: "Afrodit", B: "Athena", C: "Hera", D: "Artemis", E: "Hestia", dogru: "A", aciklama: "Afrodit aşk ve güzellik tanrıçasıdır." },
+            { soru: "Savaş tanrısı kimdir?", A: "Ares", B: "Apollon", C: "Hermes", D: "Dionysos", E: "Hephaistos", dogru: "A", aciklama: "Ares savaş tanrısıdır." },
+            { soru: "Güneş ve sanatla ilişkilendirilen tanrı kimdir?", A: "Apollon", B: "Ares", C: "Hermes", D: "Hades", E: "Poseidon", dogru: "A", aciklama: "Apollon güneş, müzik ve kehanetle anılır." },
+            { soru: "Tanrıların habercisi kimdir?", A: "Hermes", B: "Apollon", C: "Ares", D: "Dionysos", E: "Pan", dogru: "A", aciklama: "Hermes tanrıların habercisidir." },
+            { soru: "Roma mitolojisinde Zeus'un karşılığı kimdir?", A: "Jüpiter", B: "Mars", C: "Neptün", D: "Plüton", E: "Merkür", dogru: "A", aciklama: "Jüpiter, Zeus'un Roma karşılığıdır." },
+            { soru: "Roma mitolojisinde savaş tanrısı kimdir?", A: "Mars", B: "Jüpiter", C: "Venüs", D: "Apollo", E: "Satürn", dogru: "A", aciklama: "Mars, Ares'in Roma karşılığıdır." },
+            { soru: "Nordik mitolojide tanrıların kralı kimdir?", A: "Odin", B: "Thor", C: "Loki", D: "Freyr", E: "Tyr", dogru: "A", aciklama: "Odin, Asgard'ın yüce tanrısıdır." },
+            { soru: "Nordik mitolojide şimşek tanrısı kimdir?", A: "Thor", B: "Odin", C: "Loki", D: "Balder", E: "Heimdall", dogru: "A", aciklama: "Thor, Mjolnir adlı çekiciyle bilinir." },
+            { soru: "Nordik mitolojide hileci tanrı kimdir?", A: "Loki", B: "Thor", C: "Odin", D: "Tyr", E: "Heimdall", dogru: "A", aciklama: "Loki kurnazlık ve düzenbazlıkla anılır." },
+            { soru: "Mısır mitolojisinde güneş tanrısı kimdir?", A: "Ra", B: "Osiris", C: "Anubis", D: "Horus", E: "Set", dogru: "A", aciklama: "Ra, Mısır güneş tanrısıdır." },
+            { soru: "Mısır'da ölüler tanrısı / mumyalama ile anılan kimdir?", A: "Anubis", B: "Ra", C: "Isis", D: "Hathor", E: "Bastet", dogru: "A", aciklama: "Anubis ölüler ve mumyalama ile ilişkilidir." },
+            { soru: "Mısır'da yeniden doğuş ve yeraltı ile anılan tanrı kimdir?", A: "Osiris", B: "Ra", C: "Set", D: "Thoth", E: "Ptah", dogru: "A", aciklama: "Osiris yeraltı ve yeniden doğuş tanrısıdır." },
+            { soru: "Herakles'in 12 işinden biri hangisidir?", A: "Nemea aslanını yenmek", B: "Troya'yı yakmak", C: "Olimpos'u yıkmak", D: "Hades'i tahttan indirmek", E: "Zeus'u yenmek", dogru: "A", aciklama: "Nemea aslanı Herakles'in ünlü işlerindendir." },
+            { soru: "Medusa'yı yenen kahraman kimdir?", A: "Perseus", B: "Theseus", C: "Achilles", D: "Odysseus", E: "Jason", dogru: "A", aciklama: "Perseus Medusa'nın kafasını kesmiştir." },
+            { soru: "Minotor'u labirentte yenen kimdir?", A: "Theseus", B: "Perseus", C: "Herakles", D: "Orpheus", E: "Bellerophon", dogru: "A", aciklama: "Theseus, Minotor'u yenmiştir." },
+            { soru: "Troya Savaşı'nın efsanevi savaşçısı kimdir?", A: "Akhilleus", B: "Odysseus", C: "Hektor", D: "Agamemnon", E: "Paris", dogru: "A", aciklama: "Akhilleus, İlyada'nın en ünlü Yunan savaşçısıdır." },
+            { soru: "Troya atı fikrini bulan kahraman kimdir?", A: "Odysseus", B: "Akhilleus", C: "Ajax", D: "Menelaos", E: "Nestor", dogru: "A", aciklama: "Odysseus kurnazlığıyla Troya atı planıyla anılır." },
+            { soru: "Pandora'nın kutusundan çıkan nedir?", A: "Belalar / kötülükler", B: "Altın", C: "Su", D: "Ateş", E: "Işık", dogru: "A", aciklama: "Efsanede kutudan belalar yayılır; umut içeride kalır." },
+            { soru: "Prometheus insanlara ne getirmiştir?", A: "Ateş", B: "Su", C: "Altın", D: "Yazı", E: "Demir", dogru: "A", aciklama: "Prometheus tanrılardan ateşi çalıp insanlara vermiştir." },
+            { soru: "İkarus neden düşmüştür?", A: "Güneşe çok yaklaştığı için kanatları eridi", B: "Denizde boğuldu", C: "Ejderha yedi", D: "Zeus vurdu", E: "Labirentte kayboldu", dogru: "A", aciklama: "Balmumu kanatlar güneşte eridi." },
+            { soru: "Pegasus nedir?", A: "Kanatlı at", B: "Deniz canavarı", C: "Yarı insan yarı boğa", D: "Üç başlı köpek", E: "Dev yılan", dogru: "A", aciklama: "Pegasus kanatlı attır." },
+            { soru: "Kerberos nedir?", A: "Hades'in üç başlı köpeği", B: "Güneş arabası", C: "Deniz tanrısı", D: "Savaş baltası", E: "Altın elma", dogru: "A", aciklama: "Kerberos yeraltı kapısını bekler." },
+            { soru: "Yunan mitolojisinde hasat tanrıçası kimdir?", A: "Demeter", B: "Hera", C: "Artemis", D: "Hestia", E: "Nike", dogru: "A", aciklama: "Demeter tarım ve hasat tanrıçasıdır." },
+            { soru: "Av ve ay ile ilişkilendirilen tanrıça kimdir?", A: "Artemis", B: "Athena", C: "Afrodit", D: "Hera", E: "Hestia", dogru: "A", aciklama: "Artemis av ve ay tanrıçasıdır." },
+            { soru: "Şarap ve eğlence tanrısı kimdir?", A: "Dionysos", B: "Apollon", C: "Hermes", D: "Ares", E: "Pan", dogru: "A", aciklama: "Dionysos şarap tanrısıdır." },
+            { soru: "Troya prensi Paris kime elmayı vermiştir?", A: "Afrodit", B: "Hera", C: "Athena", D: "Artemis", E: "Demeter", dogru: "A", aciklama: "En güzel tanrıça yarışında Paris Afrodit'i seçmiştir." },
+            { soru: "Atlas neyi taşır?", A: "Gökyüzünü", B: "Denizi", C: "Olympos'u", D: "Güneşi", E: "Ayı", dogru: "A", aciklama: "Atlas gökkubbeyi omuzlarında taşır." },
+            { soru: "Narkissos neye âşık olmuştur?", A: "Kendi yansımasına", B: "Afrodit'e", C: "Bir nympha'ya", D: "Altına", E: "Savaşa", dogru: "A", aciklama: "Narsisizm kelimesi bu efsaneden gelir." },
+            { soru: "Orpheus neyle ünlüdür?", A: "Müziği ve lir çalması", B: "Savaş kılıcı", C: "Deniz yolculuğu", D: "Mimari", E: "Tarım", dogru: "A", aciklama: "Orpheus müziğiyle yeraltını bile etkilemiştir." },
+            { soru: "Midas'ın dileği neydi?", A: "Dokunduğu her şeyin altın olması", B: "Uçmak", C: "Ölümsüzlük", D: "Görünmezlik", E: "Dev güç", dogru: "A", aciklama: "Midas dokunduğunu altına çevirme dileğiyle bilinir." },
+            { soru: "Japon mitolojisinde güneş tanrıçası kimdir?", A: "Amaterasu", B: "Susanoo", C: "Tsukuyomi", D: "Izanagi", E: "Izanami", dogru: "A", aciklama: "Amaterasu Japon güneş tanrıçasıdır." },
+            { soru: "Türk mitolojisinde gök tanrısı kimdir?", A: "Ülgen / Tengri inancıyla ilişkilendirilir", B: "Zeus", C: "Odin", D: "Ra", E: "Thor", dogru: "A", aciklama: "Gök Tanrı / Tengri inancı Türk mitolojisinde merkezidir." },
+            { soru: "Ejderha öldüren aziz efsanesiyle anılan isim hangisidir?", A: "Aziz George", B: "Aziz Nikola", C: "Aziz Patrick", D: "Aziz Petrus", E: "Aziz Paul", dogru: "A", aciklama: "Aziz George ejderha efsanesiyle bilinir." },
+            { soru: "Yunan mitolojisinde zafer tanrıçası kimdir?", A: "Nike", B: "Athena", C: "Hera", D: "Artemis", E: "Hestia", dogru: "A", aciklama: "Nike zafer tanrıçasıdır." },
+            { soru: "Hephaistos hangi alanın tanrısıdır?", A: "Demircilik ve ateş", B: "Deniz", C: "Savaş", D: "Aşk", E: "Tarım", dogru: "A", aciklama: "Hephaistos zanaat ve demircilik tanrısıdır." },
+            { soru: "Pandora kelimesinin mitolojik anlamı nedir?", A: "Her şeyi veren / tüm armağanlar", B: "Ateş getiren", C: "Deniz kralı", D: "Güneş arabası", E: "Ölüm melek", dogru: "A", aciklama: "Pandora 'tüm armağanlara sahip olan' anlamıyla ilişkilidir." }
+        ];
+
+        const animeSorulari = [
+            { soru: "Naruto'nun en bilinen tekniği hangisidir?", A: "Rasengan", B: "Chidori", C: "Kamehameha", D: "Getsuga Tensho", E: "Bankai", dogru: "A", aciklama: "Rasengan, Naruto'nun imza tekniklerindendir." },
+            { soru: "Dragon Ball'da Goku'nun dönüşümlerinden biri hangisidir?", A: "Super Saiyan", B: "Bankai", C: "Sharingan", D: "Gear 5", E: "Susanoo", dogru: "A", aciklama: "Super Saiyan, Dragon Ball'un ikonik dönüşümüdür." },
+            { soru: "One Piece'in ana karakteri kimdir?", A: "Monkey D. Luffy", B: "Roronoa Zoro", C: "Naruto Uzumaki", D: "Ichigo Kurosaki", E: "Eren Yeager", dogru: "A", aciklama: "Luffy, One Piece'in kaptanıdır." },
+            { soru: "Attack on Titan'ın ana karakteri kimdir?", A: "Eren Yeager", B: "Mikasa Ackerman", C: "Levi Ackerman", D: "Armin Arlert", E: "Erwin Smith", dogru: "A", aciklama: "Eren, Attack on Titan'ın başkahramanıdır." },
+            { soru: "Death Note'ta ölüm defterini bulan karakter kimdir?", A: "Light Yagami", B: "L", C: "Near", D: "Misa Amane", E: "Ryuk", dogru: "A", aciklama: "Light, Death Note'u bulan öğrencidir." },
+            { soru: "Death Note'ta L kimdir?", A: "Dünyaca ünlü dedektif", B: "Shinigami", C: "Polis şefi", D: "Light'ın kardeşi", E: "Bir shinobi", dogru: "A", aciklama: "L, Kira'yı takip eden efsanevi dedektiftir." },
+            { soru: "Demon Slayer ana karakteri kimdir?", A: "Tanjiro Kamado", B: "Zenitsu", C: "Inosuke", D: "Giyu Tomioka", E: "Muzan", dogru: "A", aciklama: "Tanjiro, kardeşini kurtarmak için iblis avcısı olur." },
+            { soru: "My Hero Academia'da Midoriya'nın kahraman adı nedir?", A: "Deku", B: "Bakugo", C: "Todoroki", D: "All Might", E: "Shoto", dogru: "A", aciklama: "Izuku Midoriya, Deku olarak bilinir." },
+            { soru: "One Punch Man'in kahramanı kimdir?", A: "Saitama", B: "Genos", C: "Garou", D: "King", E: "Bang", dogru: "A", aciklama: "Saitama herkesi tek yumrukla yener." },
+            { soru: "Tokyo Ghoul ana karakteri kimdir?", A: "Ken Kaneki", B: "Touka", C: "Hide", D: "Arima", E: "Jason", dogru: "A", aciklama: "Kaneki, ghoul dünyasına sürüklenen öğrencidir." },
+            { soru: "Jujutsu Kaisen ana karakteri kimdir?", A: "Yuji Itadori", B: "Megumi Fushiguro", C: "Gojo Satoru", D: "Nobara", E: "Sukuna", dogru: "A", aciklama: "Yuji, Sukuna'nın parmağını yutan öğrencidir." },
+            { soru: "Bleach ana karakteri kimdir?", A: "Ichigo Kurosaki", B: "Rukia", C: "Aizen", D: "Byakuya", E: "Urahara", dogru: "A", aciklama: "Ichigo, shinigami güçleri kazanan lise öğrencisidir." },
+            { soru: "Fullmetal Alchemist kardeşlerin adı nedir?", A: "Edward ve Alphonse Elric", B: "Naruto ve Sasuke", C: "Luffy ve Ace", D: "Eren ve Zeke", E: "Gon ve Killua", dogru: "A", aciklama: "Elric kardeşler simya ile bedenlerini kaybeder." },
+            { soru: "Hunter x Hunter'da Gon'un en yakın arkadaşı kimdir?", A: "Killua", B: "Kurapika", C: "Leorio", D: "Hisoka", E: "Ging", dogru: "A", aciklama: "Killua, Gon'un en yakın dostudur." },
+            { soru: "Spy x Family'nin casus babası kimdir?", A: "Loid Forger / Twilight", B: "Anya", C: "Yor", D: "Bond", E: "Franky", dogru: "A", aciklama: "Loid, Twilight kod adlı casustur." },
+            { soru: "Chainsaw Man ana karakteri kimdir?", A: "Denji", B: "Aki", C: "Power", D: "Makima", E: "Himeno", dogru: "A", aciklama: "Denji, Chainsaw Man'e dönüşür." },
+            { soru: "Sailor Moon'un gerçek adı nedir?", A: "Usagi Tsukino", B: "Ami Mizuno", C: "Rei Hino", D: "Makoto", E: "Minako", dogru: "A", aciklama: "Usagi, Sailor Moon'dur." },
+            { soru: "Pokémon anime serisinin ana karakteri kimdir?", A: "Ash Ketchum (Satoshi)", B: "Gary", C: "Brock", D: "Misty", E: "Professor Oak", dogru: "A", aciklama: "Ash, Pokémon ustası olmayı hedefler." },
+            { soru: "Studio Ghibli'nin ünlü filmi hangisidir?", A: "Ruhların Kaçışı (Spirited Away)", B: "Your Name", C: "Attack on Titan", D: "Naruto", E: "One Piece", dogru: "A", aciklama: "Spirited Away, Ghibli'nin Oscarlı filmidir." },
+            { soru: "Your Name filminin yönetmeni kimdir?", A: "Makoto Shinkai", B: "Hayao Miyazaki", C: "Hideaki Anno", D: "Satoshi Kon", E: "Mamoru Hosoda", dogru: "A", aciklama: "Your Name, Makoto Shinkai filmidir." },
+            { soru: "Neon Genesis Evangelion'un ana pilotu kimdir?", A: "Shinji Ikari", B: "Asuka", C: "Rei", D: "Gendo", E: "Kaworu", dogru: "A", aciklama: "Shinji, EVA-01'i kullanan pilotur." },
+            { soru: "Cowboy Bebop'un avcı karakteri kimdir?", A: "Spike Spiegel", B: "Jet Black", C: "Faye Valentine", D: "Ed", E: "Vicious", dogru: "A", aciklama: "Spike, Cowboy Bebop'un ikonik karakteridir." },
+            { soru: "One Piece'te Zoro ne kullanır?", A: "Üç kılıç stili", B: "Tek yumruk", C: "Ninjutsu", D: "Bankai", E: "Alchemy", dogru: "A", aciklama: "Zoro üç kılıç stiliyle dövüşür." },
+            { soru: "Naruto'da Sasuke'nin klanı hangisidir?", A: "Uchiha", B: "Uzumaki", C: "Hyuga", D: "Nara", E: "Senju", dogru: "A", aciklama: "Sasuke Uchiha klanındandır." },
+            { soru: "Sharingan hangi klana aittir?", A: "Uchiha", B: "Uzumaki", C: "Hyuga", D: "Aburame", E: "Akimichi", dogru: "A", aciklama: "Sharingan Uchiha klanının dōjutsu'sudur." },
+            { soru: "Anime'de 'senpai' ne anlama gelir?", A: "Kendinden büyük / üst sınıf öğrenci", B: "Düşman", C: "Öğretmen", D: "Küçük kardeş", E: "Evcil hayvan", dogru: "A", aciklama: "Senpai, kendinden kıdemli kişiye hitaptır." },
+            { soru: "Manga ile anime farkı nedir?", A: "Manga çizgi roman, anime animasyondur", B: "İkisi aynıdır", C: "Manga sadece film", D: "Anime sadece kitap", E: "Manga müziktir", dogru: "A", aciklama: "Manga basılı çizgi roman, anime hareketli uyarlamadır." },
+            { soru: "Attack on Titan'da devlere ne denir?", A: "Titan", B: "Ghoul", C: "Hollow", D: "Cursed Spirit", E: "Homunculus", dogru: "A", aciklama: "Seride dev yaratıklara Titan denir." },
+            { soru: "My Hero Academia'da süper güçlere ne denir?", A: "Quirk", B: "Nen", C: "Chakra", D: "Haki", E: "Stand", dogru: "A", aciklama: "Quirk, MHA'daki güç sistemidir." },
+            { soru: "JoJo's Bizarre Adventure'da güçlere ne denir?", A: "Stand", B: "Quirk", C: "Nen", D: "Bankai", E: "Devil Fruit", dogru: "A", aciklama: "Stand'lar JoJo evreninin güçleridir." },
+            { soru: "One Piece'te şeytan meyveleri ne sağlar?", A: "Özel güçler", B: "Sadece para", C: "Sadece hız", D: "Ölümsüzlük garantisi", E: "Uçma garantisi", dogru: "A", aciklama: "Devil Fruit yiyenler özel yetenek kazanır." },
+            { soru: "Anime'de opening ne demektir?", A: "Açılış şarkısı / jenerik", B: "Son sahne", C: "Ara reklam", D: "Manga kapağı", E: "Seslendirme", dogru: "A", aciklama: "Opening, bölüm başı müzikli sahnedir." },
+            { soru: "Hayao Miyazaki hangi stüdyonun kurucu isimlerindendir?", A: "Studio Ghibli", B: "Toei", C: "Madhouse", D: "MAPPA", E: "Ufotable", dogru: "A", aciklama: "Miyazaki, Studio Ghibli ile özdeşleşir." },
+            { soru: "Demon Slayer'da Nezuko kimdir?", A: "Tanjiro'nun iblise dönüşen kız kardeşi", B: "Bir avcı", C: "Bir şeytan kral", D: "Bir öğretmen", E: "Bir ninja", dogru: "A", aciklama: "Nezuko, Tanjiro'nun kardeşidir." },
+            { soru: "Death Note'ta Ryuk kimdir?", A: "Shinigami (ölüm tanrısı)", B: "İnsan dedektif", C: "Polis", D: "Light'ın babası", E: "Bir shinobi", dogru: "A", aciklama: "Ryuk, defteri düşüren shinigami'dir." },
+            { soru: "Anime'de 'waifu' terimi neyi ifade eder?", A: "Hayran olunan kadın karakter", B: "Bir dövüş stili", C: "Bir köy", D: "Bir silah", E: "Bir yemek", dogru: "A", aciklama: "Waifu, hayran kültürü terimidir." },
+            { soru: "Sword Art Online'da oyuncular nerede mahsur kalır?", A: "Sanal gerçeklik oyununda", B: "Okulda", C: "Adada", D: "Uzayda", E: "Labirentte", dogru: "A", aciklama: "SAO'da oyuncular VR oyuna hapsolur." },
+            { soru: "Haikyuu!! hangi sporu konu alır?", A: "Voleybol", B: "Futbol", C: "Basketbol", D: "Tenis", E: "Yüzme", dogru: "A", aciklama: "Haikyuu!! voleybol animesidir." },
+            { soru: "Kuroko's Basketball hangi sporu konu alır?", A: "Basketbol", B: "Futbol", C: "Voleybol", D: "Beyzbol", E: "Hentbol", dogru: "A", aciklama: "Kuroko's Basketball basketbol animesidir." },
+            { soru: "Anime karakterlerinde sık görülen saç rengi abartısı neden vardır?", A: "Karakterleri ayırt etmek ve stilize çizim", B: "Gerçekçilik için", C: "Yasal zorunluluk", D: "Sadece siyah boya yokluğu", E: "Rastgele hata", dogru: "A", aciklama: "Renkli saçlar stil ve tanınırlık içindir." }
+        ];
+
+        const futbolSorulari = [
+            { soru: "FIFA Dünya Kupası'nı en çok kazanan ülke hangisidir?", A: "Brezilya", B: "Almanya", C: "İtalya", D: "Arjantin", E: "Fransa", dogru: "A", aciklama: "Brezilya 5 kez Dünya Kupası kazanmıştır." },
+            { soru: "Bir futbol maçı normal süresi kaç dakikadır?", A: "90", B: "60", C: "80", D: "100", E: "120", dogru: "A", aciklama: "Normal süre 2x45 = 90 dakikadır." },
+            { soru: "Penaltı noktası kale çizgisinden kaç metre uzaktır?", A: "11", B: "9", C: "10", D: "12", E: "16", dogru: "A", aciklama: "Penaltı noktası 11 metredir." },
+            { soru: "Bir takım sahada kaç oyuncuyla başlar?", A: "11", B: "10", C: "9", D: "12", E: "7", dogru: "A", aciklama: "Kaleci dahil 11 oyuncu." },
+            { soru: "UEFA Şampiyonlar Ligi'nin eski adı neydi?", A: "Avrupa Şampiyon Kulüpler Kupası", B: "UEFA Kupası", C: "Kupa Galipleri", D: "Konferans Ligi", E: "Intertoto", dogru: "A", aciklama: "Eski adı European Champion Clubs' Cup'tır." },
+            { soru: "2022 Dünya Kupası'nı kim kazandı?", A: "Arjantin", B: "Fransa", C: "Brezilya", D: "Hırvatistan", E: "Fas", dogru: "A", aciklama: "Arjantin 2022'de şampiyon oldu." },
+            { soru: "Offside kuralı neyi engeller?", A: "Topla rakip kaleye yakın oyuncunun avantajını", B: "Korner atmayı", C: "Penaltı atmayı", D: "Taç atmayı", E: "Faul yapmayı", dogru: "A", aciklama: "Ofsayt, hücum avantajını düzenler." },
+            { soru: "Sarı kart ne anlama gelir?", A: "Uyarı", B: "Oyundan atılma", C: "Penaltı", D: "Korner", E: "Taç", dogru: "A", aciklama: "Sarı kart uyarıdır; ikincisi kırmızıya dönüşür." },
+            { soru: "Kırmızı kart ne anlama gelir?", A: "Oyundan ihraç", B: "Uyarı", C: "Gol", D: "Korner", E: "Serbest vuruş", dogru: "A", aciklama: "Kırmızı kartla oyuncu oyundan atılır." },
+            { soru: "Galatasaray'ın 2000'de kazandığı Avrupa kupası hangisidir?", A: "UEFA Kupası", B: "Şampiyonlar Ligi", C: "Süper Kupa sadece", D: "Konferans Ligi", E: "Intercontinental sadece", dogru: "A", aciklama: "Galatasaray 2000'de UEFA Kupası'nı kazandı." },
+            { soru: "Türkiye Milli Takımı'nın en büyük Dünya Kupası başarısı nedir?", A: "2002 üçüncülüğü", B: "Şampiyonluk", C: "Final", D: "1994 şampiyonluğu", E: "2010 ikinciliği", dogru: "A", aciklama: "Türkiye 2002'de 3. olmuştur." },
+            { soru: "Ballon d'Or nedir?", A: "Yılın en iyi futbolcusu ödülü", B: "Hakem düdüğü", C: "Stadyum adı", D: "Kale ağı", E: "Forma markası", dogru: "A", aciklama: "Ballon d'Or bireysel prestij ödülüdür." },
+            { soru: "Messi hangi ülkenin milli takımındadır?", A: "Arjantin", B: "İspanya", C: "Portekiz", D: "Brezilya", E: "Fransa", dogru: "A", aciklama: "Lionel Messi Arjantinlidir." },
+            { soru: "Cristiano Ronaldo hangi ülkenin milli takımındadır?", A: "Portekiz", B: "İspanya", C: "Brezilya", D: "İtalya", E: "Fransa", dogru: "A", aciklama: "Ronaldo Portekiz milli takımındadır." },
+            { soru: "Premier League hangi ülkenin ligidir?", A: "İngiltere", B: "İspanya", C: "İtalya", D: "Almanya", E: "Fransa", dogru: "A", aciklama: "Premier League İngiliz ligidir." },
+            { soru: "La Liga hangi ülkenin ligidir?", A: "İspanya", B: "İngiltere", C: "İtalya", D: "Almanya", E: "Portekiz", dogru: "A", aciklama: "La Liga İspanyol ligidir." },
+            { soru: "Serie A hangi ülkenin ligidir?", A: "İtalya", B: "Fransa", C: "İspanya", D: "Almanya", E: "Hollanda", dogru: "A", aciklama: "Serie A İtalyan ligidir." },
+            { soru: "Bundesliga hangi ülkenin ligidir?", A: "Almanya", B: "Avusturya", C: "İsviçre", D: "Hollanda", E: "Belçika", dogru: "A", aciklama: "Bundesliga Alman ligidir." },
+            { soru: "Hangi kulüp Şampiyonlar Ligi'ni en çok kazanmıştır?", A: "Real Madrid", B: "Barcelona", C: "Milan", D: "Liverpool", E: "Bayern", dogru: "A", aciklama: "Real Madrid en çok şampiyon kulüptür." },
+            { soru: "VAR neyin kısaltmasıdır?", A: "Video Assistant Referee", B: "Very Accurate Rule", C: "Virtual Attack Run", D: "Victory Award Rank", E: "Verified Action Replay", dogru: "A", aciklama: "VAR video yardımcı hakem sistemidir." },
+            { soru: "Korner ne zaman verilir?", A: "Topu savunan takım son çizgiden dışarı çıkarırsa", B: "Faulde", C: "Ofsaytta", D: "Sarı kartta", E: "Devre arasında", dogru: "A", aciklama: "Savunma topu kale çizgisinden çıkarırsa korner olur." },
+            { soru: "Taç atışı ne zaman yapılır?", A: "Top yan çizgiden dışarı çıkınca", B: "Gol olunca", C: "Penaltıda", D: "Devre arasında", E: "Kırmızı kartta", dogru: "A", aciklama: "Top yan çizgiyi geçince taç atılır." },
+            { soru: "Hat-trick nedir?", A: "Bir maçta 3 gol atmak", B: "3 asist", C: "3 kart", D: "3 faul", E: "3 kurtarış", dogru: "A", aciklama: "Hat-trick aynı maçta üç goldür." },
+            { soru: "Clean sheet ne demektir?", A: "Gol yemeden maçı bitirmek", B: "3 gol atmak", C: "Penaltı kaçırmak", D: "Kırmızı kart görmek", E: "Uzatmaya gitmek", dogru: "A", aciklama: "Clean sheet fileyi gole kapatmaktır." },
+            { soru: "Derbi maçı nedir?", A: "Aynı şehir veya ezeli rakiplerin maçı", B: "Antrenman", C: "Hazırlık maçı", D: "Penaltı atışı", E: "Hakem toplantısı", dogru: "A", aciklama: "Derbi, ezeli rekabet maçıdır." },
+            { soru: "Fenerbahçe'nin renkleri nedir?", A: "Sarı-lacivert", B: "Sarı-kırmızı", C: "Siyah-beyaz", D: "Kırmızı-beyaz", E: "Yeşil-beyaz", dogru: "A", aciklama: "Fenerbahçe sarı-lacivertlidir." },
+            { soru: "Galatasaray'ın renkleri nedir?", A: "Sarı-kırmızı", B: "Sarı-lacivert", C: "Siyah-beyaz", D: "Mor-beyaz", E: "Mavi-beyaz", dogru: "A", aciklama: "Galatasaray sarı-kırmızılıdır." },
+            { soru: "Beşiktaş'ın renkleri nedir?", A: "Siyah-beyaz", B: "Sarı-kırmızı", C: "Sarı-lacivert", D: "Kırmızı-mavi", E: "Yeşil-siyah", dogru: "A", aciklama: "Beşiktaş siyah-beyazlıdır." },
+            { soru: "Dünya Kupası kaç yılda bir düzenlenir?", A: "4", B: "2", C: "3", D: "5", E: "6", dogru: "A", aciklama: "Dünya Kupası 4 yılda birdir." },
+            { soru: "Avrupa Şampiyonası (EURO) kaç yılda bir düzenlenir?", A: "4", B: "2", C: "3", D: "1", E: "5", dogru: "A", aciklama: "EURO da 4 yılda birdir." },
+            { soru: "Kaleci sahada topu elle oynayabilir mi?", A: "Kendi ceza sahasında evet", B: "Her yerde evet", C: "Hiçbir yerde hayır", D: "Sadece yarı sahada", E: "Sadece kornerde", dogru: "A", aciklama: "Kaleci ceza sahasında elle oynayabilir." },
+            { soru: "Serbest vuruş ne zaman verilir?", A: "Faul veya kural ihlalinde", B: "Sadece gol sonrası", C: "Sadece devre arasında", D: "Sadece penaltıda", E: "Sadece taçta", dogru: "A", aciklama: "Serbest vuruş faul/ihlal sonrası verilir." },
+            { soru: "Uzatma süreleri genelde kaçar dakikadır?", A: "15+15", B: "10+10", C: "5+5", D: "20+20", E: "30+30", dogru: "A", aciklama: "Uzatmalar genelde iki 15 dakikadır." },
+            { soru: "Altın top (Ballon d'Or) genelde kim tarafından verilir?", A: "France Football", B: "FIFA sadece her yıl", C: "UEFA her hafta", D: "Premier League", E: "La Liga", dogru: "A", aciklama: "Ballon d'Or France Football ödülüdür." },
+            { soru: "Transfer dönemi ne işe yarar?", A: "Kulüplerin oyuncu alıp satmasına", B: "Hakem seçimine", C: "Stadyum boyamaya", D: "Forma dikmeye", E: "Sadece kupa törenine", dogru: "A", aciklama: "Transfer pencerelerinde oyuncu hareketi olur." },
+            { soru: "Kaptanın kol bandı neyi gösterir?", A: "Takım kaptanını", B: "Kaleciyi", C: "Yedek oyuncuyu", D: "Hakem yardımcısını", E: "Antrenörü", dogru: "A", aciklama: "Kol bandı kaptanı belirtir." },
+            { soru: "Hat-trick yapan oyuncuya genelde ne verilir?", A: "Maçın topu", B: "Kırmızı kart", C: "Sarı kart", D: "Penaltı", E: "Ofsayt", dogru: "A", aciklama: "Geleneksel olarak maç topu verilir." },
+            { soru: "Türkiye Süper Lig eski adıyla ne olarak bilinirdi?", A: "1. Lig / Süper Lig evrimi", B: "Premier League", C: "La Liga", D: "Serie A", E: "Bundesliga", dogru: "A", aciklama: "Türkiye'nin en üst ligi Süper Lig'dir." },
+            { soru: "Hangi pozisyon genelde en önde oynar?", A: "Forvet", B: "Kaleci", C: "Stoper", D: "Sağ bek", E: "Defansif orta saha", dogru: "A", aciklama: "Forvet hücumun en ucundadır." },
+            { soru: "Hangi pozisyon kaleyi korur?", A: "Kaleci", B: "Forvet", C: "Kanat", D: "Santrafor", E: "Oyun kurucu", dogru: "A", aciklama: "Kaleci fileyi korur." }
+        ];
+
+        const markalarSorulari = [
+            { soru: "iPhone hangi markaya aittir?", A: "Apple", B: "Samsung", C: "Xiaomi", D: "Huawei", E: "Sony", dogru: "A", aciklama: "iPhone Apple ürünüdür." },
+            { soru: "Android işletim sistemi hangi şirkete aittir?", A: "Google", B: "Apple", C: "Microsoft", D: "Samsung", E: "Amazon", dogru: "A", aciklama: "Android Google'a aittir." },
+            { soru: "Swoosh logosu hangi markanındır?", A: "Nike", B: "Adidas", C: "Puma", D: "Reebok", E: "New Balance", dogru: "A", aciklama: "Swoosh Nike'ın logosudur." },
+            { soru: "Üç şerit hangi markayla özdeşleşir?", A: "Adidas", B: "Nike", C: "Puma", D: "Fila", E: "Under Armour", dogru: "A", aciklama: "Üç şerit Adidas'ın simgesidir." },
+            { soru: "Golden Arches (altın kemerler) hangi markadır?", A: "McDonald's", B: "Burger King", C: "KFC", D: "Subway", E: "Wendy's", dogru: "A", aciklama: "Altın M, McDonald's logosudur." },
+            { soru: "Tesla'nın CEO'su kimdir?", A: "Elon Musk", B: "Tim Cook", C: "Satya Nadella", D: "Jeff Bezos", E: "Mark Zuckerberg", dogru: "A", aciklama: "Elon Musk Tesla CEO'sudur." },
+            { soru: "Windows hangi şirketin ürünüdür?", A: "Microsoft", B: "Apple", C: "Google", D: "IBM", E: "Oracle", dogru: "A", aciklama: "Windows Microsoft'undur." },
+            { soru: "PlayStation hangi şirkete aittir?", A: "Sony", B: "Microsoft", C: "Nintendo", D: "Sega", E: "Apple", dogru: "A", aciklama: "PlayStation Sony'nindir." },
+            { soru: "Xbox hangi şirkete aittir?", A: "Microsoft", B: "Sony", C: "Nintendo", D: "Sega", E: "Google", dogru: "A", aciklama: "Xbox Microsoft'undur." },
+            { soru: "Instagram hangi şirketin bünyesindedir?", A: "Meta (Facebook)", B: "Google", C: "Apple", D: "Amazon", E: "Twitter", dogru: "A", aciklama: "Instagram Meta'ya aittir." },
+            { soru: "YouTube hangi şirkete aittir?", A: "Google", B: "Meta", C: "Apple", D: "Microsoft", E: "Amazon", dogru: "A", aciklama: "YouTube Google'a aittir." },
+            { soru: "Amazon'un kurucusu kimdir?", A: "Jeff Bezos", B: "Elon Musk", C: "Bill Gates", D: "Larry Page", E: "Jack Ma", dogru: "A", aciklama: "Jeff Bezos Amazon'u kurmuştur." },
+            { soru: "Louis Vuitton hangi sektörde ünlüdür?", A: "Lüks moda / deri ürünler", B: "Otomotiv", C: "Yazılım", D: "Havayolu", E: "İlaç", dogru: "A", aciklama: "LV lüks moda markasıdır." },
+            { soru: "Rolex ne üretir?", A: "Saat", B: "Telefon", C: "Araba", D: "Ayakkabı", E: "Çikolata", dogru: "A", aciklama: "Rolex lüks saat markasıdır." },
+            { soru: "Ferrari hangi ülkenin markasıdır?", A: "İtalya", B: "Almanya", C: "Fransa", D: "İngiltere", E: "ABD", dogru: "A", aciklama: "Ferrari İtalyan süper spor markasıdır." },
+            { soru: "Mercedes-Benz hangi ülkenin markasıdır?", A: "Almanya", B: "İtalya", C: "Fransa", D: "ABD", E: "Japonya", dogru: "A", aciklama: "Mercedes Alman markasıdır." },
+            { soru: "Toyota hangi ülkenin markasıdır?", A: "Japonya", B: "Kore", C: "Çin", D: "Almanya", E: "ABD", dogru: "A", aciklama: "Toyota Japon otomotiv devidir." },
+            { soru: "Samsung hangi ülkenin markasıdır?", A: "Güney Kore", B: "Japonya", C: "Çin", D: "ABD", E: "Almanya", dogru: "A", aciklama: "Samsung Güney Korelidir." },
+            { soru: "IKEA hangi ülkeyle özdeşleşir?", A: "İsveç", B: "Norveç", C: "Danimarka", D: "Finlandiya", E: "Almanya", dogru: "A", aciklama: "IKEA İsveç kökenli mobilya markasıdır." },
+            { soru: "Starbucks ne satar?", A: "Kahve ve içecekler", B: "Sadece otomobil", C: "Sadece telefon", D: "Sadece ayakkabı", E: "Sadece kitap", dogru: "A", aciklama: "Starbucks kahve zinciridir." },
+            { soru: "Coca-Cola'nın ana ürünü nedir?", A: "Gazlı içecek", B: "Telefon", C: "Araba", D: "Ayakkabı", E: "Saat", dogru: "A", aciklama: "Coca-Cola meşrubat markasıdır." },
+            { soru: "Pepsi'nin rakibi olarak bilinen marka hangisidir?", A: "Coca-Cola", B: "Nike", C: "Adidas", D: "Apple", E: "Samsung", dogru: "A", aciklama: "Klasik meşrubat rekabeti Cola-Pepsi'dir." },
+            { soru: "Netflix ne hizmeti sunar?", A: "Dizi-film yayıncılığı", B: "Havayolu", C: "Bankacılık", D: "Otomotiv", E: "Telekom sadece", dogru: "A", aciklama: "Netflix streaming platformudur." },
+            { soru: "Spotify ne hizmeti sunar?", A: "Müzik dinleme", B: "Yemek siparişi", C: "Taksi", D: "Otel", E: "Sigorta", dogru: "A", aciklama: "Spotify müzik platformudur." },
+            { soru: "Airbnb ne iş yapar?", A: "Konaklama rezervasyonu", B: "Uçak üretimi", C: "Telefon satışı", D: "Oyun konsolu", E: "Kahve zinciri", dogru: "A", aciklama: "Airbnb konaklama platformudur." },
+            { soru: "Uber ne iş yapar?", A: "Ulaşım / yolculuk çağırma", B: "Mobilya", C: "Saat", D: "Çikolata", E: "Lüks moda", dogru: "A", aciklama: "Uber ulaşım platformudur." },
+            { soru: "LEGO ne üretir?", A: "Oyuncak yapı blokları", B: "Araba lastiği", C: "Telefon", D: "Kahve", E: "Saat", dogru: "A", aciklama: "LEGO yapı blokları ile ünlüdür." },
+            { soru: "Gucci hangi sektördedir?", A: "Lüks moda", B: "Yazılım", C: "Havayolu", D: "İlaç", E: "Madencilik", dogru: "A", aciklama: "Gucci lüks moda markasıdır." },
+            { soru: "Chanel hangi sektördedir?", A: "Moda ve parfüm", B: "Otomotiv", C: "Telekom", D: "Bankacılık", E: "Enerji", dogru: "A", aciklama: "Chanel moda ve parfümle bilinir." },
+            { soru: "Red Bull ne ile ünlüdür?", A: "Enerji içeceği ve spor sponsorlukları", B: "Sadece otomobil", C: "Sadece telefon", D: "Sadece ayakkabı", E: "Sadece banka", dogru: "A", aciklama: "Red Bull enerji içeceği markasıdır." },
+            { soru: "KFC'nin açılımı nedir?", A: "Kentucky Fried Chicken", B: "King Food Company", C: "Korea Food Center", D: "Kitchen Fresh Choice", E: "Krispy Fried Cuisine", dogru: "A", aciklama: "KFC = Kentucky Fried Chicken." },
+            { soru: "BMW hangi ülkenin markasıdır?", A: "Almanya", B: "İtalya", C: "Fransa", D: "Japonya", E: "ABD", dogru: "A", aciklama: "BMW Alman otomotiv markasıdır." },
+            { soru: "Audi'nin sloganı nedir?", A: "Vorsprung durch Technik", B: "Just Do It", C: "I'm Lovin' It", D: "Think Different", E: "Because You're Worth It", dogru: "A", aciklama: "Vorsprung durch Technik Audi sloganıdır." },
+            { soru: "Nike'ın sloganı nedir?", A: "Just Do It", B: "I'm Lovin' It", C: "Think Different", D: "Impossible is Nothing", E: "The Ultimate Driving Machine", dogru: "A", aciklama: "Just Do It Nike sloganıdır." },
+            { soru: "Apple'ın eski sloganlarından ünlü olan hangisidir?", A: "Think Different", B: "Just Do It", C: "I'm Lovin' It", D: "Have a Break", E: "Open Happiness", dogru: "A", aciklama: "Think Different Apple'ın ünlü kampanyasıdır." },
+            { soru: "McDonald's sloganlarından ünlü olan hangisidir?", A: "I'm Lovin' It", B: "Just Do It", C: "Think Different", D: "Impossible is Nothing", E: "Because You're Worth It", dogru: "A", aciklama: "I'm Lovin' It McDonald's sloganıdır." },
+            { soru: "TOGG hangi ülkenin otomobil girişimidir?", A: "Türkiye", B: "Almanya", C: "Fransa", D: "İtalya", E: "Japonya", dogru: "A", aciklama: "TOGG Türkiye'nin yerli elektrikli otomobil markasıdır." },
+            { soru: "LC Waikiki hangi sektördedir?", A: "Hazır giyim", B: "Otomotiv", C: "Yazılım", D: "Havayolu", E: "İlaç", dogru: "A", aciklama: "LC Waikiki giyim perakendesidir." },
+            { soru: "Trendyol ne tür bir platformdur?", A: "E-ticaret", B: "Havayolu", C: "Banka", D: "Otomotiv fabrikası", E: "Enerji santrali", dogru: "A", aciklama: "Trendyol e-ticaret platformudur." },
+            { soru: "Turkish Airlines hangi sektördedir?", A: "Havayolu", B: "Moda", C: "Yazılım", D: "Kahve", E: "Oyuncak", dogru: "A", aciklama: "THY havayolu şirketidir." }
+        ];
+
+        const bayraklarSorulari = [
+            { soru: "Türkiye bayrağının renkleri nedir?", A: "Kırmızı-beyaz", B: "Mavi-beyaz", C: "Yeşil-kırmızı", D: "Siyah-kırmızı", E: "Sarı-kırmızı", dogru: "A", aciklama: "Türk bayrağı kırmızı zemin üzerine beyaz ay-yıldızdır." },
+            { soru: "Japon bayrağında ne vardır?", A: "Kırmızı daire (güneş)", B: "Hilal", C: "Kartal", D: "Ay-yıldız", E: "Haç", dogru: "A", aciklama: "Japon bayrağı beyaz zemin üzerine kırmızı güneştir." },
+            { soru: "ABD bayrağındaki yıldızlar neyi temsil eder?", A: "Eyaletleri", B: "Başkanları", C: "Orduları", D: "Nehirleri", E: "Şehirleri", dogru: "A", aciklama: "50 yıldız 50 eyaleti temsil eder." },
+            { soru: "Kanada bayrağında hangi yaprak vardır?", A: "Akçaağaç (maple)", B: "Zeytin", C: "Meşe", D: "Çam", E: "Hurma", dogru: "A", aciklama: "Kanada bayrağında kırmızı maple leaf vardır." },
+            { soru: "Birleşik Krallık bayrağının adı nedir?", A: "Union Jack", B: "Stars and Stripes", C: "Tricolore", D: "Dannebrog", E: "Hinomaru", dogru: "A", aciklama: "Union Jack İngiltere bayrağıdır." },
+            { soru: "Fransa bayrağının renkleri nedir?", A: "Mavi-beyaz-kırmızı", B: "Yeşil-beyaz-kırmızı", C: "Siyah-kırmızı-sarı", D: "Kırmızı-beyaz", E: "Mavi-sarı", dogru: "A", aciklama: "Fransız trikoloru mavi-beyaz-kırmızıdır." },
+            { soru: "İtalya bayrağının renkleri nedir?", A: "Yeşil-beyaz-kırmızı", B: "Mavi-beyaz-kırmızı", C: "Siyah-kırmızı-sarı", D: "Kırmızı-beyaz", E: "Mavi-sarı", dogru: "A", aciklama: "İtalyan bayrağı yeşil-beyaz-kırmızıdır." },
+            { soru: "Almanya bayrağının renkleri nedir?", A: "Siyah-kırmızı-sarı", B: "Mavi-beyaz-kırmızı", C: "Yeşil-beyaz-kırmızı", D: "Kırmızı-beyaz", E: "Mavi-sarı", dogru: "A", aciklama: "Alman bayrağı siyah-kırmızı-sarıdır." },
+            { soru: "Brezilya bayrağında hangi şekil vardır?", A: "Yeşil zemin, sarı baklava, mavi küre", B: "Sadece kırmızı daire", C: "Sadece haç", D: "Sadece ay-yıldız", E: "Sadece kartal", dogru: "A", aciklama: "Brezilya bayrağı yeşil-sarı-mavi düzenindedir." },
+            { soru: "Çin bayrağında kaç yıldız vardır?", A: "5", B: "1", C: "3", D: "13", E: "50", dogru: "A", aciklama: "Çin bayrağında bir büyük dört küçük yıldız vardır." },
+            { soru: "Yunan bayrağında hangi renkler baskındır?", A: "Mavi ve beyaz", B: "Kırmızı ve beyaz", C: "Yeşil ve kırmızı", D: "Siyah ve sarı", E: "Turuncu ve yeşil", dogru: "A", aciklama: "Yunan bayrağı mavi-beyazdır." },
+            { soru: "İsveç bayrağının renkleri nedir?", A: "Mavi zemin sarı haç", B: "Kırmızı-beyaz", C: "Yeşil-beyaz", D: "Siyah-sarı", E: "Turuncu-mavi", dogru: "A", aciklama: "İsveç bayrağı mavi-sarı haçlıdır." },
+            { soru: "İsviçre bayrağı hangi şekildedir?", A: "Kırmızı kare üzerinde beyaz haç", B: "Mavi daire", C: "Yeşil hilal", D: "Sarı yıldız", E: "Siyah kartal", dogru: "A", aciklama: "İsviçre bayrağı kırmızı zemin beyaz haçtır." },
+            { soru: "Türkiye'nin ay-yıldızı hangi renktir?", A: "Beyaz", B: "Sarı", C: "Mavi", D: "Yeşil", E: "Siyah", dogru: "A", aciklama: "Ay-yıldız beyazdır." },
+            { soru: "Pakistan bayrağında hangi semboller vardır?", A: "Hilal ve yıldız", B: "Kartal", C: "Haç", D: "Akçaağaç", E: "Güneş diski", dogru: "A", aciklama: "Pakistan bayrağında hilal ve yıldız vardır." },
+            { soru: "Hindistan bayrağında ortadaki tekerlek nedir?", A: "Ashoka Çarkı", B: "Güneş", C: "Ay", D: "Yıldız", E: "Haç", dogru: "A", aciklama: "Ortadaki tekerlek Ashoka Chakra'dır." },
+            { soru: "Güney Kore bayrağında ortadaki sembol nedir?", A: "Taeguk (yin-yang benzeri)", B: "Hilal", C: "Haç", D: "Kartal", E: "Akçaağaç", dogru: "A", aciklama: "Güney Kore bayrağında taeguk motifi vardır." },
+            { soru: "Meksika bayrağında ortada ne vardır?", A: "Kartal ve yılan motifi", B: "Hilal", C: "Haç", D: "Güneş diski", E: "Akçaağaç", dogru: "A", aciklama: "Meksika arması kartal-yılan sahnesidir." },
+            { soru: "Arjantin bayrağında ortada ne vardır?", A: "Güneş (Sol de Mayo)", B: "Hilal", C: "Kartal", D: "Haç", E: "Yıldız kümesi", dogru: "A", aciklama: "Arjantin bayrağında Mayıs Güneşi vardır." },
+            { soru: "Avustralya bayrağında hangi ülke bayrağı da yer alır?", A: "Birleşik Krallık (Union Jack)", B: "Fransa", C: "Almanya", D: "Japonya", E: "ABD", dogru: "A", aciklama: "Avustralya bayrağında Union Jack bulunur." },
+            { soru: "Yeni Zelanda bayrağında hangi yıldız takımı vardır?", A: "Güney Haçı", B: "Büyük Ayı", C: "Orion", D: "Cassiopeia", E: "Pleiades", dogru: "A", aciklama: "Southern Cross yıldızları yer alır." },
+            { soru: "Norveç bayrağı hangi tarzdadır?", A: "Haçlı İskandinav bayrağı", B: "Üç eşit şerit sadece", C: "Sadece daire", D: "Sadece hilal", E: "Sadece kartal", dogru: "A", aciklama: "Norveç İskandinav haç desenine sahiptir." },
+            { soru: "Danimarka bayrağının adı nedir?", A: "Dannebrog", B: "Union Jack", C: "Hinomaru", D: "Tricolore", E: "Stars and Stripes", dogru: "A", aciklama: "Danimarka bayrağı Dannebrog olarak bilinir." },
+            { soru: "Rusya bayrağının renkleri nedir?", A: "Beyaz-mavi-kırmızı", B: "Siyah-kırmızı-sarı", C: "Yeşil-beyaz-kırmızı", D: "Kırmızı-sarı", E: "Mavi-sarı", dogru: "A", aciklama: "Rus bayrağı beyaz-mavi-kırmızı yatay şeritlidir." },
+            { soru: "Ukrayna bayrağının renkleri nedir?", A: "Mavi-sarı", B: "Kırmızı-beyaz", C: "Yeşil-kırmızı", D: "Siyah-sarı", E: "Turuncu-siyah", dogru: "A", aciklama: "Ukrayna bayrağı mavi-sarıdır." },
+            { soru: "İspanya bayrağında baskın renkler nedir?", A: "Kırmızı ve sarı", B: "Mavi ve beyaz", C: "Yeşil ve beyaz", D: "Siyah ve kırmızı", E: "Mor ve beyaz", dogru: "A", aciklama: "İspanya bayrağı kırmızı-sarı-kırmızıdır." },
+            { soru: "Portekiz bayrağında hangi renkler vardır?", A: "Yeşil ve kırmızı", B: "Mavi ve beyaz", C: "Sadece sarı", D: "Siyah ve turuncu", E: "Mor ve gri", dogru: "A", aciklama: "Portekiz bayrağı yeşil-kırmızıdır." },
+            { soru: "Suudi Arabistan bayrağında ne yazısı bulunur?", A: "Kelime-i Şehadet / İslami yazı", B: "Ülke adı Latince", C: "Sayılar", D: "Takvim", E: "Hava durumu", dogru: "A", aciklama: "Bayrakta İslami hat yazısı vardır." },
+            { soru: "İsrail bayrağında hangi sembol vardır?", A: "Davut Yıldızı", B: "Hilal", C: "Haç", D: "Kartal", E: "Güneş diski", dogru: "A", aciklama: "İsrail bayrağında Magen David vardır." },
+            { soru: "Mısır bayrağında hangi kuş motifi vardır?", A: "Selahaddin Kartalı", B: "Akçaağaç", C: "Penguen", D: "Baykuş", E: "Papağan", dogru: "A", aciklama: "Mısır bayrağında kartal arması vardır." },
+            { soru: "Güney Afrika bayrağı neden özeldir?", A: "Çok renkli ve birleşik ulus tasarımı", B: "Sadece siyah-beyazdır", C: "Sadece kırmızıdır", D: "Sadece yıldızdır", E: "Sadece haçtır", dogru: "A", aciklama: "Çok renkli tasarımı birlik simgesidir." },
+            { soru: "Yunan bayrağındaki şeritler neyi çağrıştırır?", A: "Deniz ve bağımsızlık mücadelesi", B: "Çöl", C: "Orman", D: "Buzul", E: "Volkan", dogru: "A", aciklama: "Mavi-beyaz şeritler deniz ve mücadeleyle ilişkilidir." },
+            { soru: "AB bayrağında kaç yıldız vardır?", A: "12", B: "27", C: "50", D: "10", E: "15", dogru: "A", aciklama: "AB bayrağında 12 altın yıldız vardır." },
+            { soru: "BM bayrağında hangi renk baskındır?", A: "Mavi", B: "Kırmızı", C: "Yeşil", D: "Sarı", E: "Turuncu", dogru: "A", aciklama: "BM bayrağı mavi zeminlidir." },
+            { soru: "Olimpiyat bayrağında kaç halka vardır?", A: "5", B: "4", C: "6", D: "7", E: "3", dogru: "A", aciklama: "5 halka 5 kıtayı temsil eder." },
+            { soru: "Jolly Roger neyin bayrağıdır?", A: "Korsan bayrağı", B: "Hastane gemisi", C: "Barış bayrağı", D: "Olimpiyat", E: "BM", dogru: "A", aciklama: "Kurukafa bayrağı korsanlarla anılır." },
+            { soru: "Beyaz bayrak genelde ne anlama gelir?", A: "Teslim / ateşkes", B: "Savaş ilanı", C: "Zafer", D: "Yas", E: "Kutlama", dogru: "A", aciklama: "Beyaz bayrak ateşkes/teslim simgesidir." },
+            { soru: "Kırmızı kart bayrak değil ama yarışlarda kırmızı bayrak neyi gösterir?", A: "Dur / tehlike", B: "Hızlan", C: "Son tur", D: "Pit stop serbest", E: "Yağmur bitti", dogru: "A", aciklama: "Motorsporda kırmızı bayrak dur anlamına gelir." },
+            { soru: "Türkiye bayrağındaki ay hangi fazdadır?", A: "Hilal", B: "Dolunay", C: "Yeniay tam siyah", D: "Süper ay", E: "Kanlı ay", dogru: "A", aciklama: "Bayraktaki ay hilal formundadır." },
+            { soru: "Hangi ülkenin bayrağı kırmızı daire ile bilinir?", A: "Japonya", B: "Türkiye", C: "Kanada", D: "ABD", E: "Fransa", dogru: "A", aciklama: "Japonya'nın kırmızı güneş dairesi ikoniktir." }
+        ];
+
+        const matematikSorulari = [
+            { soru: "2+2 kaçtır?", A: "4", B: "3", C: "5", D: "6", E: "2", dogru: "A", aciklama: "2+2=4'tür." },
+            { soru: "5x5 kaçtır?", A: "25", B: "20", C: "15", D: "30", E: "10", dogru: "A", aciklama: "5x5=25'tir." },
+            { soru: "Bir üçgenin iç açıları toplamı kaç derecedir?", A: "180", B: "90", C: "270", D: "360", E: "100", dogru: "A", aciklama: "Üçgen iç açıları 180°'dir." },
+            { soru: "Bir karenin iç açıları toplamı kaç derecedir?", A: "360", B: "180", C: "270", D: "90", E: "400", dogru: "A", aciklama: "Dörtgen iç açıları 360°'dir." },
+            { soru: "Pi sayısı yaklaşık kaçtır?", A: "3.14", B: "2.71", C: "1.41", D: "1.61", E: "4.20", dogru: "A", aciklama: "Pi ≈ 3.14159..." },
+            { soru: "Bir dairenin çevresi formülü nedir?", A: "2πr", B: "πr²", C: "r²", D: "4r", E: "πd/4", dogru: "A", aciklama: "Çevre = 2πr veya πd." },
+            { soru: "Bir dairenin alanı formülü nedir?", A: "πr²", B: "2πr", C: "r³", D: "4πr", E: "πd", dogru: "A", aciklama: "Alan = πr²." },
+            { soru: "Karekök 9 kaçtır?", A: "3", B: "9", C: "4.5", D: "81", E: "1", dogru: "A", aciklama: "3x3=9 olduğu için √9=3." },
+            { soru: "Karekök 16 kaçtır?", A: "4", B: "8", C: "2", D: "16", E: "32", dogru: "A", aciklama: "4x4=16." },
+            { soru: "2³ (2 üzeri 3) kaçtır?", A: "8", B: "6", C: "9", D: "5", E: "4", dogru: "A", aciklama: "2x2x2=8." },
+            { soru: "10² kaçtır?", A: "100", B: "20", C: "50", D: "1000", E: "10", dogru: "A", aciklama: "10x10=100." },
+            { soru: "0 ile çarpılan her sayı kaçtır?", A: "0", B: "1", C: "Kendisi", D: "Sonsuz", E: "Tanımsız", dogru: "A", aciklama: "a×0=0'dır." },
+            { soru: "Bir sayı 0'a bölünürse sonuç nedir?", A: "Tanımsız", B: "0", C: "1", D: "Sonsuz kesin", E: "Sayının kendisi", dogru: "A", aciklama: "Sıfıra bölme tanımsızdır." },
+            { soru: "Asal sayı nedir?", A: "Sadece 1 ve kendisine bölünen sayı", B: "Çift sayı", C: "Tek sayı", D: "Negatif sayı", E: "Kesir", dogru: "A", aciklama: "Asal sayılar 1 ve kendisinden başka bölen almaz." },
+            { soru: "Hangisi asal sayıdır?", A: "7", B: "9", C: "15", D: "21", E: "27", dogru: "A", aciklama: "7 asal sayıdır." },
+            { soru: "Hangisi asal sayı değildir?", A: "1", B: "2", C: "3", D: "5", E: "7", dogru: "A", aciklama: "1 asal sayı değildir." },
+            { soru: "En küçük asal sayı hangisidir?", A: "2", B: "1", C: "0", D: "3", E: "5", dogru: "A", aciklama: "2 en küçük ve tek çift asal sayıdır." },
+            { soru: "Çift sayılar neye bölünür?", A: "2'ye", B: "3'e her zaman", C: "5'e her zaman", D: "7'ye her zaman", E: "9'a her zaman", dogru: "A", aciklama: "Çift sayılar 2'ye tam bölünür." },
+            { soru: "Yüzde 50 ne demektir?", A: "Yarım / 1/2", B: "Çeyrek", C: "Tamamı", D: "1/4", E: "1/5", dogru: "A", aciklama: "%50 = 0.5 = 1/2." },
+            { soru: "1/4 yüzde kaçtır?", A: "25", B: "50", C: "75", D: "10", E: "40", dogru: "A", aciklama: "1/4 = %25." },
+            { soru: "Bir dik üçgende hipotenüs nedir?", A: "En uzun kenar (dik açının karşısı)", B: "En kısa kenar", C: "Açıortay", D: "Yükseklik her zaman", E: "Alan", dogru: "A", aciklama: "Hipotenüs dik açının karşısındaki kenardır." },
+            { soru: "Pisagor bağıntısı nedir?", A: "a²+b²=c²", B: "a+b=c", C: "a×b=c", D: "a/b=c", E: "a²-b=c", dogru: "A", aciklama: "Dik üçgende a²+b²=c²." },
+            { soru: "Faktöriyel 4! kaçtır?", A: "24", B: "8", C: "12", D: "16", E: "4", dogru: "A", aciklama: "4!=4×3×2×1=24." },
+            { soru: "Negatif × negatif sonuç nedir?", A: "Pozitif", B: "Negatif", C: "Sıfır", D: "Tanımsız", E: "Kesir", dogru: "A", aciklama: "Eksi × eksi = artı." },
+            { soru: "Mutlak değer |-5| kaçtır?", A: "5", B: "-5", C: "0", D: "10", E: "1", dogru: "A", aciklama: "Mutlak değer uzaklığı verir: 5." },
+            { soru: "Ortalama (aritmetik) nasıl bulunur?", A: "Toplam / adet", B: "Çarpım", C: "Fark", D: "Karekök", E: "Yüzde", dogru: "A", aciklama: "Aritmetik ortalama toplamın adede bölümüdür." },
+            { soru: "Medyan nedir?", A: "Ortadaki değer", B: "En büyük değer", C: "En küçük değer", D: "Toplam", E: "Çarpım", dogru: "A", aciklama: "Medyan sıralı dizinin ortasındaki değerdir." },
+            { soru: "Mod nedir?", A: "En çok tekrar eden değer", B: "Ortadaki değer", C: "En büyük", D: "En küçük", E: "Ortalama", dogru: "A", aciklama: "Mod en sık görülen veridir." },
+            { soru: "Bir saatte kaç dakika vardır?", A: "60", B: "30", C: "100", D: "24", E: "12", dogru: "A", aciklama: "1 saat = 60 dakika." },
+            { soru: "Bir günde kaç saat vardır?", A: "24", B: "12", C: "60", D: "30", E: "48", dogru: "A", aciklama: "1 gün = 24 saat." },
+            { soru: "1 km kaç metredir?", A: "1000", B: "100", C: "10", D: "10000", E: "500", dogru: "A", aciklama: "1 km = 1000 m." },
+            { soru: "1 metre kaç santimetredir?", A: "100", B: "10", C: "1000", D: "50", E: "10000", dogru: "A", aciklama: "1 m = 100 cm." },
+            { soru: "Eşkenar üçgenin kenarları nasıldır?", A: "Hepsi eşit", B: "İkisi eşit", C: "Hepsi farklı", D: "Sadece taban eşit", E: "Hiçbiri eşit değil", dogru: "A", aciklama: "Eşkenar üçgende 3 kenar eşittir." },
+            { soru: "İkizkenar üçgenin özelliği nedir?", A: "En az iki kenarı eşit", B: "Hiç kenarı eşit değil", C: "Tüm açıları 90", D: "Dört kenarı var", E: "Alanı sıfır", dogru: "A", aciklama: "İkizkenarda iki kenar eşittir." },
+            { soru: "Kare ile dikdörtgen farkı nedir?", A: "Karede tüm kenarlar eşit", B: "Dikdörtgende açı yok", C: "Karede açı yok", D: "Dikdörtgen dairedir", E: "Kare üçgendir", dogru: "A", aciklama: "Kare özel bir dikdörtgendir; kenarları eşittir." },
+            { soru: "0! (sıfır faktöriyel) kaçtır?", A: "1", B: "0", C: "Tanımsız", D: "Sonsuz", E: "-1", dogru: "A", aciklama: "Matematikte 0! = 1 kabul edilir." },
+            { soru: "Kesirlerde payda ne demektir?", A: "Alt kısım", B: "Üst kısım", C: "Toplam", D: "Çarpım", E: "Kalan", dogru: "A", aciklama: "Payda kesrin altındaki sayıdır." },
+            { soru: "Kesirlerde pay ne demektir?", A: "Üst kısım", B: "Alt kısım", C: "Ortalama", D: "Mod", E: "Medyan", dogru: "A", aciklama: "Pay kesrin üstündeki sayıdır." },
+            { soru: "1'in herhangi bir kuvveti kaçtır?", A: "1", B: "0", C: "Sonsuz", D: "-1", E: "Kendisi değişir", dogru: "A", aciklama: "1ⁿ = 1'dir." },
+            { soru: "Bir sayının karesi ne demektir?", A: "Kendisiyle çarpımı", B: "İki katı", C: "Yarısı", D: "Karekökü", E: "Toplamı", dogru: "A", aciklama: "n² = n×n." }
+        ];
+
+        const diziSorulari = [
+            { soru: "Game of Thrones hangi kitaptan uyarlanmıştır?", A: "Buz ve Ateşin Şarkısı", B: "Yüzüklerin Efendisi", C: "Harry Potter", D: "Witcher", E: "Dune", dogru: "A", aciklama: "George R.R. Martin'in serisinden uyarlanmıştır." },
+            { soru: "Breaking Bad'in ana karakteri kimdir?", A: "Walter White", B: "Jesse Pinkman", C: "Saul Goodman", D: "Hank Schrader", E: "Gus Fring", dogru: "A", aciklama: "Walter White kimya öğretmenidir." },
+            { soru: "Stranger Things hangi platformun dizisidir?", A: "Netflix", B: "HBO", C: "Disney+", D: "Prime Video", E: "Apple TV+", dogru: "A", aciklama: "Stranger Things Netflix orijinalidir." },
+            { soru: "The Witcher dizisinde Geralt'ı kim canlandırmıştır?", A: "Henry Cavill", B: "Tom Cruise", C: "Keanu Reeves", D: "Jason Momoa", E: "Chris Hemsworth", dogru: "A", aciklama: "İlk sezonlarda Henry Cavill oynamıştır." },
+            { soru: "Friends dizisi hangi şehirde geçer?", A: "New York", B: "Los Angeles", C: "Chicago", D: "London", E: "Paris", dogru: "A", aciklama: "Friends New York'ta geçer." },
+            { soru: "The Office (ABD) hangi ofis ortamını konu alır?", A: "Kâğıt şirketi ofisi", B: "Hastane", C: "Okul", D: "Polis merkezi", E: "Uzay üssü", dogru: "A", aciklama: "Dunder Mifflin kâğıt şirketidir." },
+            { soru: "La Casa de Papel hangi ülkenin dizisidir?", A: "İspanya", B: "İtalya", C: "Fransa", D: "Meksika", E: "ABD", dogru: "A", aciklama: "Money Heist İspanyol yapımıdır." },
+            { soru: "Squid Game hangi ülkenin dizisidir?", A: "Güney Kore", B: "Japonya", C: "Çin", D: "Tayland", E: "ABD", dogru: "A", aciklama: "Squid Game Kore yapımıdır." },
+            { soru: "Wednesday dizisi hangi aile/evrenle bağlantılıdır?", A: "Addams Family", B: "Simpsons", C: "Skywalker", D: "Potter", E: "Stark", dogru: "A", aciklama: "Wednesday Addams ailesindendir." },
+            { soru: "The Mandalorian hangi evrendedir?", A: "Star Wars", B: "Marvel", C: "DC", D: "Harry Potter", E: "Matrix", dogru: "A", aciklama: "The Mandalorian Star Wars dizisidir." },
+            { soru: "WandaVision hangi stüdyonun dizisidir?", A: "Marvel / Disney+", B: "HBO", C: "Netflix", D: "Prime", E: "Showtime", dogru: "A", aciklama: "WandaVision MCU dizisidir." },
+            { soru: "Chernobyl mini dizisi hangi platformla ünlendi?", A: "HBO", B: "Netflix", C: "Disney+", D: "Twitch", E: "YouTube Shorts", dogru: "A", aciklama: "Chernobyl HBO yapımıdır." },
+            { soru: "Sherlock (BBC) dizisinde Sherlock'u kim oynar?", A: "Benedict Cumberbatch", B: "Tom Hiddleston", C: "David Tennant", D: "Matt Smith", E: "Martin Freeman", dogru: "A", aciklama: "Cumberbatch Sherlock'u canlandırmıştır." },
+            { soru: "The Crown hangi aileyi konu alır?", A: "İngiliz Kraliyet Ailesi", B: "Addams", C: "Simpsons", D: "Skywalker", E: "Kardashian", dogru: "A", aciklama: "The Crown Britanya kraliyetini işler." },
+            { soru: "Dark dizisi hangi ülkenin yapımıdır?", A: "Almanya", B: "Fransa", C: "İspanya", D: "İtalya", E: "ABD", dogru: "A", aciklama: "Dark Alman yapımı Netflix dizisidir." },
+            { soru: "Peaky Blinders hangi şehirde geçer?", A: "Birmingham", B: "London", C: "Manchester", D: "Liverpool", E: "Glasgow", dogru: "A", aciklama: "Peaky Blinders Birmingham'da geçer." },
+            { soru: "House of the Dragon hangi dizinin öncesidir?", A: "Game of Thrones", B: "Breaking Bad", C: "Lost", D: "Dexter", E: "Vikings", dogru: "A", aciklama: "House of the Dragon GoT prequel'idir." },
+            { soru: "Lost dizisinde uçak nerede düşer?", A: "Gizemli bir adada", B: "Çölde", C: "Şehir merkezinde", D: "Kutupta", E: "Dağda sadece", dogru: "A", aciklama: "Oceanic 815 gizemli adaya düşer." },
+            { soru: "Dexter dizisinin ana karakteri ne iş yapar?", A: "Kan sıçrama analisti / seri katil", B: "Doktor", C: "Öğretmen", D: "Avukat", E: "Polis şefi sadece", dogru: "A", aciklama: "Dexter ikili yaşam sürer." },
+            { soru: "How I Met Your Mother kaç ana arkadaş grubunu anlatır?", A: "5 ana arkadaş", B: "2", C: "10", D: "20", E: "1", dogru: "A", aciklama: "Ted, Marshall, Lily, Barney, Robin." },
+            { soru: "The Big Bang Theory hangi meslek grubunu konu alır?", A: "Bilim insanları / fizikçiler", B: "Futbolcular", C: "Aşçılar", D: "Polisler", E: "Müzisyenler", dogru: "A", aciklama: "Dizi bilim insanlarının hayatını anlatır." },
+            { soru: "Black Mirror genelde neyi eleştirir?", A: "Teknoloji ve toplum", B: "Ortaçağ", C: "Tarım", D: "Yemek tarifleri", E: "Spor kuralları", dogru: "A", aciklama: "Black Mirror distopik teknoloji antolojisidir." },
+            { soru: "The Boys dizisi neyi hicveder?", A: "Süper kahraman endüstrisini", B: "Yemek yarışmalarını", C: "Okul hayatını", D: "Futbolu", E: "Modayı", dogru: "A", aciklama: "The Boys süper kahraman mitini yerer." },
+            { soru: "Arcane hangi oyundan uyarlanmıştır?", A: "League of Legends", B: "Valorant", C: "CS:GO", D: "GTA", E: "Minecraft", dogru: "A", aciklama: "Arcane LoL evrenindedir." },
+            { soru: "The Last of Us dizisi hangi oyundan uyarlanmıştır?", A: "The Last of Us", B: "God of War", C: "Halo", D: "Zelda", E: "FIFA", dogru: "A", aciklama: "HBO uyarlaması aynı adlı oyundandır." },
+            { soru: "Succession hangi temayı işler?", A: "Aile şirketi ve iktidar mücadelesi", B: "Uzay yolculuğu", C: "Yemek tarifi", D: "Lise aşkı", E: "Futbol turnuvası", dogru: "A", aciklama: "Succession medya imparatorluğu ailesini anlatır." },
+            { soru: "Euphoria hangi yaş grubunu merkeze alır?", A: "Gençler / lise", B: "Emekliler", C: "Bebekler", D: "Sadece askerler", E: "Sadece astronotlar", dogru: "A", aciklama: "Euphoria gençlik ve travma temalıdır." },
+            { soru: "The Umbrella Academy neyi konu alır?", A: "Süper güçlü kardeşler", B: "Yemek yarışması", C: "Mahkeme", D: "Futbol", E: "Tarım", dogru: "A", aciklama: "Umbrella Academy süper güçlü kardeşleri anlatır." },
+            { soru: "Money Heist'te Profesör kimdir?", A: "Soygunun planlayıcısı", B: "Polis şefi", C: "Banka müdürü", D: "Haber spikeri", E: "Asker", dogru: "A", aciklama: "Profesör soygunu planlar." },
+            { soru: "Stranger Things'te Upside Down nedir?", A: "Ters/paralel boyut", B: "Bir okul", C: "Bir bisiklet", D: "Bir pizza", E: "Bir şarkı", dogru: "A", aciklama: "Upside Down korkutucu paralel boyuttır." },
+            { soru: "Narcos dizisi kimi konu alır?", A: "Uyuşturucu kartelleri ve kaçakçılar", B: "Aşçılar", C: "Futbolcular", D: "Astronotlar", E: "Ressamlar", dogru: "A", aciklama: "Narcos uyuşturucu savaşlarını anlatır." },
+            { soru: "Vikings dizisi kimi konu alır?", A: "İskandinav savaşçıları", B: "Samuraylar", C: "Kovboylar", D: "Astronotlar", E: "Şefler", dogru: "A", aciklama: "Vikings Ragnar ve çevresini işler." },
+            { soru: "The Walking Dead'de dünya neye uğramıştır?", A: "Zombi salgını", B: "Sel", C: "Deprem", D: "Uzaylı işgali", E: "Buzul çağı", dogru: "A", aciklama: "TWD zombi kıyametini anlatır." },
+            { soru: "Grey's Anatomy hangi mesleği konu alır?", A: "Doktorluk / hastane", B: "Avukatlık", C: "Polislik", D: "Öğretmenlik", E: "Mimarlık", dogru: "A", aciklama: "Grey's Anatomy hastane dramasıdır." },
+            { soru: "Prison Break'in ana planı nedir?", A: "Hapishaneden kaçış", B: "Banka soygunu", C: "Uzay yolculuğu", D: "Yemek yarışması", E: "Seçim kazanmak", dogru: "A", aciklama: "Michael Scofield kardeşini kaçırmak ister." },
+            { soru: "Sherlock Holmes'un yardımcısı kimdir?", A: "Dr. Watson", B: "Lestrade", C: "Moriarty", D: "Mycroft", E: "Irene", dogru: "A", aciklama: "Dr. Watson klasik yardımcıdır." },
+            { soru: "The Simpsons ne tür bir dizidir?", A: "Animasyon sitcom", B: "Belgesel", C: "Haber programı", D: "Yemek yarışması", E: "Spor yayını", dogru: "A", aciklama: "The Simpsons animasyon komedidir." },
+            { soru: "Rick and Morty ne tür bir dizidir?", A: "Bilimkurgu animasyon komedi", B: "Haber", C: "Spor", D: "Yemek", E: "Tarih belgeseli", dogru: "A", aciklama: "Rick and Morty absürt bilimkurgu animasyondur." },
+            { soru: "Dizi sezon finali ne demektir?", A: "Sezonun son bölümü", B: "İlk bölüm", C: "Fragman", D: "Jenerik", E: "Reklam", dogru: "A", aciklama: "Sezon finali o sezonun kapanışıdır." },
+            { soru: "Cliffhanger ne demektir?", A: "Merakla biten sahne / bölüm sonu", B: "Müzik", C: "Jenerik", D: "Reklam arası", E: "jenerik şarkısı", dogru: "A", aciklama: "Cliffhanger seyirciyi merakta bırakır." }
+        ];
+
+        const modaSorulari = [
+            { soru: "Haute couture ne demektir?", A: "Yüksek moda / özel dikim", B: "Ucuz hazır giyim", C: "Sadece spor giyim", D: "Sadece ayakkabı", E: "Sadece çanta", dogru: "A", aciklama: "Haute couture özel ve yüksek modadır." },
+            { soru: "Ready-to-wear (prêt-à-porter) ne demektir?", A: "Hazır giyim", B: "Sadece gelinlik", C: "Sadece üniforma", D: "Sadece kostüm", E: "Sadece iç çamaşırı", dogru: "A", aciklama: "Prêt-à-porter hazır giyimdir." },
+            { soru: "Paris hangi yönüyle ünlüdür?", A: "Moda başkentlerinden biri", B: "Sadece futbol", C: "Sadece yazılım", D: "Sadece madencilik", E: "Sadece tarım", dogru: "A", aciklama: "Paris klasik moda merkezidir." },
+            { soru: "Milano hangi yönüyle ünlüdür?", A: "Moda ve tasarım", B: "Sadece uzay", C: "Sadece balıkçılık", D: "Sadece çöl turizmi", E: "Sadece buz hokeyi", dogru: "A", aciklama: "Milano İtalyan moda merkezidir." },
+            { soru: "New York Fashion Week nedir?", A: "Moda haftası etkinliği", B: "Futbol turnuvası", C: "Yemek festivali", D: "Otomobil fuarı", E: "Kitap fuarı", dogru: "A", aciklama: "NYFW defile haftasıdır." },
+            { soru: "Chanel No.5 nedir?", A: "Ünlü bir parfüm", B: "Bir ayakkabı", C: "Bir araba", D: "Bir telefon", E: "Bir çanta modeli sadece", dogru: "A", aciklama: "Chanel No.5 ikonik parfümdür." },
+            { soru: "Louis Vuitton monogramı neyle bilinir?", A: "LV harfli desen", B: "Sadece kırmızı daire", C: "Sadece yıldız", D: "Sadece haç", E: "Sadece hilal", dogru: "A", aciklama: "LV monogram markanın imzasıdır." },
+            { soru: "Sneaker nedir?", A: "Spor ayakkabı", B: "Şapka", C: "Kemer", D: "Eldiven", E: "Kravat", dogru: "A", aciklama: "Sneaker spor/günlük ayakkabıdır." },
+            { soru: "Stiletto neyi ifade eder?", A: "İnce topuklu ayakkabı", B: "Geniş bere", C: "Kot pantolon", D: "Spor çorap", E: "Yağmurluk", dogru: "A", aciklama: "Stiletto ince yüksek topuktur." },
+            { soru: "Trench coat nedir?", A: "Trençkot / yağmurluk ceket", B: "Mayo", C: "Bere", D: "Eldiven", E: "Kravat", dogru: "A", aciklama: "Trench coat klasik uzun cekettir." },
+            { soru: "Little black dress kiminle özdeşleşir?", A: "Audrey Hepburn / Chanel geleneği", B: "Sadece futbolcular", C: "Sadece astronotlar", D: "Sadece şefler", E: "Sadece pilotlar", dogru: "A", aciklama: "Küçük siyah elbise moda ikonudur." },
+            { soru: "Fast fashion ne demektir?", A: "Hızlı ve ucuz trend üretimi", B: "Sadece el yapımı lüks", C: "Sadece askeri üniforma", D: "Sadece iş kıyafeti", E: "Sadece gece kıyafeti", dogru: "A", aciklama: "Fast fashion hızlı tüketim modasıdır." },
+            { soru: "Sustainable fashion neyi hedefler?", A: "Sürdürülebilir ve etik üretimi", B: "Daha çok atık", C: "Daha az kumaş kalitesi her zaman", D: "Sadece plastik", E: "Sadece tek kullanımlık", dogru: "A", aciklama: "Sürdürülebilir moda çevreyi gözetir." },
+            { soru: "Denim hangi ürünle özdeşleşir?", A: "Kot pantolon / jean", B: "İpek kravat", C: "Deri eldiven", D: "Yün bere", E: "Saten ayakkabı", dogru: "A", aciklama: "Denim jean kumaşıdır." },
+            { soru: "Vintage moda ne demektir?", A: "Eski dönem ürünleri / retro stil", B: "Sadece yeni sezon", C: "Sadece üniformalar", D: "Sadece spor forması", E: "Sadece iş tulumu", dogru: "A", aciklama: "Vintage geçmiş dönem parçalarıdır." },
+            { soru: "Streetwear ne demektir?", A: "Sokak tarzı giyim", B: "Resmi smokin", C: "Gelinlik", D: "Askeri zırh", E: "Laboratuvar önlüğü", dogru: "A", aciklama: "Streetwear sokak kültüründen doğar." },
+            { soru: "Runway nedir?", A: "Defile pisti", B: "Ayakkabı numarası", C: "Kumaş tipi", D: "Dikiş makinesi", E: "Ütü", dogru: "A", aciklama: "Runway mankenlerin yürüdüğü pisttir." },
+            { soru: "Lookbook nedir?", A: "Koleksiyon görsel kataloğu", B: "Yemek kitabı", C: "Harita", D: "Sözlük", E: "Takvim", dogru: "A", aciklama: "Lookbook koleksiyon sunumudur." },
+            { soru: "Capsule wardrobe ne demektir?", A: "Az ve uyumlu temel parçalar", B: "Sadece şapka koleksiyonu", C: "Sadece çanta odası", D: "Sadece spor çorap", E: "Sadece kravatlar", dogru: "A", aciklama: "Capsule wardrobe minimal uyumlu dolaptır." },
+            { soru: "Gucci hangi ülkenin markasıdır?", A: "İtalya", B: "Fransa", C: "ABD", D: "İngiltere", E: "Japonya", dogru: "A", aciklama: "Gucci İtalyan lüks markasıdır." },
+            { soru: "Prada hangi ülkenin markasıdır?", A: "İtalya", B: "Almanya", C: "İspanya", D: "Portekiz", E: "Yunanistan", dogru: "A", aciklama: "Prada İtalyan markasıdır." },
+            { soru: "Hermès hangi ürünle de çok ünlüdür?", A: "Çanta ve ipek eşarp", B: "Sadece telefon", C: "Sadece araba", D: "Sadece oyun konsolu", E: "Sadece kahve", dogru: "A", aciklama: "Hermès Birkin çanta ve eşarplarıyla ünlüdür." },
+            { soru: "Zara hangi moda modeliyle bilinir?", A: "Hızlı hazır giyim perakende", B: "Sadece couture atölye", C: "Sadece askeri", D: "Sadece iş güvenliği", E: "Sadece spora özel", dogru: "A", aciklama: "Zara hızlı moda zinciridir." },
+            { soru: "H&M hangi sektördedir?", A: "Hazır giyim", B: "Havayolu", C: "Bankacılık", D: "Otomotiv", E: "Enerji", dogru: "A", aciklama: "H&M giyim perakendesidir." },
+            { soru: "Unisex giyim ne demektir?", A: "Her iki cinse uygun", B: "Sadece çocuk", C: "Sadece erkek", D: "Sadece kadın", E: "Sadece bebek", dogru: "A", aciklama: "Unisex herkese uygun tasarımdır." },
+            { soru: "Oversize kesim ne demektir?", A: "Büyük / bol kesim", B: "Dar kesim", C: "Sadece kısa", D: "Sadece resmi", E: "Sadece askeri", dogru: "A", aciklama: "Oversize bilerek bol kalıptır." },
+            { soru: "Crop top nedir?", A: "Kısa kesim üst giysi", B: "Uzun kaban", C: "Bot", D: "Kemer", E: "Eldiven", dogru: "A", aciklama: "Crop top göbek hizasında biter." },
+            { soru: "Blazer nedir?", A: "Ceket türü", B: "Ayakkabı", C: "Çanta", D: "Bere", E: "Çorap", dogru: "A", aciklama: "Blazer şık ceket modelidir." },
+            { soru: "Loafer nedir?", A: "Bağcaksız ayakkabı modeli", B: "Şapka", C: "Kemer tokası", D: "Gözlük", E: "Eldiven", dogru: "A", aciklama: "Loafer klasik bağcaksız ayakkabıdır." },
+            { soru: "Tote bag nedir?", A: "Geniş omuz / el çantası", B: "Topuklu ayakkabı", C: "Kravat", D: "Kol düğmesi", E: "Yaka iğnesi", dogru: "A", aciklama: "Tote bag geniş ve pratik çantadır." },
+            { soru: "Moda stilisti ne yapar?", A: "Kıyafet ve imaj birleştirir", B: "Uçak kullanır", C: "Ameliyat yapar", D: "Kod yazar", E: "Maç yönetir", dogru: "A", aciklama: "Stilist görünüm kurgular." },
+            { soru: "Kumaş gramajı neyi etkiler?", A: "Kalınlık ve duruşu", B: "Sadece rengi", C: "Sadece logoyu", D: "Sadece fiyat etiketini", E: "Sadece mağaza adını", dogru: "A", aciklama: "Gramaj kumaşın yoğunluğunu belirler." },
+            { soru: "İpek kumaş neyle bilinir?", A: "Parlak ve yumuşak doku", B: "Sadece su geçirmezlik", C: "Sadece zırh", D: "Sadece kauçuk", E: "Sadece cam", dogru: "A", aciklama: "İpek lüks ve yumuşak kumaştır." },
+            { soru: "Pamuk kumaşın avantajı nedir?", A: "Nefes alabilir ve doğal olması", B: "Sadece metalik parlaklık", C: "Sadece cam gibi sertlik", D: "Sadece paslanma", E: "Sadece iletkenlik", dogru: "A", aciklama: "Pamuk doğal ve konforludur." },
+            { soru: "Polyester ne tür bir malzemedir?", A: "Sentetik kumaş", B: "Doğal yün", C: "Saf ipek", D: "Sadece deri", E: "Sadece ahşap", dogru: "A", aciklama: "Polyester sentetik elyaftır." },
+            { soru: "Moda ikonu ne demektir?", A: "Stilıyla öne çıkan ünlü kişi", B: "Sadece terzinin makası", C: "Sadece dikiş iğnesi", D: "Sadece mağaza rafı", E: "Sadece etiket", dogru: "A", aciklama: "Moda ikonu stil simgesidir." },
+            { soru: "Red carpet neyi ifade eder?", A: "Resmi etkinlik basamak / stil sahnesi", B: "Futbol sahası", C: "Mutfak tezgahı", D: "Otobüs durağı", E: "Sınıf tahtası", dogru: "A", aciklama: "Kırmızı halı prestijli etkinlik stilidir." },
+            { soru: "Trend ne demektir?", A: "Dönemin popüler stili", B: "Eski yasa", C: "Sabit üniforma", D: "Sadece askeri kural", E: "Sadece okul yönetmeliği", dogru: "A", aciklama: "Trend o dönem revaçta olandır." },
+            { soru: "Klasik stil neyi ifade eder?", A: "Zamansız ve sade şıklık", B: "Sadece flaş trend", C: "Sadece spor forma", D: "Sadece kostüm parti", E: "Sadece iş tulumu", dogru: "A", aciklama: "Klasik stil uzun ömürlü şıklıktır." },
+            { soru: "Aksesuar örneği hangisidir?", A: "Çanta, kemer, takı", B: "Sadece duvar boyası", C: "Sadece motor yağı", D: "Sadece klavye", E: "Sadece lastik", dogru: "A", aciklama: "Aksesuar kıyafeti tamamlayan parçalardır." }
+        ];
+
+        const felsefeSorulari = [
+            { soru: "Felsefe kelimesinin köken anlamı nedir?", A: "Bilgelik sevgisi", B: "Savaş sanatı", C: "Para sayma", D: "Yemek pişirme", E: "Yüzme", dogru: "A", aciklama: "Philosophia bilgelik sevgisi demektir." },
+            { soru: "Sokrates hangi yöntemle bilinir?", A: "Soru-cevap / diyalektik", B: "Laboratuvar deneyi", C: "İstatistik", D: "Harita çizimi", E: "Müzik besteleme", dogru: "A", aciklama: "Sokrates sorgulayıcı diyalog kullanır." },
+            { soru: "Platon'un ünlü alegorisi hangisidir?", A: "Mağara alegorisi", B: "Deniz alegorisi", C: "Dağ alegorisi", D: "Çöl alegorisi", E: "Nehir sadece", dogru: "A", aciklama: "Mağara alegorisi bilgi ve gerçeklik üzerinedir." },
+            { soru: "Aristoteles kimdir?", A: "Antik Yunan filozofu", B: "Futbolcu", C: "Pilotiroz", D: "Pilot", E: "Aşçı", dogru: "A", aciklama: "Aristoteles Platon'un öğrencisidir." },
+            { soru: "Descartes'in ünlü sözü nedir?", A: "Düşünüyorum, öyleyse varım", B: "Koşuyorum öyleyse varım", C: "Yiyorum öyleyse varım", D: "Uyuyorum öyleyse varım", E: "Susuyorum öyleyse varım", dogru: "A", aciklama: "Cogito, ergo sum." },
+            { soru: "Nietzsche'nin ünlü kavramlarından biri hangisidir?", A: "Üstinsan (Übermensch)", B: "Mağara", C: "Kategorik imperatif", D: "Tabula rasa", E: "İdea", dogru: "A", aciklama: "Übermensch Nietzsche düşüncesinde önemli yer tutar." },
+            { soru: "Kant'ın ahlak felsefesinde öne çıkan kavram hangisidir?", A: "Kategorik imperatif", B: "Tabula rasa", C: "İradeye tapınma", D: "Mağara", E: "Atom", dogru: "A", aciklama: "Kategorik imperatif evrensel ahlak yasasıdır." },
+            { soru: "Varoluşçuluğun önemli isimlerinden kimdir?", A: "Jean-Paul Sartre", B: "Newton", C: "Einstein", D: "Pasteur", E: "Galileo", dogru: "A", aciklama: "Sartre varoluşçu filozoftur." },
+            { soru: "Camus hangi kavramla da anılır?", A: "Absürt", B: "Kuantum", C: "Fotosentez", D: "Jeoloji", E: "Cebir", dogru: "A", aciklama: "Camus absürt düşüncesiyle bilinir." },
+            { soru: "Epistemoloji neyi inceler?", A: "Bilgiyi", B: "Yıldızları", C: "Bitkileri", D: "Madenleri", E: "Sporu", dogru: "A", aciklama: "Epistemoloji bilgi kuramıdır." },
+            { soru: "Ontoloji neyi inceler?", A: "Varlığı", B: "Yemek tariflerini", C: "Futbol taktiklerini", D: "Moda trendlerini", E: "Hava durumunu", dogru: "A", aciklama: "Ontoloji varlık felsefesidir." },
+            { soru: "Etik neyi inceler?", A: "Ahlakı", B: "Geometrıyı", C: "Kimyasal bağları", D: "Depremleri", E: "Yıldızları", dogru: "A", aciklama: "Etik ahlak felsefesidir." },
+            { soru: "Estetik neyi inceler?", A: "Güzellik ve sanatı", B: "Vergiyi", C: "Seçim sistemini", D: "Motor yağını", E: "Klavye düzenini", dogru: "A", aciklama: "Estetik güzellik ve sanat felsefesidir." },
+            { soru: "Mantık felsefede ne işe yarar?", A: "Doğru akıl yürütmeyi", B: "Yemek pişirmeyi", C: "Koşmayı", D: "Boyamayı", E: "Şarkı söylemeyi", dogru: "A", aciklama: "Mantık geçerli çıkarım kurallarını inceler." },
+            { soru: "Tabula rasa düşüncesi kiminle anılır?", A: "John Locke", B: "Nietzsche", C: "Herakleitos", D: "Platon sadece", E: "Marx sadece", dogru: "A", aciklama: "Locke zihni boş levha olarak betimler." },
+            { soru: "Diyalektik yöntem hangi isimlerle de anılır?", A: "Hegel / Marksist gelenek", B: "Sadece pastacılar", C: "Sadece pilotlar", D: "Sadece kaleciler", E: "Sadece terziler", dogru: "A", aciklama: "Diyalektik Hegel ve Marks'ta önemli yer tutar." },
+            { soru: "Hedonizm neyi savunur?", A: "Haz / mutluluğu temel iyi sayar", B: "Acıyı yüceltir", C: "Bilgiyi reddeder", D: "Sanatı yasaklar", E: "Düşünceyi reddeder", dogru: "A", aciklama: "Hedonizm hazzı merkeze alır." },
+            { soru: "Stoacılık neyi öğütler?", A: "Erdem ve iç dinginlik", B: "Sadece lüks", C: "Sadece öfke", D: "Sadece intikam", E: "Sadece savurganlık", dogru: "A", aciklama: "Stoacılık erdem ve sükûneti savunur." },
+            { soru: "Sofistler Antik Yunan'da neyle bilinir?", A: "Hitabet ve göreceli doğrular", B: "Tarım makinesi", C: "Uzay aracı", D: "Futbol kuralı", E: "Moda defilesi", dogru: "A", aciklama: "Sofistler retorik ve görecilikle anılır." },
+            { soru: "Herakleitos'un ünlü düşüncesi nedir?", A: "Her şey akar / değişim", B: "Hiçbir şey değişmez", C: "Sadece sayılar vardır", D: "Sadece idealar gerçektir", E: "Sadece haz vardır", dogru: "A", aciklama: "Panta rhei: her şey akar." },
+            { soru: "Parmenides neyi savunur?", A: "Varlığın birliği / değişmezlik", B: "Her şeyin aktığını", C: "Sadece ahlakı", D: "Sadece sanatı", E: "Sadece sporu", dogru: "A", aciklama: "Parmenides değişimin yanıltıcı olduğunu düşünür." },
+            { soru: "Utilitarizm (faydacılık) neyi ölçer?", A: "En çok sayıda en büyük mutluluğu", B: "Sadece bireysel öfkeyi", C: "Sadece güzelliği", D: "Sadece gücü", E: "Sadece inancı", dogru: "A", aciklama: "Utilitarizm sonuçsal mutluluğu esas alır." },
+            { soru: "Thomas Hobbes'un ünlü eseri hangisidir?", A: "Leviathan", B: "Devlet", C: "Nikomakhos'a Etik", D: "Varlık ve Zaman", E: "Böyle Buyurdu Zerdüşt", dogru: "A", aciklama: "Leviathan Hobbes'un siyaset felsefesi eseridir." },
+            { soru: "Platon'un ideal devleti hangi eserindedir?", A: "Devlet (Politeia)", B: "Leviathan", C: "Metafizik", D: "Poetik", E: "Organon", dogru: "A", aciklama: "Devlet, Platon'un ideal polisini anlatır." },
+            { soru: "Aristoteles'in ahlak eseri hangisidir?", A: "Nikomakhos'a Etik", B: "Leviathan", C: "Zerdüşt", D: "Mağara", E: "Cogito", dogru: "A", aciklama: "Nikomakhos'a Etik ahlak üzerinedir." },
+            { soru: "Felsefede 'argüman' ne demektir?", A: "Gerekçelerle desteklenen iddia", B: "Sadece bağırma", C: "Sadece şarkı", D: "Sadece dans", E: "Sadece resim", dogru: "A", aciklama: "Argüman öncüllerden sonuca gidiştir." },
+            { soru: "Safsata nedir?", A: "Hatalı akıl yürütme", B: "Doğru kanıt", C: "Bilimsel yasa", D: "Matematik formülü", E: "Kimyasal tepkime", dogru: "A", aciklama: "Safsata aldatıcı/geçersiz çıkarımdır." },
+            { soru: "Determinizm neyi savunur?", A: "Olayların nedenlerle belirlendiğini", B: "Tam rastgeleliği", C: "Sadece şansı", D: "Sadece mucizeyi", E: "Sadece rastlantıyı", dogru: "A", aciklama: "Determinizm nedensel belirlenimi vurgular." },
+            { soru: "Özgür irade tartışması neyi sorar?", A: "İnsan seçimlerinde özgür müdür?", B: "Hava sıcak mı?", C: "Su ıslak mı?", D: "2+2=4 mü?", E: "Güneş doğar mı?", dogru: "A", aciklama: "Özgür irade ahlak ve sorumlulukla bağlıdır." },
+            { soru: "Siyaset felsefesi neyi inceler?", A: "İktidar, adalet, devlet", B: "Sadece yemek", C: "Sadece moda", D: "Sadece spor skoru", E: "Sadece hava", dogru: "A", aciklama: "Siyaset felsefesi kamusal düzeni sorgular." },
+            { soru: "Adalet kavramı hangi alanın merkezindedir?", A: "Siyaset ve etik felsefe", B: "Sadece sporda top rengi", C: "Sadece kumaş boyası", D: "Sadece klavye tuşu", E: "Sadece lastik", dogru: "A", aciklama: "Adalet etik ve siyasetin ana sorunudur." },
+            { soru: "Bilim felsefesi neyi inceler?", A: "Bilimsel bilginin doğasını", B: "Sadece maç skoru", C: "Sadece defile", D: "Sadece yemek tarifi", E: "Sadece şarkı sözü", dogru: "A", aciklama: "Bilim felsefesi yöntem ve doğrulamayı tartışır." },
+            { soru: "Karl Marx hangi alanla da anılır?", A: "Siyaset felsefesi / ekonomi politik", B: "Futbol kaleciliği", C: "Uzay pilotluğu", D: "Moda tasarımı", E: "Opera şarkıcılığı", dogru: "A", aciklama: "Marx tarih ve toplum çözümlemesi yapar." },
+            { soru: "Simone de Beauvoir hangi konuda ünlüdür?", A: "Feminist felsefe", B: "Kuantum fiziği", C: "Futbol", D: "Otomotiv", E: "Aşçılık", dogru: "A", aciklama: "İkinci Cins önemli feminist felsefe eseridir." },
+            { soru: "Doğu felsefesi örnekleri hangileridir?", A: "Konfüçyüsçülük, Taoizm, Budist düşünce", B: "Sadece NBA kuralları", C: "Sadece yemek menüsü", D: "Sadece araba katalogu", E: "Sadece moda etiketi", dogru: "A", aciklama: "Doğu gelenekleri zengin felsefi mirasa sahiptir." },
+            { soru: "Budist düşüncede 'nirvana' neyi ifade eder?", A: "Acıdan kurtuluş / aydınlanma hedefi", B: "Bir araba modeli", C: "Bir yemek", D: "Bir spor", E: "Bir kumaş", dogru: "A", aciklama: "Nirvana acının sönümlenmesi idealidir." },
+            { soru: "Sokratik bilgelik neyi vurgular?", A: "Bilmediğini bilmek", B: "Her şeyi ezbere bilmek", C: "Hiç sormamak", D: "Sadece emretmek", E: "Sadece ezmek", dogru: "A", aciklama: "Sokrates bilmediğini bilmenin bilgelik olduğunu söyler." },
+            { soru: "Ahlakî görecilik neyi iddia eder?", A: "Ahlakın kültüre/göreli olabileceğini", B: "Tek evrensel ahlak kesinliğini her zaman", C: "Sadece matematiği", D: "Sadece fiziği", E: "Sadece sporu", dogru: "A", aciklama: "Görecilik ahlakın bağlama göre değişebileceğini savunur." },
+            { soru: "Felsefi şüphecilik neyi sorgular?", A: "Kesin bilginin imkânını", B: "Sadece yemek tadını", C: "Sadece renkleri", D: "Sadece sesleri", E: "Sadece kokuları", dogru: "A", aciklama: "Şüphecilik bilgi iddialarını sorgular." },
+            { soru: "Pratik felsefe örneği hangisidir?", A: "Etik ve siyaset", B: "Sadece saf matematik formülü", C: "Sadece spekülatif metafizik soyutluğu", D: "Sadece gramer kuralı", E: "Sadece yazım imlası", dogru: "A", aciklama: "Pratik felsefe eylem ve yaşamı konu alır." }
+        ];
+
+        const dogaSorulari = [
+            { soru: "Fotosentez yapan canlılar ne üretir?", A: "Oksijen ve glikoz", B: "Sadece azot", C: "Sadece demir", D: "Sadece plastik", E: "Sadece cam", dogru: "A", aciklama: "Fotosentez O₂ ve glikoz üretir." },
+            { soru: "Dünyanın akciğerleri olarak anılan orman hangisidir?", A: "Amazon", B: "Sahra", C: "Antarktika buzulu", D: "Grönland", E: "Gobi", dogru: "A", aciklama: "Amazon büyük oksijen ve biyoçeşitlilik kaynağıdır." },
+            { soru: "Sera etkisi neyi anlatır?", A: "Atmosferin ısıyı tutması", B: "Denizin donması", C: "Dağın erimesi", D: "Rüzgârın durması", E: "Toprağın kaybolması", dogru: "A", aciklama: "Sera gazları ısıyı hapseder." },
+            { soru: "İklim değişikliğinin ana insan kaynaklı etkeni nedir?", A: "Fosil yakıt salımları", B: "Ayın fazı", C: "Yıldız kayması", D: "Gelgit", E: "Gökkuşağı", dogru: "A", aciklama: "CO₂ vb. salımlar ısınmayı artırır." },
+            { soru: "Geri dönüşüm neyi amaçlar?", A: "Atıkları yeniden kullanıma kazandırmak", B: "Daha çok çöp üretmek", C: "Orman yakmak", D: "Suyu kirletmek", E: "Havayı bozmak", dogru: "A", aciklama: "Geri dönüşüm kaynak israfını azaltır." },
+            { soru: "Biyoçeşitlilik nedir?", A: "Canlı türlerinin çeşitliliği", B: "Sadece tek tür", C: "Sadece taşlar", D: "Sadece metaller", E: "Sadece plastikler", dogru: "A", aciklama: "Biyoçeşitlilik yaşamın zenginliğidir." },
+            { soru: "Nesli tükenme ne demektir?", A: "Bir türün yok olması", B: "Bir türün çoğalması", C: "Bir ağacın büyümesi", D: "Bir nehrin taşması", E: "Bir dağın yükselmesi", dogru: "A", aciklama: "Extinction türün ortadan kalkmasıdır." },
+            { soru: "Ozon tabakası neyi filtreler?", A: "Zararlı UV ışınlarını", B: "Sadece sesi", C: "Sadece yağmuru", D: "Sadece rüzgârı", E: "Sadece kumu", dogru: "A", aciklama: "Ozon UV'yi süzerek yaşamı korur." },
+            { soru: "Su döngüsünün aşamalarından biri hangisidir?", A: "Buharlaşma", B: "Fotokopi", C: "Kaynak", D: "Dikiş", E: "Fırınlama", dogru: "A", aciklama: "Buharlaşma-yoğuşma-yağış su döngüsüdür." },
+            { soru: "Yenilenebilir enerji örneği hangisidir?", A: "Güneş enerjisi", B: "Kömür", C: "Petrol", D: "Doğalgaz", E: "Linyit", dogru: "A", aciklama: "Güneş yenilenebilir kaynaktır." },
+            { soru: "Fosil yakıt örneği hangisidir?", A: "Kömür", B: "Güneş", C: "Rüzgâr", D: "Dalga", E: "Jeotermal ısı pompası sadece", dogru: "A", aciklama: "Kömür fosil yakıttır." },
+            { soru: "Kompost nedir?", A: "Organik atıkların gübreye dönüşümü", B: "Plastik yakma", C: "Metal eritme", D: "Cam kırma", E: "Lastik yakma", dogru: "A", aciklama: "Kompost doğal gübre üretimidir." },
+            { soru: "Erozyon nedir?", A: "Toprağın aşınıp taşınması", B: "Ağaç dikmek", C: "Su arıtmak", D: "Güneş paneli kurmak", E: "Rüzgâr türbini dikmek", dogru: "A", aciklama: "Erozyon verimli toprağı azaltır." },
+            { soru: "Çölleşme nedir?", A: "Toprağın çöl benzeri hale gelmesi", B: "Ormanın büyümesi", C: "Gölün dolması", D: "Buzulun artması", E: "Yağmurun çoğalması", dogru: "A", aciklama: "Çölleşme kuraklık ve bozulmayla ilerler." },
+            { soru: "Milli park ne işe yarar?", A: "Doğayı koruma alanı", B: "Sadece fabrika", C: "Sadece otoyol", D: "Sadece madencilik", E: "Sadece çöp depolama", dogru: "A", aciklama: "Milli parklar koruma ve eğitim içindir." },
+            { soru: "Habitat nedir?", A: "Canlının yaşadığı doğal ortam", B: "Sadece kafes", C: "Sadece laboratuvar", D: "Sadece müze", E: "Sadece stadyum", dogru: "A", aciklama: "Habitat türün yaşam alanıdır." },
+            { soru: "Ekoloji neyi inceler?", A: "Canlılar ve çevre ilişkilerini", B: "Sadece yıldızları", C: "Sadece modayı", D: "Sadece futbolu", E: "Sadece yazılımı", dogru: "A", aciklama: "Ekoloji ekosistemleri inceler." },
+            { soru: "Gıda zincirinin tabanında genelde ne vardır?", A: "Üreticiler / bitkiler", B: "Aslanlar", C: "Kartallar", D: "İnsanlar her zaman", E: "Köpekbalıkları", dogru: "A", aciklama: "Üreticiler enerjiyi güneşten alır." },
+            { soru: "Arılar ekosistemde neden önemlidir?", A: "Tozlaşma", B: "Sadece gürültü", C: "Sadece gölge", D: "Sadece rüzgâr", E: "Sadece yağmur", dogru: "A", aciklama: "Arılar bitki tozlaşmasında kritiktir." },
+            { soru: "Plastik kirliliği en çok nereleri tehdit eder?", A: "Okyanus ve deniz canlılarını", B: "Sadece uzayı", C: "Sadece mağaraları", D: "Sadece çölleri her zaman", E: "Sadece dağ zirvelerini her zaman", dogru: "A", aciklama: "Plastik denizlerde ciddi kirlilik yaratır." },
+            { soru: "Mikroplastik nedir?", A: "Çok küçük plastik parçacıklar", B: "Büyük konteyner", C: "Demir levha", D: "Cam şişe", E: "Ahşap kütük", dogru: "A", aciklama: "Mikroplastikler kolay dağılır ve birikir." },
+            { soru: "Sürdürülebilirlik ne demektir?", A: "Gelecek nesilleri de gözeten kullanım", B: "Hemen tüketip bitirmek", C: "Sadece bugünü düşünmek", D: "Kaynakları yok etmek", E: "Atığı artırmak", dogru: "A", aciklama: "Sürdürülebilirlik uzun vadeli dengedir." },
+            { soru: "Karbon ayak izi nedir?", A: "Üretilen sera gazı miktarının ölçüsü", B: "Ayak numarası", C: "Ayakkabı markası", D: "Yol uzunluğu", E: "Adım sayısı", dogru: "A", aciklama: "Karbon ayak izi emisyon etkisini gösterir." },
+            { soru: "Ağaç dikmek neye katkı sağlar?", A: "Karbon tutma ve oksijen üretimi", B: "Sadece gürültü", C: "Sadece kirlilik", D: "Sadece erozyon artırma", E: "Sadece çölleşme", dogru: "A", aciklama: "Ağaçlar karbon yutağıdır." },
+            { soru: "Sulak alanlar neden önemlidir?", A: "Biyoçeşitlilik ve su regülasyonu", B: "Sadece otopark", C: "Sadece fabrika", D: "Sadece maden", E: "Sadece çöp", dogru: "A", aciklama: "Sulak alanlar ekosistem hizmeti verir." },
+            { soru: "Yağmur ormanı iklimi nasıldır?", A: "Sıcak ve bol yağışlı", B: "Kutup gibi soğuk", C: "Çöl gibi kuru", D: "Sadece buzlu", E: "Sadece rüzgârsız her zaman", dogru: "A", aciklama: "Ekvatoral yağmur ormanları nemlidir." },
+            { soru: "Kutup ayısı hangi ortamda yaşar?", A: "Arktik buzul bölgeleri", B: "Çöl", C: "Yağmur ormanı", D: "Savana", E: "Mercan resifi", dogru: "A", aciklama: "Kutup ayısı Arktik'te yaşar." },
+            { soru: "Mercan resifleri neden tehdit altındadır?", A: "Isınma ve kirlilik", B: "Sadece kar yağışı", C: "Sadece rüzgâr", D: "Sadece ay tutulması", E: "Sadece gökkuşağı", dogru: "A", aciklama: "Okyanus ısınması mercan ağartması yapar." },
+            { soru: "Geri dönüşüm sembolü genelde neyi gösterir?", A: "Üçgen ok döngüsü", B: "Futbol topu", C: "Araba", D: "Telefon", E: "Kedi", dogru: "A", aciklama: "Mobius döngüsü geri dönüşüm simgesidir." },
+            { soru: "Organik tarım neyi hedefler?", A: "Kimyasal girdi azaltılmış üretim", B: "Daha çok pestisit", C: "Daha çok zehir", D: "Daha çok atık", E: "Daha çok erozyon", dogru: "A", aciklama: "Organik tarım doğal yöntemleri öne alır." },
+            { soru: "Hava kirliliğinin sağlık etkisi nedir?", A: "Solunum hastalıkları riski", B: "Daha iyi akciğer her zaman", C: "Daha iyi kalp her zaman", D: "Daha iyi uyku her zaman", E: "Daha iyi görme her zaman", dogru: "A", aciklama: "Kirli hava solunum sorunlarını artırır." },
+            { soru: "Gürültü kirliliği neyi bozar?", A: "Yaşam kalitesi ve sağlığı", B: "Sadece renkleri", C: "Sadece tatları", D: "Sadece kumaşları", E: "Sadece lastikleri", dogru: "A", aciklama: "Aşırı gürültü strese yol açar." },
+            { soru: "Işık kirliliği neyi etkiler?", A: "Gökyüzü gözlemi ve canlı ritmi", B: "Sadece araba lastiği", C: "Sadece klavye", D: "Sadece kalem", E: "Sadece bardak", dogru: "A", aciklama: "Işık kirliliği gece ekosistemini bozar." },
+            { soru: "Doğal afet örneği hangisidir?", A: "Deprem", B: "Futbol maçı", C: "Konser", D: "Sınav", E: "Alışveriş", dogru: "A", aciklama: "Deprem doğal afettir." },
+            { soru: "Sel riskini artıran etken hangisidir?", A: "Aşırı yağış ve yanlış yapılaşma", B: "Sadece güneş tutulması", C: "Sadece yıldız kayması", D: "Sadece ayın rengi", E: "Sadece gökkuşağı", dogru: "A", aciklama: "Yanlış kentleşme sel riskini büyütür." },
+            { soru: "Çevre dostu ulaşım örneği hangisidir?", A: "Bisiklet / toplu taşıma", B: "Tek kişilik dev SUV her gün", C: "Gereksiz uçak her gün", D: "Boş araçla uzun yol her gün", E: "Motoru rölantide saatlerce çalıştırma", dogru: "A", aciklama: "Bisiklet ve toplu taşıma daha az salım üretir." },
+            { soru: "Doğa koruma gönüllülüğü ne işe yarar?", A: "Farkındalık ve saha desteği", B: "Doğayı yok etmek", C: "Çöp artırmak", D: "Ağaç kesmek", E: "Avı artırmak", dogru: "A", aciklama: "Gönüllülük koruma çalışmalarına destek olur." },
+            { soru: "Endemik tür ne demektir?", A: "Sadece belirli bölgede yaşayan tür", B: "Her yerde bulunan tür", C: "Sadece evcil tür", D: "Sadece yok olmuş tür", E: "Sadece uzaylı tür", dogru: "A", aciklama: "Endemik türler dar yayılışlıdır." },
+            { soru: "Doğada 'besin ağı' neyi gösterir?", A: "Türler arası karmaşık beslenme ilişkileri", B: "Sadece tek çizgi", C: "Sadece bir hayvan", D: "Sadece bir bitki", E: "Sadece bir taş", dogru: "A", aciklama: "Besin ağı ekosistem ilişkilerini anlatır." },
+            { soru: "Çevre bilincinin temel amacı nedir?", A: "Doğayı ve yaşamı korumak", B: "Doğayı yok etmek", C: "Kirliliği artırmak", D: "Kaynakları israf etmek", E: "Biyoçeşitliliği azaltmak", dogru: "A", aciklama: "Çevre bilinci sürdürülebilir yaşam içindir." }
+        ];
+
+        const allPools = [marvelSorulari, dcSorulari, oyunSorulari, arabaSorulari, motorSorulari, yemekSorulari, hayvanSorulari, sporSorulari, teknolojiSorulari, genelkulturSorulari, muzikSorulari, sinemaSorulari, bilimSorulari, tarihSorulari, sanatSorulari, astronomiSorulari, edebiyatSorulari, cografyaSorulari, siyasetSorulari, saglikSorulari, mitolojiSorulari, animeSorulari, futbolSorulari, markalarSorulari, bayraklarSorulari, matematikSorulari, diziSorulari, modaSorulari, felsefeSorulari, dogaSorulari];
         allPools.forEach(arr => { while (arr.length < 30) arr.push({ ...arr[0] }); });
 
         localStorage.setItem('matex_totalPoints', '0'); let totalRankPoints = 0;
@@ -3495,7 +4138,7 @@
         function changeTheme(catId) {
             const bg = document.getElementById('animatedBg'), cont = document.getElementById('animationContainer');
             bg.className = 'animated-bg';
-            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'oyun': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik' };
+            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'oyun': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik', 'mitoloji': 'theme-mitoloji', 'anime': 'theme-anime', 'futbol': 'theme-futbol', 'markalar': 'theme-markalar', 'bayraklar': 'theme-bayraklar', 'matematik': 'theme-matematik', 'dizi': 'theme-dizi', 'moda': 'theme-moda', 'felsefe': 'theme-felsefe', 'doga': 'theme-doga' };
             bg.classList.add(map[catId] || 'theme-space'); cont.innerHTML = '';
             if (catId === 'araba') { for (let i = 0; i < 8; i++) { let c = document.createElement('div'); c.className = 'car-animation'; c.textContent = ['🏎️', '🚗', '🚙', '🚕', '🏎️', '🚓'][i % 6]; c.style.top = (5 + i * 12) + '%'; c.style.animationDelay = (i * 1.5) + 's'; c.style.animationDuration = (7 + Math.random() * 5) + 's'; cont.appendChild(c); } }
             else if (catId === 'motor') { for (let i = 0; i < 8; i++) { let c = document.createElement('div'); c.className = 'car-animation'; c.textContent = ['🏍️', '🛵', '🏍️', '🛵', '🏍️', '🛵'][i % 6]; c.style.top = (5 + i * 12) + '%'; c.style.animationDelay = (i * 1.5) + 's'; cont.appendChild(c); } }
@@ -3516,6 +4159,16 @@
             else if (catId === 'cografya') { ['🌍', '🗺️', '🧭', '⛰️', '🏝️', '🌋', '🏞️', '🌐'].forEach((g, i) => { let d = document.createElement('div'); d.className = 'geo-item'; d.textContent = g; d.style.top = (8 + i * 11) + '%'; d.style.animationDelay = (i * 1.1) + 's'; d.style.animationDuration = (7 + Math.random() * 4) + 's'; cont.appendChild(d); }); }
             else if (catId === 'siyaset') { ['🏛️', '⚖️', '🗳️', '📜', '🤝', '🗣️', '🗽', '📢'].forEach((p, i) => { let d = document.createElement('div'); d.className = 'politic-item'; d.textContent = p; d.style.left = (5 + i * 12) + '%'; d.style.top = (12 + (i % 3) * 24) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
             else if (catId === 'saglik') { ['🩺', '💊', '❤️', '🧬', '🏥', '💉', '🩹', '🧠'].forEach((h, i) => { let d = document.createElement('div'); d.className = 'health-item'; d.textContent = h; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 26) + '%'; d.style.animationDelay = (i * 0.35) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'mitoloji') { ['⚡', '🏛️', '🏹', '🔱', '🐉', '🛡️', '👑', '🔥'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'myth-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'anime') { ['🎌', '⚔️', '🌸', '🍥', '🥷', '😺', '💫', '🎮'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'anime-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'futbol') { ['⚽', '🥅', '🏆', '👟', '🏟️', '🧤', '🎖️', '👕'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'futbol-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'markalar') { ['🏷️', '📱', '👟', '🍔', '💻', '⌚', '🚗', '☕'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'brand-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'bayraklar') { ['🚩', '🏳️', '🇹🇷', '🌍', '🗺️', '🧭', '✈️', '🏛️'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'flag-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'matematik') { ['➗', '➕', '✖️', '📐', '🔢', 'π', '∑', '∞'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'math-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'dizi') { ['📺', '🍿', '🎬', '⭐', '🛋️', '🎧', '📱', '🎭'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'series-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'moda') { ['👗', '👠', '👜', '🕶️', '💄', '👒', '💍', '🧵'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'fashion-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'felsefe') { ['🧠', '📜', '⚖️', '💭', '🕯️', '📚', '🗿', '🔍'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'philo-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'doga') { ['🌿', '🌳', '🌊', '🦋', '🍃', '🏔️', '🌻', '♻️'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'nature-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
             else { for (let i = 0; i < 100; i++) { let s = document.createElement('div'); s.className = 'star'; s.style.width = Math.random() * 3 + 1 + 'px'; s.style.height = s.style.width; s.style.left = Math.random() * 100 + '%'; s.style.top = Math.random() * 100 + '%'; cont.appendChild(s); } }
         }
 
@@ -3586,7 +4239,7 @@
             }
         };
 
-        const kategoriler = [{ id: 'marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Kahramanlar' }, { id: 'dc', ad: 'DC', icon: '🦇', subtitle: 'Süper güç' }, { id: 'oyun', ad: 'Oyun', icon: '🎮', subtitle: 'Pixel dünyası' }, { id: 'araba', ad: 'Araba', icon: '🏎️', subtitle: 'Hız şöleni' }, { id: 'motor', ad: 'Motor', icon: '🏍️', subtitle: 'Açık yol' }, { id: 'yemek', ad: 'Yemek', icon: '🍳', subtitle: 'Lezzet sınavı' }, { id: 'hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Doğal dünya' }, { id: 'spor', ad: 'Spor', icon: '⚽', subtitle: 'Rekabet' }, { id: 'teknoloji', ad: 'Teknoloji', icon: '📱', subtitle: 'Gelecek' }, { id: 'genelkultur', ad: 'Genel Kültür', icon: '🌍', subtitle: 'Her şey' }, { id: 'muzik', ad: 'Müzik', icon: '🎵', subtitle: 'Sesler' }, { id: 'sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film dünyası' }, { id: 'bilim', ad: 'Bilim', icon: '🔬', subtitle: 'Keşif' }, { id: 'tarih', ad: 'Tarih', icon: '📜', subtitle: 'Geçmiş' }, { id: 'sanat', ad: 'Sanat', icon: '🎨', subtitle: 'İfade' }, { id: 'astronomi', ad: 'Astronomi', icon: '☄️', subtitle: 'Yıldızlar' }, { id: 'edebiyat', ad: 'Edebiyat', icon: '📚', subtitle: 'Kelime hazinesi' }, { id: 'cografya', ad: 'Coğrafya', icon: '🌍', subtitle: 'Harita bilgisi' }, { id: 'siyaset', ad: 'Siyaset', icon: '🏛️', subtitle: 'Toplum' }, { id: 'saglik', ad: 'Sağlık', icon: '🩺', subtitle: 'Yaşam bilgisi' }];
+        const kategoriler = [{ id: 'marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Kahramanlar' }, { id: 'dc', ad: 'DC', icon: '🦇', subtitle: 'Süper güç' }, { id: 'oyun', ad: 'Oyun', icon: '🎮', subtitle: 'Pixel dünyası' }, { id: 'araba', ad: 'Araba', icon: '🏎️', subtitle: 'Hız şöleni' }, { id: 'motor', ad: 'Motor', icon: '🏍️', subtitle: 'Açık yol' }, { id: 'yemek', ad: 'Yemek', icon: '🍳', subtitle: 'Lezzet sınavı' }, { id: 'hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Doğal dünya' }, { id: 'spor', ad: 'Spor', icon: '⚽', subtitle: 'Rekabet' }, { id: 'teknoloji', ad: 'Teknoloji', icon: '📱', subtitle: 'Gelecek' }, { id: 'genelkultur', ad: 'Genel Kültür', icon: '🌍', subtitle: 'Her şey' }, { id: 'muzik', ad: 'Müzik', icon: '🎵', subtitle: 'Sesler' }, { id: 'sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film dünyası' }, { id: 'bilim', ad: 'Bilim', icon: '🔬', subtitle: 'Keşif' }, { id: 'tarih', ad: 'Tarih', icon: '📜', subtitle: 'Geçmiş' }, { id: 'sanat', ad: 'Sanat', icon: '🎨', subtitle: 'İfade' }, { id: 'astronomi', ad: 'Astronomi', icon: '☄️', subtitle: 'Yıldızlar' }, { id: 'edebiyat', ad: 'Edebiyat', icon: '📚', subtitle: 'Kelime hazinesi' }, { id: 'cografya', ad: 'Coğrafya', icon: '🌍', subtitle: 'Harita bilgisi' }, { id: 'siyaset', ad: 'Siyaset', icon: '🏛️', subtitle: 'Toplum' }, { id: 'saglik', ad: 'Sağlık', icon: '🩺', subtitle: 'Yaşam bilgisi' }, { id: 'mitoloji', ad: 'Mitoloji', icon: '⚡', subtitle: 'Efsaneler' }, { id: 'anime', ad: 'Anime', icon: '🎌', subtitle: 'Manga dünyası' }, { id: 'futbol', ad: 'Futbol', icon: '⚽', subtitle: 'Saha bilgisi' }, { id: 'markalar', ad: 'Markalar', icon: '🏷️', subtitle: 'Logo & marka' }, { id: 'bayraklar', ad: 'Bayraklar', icon: '🚩', subtitle: 'Ülke simgeleri' }, { id: 'matematik', ad: 'Matematik', icon: '➗', subtitle: 'Sayılar' }, { id: 'dizi', ad: 'Dizi', icon: '📺', subtitle: 'Ekran keyfi' }, { id: 'moda', ad: 'Moda', icon: '👗', subtitle: 'Stil & trend' }, { id: 'felsefe', ad: 'Felsefe', icon: '🧠', subtitle: 'Düşünce' }, { id: 'doga', ad: 'Doğa', icon: '🌿', subtitle: 'Çevre & yaşam' }];
         let socket = null;
         let multiplayerAvailable = false;
         let multiplayerRoom = null;
@@ -3685,7 +4338,17 @@
                 edebiyat: edebiyatSorulari,
                 cografya: cografyaSorulari,
                 siyaset: siyasetSorulari,
-                saglik: saglikSorulari
+                saglik: saglikSorulari,
+                mitoloji: mitolojiSorulari,
+                anime: animeSorulari,
+                futbol: futbolSorulari,
+                markalar: markalarSorulari,
+                bayraklar: bayraklarSorulari,
+                matematik: matematikSorulari,
+                dizi: diziSorulari,
+                moda: modaSorulari,
+                felsefe: felsefeSorulari,
+                doga: dogaSorulari
             };
             return poolMap[categoryId] || genelkulturSorulari;
         }
@@ -3828,6 +4491,6 @@
         changeTheme('space'); updateRankDisplay();
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1b395d6dbf0b1f0',t:'MTc4NDA2NDE3Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 
 </html>
