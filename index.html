@@ -4635,7 +4635,7 @@
         let exitTarget = 'text'; // which test exit modal confirms
 
         // Fotoğraflı kategoriler (görselleri sen atınca image alanını dolduracağız)
-        // image: 'images/photo/marvel/ironman.jpg' gibi yol kullan
+        // image: 'ironman.jpg' gibi yol kullan
         // answers: kabul edilen cevap varyasyonları (küçük harf, Türkçe karakter duyarsız)
         const photoKategoriler = [
             { id: 'photo-marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Karakter tahmin', theme: 'marvel' },
@@ -4650,36 +4650,36 @@
 
         const photoPools = {
             'photo-marvel': [
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['captain america', 'kaptan amerika', 'kaptan america', 'steve rogers', 'cap'], label: 'Captain America', emoji: '🛡️', image: 'images/photo/marvel/marvel_01.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['iron man', 'ironman', 'tony stark', 'demir adam'], label: 'Iron Man', emoji: '🦾', image: 'images/photo/marvel/marvel_02.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['spider-man', 'spiderman', 'spider man', 'örümcek adam', 'orumcek adam', 'peter parker'], label: 'Spider-Man', emoji: '🕷️', image: 'images/photo/marvel/marvel_03.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['hulk', 'bruce banner', 'yesil dev', 'yeşil dev'], label: 'Hulk', emoji: '💪', image: 'images/photo/marvel/marvel_04.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['thor', 'tor', 'thor odinson'], label: 'Thor', emoji: '🔨', image: 'images/photo/marvel/marvel_05.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['black widow', 'kara dul', 'natasha romanoff', 'natasha', 'blackwidow'], label: 'Black Widow', emoji: '🖤', image: 'images/photo/marvel/marvel_06.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor strange', 'dr strange', 'doktor strange', 'stephen strange', 'dr. strange'], label: 'Doctor Strange', emoji: '🪄', image: 'images/photo/marvel/marvel_07.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['black panther', 'kara panter', 'tchalla', 't challa', 'blackpanther'], label: 'Black Panther', emoji: '🐆', image: 'images/photo/marvel/marvel_08.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['loki', 'loki laufeyson'], label: 'Loki', emoji: '😈', image: 'images/photo/marvel/marvel_09.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['thanos', 'tanos'], label: 'Thanos', emoji: '🫰', image: 'images/photo/marvel/marvel_10.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['rocket', 'rocket raccoon', 'rakun rocket', 'roket', 'rocket rakun'], label: 'Rocket', emoji: '🦝', image: 'images/photo/marvel/marvel_11.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['star-lord', 'starlord', 'star lord', 'peter quill', 'yildiz lordu', 'yıldız lordu'], label: 'Star-Lord', emoji: '⭐', image: 'images/photo/marvel/marvel_12.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['gamora', 'gamora zen whoberi'], label: 'Gamora', emoji: '💚', image: 'images/photo/marvel/marvel_13.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['groot', 'ben groot', 'i am groot'], label: 'Groot', emoji: '🌳', image: 'images/photo/marvel/marvel_14.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['venom', 'eddie brock', 'venom eddie brock'], label: 'Venom', emoji: '🖤', image: 'images/photo/marvel/marvel_15.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor doom', 'dr doom', 'doktor doom', 'doom', 'victor von doom', 'dr. doom'], label: 'Doctor Doom', emoji: '🟢', image: 'images/photo/marvel/marvel_16.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['wolverine', 'logan', 'james howlett', 'wolverin'], label: 'Wolverine', emoji: '⚔️', image: 'images/photo/marvel/marvel_17.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['deadpool', 'wade wilson', 'dead pool', 'olum havuzu', 'ölüm havuzu'], label: 'Deadpool', emoji: '🔴', image: 'images/photo/marvel/marvel_18.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['ant-man', 'antman', 'ant man', 'scott lang', 'karinca adam', 'karınca adam'], label: 'Ant-Man', emoji: '🐜', image: 'images/photo/marvel/marvel_19.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['wasp', 'the wasp', 'hope van dyne', 'hope vandyne', 'yaban arisi', 'yaban arısı', 'ari kadin', 'arı kadın'], label: 'Wasp', emoji: '🐝', image: 'images/photo/marvel/marvel_20.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['scorpion', 'the scorpion', 'mac gargan', 'akrep', 'scorpio'], label: 'Scorpion', emoji: '🦂', image: 'images/photo/marvel/marvel_21.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['rhino', 'the rhino', 'aleksei sytsevich', 'gergedan', 'rino'], label: 'Rhino', emoji: '🦏', image: 'images/photo/marvel/marvel_22.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['scarlet witch', 'scarlett witch', 'wanda maximoff', 'wanda', 'kizil cadı', 'kızıl cadı', 'kirmizi cadı', 'kırmızı cadı'], label: 'Scarlet Witch', emoji: '🔴', image: 'images/photo/marvel/marvel_23.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['hawkeye', 'hawk eye', 'clint barton', 'sahin goz', 'şahin göz', 'okcu', 'okçu'], label: 'Hawkeye', emoji: '🏹', image: 'images/photo/marvel/marvel_24.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['vision', 'vizyon', 'the vision'], label: 'Vision', emoji: '💎', image: 'images/photo/marvel/marvel_25.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['winter soldier', 'bucky', 'bucky barnes', 'kis askeri', 'kış askeri', 'wintersoldier'], label: 'Winter Soldier', emoji: '❄️', image: 'images/photo/marvel/marvel_26.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['juggernaut', 'the juggernaut', 'cain marko', 'yokedici', 'yok edici', 'jaggernaut'], label: 'Juggernaut', emoji: '🟡', image: 'images/photo/marvel/marvel_27.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['red hulk', 'redhulk', 'kirmizi hulk', 'kırmızı hulk', 'thunderbolt ross', 'general ross', 'ross'], label: 'Red Hulk', emoji: '🔴', image: 'images/photo/marvel/marvel_28.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['moon knight', 'moonknight', 'marc spector', 'steven grant', 'jake lockley', 'ay sovalye', 'ay şövalye', 'ay sovalyesi', 'ay şövalyesi'], label: 'Moon Knight', emoji: '🌙', image: 'images/photo/marvel/marvel_29.png' },
-                { prompt: 'Bu karakterin ismi nedir?', answers: ['daredevil', 'dare devil', 'matt murdock', 'kor seytan', 'kör şeytan', 'kor şeytan', 'kör seytan'], label: 'Daredevil', emoji: '🔴', image: 'images/photo/marvel/marvel_30.png' }
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['captain america', 'kaptan amerika', 'kaptan america', 'steve rogers', 'cap'], label: 'Captain America', emoji: '🛡️', image: 'marvel_01.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['iron man', 'ironman', 'tony stark', 'demir adam'], label: 'Iron Man', emoji: '🦾', image: 'marvel_02.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['spider-man', 'spiderman', 'spider man', 'örümcek adam', 'orumcek adam', 'peter parker'], label: 'Spider-Man', emoji: '🕷️', image: 'marvel_03.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['hulk', 'bruce banner', 'yesil dev', 'yeşil dev'], label: 'Hulk', emoji: '💪', image: 'marvel_04.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['thor', 'tor', 'thor odinson'], label: 'Thor', emoji: '🔨', image: 'marvel_05.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['black widow', 'kara dul', 'natasha romanoff', 'natasha', 'blackwidow'], label: 'Black Widow', emoji: '🖤', image: 'marvel_06.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor strange', 'dr strange', 'doktor strange', 'stephen strange', 'dr. strange'], label: 'Doctor Strange', emoji: '🪄', image: 'marvel_07.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['black panther', 'kara panter', 'tchalla', 't challa', 'blackpanther'], label: 'Black Panther', emoji: '🐆', image: 'marvel_08.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['loki', 'loki laufeyson'], label: 'Loki', emoji: '😈', image: 'marvel_09.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['thanos', 'tanos'], label: 'Thanos', emoji: '🫰', image: 'marvel_10.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rocket', 'rocket raccoon', 'rakun rocket', 'roket', 'rocket rakun'], label: 'Rocket', emoji: '🦝', image: 'marvel_11.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['star-lord', 'starlord', 'star lord', 'peter quill', 'yildiz lordu', 'yıldız lordu'], label: 'Star-Lord', emoji: '⭐', image: 'marvel_12.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['gamora', 'gamora zen whoberi'], label: 'Gamora', emoji: '💚', image: 'marvel_13.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['groot', 'ben groot', 'i am groot'], label: 'Groot', emoji: '🌳', image: 'marvel_14.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['venom', 'eddie brock', 'venom eddie brock'], label: 'Venom', emoji: '🖤', image: 'marvel_15.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor doom', 'dr doom', 'doktor doom', 'doom', 'victor von doom', 'dr. doom'], label: 'Doctor Doom', emoji: '🟢', image: 'marvel_16.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wolverine', 'logan', 'james howlett', 'wolverin'], label: 'Wolverine', emoji: '⚔️', image: 'marvel_17.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['deadpool', 'wade wilson', 'dead pool', 'olum havuzu', 'ölüm havuzu'], label: 'Deadpool', emoji: '🔴', image: 'marvel_18.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['ant-man', 'antman', 'ant man', 'scott lang', 'karinca adam', 'karınca adam'], label: 'Ant-Man', emoji: '🐜', image: 'marvel_19.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wasp', 'the wasp', 'hope van dyne', 'hope vandyne', 'yaban arisi', 'yaban arısı', 'ari kadin', 'arı kadın'], label: 'Wasp', emoji: '🐝', image: 'marvel_20.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['scorpion', 'the scorpion', 'mac gargan', 'akrep', 'scorpio'], label: 'Scorpion', emoji: '🦂', image: 'marvel_21.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rhino', 'the rhino', 'aleksei sytsevich', 'gergedan', 'rino'], label: 'Rhino', emoji: '🦏', image: 'marvel_22.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['scarlet witch', 'scarlett witch', 'wanda maximoff', 'wanda', 'kizil cadı', 'kızıl cadı', 'kirmizi cadı', 'kırmızı cadı'], label: 'Scarlet Witch', emoji: '🔴', image: 'marvel_23.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['hawkeye', 'hawk eye', 'clint barton', 'sahin goz', 'şahin göz', 'okcu', 'okçu'], label: 'Hawkeye', emoji: '🏹', image: 'marvel_24.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['vision', 'vizyon', 'the vision'], label: 'Vision', emoji: '💎', image: 'marvel_25.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['winter soldier', 'bucky', 'bucky barnes', 'kis askeri', 'kış askeri', 'wintersoldier'], label: 'Winter Soldier', emoji: '❄️', image: 'marvel_26.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['juggernaut', 'the juggernaut', 'cain marko', 'yokedici', 'yok edici', 'jaggernaut'], label: 'Juggernaut', emoji: '🟡', image: 'marvel_27.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['red hulk', 'redhulk', 'kirmizi hulk', 'kırmızı hulk', 'thunderbolt ross', 'general ross', 'ross'], label: 'Red Hulk', emoji: '🔴', image: 'marvel_28.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['moon knight', 'moonknight', 'marc spector', 'steven grant', 'jake lockley', 'ay sovalye', 'ay şövalye', 'ay sovalyesi', 'ay şövalyesi'], label: 'Moon Knight', emoji: '🌙', image: 'marvel_29.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['daredevil', 'dare devil', 'matt murdock', 'kor seytan', 'kör şeytan', 'kor şeytan', 'kör seytan'], label: 'Daredevil', emoji: '🔴', image: 'marvel_30.png' }
             ],
             'photo-dc': [
                 { prompt: 'Bu karakterin ismi nedir?', answers: ['batman', 'bruce wayne'], label: 'Batman', emoji: '🦇', image: '' },
