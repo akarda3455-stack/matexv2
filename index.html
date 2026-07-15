@@ -3070,7 +3070,6 @@
                         <div style="color:#00d2ff; font-size:28px;" id="photoDifficultyDisplay"></div>
                         <div style="color:#a0d0ff;" id="photoQuestionCounter">1/10</div>
                     </div>
-                    <button class="exit-test-btn" onclick="showPhotoExitConfirm()">🚪 Çık</button>
                 </div>
             </div>
             <div class="timer-section">
@@ -3091,8 +3090,8 @@
             </div>
             <div class="nav-buttons">
                 <button class="nav-btn" id="photoPrevBtn" onclick="photoPreviousQuestion()" disabled>← Önceki</button>
+                <button class="nav-btn" id="photoReturnSkippedBtn" onclick="photoReturnToSkipped()" disabled>↩️ Boş Bırakılan Soruya Dön</button>
                 <button class="nav-btn skip-btn" id="photoSkipBtn" onclick="photoSkipQuestion()">⏭️ Boş Bırak</button>
-                <button class="nav-btn" onclick="showPhotoExitConfirm()">🚪 Sorudan Çık</button>
                 <button class="primary-btn" id="photoNextBtn" onclick="photoNextQuestion()" disabled>Sonraki →</button>
             </div>
         </div>
@@ -3186,7 +3185,7 @@
                     <div style="text-align:right;">
                         <div style="color:#00d2ff; font-size:28px;" id="difficultyDisplay"></div>
                         <div style="color:#a0d0ff;" id="questionCounter">1/10</div>
-                    </div><button class="exit-test-btn" onclick="showExitConfirm()">🚪 Çık</button>
+                    </div>
                 </div>
             </div>
             <div class="timer-section">
@@ -3202,8 +3201,7 @@
                     disabled>↩️ Boş
                     Bırakılan Soruya Dön</button><button class="nav-btn skip-btn" id="skipBtn"
                     onclick="skipCurrentQuestion()">⏭️ Boş
-                    Bırak</button><button class="nav-btn" id="exitQuestionBtn" onclick="showExitConfirm()">🚪 Sorudan
-                    Çık</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki
+                    Bırak</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki
                     →</button></div>
         </div>
         <div class="screen" id="resultScreen" style="display:none;">
@@ -5036,7 +5034,6 @@
             photoTimeLeft = secilenPhotoZorluk.sure;
             photoTestAktif = true;
             photoPuan = 0;
-            exitTarget = 'photo';
 
             document.getElementById('photoTestUserName').textContent = kullaniciAdi;
             document.getElementById('photoTestUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet} • ${secilenPhotoKategori.ad}`;
@@ -5079,6 +5076,7 @@
 
             document.getElementById('photoPrevBtn').disabled = photoIndex === 0;
             document.getElementById('photoNextBtn').disabled = !photoCevaplar[photoIndex];
+            updatePhotoNavigationButtons();
 
             clearInterval(photoTimer);
             photoTimeLeft = secilenPhotoZorluk.sure;
@@ -5092,8 +5090,9 @@
                     if (!photoCevaplar[photoIndex]) {
                         photoCevaplar[photoIndex] = { text: '', correct: false, timeout: true };
                     }
-                    if (photoIndex < photoSorular.length - 1) {
-                        photoIndex++;
+                    const nextIdx = getPhotoNextUnansweredIndex(photoIndex);
+                    if (nextIdx !== -1) {
+                        photoIndex = nextIdx;
                         showPhotoQuestion();
                     } else {
                         finishPhotoTest();
@@ -5131,6 +5130,28 @@
             return true;
         }
 
+        function getPhotoNextUnansweredIndex(fromIndex) {
+            for (let i = fromIndex + 1; i < photoSorular.length; i++) {
+                if (!photoCevaplar[i] || photoCevaplar[i].skipped) return i;
+            }
+            return -1;
+        }
+
+        function getPhotoLastSkippedIndex() {
+            for (let i = photoSorular.length - 1; i >= 0; i--) {
+                if (photoCevaplar[i] && photoCevaplar[i].skipped) return i;
+            }
+            return -1;
+        }
+
+        function updatePhotoNavigationButtons() {
+            const skippedIndex = getPhotoLastSkippedIndex();
+            const canReturn = skippedIndex !== -1 && skippedIndex !== photoIndex;
+            document.getElementById('photoReturnSkippedBtn').disabled = !canReturn;
+            document.getElementById('photoPrevBtn').disabled = photoIndex === 0;
+            document.getElementById('photoNextBtn').disabled = !photoCevaplar[photoIndex];
+        }
+
         window.photoNextQuestion = function () {
             if (!photoCevaplar[photoIndex]) {
                 if (!commitPhotoAnswerFromInput()) return;
@@ -5144,8 +5165,10 @@
                 }
             }
             clearInterval(photoTimer);
-            if (photoIndex < photoSorular.length - 1) {
-                photoIndex++;
+            // Cevapsız/boş bırakılan ilk soruya git, cevaplanmışları atla
+            const nextIndex = getPhotoNextUnansweredIndex(photoIndex);
+            if (nextIndex !== -1) {
+                photoIndex = nextIndex;
                 showPhotoQuestion();
             } else {
                 finishPhotoTest();
@@ -5163,24 +5186,33 @@
         window.photoSkipQuestion = function () {
             photoCevaplar[photoIndex] = { text: '', correct: false, timeout: false, skipped: true };
             clearInterval(photoTimer);
-            if (photoIndex < photoSorular.length - 1) {
-                photoIndex++;
+            // Boş bıraktıktan sonra cevapsız/boş bırakılan ilk soruya git
+            const nextIndex = getPhotoNextUnansweredIndex(photoIndex);
+            if (nextIndex !== -1) {
+                photoIndex = nextIndex;
                 showPhotoQuestion();
             } else {
                 finishPhotoTest();
             }
         };
 
+        window.photoReturnToSkipped = function () {
+            const skippedIndex = getPhotoLastSkippedIndex();
+            if (skippedIndex !== -1) {
+                clearInterval(photoTimer);
+                photoIndex = skippedIndex;
+                showPhotoQuestion();
+            }
+        };
+
         window.showPhotoExitConfirm = function () {
-            exitTarget = 'photo';
-            document.getElementById('exitConfirmModal').style.display = 'flex';
+            // Çık butonu kaldırıldı
         };
 
         // wrap original exit handlers
         const _origShowExit = window.showExitConfirm;
         window.showExitConfirm = function () {
-            exitTarget = 'text';
-            document.getElementById('exitConfirmModal').style.display = 'flex';
+            // Çık butonu kaldırıldı
         };
 
 
@@ -5435,7 +5467,7 @@
         window.nextQuestion = function () { if (cevaplar[mevcutIndex]) { clearInterval(timer); const nextIndex = getNextQuestionIndex(mevcutIndex); if (nextIndex !== -1) { mevcutIndex = nextIndex; soruyuGoster(); } else { testiBitir(); } } };
         window.previousQuestion = function () { if (mevcutIndex > 0) { clearInterval(timer); mevcutIndex--; soruyuGoster(); } };
         window.returnToSkippedQuestion = function () { const skippedIndex = getLastSkippedQuestionIndex(); if (skippedIndex !== -1) { clearInterval(timer); mevcutIndex = skippedIndex; soruyuGoster(); } };
-        window.showExitConfirm = function () { document.getElementById('exitConfirmModal').style.display = 'flex'; };
+        window.showExitConfirm = function () { /* Çık butonu kaldırıldı */ };
         window.confirmExit = function () {
             document.getElementById('exitConfirmModal').style.display = 'none';
             if (typeof exitTarget !== 'undefined' && exitTarget === 'photo') {
@@ -5523,7 +5555,7 @@
         changeTheme('space'); updateRankDisplay();
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1b9656b8adad5f7',t:'MTc4NDEyNTEwMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1b97cc20d1f19a2',t:'MTc4NDEyNjA1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
 </html>
