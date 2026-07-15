@@ -1467,6 +1467,256 @@
             50% { transform: translateY(-40px) scale(1.08); }
         }
 
+
+        /* ===== OYUN MODU SEÇİM ===== */
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin: 30px 0 20px;
+        }
+
+        @media (max-width: 700px) {
+            .mode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, rgba(5, 10, 30, 0.96), rgba(30, 35, 70, 0.95));
+            border: 3px solid rgba(0, 210, 255, 0.35);
+            border-radius: 28px;
+            padding: 34px 22px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-6px);
+            border-color: #8a2be2;
+            box-shadow: 0 18px 40px rgba(138, 43, 226, 0.28);
+        }
+
+        .mode-card.selected {
+            border-color: #8a2be2;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.35);
+        }
+
+        .mode-card-icon {
+            font-size: 64px;
+        }
+
+        .mode-card-title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .mode-card-desc {
+            color: #bcdcff;
+            font-size: 15px;
+            line-height: 1.5;
+            max-width: 280px;
+        }
+
+        .mode-card--photo {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(30, 20, 60, 0.95));
+            border-color: #ec4899;
+        }
+
+        .mode-card--text {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.18), rgba(20, 30, 70, 0.95));
+            border-color: #00d2ff;
+        }
+
+        .category-card--photo-marvel {
+            background: linear-gradient(135deg, rgba(255, 25, 102, 0.28), rgba(0, 210, 255, 0.15));
+            border-color: #ff4d8d;
+        }
+
+        .category-card--photo-dc {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.24), rgba(17, 24, 39, 0.9));
+            border-color: #3b82f6;
+        }
+
+        .category-card--photo-anime {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(88, 28, 135, 0.9));
+            border-color: #ec4899;
+        }
+
+        .category-card--photo-futbol {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(6, 40, 20, 0.95));
+            border-color: #22c55e;
+        }
+
+        .category-card--photo-markalar {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.24), rgba(12, 40, 70, 0.95));
+            border-color: #0ea5e9;
+        }
+
+        .category-card--photo-sinema {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.24), rgba(120, 53, 15, 0.9));
+            border-color: #facc15;
+        }
+
+        .category-card--photo-hayvan {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.24), rgba(16, 47, 20, 0.9));
+            border-color: #4caf50;
+        }
+
+        .category-card--photo-bayraklar {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(15, 30, 70, 0.95));
+            border-color: #3b82f6;
+        }
+
+        /* ===== FOTOĞRAFLI QUIZ UI ===== */
+        .photo-question-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .photo-frame {
+            width: min(420px, 92%);
+            aspect-ratio: 1 / 1;
+            border-radius: 28px;
+            border: 3px solid rgba(0, 210, 255, 0.45);
+            background: rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            font-size: 92px;
+            filter: drop-shadow(0 0 18px rgba(0, 210, 255, 0.35));
+        }
+
+        .photo-prompt {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+        }
+
+        .photo-answer-input {
+            width: min(480px, 100%);
+            background: rgba(0, 0, 0, 0.35);
+            border: 2px solid #00d2ff;
+            border-radius: 20px;
+            padding: 16px 20px;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            outline: none;
+        }
+
+        .photo-answer-input:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .photo-answer-input::placeholder {
+            color: #7a9bcb;
+        }
+
+        .photo-feedback {
+            min-height: 28px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .photo-feedback.ok {
+            color: #4caf50;
+        }
+
+        .photo-feedback.bad {
+            color: #ff6b6b;
+        }
+
+        .photo-hint {
+            color: #a0d0ff;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .photo-count-box {
+            margin: 18px auto 0;
+            max-width: 420px;
+            background: rgba(0, 0, 0, 0.28);
+            border: 2px solid rgba(0, 210, 255, 0.35);
+            border-radius: 22px;
+            padding: 16px 18px;
+            text-align: center;
+        }
+        .photo-count-box label {
+            display: block;
+            color: #a0d0ff;
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .photo-count-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .photo-count-input {
+            width: 110px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 2px solid #00d2ff;
+            border-radius: 16px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            outline: none;
+        }
+        .photo-count-input:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 18px rgba(138, 43, 226, 0.3);
+        }
+        .photo-count-max {
+            color: #00d2ff;
+            font-size: 16px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        .photo-count-error {
+            color: #ff6b6b;
+            font-size: 13px;
+            min-height: 20px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
         .screen {
             background: rgba(10, 15, 30, 0.75);
             backdrop-filter: blur(25px);
@@ -2685,7 +2935,7 @@
                 <span class="logo-text">MATEX</span>
             </div>
             <div class="slogan">"Quizin ve Testin Harman Olduğu Yer"</div>
-            <div class="subtitle">30 KATEGORİ • 40+ SORU / KATEGORİ</div>
+            <div class="subtitle">2 MOD • FOTOĞRAFLI + KLASİK QUIZ</div>
             <div class="profile-shell">
                 <div class="profile-hero">
                     <div class="hero-badge">✨ Yeni Nesil Quiz</div>
@@ -2695,7 +2945,7 @@
                     <div class="feature-grid">
                         <div class="feature-pill">⚡ Hızlı Başlangıç</div>
                         <div class="feature-pill">🧠 30 Kategori</div>
-                        <div class="feature-pill">🎮 Arkadaşlarla Oyna</div>
+                        <div class="feature-pill">🖼️ Fotoğraflı + Klasik</div>
                     </div>
                 </div>
                 <div class="profile-section">
@@ -2729,9 +2979,140 @@
             </div>
             <button class="primary-btn" onclick="validateAndContinue()">Devam Et →</button>
         </div>
+
+        <div class="screen" id="modeScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:10px;">
+                <button class="back-btn" onclick="goBackToProfileFromMode()">← Profil</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:42px;">Oyun Modu</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" style="margin-bottom:10px;">Nasıl oynamak istersin?</p>
+            <div class="mode-grid">
+                <div class="mode-card mode-card--text" id="modeTextCard" onclick="selectGameMode('text')">
+                    <div class="mode-card-icon">📝</div>
+                    <div class="mode-card-title">Fotoğrafsız Soru</div>
+                    <div class="mode-card-desc">Klasik çoktan seçmeli quiz. 30 kategori, şıklı sorular.</div>
+                </div>
+                <div class="mode-card mode-card--photo" id="modePhotoCard" onclick="selectGameMode('photo')">
+                    <div class="mode-card-icon">🖼️</div>
+                    <div class="mode-card-title">Fotoğraflı Soru</div>
+                    <div class="mode-card-desc">Görseli gör, ismi yaz. Karakter / logo / bayrak tahmin et.</div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="back-btn" onclick="goBackToProfileFromMode()">👤 Profil</button>
+                <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromPhotoCats()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">Fotoğraflı Kategori</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <div class="categories-grid" id="photoCategoryGrid"></div>
+            <div class="button-group">
+                <button class="back-btn" onclick="goBackToModeFromPhotoCats()">🎮 Mod</button>
+                <button class="primary-btn" id="photoCategoryNextBtn" onclick="goToPhotoDifficulty()" disabled>Zorluk Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoDifficultyScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToPhotoCategory()">← Kategoriler</button>
+                <div style="flex:1;"></div>
+                <div style="width:80px;"></div>
+            </div>
+            <div class="logo-container">
+                <span class="logo-text" style="font-size:42px;">Zorluk Seviyesi</span>
+            </div>
+            <div class="difficulty-centered" id="photoDifficultyContainer"></div>
+            <div class="photo-count-box" id="photoCountBox">
+                <label for="photoQuestionCountInput">Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="photoQuestionCountInput" type="number" min="1" max="30" value="10" inputmode="numeric">
+                    <div class="photo-count-max" id="photoCountMaxLabel">/ maks 30</div>
+                </div>
+                <div class="photo-count-error" id="photoCountError"></div>
+            </div>
+            <div class="button-group">
+                <button class="back-btn" onclick="goBackToPhotoCategory()">📋 Kategori</button>
+                <button class="primary-btn" id="photoDifficultyNextBtn" onclick="startPhotoTest()" disabled>🚀 Teste Başla</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoTestScreen" style="display:none;">
+            <div class="test-header">
+                <div class="user-badge">
+                    <div class="user-avatar" id="photoTestUserAvatar">👤</div>
+                    <div>
+                        <h3 style="color:#00d2ff;" id="photoTestUserName"></h3>
+                        <p style="color:#a0d0ff;" id="photoTestUserDetails"></p>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:20px;">
+                    <div style="text-align:right;">
+                        <div style="color:#00d2ff; font-size:28px;" id="photoDifficultyDisplay"></div>
+                        <div style="color:#a0d0ff;" id="photoQuestionCounter">1/10</div>
+                    </div>
+                    <button class="exit-test-btn" onclick="showPhotoExitConfirm()">🚪 Çık</button>
+                </div>
+            </div>
+            <div class="timer-section">
+                <div class="timer-bar">
+                    <div class="timer-progress" id="photoTimerProgress"></div>
+                </div>
+                <div class="timer-text" id="photoTimerText">01:00</div>
+            </div>
+            <div class="photo-question-wrap">
+                <div class="photo-frame" id="photoFrame">
+                    <div class="photo-placeholder" id="photoPlaceholder">🖼️</div>
+                    <img id="photoImage" alt="Soru görseli" style="display:none;">
+                </div>
+                <div class="photo-prompt" id="photoPrompt">Bu karakterin ismi nedir?</div>
+                <div class="photo-hint" id="photoHint"></div>
+                <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..." autocomplete="off" autocapitalize="words">
+                <div class="photo-feedback" id="photoFeedback"></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="photoPrevBtn" onclick="photoPreviousQuestion()" disabled>← Önceki</button>
+                <button class="nav-btn skip-btn" id="photoSkipBtn" onclick="photoSkipQuestion()">⏭️ Boş Bırak</button>
+                <button class="nav-btn" onclick="showPhotoExitConfirm()">🚪 Sorudan Çık</button>
+                <button class="primary-btn" id="photoNextBtn" onclick="photoNextQuestion()" disabled>Sonraki →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoResultScreen" style="display:none;">
+            <div style="text-align:center; margin-bottom:30px;">
+                <div style="font-size:52px; font-weight:800; color:#00d2ff;" id="photoZekaSeviyesi"></div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
+                <div>
+                    <div style="font-size:58px; color:#00d2ff;" id="photoFinalScore">0</div>
+                    <div style="color:#a0d0ff;">Doğru</div>
+                </div>
+                <div>
+                    <div style="font-size:58px; color:#8a2be2;" id="photoTotalPoints">0</div>
+                    <div style="color:#a0d0ff;">Puan</div>
+                </div>
+            </div>
+            <div id="photoResultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
+            <div id="photoExplanationPanel"></div>
+            <button class="primary-btn" onclick="goToPhotoCategoriesFromResult()">🔄 Yeniden Başla</button>
+        </div>
+
         <div class="screen" id="categoryScreen" style="display:none;">
             <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn"
-                    onclick="goBackToProfile()">← Geri</button>
+                    onclick="goBackToProfile()">← Modlar</button>
                 <div style="flex:1; text-align:center;">
                     <div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100" fill="none">
                             <defs>
@@ -2749,7 +3130,7 @@
                 <div style="width:80px;"></div>
             </div>
             <div class="categories-grid" id="categoryGrid"></div>
-            <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">👤 Profil</button><button
+            <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">🎮 Modlar</button><button
                     class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç
                     →</button></div>
             <div class="button-group" style="margin-top:15px;"><button class="back-btn"
@@ -4235,9 +4616,634 @@
             if (isValid) {
                 kullaniciAdi = nameInput.value.trim();
                 kullaniciYas = yas;
-                goToCategorySelect();
+                goToModeSelect();
             }
         };
+
+
+        // ===== OYUN MODU =====
+        let gameMode = null; // 'text' | 'photo'
+        let secilenPhotoKategori = null;
+        let secilenPhotoZorluk = null;
+        let photoSorular = [];
+        let photoIndex = 0;
+        let photoCevaplar = [];
+        let photoTimer = null;
+        let photoTimeLeft = 0;
+        let photoTestAktif = false;
+        let photoPuan = 0;
+        let exitTarget = 'text'; // which test exit modal confirms
+
+        // Fotoğraflı kategoriler (görselleri sen atınca image alanını dolduracağız)
+        // image: 'images/photo/marvel/ironman.jpg' gibi yol kullan
+        // answers: kabul edilen cevap varyasyonları (küçük harf, Türkçe karakter duyarsız)
+        const photoKategoriler = [
+            { id: 'photo-marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Karakter tahmin', theme: 'marvel' },
+            { id: 'photo-dc', ad: 'DC', icon: '🦇', subtitle: 'Karakter tahmin', theme: 'dc' },
+            { id: 'photo-anime', ad: 'Anime', icon: '🎌', subtitle: 'Karakter tahmin', theme: 'anime' },
+            { id: 'photo-futbol', ad: 'Futbol', icon: '⚽', subtitle: 'Oyuncu / kulüp', theme: 'futbol' },
+            { id: 'photo-markalar', ad: 'Markalar', icon: '🏷️', subtitle: 'Logo tahmin', theme: 'markalar' },
+            { id: 'photo-sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film / karakter', theme: 'sinema' },
+            { id: 'photo-hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Canlı tahmin', theme: 'hayvan' },
+            { id: 'photo-bayraklar', ad: 'Bayraklar', icon: '🚩', subtitle: 'Ülke tahmin', theme: 'bayraklar' }
+        ];
+
+        const photoPools = {
+            'photo-marvel': [
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['captain america', 'kaptan amerika', 'kaptan america', 'steve rogers', 'cap'], label: 'Captain America', emoji: '🛡️', image: 'images/photo/marvel/marvel_01.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['iron man', 'ironman', 'tony stark', 'demir adam'], label: 'Iron Man', emoji: '🦾', image: 'images/photo/marvel/marvel_02.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['spider-man', 'spiderman', 'spider man', 'örümcek adam', 'orumcek adam', 'peter parker'], label: 'Spider-Man', emoji: '🕷️', image: 'images/photo/marvel/marvel_03.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['hulk', 'bruce banner', 'yesil dev', 'yeşil dev'], label: 'Hulk', emoji: '💪', image: 'images/photo/marvel/marvel_04.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['thor', 'tor', 'thor odinson'], label: 'Thor', emoji: '🔨', image: 'images/photo/marvel/marvel_05.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['black widow', 'kara dul', 'natasha romanoff', 'natasha', 'blackwidow'], label: 'Black Widow', emoji: '🖤', image: 'images/photo/marvel/marvel_06.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor strange', 'dr strange', 'doktor strange', 'stephen strange', 'dr. strange'], label: 'Doctor Strange', emoji: '🪄', image: 'images/photo/marvel/marvel_07.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['black panther', 'kara panter', 'tchalla', 't challa', 'blackpanther'], label: 'Black Panther', emoji: '🐆', image: 'images/photo/marvel/marvel_08.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['loki', 'loki laufeyson'], label: 'Loki', emoji: '😈', image: 'images/photo/marvel/marvel_09.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['thanos', 'tanos'], label: 'Thanos', emoji: '🫰', image: 'images/photo/marvel/marvel_10.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rocket', 'rocket raccoon', 'rakun rocket', 'roket', 'rocket rakun'], label: 'Rocket', emoji: '🦝', image: 'images/photo/marvel/marvel_11.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['star-lord', 'starlord', 'star lord', 'peter quill', 'yildiz lordu', 'yıldız lordu'], label: 'Star-Lord', emoji: '⭐', image: 'images/photo/marvel/marvel_12.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['gamora', 'gamora zen whoberi'], label: 'Gamora', emoji: '💚', image: 'images/photo/marvel/marvel_13.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['groot', 'ben groot', 'i am groot'], label: 'Groot', emoji: '🌳', image: 'images/photo/marvel/marvel_14.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['venom', 'eddie brock', 'venom eddie brock'], label: 'Venom', emoji: '🖤', image: 'images/photo/marvel/marvel_15.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['doctor doom', 'dr doom', 'doktor doom', 'doom', 'victor von doom', 'dr. doom'], label: 'Doctor Doom', emoji: '🟢', image: 'images/photo/marvel/marvel_16.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wolverine', 'logan', 'james howlett', 'wolverin'], label: 'Wolverine', emoji: '⚔️', image: 'images/photo/marvel/marvel_17.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['deadpool', 'wade wilson', 'dead pool', 'olum havuzu', 'ölüm havuzu'], label: 'Deadpool', emoji: '🔴', image: 'images/photo/marvel/marvel_18.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['ant-man', 'antman', 'ant man', 'scott lang', 'karinca adam', 'karınca adam'], label: 'Ant-Man', emoji: '🐜', image: 'images/photo/marvel/marvel_19.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wasp', 'the wasp', 'hope van dyne', 'hope vandyne', 'yaban arisi', 'yaban arısı', 'ari kadin', 'arı kadın'], label: 'Wasp', emoji: '🐝', image: 'images/photo/marvel/marvel_20.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['scorpion', 'the scorpion', 'mac gargan', 'akrep', 'scorpio'], label: 'Scorpion', emoji: '🦂', image: 'images/photo/marvel/marvel_21.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rhino', 'the rhino', 'aleksei sytsevich', 'gergedan', 'rino'], label: 'Rhino', emoji: '🦏', image: 'images/photo/marvel/marvel_22.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['scarlet witch', 'scarlett witch', 'wanda maximoff', 'wanda', 'kizil cadı', 'kızıl cadı', 'kirmizi cadı', 'kırmızı cadı'], label: 'Scarlet Witch', emoji: '🔴', image: 'images/photo/marvel/marvel_23.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['hawkeye', 'hawk eye', 'clint barton', 'sahin goz', 'şahin göz', 'okcu', 'okçu'], label: 'Hawkeye', emoji: '🏹', image: 'images/photo/marvel/marvel_24.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['vision', 'vizyon', 'the vision'], label: 'Vision', emoji: '💎', image: 'images/photo/marvel/marvel_25.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['winter soldier', 'bucky', 'bucky barnes', 'kis askeri', 'kış askeri', 'wintersoldier'], label: 'Winter Soldier', emoji: '❄️', image: 'images/photo/marvel/marvel_26.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['juggernaut', 'the juggernaut', 'cain marko', 'yokedici', 'yok edici', 'jaggernaut'], label: 'Juggernaut', emoji: '🟡', image: 'images/photo/marvel/marvel_27.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['red hulk', 'redhulk', 'kirmizi hulk', 'kırmızı hulk', 'thunderbolt ross', 'general ross', 'ross'], label: 'Red Hulk', emoji: '🔴', image: 'images/photo/marvel/marvel_28.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['moon knight', 'moonknight', 'marc spector', 'steven grant', 'jake lockley', 'ay sovalye', 'ay şövalye', 'ay sovalyesi', 'ay şövalyesi'], label: 'Moon Knight', emoji: '🌙', image: 'images/photo/marvel/marvel_29.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['daredevil', 'dare devil', 'matt murdock', 'kor seytan', 'kör şeytan', 'kor şeytan', 'kör seytan'], label: 'Daredevil', emoji: '🔴', image: 'images/photo/marvel/marvel_30.png' }
+            ],
+            'photo-dc': [
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['batman', 'bruce wayne'], label: 'Batman', emoji: '🦇', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['superman', 'clark kent', 'süpermen', 'supermen'], label: 'Superman', emoji: '🦸‍♂️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wonder woman', 'diana prince', 'wonderwoman'], label: 'Wonder Woman', emoji: '🛡️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['flash', 'barry allen', 'the flash'], label: 'Flash', emoji: '⚡', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['joker'], label: 'Joker', emoji: '🃏', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['aquaman', 'arthur curry'], label: 'Aquaman', emoji: '🌊', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['harley quinn', 'harleen quinzel'], label: 'Harley Quinn', emoji: '🎪', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['green lantern', 'yeşil fener', 'yesil fener', 'hal jordan'], label: 'Green Lantern', emoji: '💚', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['catwoman', 'selina kyle', 'kedi kadın', 'kedi kadin'], label: 'Catwoman', emoji: '🐱', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['cyborg', 'victor stone'], label: 'Cyborg', emoji: '🤖', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['shazam', 'billy batson'], label: 'Shazam', emoji: '⚡', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['darkseid'], label: 'Darkseid', emoji: '🌑', image: '' }
+            ],
+            'photo-anime': [
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['naruto', 'naruto uzumaki'], label: 'Naruto', emoji: '🍜', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['goku', 'son goku'], label: 'Goku', emoji: '🟠', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['luffy', 'monkey d luffy', 'monkey d. luffy'], label: 'Luffy', emoji: '🏴‍☠️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['eren', 'eren yeager', 'eren jaeger'], label: 'Eren Yeager', emoji: '🗡️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['saitama', 'one punch man'], label: 'Saitama', emoji: '👊', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['light', 'light yagami', 'kira'], label: 'Light Yagami', emoji: '📓', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['tanjiro', 'tanjiro kamado'], label: 'Tanjiro', emoji: '🗡️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['deku', 'izuku midoriya', 'midoriya'], label: 'Deku', emoji: '💥', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['ichigo', 'ichigo kurosaki'], label: 'Ichigo', emoji: '⚔️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['sasuke', 'sasuke uchiha'], label: 'Sasuke', emoji: '🔥', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['zoro', 'roronoa zoro'], label: 'Zoro', emoji: '⚔️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['pikachu'], label: 'Pikachu', emoji: '⚡', image: '' }
+            ],
+            'photo-futbol': [
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['messi', 'lionel messi'], label: 'Messi', emoji: '🐐', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['ronaldo', 'cristiano ronaldo', 'cr7'], label: 'Cristiano Ronaldo', emoji: '7️⃣', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['neymar', 'neymar jr'], label: 'Neymar', emoji: '🇧🇷', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['mbappe', 'mbappé', 'kylian mbappe'], label: 'Mbappé', emoji: '🇫🇷', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['haaland', 'erling haaland'], label: 'Haaland', emoji: '9️⃣', image: '' },
+                { prompt: 'Bu kulübün adı nedir?', answers: ['real madrid'], label: 'Real Madrid', emoji: '⚪', image: '' },
+                { prompt: 'Bu kulübün adı nedir?', answers: ['barcelona', 'fc barcelona', 'barça', 'barca'], label: 'Barcelona', emoji: '🔵', image: '' },
+                { prompt: 'Bu kulübün adı nedir?', answers: ['galatasaray', 'gs'], label: 'Galatasaray', emoji: '🦁', image: '' },
+                { prompt: 'Bu kulübün adı nedir?', answers: ['fenerbahçe', 'fenerbahce', 'fb'], label: 'Fenerbahçe', emoji: '💛', image: '' },
+                { prompt: 'Bu kulübün adı nedir?', answers: ['beşiktaş', 'besiktas', 'bjk'], label: 'Beşiktaş', emoji: '🦅', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['iniesta', 'andres iniesta', 'andrés iniesta'], label: 'Iniesta', emoji: '🇪🇸', image: '' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['zidane', 'zinedine zidane'], label: 'Zidane', emoji: '🧠', image: '' }
+            ],
+            'photo-markalar': [
+                { prompt: 'Bu markanın adı nedir?', answers: ['apple', 'elma'], label: 'Apple', emoji: '🍎', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['nike'], label: 'Nike', emoji: '✔️', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['adidas'], label: 'Adidas', emoji: '👟', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['mcdonalds', "mcdonald's", 'mcdonald', 'mc donalds'], label: "McDonald's", emoji: '🍟', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['samsung'], label: 'Samsung', emoji: '📱', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['mercedes', 'mercedes-benz', 'mercedes benz'], label: 'Mercedes', emoji: '🚗', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['coca cola', 'cocacola', 'coca-cola'], label: 'Coca-Cola', emoji: '🥤', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['google'], label: 'Google', emoji: '🔍', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['tesla'], label: 'Tesla', emoji: '⚡', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['netflix'], label: 'Netflix', emoji: '🎬', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['spotify'], label: 'Spotify', emoji: '🎵', image: '' },
+                { prompt: 'Bu markanın adı nedir?', answers: ['pepsi'], label: 'Pepsi', emoji: '🔵', image: '' }
+            ],
+            'photo-sinema': [
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['harry potter'], label: 'Harry Potter', emoji: '⚡', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['darth vader', 'vader'], label: 'Darth Vader', emoji: '🌑', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['joker'], label: 'Joker', emoji: '🃏', image: '' },
+                { prompt: 'Bu film / karakter nedir?', answers: ['//o', 'joker? skip', 'jack sparrow', 'kaptan jack sparrow'], label: 'Jack Sparrow', emoji: '🏴‍☠️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['frozen elsa', 'elsa'], label: 'Elsa', emoji: '❄️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['shrek'], label: 'Shrek', emoji: '🟢', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['neo', 'the matrix neo'], label: 'Neo', emoji: '🕶️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['gollum', 'smeagol'], label: 'Gollum', emoji: '💍', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['yoda'], label: 'Yoda', emoji: '🟢', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['wolverine', 'logan'], label: 'Wolverine', emoji: '⚔️', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['joker heath', 'joker', 'heath ledger joker'], label: 'Joker', emoji: '🃏', image: '' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['minion', 'minions'], label: 'Minion', emoji: '💛', image: '' }
+            ],
+            'photo-hayvan': [
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['aslan', 'lion'], label: 'Aslan', emoji: '🦁', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['fil', 'elephant'], label: 'Fil', emoji: '🐘', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['zürafa', 'zurafa', 'giraffe'], label: 'Zürafa', emoji: '🦒', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['penguen', 'penguin'], label: 'Penguen', emoji: '🐧', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['panda'], label: 'Panda', emoji: '🐼', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['köpekbalığı', 'kopekbaligi', 'shark'], label: 'Köpekbalığı', emoji: '🦈', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kartal', 'eagle'], label: 'Kartal', emoji: '🦅', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['yılan', 'yilan', 'snake'], label: 'Yılan', emoji: '🐍', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kanguru', 'kangaroo'], label: 'Kanguru', emoji: '🦘', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['baykuş', 'baykus', 'owl'], label: 'Baykuş', emoji: '🦉', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['timsah', 'crocodile', 'alligator'], label: 'Timsah', emoji: '🐊', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kelebek', 'butterfly'], label: 'Kelebek', emoji: '🦋', image: '' }
+            ],
+            'photo-bayraklar': [
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['türkiye', 'turkiye', 'turkey'], label: 'Türkiye', emoji: '🇹🇷', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['japonya', 'japan'], label: 'Japonya', emoji: '🇯🇵', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['abd', 'amerika', 'usa', 'united states', 'amerika birleşik devletleri', 'amerika birlesik devletleri'], label: 'ABD', emoji: '🇺🇸', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['almanya', 'germany'], label: 'Almanya', emoji: '🇩🇪', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['fransa', 'france'], label: 'Fransa', emoji: '🇫🇷', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['italya', 'italy'], label: 'İtalya', emoji: '🇮🇹', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['brezilya', 'brazil'], label: 'Brezilya', emoji: '🇧🇷', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['ingiltere', 'birleşik krallık', 'birlesik krallik', 'uk', 'united kingdom'], label: 'Birleşik Krallık', emoji: '🇬🇧', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['kanada', 'canada'], label: 'Kanada', emoji: '🇨🇦', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['ispanya', 'spain'], label: 'İspanya', emoji: '🇪🇸', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['güney kore', 'guney kore', 'south korea', 'kore'], label: 'Güney Kore', emoji: '🇰🇷', image: '' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['çin', 'cin', 'china'], label: 'Çin', emoji: '🇨🇳', image: '' }
+            ]
+        };
+
+        // sinema Jack Sparrow answers fix (cleanup bad placeholder)
+        photoPools['photo-sinema'][3] = { prompt: 'Bu karakterin ismi nedir?', answers: ['jack sparrow', 'kaptan jack sparrow', 'captain jack sparrow'], label: 'Jack Sparrow', emoji: '🏴‍☠️', image: '' };
+
+        function normalizeAnswer(s) {
+            return (s || '')
+                .toString()
+                .toLocaleLowerCase('tr-TR')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/ı/g, 'i')
+                .replace(/ğ/g, 'g')
+                .replace(/ü/g, 'u')
+                .replace(/ş/g, 's')
+                .replace(/ö/g, 'o')
+                .replace(/ç/g, 'c')
+                .replace(/[^a-z0-9\s]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function isPhotoAnswerCorrect(userText, answers) {
+            const u = normalizeAnswer(userText);
+            if (!u) return false;
+            return (answers || []).some(a => {
+                const n = normalizeAnswer(a);
+                return u === n || u.includes(n) || n.includes(u);
+            });
+        }
+
+        function hideAllMainScreens() {
+            ['profileScreen', 'modeScreen', 'categoryScreen', 'difficultyScreen', 'testScreen', 'resultScreen',
+             'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen']
+                .forEach(sid => {
+                    const el = document.getElementById(sid);
+                    if (el) el.style.display = 'none';
+                });
+        }
+
+        window.goToModeSelect = function () {
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display = 'block';
+            gameMode = null;
+            document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('modeNextBtn').disabled = true;
+            changeTheme('space');
+        };
+
+        window.selectGameMode = function (mode) {
+            gameMode = mode;
+            document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+            if (mode === 'text') document.getElementById('modeTextCard').classList.add('selected');
+            if (mode === 'photo') document.getElementById('modePhotoCard').classList.add('selected');
+            document.getElementById('modeNextBtn').disabled = false;
+        };
+
+        window.continueFromMode = function () {
+            if (gameMode === 'text') goToCategorySelect();
+            else if (gameMode === 'photo') goToPhotoCategorySelect();
+        };
+
+        window.goBackToProfileFromMode = function () {
+            hideAllMainScreens();
+            document.getElementById('profileScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        // override classic category entry to come from mode
+        window.goToCategorySelect = function () {
+            id('categoryGrid').innerHTML = kategoriler.map(k => `<div class="category-card category-card--${k.id}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${k.ad}</div><div class="category-subtitle">${k.subtitle}</div></div>`).join('');
+            hideAllMainScreens();
+            cScreen.style.display = 'block';
+            changeTheme('space');
+        };
+
+        window.goBackToProfile = function () {
+            // text categories back -> mode select
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        window.goBackToCategory = function () {
+            dScreen.style.display = 'none';
+            cScreen.style.display = 'block';
+        };
+
+        // ===== PHOTO FLOW =====
+        window.goToPhotoCategorySelect = function () {
+            const grid = document.getElementById('photoCategoryGrid');
+            grid.innerHTML = photoKategoriler.map(k =>
+                `<div class="category-card category-card--${k.id}" onclick="selectPhotoCategory('${k.id}')" id="pcat_${k.id}">
+                    <div class="category-icon">${k.icon}</div>
+                    <div class="category-title">${k.ad}</div>
+                    <div class="category-subtitle">${k.subtitle}</div>
+                </div>`
+            ).join('');
+            hideAllMainScreens();
+            document.getElementById('photoCategoryScreen').style.display = 'block';
+            document.getElementById('photoCategoryNextBtn').disabled = true;
+            secilenPhotoKategori = null;
+            changeTheme('space');
+        };
+
+        window.selectPhotoCategory = function (cid) {
+            document.querySelectorAll('#photoCategoryGrid .category-card').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById(`pcat_${cid}`);
+            if (el) el.classList.add('selected');
+            secilenPhotoKategori = photoKategoriler.find(k => k.id === cid);
+            if (secilenPhotoKategori) changeTheme(secilenPhotoKategori.theme || 'space');
+            document.getElementById('photoCategoryNextBtn').disabled = false;
+        };
+
+        window.goBackToModeFromPhotoCats = function () {
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        window.getPhotoPoolMax = function (categoryId) {
+            const pool = photoPools[categoryId] || [];
+            return Math.min(30, pool.length || 0);
+        };
+
+        window.validatePhotoQuestionCount = function () {
+            const input = document.getElementById('photoQuestionCountInput');
+            const err = document.getElementById('photoCountError');
+            const maxLabel = document.getElementById('photoCountMaxLabel');
+            if (!input) return false;
+            const max = getPhotoPoolMax(secilenPhotoKategori?.id);
+            input.max = String(max);
+            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            const raw = String(input.value || '').trim();
+            const n = parseInt(raw, 10);
+            err.textContent = '';
+            if (!raw || Number.isNaN(n)) {
+                err.textContent = 'Lütfen soru sayısı girin!';
+                return false;
+            }
+            if (n < 1) {
+                err.textContent = 'Soru sayısı en az 1 olmalı!';
+                return false;
+            }
+            if (n > max) {
+                err.textContent = `Maksimum ${max} soru seçebilirsin!`;
+                return false;
+            }
+            photoQuestionCount = n;
+            return true;
+        };
+
+        window.updatePhotoStartButtonState = function () {
+            const btn = document.getElementById('photoDifficultyNextBtn');
+            if (!btn) return;
+            const input = document.getElementById('photoQuestionCountInput');
+            const err = document.getElementById('photoCountError');
+            const maxLabel = document.getElementById('photoCountMaxLabel');
+            const max = getPhotoPoolMax(secilenPhotoKategori?.id);
+            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            if (input) input.max = String(max);
+            const raw = String(input?.value || '').trim();
+            const n = parseInt(raw, 10);
+            let countValid = !Number.isNaN(n) && n >= 1 && n <= max;
+            if (err) {
+                if (raw && !Number.isNaN(n) && n > max) {
+                    err.textContent = `Maksimum ${max} soru seçebilirsin!`;
+                    countValid = false;
+                } else if (raw && !Number.isNaN(n) && n < 1) {
+                    err.textContent = 'Soru sayısı en az 1 olmalı!';
+                    countValid = false;
+                } else {
+                    err.textContent = '';
+                }
+            }
+            btn.disabled = !(secilenPhotoZorluk && countValid);
+            if (countValid) photoQuestionCount = n;
+        };
+
+        window.goToPhotoDifficulty = function () {
+            if (!secilenPhotoKategori) return;
+            document.getElementById('photoDifficultyContainer').innerHTML = zorluklar.map(z =>
+                `<div class="difficulty-card" onclick="selectPhotoDifficulty('${z.id}')" id="pdiff_${z.id}">
+                    <div class="difficulty-icon">${z.icon}</div>
+                    <div class="difficulty-title">${z.ad}</div>
+                    <div class="difficulty-time">${z.sure} sn</div>
+                </div>`
+            ).join('');
+            hideAllMainScreens();
+            document.getElementById('photoDifficultyScreen').style.display = 'block';
+            document.getElementById('photoDifficultyNextBtn').disabled = true;
+            secilenPhotoZorluk = null;
+            const max = getPhotoPoolMax(secilenPhotoKategori.id);
+            const input = document.getElementById('photoQuestionCountInput');
+            const maxLabel = document.getElementById('photoCountMaxLabel');
+            const err = document.getElementById('photoCountError');
+            if (err) err.textContent = '';
+            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            if (input) {
+                input.min = '1';
+                input.max = String(max);
+                input.value = String(Math.min(10, max) || 1);
+            }
+            photoQuestionCount = Math.min(10, max) || 1;
+            updatePhotoStartButtonState();
+        };
+
+        window.selectPhotoDifficulty = function (d) {
+            document.querySelectorAll('#photoDifficultyContainer .difficulty-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById(`pdiff_${d}`).classList.add('selected');
+            secilenPhotoZorluk = zorluklar.find(z => z.id === d);
+            updatePhotoStartButtonState();
+        };
+
+        document.addEventListener('input', function (e) {
+            if (e.target && e.target.id === 'photoQuestionCountInput') {
+                updatePhotoStartButtonState();
+            }
+        });
+
+        window.goBackToPhotoCategory = function () {
+            hideAllMainScreens();
+            document.getElementById('photoCategoryScreen').style.display = 'block';
+        };
+
+        window.startPhotoTest = function () {
+            if (!secilenPhotoKategori || !secilenPhotoZorluk) {
+                alert('Kategori ve zorluk seçmelisin.');
+                return;
+            }
+            if (!validatePhotoQuestionCount()) {
+                // do not start if count invalid / over max
+                return;
+            }
+            const pool = [...(photoPools[secilenPhotoKategori.id] || [])];
+            if (!pool.length) {
+                alert('Bu kategoride henüz soru yok.');
+                return;
+            }
+            const max = getPhotoPoolMax(secilenPhotoKategori.id);
+            if (photoQuestionCount > max) {
+                document.getElementById('photoCountError').textContent = `Maksimum ${max} soru seçebilirsin!`;
+                return;
+            }
+            // shuffle and take selected count
+            photoSorular = pool.sort(() => Math.random() - 0.5).slice(0, photoQuestionCount);
+            photoIndex = 0;
+            photoCevaplar = Array(photoSorular.length).fill(null);
+            photoTimeLeft = secilenPhotoZorluk.sure;
+            photoTestAktif = true;
+            photoPuan = 0;
+            exitTarget = 'photo';
+
+            document.getElementById('photoTestUserName').textContent = kullaniciAdi;
+            document.getElementById('photoTestUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet} • ${secilenPhotoKategori.ad}`;
+            let av = document.getElementById('photoTestUserAvatar');
+            if (uploadedImage) av.innerHTML = `<img src="${uploadedImage}">`;
+            else av.textContent = secilenAvatar;
+            document.getElementById('photoDifficultyDisplay').textContent = `${secilenPhotoZorluk.ad} • ${photoQuestionCount} soru`;
+
+            hideAllMainScreens();
+            document.getElementById('photoTestScreen').style.display = 'block';
+            showPhotoQuestion();
+        };
+
+        function showPhotoQuestion() {
+            if (!photoTestAktif) return;
+            const s = photoSorular[photoIndex];
+            document.getElementById('photoQuestionCounter').textContent = `${photoIndex + 1}/${photoSorular.length}`;
+            document.getElementById('photoPrompt').textContent = s.prompt || 'Bu görselde ne/kim var?';
+            document.getElementById('photoHint').textContent = s.image ? '' : 'ℹ️ Görsel yakında eklenecek — şimdilik ipucu emojisine bak.';
+            document.getElementById('photoFeedback').textContent = '';
+            document.getElementById('photoFeedback').className = 'photo-feedback';
+
+            const img = document.getElementById('photoImage');
+            const ph = document.getElementById('photoPlaceholder');
+            if (s.image) {
+                img.src = s.image;
+                img.style.display = 'block';
+                ph.style.display = 'none';
+            } else {
+                img.removeAttribute('src');
+                img.style.display = 'none';
+                ph.style.display = 'flex';
+                ph.textContent = s.emoji || '🖼️';
+            }
+
+            const input = document.getElementById('photoAnswerInput');
+            input.value = photoCevaplar[photoIndex] && photoCevaplar[photoIndex].text ? photoCevaplar[photoIndex].text : '';
+            input.disabled = false;
+            input.focus();
+
+            document.getElementById('photoPrevBtn').disabled = photoIndex === 0;
+            document.getElementById('photoNextBtn').disabled = !photoCevaplar[photoIndex];
+
+            clearInterval(photoTimer);
+            photoTimeLeft = secilenPhotoZorluk.sure;
+            updatePhotoTimer();
+            photoTimer = setInterval(() => {
+                if (!photoTestAktif) return;
+                photoTimeLeft--;
+                updatePhotoTimer();
+                if (photoTimeLeft <= 0) {
+                    clearInterval(photoTimer);
+                    if (!photoCevaplar[photoIndex]) {
+                        photoCevaplar[photoIndex] = { text: '', correct: false, timeout: true };
+                    }
+                    if (photoIndex < photoSorular.length - 1) {
+                        photoIndex++;
+                        showPhotoQuestion();
+                    } else {
+                        finishPhotoTest();
+                    }
+                }
+            }, 1000);
+        }
+
+        function updatePhotoTimer() {
+            const m = Math.floor(photoTimeLeft / 60), s = photoTimeLeft % 60;
+            document.getElementById('photoTimerText').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            document.getElementById('photoTimerProgress').style.width = `${(photoTimeLeft / secilenPhotoZorluk.sure) * 100}%`;
+        }
+
+        function commitPhotoAnswerFromInput() {
+            const input = document.getElementById('photoAnswerInput');
+            const textVal = input.value.trim();
+            if (!textVal) {
+                document.getElementById('photoFeedback').textContent = 'Bir cevap yaz veya Boş Bırak.';
+                document.getElementById('photoFeedback').className = 'photo-feedback bad';
+                return false;
+            }
+            const s = photoSorular[photoIndex];
+            const ok = isPhotoAnswerCorrect(textVal, s.answers);
+            photoCevaplar[photoIndex] = { text: textVal, correct: ok, timeout: false };
+            const fb = document.getElementById('photoFeedback');
+            if (ok) {
+                fb.textContent = '✅ Doğru!';
+                fb.className = 'photo-feedback ok';
+            } else {
+                fb.textContent = `❌ Yanlış — Doğru: ${s.label}`;
+                fb.className = 'photo-feedback bad';
+            }
+            document.getElementById('photoNextBtn').disabled = false;
+            return true;
+        }
+
+        window.photoNextQuestion = function () {
+            if (!photoCevaplar[photoIndex]) {
+                if (!commitPhotoAnswerFromInput()) return;
+            } else {
+                // update if user edited
+                const textVal = document.getElementById('photoAnswerInput').value.trim();
+                if (textVal) {
+                    const s = photoSorular[photoIndex];
+                    const ok = isPhotoAnswerCorrect(textVal, s.answers);
+                    photoCevaplar[photoIndex] = { text: textVal, correct: ok, timeout: false };
+                }
+            }
+            clearInterval(photoTimer);
+            if (photoIndex < photoSorular.length - 1) {
+                photoIndex++;
+                showPhotoQuestion();
+            } else {
+                finishPhotoTest();
+            }
+        };
+
+        window.photoPreviousQuestion = function () {
+            if (photoIndex > 0) {
+                clearInterval(photoTimer);
+                photoIndex--;
+                showPhotoQuestion();
+            }
+        };
+
+        window.photoSkipQuestion = function () {
+            photoCevaplar[photoIndex] = { text: '', correct: false, timeout: false, skipped: true };
+            clearInterval(photoTimer);
+            if (photoIndex < photoSorular.length - 1) {
+                photoIndex++;
+                showPhotoQuestion();
+            } else {
+                finishPhotoTest();
+            }
+        };
+
+        window.showPhotoExitConfirm = function () {
+            exitTarget = 'photo';
+            document.getElementById('exitConfirmModal').style.display = 'flex';
+        };
+
+        // wrap original exit handlers
+        const _origShowExit = window.showExitConfirm;
+        window.showExitConfirm = function () {
+            exitTarget = 'text';
+            document.getElementById('exitConfirmModal').style.display = 'flex';
+        };
+
+
+        function finishPhotoTest() {
+            photoTestAktif = false;
+            clearInterval(photoTimer);
+            let dogru = 0;
+            let html = '';
+            photoSorular.forEach((s, i) => {
+                const c = photoCevaplar[i];
+                const ok = c && c.correct;
+                if (ok) {
+                    dogru++;
+                    photoPuan += 10;
+                }
+                const given = !c ? 'Cevapsız' : c.timeout ? 'Süre Doldu' : c.skipped ? 'Boş Bırakıldı' : (c.text || 'Cevapsız');
+                html += `<div class="result-item" onclick="showPhotoExplanation(${i})">${ok ? '✅' : '❌'} ${i + 1}. ${s.label} — Senin: ${given}</div>`;
+            });
+            hideAllMainScreens();
+            document.getElementById('photoResultScreen').style.display = 'block';
+            document.getElementById('photoResultList').innerHTML = html;
+            document.getElementById('photoFinalScore').textContent = dogru;
+            document.getElementById('photoTotalPoints').textContent = photoPuan;
+            addPoints(photoPuan);
+            const total = photoSorular.length || 10;
+            const ratio = dogru / total;
+            let seviye = ratio <= 0.3 ? '😅 Düşük' : ratio <= 0.5 ? '🙂 Orta' : ratio <= 0.7 ? '🤓 İleri' : ratio <= 0.9 ? '🧠 Çok İleri' : '👑 Ultra';
+            document.getElementById('photoZekaSeviyesi').textContent = seviye + ' Zekalı';
+            document.getElementById('photoExplanationPanel').innerHTML = '';
+            changeTheme(secilenPhotoKategori?.theme || 'space');
+        }
+
+        window.showPhotoExplanation = function (i) {
+            const s = photoSorular[i];
+            const c = photoCevaplar[i];
+            const given = !c ? 'Cevapsız' : c.timeout ? 'Süre Doldu' : c.skipped ? 'Boş Bırakıldı' : (c.text || 'Cevapsız');
+            const ok = c && c.correct;
+            document.getElementById('photoExplanationPanel').innerHTML =
+                `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3>
+                <p>${s.prompt}</p>
+                <p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>
+                <p>Cevabınız: ${given}</p>
+                <p>Doğru: ${s.label}</p>
+                <p>💡 ${ok ? 'Harika, doğru bildin!' : 'Görselleri ekledikçe daha da netleşecek.'}</p></div>`;
+        };
+
+        window.goToPhotoCategoriesFromResult = function () {
+            clearInterval(photoTimer);
+            hideAllMainScreens();
+            document.getElementById('photoCategoryScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        // live enable next while typing
+        document.addEventListener('input', (e) => {
+            if (e.target && e.target.id === 'photoAnswerInput') {
+                document.getElementById('photoNextBtn').disabled = !e.target.value.trim();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const pts = document.getElementById('photoTestScreen');
+                if (pts && pts.style.display !== 'none' && photoTestAktif) {
+                    e.preventDefault();
+                    photoNextQuestion();
+                }
+            }
+        });
+
 
         const kategoriler = [{ id: 'marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Kahramanlar' }, { id: 'dc', ad: 'DC', icon: '🦇', subtitle: 'Süper güç' }, { id: 'oyun', ad: 'Oyun', icon: '🎮', subtitle: 'Pixel dünyası' }, { id: 'araba', ad: 'Araba', icon: '🏎️', subtitle: 'Hız şöleni' }, { id: 'motor', ad: 'Motor', icon: '🏍️', subtitle: 'Açık yol' }, { id: 'yemek', ad: 'Yemek', icon: '🍳', subtitle: 'Lezzet sınavı' }, { id: 'hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Doğal dünya' }, { id: 'spor', ad: 'Spor', icon: '⚽', subtitle: 'Rekabet' }, { id: 'teknoloji', ad: 'Teknoloji', icon: '📱', subtitle: 'Gelecek' }, { id: 'genelkultur', ad: 'Genel Kültür', icon: '🌍', subtitle: 'Her şey' }, { id: 'muzik', ad: 'Müzik', icon: '🎵', subtitle: 'Sesler' }, { id: 'sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film dünyası' }, { id: 'bilim', ad: 'Bilim', icon: '🔬', subtitle: 'Keşif' }, { id: 'tarih', ad: 'Tarih', icon: '📜', subtitle: 'Geçmiş' }, { id: 'sanat', ad: 'Sanat', icon: '🎨', subtitle: 'İfade' }, { id: 'astronomi', ad: 'Astronomi', icon: '☄️', subtitle: 'Yıldızlar' }, { id: 'edebiyat', ad: 'Edebiyat', icon: '📚', subtitle: 'Kelime hazinesi' }, { id: 'cografya', ad: 'Coğrafya', icon: '🌍', subtitle: 'Harita bilgisi' }, { id: 'siyaset', ad: 'Siyaset', icon: '🏛️', subtitle: 'Toplum' }, { id: 'saglik', ad: 'Sağlık', icon: '🩺', subtitle: 'Yaşam bilgisi' }, { id: 'mitoloji', ad: 'Mitoloji', icon: '⚡', subtitle: 'Efsaneler' }, { id: 'anime', ad: 'Anime', icon: '🎌', subtitle: 'Manga dünyası' }, { id: 'futbol', ad: 'Futbol', icon: '⚽', subtitle: 'Saha bilgisi' }, { id: 'markalar', ad: 'Markalar', icon: '🏷️', subtitle: 'Logo & marka' }, { id: 'bayraklar', ad: 'Bayraklar', icon: '🚩', subtitle: 'Ülke simgeleri' }, { id: 'matematik', ad: 'Matematik', icon: '➗', subtitle: 'Sayılar' }, { id: 'dizi', ad: 'Dizi', icon: '📺', subtitle: 'Ekran keyfi' }, { id: 'moda', ad: 'Moda', icon: '👗', subtitle: 'Stil & trend' }, { id: 'felsefe', ad: 'Felsefe', icon: '🧠', subtitle: 'Düşünce' }, { id: 'doga', ad: 'Doğa', icon: '🌿', subtitle: 'Çevre & yaşam' }];
         let socket = null;
@@ -4269,7 +5275,6 @@
         let secilenKategori = null, secilenZorluk = null, mevcutSorular = [], mevcutIndex = 0, cevaplar = [], timer, timeLeft, testAktif = false, puan = 0;
         function id(s) { return document.getElementById(s); } const pScreen = id('profileScreen'), cScreen = id('categoryScreen'), dScreen = id('difficultyScreen'), tScreen = id('testScreen'), rScreen = id('resultScreen');
 
-        window.goToCategorySelect = function () { id('categoryGrid').innerHTML = kategoriler.map(k => `<div class="category-card category-card--${k.id}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${k.ad}</div><div class="category-subtitle">${k.subtitle}</div></div>`).join(''); pScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme('space'); };
         window.openMultiplayerSetup = function () {
             multiplayerModalMode = 'create';
             document.getElementById('multiplayerModalTitle').textContent = 'Oda Kur';
@@ -4312,9 +5317,7 @@
             emitMultiplayer('join-room', { code, password, name });
         };
         window.selectCategory = function (cid) { document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected')); id(`cat_${cid}`).classList.add('selected'); secilenKategori = kategoriler.find(k => k.id === cid); changeTheme(cid); id('categoryNextBtn').disabled = false; };
-        window.goBackToProfile = function () { cScreen.style.display = 'none'; pScreen.style.display = 'block'; changeTheme('space'); };
         window.goToDifficultySelect = function () { id('difficultyContainer').innerHTML = zorluklar.map(z => `<div class="difficulty-card" onclick="selectDifficulty('${z.id}')" id="diff_${z.id}"><div class="difficulty-icon">${z.icon}</div><div class="difficulty-title">${z.ad}</div><div class="difficulty-time">${z.sure} sn</div></div>`).join(''); cScreen.style.display = 'none'; dScreen.style.display = 'block'; id('difficultyNextBtn').disabled = true; };
-        window.goBackToCategory = function () { dScreen.style.display = 'none'; cScreen.style.display = 'block'; };
         window.selectDifficulty = function (d) { document.querySelectorAll('.difficulty-card').forEach(c => c.classList.remove('selected')); id(`diff_${d}`).classList.add('selected'); secilenZorluk = zorluklar.find(z => z.id === d); id('difficultyNextBtn').disabled = false; };
 
         function getQuestionPoolByCategoryId(categoryId) {
@@ -4427,7 +5430,22 @@
         window.previousQuestion = function () { if (mevcutIndex > 0) { clearInterval(timer); mevcutIndex--; soruyuGoster(); } };
         window.returnToSkippedQuestion = function () { const skippedIndex = getLastSkippedQuestionIndex(); if (skippedIndex !== -1) { clearInterval(timer); mevcutIndex = skippedIndex; soruyuGoster(); } };
         window.showExitConfirm = function () { document.getElementById('exitConfirmModal').style.display = 'flex'; };
-        window.confirmExit = function () { document.getElementById('exitConfirmModal').style.display = 'none'; clearInterval(timer); testAktif = false; tScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); };
+        window.confirmExit = function () {
+            document.getElementById('exitConfirmModal').style.display = 'none';
+            if (typeof exitTarget !== 'undefined' && exitTarget === 'photo') {
+                clearInterval(photoTimer);
+                photoTestAktif = false;
+                hideAllMainScreens();
+                document.getElementById('photoCategoryScreen').style.display = 'block';
+                changeTheme(secilenPhotoKategori?.theme || 'space');
+            } else {
+                clearInterval(timer);
+                testAktif = false;
+                tScreen.style.display = 'none';
+                cScreen.style.display = 'block';
+                changeTheme(secilenKategori?.id || 'space');
+            }
+        };
         window.cancelExit = function () { document.getElementById('exitConfirmModal').style.display = 'none'; };
         function testiBitir() { testAktif = false; clearInterval(timer); tScreen.style.display = 'none'; rScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); let dogru = 0, html = ''; mevcutSorular.forEach((s, i) => { let dm = cevaplar[i] === s.dogru; if (dm) { dogru++; puan += 10; } html += `<div class="result-item" onclick="showExplanation(${i})">${dm ? '✅' : '❌'} ${i + 1}. ${s.soru}</div>`; }); id('resultList').innerHTML = html; id('finalScore').textContent = dogru; id('totalPoints').textContent = puan; addPoints(puan); let seviye = dogru <= 3 ? '😅 Düşük' : dogru <= 5 ? '🙂 Orta' : dogru <= 7 ? '🤓 İleri' : dogru <= 9 ? '🧠 Çok İleri' : '👑 Ultra'; id('zekaSeviyesi').textContent = seviye + ' Zekalı'; }
         window.showExplanation = function (i) { let s = mevcutSorular[i], c = cevaplar[i], dm = c === s.dogru; const answerText = c === 'Z' ? 'Süre Doldu' : (c === 'B' ? 'Boş Bırakıldı' : (c ? `${c}) ${s[c]}` : 'Cevapsız')); id('explanationPanel').innerHTML = `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3><p>${s.soru}</p><p style="color:#ffffff;">Cevabınız: ${answerText}</p><p style="color:#ffffff;">Doğru: ${s.dogru}) ${s[s.dogru]}</p><p style="color:#ffffff;">💡 ${s.aciklama}</p></div>`; };
@@ -4487,10 +5505,17 @@
                 }
             });
         }
-        document.addEventListener('keypress', e => { if (e.key === 'Enter') { if (pScreen.style.display !== 'none') validateAndContinue(); else if (cScreen.style.display !== 'none' && !id('categoryNextBtn').disabled) goToDifficultySelect(); else if (dScreen.style.display !== 'none' && !id('difficultyNextBtn').disabled) startTest(); } });
+        document.addEventListener('keypress', e => { if (e.key === 'Enter') {
+            const modeScr = document.getElementById('modeScreen');
+            if (pScreen.style.display !== 'none') validateAndContinue();
+            else if (modeScr && modeScr.style.display !== 'none' && !document.getElementById('modeNextBtn').disabled) continueFromMode();
+            else if (cScreen.style.display !== 'none' && !id('categoryNextBtn').disabled) goToDifficultySelect();
+            else if (dScreen.style.display !== 'none' && !id('difficultyNextBtn').disabled) startTest();
+            else if (document.getElementById('photoCategoryScreen')?.style.display !== 'none' && !document.getElementById('photoCategoryNextBtn').disabled) goToPhotoDifficulty();
+            else if (document.getElementById('photoDifficultyScreen')?.style.display !== 'none' && !document.getElementById('photoDifficultyNextBtn').disabled) startPhotoTest();
+        } });
         changeTheme('space'); updateRankDisplay();
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
 </html>
