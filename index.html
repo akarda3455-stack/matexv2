@@ -2737,7 +2737,36 @@
             color: #00d2ff;
             font-size: 20px;
             font-weight: 600;
-        }
+        }   
+         /* --- ÇOK DİLLİ SİSTEM EKLEMELERİ --- */
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.form-select {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 210, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px 20px;
+    color: white;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.form-select:focus {
+    border-color: #8a2be2;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+}
+
+.form-select option {
+    background: #0a0f1e;
+    color: white;
+}
+        
     </style>
 </head>
 
@@ -2747,6 +2776,22 @@
         <div class="loading-text">Sorular Hazırlanıyor...</div>
     </div>
 
+    <!-- DİL SEÇİMİ (Mevcut Giriş Ekranı İçine Eklenecek) -->
+<div class="form-group">
+    <label class="form-label" id="lblSelectLanguage"><i class="fa-solid fa-globe"></i> Dil Seçin / Select Language</label>
+    <select id="languageSelect" class="form-select" onchange="changeLanguage(this.value)">
+        <option value="tr">🇹🇷 Türkçe</option>
+        <option value="en">🇺🇸 English</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="ru">🇷🇺 Русский</option>
+        <option value="zh">🇨🇳 中文</option>
+        <option value="ja">🇯🇵 日本語</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
+</div>
+
+    
     <!-- SOL ÜST - ARMA SİSTEMİ -->
     <div class="rank-system-left">
         <div class="rank-item rank-bronz rank-active" id="rankBronz">
@@ -3226,7 +3271,213 @@
         </div>
     </div>
     <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
-    <script>
+    <script>  
+    
+     // --- 8 DİL İÇİN ÇEVİRİ SÖZLÜĞÜ ---
+const translations = {
+    tr: {
+        lblSelectLanguage: "Dil Seçin / Select Language",
+        lblUsername: "Kullanıcı Adı",
+        txtStartGame: "Oyunu Başlat",
+        lblCategoryTitle: "Bir Kategori Seçin",
+        txtNext: "İleri",
+        btnBack: "Geri",
+        lblDifficultyTitle: "Zorluk Derecesi",
+        txtStartQuiz: "Sınavı Başlat",
+        lblResultsTitle: "Sınav Tamamlandı!",
+        resultSummary: "Doğru sayısı: {correct} / {total}",
+        btnPlayAgain: "Ana Sayfaya Dön",
+        categories: { math: "Matematik", science: "Bilim", history: "Tarih", geography: "Coğrafya" },
+        difficulties: { easy: "Kolay", medium: "Orta", hard: "Zor" }
+    },
+    en: {
+        lblSelectLanguage: "Select Language",
+        lblUsername: "Username",
+        txtStartGame: "Start Game",
+        lblCategoryTitle: "Select a Category",
+        txtNext: "Next",
+        btnBack: "Back",
+        lblDifficultyTitle: "Select Difficulty",
+        txtStartQuiz: "Start Quiz",
+        lblResultsTitle: "Quiz Finished!",
+        resultSummary: "Score: {correct} / {total}",
+        btnPlayAgain: "Back to Home",
+        categories: { math: "Mathematics", science: "Science", history: "History", geography: "Geography" },
+        difficulties: { easy: "Easy", medium: "Medium", hard: "Hard" }
+    },
+    de: {
+        lblSelectLanguage: "Sprache auswählen",
+        lblUsername: "Benutzername",
+        txtStartGame: "Spiel starten",
+        lblCategoryTitle: "Kategorie wählen",
+        txtNext: "Weiter",
+        btnBack: "Zurück",
+        lblDifficultyTitle: "Schwierigkeit wählen",
+        txtStartQuiz: "Quiz starten",
+        lblResultsTitle: "Quiz beendet!",
+        resultSummary: "Ergebnis: {correct} / {total}",
+        btnPlayAgain: "Zurück zur Startseite",
+        categories: { math: "Mathematik", science: "Wissenschaft", history: "Geschichte", geography: "Geografie" },
+        difficulties: { easy: "Einfach", medium: "Mittel", hard: "Schwer" }
+    },
+    ru: {
+        lblSelectLanguage: "Выберите язык",
+        lblUsername: "Имя пользователя",
+        txtStartGame: "Начать игру",
+        lblCategoryTitle: "Выберите категорию",
+        txtNext: "Далее",
+        btnBack: "Назад",
+        lblDifficultyTitle: "Выберите сложность",
+        txtStartQuiz: "Начать тест",
+        lblResultsTitle: "Тест завершен!",
+        resultSummary: "Счет: {correct} / {total}",
+        btnPlayAgain: "На главную",
+        categories: { math: "Математика", science: "Наука", history: "История", geography: "География" },
+        difficulties: { easy: "Легко", medium: "Средне", hard: "Сложно" }
+    },
+    zh: {
+        lblSelectLanguage: "选择语言",
+        lblUsername: "用户名",
+        txtStartGame: "开始游戏",
+        lblCategoryTitle: "选择类别",
+        txtNext: "下一步",
+        btnBack: "返回",
+        lblDifficultyTitle: "选择难度",
+        txtStartQuiz: "开始答题",
+        lblResultsTitle: "测验结束！",
+        resultSummary: "得分: {correct} / {total}",
+        btnPlayAgain: "返回主页",
+        categories: { math: "数学", science: "科学", history: "历史", geography: "地理" },
+        difficulties: { easy: "简单", medium: "中等", hard: "困难" }
+    },
+    ja: {
+        lblSelectLanguage: "言語を選択",
+        lblUsername: "ユーザー名",
+        txtStartGame: "ゲーム開始",
+        lblCategoryTitle: "カテゴリを選択",
+        txtNext: "次へ",
+        btnBack: "戻る",
+        lblDifficultyTitle: "難易度を選択",
+        txtStartQuiz: "クイズを開始",
+        lblResultsTitle: "クイズ終了！",
+        resultSummary: "スコア: {correct} / {total}",
+        btnPlayAgain: "ホームに戻る",
+        categories: { math: "数学", science: "科学", history: "歴史", geography: "地理" },
+        difficulties: { easy: "簡単", medium: "普通", hard: "難しい" }
+    },
+    es: {
+        lblSelectLanguage: "Seleccionar idioma",
+        lblUsername: "Nombre de usuario",
+        txtStartGame: "Iniciar juego",
+        lblCategoryTitle: "Selecciona una categoría",
+        txtNext: "Siguiente",
+        btnBack: "Atrás",
+        lblDifficultyTitle: "Selecciona dificultad",
+        txtStartQuiz: "Iniciar Quiz",
+        lblResultsTitle: "¡Prueba terminada!",
+        resultSummary: "Puntuación: {correct} / {total}",
+        btnPlayAgain: "Volver al inicio",
+        categories: { math: "Matemáticas", science: "Ciencia", history: "Historia", geography: "Geografía" },
+        difficulties: { easy: "Fácil", medium: "Medio", hard: "Difícil" }
+    },
+    ar: {
+        lblSelectLanguage: "اختر اللغة",
+        lblUsername: "اسم المستخدم",
+        txtStartGame: "ابدأ اللعبة",
+        lblCategoryTitle: "اختر الفئة",
+        txtNext: "التالي",
+        btnBack: "رجوع",
+        lblDifficultyTitle: "اختر الصعوبة",
+        txtStartQuiz: "ابدأ الاختبار",
+        lblResultsTitle: "انتهى الاختبار!",
+        resultSummary: "النتيجة: {correct} / {total}",
+        btnPlayAgain: "العودة للرئيسية",
+        categories: { math: "الرياضيات", science: "العلوم", history: "التاريخ", geography: "الجغرافيا" },
+        difficulties: { easy: "سهل", medium: "متوسط", hard: "صعب" }
+    }
+};
+
+// --- ÇOK DİLLİ SORU HAVUZU (Örnektir, soruları buraya ekleyebilirsin) ---
+const questionsPool = {
+    math: {
+        tr: [{ q: "5 * 6 kaç eder?", a: ["30", "25", "35", "20"], c: 0 }],
+        en: [{ q: "What is 5 * 6?", a: ["30", "25", "35", "20"], c: 0 }],
+        de: [{ q: "Was ist 5 * 6?", a: ["30", "25", "35", "20"], c: 0 }],
+        ru: [{ q: "Сколько будет 5 * 6?", a: ["30", "25", "35", "20"], c: 0 }],
+        zh: [{ q: "5 * 6 等于多少？", a: ["30", "25", "35", "20"], c: 0 }],
+        ja: [{ q: "5 * 6 は何ですか？", a: ["30", "25", "35", "20"], c: 0 }],
+        es: [{ q: "¿Cuánto es 5 * 6?", a: ["30", "25", "35", "20"], c: 0 }],
+        ar: [{ q: "ما حاصل ضرب 5 * 6؟", a: ["30", "25", "35", "20"], c: 0 }]
+    }
+    // Dilersen science, history gibi diğer kategorileri de yukarıdaki şablonla buraya ekleyebilirsin.
+};
+
+
+  let currentLang = 'tr'; // Varsayılan dil
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    const dict = translations[lang];
+
+    // Arapça için Sağdan Sola (RTL) desteği
+    if (lang === 'ar') {
+        document.body.classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
+    }
+
+    // Ekran Elemanlarının Çevirileri (ID'leri kendi HTML elementlerine göre kontrol et)
+    if(document.getElementById('lblSelectLanguage')) {
+        document.getElementById('lblSelectLanguage').innerHTML = `<i class="fa-solid fa-globe"></i> ` + dict.lblSelectLanguage;
+    }
+    if(document.getElementById('lblUsername')) {
+        document.getElementById('lblUsername').innerHTML = `<i class="fa-solid fa-user"></i> ` + dict.lblUsername;
+    }
+    if(document.getElementById('txtStartGame')) {
+        document.getElementById('txtStartGame').innerText = dict.txtStartGame;
+    }
+    if(document.getElementById('lblCategoryTitle')) {
+        document.getElementById('lblCategoryTitle').innerText = dict.lblCategoryTitle;
+    }
+    if(document.getElementById('txtNext')) {
+        document.getElementById('txtNext').innerText = dict.txtNext;
+    }
+    if(document.getElementById('btnBack')) {
+        document.getElementById('btnBack').innerText = dict.btnBack;
+    }
+    if(document.getElementById('lblDifficultyTitle')) {
+        document.getElementById('lblDifficultyTitle').innerText = dict.lblDifficultyTitle;
+    }
+    if(document.getElementById('txtStartQuiz')) {
+        document.getElementById('txtStartQuiz').innerText = dict.txtStartQuiz;
+    }
+    if(document.getElementById('lblResultsTitle')) {
+        document.getElementById('lblResultsTitle').innerText = dict.lblResultsTitle;
+    }
+    if(document.getElementById('btnPlayAgain')) {
+        document.getElementById('btnPlayAgain').innerText = dict.btnPlayAgain;
+    }
+
+    // Kategorileri ve Zorlukları yeniden oluştur
+    if (typeof renderCategories === "function") renderCategories();
+    if (typeof renderDifficulties === "function") renderDifficulties();
+}
+
+ function showQuestion() {
+    // Aktif kategoriden ve seçilen dilden soruları çek
+    const activeQuestions = questionsPool[selectedCategory][currentLang] || questionsPool[selectedCategory]['en'];
+    
+    const q = activeQuestions[currentQuestionIndex];
+    document.getElementById('questionText').innerText = q.q; // Soru metni
+
+    const container = document.getElementById('optionsContainer');
+    // Şıkları ekrana bas
+    container.innerHTML = q.a.map((ans, idx) => `
+        <button class="option-btn" onclick="checkAnswer(${idx})">${ans}</button>
+    `).join('');
+}
+        
+        
         // Soru havuzları (öncekiyle aynı - kısaltıldı)
         const marvelSorulari = [
             { soru: "Iron Man'in gerçek adı nedir?", A: "Tony Stark", B: "Steve Rogers", C: "Bruce Banner", D: "Thor Odinson", E: "Clint Barton", dogru: "A", aciklama: "Tony Stark, milyarder iş adamı ve dahi mucittir." },
