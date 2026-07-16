@@ -2737,8 +2737,16 @@
             color: #00d2ff;
             font-size: 20px;
             font-weight: 600;
-        }   
-         
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;" ondragstart="return false;">
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Sorular Hazırlanıyor...</div>
+    </div>
+
     <!-- SOL ÜST - ARMA SİSTEMİ -->
     <div class="rank-system-left">
         <div class="rank-item rank-bronz rank-active" id="rankBronz">
@@ -3218,8 +3226,7 @@
         </div>
     </div>
     <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
-    <script>  
-    
+    <script>
         // Soru havuzları (öncekiyle aynı - kısaltıldı)
         const marvelSorulari = [
             { soru: "Iron Man'in gerçek adı nedir?", A: "Tony Stark", B: "Steve Rogers", C: "Bruce Banner", D: "Thor Odinson", E: "Clint Barton", dogru: "A", aciklama: "Tony Stark, milyarder iş adamı ve dahi mucittir." },
