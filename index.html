@@ -6374,7 +6374,6 @@
             { id: 'photo-dc', adKey: 'dc', icon: '🦇', subtitleKey: 'photoCharGuess', theme: 'dc' },
             { id: 'photo-anime', adKey: 'anime', icon: '🎌', subtitleKey: 'photoCharGuess', theme: 'anime' },
             { id: 'photo-futbol', adKey: 'futbol', icon: '⚽', subtitleKey: 'photoPlayerClub', theme: 'futbol' },
-            { id: 'photo-yemek', adKey: 'yemek', icon: '🍽️', subtitleKey: 'photoDishGuess', theme: 'yemek' },
             { id: 'photo-markalar', adKey: 'markalar', icon: '🏷️', subtitleKey: 'photoLogoGuess', theme: 'markalar' },
             { id: 'photo-sinema', adKey: 'sinema', icon: '🎬', subtitleKey: 'photoFilmChar', theme: 'sinema' },
             { id: 'photo-hayvan', adKey: 'hayvan', icon: '🦁', subtitleKey: 'photoCreatureGuess', theme: 'hayvan' },
@@ -6383,14 +6382,14 @@
 
         // Photo subtitle translations
         const photoSubTitles = {
-            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoDishGuess: 'Yemeği tahmin et', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin' },
-            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoDishGuess: 'Guess the dish', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess' },
-            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoDishGuess: 'Gericht erraten', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten' },
-            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoDishGuess: 'Угадай блюдо', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну' },
-            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoDishGuess: '猜菜名', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家' },
-            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoDishGuess: '料理当て', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て' },
-            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoDishGuess: 'Adivina el plato', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país' },
-            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoDishGuess: 'خمّن الطبق', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد' }
+            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin' },
+            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess' },
+            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten' },
+            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну' },
+            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家' },
+            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て' },
+            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país' },
+            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد' }
         };
 
         function getPhotoSubTitle(key) {
@@ -6516,26 +6515,6 @@
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda', 'turan'], label: 'arda turan', emoji: '🇧🇷', image: 'futbolcu_18.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['jünyer', 'neymar'], label: 'junyer neymar', emoji: '🇹🇷', image: 'futbolcu_19.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda'], label: 'arda güler', emoji: '🇧🇷', image: 'futbolcu_20.jpg' }
-            ],
-            'photo-yemek': [
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['babagannuş', 'babagannus', 'baba gannuş', 'baba gannus', 'patlıcan salatası', 'patlican salatasi', 'közlenmiş patlıcan salatası', 'kozlenmis patlican salatasi'], label: 'Babagannuş', emoji: '🍆', image: 'yemekler_01.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['biber dolması', 'biber dolmasi', 'dolma', 'zeytinyağlı biber dolması', 'zeytinyagli biber dolmasi'], label: 'Biber Dolması', emoji: '🫑', image: 'yemekler_02.webp' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['döner', 'doner', 'et döner', 'et doner', 'yaprak döner', 'yaprak doner'], label: 'Döner', emoji: '🥙', image: 'yemekler_04.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['krep', 'crepe', 'akıtma', 'akitma'], label: 'Krep', emoji: '🥞', image: 'yemekler_05.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['arpa şehriye çorbası', 'arpa sehriye corbasi', 'şehriye çorbası', 'sehriye corbasi', 'domatesli arpa şehriye çorbası', 'domatesli arpa sehriye corbasi'], label: 'Arpa Şehriye Çorbası', emoji: '🍲', image: 'yemekler_06.webp' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['alinazik', 'ali nazik', 'alınazik', 'ali nazik kebabı', 'ali nazik kebabi'], label: 'Ali Nazik', emoji: '🍆', image: 'yemekler_07.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['analı kızlı', 'anali kizli', 'analı kızlı çorbası', 'anali kizli corbasi'], label: 'Analı Kızlı', emoji: '🥘', image: 'yemekler_08.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['bulgur pilavı', 'bulgur pilavi', 'bulgur', 'sebzeli bulgur pilavı', 'sebzeli bulgur pilavi'], label: 'Bulgur Pilavı', emoji: '🍚', image: 'yemekler_09.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['çiğ köfte', 'cig kofte', 'etsiz çiğ köfte', 'etsiz cig kofte'], label: 'Çiğ Köfte', emoji: '🌶️', image: 'yemekler_10.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['arabaşı', 'arabasi', 'arabaşı çorbası', 'arabasi corbasi'], label: 'Arabaşı', emoji: '🥣', image: 'yemekler_11.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['biftek', 'steak', 'et biftek', 'ızgara biftek', 'izgara biftek'], label: 'Biftek', emoji: '🥩', image: 'yemekler_12.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['boyoz', 'izmir boyozu'], label: 'Boyoz', emoji: '🥐', image: 'yemekler_13.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['cacık', 'cacik', 'yoğurtlu salatalık', 'yogurtlu salatalik'], label: 'Cacık', emoji: '🥒', image: 'yemekler_14.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['elbasan tava', 'elbasan tavası', 'elbasan tavasi'], label: 'Elbasan Tava', emoji: '🍖', image: 'yemekler_16.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['etli ekmek', 'konya etli ekmek', 'etli pide'], label: 'Etli Ekmek', emoji: '🫓', image: 'yemekler_17.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['etli nohut', 'etli nohut yemeği', 'etli nohut yemegi', 'nohut yemeği', 'nohut yemegi'], label: 'Etli Nohut', emoji: '🫘', image: 'yemekler_18.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['lahmacun', 'lahmajun'], label: 'Lahmacun', emoji: '🫓', image: 'yemekler_19.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ['adana kebap', 'adana kebabı', 'adana kebabi', 'adana', 'kıyma kebabı', 'kiyma kebabi'], label: 'Adana Kebap', emoji: '🍢', image: 'yemekler_20.jpg' }
             ],
             'photo-markalar': [
                 { prompt: 'Bu markanın adı nedir?', answers: ['apple', 'elma'], label: 'Apple', emoji: '🍎', image: '' },
@@ -6685,7 +6664,7 @@
         // Map photo categories to text category IDs for styling
         const photoToTextCatMap = {
             'photo-marvel': 'marvel', 'photo-dc': 'dc', 'photo-anime': 'anime',
-            'photo-futbol': 'futbol', 'photo-yemek': 'yemek', 'photo-markalar': 'markalar',
+            'photo-futbol': 'futbol', 'photo-markalar': 'markalar',
             'photo-sinema': 'sinema', 'photo-hayvan': 'hayvan', 'photo-bayraklar': 'bayraklar'
         };
 
@@ -6987,19 +6966,17 @@
                     input.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
                 }
             } else {
-                // End mode
-                if (ok) {
-                    fb.textContent = '✅ ' + t('harika');
-                    fb.className = 'photo-feedback ok';
-                    playCorrectSound();
-                } else {
-                    fb.textContent = '❌';
-                    fb.className = 'photo-feedback bad';
-                    playWrongSound();
-                    const mc = document.getElementById('mainContainer');
-                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(() => mc.classList.remove('shake'), 600); }
+                // Sonda Göster modu: cevap verildiğinde doğru/yanlış bilgisi tamamen gizli kalır.
+                // Ses, titreşim, ekran sallama, renk veya doğru cevap gösterilmez.
+                fb.textContent = '';
+                fb.className = 'photo-feedback';
+                if (pifb) {
+                    pifb.textContent = '';
+                    pifb.className = 'inline-feedback';
+                    pifb.style.display = 'none';
                 }
-                if (pifb) pifb.style.display = 'none';
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
             }
 
             document.getElementById('photoNextBtn').disabled = false;
@@ -7118,7 +7095,16 @@
                     photoPuan += (POINTS_PER_DIFFICULTY[secilenPhotoZorluk?.id || 'kolay'] || 10);
                 }
                 const given = !c ? 'Cevapsız' : c.timeout ? 'Süre Doldu' : c.skipped ? 'Boş Bırakıldı' : (c.text || 'Cevapsız');
-                html += `<div class="result-item" onclick="showPhotoExplanation(${i})">${ok ? '✅' : '❌'} ${i + 1}. ${s.label} — Senin: ${given}</div>`;
+                // Kullanıcı soruyu cevaplayıp yanlış yaptıysa doğru cevabı sonuç kutusunun altında göster.
+                // Boş bırakılan veya süresi dolan sorularda bu ek satır görünmez.
+                const answeredWrong = !!(c && !ok && !c.timeout && !c.skipped && String(c.text || '').trim());
+                const correctAnswerLine = answeredWrong
+                    ? `<div style="margin-top:10px;padding-top:10px;border-top:1px dotted rgba(76,175,80,.65);color:#4caf50;font-weight:800;">✅ ${t('dogruCevap')} ${s.label}</div>`
+                    : '';
+                html += `<div class="result-item" onclick="showPhotoExplanation(${i})" style="border-color:${ok ? '#4caf50' : '#ff6b6b'};">
+                    <div>${ok ? '✅' : '❌'} ${i + 1}. ${s.prompt} — ${t('cevabiniz')} ${given}</div>
+                    ${correctAnswerLine}
+                </div>`;
             });
             hideAllMainScreens();
             document.getElementById('photoResultScreen').style.display = 'block';
@@ -7142,7 +7128,7 @@
             document.getElementById('photoExplanationPanel').innerHTML =
                 `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3>
                 <p>${s.prompt}</p>
-                ${s.image ? `<div style="text-align:center;margin:14px 0;"><img src="${s.image}" alt="${s.label}" style="max-width:280px;max-height:220px;border-radius:18px;object-fit:contain;"></div>` : `<p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>`}
+                <p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>
                 <p>Cevabınız: ${given}</p>
                 <p>Doğru: ${s.label}</p>
                 <p>💡 ${ok ? 'Harika, doğru bildin!' : 'Görselleri ekledikçe daha da netleşecek.'}</p></div>`;
@@ -7673,6 +7659,6 @@
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
