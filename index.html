@@ -74,45 +74,77 @@
         }
 
         .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.4);
-            background: linear-gradient(135deg, #3a7bd5, #8a2be2);
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.4), 0 0 50px rgba(0, 210, 255, 0.2), 0 15px 40px rgba(0, 210, 255, 0.3);
+            background: linear-gradient(135deg, #3a7bd5, #8a2be2, #C71585);
+            background-size: 200% 200%;
+            animation: gradientShift 2s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .back-btn:hover {
-            background: rgba(0, 210, 255, 0.15);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(138, 43, 226, 0.12));
             color: #ffffff;
             border-color: #8a2be2;
             transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3), 0 0 40px rgba(0, 210, 255, 0.1);
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px) scale(1.02);
             border-color: #8a2be2;
-            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.2);
-            background: rgba(0, 210, 255, 0.1);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5), 0 0 50px rgba(0, 210, 255, 0.25), 0 15px 35px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 210, 255, 0.12);
+            filter: brightness(1.15);
+        }
+        .category-card:hover .category-icon {
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+            transform: scale(1.1);
+        }
+        .category-card:hover .category-title {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
         .difficulty-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
             border-color: #8a2be2;
-            box-shadow: 0 0 40px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 35px rgba(138, 43, 226, 0.5), 0 0 70px rgba(0, 210, 255, 0.2), inset 0 0 30px rgba(138, 43, 226, 0.1);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(138, 43, 226, 0.15));
+        }
+        .difficulty-card:hover .difficulty-icon {
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+            transform: scale(1.15);
+        }
+        .difficulty-card:hover .difficulty-title {
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
         .option-btn:hover {
-            background: rgba(0, 210, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(138, 43, 226, 0.1));
             border-color: #8a2be2;
-            transform: translateX(8px);
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3), 0 0 40px rgba(0, 210, 255, 0.1);
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
         }
 
         .nav-btn:hover {
-            background: rgba(0, 210, 255, 0.15);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(138, 43, 226, 0.12));
             border-color: #8a2be2;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3), 0 0 40px rgba(0, 210, 255, 0.15);
+            transform: translateY(-2px);
+            color: #ffffff;
         }
 
         .gender-option:hover {
-            background: rgba(0, 210, 255, 0.15);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(138, 43, 226, 0.1));
             border-color: #8a2be2;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            transform: translateY(-2px);
         }
 
         .avatar-btn:hover {
@@ -137,9 +169,10 @@
         }
 
         .result-item:hover {
-            background: rgba(0, 210, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(138, 43, 226, 0.08));
             border-color: #8a2be2;
-            transform: translateX(5px);
+            transform: translateX(8px);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.25);
         }
 
         .avatar-option:hover {
@@ -211,22 +244,136 @@
             z-index: 10;
         }
 
-        /* SOL ÜST - ARMA SİSTEMİ */
+        /* SOL ÜST - ARMA SİSTEMİ (KOMPAKT KAPSÜL) */
         .rank-system-left {
             position: fixed;
             top: 25px;
             left: 30px;
             z-index: 100;
+        }
+
+        .rank-capsule {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
+            align-items: center;
+            gap: 10px;
             background: rgba(10, 15, 30, 0.85);
             backdrop-filter: blur(15px);
             border: 2px solid rgba(0, 210, 255, 0.4);
-            border-radius: 30px;
-            padding: 15px 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            user-select: none;
         }
+
+        .rank-capsule:hover {
+            border-color: #8a2be2;
+            box-shadow: 0 8px 30px rgba(138, 43, 226, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .rank-capsule-icon {
+            font-size: 24px;
+        }
+
+        .rank-capsule-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rank-capsule-name {
+            font-weight: 800;
+            font-size: 15px;
+            color: #cd7f32;
+        }
+
+        .rank-capsule-pts {
+            font-size: 14px;
+            font-weight: 700;
+            color: #00d2ff;
+        }
+
+        .rank-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 210, 255, 0.35);
+            border-radius: 24px;
+            padding: 20px;
+            min-width: 320px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .rank-dropdown.show {
+            display: block;
+        }
+
+        .rank-dropdown-title {
+            color: #00d2ff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .rank-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .rank-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-dropdown-icon {
+            font-size: 28px;
+            width: 36px;
+            text-align: center;
+        }
+
+        .rank-dropdown-info {
+            flex: 1;
+        }
+
+        .rank-dropdown-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .rank-dropdown-req {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .rank-dropdown-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .rank-dropdown-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .rank-dropdown-item.locked .rank-dropdown-icon { opacity: 0.4; filter: grayscale(0.5); }
+        .rank-dropdown-item.locked .rank-dropdown-name { color: #777; }
+        .rank-dropdown-item.active .rank-dropdown-icon { filter: drop-shadow(0 0 8px currentColor); }
+
 
         .rank-item {
             display: flex;
@@ -1500,9 +1647,13 @@
         }
 
         .mode-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px) scale(1.02);
             border-color: #8a2be2;
-            box-shadow: 0 18px 40px rgba(138, 43, 226, 0.28);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(0, 210, 255, 0.2), 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+        .mode-card:hover .mode-card-icon {
+            filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.5));
+            transform: scale(1.1);
         }
 
         .mode-card.selected {
@@ -1512,6 +1663,7 @@
 
         .mode-card-icon {
             font-size: 64px;
+            transition: all 0.3s ease;
         }
 
         .mode-card-title {
@@ -2002,9 +2154,13 @@
         }
 
         .category-card.selected {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px) scale(1.03);
             border-color: #8a2be2;
-            box-shadow: 0 18px 40px rgba(138, 43, 226, 0.28);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5), 0 0 50px rgba(0, 210, 255, 0.2), 0 18px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.12), rgba(0, 210, 255, 0.08));
+        }
+        .category-card.selected .category-icon {
+            filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.5));
         }
 
         .category-card--marvel {
@@ -2161,6 +2317,7 @@
             font-size: 46px;
             margin-bottom: 10px;
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            transition: all 0.3s ease;
         }
 
         .category-title {
@@ -2168,6 +2325,7 @@
             font-weight: 800;
             font-size: 18px;
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.14);
+            transition: all 0.3s ease;
         }
 
         .category-subtitle {
@@ -2197,19 +2355,25 @@
         }
 
         .difficulty-card.selected {
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(138, 43, 226, 0.2));
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(138, 43, 226, 0.25));
             border-color: #8a2be2;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(0, 210, 255, 0.15), inset 0 0 20px rgba(138, 43, 226, 0.08);
+        }
+        .difficulty-card.selected .difficulty-icon {
+            filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.5));
         }
 
         .difficulty-icon {
             font-size: 60px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
 
         .difficulty-title {
             color: #00d2ff;
             font-size: 32px;
             font-weight: 800;
+            transition: all 0.3s ease;
         }
 
         .difficulty-time {
@@ -2738,6 +2902,393 @@
             font-size: 20px;
             font-weight: 600;
         }
+
+        /* ===== LANGUAGE SELECTION SCREEN ===== */
+        .language-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .language-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #00d2ff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .language-subtitle {
+            font-size: 18px;
+            color: #a0d0ff;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        @media (max-width: 700px) {
+            .language-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .language-card {
+            background: linear-gradient(135deg, rgba(5, 10, 30, 0.96), rgba(30, 35, 70, 0.95));
+            border: 3px solid rgba(0, 210, 255, 0.35);
+            border-radius: 24px;
+            padding: 22px 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+            border-color: #8a2be2;
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
+        }
+
+        .language-card.selected {
+            border-color: #8a2be2;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.35);
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(30, 35, 70, 0.95));
+        }
+
+        .language-flag {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .language-name {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .language-native {
+            color: #a0d0ff;
+            font-size: 13px;
+        }
+
+        /* LANGUAGE DROPDOWN IN PROFILE */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-trigger {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #00d2ff;
+            border-radius: 20px;
+            padding: 14px 20px;
+            color: #ffffff;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .lang-dropdown-trigger:hover {
+            border-color: #8a2be2;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .lang-dropdown-panel {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: rgba(10, 15, 30, 0.98);
+            backdrop-filter: blur(20px);
+            border: 2px solid #00d2ff;
+            border-radius: 20px;
+            padding: 10px;
+            z-index: 50;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .lang-dropdown-panel::-webkit-scrollbar { display: none; }
+        .lang-dropdown-panel.show { display: block; }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #a0d0ff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: #fff;
+        }
+
+        .lang-dropdown-item.selected {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            color: #fff;
+        }
+
+        .lang-dropdown-item .lang-flag {
+            font-size: 24px;
+        }
+
+        .lang-save-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00d2ff, #8a2be2);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .lang-save-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
+        }
+        .lang-save-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* SOUND TOGGLE */
+        .sound-toggle-btn {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(10, 15, 30, 0.85);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            border-radius: 50px;
+            padding: 8px 18px;
+            color: #00d2ff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .sound-toggle-btn:hover {
+            border-color: #8a2be2;
+            transform: translateX(-50%) translateY(-2px);
+        }
+        .sound-toggle-btn.muted {
+            color: #ff6b6b;
+            border-color: rgba(255, 107, 107, 0.4);
+        }
+        .sound-toggle-label {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ANSWER MODE TOGGLE */
+        .answer-mode-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #00d2ff;
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin: 15px auto;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .answer-mode-label {
+            color: #a0d0ff;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .answer-mode-option {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #00d2ff;
+            border-radius: 50px;
+            padding: 8px 18px;
+            color: #a0d0ff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .answer-mode-option:hover {
+            border-color: #8a2be2;
+            background: rgba(0, 210, 255, 0.1);
+        }
+        .answer-mode-option.selected {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: #fff;
+            border-color: #8a2be2;
+        }
+
+        /* INLINE ANSWER FEEDBACK */
+        .inline-feedback {
+            margin-top: 12px;
+            padding: 14px 20px;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            animation: slideUp 0.3s ease;
+        }
+        .inline-feedback.correct {
+            background: rgba(76, 175, 80, 0.15);
+            border: 2px solid #4caf50;
+            color: #4caf50;
+        }
+        .inline-feedback.wrong {
+            background: rgba(255, 107, 107, 0.15);
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        /* SÜRESİZ DIFFICULTY CARD */
+        .difficulty-card--suretsiz {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(138, 43, 226, 0.15));
+            border-color: #8a2be2;
+        }
+        .difficulty-card--suretextures:hover {
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5), 0 0 100px rgba(0, 210, 255, 0.2);
+        }
+
+        /* SCREEN SHAKE */
+        @keyframes shakeScreen {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-8px) rotate(-0.5deg); }
+            20% { transform: translateX(8px) rotate(0.5deg); }
+            30% { transform: translateX(-6px) rotate(-0.3deg); }
+            40% { transform: translateX(6px) rotate(0.3deg); }
+            50% { transform: translateX(-4px); }
+            60% { transform: translateX(4px); }
+            70% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+            90% { transform: translateX(-1px); }
+        }
+        .shake {
+            animation: shakeScreen 0.5s ease-in-out;
+        }
+
+        /* VOICE COMMAND */
+        .voice-cmd-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .voice-mic-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #00d2ff;
+            border-radius: 50px;
+            padding: 12px 24px;
+            color: #00d2ff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .voice-mic-btn:hover {
+            border-color: #8a2be2;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            transform: translateY(-2px);
+        }
+        .voice-mic-btn.listening {
+            border-color: #ff4444;
+            color: #ff4444;
+            animation: voicePulse 1s ease-in-out infinite;
+            box-shadow: 0 0 25px rgba(255, 68, 68, 0.4);
+        }
+        @keyframes voicePulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 68, 68, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 68, 68, 0.6); }
+        }
+        .voice-mic-btn .mic-icon {
+            font-size: 22px;
+        }
+        .voice-mic-label {
+            font-size: 14px;
+        }
+        .voice-status {
+            color: #a0d0ff;
+            font-size: 13px;
+            min-height: 20px;
+            text-align: center;
+        }
+        .voice-toggle-btn {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(10, 15, 30, 0.85);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            border-radius: 50px;
+            padding: 10px 18px;
+            color: #00d2ff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+        .voice-toggle-btn:hover {
+            border-color: #8a2be2;
+            transform: translateY(-2px);
+        }
+        .voice-toggle-btn.active {
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+        .voice-toggle-btn.muted {
+            color: #ff6b6b;
+            border-color: rgba(255, 107, 107, 0.4);
+        }
     </style>
 </head>
 
@@ -2747,28 +3298,69 @@
         <div class="loading-text">Sorular Hazırlanıyor...</div>
     </div>
 
-    <!-- SOL ÜST - ARMA SİSTEMİ -->
-    <div class="rank-system-left">
-        <div class="rank-item rank-bronz rank-active" id="rankBronz">
-            <div class="rank-icon">🥉</div>
-            <div class="rank-info"><span class="rank-name">BRONZ</span><span class="rank-desc">300 Puan</span></div>
+    <!-- SOL ÜST - ARMA SİSTEMİ (KOMPAKT KAPSÜL) -->
+    <div class="rank-system-left" id="rankSystemLeft">
+        <div class="rank-capsule" onclick="toggleRankDropdown()">
+            <span class="rank-capsule-icon" id="rankCapsuleIcon">🥉</span>
+            <div class="rank-capsule-info">
+                <span class="rank-capsule-name" id="rankCapsuleName">BRONZ</span>
+                <span style="color:#7eb8ff;font-size:12px;">|</span>
+                <span class="rank-capsule-pts" id="totalRankPoints">0</span>
+                <span class="rank-capsule-pts" style="font-size:11px;opacity:0.7;" id="rankPtsLabel">PUAN</span>
+            </div>
         </div>
-        <div class="rank-item rank-gumus rank-locked" id="rankGumus">
-            <div class="rank-icon">🥈</div>
-            <div class="rank-info"><span class="rank-name">GÜMÜŞ</span><span class="rank-desc">600 Puan</span></div>
+        <div class="rank-dropdown" id="rankDropdown">
+            <div class="rank-dropdown-title" id="rankDropdownTitle">Arma İlerlemesi</div>
+            <div class="rank-dropdown-item active" id="rankDropBronz">
+                <div class="rank-dropdown-icon">🥉</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#cd7f32;" id="rankDropBronzName">BRONZ</div>
+                    <div class="rank-dropdown-req" id="rankDropBronzReq">200 Puan</div>
+                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarBronz" style="width:0%;background:linear-gradient(90deg,#cd7f32,#daa520);"></div></div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropGumus">
+                <div class="rank-dropdown-icon">🥈</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#c0c0c0;" id="rankDropGumusName">GÜMÜŞ</div>
+                    <div class="rank-dropdown-req" id="rankDropGumusReq">400 Puan</div>
+                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarGumus" style="width:0%;background:linear-gradient(90deg,#c0c0c0,#e0e0e0);"></div></div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropAltin">
+                <div class="rank-dropdown-icon">🥇</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#ffd700;" id="rankDropAltinName">ALTIN</div>
+                    <div class="rank-dropdown-req" id="rankDropAltinReq">600 Puan</div>
+                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarAltin" style="width:0%;background:linear-gradient(90deg,#ffd700,#ffec80);"></div></div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropElmas">
+                <div class="rank-dropdown-icon">💎</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#00d2ff;" id="rankDropElmasName">ELMAS</div>
+                    <div class="rank-dropdown-req" id="rankDropElmasReq">800 Puan</div>
+                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarElmas" style="width:0%;background:linear-gradient(90deg,#00d2ff,#8a2be2);"></div></div>
+                </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+                <span style="color:#7eb8ff;font-size:12px;" id="rankPtsPerLabel">Kolay: 10p • Orta: 20p • Zor: 30p</span>
+            </div>
         </div>
-        <div class="rank-item rank-altin rank-locked" id="rankAltin">
-            <div class="rank-icon">🥇</div>
-            <div class="rank-info"><span class="rank-name">ALTIN</span><span class="rank-desc">900 Puan</span></div>
-        </div>
-        <div class="rank-item rank-elmas rank-locked" id="rankElmas">
-            <div class="rank-icon">💎</div>
-            <div class="rank-info"><span class="rank-name">ELMAS</span><span class="rank-desc">1200 Puan</span></div>
-        </div>
-        <div class="total-points-display">
-            <div class="total-points-value" id="totalRankPoints">0</div>
-            <div class="total-points-label">TOPLAM PUAN</div>
-        </div>
+    </div>
+
+
+    <!-- SES AÇ/KAPA -->
+    <div class="sound-toggle-btn" id="soundToggleBtn" onclick="toggleSound()">
+        <span id="soundIcon">🔊</span>
+        <span class="sound-toggle-label" id="soundLabel">Ses Açık</span>
+    </div>
+
+
+    <!-- SESLİ KOMUT AÇ/KAPA -->
+    <div class="voice-toggle-btn" id="voiceToggleBtn" onclick="toggleVoiceFeature()" style="left:auto;right:20px;bottom:80px;">
+        <span id="voiceFeatureIcon">🎤</span>
+        <span id="voiceFeatureLabel" style="font-size:13px;">Sesli Komut</span>
     </div>
 
     <!-- SAĞ ÜST PANEL -->
@@ -2892,34 +3484,7 @@
                 onclick="closeAvatarModal()">Onayla</button>
         </div>
     </div>
-    <div class="multiplayer-modal" id="multiplayerModal">
-        <div class="multiplayer-modal-content">
-            <div class="multiplayer-modal-header">
-                <h2 id="multiplayerModalTitle" style="color:#00d2ff;">Oda Kur</h2>
-                <div class="close-modal-btn" onclick="closeMultiplayerModal()">✕</div>
-            </div>
-            <div id="multiplayerFormBody">
-                <div class="multiplayer-form" id="createRoomForm">
-                    <input class="multiplayer-input" id="roomNameInput" placeholder="Oda adı girin">
-                    <input class="multiplayer-input" id="roomPasswordInput" placeholder="Oda şifresi (opsiyonel)">
-                    <input class="multiplayer-input" id="roomHostNameInput" placeholder="İsminiz">
-                    <div class="multiplayer-actions">
-                        <button class="multiplayer-cancel" onclick="closeMultiplayerModal()">İptal</button>
-                        <button class="multiplayer-submit" onclick="submitCreateRoom()">Oda Kur</button>
-                    </div>
-                </div>
-                <div class="multiplayer-form" id="joinRoomForm" style="display:none;">
-                    <input class="multiplayer-input" id="joinCodeInput" placeholder="Oda kodu">
-                    <input class="multiplayer-input" id="joinPasswordInput" placeholder="Oda şifresi (opsiyonel)">
-                    <input class="multiplayer-input" id="joinNameInput" placeholder="İsminiz">
-                    <div class="multiplayer-actions">
-                        <button class="multiplayer-cancel" onclick="closeMultiplayerModal()">İptal</button>
-                        <button class="multiplayer-submit" onclick="submitJoinRoom()">Odaya Katıl</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Multiplayer removed -->
     <input type="file" id="galleryInput" accept="image/*" onchange="handleGalleryUpload(event)">
 
     <div class="main-container" id="mainContainer">
@@ -2979,6 +3544,25 @@
                                 <button type="button" class="gender-option" data-gender="yok" id="genderYok">⚧ Belirtmiyorum</button>
                             </div>
                             <div class="error-message" id="genderError"></div>
+                        </div>
+                        <div class="input-wrapper lang-dropdown-wrapper" style="grid-column:span 2;">
+                            <label id="langDropdownLabel">🌍 Dil / Language</label>
+                            <div class="lang-dropdown-trigger" id="langDropdownTrigger" onclick="toggleLangDropdown()">
+                                <span id="langDropdownFlag">🇹🇷</span>
+                                <span id="langDropdownName">Türkçe</span>
+                                <span style="opacity:0.5;font-size:14px;">▼</span>
+                            </div>
+                            <div class="lang-dropdown-panel" id="langDropdownPanel">
+                                <div class="lang-dropdown-item selected" onclick="selectLangOption('tr')" data-lang="tr"><span class="lang-flag">🇹🇷</span> Türkçe</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('en')" data-lang="en"><span class="lang-flag">🇬🇧</span> English</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('de')" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ru')" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('zh')" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ja')" data-lang="ja"><span class="lang-flag">🇯🇵</span> 日本語</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('es')" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ar')" data-lang="ar"><span class="lang-flag">🇸🇦</span> العربية</div>
+                                <div style="padding:8px 10px 4px;"><button class="lang-save-btn" id="langSaveBtn" onclick="saveLanguage()" disabled>💾 Kaydet</button></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3046,9 +3630,14 @@
                 <label for="photoQuestionCountInput">Soru sayısı seç</label>
                 <div class="photo-count-row">
                     <input class="photo-count-input" id="photoQuestionCountInput" type="number" min="1" max="30" value="10" inputmode="numeric">
-                    <div class="photo-count-max" id="photoCountMaxLabel">/ maks 30</div>
+                    <div class="photo-count-max" id="photoCountMaxLabel">/ max 30</div>
                 </div>
                 <div class="photo-count-error" id="photoCountError"></div>
+            </div>
+            <div class="answer-mode-box" id="photoAnswerModeBox">
+                <span class="answer-mode-label" id="photoAnswerModeLabel">📋 Cevaplar:</span>
+                <div class="answer-mode-option selected" id="photoAnsModeInstant" onclick="setPhotoAnswerMode('instant')">⚡ Hemen Göster</div>
+                <div class="answer-mode-option" id="photoAnsModeEnd" onclick="setPhotoAnswerMode('end')">🏁 Sonda Göster</div>
             </div>
             <div class="button-group">
                 <button class="back-btn" onclick="goBackToPhotoCategory()">📋 Kategori</button>
@@ -3087,7 +3676,15 @@
                 <div class="photo-prompt" id="photoPrompt">Bu karakterin ismi nedir?</div>
                 <div class="photo-hint" id="photoHint"></div>
                 <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..." autocomplete="off" autocapitalize="words">
+                <div class="voice-cmd-box" id="voiceCmdBox" style="display:none;">
+                    <button class="voice-mic-btn" id="voiceMicBtn" onclick="toggleVoiceRecognition()">
+                        <span id="voiceMicIcon">🎤</span>
+                        <span id="voiceMicLabel" class="voice-mic-label">Sesli Komut</span>
+                    </button>
+                    <div class="voice-status" id="voiceStatus"></div>
+                </div>
                 <div class="photo-feedback" id="photoFeedback"></div>
+                <div class="inline-feedback" id="photoInlineFeedback" style="display:none;"></div>
             </div>
             <div class="nav-buttons">
                 <button class="nav-btn" id="photoPrevBtn" onclick="photoPreviousQuestion()" disabled>← Önceki</button>
@@ -3104,11 +3701,11 @@
             <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
                 <div>
                     <div style="font-size:58px; color:#00d2ff;" id="photoFinalScore">0</div>
-                    <div style="color:#a0d0ff;">Doğru</div>
+                    <div style="color:#a0d0ff;" class="t-dogru-label">Doğru</div>
                 </div>
                 <div>
                     <div style="font-size:58px; color:#8a2be2;" id="photoTotalPoints">0</div>
-                    <div style="color:#a0d0ff;">Puan</div>
+                    <div style="color:#a0d0ff;" class="t-puan-label">Puan</div>
                 </div>
             </div>
             <div id="photoResultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
@@ -3139,17 +3736,6 @@
             <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">🎮 Modlar</button><button
                     class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç
                     →</button></div>
-            <div class="button-group" style="margin-top:15px;"><button class="back-btn"
-                    onclick="openMultiplayerSetup()">🧑‍🤝‍🧑 Oda Kur</button><button class="back-btn"
-                    onclick="joinMultiplayerRoom()">🚪 Odaya Katıl</button></div>
-            <div id="multiplayerLobbyBox"
-                style="margin-top:20px; background:rgba(10,15,30,0.75); border:2px solid #00d2ff; border-radius:24px; padding:22px; display:none; box-shadow:0 10px 25px rgba(0,0,0,0.25);">
-                <h3 style="color:#00d2ff; margin-bottom:10px; font-size:20px;">🎮 Oda Bilgisi</h3>
-                <div id="multiplayerLobbyText" style="color:#f7fbff; line-height:1.7; font-size:15px;"></div>
-                <div id="multiplayerPlayersList" style="margin-top:12px; color:#cfe7ff; line-height:1.6;"></div>
-                <button class="primary-btn" id="multiplayerStartBtn" onclick="startMultiplayerGame()"
-                    style="margin-top:15px; display:none; padding:14px 20px; font-size:18px;">▶️ Oyunu Başlat</button>
-            </div>
         </div>
         <div class="screen" id="difficultyScreen" style="display:none;">
             <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn"
@@ -3169,6 +3755,11 @@
                     <path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad3)" />
                 </svg><span class="logo-text" style="font-size:48px;">Zorluk Seviyesi</span></div>
             <div class="difficulty-centered" id="difficultyContainer"></div>
+            <div class="answer-mode-box" id="answerModeBox">
+                <span class="answer-mode-label" id="answerModeLabel">📋 Cevaplar:</span>
+                <div class="answer-mode-option selected" id="ansModeInstant" onclick="setAnswerMode('instant')">⚡ Hemen Göster</div>
+                <div class="answer-mode-option" id="ansModeEnd" onclick="setAnswerMode('end')">🏁 Sonda Göster</div>
+            </div>
             <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">📋 Kategori</button><button
                     class="primary-btn" id="difficultyNextBtn" onclick="startTest()" disabled>🚀 Teste Başla</button>
             </div>
@@ -3198,6 +3789,7 @@
             </div>
             <div class="question-text" id="questionText"></div>
             <div class="options-container" id="optionsContainer"></div>
+            <div class="inline-feedback" id="inlineFeedback" style="display:none;"></div>
             <div class="nav-buttons"><button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>←
                     Önceki</button><button class="nav-btn" id="returnSkippedBtn" onclick="returnToSkippedQuestion()"
                     disabled>↩️ Boş
@@ -3213,11 +3805,11 @@
             <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
                 <div>
                     <div style="font-size:58px; color:#00d2ff;" id="finalScore">0</div>
-                    <div style="color:#a0d0ff;">Doğru</div>
+                    <div style="color:#a0d0ff;" class="t-dogru-label">Doğru</div>
                 </div>
                 <div>
                     <div style="font-size:58px; color:#8a2be2;" id="totalPoints">0</div>
-                    <div style="color:#a0d0ff;">Puan</div>
+                    <div style="color:#a0d0ff;" class="t-puan-label">Puan</div>
                 </div>
             </div>
             <div id="resultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
@@ -3227,7 +3819,973 @@
     </div>
     <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
     <script>
-        // Soru havuzları (öncekiyle aynı - kısaltıldı)
+        // ===== LANGUAGE / TRANSLATION SYSTEM =====
+        let currentLanguage = 'tr';
+        let selectedLangForConfirm = null;
+
+        const T = {
+            tr: {
+                loading: "Sorular Hazırlanıyor...",
+                bronz: "BRONZ", gumus: "GÜMÜŞ", altin: "ALTIN", elmas: "ELMAS",
+                bronzDesc: "200 Puan", gumusDesc: "400 Puan", altinDesc: "600 Puan", elmasDesc: "800 Puan",
+                toplamPuan: "TOPLAM PUAN",
+                yapimcilar: "🎬 YAPIM EKİBİ", yapimciBtn: "Yapımcılar",
+                guncellemeler: "Güncellemeler", yeni: "YENİ",
+                guncellemeGecmisi: "📋 Güncelleme Geçmişi",
+                kapat: "Kapat",
+                sikayetOneri: "Şikayet / Öneri",
+                gorisYazin: "Görüşlerinizi yazın...",
+                gonder: "Gönder",
+                feedbackSuccess: "✅ Geri bildiriminiz alındı!",
+                yapimci: "Yapımcı:", yardimciYapimci: "Yardımcı Yapımcı:",
+                sponsor: "Sponsor:", ortaklar: "Ortaklar:",
+                dilSecTitle: "🌍 Dil Seçin",
+                dilSecSubtitle: "Oyun dilinizi seçin",
+                dilSecBtn: "Seç →",
+                kaydet: "Kaydet", sesAcik: "Ses Açık", sesKapali: "Ses Kapalı", cevaplar: "Cevaplar:", hemenGoster: "⚡ Hemen Göster", sondaGoster: "🏁 Sonda Göster", sesliKomutAcik: "Sesli Komut Açık", sesliKomutKapali: "Sesli Komut Kapalı", sesliKomut: "Sesli Komut",
+                profilSec: "Profil Seç",
+                onayla: "Onayla",
+                adSoyad: "👤 Ad Soyad", adPlaceholder: "Adınız Soyadınız",
+                yas: "📅 Yaş (1-100)", yasPlaceholder: "Yaşınız",
+                cinsiyet: "⚥ Cinsiyet",
+                erkek: "👨 Erkek", kadin: "👩 Kadın", belirtmiyorum: "⚧ Belirtmiyorum",
+                devamEt: "Devam Et →",
+                nameError: "Lütfen adınızı girin!",
+                ageError: "Lütfen yaşınızı girin!",
+                ageRangeError: "Yaş 1-100 arası olmalı!",
+                genderError: "Lütfen cinsiyet seçin!",
+                oyunModu: "Oyun Modu",
+                nasilOynamak: "Nasıl oynamak istersin?",
+                fotografSiz: "Fotoğrafsız Soru",
+                fotografSizDesc: "Klasik çoktan seçmeli quiz. 30 kategori, şıklı sorular.",
+                fotografli: "Fotoğraflı Soru",
+                fotografliDesc: "Görseli gör, ismi yaz. Karakter / logo / bayrak tahmin et.",
+                profil: "Profil",
+                modlar: "Modlar",
+                kategoriSec: "Kategori Seç",
+                zorlukSec: "Zorluk Seç →",
+                zorlukSeviyesi: "Zorluk Seviyesi",
+                kolay: "Kolay", orta: "Orta", zor: "Zor", suretsiz: "♾️ Süresiz",
+                kategori: "Kategori",
+                testeBasla: "🚀 Teste Başla",
+                cik: "🚪 Çık",
+                onceki: "← Önceki",
+                bosBirak: "⏭️ Boş Bırak",
+                sonraki: "Sonraki →",
+                bosBirakilanDon: "↩️ Boş Bırakılan Soruya Dön",
+                dogru: "Doğru",
+                puan: "Puan",
+                zekali: "Zekalı",
+                dusuk: "😅 Düşük", ortaZeka: "🙂 Orta", ileri: "🤓 İleri",
+                cokIleri: "🧠 Çok İleri", ultra: "👑 Ultra",
+                yenidenBasla: "🔄 Yeniden Başla",
+                testtenCik: "🚪 Testten Çık",
+                testtenCikEmin: "Testten çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.",
+                evetCik: "Evet, Çık", iptal: "İptal",
+                cevapYaz: "Cevabını yaz...",
+                soruSayisiSec: "Soru sayısı seç",
+                soruSayisiGirin: "Lütfen soru sayısı girin!",
+                soruSayisiEnAz: "Soru sayısı en az 1 olmalı!",
+                maksimumSoru: "Maksimum {0} soru seçebilirsin!",
+                yas: "yaş",
+                soru: "Soru",
+                cevabiniz: "Cevabınız:",
+                cevapsiz: "Cevapsız",
+                sureDoldu: "Süre Doldu",
+                bosBirakildi: "Boş Bırakıldı",
+                dogruCevap: "Doğru:",
+                harika: "Harika, doğru bildin!",
+                birCevapYaz: "Bir cevap yaz veya Boş Bırak.",
+                kategoriZorlukSec: "Kategori ve zorluk seçmelisin.",
+                soruYok: "Bu kategoride henüz soru yok.",
+                oyunBasladi: "Oyun başladı",
+                yeniNesilQuiz: "✨ Yeni Nesil Quiz",
+                matexIleTest: "MATEX ile kendini test et",
+                profilOlustur: "Profilini oluştur, kategori seç, zorluk belirle ve hemen oyuna başla.",
+                hizliBaslangic: "⚡ Hızlı Başlangıç",
+                kategoriCount: "🧠 30 Kategori",
+                fotografliKlasik: "🖼️ Fotoğraflı + Klasik",
+                slogan: "\"Quizin ve Testin Harman Olduğu Yer\"",
+                subtitle2Mod: "2 MOD • FOTOĞRAFLI + KLASİK QUIZ",
+                maks: "maks",
+                soruCount: "soru",
+                emoji: "🎭 Emoji", galeri: "📁 Galeri"
+            },
+            en: {
+                loading: "Preparing Questions...",
+                bronz: "BRONZE", gumus: "SILVER", altin: "GOLD", elmas: "DIAMOND",
+                bronzDesc: "200 Points", gumusDesc: "400 Points", altinDesc: "600 Points", elmasDesc: "800 Points",
+                toplamPuan: "TOTAL POINTS",
+                yapimcilar: "🎬 CREDITS", yapimciBtn: "Credits",
+                guncellemeler: "Updates", yeni: "NEW",
+                guncellemeGecmisi: "📋 Update History",
+                kapat: "Close",
+                sikayetOneri: "Feedback / Suggestion",
+                gorisYazin: "Write your feedback...",
+                gonder: "Send",
+                feedbackSuccess: "✅ Your feedback has been received!",
+                yapimci: "Producer:", yardimciYapimci: "Co-Producer:",
+                sponsor: "Sponsor:", ortaklar: "Partners:",
+                dilSecTitle: "🌍 Select Language",
+                dilSecSubtitle: "Choose your game language",
+                dilSecBtn: "Select →",
+                kaydet: "Save", sesAcik: "Sound On", sesKapali: "Sound Off", cevaplar: "Answers:", hemenGoster: "⚡ Show Instantly", sondaGoster: "🏁 Show at End", sesliKomutAcik: "Voice Command On", sesliKomutKapali: "Voice Command Off", sesliKomut: "Voice Command",
+                profilSec: "Select Profile",
+                onayla: "Confirm",
+                adSoyad: "👤 Full Name", adPlaceholder: "Your Full Name",
+                yas: "📅 Age (1-100)", yasPlaceholder: "Your Age",
+                cinsiyet: "⚥ Gender",
+                erkek: "👨 Male", kadin: "👩 Female", belirtmiyorum: "⚧ Prefer not to say",
+                devamEt: "Continue →",
+                nameError: "Please enter your name!",
+                ageError: "Please enter your age!",
+                ageRangeError: "Age must be between 1-100!",
+                genderError: "Please select your gender!",
+                oyunModu: "Game Mode",
+                nasilOynamak: "How would you like to play?",
+                fotografSiz: "Text Questions",
+                fotografSizDesc: "Classic multiple choice quiz. 30 categories.",
+                fotografli: "Photo Questions",
+                fotografliDesc: "See the image, type the name. Guess character / logo / flag.",
+                profil: "Profile",
+                modlar: "Modes",
+                kategoriSec: "Select Category",
+                zorlukSec: "Select Difficulty →",
+                zorlukSeviyesi: "Difficulty Level",
+                kolay: "Easy", orta: "Medium", zor: "Hard", suretsiz: "♾️ Unlimited",
+                kategori: "Category",
+                testeBasla: "🚀 Start Test",
+                cik: "🚪 Exit",
+                onceki: "← Previous",
+                bosBirak: "⏭️ Skip",
+                sonraki: "Next →",
+                bosBirakilanDon: "↩️ Return to Skipped Question",
+                dogru: "Correct",
+                puan: "Points",
+                zekali: "Intelligent",
+                dusuk: "😅 Low", ortaZeka: "🙂 Medium", ileri: "🤓 Advanced",
+                cokIleri: "🧠 Very Advanced", ultra: "👑 Ultra",
+                yenidenBasla: "🔄 Restart",
+                testtenCik: "🚪 Exit Test",
+                testtenCikEmin: "Are you sure you want to exit? Your progress will be lost.",
+                evetCik: "Yes, Exit", iptal: "Cancel",
+                cevapYaz: "Type your answer...",
+                soruSayisiSec: "Select number of questions",
+                soruSayisiGirin: "Please enter number of questions!",
+                soruSayisiEnAz: "Minimum 1 question!",
+                maksimumSoru: "Maximum {0} questions!",
+                yas: "years",
+                soru: "Question",
+                cevabiniz: "Your answer:",
+                cevapsiz: "No answer",
+                sureDoldu: "Time's up",
+                bosBirakildi: "Skipped",
+                dogruCevap: "Correct:",
+                harika: "Great, correct!",
+                birCevapYaz: "Type an answer or Skip.",
+                kategoriZorlukSec: "You must select a category and difficulty.",
+                soruYok: "No questions in this category yet.",
+                oyunBasladi: "Game started",
+                yeniNesilQuiz: "✨ Next-Gen Quiz",
+                matexIleTest: "Test yourself with MATEX",
+                profilOlustur: "Create your profile, choose a category, set difficulty and start playing.",
+                hizliBaslangic: "⚡ Quick Start",
+                kategoriCount: "🧠 30 Categories",
+                fotografliKlasik: "🖼️ Photo + Classic",
+                slogan: "\"Where Quizzes and Tests Unite\"",
+                subtitle2Mod: "2 MODES • PHOTO + CLASSIC QUIZ",
+                maks: "max",
+                soruCount: "questions",
+                emoji: "🎭 Emoji", galeri: "📁 Gallery"
+            },
+            de: {
+                loading: "Fragen werden vorbereitet...",
+                bronz: "BRONZE", gumus: "SILBER", altin: "GOLD", elmas: "DIAMANT",
+                bronzDesc: "200 Punkte", gumusDesc: "400 Punkte", altinDesc: "600 Punkte", elmasDesc: "800 Punkte",
+                toplamPuan: "GESAMTPUNKTE",
+                yapimcilar: "🎬 MITWIRKENDE", yapimciBtn: "Mitwirkende",
+                guncellemeler: "Updates", yeni: "NEU",
+                guncellemeGecmisi: "📋 Update-Verlauf",
+                kapat: "Schließen",
+                sikayetOneri: "Feedback / Vorschlag",
+                gorisYazin: "Schreiben Sie Ihr Feedback...",
+                gonder: "Senden",
+                feedbackSuccess: "✅ Ihr Feedback wurde erhalten!",
+                yapimci: "Produzent:", yardimciYapimci: "Co-Produzent:",
+                sponsor: "Sponsor:", ortaklar: "Partner:",
+                dilSecTitle: "🌍 Sprache wählen",
+                dilSecSubtitle: "Wählen Sie Ihre Spielsprache",
+                dilSecBtn: "Auswählen →",
+                kaydet: "Speichern", sesAcik: "Ton An", sesKapali: "Ton Aus", cevaplar: "Antworten:", hemenGoster: "⚡ Sofort zeigen", sondaGoster: "🏁 Am Ende zeigen", sesliKomutAcik: "Sprachbefehl An", sesliKomutKapali: "Sprachbefehl Aus", sesliKomut: "Sprachbefehl",
+                profilSec: "Profil wählen",
+                onayla: "Bestätigen",
+                adSoyad: "👤 Vollständiger Name", adPlaceholder: "Ihr vollständiger Name",
+                yas: "📅 Alter (1-100)", yasPlaceholder: "Ihr Alter",
+                cinsiyet: "⚥ Geschlecht",
+                erkek: "👨 Männlich", kadin: "👩 Weiblich", belirtmiyorum: "⚧ Keine Angabe",
+                devamEt: "Weiter →",
+                nameError: "Bitte geben Sie Ihren Namen ein!",
+                ageError: "Bitte geben Sie Ihr Alter ein!",
+                ageRangeError: "Alter muss zwischen 1-100 liegen!",
+                genderError: "Bitte wählen Sie Ihr Geschlecht!",
+                oyunModu: "Spielmodus",
+                nasilOynamak: "Wie möchten Sie spielen?",
+                fotografSiz: "Textfragen",
+                fotografSizDesc: "Klassisches Multiple-Choice-Quiz. 30 Kategorien.",
+                fotografli: "Foto-Fragen",
+                fotografliDesc: "Bild ansehen, Namen eingeben. Figur / Logo / Flagge erraten.",
+                profil: "Profil",
+                modlar: "Modi",
+                kategoriSec: "Kategorie wählen",
+                zorlukSec: "Schwierigkeit wählen →",
+                zorlukSeviyesi: "Schwierigkeitsgrad",
+                kolay: "Leicht", orta: "Mittel", zor: "Schwer", suretsiz: "♾️ Zeitlos",
+                kategori: "Kategorie",
+                testeBasla: "🚀 Test starten",
+                cik: "🚪 Beenden",
+                onceki: "← Zurück",
+                bosBirak: "⏭️ Überspringen",
+                sonraki: "Weiter →",
+                bosBirakilanDon: "↩️ Zurück zur übersprungenen Frage",
+                dogru: "Richtig",
+                puan: "Punkte",
+                zekali: "Intelligent",
+                dusuk: "😅 Niedrig", ortaZeka: "🙂 Mittel", ileri: "🤓 Fortgeschritten",
+                cokIleri: "🧠 Sehr fortgeschritten", ultra: "👑 Ultra",
+                yenidenBasla: "🔄 Neustart",
+                testtenCik: "🚪 Test beenden",
+                testtenCikEmin: "Möchten Sie wirklich beenden? Ihr Fortschritt geht verloren.",
+                evetCik: "Ja, beenden", iptal: "Abbrechen",
+                cevapYaz: "Antwort eingeben...",
+                soruSayisiSec: "Anzahl der Fragen wählen",
+                soruSayisiGirin: "Bitte Anzahl der Fragen eingeben!",
+                soruSayisiEnAz: "Mindestens 1 Frage!",
+                maksimumSoru: "Maximal {0} Fragen!",
+                yas: "Jahre",
+                soru: "Frage",
+                cevabiniz: "Ihre Antwort:",
+                cevapsiz: "Keine Antwort",
+                sureDoldu: "Zeit abgelaufen",
+                bosBirakildi: "Übersprungen",
+                dogruCevap: "Richtig:",
+                harika: "Super, richtig!",
+                birCevapYaz: "Geben Sie eine Antwort ein oder überspringen.",
+                kategoriZorlukSec: "Sie müssen eine Kategorie und Schwierigkeit wählen.",
+                soruYok: "In dieser Kategorie noch keine Fragen.",
+                oyunBasladi: "Spiel gestartet",
+                yeniNesilQuiz: "✨ Next-Gen Quiz",
+                matexIleTest: "Testen Sie sich mit MATEX",
+                profilOlustur: "Erstellen Sie Ihr Profil, wählen Sie eine Kategorie und starten Sie.",
+                hizliBaslangic: "⚡ Schnellstart",
+                kategoriCount: "🧠 30 Kategorien",
+                fotografliKlasik: "🖼️ Foto + Klassisch",
+                slogan: "\"Wo Quiz und Test sich vereinen\"",
+                subtitle2Mod: "2 MODI • FOTO + KLASSISCHES QUIZ",
+                maks: "max",
+                soruCount: "Fragen",
+                emoji: "🎭 Emoji", galeri: "📁 Galerie"
+            },
+            ru: {
+                loading: "Подготовка вопросов...",
+                bronz: "БРОНЗА", gumus: "СЕРЕБРО", altin: "ЗОЛОТО", elmas: "АЛМАЗ",
+                bronzDesc: "200 Очков", gumusDesc: "400 Очков", altinDesc: "600 Очков", elmasDesc: "800 Очков",
+                toplamPuan: "ОБЩИЕ БАЛЛЫ",
+                yapimcilar: "🎬 АВТОРЫ", yapimciBtn: "Авторы",
+                guncellemeler: "Обновления", yeni: "НОВОЕ",
+                guncellemeGecmisi: "📋 История обновлений",
+                kapat: "Закрыть",
+                sikayetOneri: "Отзыв / Предложение",
+                gorisYazin: "Напишите ваш отзыв...",
+                gonder: "Отправить",
+                feedbackSuccess: "✅ Ваш отзыв получен!",
+                yapimci: "Продюсер:", yardimciYapimci: "Со-продюсер:",
+                sponsor: "Спонсор:", ortaklar: "Партнёры:",
+                dilSecTitle: "🌍 Выберите язык",
+                dilSecSubtitle: "Выберите язык игры",
+                dilSecBtn: "Выбрать →",
+                kaydet: "Сохранить", sesAcik: "Звук вкл", sesKapali: "Звук выкл", cevaplar: "Ответы:", hemenGoster: "⚡ Сразу", sondaGoster: "🏁 В конце", sesliKomutAcik: "Голос вкл", sesliKomutKapali: "Голос выкл", sesliKomut: "Голосовая команда",
+                profilSec: "Выбрать профиль",
+                onayla: "Подтвердить",
+                adSoyad: "👤 Полное имя", adPlaceholder: "Ваше полное имя",
+                yas: "📅 Возраст (1-100)", yasPlaceholder: "Ваш возраст",
+                cinsiyet: "⚥ Пол",
+                erkek: "👨 Мужской", kadin: "👩 Женский", belirtmiyorum: "⚧ Не указывать",
+                devamEt: "Продолжить →",
+                nameError: "Пожалуйста, введите имя!",
+                ageError: "Пожалуйста, введите возраст!",
+                ageRangeError: "Возраст должен быть от 1 до 100!",
+                genderError: "Пожалуйста, выберите пол!",
+                oyunModu: "Режим игры",
+                nasilOynamak: "Как хотите играть?",
+                fotografSiz: "Текстовые вопросы",
+                fotografSizDesc: "Классический тест с вариантами. 30 категорий.",
+                fotografli: "Фото-вопросы",
+                fotografliDesc: "Смотрите изображение, введите имя. Угадайте персонажа / логотип / флаг.",
+                profil: "Профиль",
+                modlar: "Режимы",
+                kategoriSec: "Выбор категории",
+                zorlukSec: "Выбор сложности →",
+                zorlukSeviyesi: "Уровень сложности",
+                kolay: "Легкий", orta: "Средний", zor: "Сложный", suretsiz: "♾️ Без времени",
+                kategori: "Категория",
+                testeBasla: "🚀 Начать тест",
+                cik: "🚪 Выход",
+                onceki: "← Назад",
+                bosBirak: "⏭️ Пропустить",
+                sonraki: "Далее →",
+                bosBirakilanDon: "↩️ Вернуться к пропущенному",
+                dogru: "Правильно",
+                puan: "Баллы",
+                zekali: "Интеллект",
+                dusuk: "😅 Низкий", ortaZeka: "🙂 Средний", ileri: "🤓 Продвинутый",
+                cokIleri: "🧠 Очень продвинутый", ultra: "👑 Ультра",
+                yenidenBasla: "🔄 Заново",
+                testtenCik: "🚪 Выйти из теста",
+                testtenCikEmin: "Вы уверены, что хотите выйти? Прогресс будет потерян.",
+                evetCik: "Да, выйти", iptal: "Отмена",
+                cevapYaz: "Введите ответ...",
+                soruSayisiSec: "Выберите количество вопросов",
+                soruSayisiGirin: "Введите количество вопросов!",
+                soruSayisiEnAz: "Минимум 1 вопрос!",
+                maksimumSoru: "Максимум {0} вопросов!",
+                yas: "лет",
+                soru: "Вопрос",
+                cevabiniz: "Ваш ответ:",
+                cevapsiz: "Нет ответа",
+                sureDoldu: "Время вышло",
+                bosBirakildi: "Пропущено",
+                dogruCevap: "Правильно:",
+                harika: "Отлично, правильно!",
+                birCevapYaz: "Введите ответ или пропустите.",
+                kategoriZorlukSec: "Выберите категорию и сложность.",
+                soruYok: "В этой категории пока нет вопросов.",
+                oyunBasladi: "Игра началась",
+                yeniNesilQuiz: "✨ Квиз нового поколения",
+                matexIleTest: "Проверьте себя с MATEX",
+                profilOlustur: "Создайте профиль, выберите категорию и начните игру.",
+                hizliBaslangic: "⚡ Быстрый старт",
+                kategoriCount: "🧠 30 Категорий",
+                fotografliKlasik: "🖼️ Фото + Классика",
+                slogan: "\"Где тесты и квизы объединяются\"",
+                subtitle2Mod: "2 РЕЖИМА • ФОТО + КЛАССИЧЕСКИЙ КВИЗ",
+                maks: "макс",
+                soruCount: "вопросов",
+                emoji: "🎭 Эмодзи", galeri: "📁 Галерея"
+            },
+            zh: {
+                loading: "正在准备题目...",
+                bronz: "铜牌", gumus: "银牌", altin: "金牌", elmas: "钻石",
+                bronzDesc: "200 分", gumusDesc: "400 分", altinDesc: "600 分", elmasDesc: "800 分",
+                toplamPuan: "总分",
+                yapimcilar: "🎬 制作团队", yapimciBtn: "制作团队",
+                guncellemeler: "更新", yeni: "新",
+                guncellemeGecmisi: "📋 更新历史",
+                kapat: "关闭",
+                sikayetOneri: "反馈 / 建议",
+                gorisYazin: "写下您的反馈...",
+                gonder: "发送",
+                feedbackSuccess: "✅ 您的反馈已收到！",
+                yapimci: "制作人:", yardimciYapimci: "联合制作人:",
+                sponsor: "赞助商:", ortaklar: "合作伙伴:",
+                dilSecTitle: "🌍 选择语言",
+                dilSecSubtitle: "选择您的游戏语言",
+                dilSecBtn: "选择 →",
+                kaydet: "保存", sesAcik: "声音开", sesKapali: "声音关", cevaplar: "答案:", hemenGoster: "⚡ 即时显示", sondaGoster: "🏁 最后显示", sesliKomutAcik: "语音命令开", sesliKomutKapali: "语音命令关", sesliKomut: "语音命令",
+                profilSec: "选择头像",
+                onayla: "确认",
+                adSoyad: "👤 姓名", adPlaceholder: "您的姓名",
+                yas: "📅 年龄 (1-100)", yasPlaceholder: "您的年龄",
+                cinsiyet: "⚥ 性别",
+                erkek: "👨 男", kadin: "👩 女", belirtmiyorum: "⚧ 不愿透露",
+                devamEt: "继续 →",
+                nameError: "请输入您的姓名！",
+                ageError: "请输入您的年龄！",
+                ageRangeError: "年龄必须在1-100之间！",
+                genderError: "请选择性别！",
+                oyunModu: "游戏模式",
+                nasilOynamak: "您想怎么玩？",
+                fotografSiz: "文字题目",
+                fotografSizDesc: "经典选择题测验。30个分类。",
+                fotografli: "图片题目",
+                fotografliDesc: "看图猜名字。猜角色 / 标志 / 旗帜。",
+                profil: "个人资料",
+                modlar: "模式",
+                kategoriSec: "选择分类",
+                zorlukSec: "选择难度 →",
+                zorlukSeviyesi: "难度等级",
+                kolay: "简单", orta: "中等", zor: "困难", suretsiz: "♾️ 无限时",
+                kategori: "分类",
+                testeBasla: "🚀 开始测试",
+                cik: "🚪 退出",
+                onceki: "← 上一题",
+                bosBirak: "⏭️ 跳过",
+                sonraki: "下一题 →",
+                bosBirakilanDon: "↩️ 返回跳过的题目",
+                dogru: "正确",
+                puan: "分数",
+                zekali: "智力",
+                dusuk: "😅 初级", ortaZeka: "🙂 中等", ileri: "🤓 高级",
+                cokIleri: "🧠 非常高级", ultra: "👑 超级",
+                yenidenBasla: "🔄 重新开始",
+                testtenCik: "🚪 退出测试",
+                testtenCikEmin: "确定要退出吗？您的进度将丢失。",
+                evetCik: "是的，退出", iptal: "取消",
+                cevapYaz: "输入答案...",
+                soruSayisiSec: "选择题数",
+                soruSayisiGirin: "请输入题目数量！",
+                soruSayisiEnAz: "至少1题！",
+                maksimumSoru: "最多 {0} 题！",
+                yas: "岁",
+                soru: "题目",
+                cevabiniz: "您的答案:",
+                cevapsiz: "未回答",
+                sureDoldu: "时间到",
+                bosBirakildi: "已跳过",
+                dogruCevap: "正确答案:",
+                harika: "太棒了，答对了！",
+                birCevapYaz: "输入答案或跳过。",
+                kategoriZorlukSec: "请选择分类和难度。",
+                soruYok: "此分类暂无题目。",
+                oyunBasladi: "游戏开始",
+                yeniNesilQuiz: "✨ 新一代测验",
+                matexIleTest: "用 MATEX 测试自己",
+                profilOlustur: "创建个人资料，选择分类，开始游戏。",
+                hizliBaslangic: "⚡ 快速开始",
+                kategoriCount: "🧠 30个分类",
+                fotografliKlasik: "🖼️ 图片 + 经典",
+                slogan: "\"测验与测试的融合之地\"",
+                subtitle2Mod: "2种模式 • 图片 + 经典测验",
+                maks: "最多",
+                soruCount: "题目",
+                emoji: "🎭 表情", galeri: "📁 相册"
+            },
+            ja: {
+                loading: "質問を準備中...",
+                bronz: "ブロンズ", gumus: "シルバー", altin: "ゴールド", elmas: "ダイヤモンド",
+                bronzDesc: "200 ポイント", gumusDesc: "400 ポイント", altinDesc: "600 ポイント", elmasDesc: "800 ポイント",
+                toplamPuan: "合計ポイント",
+                yapimcilar: "🎬 制作チーム", yapimciBtn: "制作チーム",
+                guncellemeler: "アップデート", yeni: "新",
+                guncellemeGecmisi: "📋 アップデート履歴",
+                kapat: "閉じる",
+                sikayetOneri: "フィードバック / 提案",
+                gorisYazin: "フィードバックを入力...",
+                gonder: "送信",
+                feedbackSuccess: "✅ フィードバックを受け取りました！",
+                yapimci: "プロデューサー:", yardimciYapimci: "共同プロデューサー:",
+                sponsor: "スポンサー:", ortaklar: "パートナー:",
+                dilSecTitle: "🌍 言語を選択",
+                dilSecSubtitle: "ゲーム言語を選択してください",
+                dilSecBtn: "選択 →",
+                kaydet: "保存", sesAcik: "サウンドオン", sesKapali: "サウンドオフ", cevaplar: "回答:", hemenGoster: "⚡ すぐ表示", sondaGoster: "🏁 最後に表示", sesliKomutAcik: "音声コマンドオン", sesliKomutKapali: "音声コマンドオフ", sesliKomut: "音声コマンド",
+                profilSec: "プロフィール選択",
+                onayla: "確認",
+                adSoyad: "👤 氏名", adPlaceholder: "お名前",
+                yas: "📅 年齢 (1-100)", yasPlaceholder: "年齢",
+                cinsiyet: "⚥ 性別",
+                erkek: "👨 男性", kadin: "👩 女性", belirtmiyorum: "⚧ 回答しない",
+                devamEt: "続ける →",
+                nameError: "名前を入力してください！",
+                ageError: "年齢を入力してください！",
+                ageRangeError: "年齢は1〜100の間で入力してください！",
+                genderError: "性別を選択してください！",
+                oyunModu: "ゲームモード",
+                nasilOynamak: "どのようにプレイしますか？",
+                fotografSiz: "テキスト問題",
+                fotografSizDesc: "クラシックな選択式クイズ。30カテゴリ。",
+                fotografli: "写真問題",
+                fotografliDesc: "画像を見て名前を入力。キャラクター / ロゴ / 旗を当てよう。",
+                profil: "プロフィール",
+                modlar: "モード",
+                kategoriSec: "カテゴリ選択",
+                zorlukSec: "難易度選択 →",
+                zorlukSeviyesi: "難易度レベル",
+                kolay: "簡単", orta: "普通", zor: "難しい", suretsiz: "♾️ 無制限",
+                kategori: "カテゴリ",
+                testeBasla: "🚀 テスト開始",
+                cik: "🚪 終了",
+                onceki: "← 前へ",
+                bosBirak: "⏭️ スキップ",
+                sonraki: "次へ →",
+                bosBirakilanDon: "↩️ スキップした問題に戻る",
+                dogru: "正解",
+                puan: "ポイント",
+                zekali: "知能",
+                dusuk: "😅 初級", ortaZeka: "🙂 中級", ileri: "🤓 上級",
+                cokIleri: "🧠 非常に上級", ultra: "👑 ウルトラ",
+                yenidenBasla: "🔄 やり直す",
+                testtenCik: "🚪 テストを終了",
+                testtenCikEmin: "終了してもよろしいですか？進行状況は失われます。",
+                evetCik: "はい、終了", iptal: "キャンセル",
+                cevapYaz: "回答を入力...",
+                soruSayisiSec: "問題数を選択",
+                soruSayisiGirin: "問題数を入力してください！",
+                soruSayisiEnAz: "最低1問！",
+                maksimumSoru: "最大 {0} 問！",
+                yas: "歳",
+                soru: "問題",
+                cevabiniz: "あなたの答え:",
+                cevapsiz: "回答なし",
+                sureDoldu: "時間切れ",
+                bosBirakildi: "スキップ済み",
+                dogruCevap: "正解:",
+                harika: "素晴らしい、正解！",
+                birCevapYaz: "答えを入力するかスキップしてください。",
+                kategoriZorlukSec: "カテゴリと難易度を選択してください。",
+                soruYok: "このカテゴリにはまだ問題がありません。",
+                oyunBasladi: "ゲーム開始",
+                yeniNesilQuiz: "✨ 次世代クイズ",
+                matexIleTest: "MATEXで自分をテスト",
+                profilOlustur: "プロフィールを作成し、カテゴリを選んで始めましょう。",
+                hizliBaslangic: "⚡ クイックスタート",
+                kategoriCount: "🧠 30カテゴリ",
+                fotografliKlasik: "🖼️ 写真 + クラシック",
+                slogan: "\"クイズとテストが一つになる場所\"",
+                subtitle2Mod: "2モード • 写真 + クラシッククイズ",
+                maks: "最大",
+                soruCount: "問",
+                emoji: "🎭 絵文字", galeri: "📁 ギャラリー"
+            },
+            es: {
+                loading: "Preparando preguntas...",
+                bronz: "BRONCE", gumus: "PLATA", altin: "ORO", elmas: "DIAMANTE",
+                bronzDesc: "200 Puntos", gumusDesc: "400 Puntos", altinDesc: "600 Puntos", elmasDesc: "800 Puntos",
+                toplamPuan: "PUNTOS TOTALES",
+                yapimcilar: "🎬 CRÉDITOS", yapimciBtn: "Créditos",
+                guncellemeler: "Actualizaciones", yeni: "NUEVO",
+                guncellemeGecmisi: "📋 Historial de actualizaciones",
+                kapat: "Cerrar",
+                sikayetOneri: "Comentario / Sugerencia",
+                gorisYazin: "Escribe tu comentario...",
+                gonder: "Enviar",
+                feedbackSuccess: "✅ ¡Tu comentario ha sido recibido!",
+                yapimci: "Productor:", yardimciYapimci: "Co-Productor:",
+                sponsor: "Patrocinador:", ortaklar: "Socios:",
+                dilSecTitle: "🌍 Seleccionar idioma",
+                dilSecSubtitle: "Elige el idioma del juego",
+                dilSecBtn: "Seleccionar →",
+                kaydet: "Guardar", sesAcik: "Sonido on", sesKapali: "Sonido off", cevaplar: "Respuestas:", hemenGoster: "⚡ Mostrar al instante", sondaGoster: "🏁 Mostrar al final", sesliKomutAcik: "Comando voz activo", sesliKomutKapali: "Comando voz inactivo", sesliKomut: "Comando de voz",
+                profilSec: "Seleccionar perfil",
+                onayla: "Confirmar",
+                adSoyad: "👤 Nombre completo", adPlaceholder: "Tu nombre completo",
+                yas: "📅 Edad (1-100)", yasPlaceholder: "Tu edad",
+                cinsiyet: "⚥ Género",
+                erkek: "👨 Masculino", kadin: "👩 Femenino", belirtmiyorum: "⚧ Prefiero no decir",
+                devamEt: "Continuar →",
+                nameError: "¡Por favor ingresa tu nombre!",
+                ageError: "¡Por favor ingresa tu edad!",
+                ageRangeError: "¡La edad debe estar entre 1-100!",
+                genderError: "¡Por favor selecciona tu género!",
+                oyunModu: "Modo de juego",
+                nasilOynamak: "¿Cómo te gustaría jugar?",
+                fotografSiz: "Preguntas de texto",
+                fotografSizDesc: "Quiz clásico de opción múltiple. 30 categorías.",
+                fotografli: "Preguntas con foto",
+                fotografliDesc: "Mira la imagen, escribe el nombre. Adivina personaje / logo / bandera.",
+                profil: "Perfil",
+                modlar: "Modos",
+                kategoriSec: "Seleccionar categoría",
+                zorlukSec: "Seleccionar dificultad →",
+                zorlukSeviyesi: "Nivel de dificultad",
+                kolay: "Fácil", orta: "Medio", zor: "Difícil", suretsiz: "♾️ Sin límite",
+                kategori: "Categoría",
+                testeBasla: "🚀 Iniciar prueba",
+                cik: "🚪 Salir",
+                onceki: "← Anterior",
+                bosBirak: "⏭️ Omitir",
+                sonraki: "Siguiente →",
+                bosBirakilanDon: "↩️ Volver a pregunta omitida",
+                dogru: "Correcto",
+                puan: "Puntos",
+                zekali: "Inteligencia",
+                dusuk: "😅 Bajo", ortaZeka: "🙂 Medio", ileri: "🤓 Avanzado",
+                cokIleri: "🧠 Muy avanzado", ultra: "👑 Ultra",
+                yenidenBasla: "🔄 Reiniciar",
+                testtenCik: "🚪 Salir de la prueba",
+                testtenCikEmin: "¿Estás seguro de que quieres salir? Tu progreso se perderá.",
+                evetCik: "Sí, salir", iptal: "Cancelar",
+                cevapYaz: "Escribe tu respuesta...",
+                soruSayisiSec: "Seleccionar número de preguntas",
+                soruSayisiGirin: "¡Ingresa el número de preguntas!",
+                soruSayisiEnAz: "¡Mínimo 1 pregunta!",
+                maksimumSoru: "¡Máximo {0} preguntas!",
+                yas: "años",
+                soru: "Pregunta",
+                cevabiniz: "Tu respuesta:",
+                cevapsiz: "Sin respuesta",
+                sureDoldu: "Tiempo agotado",
+                bosBirakildi: "Omitido",
+                dogruCevap: "Correcta:",
+                harika: "¡Genial, correcto!",
+                birCevapYaz: "Escribe una respuesta o omite.",
+                kategoriZorlukSec: "Debes seleccionar una categoría y dificultad.",
+                soruYok: "Aún no hay preguntas en esta categoría.",
+                oyunBasladi: "Juego iniciado",
+                yeniNesilQuiz: "✨ Quiz de nueva generación",
+                matexIleTest: "Ponte a prueba con MATEX",
+                profilOlustur: "Crea tu perfil, elige una categoría y empieza a jugar.",
+                hizliBaslangic: "⚡ Inicio rápido",
+                kategoriCount: "🧠 30 Categorías",
+                fotografliKlasik: "🖼️ Foto + Clásico",
+                slogan: "\"Donde los quizzes y tests se unen\"",
+                subtitle2Mod: "2 MODOS • FOTO + QUIZ CLÁSICO",
+                maks: "máx",
+                soruCount: "preguntas",
+                emoji: "🎭 Emoji", galeri: "📁 Galería"
+            },
+            ar: {
+                loading: "...جاري تحضير الأسئلة",
+                bronz: "برونز", gumus: "فضة", altin: "ذهب", elmas: "ألماس",
+                bronzDesc: "200 نقطة", gumusDesc: "400 نقطة", altinDesc: "600 نقطة", elmasDesc: "800 نقطة",
+                toplamPuan: "مجموع النقاط",
+                yapimcilar: "🎬 الفريق المنتج", yapimciBtn: "الفريق المنتج",
+                guncellemeler: "تحديثات", yeni: "جديد",
+                guncellemeGecmisi: "📋 سجل التحديثات",
+                kapat: "إغلاق",
+                sikayetOneri: "ملاحظات / اقتراحات",
+                gorisYazin: "...اكتب ملاحظاتك",
+                gonder: "إرسال",
+                feedbackSuccess: "✅ تم استلام ملاحظاتك!",
+                yapimci: ":المنتج", yardimciYapimci: ":المنتج المشارك",
+                sponsor: ":الراعي", ortaklar: ":الشركاء",
+                dilSecTitle: "🌍 اختر اللغة",
+                dilSecSubtitle: "اختر لغة اللعبة",
+                dilSecBtn: "← اختيار",
+                kaydet: "حفظ", sesAcik: "صوت مفتوح", sesKapali: "صوت مغلق", cevaplar: "الإجابات:", hemenGoster: "⚡ عرض فوري", sondaGoster: "🏁 عرض بالنهاية", sesliKomutAcik: "الأوامر الصوتية مفعلة", sesliKomutKapali: "الأوامر الصوتية معطلة", sesliKomut: "الأوامر الصوتية",
+                profilSec: "اختر الملف الشخصي",
+                onayla: "تأكيد",
+                adSoyad: "👤 الاسم الكامل", adPlaceholder: "اسمك الكامل",
+                yas: "📅 العمر (1-100)", yasPlaceholder: "عمرك",
+                cinsiyet: "⚥ الجنس",
+                erkek: "👨 ذكر", kadin: "👩 أنثى", belirtmiyorum: "⚧ لا أود التحديد",
+                devamEt: "← متابعة",
+                nameError: "!الرجاء إدخال اسمك",
+                ageError: "!الرجاء إدخال عمرك",
+                ageRangeError: "!يجب أن يكون العمر بين 1-100",
+                genderError: "!الرجاء اختيار الجنس",
+                oyunModu: "وضع اللعب",
+                nasilOynamak: "?كيف تريد اللعب",
+                fotografSiz: "أسئلة نصية",
+                fotografSizDesc: "اختبار اختيار من متعدد كلاسيكي. 30 فئة.",
+                fotografli: "أسئلة مصورة",
+                fotografliDesc: "انظر الصورة واكتب الاسم. خمّن الشخصية / الشعار / العلم.",
+                profil: "الملف الشخصي",
+                modlar: "الأوضاع",
+                kategoriSec: "اختر الفئة",
+                zorlukSec: "← اختر الصعوبة",
+                zorlukSeviyesi: "مستوى الصعوبة",
+                kolay: "سهل", orta: "متوسط", zor: "صعب", suretsiz: "♾️ بلا حدود",
+                kategori: "الفئة",
+                testeBasla: "🚀 ابدأ الاختبار",
+                cik: "🚪 خروج",
+                onceki: "→ السابق",
+                bosBirak: "⏭️ تخطي",
+                sonraki: "→ التالي",
+                bosBirakilanDon: "↩️ العودة للسؤال المتخطى",
+                dogru: "صحيح",
+                puan: "نقاط",
+                zekali: "ذكاء",
+                dusuk: "😅 منخفض", ortaZeka: "🙂 متوسط", ileri: "🤓 متقدم",
+                cokIleri: "🧠 متقدم جداً", ultra: "👑 فائق",
+                yenidenBasla: "🔄 إعادة البدء",
+                testtenCik: "🚪 الخروج من الاختبار",
+                testtenCikEmin: "هل أنت متأكد من الخروج؟ سيتم فقدان تقدمك.",
+                evetCik: "نعم، خروج", iptal: "إلغاء",
+                cevapYaz: "...اكتب إجابتك",
+                soruSayisiSec: "اختر عدد الأسئلة",
+                soruSayisiGirin: "!الرجاء إدخال عدد الأسئلة",
+                soruSayisiEnAz: "!سؤال واحد على الأقل",
+                maksimumSoru: "!حد أقصى {0} سؤال",
+                yas: "سنة",
+                soru: "سؤال",
+                cevabiniz: ":إجابتك",
+                cevapsiz: "بدون إجابة",
+                sureDoldu: "انتهى الوقت",
+                bosBirakildi: "تم التخطي",
+                dogruCevap: ":الصحيح",
+                harika: "!ممتاز، إجابة صحيحة",
+                birCevapYaz: "اكتب إجابة أو تخطى.",
+                kategoriZorlukSec: "يجب اختيار فئة وصعوبة.",
+                soruYok: ".لا توجد أسئلة في هذه الفئة بعد",
+                oyunBasladi: "بدأت اللعبة",
+                yeniNesilQuiz: "✨ اختبار الجيل الجديد",
+                matexIleTest: "اختبر نفسك مع MATEX",
+                profilOlustur: "أنشئ ملفك الشخصي واختر فئة وابدأ اللعب.",
+                hizliBaslangic: "⚡ بدء سريع",
+                kategoriCount: "🧠 30 فئة",
+                fotografliKlasik: "🖼️ صور + كلاسيكي",
+                slogan: "\"حيث تجتمع الاختبارات\"",
+                subtitle2Mod: "وضعان • صور + اختبار كلاسيكي",
+                maks: "حد أقصى",
+                soruCount: "أسئلة",
+                emoji: "🎭 إيموجي", galeri: "📁 معرض"
+            }
+        };
+
+        function t(key) {
+            const lang = T[currentLanguage] || T['tr'];
+            return lang[key] || T['tr'][key] || key;
+        }
+
+        function selectLanguage(langCode) {
+            selectedLangForConfirm = langCode;
+            document.querySelectorAll('.language-card').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById('lang_' + langCode);
+            if (el) el.classList.add('selected');
+            document.getElementById('langNextBtn').disabled = false;
+        }
+
+        function confirmLanguage() {
+            if (!selectedLangForConfirm) return;
+            currentLanguage = selectedLangForConfirm;
+            localStorage.setItem('matex_language', currentLanguage);
+            applyLanguage();
+            // Show profile screen
+            document.getElementById('languageScreen').style.display = 'none';
+            document.getElementById('profileScreen').style.display = 'block';
+            // Start background music immediately
+            setTimeout(() => {
+                if (soundEnabled && !isInTest && !musicPlaying) {
+                    try {
+                        audioCtx.resume().then(() => startBgMusic());
+                    } catch(e) {
+                        // If AudioContext blocked, wait for first interaction
+                        document.addEventListener('click', function resumeMusic() {
+                            if (soundEnabled && !isInTest && !musicPlaying) {
+                                audioCtx.resume().then(() => startBgMusic());
+                            }
+                            document.removeEventListener('click', resumeMusic);
+                        }, { once: true });
+                    }
+                }
+            }, 500);
+        }
+
+        function applyLanguage() {
+            const isRTL = currentLanguage === 'ar';
+            document.documentElement.lang = currentLanguage;
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+
+            // Loading
+            const loadingEl = document.querySelector('.loading-text');
+            if (loadingEl) loadingEl.textContent = t('loading');
+
+            // Ranks - Updated to capsule style
+            // Rank names updated via updateRankDisplay()
+
+            // Top right
+            document.querySelector('.developer-credit').innerHTML = `<i class="fas fa-code"></i> ${t('yapimciBtn')}`;
+            document.querySelector('.updates-btn').innerHTML = `<i class="fas fa-code-branch"></i> ${t('guncellemeler')} <span class="new-badge">${t('yeni')}</span>`;
+
+            // Credits panel
+            document.querySelector('#creditsPanel h3').textContent = t('yapimcilar');
+            const creditLabels = document.querySelectorAll('#creditsPanel .label');
+            if (creditLabels[0]) creditLabels[0].textContent = t('yapimci');
+            if (creditLabels[1]) creditLabels[1].textContent = t('yardimciYapimci');
+            if (creditLabels[2]) creditLabels[2].textContent = t('sponsor');
+            if (creditLabels[3]) creditLabels[3].textContent = t('ortaklar');
+            document.querySelector('.close-credits').textContent = t('kapat');
+
+            // Updates panel
+            document.querySelector('#updatesPanel h3').textContent = t('guncellemeGecmisi');
+            document.querySelector('.close-updates').textContent = t('kapat');
+
+            // Feedback
+            document.querySelector('.feedback-header span').textContent = t('sikayetOneri');
+            document.querySelector('.feedback-input').placeholder = t('gorisYazin');
+            document.querySelector('.feedback-btn').textContent = t('gonder');
+            document.querySelector('.feedback-success').textContent = t('feedbackSuccess');
+
+            // Profile screen
+            const sloganEl = document.querySelector('.slogan');
+            if (sloganEl) sloganEl.textContent = t('slogan');
+            const subtitle2Mod = document.querySelectorAll('.subtitle');
+            if (subtitle2Mod.length > 0) subtitle2Mod[0].textContent = t('subtitle2Mod');
+
+            // Profile hero
+            const heroBadge = document.querySelector('.hero-badge');
+            if (heroBadge) heroBadge.textContent = t('yeniNesilQuiz');
+            const heroH1 = document.querySelector('.profile-hero h1');
+            if (heroH1) heroH1.textContent = t('matexIleTest');
+            const heroP = document.querySelector('.profile-hero p');
+            if (heroP) heroP.textContent = t('profilOlustur');
+            const pills = document.querySelectorAll('.feature-pill');
+            if (pills[0]) pills[0].textContent = t('hizliBaslangic');
+            if (pills[1]) pills[1].textContent = t('kategoriCount');
+            if (pills[2]) pills[2].textContent = t('fotografliKlasik');
+
+            // Profile form
+            const formLabels = document.querySelectorAll('#profileScreen label');
+            if (formLabels[0]) formLabels[0].textContent = t('adSoyad');
+            if (formLabels[1]) formLabels[1].textContent = t('yas');
+            if (formLabels[2]) formLabels[2].textContent = t('cinsiyet');
+
+            document.getElementById('fullNameInput').placeholder = t('adPlaceholder');
+            document.getElementById('ageInputDisplay').placeholder = t('yasPlaceholder');
+
+            document.getElementById('genderErkek').textContent = t('erkek');
+            document.getElementById('genderKadin').textContent = t('kadin');
+            document.getElementById('genderYok').textContent = t('belirtmiyorum');
+
+            // Continue button
+            const continueBtn = document.querySelector('#profileScreen .primary-btn');
+            if (continueBtn) continueBtn.textContent = t('devamEt');
+
+            // Avatar buttons
+            const avatarBtns = document.querySelectorAll('.avatar-btn');
+            if (avatarBtns[0]) avatarBtns[0].textContent = t('emoji');
+            if (avatarBtns[1]) avatarBtns[1].textContent = t('galeri');
+
+            // Avatar modal
+            const avatarModalH2 = document.querySelector('#avatarModal h2');
+            if (avatarModalH2) avatarModalH2.textContent = t('profilSec');
+            const avatarConfirmBtn = document.querySelector('#avatarModal .primary-btn');
+            if (avatarConfirmBtn) avatarConfirmBtn.textContent = t('onayla');
+
+            // Mode screen
+            const modeLogoText = document.querySelector('#modeScreen .logo-text');
+            if (modeLogoText) modeLogoText.textContent = t('oyunModu');
+            const modeSubtitle = document.querySelector('#modeScreen .subtitle');
+            if (modeSubtitle) modeSubtitle.textContent = t('nasilOynamak');
+            const modeTextTitle = document.querySelector('#modeTextCard .mode-card-title');
+            if (modeTextTitle) modeTextTitle.textContent = t('fotografSiz');
+            const modeTextDesc = document.querySelector('#modeTextCard .mode-card-desc');
+            if (modeTextDesc) modeTextDesc.textContent = t('fotografSizDesc');
+            const modePhotoTitle = document.querySelector('#modePhotoCard .mode-card-title');
+            if (modePhotoTitle) modePhotoTitle.textContent = t('fotografli');
+            const modePhotoDesc = document.querySelector('#modePhotoCard .mode-card-desc');
+            if (modePhotoDesc) modePhotoDesc.textContent = t('fotografliDesc');
+            const modeNextBtn = document.getElementById('modeNextBtn');
+            if (modeNextBtn) modeNextBtn.textContent = t('devamEt');
+
+            // Back buttons in mode screen
+            const modeBackBtns = document.querySelectorAll('#modeScreen .back-btn');
+            modeBackBtns.forEach(btn => {
+                if (btn.textContent.includes('Profil') || btn.textContent.includes('profil') || btn.textContent.includes('👤')) btn.textContent = '← ' + t('profil');
+            });
+
+            // Category screen
+            const catLogoText = document.querySelector('#categoryScreen .logo-text');
+            if (catLogoText) catLogoText.textContent = t('kategoriSec');
+            const catNextBtn = document.getElementById('categoryNextBtn');
+            if (catNextBtn) catNextBtn.textContent = t('zorlukSec');
+
+            // Difficulty screen
+            const diffLogoText = document.querySelector('#difficultyScreen .logo-text');
+            if (diffLogoText) diffLogoText.textContent = t('zorlukSeviyesi');
+            const diffStartBtn = document.getElementById('difficultyNextBtn');
+            if (diffStartBtn) diffStartBtn.textContent = t('testeBasla');
+
+            // Test screen
+            const testExitBtn = document.querySelector('#testScreen .skip-btn');
+            if (testExitBtn) testExitBtn.textContent = t('cik');
+
+            // Photo test screen
+            const photoExitBtn = document.querySelector('#photoTestScreen .skip-btn');
+            if (photoExitBtn) photoExitBtn.textContent = t('cik');
+            const photoAnswerInput = document.getElementById('photoAnswerInput');
+            if (photoAnswerInput) photoAnswerInput.placeholder = t('cevapYaz');
+
+            // Exit confirm modal
+            document.querySelector('.exit-confirm-box h3').textContent = t('testtenCik');
+            document.querySelector('.exit-confirm-box p').textContent = t('testtenCikEmin');
+            document.querySelector('.exit-confirm-btn.yes').textContent = t('evetCik');
+            document.querySelector('.exit-confirm-btn.no').textContent = t('iptal');
+
+            // Result labels
+            document.querySelectorAll('.t-dogru-label').forEach(el => el.textContent = t('dogru'));
+            document.querySelectorAll('.t-puan-label').forEach(el => el.textContent = t('puan'));
+
+            // Result screen buttons
+            const resultRestartBtns = document.querySelectorAll('.screen[style*="display:none"] .primary-btn, #resultScreen .primary-btn, #photoResultScreen .primary-btn');
+            resultRestartBtns.forEach(btn => { if (btn.textContent.includes('Yeniden') || btn.textContent.includes('Restart') || btn.textContent.includes('Neustart') || btn.textContent.includes('重新') || btn.textContent.includes('やり') || btn.textContent.includes('Reiniciar') || btn.textContent.includes('إعادة') || btn.textContent.includes('🔄')) btn.textContent = t('yenidenBasla'); });
+
+            // Test navigation buttons
+            const testPrevBtn = document.getElementById('prevBtn');
+            if (testPrevBtn) testPrevBtn.textContent = t('onceki');
+            const testSkipBtn = document.getElementById('skipBtn');
+            if (testSkipBtn) testSkipBtn.textContent = t('bosBirak');
+            const testNextBtn = document.getElementById('testNextBtn');
+            if (testNextBtn) testNextBtn.textContent = t('sonraki');
+            const testReturnBtn = document.getElementById('returnSkippedBtn');
+            if (testReturnBtn) testReturnBtn.textContent = t('bosBirakilanDon');
+
+            // Photo navigation buttons
+            const photoPrevBtn = document.getElementById('photoPrevBtn');
+            if (photoPrevBtn) photoPrevBtn.textContent = t('onceki');
+            const photoSkipBtn = document.getElementById('photoSkipBtn');
+            if (photoSkipBtn) photoSkipBtn.textContent = t('bosBirak');
+            const photoNextBtn = document.getElementById('photoNextBtn');
+            if (photoNextBtn) photoNextBtn.textContent = t('sonraki');
+            const photoReturnBtn = document.getElementById('photoReturnSkippedBtn');
+            if (photoReturnBtn) photoReturnBtn.textContent = t('bosBirakilanDon');
+
+            // Back buttons text
+            document.querySelectorAll('.back-btn').forEach(btn => {
+                const txt = btn.textContent;
+                if (txt.includes('Profil') || txt.includes('profil')) btn.textContent = '← ' + t('profil');
+                else if (txt.includes('Mod') || txt.includes('mod') || txt.includes('Modlar') || txt.includes('Mode')) btn.textContent = '🎮 ' + t('modlar');
+                else if (txt.includes('Kategori') || txt.includes('kategori') || txt.includes('ategor')) btn.textContent = '📋 ' + t('kategori');
+                else if (txt.includes('Zorluk') || txt.includes('zorluk') || txt.includes('Difficult')) btn.textContent = '← ' + t('zorlukSeviyesi');
+                else if (txt.includes('Modlar') || txt.includes('Mode')) btn.textContent = '← ' + t('modlar');
+            });
+
+            // Difficulty back buttons
+            const diffBackBtn = document.querySelector('#difficultyScreen .back-btn');
+            if (diffBackBtn) diffBackBtn.textContent = '📋 ' + t('kategori');
+            const photoDiffBackBtn = document.querySelector('#photoDifficultyScreen .back-btn');
+            if (photoDiffBackBtn) photoDiffBackBtn.textContent = '← ' + t('kategori');
+
+            // Language dropdown label
+            const langLabel = document.getElementById('langDropdownLabel');
+            if (langLabel) langLabel.textContent = '🌍 ' + t('dilSecTitle').replace('🌍 ','');
+
+            // Sound toggle
+            const soundLabel = document.getElementById('soundLabel');
+            if (soundLabel) soundLabel.textContent = soundEnabled ? t('sesAcik') : t('sesKapali');
+
+            // Answer mode label (text test)
+            const ansLabel = document.getElementById('answerModeLabel');
+            if (ansLabel) ansLabel.textContent = '📋 ' + t('cevaplar');
+            const ansInstant = document.getElementById('ansModeInstant');
+            if (ansInstant) ansInstant.textContent = t('hemenGoster');
+            const ansEnd = document.getElementById('ansModeEnd');
+            if (ansEnd) ansEnd.textContent = t('sondaGoster');
+
+            // Answer mode label (photo test)
+            const photoAnsLabel = document.getElementById('photoAnswerModeLabel');
+            if (photoAnsLabel) photoAnsLabel.textContent = '📋 ' + t('cevaplar');
+            const photoAnsInst = document.getElementById('photoAnsModeInstant');
+            if (photoAnsInst) photoAnsInst.textContent = t('hemenGoster');
+            const photoAnsEnd = document.getElementById('photoAnsModeEnd');
+            if (photoAnsEnd) photoAnsEnd.textContent = t('sondaGoster');
+
+            // Lang save button
+            const langSaveBtn = document.getElementById('langSaveBtn');
+            if (langSaveBtn && !langSaveBtn.disabled) langSaveBtn.textContent = '💾 ' + t('kaydet');
+
+            // Rank points per difficulty label
+            const ptsLabel = document.getElementById('rankPtsPerLabel');
+            if (ptsLabel) ptsLabel.textContent = t('kolay') + ': 10p • ' + t('orta') + ': 20p • ' + t('zor') + ': 30p';
+
+            // Rank dropdown title
+            const rankTitle = document.getElementById('rankDropdownTitle');
+            if (rankTitle) rankTitle.textContent = t('bronz') + ' / ' + t('gumus') + ' / ' + t('altin') + ' / ' + t('elmas');
+
+            // Re-apply rank display with translations
+            updateRankDisplay();
+
+        }
+
+        // Load saved language
+        (function() {
+            const saved = localStorage.getItem('matex_language');
+            if (saved && T[saved]) {
+                currentLanguage = saved;
+                selectedLangForConfirm = saved;
+            }
+        })();
+
         const marvelSorulari = [
             { soru: "Iron Man'in gerçek adı nedir?", A: "Tony Stark", B: "Steve Rogers", C: "Bruce Banner", D: "Thor Odinson", E: "Clint Barton", dogru: "A", aciklama: "Tony Stark, milyarder iş adamı ve dahi mucittir." },
             { soru: "Thor'un çekicinin adı nedir?", A: "Mjolnir", B: "Stormbreaker", C: "Gungnir", D: "Hofund", E: "Jarnbjorn", dogru: "A", aciklama: "Mjolnir, sadece 'layık olan' tarafından kaldırılabilir." },
@@ -4497,7 +6055,114 @@
         allPools.forEach(arr => { while (arr.length < 30) arr.push({ ...arr[0] }); });
 
         localStorage.setItem('matex_totalPoints', '0'); let totalRankPoints = 0;
-        function updateRankDisplay() { document.getElementById('totalRankPoints').textContent = totalRankPoints; const b = document.getElementById('rankBronz'), g = document.getElementById('rankGumus'), a = document.getElementById('rankAltin'), e = document.getElementById('rankElmas'); b.classList.remove('rank-active'); g.classList.remove('rank-active', 'rank-locked'); a.classList.remove('rank-active', 'rank-locked'); e.classList.remove('rank-active', 'rank-locked'); if (totalRankPoints >= 1200) { e.classList.add('rank-active'); g.classList.remove('rank-locked'); a.classList.remove('rank-locked'); } else e.classList.add('rank-locked'); if (totalRankPoints >= 900) { a.classList.add('rank-active'); g.classList.remove('rank-locked'); } else a.classList.add('rank-locked'); if (totalRankPoints >= 600) g.classList.add('rank-active'); else g.classList.add('rank-locked'); if (totalRankPoints >= 300) b.classList.add('rank-active'); }
+        // Rank thresholds
+        const RANK_THRESHOLDS = { bronz: 200, gumus: 400, altin: 600, elmas: 800 };
+        const RANK_ICONS = { bronz: '🥉', gumus: '🥈', altin: '🥇', elmas: '💎' };
+        const POINTS_PER_DIFFICULTY = { kolay: 10, orta: 20, zor: 30 };
+
+        function toggleRankDropdown() {
+            document.getElementById('rankDropdown').classList.toggle('show');
+        }
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#rankSystemLeft')) {
+                const dd = document.getElementById('rankDropdown');
+                if (dd) dd.classList.remove('show');
+            }
+            if (!e.target.closest('.lang-dropdown-wrapper')) {
+                const lp = document.getElementById('langDropdownPanel');
+                if (lp) lp.classList.remove('show');
+            }
+        });
+
+        function toggleLangDropdown() {
+            document.getElementById('langDropdownPanel').classList.toggle('show');
+        }
+
+        let pendingLang = null;
+        const LANG_FLAGS = { tr:'🇹🇷', en:'🇬🇧', de:'🇩🇪', ru:'🇷🇺', zh:'🇨🇳', ja:'🇯🇵', es:'🇪🇸', ar:'🇸🇦' };
+        const LANG_NAMES = { tr:'Türkçe', en:'English', de:'Deutsch', ru:'Русский', zh:'中文', ja:'日本語', es:'Español', ar:'العربية' };
+
+        function selectLangOption(langCode) {
+            pendingLang = langCode;
+            document.querySelectorAll('.lang-dropdown-item').forEach(el => {
+                el.classList.toggle('selected', el.getAttribute('data-lang') === langCode);
+            });
+            const saveBtn = document.getElementById('langSaveBtn');
+            if (saveBtn) {
+                saveBtn.disabled = false;
+                saveBtn.textContent = '💾 ' + (T[langCode] && T[langCode].kaydet || 'Kaydet');
+            }
+        }
+
+        function saveLanguage() {
+            if (!pendingLang) return;
+            currentLanguage = pendingLang;
+            localStorage.setItem('matex_language', pendingLang);
+            applyLanguage();
+            document.getElementById('langDropdownFlag').textContent = LANG_FLAGS[pendingLang] || '🌍';
+            document.getElementById('langDropdownName').textContent = LANG_NAMES[pendingLang] || pendingLang;
+            document.getElementById('langDropdownPanel').classList.remove('show');
+            pendingLang = null;
+        }
+
+        function applyLangDisplay(langCode) {
+            document.getElementById('langDropdownFlag').textContent = LANG_FLAGS[langCode] || '🌍';
+            document.getElementById('langDropdownName').textContent = LANG_NAMES[langCode] || langCode;
+            document.querySelectorAll('.lang-dropdown-item').forEach(el => {
+                el.classList.toggle('selected', el.getAttribute('data-lang') === langCode);
+            });
+        }
+
+        function getCurrentRank() {
+            if (totalRankPoints >= RANK_THRESHOLDS.elmas) return 'elmas';
+            if (totalRankPoints >= RANK_THRESHOLDS.altin) return 'altin';
+            if (totalRankPoints >= RANK_THRESHOLDS.gumus) return 'gumus';
+            if (totalRankPoints >= RANK_THRESHOLDS.bronz) return 'bronz';
+            return 'bronz';
+        }
+
+        function updateRankDisplay() {
+            const tp = totalRankPoints;
+            document.getElementById('totalRankPoints').textContent = tp;
+            const rank = getCurrentRank();
+
+            // Update capsule
+            document.getElementById('rankCapsuleIcon').textContent = RANK_ICONS[rank];
+            const rankNames = { bronz: t('bronz'), gumus: t('gumus'), altin: t('altin'), elmas: t('elmas') };
+            document.getElementById('rankCapsuleName').textContent = rankNames[rank] || rank.toUpperCase();
+            document.getElementById('rankCapsuleName').style.color = rank === 'bronz' ? '#cd7f32' : rank === 'gumus' ? '#c0c0c0' : rank === 'altin' ? '#ffd700' : '#00d2ff';
+            document.getElementById('rankPtsLabel').textContent = t('toplamPuan');
+
+            // Update dropdown items
+            const ranks = ['bronz', 'gumus', 'altin', 'elmas'];
+            const thresholds = [RANK_THRESHOLDS.bronz, RANK_THRESHOLDS.gumus, RANK_THRESHOLDS.altin, RANK_THRESHOLDS.elmas];
+            const dropIds = ['rankDropBronz', 'rankDropGumus', 'rankDropAltin', 'rankDropElmas'];
+            const barIds = ['rankBarBronz', 'rankBarGumus', 'rankBarAltin', 'rankBarElmas'];
+
+            ranks.forEach((r, i) => {
+                const el = document.getElementById(dropIds[i]);
+                if (!el) return;
+                const threshold = thresholds[i];
+                const prevThreshold = i > 0 ? thresholds[i-1] : 0;
+                const progress = Math.min(100, Math.max(0, ((tp - prevThreshold) / (threshold - prevThreshold)) * 100));
+                const bar = document.getElementById(barIds[i]);
+                if (bar) bar.style.width = (tp >= threshold ? 100 : progress) + '%';
+
+                el.classList.remove('active', 'locked');
+                if (tp >= threshold) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.add('locked');
+                }
+            });
+
+            // Update rank names in dropdown
+            const descTexts = { bronz: t('bronzDesc'), gumus: t('gumusDesc'), altin: t('altinDesc'), elmas: t('elmasDesc') };
+            document.getElementById('rankDropBronzReq').textContent = descTexts.bronz;
+            document.getElementById('rankDropGumusReq').textContent = descTexts.gumus;
+            document.getElementById('rankDropAltinReq').textContent = descTexts.altin;
+            document.getElementById('rankDropElmasReq').textContent = descTexts.elmas;
+        }
         function addPoints(p) { totalRankPoints += p; localStorage.setItem('matex_totalPoints', totalRankPoints); updateRankDisplay(); }
 
         function toggleAgeScroll() { const s = document.getElementById('ageScroll'); if (!s.classList.contains('show')) { let o = ''; for (let i = 1; i <= 100; i++) o += `<div class="age-option" onclick="selectAge(${i})">${i}</div>`; s.innerHTML = o; } s.classList.toggle('show'); }
@@ -4521,6 +6186,303 @@
 
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => { if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault(); });
+
+
+        // ===== SOUND SYSTEM =====
+        let soundEnabled = true;
+        let musicPlaying = false;
+        let musicInterval = null;
+        let isInTest = false;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Background music - generates a pleasant ambient loop using Web Audio API
+        function startBgMusic() {
+            if (!soundEnabled || musicPlaying || isInTest) return;
+            musicPlaying = true;
+            const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 349.23, 440.00, 523.25, 440.00, 349.23, 329.63];
+            let noteIdx = 0;
+
+            function playNote() {
+                if (!soundEnabled || !musicPlaying || isInTest) return;
+                try {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const osc2 = audioCtx.createOscillator();
+                    const gain2 = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc2.connect(gain2);
+                    gain2.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.value = notes[noteIdx % notes.length];
+                    gain.gain.value = 0.04;
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+                    osc2.type = 'triangle';
+                    osc2.frequency.value = notes[noteIdx % notes.length] * 0.5;
+                    gain2.gain.value = 0.02;
+                    gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.6);
+                    osc2.start();
+                    osc2.stop(audioCtx.currentTime + 0.7);
+                    noteIdx++;
+                } catch(e) {}
+            }
+
+            playNote();
+            musicInterval = setInterval(playNote, 700);
+        }
+
+        function stopBgMusic() {
+            musicPlaying = false;
+            if (musicInterval) {
+                clearInterval(musicInterval);
+                musicInterval = null;
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('soundToggleBtn');
+            const icon = document.getElementById('soundIcon');
+            const label = document.getElementById('soundLabel');
+            if (soundEnabled) {
+                btn.classList.remove('muted');
+                icon.textContent = '🔊';
+                label.textContent = t('sesAcik');
+                if (!isInTest) startBgMusic();
+            } else {
+                btn.classList.add('muted');
+                icon.textContent = '🔇';
+                label.textContent = t('sesKapali');
+                stopBgMusic();
+            }
+            localStorage.setItem('matex_sound', soundEnabled ? '1' : '0');
+        }
+
+        function playTone(freq, duration, type) {
+            if (!soundEnabled) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.type = type || 'sine';
+                osc.frequency.value = freq;
+                gain.gain.value = 0.15;
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playCorrectSound() {
+            // Ding-ding bell sound
+            playTone(880, 0.15, 'sine');
+            setTimeout(() => playTone(1100, 0.12, 'sine'), 120);
+            setTimeout(() => playTone(1320, 0.2, 'sine'), 240);
+            setTimeout(() => playTone(1760, 0.3, 'sine'), 360);
+        }
+
+        function playWrongSound() {
+            // Buzzer buzz-buzz sound
+            playTone(180, 0.12, 'square');
+            setTimeout(() => playTone(150, 0.12, 'square'), 130);
+            setTimeout(() => playTone(120, 0.2, 'square'), 260);
+        }
+
+        function playClickSound() {
+            playTone(660, 0.04, 'sine');
+        }
+
+
+        // ===== GLOBAL CLICK SOUND (not during tests) =====
+        document.addEventListener('click', function(e) {
+            if (isInTest || !soundEnabled) return;
+            const target = e.target;
+            // Play click for interactive elements
+            if (target.closest('button') || target.closest('.category-card') || target.closest('.difficulty-card') ||
+                target.closest('.option-btn') || target.closest('.nav-btn') || target.closest('.back-btn') ||
+                target.closest('.primary-btn') || target.closest('.mode-card') || target.closest('.language-card') ||
+                target.closest('.lang-dropdown-item') || target.closest('.answer-mode-option') ||
+                target.closest('.rank-capsule') || target.closest('.social-btn') || target.closest('.avatar-btn') ||
+                target.closest('.gender-option') || target.closest('.avatar-option') || target.closest('.updates-btn') ||
+                target.closest('.developer-credit') || target.closest('.feedback-btn') || target.closest('.sound-toggle-btn')) {
+                playClickSound();
+            }
+        }, true);
+
+        // Load saved sound preference
+        (function() {
+            const saved = localStorage.getItem('matex_sound');
+            if (saved === '0') {
+                soundEnabled = false;
+                setTimeout(() => {
+                    const btn = document.getElementById('soundToggleBtn');
+                    const icon = document.getElementById('soundIcon');
+                    const label = document.getElementById('soundLabel');
+                    if (btn) btn.classList.add('muted');
+                    if (icon) icon.textContent = '🔇';
+                    if (label) label.textContent = '🔇';
+                }, 100);
+            }
+        })();
+
+
+        // ===== VOICE RECOGNITION SYSTEM =====
+        let voiceFeatureEnabled = false;
+        let voiceRecognition = null;
+        let voiceListening = false;
+
+        function toggleVoiceFeature() {
+            voiceFeatureEnabled = !voiceFeatureEnabled;
+            const btn = document.getElementById('voiceToggleBtn');
+            const icon = document.getElementById('voiceFeatureIcon');
+            const label = document.getElementById('voiceFeatureLabel');
+            if (voiceFeatureEnabled) {
+                btn.classList.add('active');
+                btn.classList.remove('muted');
+                icon.textContent = '🎤';
+                label.textContent = t('sesliKomutAcik') || 'Sesli Komut Açık';
+            } else {
+                btn.classList.remove('active');
+                btn.classList.add('muted');
+                icon.textContent = '🔇';
+                label.textContent = t('sesliKomutKapali') || 'Sesli Komut Kapalı';
+                stopVoiceRecognition();
+            }
+            // Show/hide mic button in photo test
+            const voiceBox = document.getElementById('voiceCmdBox');
+            if (voiceBox) voiceBox.style.display = voiceFeatureEnabled ? 'flex' : 'none';
+            localStorage.setItem('matex_voice', voiceFeatureEnabled ? '1' : '0');
+        }
+
+        function initVoiceRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                console.log('Speech recognition not supported');
+                return null;
+            }
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = true;
+            recognition.lang = 'tr-TR';
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = function(event) {
+                let finalTranscript = '';
+                let interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript;
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+                const input = document.getElementById('photoAnswerInput');
+                const status = document.getElementById('voiceStatus');
+                if (input) {
+                    if (finalTranscript) {
+                        input.value = finalTranscript.trim();
+                        if (status) status.textContent = '✅ ' + finalTranscript.trim();
+                        // Trigger input event to enable next button
+                        input.dispatchEvent(new Event('input'));
+                    } else if (interimTranscript) {
+                        input.value = interimTranscript;
+                        if (status) status.textContent = '🎤 ' + interimTranscript;
+                    }
+                }
+            };
+
+            recognition.onerror = function(event) {
+                console.log('Voice error:', event.error);
+                const status = document.getElementById('voiceStatus');
+                if (status) {
+                    if (event.error === 'no-speech') status.textContent = '🔇 Ses algılanmadı';
+                    else if (event.error === 'not-allowed') status.textContent = '⚠️ Mikrofon izni gerekli';
+                    else status.textContent = '❌ Hata: ' + event.error;
+                }
+                stopVoiceRecognition();
+            };
+
+            recognition.onend = function() {
+                voiceListening = false;
+                const micBtn = document.getElementById('voiceMicBtn');
+                const micIcon = document.getElementById('voiceMicIcon');
+                if (micBtn) micBtn.classList.remove('listening');
+                if (micIcon) micIcon.textContent = '🎤';
+            };
+
+            return recognition;
+        }
+
+        function toggleVoiceRecognition() {
+            if (voiceListening) {
+                stopVoiceRecognition();
+            } else {
+                startVoiceRecognition();
+            }
+        }
+
+        function startVoiceRecognition() {
+            if (!voiceRecognition) {
+                voiceRecognition = initVoiceRecognition();
+            }
+            if (!voiceRecognition) {
+                const status = document.getElementById('voiceStatus');
+                if (status) status.textContent = '⚠️ Tarayıcı sesli komutu desteklemiyor';
+                return;
+            }
+            try {
+                // Set language based on current game language
+                const langMap = { tr: 'tr-TR', en: 'en-US', de: 'de-DE', ru: 'ru-RU', zh: 'zh-CN', ja: 'ja-JP', es: 'es-ES', ar: 'ar-SA' };
+                voiceRecognition.lang = langMap[currentLanguage] || 'tr-TR';
+                voiceRecognition.start();
+                voiceListening = true;
+                const micBtn = document.getElementById('voiceMicBtn');
+                const micIcon = document.getElementById('voiceMicIcon');
+                const status = document.getElementById('voiceStatus');
+                if (micBtn) micBtn.classList.add('listening');
+                if (micIcon) micIcon.textContent = '🔴';
+                if (status) status.textContent = '🎤 Dinliyor... Konuşun';
+                playClickSound();
+            } catch(e) {
+                console.log('Voice start error:', e);
+                const status = document.getElementById('voiceStatus');
+                if (status) status.textContent = '❌ Başlatılamadı';
+            }
+        }
+
+        function stopVoiceRecognition() {
+            if (voiceRecognition && voiceListening) {
+                try { voiceRecognition.stop(); } catch(e) {}
+            }
+            voiceListening = false;
+            const micBtn = document.getElementById('voiceMicBtn');
+            const micIcon = document.getElementById('voiceMicIcon');
+            if (micBtn) micBtn.classList.remove('listening');
+            if (micIcon) micIcon.textContent = '🎤';
+        }
+
+        // Load saved voice preference
+        (function() {
+            const saved = localStorage.getItem('matex_voice');
+            if (saved === '1') {
+                voiceFeatureEnabled = true;
+                setTimeout(function() {
+                    const btn = document.getElementById('voiceToggleBtn');
+                    if (btn) { btn.classList.add('active'); btn.classList.remove('muted'); }
+                    const icon = document.getElementById('voiceFeatureIcon');
+                    if (icon) icon.textContent = '🎤';
+                }, 200);
+            } else {
+                setTimeout(function() {
+                    const btn = document.getElementById('voiceToggleBtn');
+                    if (btn) btn.classList.add('muted');
+                }, 200);
+            }
+        })();
 
         function changeTheme(catId) {
             const bg = document.getElementById('animatedBg'), cont = document.getElementById('animationContainer');
@@ -4560,7 +6522,22 @@
         }
 
         const avatarEmojis = ['👤', '👨', '👩', '🧑', '👶', '👴', '👵', '🦸', '🦹', '🧙', '🧝', '🏎️', '🚗', '🚙', '🚕', '🏍️', '🛵', '🚀', '✈️', '🚁', '🍕', '🍔', '🌮', '🍣', '🍜', '⚽', '🏀', '🎮', '🎵', '🎬', '📱', '💻', '🦁', '🐶', '🐱', '🦊', '🐼', '🐨']; let secilenAvatar = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)]; let uploadedImage = null;
-        document.addEventListener('DOMContentLoaded', () => { document.getElementById('avatarPreview').textContent = secilenAvatar; updateRankDisplay(); document.getElementById('ageInputDisplay').value = ''; document.getElementById('ageInput').value = ''; });
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('avatarPreview').textContent = secilenAvatar;
+            updateRankDisplay();
+            document.getElementById('ageInputDisplay').value = '';
+            document.getElementById('ageInput').value = '';
+            // Load saved language
+            const savedLang = localStorage.getItem('matex_language');
+            if (savedLang && T[savedLang]) {
+                currentLanguage = savedLang;
+                selectedLangForConfirm = savedLang;
+                applyLanguage();
+                // Update lang dropdown display
+                applyLangDisplay(savedLang);
+            }
+            document.getElementById('profileScreen').style.display = 'block';
+        });
         window.handleGalleryUpload = function (e) { const f = e.target.files[0]; if (f) { const r = new FileReader(); r.onload = function (ev) { uploadedImage = ev.target.result; document.getElementById('avatarPreview').innerHTML = `<img src="${uploadedImage}">`; secilenAvatar = 'image'; }; r.readAsDataURL(f); } };
         window.openAvatarModal = function () { document.getElementById('avatarGrid').innerHTML = avatarEmojis.map(a => `<div class="avatar-option ${secilenAvatar === a ? 'selected' : ''}" onclick="selectAvatar('${a}')">${a}</div>`).join(''); document.getElementById('avatarModal').style.display = 'flex'; };
         window.selectAvatar = function (a) { secilenAvatar = a; uploadedImage = null; document.querySelectorAll('.avatar-option').forEach(e => e.classList.remove('selected')); event.target.classList.add('selected'); document.getElementById('avatarPreview').textContent = a; };
@@ -4601,7 +6578,7 @@
             document.getElementById('genderError').textContent = '';
             nameInput.classList.remove('error');
             if (!nameInput.value.trim()) {
-                document.getElementById('nameError').textContent = 'Lütfen adınızı girin!';
+                document.getElementById('nameError').textContent = t('nameError');
                 nameInput.classList.add('error');
                 isValid = false;
             }
@@ -4609,14 +6586,14 @@
             ageInput.value = rawAge;
             const yas = parseInt(rawAge, 10);
             if (!rawAge) {
-                document.getElementById('ageError').textContent = 'Lütfen yaşınızı girin!';
+                document.getElementById('ageError').textContent = t('ageError');
                 isValid = false;
             } else if (Number.isNaN(yas) || yas < 1 || yas > 100) {
-                document.getElementById('ageError').textContent = 'Yaş 1-100 arası olmalı!';
+                document.getElementById('ageError').textContent = t('ageRangeError');
                 isValid = false;
             }
             if (!secilenCinsiyet) {
-                document.getElementById('genderError').textContent = 'Lütfen cinsiyet seçin!';
+                document.getElementById('genderError').textContent = t('genderError');
                 isValid = false;
             }
             if (isValid) {
@@ -4626,6 +6603,25 @@
             }
         };
 
+
+
+        // ===== ANSWER MODE =====
+        let answerMode = 'instant'; // 'instant' | 'end'
+        let photoAnswerMode = 'instant'; // 'instant' | 'end'
+
+        function setAnswerMode(mode) {
+            answerMode = mode;
+            document.getElementById('ansModeInstant').classList.toggle('selected', mode === 'instant');
+            document.getElementById('ansModeEnd').classList.toggle('selected', mode === 'end');
+            playClickSound();
+        }
+
+        function setPhotoAnswerMode(mode) {
+            photoAnswerMode = mode;
+            document.getElementById('photoAnsModeInstant').classList.toggle('selected', mode === 'instant');
+            document.getElementById('photoAnsModeEnd').classList.toggle('selected', mode === 'end');
+            playClickSound();
+        }
 
         // ===== OYUN MODU =====
         let gameMode = null; // 'text' | 'photo'
@@ -4637,22 +6633,39 @@
         let photoTimer = null;
         let photoTimeLeft = 0;
         let photoTestAktif = false;
-        let photoPuan = 0;
+        let photoPuan = 0, photoQuestionStartTime = 0, photoTimeBonus = 0;
         let exitTarget = 'text'; // which test exit modal confirms
 
         // Fotoğraflı kategoriler (görselleri sen atınca image alanını dolduracağız)
         // image: 'ironman.jpg' gibi yol kullan
         // answers: kabul edilen cevap varyasyonları (küçük harf, Türkçe karakter duyarsız)
         const photoKategoriler = [
-            { id: 'photo-marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Karakter tahmin', theme: 'marvel' },
-            { id: 'photo-dc', ad: 'DC', icon: '🦇', subtitle: 'Karakter tahmin', theme: 'dc' },
-            { id: 'photo-anime', ad: 'Anime', icon: '🎌', subtitle: 'Karakter tahmin', theme: 'anime' },
-            { id: 'photo-futbol', ad: 'Futbol', icon: '⚽', subtitle: 'Oyuncu / kulüp', theme: 'futbol' },
-            { id: 'photo-markalar', ad: 'Markalar', icon: '🏷️', subtitle: 'Logo tahmin', theme: 'markalar' },
-            { id: 'photo-sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film / karakter', theme: 'sinema' },
-            { id: 'photo-hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Canlı tahmin', theme: 'hayvan' },
-            { id: 'photo-bayraklar', ad: 'Bayraklar', icon: '🚩', subtitle: 'Ülke tahmin', theme: 'bayraklar' }
+            { id: 'photo-marvel', adKey: 'marvel', icon: '🦸', subtitleKey: 'photoCharGuess', theme: 'marvel' },
+            { id: 'photo-dc', adKey: 'dc', icon: '🦇', subtitleKey: 'photoCharGuess', theme: 'dc' },
+            { id: 'photo-anime', adKey: 'anime', icon: '🎌', subtitleKey: 'photoCharGuess', theme: 'anime' },
+            { id: 'photo-futbol', adKey: 'futbol', icon: '⚽', subtitleKey: 'photoPlayerClub', theme: 'futbol' },
+            { id: 'photo-markalar', adKey: 'markalar', icon: '🏷️', subtitleKey: 'photoLogoGuess', theme: 'markalar' },
+            { id: 'photo-sinema', adKey: 'sinema', icon: '🎬', subtitleKey: 'photoFilmChar', theme: 'sinema' },
+            { id: 'photo-hayvan', adKey: 'hayvan', icon: '🦁', subtitleKey: 'photoCreatureGuess', theme: 'hayvan' },
+            { id: 'photo-bayraklar', adKey: 'bayraklar', icon: '🚩', subtitleKey: 'photoCountryGuess', theme: 'bayraklar' }
         ];
+
+        // Photo subtitle translations
+        const photoSubTitles = {
+            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin' },
+            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess' },
+            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten' },
+            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну' },
+            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家' },
+            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て' },
+            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país' },
+            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد' }
+        };
+
+        function getPhotoSubTitle(key) {
+            const lang = photoSubTitles[currentLanguage] || photoSubTitles['tr'];
+            return lang[key] || key;
+        }
 
         const photoPools = {
             'photo-marvel': [
@@ -4891,7 +6904,7 @@
 
         // override classic category entry to come from mode
         window.goToCategorySelect = function () {
-            id('categoryGrid').innerHTML = kategoriler.map(k => `<div class="category-card category-card--${k.id}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${k.ad}</div><div class="category-subtitle">${k.subtitle}</div></div>`).join('');
+            id('categoryGrid').innerHTML = kategoriler.map(k => `<div class="category-card category-card--${k.id}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${getCatName(k.id)}</div><div class="category-subtitle">${getCatSubtitle(k.id)}</div></div>`).join('');
             hideAllMainScreens();
             cScreen.style.display = 'block';
             changeTheme('space');
@@ -4910,15 +6923,23 @@
         };
 
         // ===== PHOTO FLOW =====
+        // Map photo categories to text category IDs for styling
+        const photoToTextCatMap = {
+            'photo-marvel': 'marvel', 'photo-dc': 'dc', 'photo-anime': 'anime',
+            'photo-futbol': 'futbol', 'photo-markalar': 'markalar',
+            'photo-sinema': 'sinema', 'photo-hayvan': 'hayvan', 'photo-bayraklar': 'bayraklar'
+        };
+
         window.goToPhotoCategorySelect = function () {
             const grid = document.getElementById('photoCategoryGrid');
-            grid.innerHTML = photoKategoriler.map(k =>
-                `<div class="category-card category-card--${k.id}" onclick="selectPhotoCategory('${k.id}')" id="pcat_${k.id}">
+            grid.innerHTML = photoKategoriler.map(k => {
+                const textCatId = photoToTextCatMap[k.id] || k.id;
+                return `<div class="category-card category-card--${textCatId}" onclick="selectPhotoCategory('${k.id}')" id="pcat_${k.id}">
                     <div class="category-icon">${k.icon}</div>
-                    <div class="category-title">${k.ad}</div>
-                    <div class="category-subtitle">${k.subtitle}</div>
-                </div>`
-            ).join('');
+                    <div class="category-title">${getCatName(k.adKey)}</div>
+                    <div class="category-subtitle">${getPhotoSubTitle(k.subtitleKey)}</div>
+                </div>`;
+            }).join('');
             hideAllMainScreens();
             document.getElementById('photoCategoryScreen').style.display = 'block';
             document.getElementById('photoCategoryNextBtn').disabled = true;
@@ -4953,20 +6974,20 @@
             if (!input) return false;
             const max = getPhotoPoolMax(secilenPhotoKategori?.id);
             input.max = String(max);
-            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            if (maxLabel) maxLabel.textContent = `/ ${t('maks')} ${max}`;
             const raw = String(input.value || '').trim();
             const n = parseInt(raw, 10);
             err.textContent = '';
             if (!raw || Number.isNaN(n)) {
-                err.textContent = 'Lütfen soru sayısı girin!';
+                err.textContent = t('soruSayisiGirin');
                 return false;
             }
             if (n < 1) {
-                err.textContent = 'Soru sayısı en az 1 olmalı!';
+                err.textContent = t('soruSayisiEnAz');
                 return false;
             }
             if (n > max) {
-                err.textContent = `Maksimum ${max} soru seçebilirsin!`;
+                err.textContent = t('maksimumSoru').replace('{0}', max);
                 return false;
             }
             photoQuestionCount = n;
@@ -4980,17 +7001,17 @@
             const err = document.getElementById('photoCountError');
             const maxLabel = document.getElementById('photoCountMaxLabel');
             const max = getPhotoPoolMax(secilenPhotoKategori?.id);
-            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            if (maxLabel) maxLabel.textContent = `/ ${t('maks')} ${max}`;
             if (input) input.max = String(max);
             const raw = String(input?.value || '').trim();
             const n = parseInt(raw, 10);
             let countValid = !Number.isNaN(n) && n >= 1 && n <= max;
             if (err) {
                 if (raw && !Number.isNaN(n) && n > max) {
-                    err.textContent = `Maksimum ${max} soru seçebilirsin!`;
+                    err.textContent = t('maksimumSoru').replace('{0}', max);
                     countValid = false;
                 } else if (raw && !Number.isNaN(n) && n < 1) {
-                    err.textContent = 'Soru sayısı en az 1 olmalı!';
+                    err.textContent = t('soruSayisiEnAz');
                     countValid = false;
                 } else {
                     err.textContent = '';
@@ -5005,8 +7026,8 @@
             document.getElementById('photoDifficultyContainer').innerHTML = zorluklar.map(z =>
                 `<div class="difficulty-card" onclick="selectPhotoDifficulty('${z.id}')" id="pdiff_${z.id}">
                     <div class="difficulty-icon">${z.icon}</div>
-                    <div class="difficulty-title">${z.ad}</div>
-                    <div class="difficulty-time">${z.sure} sn</div>
+                    <div class="difficulty-title">${getZorlukAd(z)}</div>
+                    <div class="difficulty-time">${z.id === 'suretsiz' ? '∞' : z.sure + ' sn'}</div>
                 </div>`
             ).join('');
             hideAllMainScreens();
@@ -5018,7 +7039,7 @@
             const maxLabel = document.getElementById('photoCountMaxLabel');
             const err = document.getElementById('photoCountError');
             if (err) err.textContent = '';
-            if (maxLabel) maxLabel.textContent = `/ maks ${max}`;
+            if (maxLabel) maxLabel.textContent = `/ ${t('maks')} ${max}`;
             if (input) {
                 input.min = '1';
                 input.max = String(max);
@@ -5047,6 +7068,8 @@
         };
 
         window.startPhotoTest = function () {
+            isInTest = true;
+            stopBgMusic();
             if (!secilenPhotoKategori || !secilenPhotoZorluk) {
                 alert('Kategori ve zorluk seçmelisin.');
                 return;
@@ -5074,14 +7097,18 @@
             photoPuan = 0;
 
             document.getElementById('photoTestUserName').textContent = kullaniciAdi;
-            document.getElementById('photoTestUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet} • ${secilenPhotoKategori.ad}`;
+            const photoCatName = getCatName(secilenPhotoKategori?.id || '');
+            document.getElementById('photoTestUserDetails').textContent = `${kullaniciYas} ${t('yas')} • ${secilenCinsiyet} • ${photoCatName}`;
             let av = document.getElementById('photoTestUserAvatar');
             if (uploadedImage) av.innerHTML = `<img src="${uploadedImage}">`;
             else av.textContent = secilenAvatar;
-            document.getElementById('photoDifficultyDisplay').textContent = `${secilenPhotoZorluk.ad} • ${photoQuestionCount} soru`;
+            document.getElementById('photoDifficultyDisplay').textContent = `${getZorlukAd(secilenPhotoZorluk)} • ${photoQuestionCount} ${t('soruCount')}`;
 
             hideAllMainScreens();
             document.getElementById('photoTestScreen').style.display = 'block';
+            // Show voice mic button if voice feature is enabled
+            const voiceCmdBox = document.getElementById('voiceCmdBox');
+            if (voiceCmdBox) voiceCmdBox.style.display = voiceFeatureEnabled ? 'flex' : 'none';
             showPhotoQuestion();
         };
 
@@ -5093,6 +7120,12 @@
             document.getElementById('photoHint').textContent = s.image ? '' : 'ℹ️ Görsel yakında eklenecek — şimdilik ipucu emojisine bak.';
             document.getElementById('photoFeedback').textContent = '';
             document.getElementById('photoFeedback').className = 'photo-feedback';
+            const pifb = document.getElementById('photoInlineFeedback');
+            if (pifb) { pifb.style.display = 'none'; pifb.className = 'inline-feedback'; }
+            if (photoAutoAdvanceTimer) { clearTimeout(photoAutoAdvanceTimer); photoAutoAdvanceTimer = null; }
+            // Reset input style
+            const pinput = document.getElementById('photoAnswerInput');
+            if (pinput) { pinput.style.borderColor = ''; pinput.style.boxShadow = ''; }
 
             const img = document.getElementById('photoImage');
             const ph = document.getElementById('photoPlaceholder');
@@ -5119,24 +7152,29 @@
             clearInterval(photoTimer);
             photoTimeLeft = secilenPhotoZorluk.sure;
             updatePhotoTimer();
-            photoTimer = setInterval(() => {
-                if (!photoTestAktif) return;
-                photoTimeLeft--;
-                updatePhotoTimer();
-                if (photoTimeLeft <= 0) {
-                    clearInterval(photoTimer);
-                    if (!photoCevaplar[photoIndex]) {
-                        photoCevaplar[photoIndex] = { text: '', correct: false, timeout: true };
+            if (secilenPhotoZorluk.id === 'suretsiz') {
+                document.getElementById('photoTimerText').textContent = '∞';
+                document.getElementById('photoTimerProgress').style.width = '100%';
+            } else {
+                photoTimer = setInterval(() => {
+                    if (!photoTestAktif) return;
+                    photoTimeLeft--;
+                    updatePhotoTimer();
+                    if (photoTimeLeft <= 0) {
+                        clearInterval(photoTimer);
+                        if (!photoCevaplar[photoIndex]) {
+                            photoCevaplar[photoIndex] = { text: '', correct: false, timeout: true };
+                        }
+                        const nextIdx = getPhotoNextUnansweredIndex(photoIndex);
+                        if (nextIdx !== -1) {
+                            photoIndex = nextIdx;
+                            showPhotoQuestion();
+                        } else {
+                            finishPhotoTest();
+                        }
                     }
-                    const nextIdx = getPhotoNextUnansweredIndex(photoIndex);
-                    if (nextIdx !== -1) {
-                        photoIndex = nextIdx;
-                        showPhotoQuestion();
-                    } else {
-                        finishPhotoTest();
-                    }
-                }
-            }, 1000);
+                }, 1000);
+            }
         }
 
         function updatePhotoTimer() {
@@ -5144,6 +7182,8 @@
             document.getElementById('photoTimerText').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
             document.getElementById('photoTimerProgress').style.width = `${(photoTimeLeft / secilenPhotoZorluk.sure) * 100}%`;
         }
+
+        let photoAutoAdvanceTimer = null;
 
         function commitPhotoAnswerFromInput() {
             const input = document.getElementById('photoAnswerInput');
@@ -5156,15 +7196,72 @@
             const s = photoSorular[photoIndex];
             const ok = isPhotoAnswerCorrect(textVal, s.answers);
             photoCevaplar[photoIndex] = { text: textVal, correct: ok, timeout: false };
+            const photoElapsed = (Date.now() - photoQuestionStartTime) / 1000;
+            if (photoElapsed < 10 && ok) { photoTimeBonus += 3; photoTimeLeft += 3; updatePhotoTimer(); }
             const fb = document.getElementById('photoFeedback');
-            if (ok) {
-                fb.textContent = '✅ Doğru!';
-                fb.className = 'photo-feedback ok';
+            const pifb = document.getElementById('photoInlineFeedback');
+
+            // Disable input after answering
+            input.disabled = true;
+
+            if (photoAnswerMode === 'instant') {
+                if (ok) {
+                    fb.textContent = '✅ ' + t('harika');
+                    fb.className = 'photo-feedback ok';
+                    if (pifb) {
+                        pifb.className = 'inline-feedback correct';
+                        pifb.innerHTML = '✅ ' + t('harika') + ' — <span style="color:#4caf50;font-weight:800;font-size:20px;">' + s.label + '</span>';
+                        pifb.style.display = 'block';
+                    }
+                    playCorrectSound();
+                } else {
+                    fb.textContent = '❌';
+                    fb.className = 'photo-feedback bad';
+                    if (pifb) {
+                        pifb.className = 'inline-feedback wrong';
+                        pifb.innerHTML = '❌ — ' + t('dogruCevap') + ' <span style="color:#4caf50;font-weight:800;font-size:20px;">' + s.label + '</span>';
+                        pifb.style.display = 'block';
+                    }
+                    playWrongSound();
+                    // Screen shake
+                    const mc = document.getElementById('mainContainer');
+                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(() => mc.classList.remove('shake'), 600); }
+                    // Red border on input
+                    input.style.borderColor = '#ff6b6b';
+                    input.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
+                }
             } else {
-                fb.textContent = `❌ Yanlış — Doğru: ${s.label}`;
-                fb.className = 'photo-feedback bad';
+                // End mode
+                if (ok) {
+                    fb.textContent = '✅ ' + t('harika');
+                    fb.className = 'photo-feedback ok';
+                    playCorrectSound();
+                } else {
+                    fb.textContent = '❌';
+                    fb.className = 'photo-feedback bad';
+                    playWrongSound();
+                    const mc = document.getElementById('mainContainer');
+                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(() => mc.classList.remove('shake'), 600); }
+                }
+                if (pifb) pifb.style.display = 'none';
             }
+
             document.getElementById('photoNextBtn').disabled = false;
+
+            // Auto-advance after 5 seconds in instant mode
+            if (photoAnswerMode === 'instant') {
+                if (photoAutoAdvanceTimer) clearTimeout(photoAutoAdvanceTimer);
+                photoAutoAdvanceTimer = setTimeout(() => {
+                    const nextIdx = getPhotoNextUnansweredIndex(photoIndex);
+                    if (nextIdx !== -1) {
+                        photoIndex = nextIdx;
+                        showPhotoQuestion();
+                    } else {
+                        finishPhotoTest();
+                    }
+                }, 5000);
+            }
+
             return true;
         }
 
@@ -5253,6 +7350,8 @@
         function finishPhotoTest() {
             photoTestAktif = false;
             clearInterval(photoTimer);
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
             let dogru = 0;
             let html = '';
             photoSorular.forEach((s, i) => {
@@ -5260,7 +7359,7 @@
                 const ok = c && c.correct;
                 if (ok) {
                     dogru++;
-                    photoPuan += 10;
+                    photoPuan += (POINTS_PER_DIFFICULTY[secilenPhotoZorluk?.id || 'kolay'] || 10);
                 }
                 const given = !c ? 'Cevapsız' : c.timeout ? 'Süre Doldu' : c.skipped ? 'Boş Bırakıldı' : (c.text || 'Cevapsız');
                 html += `<div class="result-item" onclick="showPhotoExplanation(${i})">${ok ? '✅' : '❌'} ${i + 1}. ${s.label} — Senin: ${given}</div>`;
@@ -5273,8 +7372,8 @@
             addPoints(photoPuan);
             const total = photoSorular.length || 10;
             const ratio = dogru / total;
-            let seviye = ratio <= 0.3 ? '😅 Düşük' : ratio <= 0.5 ? '🙂 Orta' : ratio <= 0.7 ? '🤓 İleri' : ratio <= 0.9 ? '🧠 Çok İleri' : '👑 Ultra';
-            document.getElementById('photoZekaSeviyesi').textContent = seviye + ' Zekalı';
+            let seviye = ratio <= 0.3 ? t('dusuk') : ratio <= 0.5 ? t('ortaZeka') : ratio <= 0.7 ? t('ileri') : ratio <= 0.9 ? t('cokIleri') : t('ultra');
+            document.getElementById('photoZekaSeviyesi').textContent = seviye + ' ' + t('zekali');
             document.getElementById('photoExplanationPanel').innerHTML = '';
             changeTheme(secilenPhotoKategori?.theme || 'space');
         }
@@ -5310,6 +7409,8 @@
             if (e.key === 'Enter') {
                 const pts = document.getElementById('photoTestScreen');
                 if (pts && pts.style.display !== 'none' && photoTestAktif) {
+                    // Don't advance if in instant mode and auto-advance is pending
+                    if (photoAnswerMode === 'instant' && photoAutoAdvanceTimer) return;
                     e.preventDefault();
                     photoNextQuestion();
                 }
@@ -5317,7 +7418,71 @@
         });
 
 
-        const kategoriler = [{ id: 'marvel', ad: 'Marvel', icon: '🦸', subtitle: 'Kahramanlar' }, { id: 'dc', ad: 'DC', icon: '🦇', subtitle: 'Süper güç' }, { id: 'oyun', ad: 'Oyun', icon: '🎮', subtitle: 'Pixel dünyası' }, { id: 'araba', ad: 'Araba', icon: '🏎️', subtitle: 'Hız şöleni' }, { id: 'motor', ad: 'Motor', icon: '🏍️', subtitle: 'Açık yol' }, { id: 'yemek', ad: 'Yemek', icon: '🍳', subtitle: 'Lezzet sınavı' }, { id: 'hayvan', ad: 'Hayvan', icon: '🦁', subtitle: 'Doğal dünya' }, { id: 'spor', ad: 'Spor', icon: '⚽', subtitle: 'Rekabet' }, { id: 'teknoloji', ad: 'Teknoloji', icon: '📱', subtitle: 'Gelecek' }, { id: 'genelkultur', ad: 'Genel Kültür', icon: '🌍', subtitle: 'Her şey' }, { id: 'muzik', ad: 'Müzik', icon: '🎵', subtitle: 'Sesler' }, { id: 'sinema', ad: 'Sinema', icon: '🎬', subtitle: 'Film dünyası' }, { id: 'bilim', ad: 'Bilim', icon: '🔬', subtitle: 'Keşif' }, { id: 'tarih', ad: 'Tarih', icon: '📜', subtitle: 'Geçmiş' }, { id: 'sanat', ad: 'Sanat', icon: '🎨', subtitle: 'İfade' }, { id: 'astronomi', ad: 'Astronomi', icon: '☄️', subtitle: 'Yıldızlar' }, { id: 'edebiyat', ad: 'Edebiyat', icon: '📚', subtitle: 'Kelime hazinesi' }, { id: 'cografya', ad: 'Coğrafya', icon: '🌍', subtitle: 'Harita bilgisi' }, { id: 'siyaset', ad: 'Siyaset', icon: '🏛️', subtitle: 'Toplum' }, { id: 'saglik', ad: 'Sağlık', icon: '🩺', subtitle: 'Yaşam bilgisi' }, { id: 'mitoloji', ad: 'Mitoloji', icon: '⚡', subtitle: 'Efsaneler' }, { id: 'anime', ad: 'Anime', icon: '🎌', subtitle: 'Manga dünyası' }, { id: 'futbol', ad: 'Futbol', icon: '⚽', subtitle: 'Saha bilgisi' }, { id: 'markalar', ad: 'Markalar', icon: '🏷️', subtitle: 'Logo & marka' }, { id: 'bayraklar', ad: 'Bayraklar', icon: '🚩', subtitle: 'Ülke simgeleri' }, { id: 'matematik', ad: 'Matematik', icon: '➗', subtitle: 'Sayılar' }, { id: 'dizi', ad: 'Dizi', icon: '📺', subtitle: 'Ekran keyfi' }, { id: 'moda', ad: 'Moda', icon: '👗', subtitle: 'Stil & trend' }, { id: 'felsefe', ad: 'Felsefe', icon: '🧠', subtitle: 'Düşünce' }, { id: 'doga', ad: 'Doğa', icon: '🌿', subtitle: 'Çevre & yaşam' }];
+        const kategoriler = [
+            { id: 'marvel', icon: '🦸', subtitleKey: 'catMarvelSub' },
+            { id: 'dc', icon: '🦇', subtitleKey: 'catDcSub' },
+            { id: 'oyun', icon: '🎮', subtitleKey: 'catOyunSub' },
+            { id: 'araba', icon: '🏎️', subtitleKey: 'catArabaSub' },
+            { id: 'motor', icon: '🏍️', subtitleKey: 'catMotorSub' },
+            { id: 'yemek', icon: '🍳', subtitleKey: 'catYemekSub' },
+            { id: 'hayvan', icon: '🦁', subtitleKey: 'catHayvanSub' },
+            { id: 'spor', icon: '⚽', subtitleKey: 'catSporSub' },
+            { id: 'teknoloji', icon: '📱', subtitleKey: 'catTeknolojiSub' },
+            { id: 'genelkultur', icon: '🌍', subtitleKey: 'catGenelSub' },
+            { id: 'muzik', icon: '🎵', subtitleKey: 'catMuzikSub' },
+            { id: 'sinema', icon: '🎬', subtitleKey: 'catSinemaSub' },
+            { id: 'bilim', icon: '🔬', subtitleKey: 'catBilimSub' },
+            { id: 'tarih', icon: '📜', subtitleKey: 'catTarihSub' },
+            { id: 'sanat', icon: '🎨', subtitleKey: 'catSanatSub' },
+            { id: 'astronomi', icon: '☄️', subtitleKey: 'catAstronomiSub' },
+            { id: 'edebiyat', icon: '📚', subtitleKey: 'catEdebiyatSub' },
+            { id: 'cografya', icon: '🌍', subtitleKey: 'catCografyaSub' },
+            { id: 'siyaset', icon: '🏛️', subtitleKey: 'catSiyasetSub' },
+            { id: 'saglik', icon: '🩺', subtitleKey: 'catSaglikSub' },
+            { id: 'mitoloji', icon: '⚡', subtitleKey: 'catMitolojiSub' },
+            { id: 'anime', icon: '🎌', subtitleKey: 'catAnimeSub' },
+            { id: 'futbol', icon: '⚽', subtitleKey: 'catFutbolSub' },
+            { id: 'markalar', icon: '🏷️', subtitleKey: 'catMarkalarSub' },
+            { id: 'bayraklar', icon: '🚩', subtitleKey: 'catBayraklarSub' },
+            { id: 'matematik', icon: '➗', subtitleKey: 'catMatematikSub' },
+            { id: 'dizi', icon: '📺', subtitleKey: 'catDiziSub' },
+            { id: 'moda', icon: '👗', subtitleKey: 'catModaSub' },
+            { id: 'felsefe', icon: '🧠', subtitleKey: 'catFelsefeSub' },
+            { id: 'doga', icon: '🌿', subtitleKey: 'catDogaSub' }
+        ];
+
+        // Category name translations
+        const catNames = {
+            tr: { marvel:'Marvel', dc:'DC', oyun:'Oyun', araba:'Araba', motor:'Motor', yemek:'Yemek', hayvan:'Hayvan', spor:'Spor', teknoloji:'Teknoloji', genelkultur:'Genel Kültür', muzik:'Müzik', sinema:'Sinema', bilim:'Bilim', tarih:'Tarih', sanat:'Sanat', astronomi:'Astronomi', edebiyat:'Edebiyat', cografya:'Coğrafya', siyaset:'Siyaset', saglik:'Sağlık', mitoloji:'Mitoloji', anime:'Anime', futbol:'Futbol', markalar:'Markalar', bayraklar:'Bayraklar', matematik:'Matematik', dizi:'Dizi', moda:'Moda', felsefe:'Felsefe', doga:'Doğa' },
+            en: { marvel:'Marvel', dc:'DC', oyun:'Games', araba:'Cars', motor:'Motorcycles', yemek:'Food', hayvan:'Animals', spor:'Sports', teknoloji:'Technology', genelkultur:'General Knowledge', muzik:'Music', sinema:'Cinema', bilim:'Science', tarih:'History', sanat:'Art', astronomi:'Astronomy', edebiyat:'Literature', cografya:'Geography', siyaset:'Politics', saglik:'Health', mitoloji:'Mythology', anime:'Anime', futbol:'Football', markalar:'Brands', bayraklar:'Flags', matematik:'Mathematics', dizi:'TV Series', moda:'Fashion', felsefe:'Philosophy', doga:'Nature' },
+            de: { marvel:'Marvel', dc:'DC', oyun:'Spiele', araba:'Autos', motor:'Motorräder', yemek:'Essen', hayvan:'Tiere', spor:'Sport', teknoloji:'Technologie', genelkultur:'Allgemeinwissen', muzik:'Musik', sinema:'Kino', bilim:'Wissenschaft', tarih:'Geschichte', sanat:'Kunst', astronomi:'Astronomie', edebiyat:'Literatur', cografya:'Geographie', siyaset:'Politik', saglik:'Gesundheit', mitoloji:'Mythologie', anime:'Anime', futbol:'Fußball', markalar:'Marken', bayraklar:'Flaggen', matematik:'Mathematik', dizi:'TV-Serien', moda:'Mode', felsefe:'Philosophie', doga:'Natur' },
+            ru: { marvel:'Марвел', dc:'DC', oyun:'Игры', araba:'Авто', motor:'Мотоциклы', yemek:'Еда', hayvan:'Животные', spor:'Спорт', teknoloji:'Технологии', genelkultur:'Общие знания', muzik:'Музыка', sinema:'Кино', bilim:'Наука', tarih:'История', sanat:'Искусство', astronomi:'Астрономия', edebiyat:'Литература', cografya:'География', siyaset:'Политика', saglik:'Здоровье', mitoloji:'Мифология', anime:'Аниме', futbol:'Футбол', markalar:'Бренды', bayraklar:'Флаги', matematik:'Математика', dizi:'Сериалы', moda:'Мода', felsefe:'Философия', doga:'Природа' },
+            zh: { marvel:'漫威', dc:'DC', oyun:'游戏', araba:'汽车', motor:'摩托车', yemek:'美食', hayvan:'动物', spor:'体育', teknoloji:'科技', genelkultur:'常识', muzik:'音乐', sinema:'电影', bilim:'科学', tarih:'历史', sanat:'艺术', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神话', anime:'动漫', futbol:'足球', markalar:'品牌', bayraklar:'旗帜', matematik:'数学', dizi:'电视剧', moda:'时尚', felsefe:'哲学', doga:'自然' },
+            ja: { marvel:'マーベル', dc:'DC', oyun:'ゲーム', araba:'車', motor:'バイク', yemek:'料理', hayvan:'動物', spor:'スポーツ', teknoloji:'テクノロジー', genelkultur:'一般教養', muzik:'音楽', sinema:'映画', bilim:'科学', tarih:'歴史', sanat:'芸術', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神話', anime:'アニメ', futbol:'サッカー', markalar:'ブランド', bayraklar:'国旗', matematik:'数学', dizi:'ドラマ', moda:'ファッション', felsefe:'哲学', doga:'自然' },
+            es: { marvel:'Marvel', dc:'DC', oyun:'Juegos', araba:'Coches', motor:'Motos', yemek:'Comida', hayvan:'Animales', spor:'Deportes', teknoloji:'Tecnología', genelkultur:'Cultura General', muzik:'Música', sinema:'Cine', bilim:'Ciencia', tarih:'Historia', sanat:'Arte', astronomi:'Astronomía', edebiyat:'Literatura', cografya:'Geografía', siyaset:'Política', saglik:'Salud', mitoloji:'Mitología', anime:'Anime', futbol:'Fútbol', markalar:'Marcas', bayraklar:'Banderas', matematik:'Matemáticas', dizi:'Series', moda:'Moda', felsefe:'Filosofía', doga:'Naturaleza' },
+            ar: { marvel:'مارفل', dc:'DC', oyun:'ألعاب', araba:'سيارات', motor:'دراجات', yemek:'طعام', hayvan:'حيوانات', spor:'رياضة', teknoloji:'تكنولوجيا', genelkultur:'ثقافة عامة', muzik:'موسيقى', sinema:'سينما', bilim:'علوم', tarih:'تاريخ', sanat:'فن', astronomi:'فلك', edebiyat:'أدب', cografya:'جغرافيا', siyaset:'سياسة', saglik:'صحة', mitoloji:'أساطير', anime:'أنمي', futbol:'كرة القدم', markalar:'علامات', bayraklar:'أعلام', matematik:'رياضيات', dizi:'مسلسلات', moda:'أزياء', felsefe:'فلسفة', doga:'طبيعة' }
+        };
+
+        const catSubtitles = {
+            tr: { marvel:'Kahramanlar', dc:'Süper güç', oyun:'Pixel dünyası', araba:'Hız şöleni', motor:'Açık yol', yemek:'Lezzet sınavı', hayvan:'Doğal dünya', spor:'Rekabet', teknoloji:'Gelecek', genelkultur:'Her şey', muzik:'Sesler', sinema:'Film dünyası', bilim:'Keşif', tarih:'Geçmiş', sanat:'İfade', astronomi:'Yıldızlar', edebiyat:'Kelime hazinesi', cografya:'Harita bilgisi', siyaset:'Toplum', saglik:'Yaşam bilgisi', mitoloji:'Efsaneler', anime:'Manga dünyası', futbol:'Saha bilgisi', markalar:'Logo & marka', bayraklar:'Ülke simgeleri', matematik:'Sayılar', dizi:'Ekran keyfi', moda:'Stil & trend', felsefe:'Düşünce', doga:'Çevre & yaşam' },
+            en: { marvel:'Heroes', dc:'Super powers', oyun:'Pixel world', araba:'Speed feast', motor:'Open road', yemek:'Flavor test', hayvan:'Natural world', spor:'Competition', teknoloji:'Future', genelkultur:'Everything', muzik:'Sounds', sinema:'Film world', bilim:'Discovery', tarih:'Past', sanat:'Expression', astronomi:'Stars', edebiyat:'Word power', cografya:'Map knowledge', siyaset:'Society', saglik:'Life knowledge', mitoloji:'Legends', anime:'Manga world', futbol:'Field knowledge', markalar:'Logo & brand', bayraklar:'Country symbols', matematik:'Numbers', dizi:'Screen fun', moda:'Style & trend', felsefe:'Thought', doga:'Environment & life' },
+            de: { marvel:'Helden', dc:'Superkräfte', oyun:'Pixelwelt', araba:'Speed', motor:'Offene Straße', yemek:'Geschmackstest', hayvan:'Tierwelt', spor:'Wettkampf', teknoloji:'Zukunft', genelkultur:'Alles', muzik:'Klänge', sinema:'Filmwelt', bilim:'Entdeckung', tarih:'Vergangenheit', sanat:'Ausdruck', astronomi:'Sterne', edebiyat:'Wortschatz', cografya:'Kartenwissen', siyaset:'Gesellschaft', saglik:'Lebenswissen', mitoloji:'Legenden', anime:'Manga-Welt', futbol:'Feldwissen', markalar:'Logo & Marke', bayraklar:'Landessymbole', matematik:'Zahlen', dizi:'Bildschirm-Spaß', moda:'Stil & Trend', felsefe:'Gedanken', doga:'Umwelt & Leben' },
+            ru: { marvel:'Герои', dc:'Суперсилы', oyun:'Пиксельный мир', araba:'Скорость', motor:'Открытая дорога', yemek:'Тест вкуса', hayvan:'Мир животных', spor:'Соревнование', teknoloji:'Будущее', genelkultur:'Всё', muzik:'Звуки', sinema:'Мир кино', bilim:'Открытия', tarih:'Прошлое', sanat:'Выражение', astronomi:'Звёзды', edebiyat:'Словарный запас', cografya:'Знание карт', siyaset:'Общество', saglik:'Знания о жизни', mitoloji:'Легенды', anime:'Мир манги', futbol:'Знание поля', markalar:'Логотип и бренд', bayraklar:'Символы стран', matematik:'Числа', dizi:'Экранные развлечения', moda:'Стиль и тренд', felsefe:'Мысль', doga:'Окружение и жизнь' },
+            zh: { marvel:'英雄', dc:'超能力', oyun:'像素世界', araba:'速度盛宴', motor:'公路', yemek:'美食考验', hayvan:'自然世界', spor:'竞技', teknoloji:'未来', genelkultur:'万事通', muzik:'声音', sinema:'电影世界', bilim:'发现', tarih:'过去', sanat:'表达', astronomi:'星辰', edebiyat:'词汇量', cografya:'地图知识', siyaset:'社会', saglik:'生活常识', mitoloji:'传说', anime:'漫画世界', futbol:'球场知识', markalar:'标志与品牌', bayraklar:'国家象征', matematik:'数字', dizi:'追剧乐趣', moda:'风格与潮流', felsefe:'思想', doga:'环境与生命' },
+            ja: { marvel:'ヒーロー', dc:'超能力', oyun:'ピクセル世界', araba:'スピード', motor:'オープンロード', yemek:'味覚テスト', hayvan:'自然の世界', spor:'競争', teknoloji:'未来', genelkultur:'全般', muzik:'サウンド', sinema:'映画の世界', bilim:'発見', tarih:'過去', sanat:'表現', astronomi:'星々', edebiyat:'語彙力', cografya:'地図知識', siyaset:'社会', saglik:'生活知識', mitoloji:'伝説', anime:'マンガの世界', futbol:'サッカー知識', markalar:'ロゴ＆ブランド', bayraklar:'国のシンボル', matematik:'数字', dizi:'ドラマ楽し', moda:'スタイル＆トレンド', felsefe:'思考', doga:'環境＆生活' },
+            es: { marvel:'Héroes', dc:'Superpoderes', oyun:'Mundo pixel', araba:'Velocidad', motor:'Carretera', yemek:'Sabor test', hayvan:'Mundo animal', spor:'Competencia', teknoloji:'Futuro', genelkultur:'Todo', muzik:'Sonidos', sinema:'Cine', bilim:'Descubrimiento', tarih:'Pasado', sanat:'Expresión', astronomi:'Estrellas', edebiyat:'Vocabulario', cografya:'Mapas', siyaset:'Sociedad', saglik:'Vida', mitoloji:'Leyendas', anime:'Manga', futbol:'Fútbol', markalar:'Logo y marca', bayraklar:'Símbolos', matematik:'Números', dizi:'Series', moda:'Moda', felsefe:'Pensamiento', doga:'Naturaleza' },
+            ar: { marvel:'أبطال', dc:'قوى خارقة', oyun:'عالم البكسل', araba:'سرعة', motor:'الطريق', yemek:'اختبار النكهة', hayvan:'عالم الحيوانات', spor:'منافسة', teknoloji:'المستقبل', genelkultur:'كل شيء', muzik:'أصوات', sinema:'عالم الأفلام', bilim:'اكتشاف', tarih:'الماضي', sanat:'تعبير', astronomi:'نجوم', edebiyat:'مفردات', cografya:'خرائط', siyaset:'مجتمع', saglik:'حياة', mitoloji:'أساطير', anime:'مانغا', futbol:'كرة القدم', markalar:'شعارات', bayraklar:'رموز الدول', matematik:'أرقام', dizi:'مسلسلات', moda:'أزياء', felsefe:'فكر', doga:'بيئة وحياة' }
+        };
+
+        function getCatName(catId) {
+            const lang = catNames[currentLanguage] || catNames['tr'];
+            return lang[catId] || catId;
+        }
+
+        function getCatSubtitle(catId) {
+            const lang = catSubtitles[currentLanguage] || catSubtitles['tr'];
+            return lang[catId] || '';
+        }
         let socket = null;
         let multiplayerAvailable = false;
         let multiplayerRoom = null;
@@ -5342,54 +7507,15 @@
         } catch (error) {
             multiplayerAvailable = false;
         }
-        const zorluklar = [{ id: 'kolay', ad: 'Kolay', icon: '🟢', sure: 60 }, { id: 'orta', ad: 'Orta', icon: '🟡', sure: 45 }, { id: 'zor', ad: 'Zor', icon: '🔴', sure: 30 }];
+        const zorluklar = [{ id: 'kolay', adKey: 'kolay', icon: '🟢', sure: 60 }, { id: 'orta', adKey: 'orta', icon: '🟡', sure: 45 }, { id: 'zor', adKey: 'zor', icon: '🔴', sure: 30 }, { id: 'suretsiz', adKey: 'suretsiz', icon: '♾️', sure: 9999 }];
+        function getZorlukAd(z) { return t(z.adKey); }
 
-        let secilenKategori = null, secilenZorluk = null, mevcutSorular = [], mevcutIndex = 0, cevaplar = [], timer, timeLeft, testAktif = false, puan = 0;
+        let secilenKategori = null, secilenZorluk = null, mevcutSorular = [], mevcutIndex = 0, cevaplar = [], timer, timeLeft, testAktif = false, puan = 0, questionStartTime = 0, timeBonusSeconds = 0;
         function id(s) { return document.getElementById(s); } const pScreen = id('profileScreen'), cScreen = id('categoryScreen'), dScreen = id('difficultyScreen'), tScreen = id('testScreen'), rScreen = id('resultScreen');
 
-        window.openMultiplayerSetup = function () {
-            multiplayerModalMode = 'create';
-            document.getElementById('multiplayerModalTitle').textContent = 'Oda Kur';
-            document.getElementById('createRoomForm').style.display = 'flex';
-            document.getElementById('joinRoomForm').style.display = 'none';
-            document.getElementById('multiplayerModal').style.display = 'flex';
-        };
-        window.joinMultiplayerRoom = function () {
-            multiplayerModalMode = 'join';
-            document.getElementById('multiplayerModalTitle').textContent = 'Odaya Katıl';
-            document.getElementById('createRoomForm').style.display = 'none';
-            document.getElementById('joinRoomForm').style.display = 'flex';
-            document.getElementById('multiplayerModal').style.display = 'flex';
-        };
-        window.closeMultiplayerModal = function () {
-            document.getElementById('multiplayerModal').style.display = 'none';
-        };
-        window.submitCreateRoom = function () {
-            const roomName = document.getElementById('roomNameInput').value.trim();
-            const password = document.getElementById('roomPasswordInput').value.trim();
-            const name = document.getElementById('roomHostNameInput').value.trim();
-            if (!roomName || !name) {
-                alert('Oda adı ve isminiz zorunlu.');
-                return;
-            }
-            multiplayerName = name;
-            closeMultiplayerModal();
-            emitMultiplayer('create-room', { roomName, password, hostName: name });
-        };
-        window.submitJoinRoom = function () {
-            const code = document.getElementById('joinCodeInput').value.trim().toUpperCase();
-            const password = document.getElementById('joinPasswordInput').value.trim();
-            const name = document.getElementById('joinNameInput').value.trim();
-            if (!code || !name) {
-                alert('Oda kodu ve isminiz zorunlu.');
-                return;
-            }
-            multiplayerName = name;
-            closeMultiplayerModal();
-            emitMultiplayer('join-room', { code, password, name });
-        };
+        // Multiplayer room functions removed
         window.selectCategory = function (cid) { document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected')); id(`cat_${cid}`).classList.add('selected'); secilenKategori = kategoriler.find(k => k.id === cid); changeTheme(cid); id('categoryNextBtn').disabled = false; };
-        window.goToDifficultySelect = function () { id('difficultyContainer').innerHTML = zorluklar.map(z => `<div class="difficulty-card" onclick="selectDifficulty('${z.id}')" id="diff_${z.id}"><div class="difficulty-icon">${z.icon}</div><div class="difficulty-title">${z.ad}</div><div class="difficulty-time">${z.sure} sn</div></div>`).join(''); cScreen.style.display = 'none'; dScreen.style.display = 'block'; id('difficultyNextBtn').disabled = true; };
+        window.goToDifficultySelect = function () { id('difficultyContainer').innerHTML = zorluklar.map(z => `<div class="difficulty-card" onclick="selectDifficulty('${z.id}')" id="diff_${z.id}"><div class="difficulty-icon">${z.icon}</div><div class="difficulty-title">${getZorlukAd(z)}</div><div class="difficulty-time">${z.id === 'suretsiz' ? '∞' : z.sure + ' sn'}</div></div>`).join(''); cScreen.style.display = 'none'; dScreen.style.display = 'block'; id('difficultyNextBtn').disabled = true; };
         window.selectDifficulty = function (d) { document.querySelectorAll('.difficulty-card').forEach(c => c.classList.remove('selected')); id(`diff_${d}`).classList.add('selected'); secilenZorluk = zorluklar.find(z => z.id === d); id('difficultyNextBtn').disabled = false; };
 
         function getQuestionPoolByCategoryId(categoryId) {
@@ -5437,7 +7563,7 @@
 
         function startMultiplayerQuiz(room) {
             const categoryId = room.selectedCategoryId || (secilenKategori && secilenKategori.id) || 'genelkultur';
-            const categoryName = room.selectedCategoryName || (secilenKategori && secilenKategori.ad) || 'Genel Kültür';
+            const categoryName = room.selectedCategoryName || (secilenKategori && getCatName(secilenKategori.id)) || 'Genel Kültür';
             const difficultyId = room.difficultyId || (secilenZorluk && secilenZorluk.id) || 'orta';
             secilenKategori = kategoriler.find(k => k.id === categoryId) || kategoriler.find(k => k.id === 'genelkultur');
             secilenZorluk = zorluklar.find(z => z.id === difficultyId) || zorluklar.find(z => z.id === 'orta');
@@ -5451,7 +7577,7 @@
             multiplayerMode = true;
             id('testUserName').textContent = multiplayerName || kullaniciAdi;
             id('testUserDetails').textContent = `${kullaniciYas || 18} yaş • ${secilenCinsiyet || 'Belirtilmedi'}`;
-            id('difficultyDisplay').textContent = secilenZorluk ? secilenZorluk.ad : 'Orta';
+            id('difficultyDisplay').textContent = secilenZorluk ? getZorlukAd(secilenZorluk) : t('orta');
             cScreen.style.display = 'none';
             dScreen.style.display = 'none';
             tScreen.style.display = 'block';
@@ -5460,43 +7586,176 @@
             alert(`Oyun başladı. Seçilen kategori: ${categoryName}`);
         }
 
-        window.startMultiplayerGame = function () {
-            if (!multiplayerRoom) return;
-            if (!multiplayerHost) {
-                alert('Sadece oda sahibi oyunu başlatabilir.');
-                return;
-            }
-            if (!secilenKategori || !secilenZorluk) {
-                alert('Önce bir kategori ve zorluk seçmelisiniz.');
-                return;
-            }
-            emitMultiplayer('select-categories', { code: multiplayerRoom.code, categories: [secilenKategori.ad] });
-            emitMultiplayer('start-game', {
-                code: multiplayerRoom.code,
-                categoryId: secilenKategori?.id || 'genelkultur',
-                categoryName: secilenKategori?.ad || 'Genel Kültür',
-                difficultyId: secilenZorluk?.id || 'orta'
-            });
-        };
+        // Multiplayer start removed
 
         window.startTest = function () {
+            isInTest = true;
+            stopBgMusic();
+            if (!secilenKategori || !secilenZorluk) { alert('Kategori ve zorluk seçilmeli!'); return; }
             const havuz = getQuestionPoolByCategoryId(secilenKategori.id);
-            mevcutSorular = [...havuz].sort(() => Math.random() - 0.5).slice(0, 10);
-            mevcutSorular.forEach(s => { if (!s.aciklama) s.aciklama = `${secilenKategori.ad} kategorisinden bir soru.`; });
-            mevcutIndex = 0; cevaplar = Array(10).fill(null); timeLeft = secilenZorluk.sure; testAktif = true; puan = 0;
-            id('testUserName').textContent = kullaniciAdi; id('testUserDetails').textContent = `${kullaniciYas} yaş • ${secilenCinsiyet}`;
-            let av = id('testUserAvatar'); if (uploadedImage) av.innerHTML = `<img src="${uploadedImage}">`; else av.textContent = secilenAvatar;
-            id('difficultyDisplay').textContent = secilenZorluk.ad;
-            dScreen.style.display = 'none'; tScreen.style.display = 'block';
-            soruyuGoster();
+            if (!havuz || havuz.length === 0) { alert('Bu kategoride soru yok!'); return; }
+            mevcutSorular = [...havuz].sort(function() { return Math.random() - 0.5; }).slice(0, 10);
+            mevcutSorular.forEach(function(s) { if (!s.aciklama) s.aciklama = getCatName(secilenKategori.id) + ' — ' + t('soru'); });
+            mevcutIndex = 0;
+            cevaplar = Array(10).fill(null);
+            timeLeft = secilenZorluk.sure || 60;
+            testAktif = true;
+            puan = 0;
+            const userNameEl = document.getElementById('testUserName');
+            const userDetailsEl = document.getElementById('testUserDetails');
+            if (userNameEl) userNameEl.textContent = kullaniciAdi;
+            if (userDetailsEl) userDetailsEl.textContent = kullaniciYas + ' ' + t('yas') + ' • ' + secilenCinsiyet;
+            const avEl = document.getElementById('testUserAvatar');
+            if (avEl) { if (uploadedImage) avEl.innerHTML = '<img src="' + uploadedImage + '">'; else avEl.textContent = secilenAvatar; }
+            const diffEl = document.getElementById('difficultyDisplay');
+            if (diffEl) diffEl.textContent = getZorlukAd(secilenZorluk);
+            if (dScreen) dScreen.style.display = 'none';
+            if (tScreen) tScreen.style.display = 'block';
+            setTimeout(function() { soruyuGoster(); }, 100);
         };
 
-        function soruyuGoster() { if (!testAktif) return; document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected')); let s = mevcutSorular[mevcutIndex]; id('questionText').textContent = `${mevcutIndex + 1}. ${s.soru}`; id('questionCounter').textContent = `${mevcutIndex + 1}/10`; let h = '';['A', 'B', 'C', 'D', 'E'].forEach(l => { if (s[l]) h += `<button class="option-btn" onclick="selectAnswer('${l}')" id="opt${l}">${l}) ${s[l]}</button>`; }); id('optionsContainer').innerHTML = h; if (cevaplar[mevcutIndex]) { id(`opt${cevaplar[mevcutIndex]}`)?.classList.add('selected'); } updateQuestionNavigationButtons(); clearInterval(timer); timeLeft = secilenZorluk.sure; updateTimer(); timer = setInterval(() => { if (!testAktif) return; timeLeft--; updateTimer(); if (timeLeft <= 0) { clearInterval(timer); if (!cevaplar[mevcutIndex]) cevaplar[mevcutIndex] = 'Z'; if (mevcutIndex < 9) { mevcutIndex++; soruyuGoster(); } else testiBitir(); } }, 1000); }
+        function soruyuGoster() {
+            if (!testAktif) return;
+            if (!mevcutSorular || mevcutSorular.length === 0) return;
+            if (mevcutIndex >= mevcutSorular.length) { testiBitir(); return; }
+            // Reset option styles
+            document.querySelectorAll('.option-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; b.style.boxShadow = ''; b.style.pointerEvents = ''; b.style.opacity = ''; });
+            // Hide inline feedback
+            const fbEl = document.getElementById('inlineFeedback');
+            if (fbEl) { fbEl.style.display = 'none'; fbEl.className = 'inline-feedback'; fbEl.innerHTML = ''; }
+            // Clear auto-advance timer
+            if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+            let s = mevcutSorular[mevcutIndex];
+            if (!s) return;
+            questionStartTime = Date.now();
+            // Show question text
+            const qText = document.getElementById('questionText');
+            if (qText) qText.textContent = (mevcutIndex + 1) + '. ' + s.soru;
+            // Show counter
+            const qCounter = document.getElementById('questionCounter');
+            if (qCounter) qCounter.textContent = (mevcutIndex + 1) + '/10';
+            // Build options
+            let h = '';
+            ['A', 'B', 'C', 'D', 'E'].forEach(function(l) {
+                if (s[l]) h += '<button class="option-btn" onclick="selectAnswer(\'' + l + '\')" id="opt' + l + '">' + l + ') ' + s[l] + '</button>';
+            });
+            const optContainer = document.getElementById('optionsContainer');
+            if (optContainer) optContainer.innerHTML = h;
+            // Restore previous answer if exists
+            if (cevaplar[mevcutIndex] && cevaplar[mevcutIndex] !== 'B' && cevaplar[mevcutIndex] !== 'Z') {
+                const prevOpt = document.getElementById('opt' + cevaplar[mevcutIndex]);
+                if (prevOpt) prevOpt.classList.add('selected');
+            }
+            updateQuestionNavigationButtons();
+            // Timer
+            clearInterval(timer);
+            if (secilenZorluk && secilenZorluk.id === 'suretsiz') {
+                const tText = document.getElementById('timerText');
+                const tProg = document.getElementById('timerProgress');
+                if (tText) tText.textContent = '∞';
+                if (tProg) tProg.style.width = '100%';
+            } else {
+                timeLeft = secilenZorluk ? secilenZorluk.sure : 60;
+                updateTimer();
+                timer = setInterval(function() {
+                    if (!testAktif) return;
+                    timeLeft--;
+                    updateTimer();
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        if (!cevaplar[mevcutIndex]) cevaplar[mevcutIndex] = 'Z';
+                        if (mevcutIndex < 9) { mevcutIndex++; soruyuGoster(); }
+                        else testiBitir();
+                    }
+                }, 1000);
+            }
+        }
         function updateTimer() { let m = Math.floor(timeLeft / 60), s = timeLeft % 60; id('timerText').textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`; id('timerProgress').style.width = `${(timeLeft / secilenZorluk.sure) * 100}%`; }
         function getNextQuestionIndex(fromIndex) { for (let i = fromIndex + 1; i < cevaplar.length; i++) { if (cevaplar[i] == null || cevaplar[i] === 'B') return i; } return -1; }
         function getLastSkippedQuestionIndex() { for (let i = cevaplar.length - 1; i >= 0; i--) { if (cevaplar[i] === 'B') return i; } return -1; }
         function updateQuestionNavigationButtons() { const skippedIndex = getLastSkippedQuestionIndex(); const canReturn = skippedIndex !== -1 && skippedIndex !== mevcutIndex; id('returnSkippedBtn').disabled = !canReturn; id('prevBtn').disabled = mevcutIndex === 0; id('testNextBtn').disabled = !cevaplar[mevcutIndex]; }
-        window.selectAnswer = function (l) { document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected')); id(`opt${l}`).classList.add('selected'); cevaplar[mevcutIndex] = l; updateQuestionNavigationButtons(); };
+        window.selectAnswer = function (l) {
+            // Disable all options first (prevent clicking other answers)
+            const allOpts = document.querySelectorAll('.option-btn');
+            allOpts.forEach(b => { b.classList.remove('selected'); b.style.pointerEvents = 'none'; b.style.opacity = '0.7'; });
+            id(`opt${l}`).classList.add('selected');
+            id(`opt${l}`).style.opacity = '1';
+            cevaplar[mevcutIndex] = l;
+            const elapsed = (Date.now() - questionStartTime) / 1000;
+            if (elapsed < 10 && timeLeft < secilenZorluk.sure) { timeBonusSeconds += 3; timeLeft += 3; updateTimer(); }
+
+            const s = mevcutSorular[mevcutIndex];
+            const isCorrect = l === s.dogru;
+            const fb = document.getElementById('inlineFeedback');
+
+            if (answerMode === 'instant') {
+                // Show correct answer highlighted green always
+                id(`opt${l}`).style.opacity = '1';
+                if (isCorrect) {
+                    id(`opt${l}`).style.borderColor = '#4caf50';
+                    id(`opt${l}`).style.background = 'rgba(76, 175, 80, 0.25)';
+                    id(`opt${l}`).style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
+                    fb.className = 'inline-feedback correct';
+                    fb.innerHTML = '✅ ' + t('harika');
+                    playCorrectSound();
+                } else {
+                    // Wrong: red on selected, green on correct
+                    id(`opt${l}`).style.borderColor = '#ff6b6b';
+                    id(`opt${l}`).style.background = 'rgba(255, 107, 107, 0.25)';
+                    id(`opt${l}`).style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
+                    if (id(`opt${s.dogru}`)) {
+                        id(`opt${s.dogru}`).style.borderColor = '#4caf50';
+                        id(`opt${s.dogru}`).style.background = 'rgba(76, 175, 80, 0.25)';
+                        id(`opt${s.dogru}`).style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
+                        id(`opt${s.dogru}`).style.opacity = '1';
+                    }
+                    fb.className = 'inline-feedback wrong';
+                    fb.innerHTML = '❌ ' + t('dogruCevap') + ' <span style="color:#4caf50;font-weight:800;">' + s.dogru + ') ' + s[s.dogru] + '</span>';
+                    playWrongSound();
+                    // Screen shake on wrong answer
+                    const mainContainer = document.getElementById('mainContainer');
+                    if (mainContainer) {
+                        mainContainer.classList.remove('shake');
+                        void mainContainer.offsetWidth; // force reflow
+                        mainContainer.classList.add('shake');
+                        setTimeout(() => mainContainer.classList.remove('shake'), 600);
+                    }
+                }
+                fb.style.display = 'block';
+
+                // Auto-advance after 5 seconds
+                if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = setTimeout(() => {
+                    const nextIdx = getNextQuestionIndex(mevcutIndex);
+                    if (nextIdx !== -1) {
+                        mevcutIndex = nextIdx;
+                        soruyuGoster();
+                    } else {
+                        testiBitir();
+                    }
+                }, 5000);
+            } else {
+                // End mode - just show feedback briefly
+                if (isCorrect) {
+                    id(`opt${l}`).style.borderColor = '#4caf50';
+                    id(`opt${l}`).style.background = 'rgba(76, 175, 80, 0.2)';
+                    playCorrectSound();
+                } else {
+                    id(`opt${l}`).style.borderColor = '#ff6b6b';
+                    id(`opt${l}`).style.background = 'rgba(255, 107, 107, 0.2)';
+                    playWrongSound();
+                    const mainContainer = document.getElementById('mainContainer');
+                    if (mainContainer) {
+                        mainContainer.classList.remove('shake');
+                        void mainContainer.offsetWidth;
+                        mainContainer.classList.add('shake');
+                        setTimeout(() => mainContainer.classList.remove('shake'), 600);
+                    }
+                }
+            }
+
+            updateQuestionNavigationButtons();
+        };
         window.skipCurrentQuestion = function () { cevaplar[mevcutIndex] = 'B'; updateQuestionNavigationButtons(); nextQuestion(); };
         window.nextQuestion = function () { if (cevaplar[mevcutIndex]) { clearInterval(timer); const nextIndex = getNextQuestionIndex(mevcutIndex); if (nextIndex !== -1) { mevcutIndex = nextIndex; soruyuGoster(); } else { testiBitir(); } } };
         window.previousQuestion = function () { if (mevcutIndex > 0) { clearInterval(timer); mevcutIndex--; soruyuGoster(); } };
@@ -5511,24 +7770,41 @@
             if (typeof exitTarget !== 'undefined' && exitTarget === 'photo') {
                 clearInterval(photoTimer);
                 photoTestAktif = false;
+                isInTest = false;
+                if (soundEnabled) startBgMusic();
                 hideAllMainScreens();
                 document.getElementById('photoCategoryScreen').style.display = 'block';
                 changeTheme(secilenPhotoKategori?.theme || 'space');
             } else {
                 clearInterval(timer);
                 testAktif = false;
+                isInTest = false;
+                if (soundEnabled) startBgMusic();
                 tScreen.style.display = 'none';
                 cScreen.style.display = 'block';
                 changeTheme(secilenKategori?.id || 'space');
             }
         };
         window.cancelExit = function () { document.getElementById('exitConfirmModal').style.display = 'none'; };
-        function testiBitir() { testAktif = false; clearInterval(timer); tScreen.style.display = 'none'; rScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); let dogru = 0, html = ''; mevcutSorular.forEach((s, i) => { let dm = cevaplar[i] === s.dogru; if (dm) { dogru++; puan += 10; } html += `<div class="result-item" onclick="showExplanation(${i})">${dm ? '✅' : '❌'} ${i + 1}. ${s.soru}</div>`; }); id('resultList').innerHTML = html; id('finalScore').textContent = dogru; id('totalPoints').textContent = puan; addPoints(puan); let seviye = dogru <= 3 ? '😅 Düşük' : dogru <= 5 ? '🙂 Orta' : dogru <= 7 ? '🤓 İleri' : dogru <= 9 ? '🧠 Çok İleri' : '👑 Ultra'; id('zekaSeviyesi').textContent = seviye + ' Zekalı'; }
-        window.showExplanation = function (i) { let s = mevcutSorular[i], c = cevaplar[i], dm = c === s.dogru; const answerText = c === 'Z' ? 'Süre Doldu' : (c === 'B' ? 'Boş Bırakıldı' : (c ? `${c}) ${s[c]}` : 'Cevapsız')); id('explanationPanel').innerHTML = `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3><p>${s.soru}</p><p style="color:#ffffff;">Cevabınız: ${answerText}</p><p style="color:#ffffff;">Doğru: ${s.dogru}) ${s[s.dogru]}</p><p style="color:#ffffff;">💡 ${s.aciklama}</p></div>`; };
+        function testiBitir() { testAktif = false; clearInterval(timer); isInTest = false; if (soundEnabled) startBgMusic(); tScreen.style.display = 'none'; rScreen.style.display = 'block'; changeTheme(secilenKategori?.id || 'space'); let dogru = 0, html = ''; const ptsPerQ = POINTS_PER_DIFFICULTY[secilenZorluk?.id || 'kolay'] || 10; mevcutSorular.forEach((s, i) => { let dm = cevaplar[i] === s.dogru; if (dm) { dogru++; puan += ptsPerQ; } html += `<div class="result-item" onclick="showExplanation(${i})" style="border-color:${dm ? '#4caf50' : '#ff6b6b'};">${dm ? '✅' : '❌'} ${i + 1}. ${s.soru}</div>`; }); id('resultList').innerHTML = html; id('finalScore').textContent = dogru; id('totalPoints').textContent = puan; addPoints(puan); playCorrectSound(); let seviye = dogru <= 3 ? t('dusuk') : dogru <= 5 ? t('ortaZeka') : dogru <= 7 ? t('ileri') : dogru <= 9 ? t('cokIleri') : t('ultra'); id('zekaSeviyesi').textContent = seviye + ' ' + t('zekali'); }
+        window.showExplanation = function (i) {
+            let s = mevcutSorular[i], c = cevaplar[i], dm = c === s.dogru;
+            const answerText = c === 'Z' ? t('sureDoldu') : (c === 'B' ? t('bosBirakildi') : (c ? `${c}) ${s[c]}` : t('cevapsiz')));
+            const yourColor = dm ? '#4caf50' : '#ff6b6b';
+            const yourIcon = dm ? '✅' : '❌';
+            id('explanationPanel').innerHTML = `<div class="explanation-box">
+                <h3>📝 ${i + 1}. ${t('soru')}</h3>
+                <p style="color:#ffffff;font-size:20px;">${s.soru}</p>
+                <p style="color:${yourColor};font-size:18px;font-weight:700;">${yourIcon} ${t('cevabiniz')} ${answerText}</p>
+                ${!dm ? `<p style="color:#4caf50;font-size:18px;font-weight:700;">✅ ${t('dogruCevap')} ${s.dogru}) ${s[s.dogru]}</p>` : ''}
+                <p style="color:#a0d0ff;">💡 ${s.aciklama}</p>
+            </div>`;
+        };
         window.goToCategoriesFromResult = function () { clearInterval(timer); rScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme('space'); };
         window.resetToStart = function () { clearInterval(timer); rScreen.style.display = 'none'; pScreen.style.display = 'block'; changeTheme('space'); };
         function renderMultiplayerLobby() {
             const box = document.getElementById('multiplayerLobbyBox');
+            if (!box) return;
             const text = document.getElementById('multiplayerLobbyText');
             const players = document.getElementById('multiplayerPlayersList');
             const startBtn = document.getElementById('multiplayerStartBtn');
@@ -5537,9 +7813,9 @@
                 return;
             }
             box.style.display = 'block';
-            text.innerHTML = `<strong>Oda:</strong> ${multiplayerRoom.name}<br><strong>Kod:</strong> ${multiplayerRoom.code}<br><strong>Şifre:</strong> ${multiplayerRoom.password || 'Yok'}`;
-            players.innerHTML = '<strong>Oyuncular:</strong><br>' + multiplayerRoom.players.map(p => `• ${p.name}${p.host ? ' 👑' : ''}`).join('<br>');
-            startBtn.style.display = multiplayerHost ? 'block' : 'none';
+            if (text) text.innerHTML = `<strong>Oda:</strong> ${multiplayerRoom.name}<br><strong>Kod:</strong> ${multiplayerRoom.code}<br><strong>Şifre:</strong> ${multiplayerRoom.password || 'Yok'}`;
+            if (players) players.innerHTML = '<strong>Oyuncular:</strong><br>' + multiplayerRoom.players.map(p => `• ${p.name}${p.host ? ' 👑' : ''}`).join('<br>');
+            if (startBtn) startBtn.style.display = multiplayerHost ? 'block' : 'none';
         }
 
         if (socket) {
@@ -5581,7 +7857,7 @@
                 }
             });
         }
-        document.addEventListener('keypress', e => { if (e.key === 'Enter') {
+        document.addEventListener('keypress', e => { if (e.key === 'Enter' && !autoAdvanceTimer) {
             const modeScr = document.getElementById('modeScreen');
             if (pScreen.style.display !== 'none') validateAndContinue();
             else if (modeScr && modeScr.style.display !== 'none' && !document.getElementById('modeNextBtn').disabled) continueFromMode();
