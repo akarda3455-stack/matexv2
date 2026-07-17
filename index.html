@@ -6559,18 +6559,21 @@
                 { prompt: 'Bu hayvanın adı nedir?', answers: ['kelebek', 'butterfly'], label: 'Kelebek', emoji: '🦋', image: '' }
             ],
             'photo-bayraklar': [
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['türkiye', 'turkiye', 'turkey'], label: 'Türkiye', emoji: '🇹🇷', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['japonya', 'japan'], label: 'Japonya', emoji: '🇯🇵', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['abd', 'amerika', 'usa', 'united states', 'amerika birleşik devletleri', 'amerika birlesik devletleri'], label: 'ABD', emoji: '🇺🇸', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['almanya', 'germany'], label: 'Almanya', emoji: '🇩🇪', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['fransa', 'france'], label: 'Fransa', emoji: '🇫🇷', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['italya', 'italy'], label: 'İtalya', emoji: '🇮🇹', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['brezilya', 'brazil'], label: 'Brezilya', emoji: '🇧🇷', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['ingiltere', 'birleşik krallık', 'birlesik krallik', 'uk', 'united kingdom'], label: 'Birleşik Krallık', emoji: '🇬🇧', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['kanada', 'canada'], label: 'Kanada', emoji: '🇨🇦', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['ispanya', 'spain'], label: 'İspanya', emoji: '🇪🇸', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['güney kore', 'guney kore', 'south korea', 'kore'], label: 'Güney Kore', emoji: '🇰🇷', image: '' },
-                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['çin', 'cin', 'china'], label: 'Çin', emoji: '🇨🇳', image: '' }
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['güney kore', 'guney kore', 'south korea', 'kore cumhuriyeti', 'korea'], label: 'Güney Kore', emoji: '🇰🇷', image: 'bayraklar_01.jpg' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['fransa', 'france', 'fransız', 'fransiz'], label: 'Fransa', emoji: '🇫🇷', image: 'bayraklar_02.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['kuzey makedonya', 'north macedonia', 'makedonya', 'macedonia'], label: 'Kuzey Makedonya', emoji: '🇲🇰', image: 'bayraklar_03.jpg' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['türkiye', 'turkiye', 'turkey', 'türk', 'turk'], label: 'Türkiye', emoji: '🇹🇷', image: 'bayraklar_04.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['israil', 'israel'], label: 'İsrail', emoji: '🇮🇱', image: 'bayraklar_05.jpg' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['danimarka', 'denmark', 'danish'], label: 'Danimarka', emoji: '🇩🇰', image: 'bayraklar_06.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['abd', 'amerika', 'amerika birleşik devletleri', 'amerika birlesik devletleri', 'usa', 'united states', 'united states of america'], label: 'Amerika Birleşik Devletleri', emoji: '🇺🇸', image: 'bayraklar_07.jpg' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['brezilya', 'brazil', 'brasil'], label: 'Brezilya', emoji: '🇧🇷', image: 'bayraklar_08.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['özbekistan', 'ozbekistan', 'uzbekistan'], label: 'Özbekistan', emoji: '🇺🇿', image: 'bayraklar_09.jpg' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['suriye', 'syria', 'suriyeli'], label: 'Suriye', emoji: '🇸🇾', image: 'bayraklar_10.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['ermenistan', 'armenia', 'ermeni'], label: 'Ermenistan', emoji: '🇦🇲', image: 'bayraklar_11.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['azerbaycan', 'azerbaijan', 'azərbaycan'], label: 'Azerbaycan', emoji: '🇦🇿', image: 'bayraklar_12.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['türkmenistan', 'turkmenistan', 'türkmen', 'turkmen'], label: 'Türkmenistan', emoji: '🇹🇲', image: 'bayraklar_13.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['pakistan'], label: 'Pakistan', emoji: '🇵🇰', image: 'bayraklar_14.png' },
+                { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['almanya', 'germany', 'deutschland', 'alman'], label: 'Almanya', emoji: '🇩🇪', image: 'bayraklar_15.png' }
             ]
         };
 
@@ -7128,7 +7131,7 @@
             document.getElementById('photoExplanationPanel').innerHTML =
                 `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3>
                 <p>${s.prompt}</p>
-                <p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>
+                ${s.image ? `<div style="text-align:center;margin:14px 0;"><img src="${s.image}" alt="${s.label}" style="max-width:320px;max-height:220px;border-radius:16px;object-fit:contain;background:#fff;"></div>` : `<p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>`}
                 <p>Cevabınız: ${given}</p>
                 <p>Doğru: ${s.label}</p>
                 <p>💡 ${ok ? 'Harika, doğru bildin!' : 'Görselleri ekledikçe daha da netleşecek.'}</p></div>`;
