@@ -6374,6 +6374,7 @@
             { id: 'photo-dc', adKey: 'dc', icon: '🦇', subtitleKey: 'photoCharGuess', theme: 'dc' },
             { id: 'photo-anime', adKey: 'anime', icon: '🎌', subtitleKey: 'photoCharGuess', theme: 'anime' },
             { id: 'photo-futbol', adKey: 'futbol', icon: '⚽', subtitleKey: 'photoPlayerClub', theme: 'futbol' },
+            { id: 'photo-yemek', adKey: 'yemek', icon: '🍽️', subtitleKey: 'photoDishGuess', theme: 'yemek' },
             { id: 'photo-markalar', adKey: 'markalar', icon: '🏷️', subtitleKey: 'photoLogoGuess', theme: 'markalar' },
             { id: 'photo-sinema', adKey: 'sinema', icon: '🎬', subtitleKey: 'photoFilmChar', theme: 'sinema' },
             { id: 'photo-hayvan', adKey: 'hayvan', icon: '🦁', subtitleKey: 'photoCreatureGuess', theme: 'hayvan' },
@@ -6382,14 +6383,14 @@
 
         // Photo subtitle translations
         const photoSubTitles = {
-            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin' },
-            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess' },
-            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten' },
-            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну' },
-            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家' },
-            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て' },
-            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país' },
-            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد' }
+            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoDishGuess: 'Yemeği tahmin et', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin' },
+            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoDishGuess: 'Guess the dish', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess' },
+            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoDishGuess: 'Gericht erraten', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten' },
+            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoDishGuess: 'Угадай блюдо', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну' },
+            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoDishGuess: '猜菜名', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家' },
+            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoDishGuess: '料理当て', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て' },
+            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoDishGuess: 'Adivina el plato', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país' },
+            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoDishGuess: 'خمّن الطبق', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد' }
         };
 
         function getPhotoSubTitle(key) {
@@ -6515,7 +6516,27 @@
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda', 'turan'], label: 'arda turan', emoji: '🇧🇷', image: 'futbolcu_18.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['jünyer', 'neymar'], label: 'junyer neymar', emoji: '🇹🇷', image: 'futbolcu_19.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda'], label: 'arda güler', emoji: '🇧🇷', image: 'futbolcu_20.jpg' }
-        
+            ],
+            'photo-yemek': [
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['babagannuş', 'babagannus', 'baba gannuş', 'baba gannus', 'patlıcan salatası', 'patlican salatasi', 'közlenmiş patlıcan salatası', 'kozlenmis patlican salatasi'], label: 'Babagannuş', emoji: '🍆', image: 'yemekler_01.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['biber dolması', 'biber dolmasi', 'dolma', 'zeytinyağlı biber dolması', 'zeytinyagli biber dolmasi'], label: 'Biber Dolması', emoji: '🫑', image: 'yemekler_02.webp' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['döner', 'doner', 'et döner', 'et doner', 'yaprak döner', 'yaprak doner'], label: 'Döner', emoji: '🥙', image: 'yemekler_04.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['krep', 'crepe', 'akıtma', 'akitma'], label: 'Krep', emoji: '🥞', image: 'yemekler_05.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['arpa şehriye çorbası', 'arpa sehriye corbasi', 'şehriye çorbası', 'sehriye corbasi', 'domatesli arpa şehriye çorbası', 'domatesli arpa sehriye corbasi'], label: 'Arpa Şehriye Çorbası', emoji: '🍲', image: 'yemekler_06.webp' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['alinazik', 'ali nazik', 'alınazik', 'ali nazik kebabı', 'ali nazik kebabi'], label: 'Ali Nazik', emoji: '🍆', image: 'yemekler_07.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['analı kızlı', 'anali kizli', 'analı kızlı çorbası', 'anali kizli corbasi'], label: 'Analı Kızlı', emoji: '🥘', image: 'yemekler_08.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['bulgur pilavı', 'bulgur pilavi', 'bulgur', 'sebzeli bulgur pilavı', 'sebzeli bulgur pilavi'], label: 'Bulgur Pilavı', emoji: '🍚', image: 'yemekler_09.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['çiğ köfte', 'cig kofte', 'etsiz çiğ köfte', 'etsiz cig kofte'], label: 'Çiğ Köfte', emoji: '🌶️', image: 'yemekler_10.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['arabaşı', 'arabasi', 'arabaşı çorbası', 'arabasi corbasi'], label: 'Arabaşı', emoji: '🥣', image: 'yemekler_11.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['biftek', 'steak', 'et biftek', 'ızgara biftek', 'izgara biftek'], label: 'Biftek', emoji: '🥩', image: 'yemekler_12.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['boyoz', 'izmir boyozu'], label: 'Boyoz', emoji: '🥐', image: 'yemekler_13.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['cacık', 'cacik', 'yoğurtlu salatalık', 'yogurtlu salatalik'], label: 'Cacık', emoji: '🥒', image: 'yemekler_14.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['elbasan tava', 'elbasan tavası', 'elbasan tavasi'], label: 'Elbasan Tava', emoji: '🍖', image: 'yemekler_16.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['etli ekmek', 'konya etli ekmek', 'etli pide'], label: 'Etli Ekmek', emoji: '🫓', image: 'yemekler_17.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['etli nohut', 'etli nohut yemeği', 'etli nohut yemegi', 'nohut yemeği', 'nohut yemegi'], label: 'Etli Nohut', emoji: '🫘', image: 'yemekler_18.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['lahmacun', 'lahmajun'], label: 'Lahmacun', emoji: '🫓', image: 'yemekler_19.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ['adana kebap', 'adana kebabı', 'adana kebabi', 'adana', 'kıyma kebabı', 'kiyma kebabi'], label: 'Adana Kebap', emoji: '🍢', image: 'yemekler_20.jpg' }
+            ],
             'photo-markalar': [
                 { prompt: 'Bu markanın adı nedir?', answers: ['apple', 'elma'], label: 'Apple', emoji: '🍎', image: '' },
                 { prompt: 'Bu markanın adı nedir?', answers: ['nike'], label: 'Nike', emoji: '✔️', image: '' },
@@ -6664,7 +6685,7 @@
         // Map photo categories to text category IDs for styling
         const photoToTextCatMap = {
             'photo-marvel': 'marvel', 'photo-dc': 'dc', 'photo-anime': 'anime',
-            'photo-futbol': 'futbol', 'photo-markalar': 'markalar',
+            'photo-futbol': 'futbol', 'photo-yemek': 'yemek', 'photo-markalar': 'markalar',
             'photo-sinema': 'sinema', 'photo-hayvan': 'hayvan', 'photo-bayraklar': 'bayraklar'
         };
 
@@ -7121,7 +7142,7 @@
             document.getElementById('photoExplanationPanel').innerHTML =
                 `<div class="explanation-box"><h3>📝 ${i + 1}. Soru</h3>
                 <p>${s.prompt}</p>
-                <p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>
+                ${s.image ? `<div style="text-align:center;margin:14px 0;"><img src="${s.image}" alt="${s.label}" style="max-width:280px;max-height:220px;border-radius:18px;object-fit:contain;"></div>` : `<p style="font-size:48px; text-align:center;">${s.emoji || '🖼️'}</p>`}
                 <p>Cevabınız: ${given}</p>
                 <p>Doğru: ${s.label}</p>
                 <p>💡 ${ok ? 'Harika, doğru bildin!' : 'Görselleri ekledikçe daha da netleşecek.'}</p></div>`;
