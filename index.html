@@ -3205,90 +3205,6 @@
         .shake {
             animation: shakeScreen 0.5s ease-in-out;
         }
-
-        /* VOICE COMMAND */
-        .voice-cmd-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .voice-mic-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid #00d2ff;
-            border-radius: 50px;
-            padding: 12px 24px;
-            color: #00d2ff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .voice-mic-btn:hover {
-            border-color: #8a2be2;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
-            transform: translateY(-2px);
-        }
-        .voice-mic-btn.listening {
-            border-color: #ff4444;
-            color: #ff4444;
-            animation: voicePulse 1s ease-in-out infinite;
-            box-shadow: 0 0 25px rgba(255, 68, 68, 0.4);
-        }
-        @keyframes voicePulse {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 68, 68, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(255, 68, 68, 0.6); }
-        }
-        .voice-mic-btn .mic-icon {
-            font-size: 22px;
-        }
-        .voice-mic-label {
-            font-size: 14px;
-        }
-        .voice-status {
-            color: #a0d0ff;
-            font-size: 13px;
-            min-height: 20px;
-            text-align: center;
-        }
-        .voice-toggle-btn {
-            position: fixed;
-            bottom: 80px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(10, 15, 30, 0.85);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            border-radius: 50px;
-            padding: 10px 18px;
-            color: #00d2ff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-        }
-        .voice-toggle-btn:hover {
-            border-color: #8a2be2;
-            transform: translateY(-2px);
-        }
-        .voice-toggle-btn.active {
-            border-color: #4caf50;
-            color: #4caf50;
-        }
-        .voice-toggle-btn.muted {
-            color: #ff6b6b;
-            border-color: rgba(255, 107, 107, 0.4);
-        }
     </style>
 </head>
 
@@ -3355,14 +3271,6 @@
         <span id="soundIcon">🔊</span>
         <span class="sound-toggle-label" id="soundLabel">Ses Açık</span>
     </div>
-
-
-    <!-- SESLİ KOMUT AÇ/KAPA -->
-    <div class="voice-toggle-btn" id="voiceToggleBtn" onclick="toggleVoiceFeature()" style="left:auto;right:20px;bottom:80px;">
-        <span id="voiceFeatureIcon">🎤</span>
-        <span id="voiceFeatureLabel" style="font-size:13px;">Sesli Komut</span>
-    </div>
-
     <!-- SAĞ ÜST PANEL -->
     <div class="top-right-panel">
         <div class="developer-credit" onclick="toggleCredits()"><i class="fas fa-code"></i> Yapımcılar</div>
@@ -3594,7 +3502,6 @@
                 </div>
             </div>
             <div class="button-group">
-                <button class="back-btn" onclick="goBackToProfileFromMode()">👤 Profil</button>
                 <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
             </div>
         </div>
@@ -3611,7 +3518,6 @@
             </div>
             <div class="categories-grid" id="photoCategoryGrid"></div>
             <div class="button-group">
-                <button class="back-btn" onclick="goBackToModeFromPhotoCats()">🎮 Mod</button>
                 <button class="primary-btn" id="photoCategoryNextBtn" onclick="goToPhotoDifficulty()" disabled>Zorluk Seç →</button>
             </div>
         </div>
@@ -3640,7 +3546,6 @@
                 <div class="answer-mode-option" id="photoAnsModeEnd" onclick="setPhotoAnswerMode('end')">🏁 Sonda Göster</div>
             </div>
             <div class="button-group">
-                <button class="back-btn" onclick="goBackToPhotoCategory()">📋 Kategori</button>
                 <button class="primary-btn" id="photoDifficultyNextBtn" onclick="startPhotoTest()" disabled>🚀 Teste Başla</button>
             </div>
         </div>
@@ -3676,13 +3581,6 @@
                 <div class="photo-prompt" id="photoPrompt">Bu karakterin ismi nedir?</div>
                 <div class="photo-hint" id="photoHint"></div>
                 <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..." autocomplete="off" autocapitalize="words">
-                <div class="voice-cmd-box" id="voiceCmdBox" style="display:none;">
-                    <button class="voice-mic-btn" id="voiceMicBtn" onclick="toggleVoiceRecognition()">
-                        <span id="voiceMicIcon">🎤</span>
-                        <span id="voiceMicLabel" class="voice-mic-label">Sesli Komut</span>
-                    </button>
-                    <div class="voice-status" id="voiceStatus"></div>
-                </div>
                 <div class="photo-feedback" id="photoFeedback"></div>
                 <div class="inline-feedback" id="photoInlineFeedback" style="display:none;"></div>
             </div>
@@ -3733,34 +3631,22 @@
                 <div style="width:80px;"></div>
             </div>
             <div class="categories-grid" id="categoryGrid"></div>
-            <div class="button-group"><button class="back-btn" onclick="goBackToProfile()">🎮 Modlar</button><button
-                    class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç
-                    →</button></div>
+            <div class="button-group"><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç →</button></div>
         </div>
         <div class="screen" id="difficultyScreen" style="display:none;">
-            <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn"
-                    onclick="goBackToCategory()">← Kategoriler</button>
-                <div style="flex:1;"></div>
-                <div style="width:80px;"></div>
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <div style="flex:1; text-align:center;">
+                    <span class="logo-text" style="font-size:42px;">Zorluk Seviyesi</span>
+                </div>
             </div>
-            <div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100">
-                    <defs>
-                        <linearGradient id="logoGrad3" x1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#8A2BE2" />
-                            <stop offset="33%" style="stop-color:#C71585" />
-                            <stop offset="66%" style="stop-color:#DA70D6" />
-                            <stop offset="100%" style="stop-color:#FF69B4" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad3)" />
-                </svg><span class="logo-text" style="font-size:48px;">Zorluk Seviyesi</span></div>
+
             <div class="difficulty-centered" id="difficultyContainer"></div>
             <div class="answer-mode-box" id="answerModeBox">
                 <span class="answer-mode-label" id="answerModeLabel">📋 Cevaplar:</span>
                 <div class="answer-mode-option selected" id="ansModeInstant" onclick="setAnswerMode('instant')">⚡ Hemen Göster</div>
                 <div class="answer-mode-option" id="ansModeEnd" onclick="setAnswerMode('end')">🏁 Sonda Göster</div>
             </div>
-            <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">📋 Kategori</button><button
+            <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">← Kategoriler</button><button
                     class="primary-btn" id="difficultyNextBtn" onclick="startTest()" disabled>🚀 Teste Başla</button>
             </div>
         </div>
@@ -3842,7 +3728,7 @@
                 dilSecTitle: "🌍 Dil Seçin",
                 dilSecSubtitle: "Oyun dilinizi seçin",
                 dilSecBtn: "Seç →",
-                kaydet: "Kaydet", sesAcik: "Ses Açık", sesKapali: "Ses Kapalı", cevaplar: "Cevaplar:", hemenGoster: "⚡ Hemen Göster", sondaGoster: "🏁 Sonda Göster", sesliKomutAcik: "Sesli Komut Açık", sesliKomutKapali: "Sesli Komut Kapalı", sesliKomut: "Sesli Komut",
+                kaydet: "Kaydet", sesAcik: "Ses Açık", sesKapali: "Ses Kapalı", cevaplar: "Cevaplar:", hemenGoster: "⚡ Hemen Göster", sondaGoster: "🏁 Sonda Göster",
                 profilSec: "Profil Seç",
                 onayla: "Onayla",
                 adSoyad: "👤 Ad Soyad", adPlaceholder: "Adınız Soyadınız",
@@ -3929,7 +3815,7 @@
                 dilSecTitle: "🌍 Select Language",
                 dilSecSubtitle: "Choose your game language",
                 dilSecBtn: "Select →",
-                kaydet: "Save", sesAcik: "Sound On", sesKapali: "Sound Off", cevaplar: "Answers:", hemenGoster: "⚡ Show Instantly", sondaGoster: "🏁 Show at End", sesliKomutAcik: "Voice Command On", sesliKomutKapali: "Voice Command Off", sesliKomut: "Voice Command",
+                kaydet: "Save", sesAcik: "Sound On", sesKapali: "Sound Off", cevaplar: "Answers:", hemenGoster: "⚡ Show Instantly", sondaGoster: "🏁 Show at End",
                 profilSec: "Select Profile",
                 onayla: "Confirm",
                 adSoyad: "👤 Full Name", adPlaceholder: "Your Full Name",
@@ -4016,7 +3902,7 @@
                 dilSecTitle: "🌍 Sprache wählen",
                 dilSecSubtitle: "Wählen Sie Ihre Spielsprache",
                 dilSecBtn: "Auswählen →",
-                kaydet: "Speichern", sesAcik: "Ton An", sesKapali: "Ton Aus", cevaplar: "Antworten:", hemenGoster: "⚡ Sofort zeigen", sondaGoster: "🏁 Am Ende zeigen", sesliKomutAcik: "Sprachbefehl An", sesliKomutKapali: "Sprachbefehl Aus", sesliKomut: "Sprachbefehl",
+                kaydet: "Speichern", sesAcik: "Ton An", sesKapali: "Ton Aus", cevaplar: "Antworten:", hemenGoster: "⚡ Sofort zeigen", sondaGoster: "🏁 Am Ende zeigen",
                 profilSec: "Profil wählen",
                 onayla: "Bestätigen",
                 adSoyad: "👤 Vollständiger Name", adPlaceholder: "Ihr vollständiger Name",
@@ -4103,7 +3989,7 @@
                 dilSecTitle: "🌍 Выберите язык",
                 dilSecSubtitle: "Выберите язык игры",
                 dilSecBtn: "Выбрать →",
-                kaydet: "Сохранить", sesAcik: "Звук вкл", sesKapali: "Звук выкл", cevaplar: "Ответы:", hemenGoster: "⚡ Сразу", sondaGoster: "🏁 В конце", sesliKomutAcik: "Голос вкл", sesliKomutKapali: "Голос выкл", sesliKomut: "Голосовая команда",
+                kaydet: "Сохранить", sesAcik: "Звук вкл", sesKapali: "Звук выкл", cevaplar: "Ответы:", hemenGoster: "⚡ Сразу", sondaGoster: "🏁 В конце",
                 profilSec: "Выбрать профиль",
                 onayla: "Подтвердить",
                 adSoyad: "👤 Полное имя", adPlaceholder: "Ваше полное имя",
@@ -4190,7 +4076,7 @@
                 dilSecTitle: "🌍 选择语言",
                 dilSecSubtitle: "选择您的游戏语言",
                 dilSecBtn: "选择 →",
-                kaydet: "保存", sesAcik: "声音开", sesKapali: "声音关", cevaplar: "答案:", hemenGoster: "⚡ 即时显示", sondaGoster: "🏁 最后显示", sesliKomutAcik: "语音命令开", sesliKomutKapali: "语音命令关", sesliKomut: "语音命令",
+                kaydet: "保存", sesAcik: "声音开", sesKapali: "声音关", cevaplar: "答案:", hemenGoster: "⚡ 即时显示", sondaGoster: "🏁 最后显示",
                 profilSec: "选择头像",
                 onayla: "确认",
                 adSoyad: "👤 姓名", adPlaceholder: "您的姓名",
@@ -4277,7 +4163,7 @@
                 dilSecTitle: "🌍 言語を選択",
                 dilSecSubtitle: "ゲーム言語を選択してください",
                 dilSecBtn: "選択 →",
-                kaydet: "保存", sesAcik: "サウンドオン", sesKapali: "サウンドオフ", cevaplar: "回答:", hemenGoster: "⚡ すぐ表示", sondaGoster: "🏁 最後に表示", sesliKomutAcik: "音声コマンドオン", sesliKomutKapali: "音声コマンドオフ", sesliKomut: "音声コマンド",
+                kaydet: "保存", sesAcik: "サウンドオン", sesKapali: "サウンドオフ", cevaplar: "回答:", hemenGoster: "⚡ すぐ表示", sondaGoster: "🏁 最後に表示",
                 profilSec: "プロフィール選択",
                 onayla: "確認",
                 adSoyad: "👤 氏名", adPlaceholder: "お名前",
@@ -4364,7 +4250,7 @@
                 dilSecTitle: "🌍 Seleccionar idioma",
                 dilSecSubtitle: "Elige el idioma del juego",
                 dilSecBtn: "Seleccionar →",
-                kaydet: "Guardar", sesAcik: "Sonido on", sesKapali: "Sonido off", cevaplar: "Respuestas:", hemenGoster: "⚡ Mostrar al instante", sondaGoster: "🏁 Mostrar al final", sesliKomutAcik: "Comando voz activo", sesliKomutKapali: "Comando voz inactivo", sesliKomut: "Comando de voz",
+                kaydet: "Guardar", sesAcik: "Sonido on", sesKapali: "Sonido off", cevaplar: "Respuestas:", hemenGoster: "⚡ Mostrar al instante", sondaGoster: "🏁 Mostrar al final",
                 profilSec: "Seleccionar perfil",
                 onayla: "Confirmar",
                 adSoyad: "👤 Nombre completo", adPlaceholder: "Tu nombre completo",
@@ -4451,7 +4337,7 @@
                 dilSecTitle: "🌍 اختر اللغة",
                 dilSecSubtitle: "اختر لغة اللعبة",
                 dilSecBtn: "← اختيار",
-                kaydet: "حفظ", sesAcik: "صوت مفتوح", sesKapali: "صوت مغلق", cevaplar: "الإجابات:", hemenGoster: "⚡ عرض فوري", sondaGoster: "🏁 عرض بالنهاية", sesliKomutAcik: "الأوامر الصوتية مفعلة", sesliKomutKapali: "الأوامر الصوتية معطلة", sesliKomut: "الأوامر الصوتية",
+                kaydet: "حفظ", sesAcik: "صوت مفتوح", sesKapali: "صوت مغلق", cevaplar: "الإجابات:", hemenGoster: "⚡ عرض فوري", sondaGoster: "🏁 عرض بالنهاية",
                 profilSec: "اختر الملف الشخصي",
                 onayla: "تأكيد",
                 adSoyad: "👤 الاسم الكامل", adPlaceholder: "اسمك الكامل",
@@ -6328,162 +6214,6 @@
             }
         })();
 
-
-        // ===== VOICE RECOGNITION SYSTEM =====
-        let voiceFeatureEnabled = false;
-        let voiceRecognition = null;
-        let voiceListening = false;
-
-        function toggleVoiceFeature() {
-            voiceFeatureEnabled = !voiceFeatureEnabled;
-            const btn = document.getElementById('voiceToggleBtn');
-            const icon = document.getElementById('voiceFeatureIcon');
-            const label = document.getElementById('voiceFeatureLabel');
-            if (voiceFeatureEnabled) {
-                btn.classList.add('active');
-                btn.classList.remove('muted');
-                icon.textContent = '🎤';
-                label.textContent = t('sesliKomutAcik') || 'Sesli Komut Açık';
-            } else {
-                btn.classList.remove('active');
-                btn.classList.add('muted');
-                icon.textContent = '🔇';
-                label.textContent = t('sesliKomutKapali') || 'Sesli Komut Kapalı';
-                stopVoiceRecognition();
-            }
-            // Show/hide mic button in photo test
-            const voiceBox = document.getElementById('voiceCmdBox');
-            if (voiceBox) voiceBox.style.display = voiceFeatureEnabled ? 'flex' : 'none';
-            localStorage.setItem('matex_voice', voiceFeatureEnabled ? '1' : '0');
-        }
-
-        function initVoiceRecognition() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                console.log('Speech recognition not supported');
-                return null;
-            }
-            const recognition = new SpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = true;
-            recognition.lang = 'tr-TR';
-            recognition.maxAlternatives = 1;
-
-            recognition.onresult = function(event) {
-                let finalTranscript = '';
-                let interimTranscript = '';
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    const transcript = event.results[i][0].transcript;
-                    if (event.results[i].isFinal) {
-                        finalTranscript += transcript;
-                    } else {
-                        interimTranscript += transcript;
-                    }
-                }
-                const input = document.getElementById('photoAnswerInput');
-                const status = document.getElementById('voiceStatus');
-                if (input) {
-                    if (finalTranscript) {
-                        input.value = finalTranscript.trim();
-                        if (status) status.textContent = '✅ ' + finalTranscript.trim();
-                        // Trigger input event to enable next button
-                        input.dispatchEvent(new Event('input'));
-                    } else if (interimTranscript) {
-                        input.value = interimTranscript;
-                        if (status) status.textContent = '🎤 ' + interimTranscript;
-                    }
-                }
-            };
-
-            recognition.onerror = function(event) {
-                console.log('Voice error:', event.error);
-                const status = document.getElementById('voiceStatus');
-                if (status) {
-                    if (event.error === 'no-speech') status.textContent = '🔇 Ses algılanmadı';
-                    else if (event.error === 'not-allowed') status.textContent = '⚠️ Mikrofon izni gerekli';
-                    else status.textContent = '❌ Hata: ' + event.error;
-                }
-                stopVoiceRecognition();
-            };
-
-            recognition.onend = function() {
-                voiceListening = false;
-                const micBtn = document.getElementById('voiceMicBtn');
-                const micIcon = document.getElementById('voiceMicIcon');
-                if (micBtn) micBtn.classList.remove('listening');
-                if (micIcon) micIcon.textContent = '🎤';
-            };
-
-            return recognition;
-        }
-
-        function toggleVoiceRecognition() {
-            if (voiceListening) {
-                stopVoiceRecognition();
-            } else {
-                startVoiceRecognition();
-            }
-        }
-
-        function startVoiceRecognition() {
-            if (!voiceRecognition) {
-                voiceRecognition = initVoiceRecognition();
-            }
-            if (!voiceRecognition) {
-                const status = document.getElementById('voiceStatus');
-                if (status) status.textContent = '⚠️ Tarayıcı sesli komutu desteklemiyor';
-                return;
-            }
-            try {
-                // Set language based on current game language
-                const langMap = { tr: 'tr-TR', en: 'en-US', de: 'de-DE', ru: 'ru-RU', zh: 'zh-CN', ja: 'ja-JP', es: 'es-ES', ar: 'ar-SA' };
-                voiceRecognition.lang = langMap[currentLanguage] || 'tr-TR';
-                voiceRecognition.start();
-                voiceListening = true;
-                const micBtn = document.getElementById('voiceMicBtn');
-                const micIcon = document.getElementById('voiceMicIcon');
-                const status = document.getElementById('voiceStatus');
-                if (micBtn) micBtn.classList.add('listening');
-                if (micIcon) micIcon.textContent = '🔴';
-                if (status) status.textContent = '🎤 Dinliyor... Konuşun';
-                playClickSound();
-            } catch(e) {
-                console.log('Voice start error:', e);
-                const status = document.getElementById('voiceStatus');
-                if (status) status.textContent = '❌ Başlatılamadı';
-            }
-        }
-
-        function stopVoiceRecognition() {
-            if (voiceRecognition && voiceListening) {
-                try { voiceRecognition.stop(); } catch(e) {}
-            }
-            voiceListening = false;
-            const micBtn = document.getElementById('voiceMicBtn');
-            const micIcon = document.getElementById('voiceMicIcon');
-            if (micBtn) micBtn.classList.remove('listening');
-            if (micIcon) micIcon.textContent = '🎤';
-        }
-
-        // Load saved voice preference
-        (function() {
-            const saved = localStorage.getItem('matex_voice');
-            if (saved === '1') {
-                voiceFeatureEnabled = true;
-                setTimeout(function() {
-                    const btn = document.getElementById('voiceToggleBtn');
-                    if (btn) { btn.classList.add('active'); btn.classList.remove('muted'); }
-                    const icon = document.getElementById('voiceFeatureIcon');
-                    if (icon) icon.textContent = '🎤';
-                }, 200);
-            } else {
-                setTimeout(function() {
-                    const btn = document.getElementById('voiceToggleBtn');
-                    if (btn) btn.classList.add('muted');
-                }, 200);
-            }
-        })();
-
         function changeTheme(catId) {
             const bg = document.getElementById('animatedBg'), cont = document.getElementById('animationContainer');
             bg.className = 'animated-bg';
@@ -6765,19 +6495,27 @@
                 { prompt: 'Bu karakterin ismi nedir?', answers: ["aizen", "sosuke aizen", "sösuke aizen"], label: "Sosuke Aizen", emoji: '👑', image: 'anime_35.jpg' }
             ],
             'photo-futbol': [
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['messi', 'lionel messi'], label: 'Messi', emoji: '🐐', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['ronaldo', 'cristiano ronaldo', 'cr7'], label: 'Cristiano Ronaldo', emoji: '7️⃣', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['neymar', 'neymar jr'], label: 'Neymar', emoji: '🇧🇷', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['mbappe', 'mbappé', 'kylian mbappe'], label: 'Mbappé', emoji: '🇫🇷', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['haaland', 'erling haaland'], label: 'Haaland', emoji: '9️⃣', image: '' },
-                { prompt: 'Bu kulübün adı nedir?', answers: ['real madrid'], label: 'Real Madrid', emoji: '⚪', image: '' },
-                { prompt: 'Bu kulübün adı nedir?', answers: ['barcelona', 'fc barcelona', 'barça', 'barca'], label: 'Barcelona', emoji: '🔵', image: '' },
-                { prompt: 'Bu kulübün adı nedir?', answers: ['galatasaray', 'gs'], label: 'Galatasaray', emoji: '🦁', image: '' },
-                { prompt: 'Bu kulübün adı nedir?', answers: ['fenerbahçe', 'fenerbahce', 'fb'], label: 'Fenerbahçe', emoji: '💛', image: '' },
-                { prompt: 'Bu kulübün adı nedir?', answers: ['beşiktaş', 'besiktas', 'bjk'], label: 'Beşiktaş', emoji: '🦅', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['iniesta', 'andres iniesta', 'andrés iniesta'], label: 'Iniesta', emoji: '🇪🇸', image: '' },
-                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['zidane', 'zinedine zidane'], label: 'Zidane', emoji: '🧠', image: '' }
-            ],
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['alper barış', 'alper', 'barış'], label: 'barış alper', emoji: '🇹🇷', image: 'futbolcu_01.jpeg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['mbappe', 'kylian mbappe', 'mbappé'], label: 'Kylian Mbappé', emoji: '🇫🇷', image: 'futbolcu_02.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['de bruyne', 'kevin de bruyne'], label: 'Kevin De Bruyne', emoji: '🇧🇪', image: 'futbolcu_03.png' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['ıcardi', 'içardi'], label: 'icardi', emoji: '🇧🇪', image: 'futbolcu_04.webp' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['vinicius', 'vinicius jr', 'vini jr'], label: 'Vinicius Jr.', emoji: '🇧🇷', image: 'futbolcu_05.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['messi', 'lionel messi'], label: 'Lionel Messi', emoji: '🇦🇷', image: 'futbolcu_06.webp' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['kenan', 'yıldız'], label: 'kenan yıldız', emoji: '🇹🇷', image: 'futbolcu_07.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['ronaldo', 'cristiano ronaldo', 'cr7'], label: 'Cristiano Ronaldo', emoji: '🇵🇹', image: 'futbolcu_08.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['ronaldinho'], label: 'Ronaldinho', emoji: '🇧🇷', image: 'futbolcu_09.webp' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['Luís Nazário'], label: 'Luís Nazário', emoji: '🇧🇷', image: 'futbolcu_10.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['muslera', 'fernando muslera'], label: 'Fernando Muslera', emoji: '🇺🇾', image: 'futbolcu_11.webp' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['osimhen', 'victor osimhen'], label: 'Victor Osimhen', emoji: '🇳🇬', image: 'futbolcu_12.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['küerejma', 'quarajma'], label: 'querejma', emoji: '🇹🇷', image: 'futbolcu_13.jpg' },
+                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['odegard', 'martin'], label: 'martin odegard', emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', image: 'futbolcu_14.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['haaland', 'erling haaland'], label: 'Erling Haaland', emoji: '🇳🇴', image: 'futbolcu_15.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['bellingham', 'jude bellingham'], label: 'Jude Bellingham', emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', image: 'futbolcu_16.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['lamin', 'yamal'], label: 'lamin yamal', emoji: '🇪🇸', image: 'futbolcu_17.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda', 'turan'], label: 'arda turan', emoji: '🇧🇷', image: 'futbolcu_18.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['jünyer', 'neymar'], label: 'junyer neymar', emoji: '🇹🇷', image: 'futbolcu_19.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['arda'], label: 'arda güler', emoji: '🇧🇷', image: 'futbolcu_20.jpg' }
+        
             'photo-markalar': [
                 { prompt: 'Bu markanın adı nedir?', answers: ['apple', 'elma'], label: 'Apple', emoji: '🍎', image: '' },
                 { prompt: 'Bu markanın adı nedir?', answers: ['nike'], label: 'Nike', emoji: '✔️', image: '' },
@@ -7106,9 +6844,6 @@
 
             hideAllMainScreens();
             document.getElementById('photoTestScreen').style.display = 'block';
-            // Show voice mic button if voice feature is enabled
-            const voiceCmdBox = document.getElementById('voiceCmdBox');
-            if (voiceCmdBox) voiceCmdBox.style.display = voiceFeatureEnabled ? 'flex' : 'none';
             showPhotoQuestion();
         };
 
@@ -7510,7 +7245,7 @@
         const zorluklar = [{ id: 'kolay', adKey: 'kolay', icon: '🟢', sure: 60 }, { id: 'orta', adKey: 'orta', icon: '🟡', sure: 45 }, { id: 'zor', adKey: 'zor', icon: '🔴', sure: 30 }, { id: 'suretsiz', adKey: 'suretsiz', icon: '♾️', sure: 9999 }];
         function getZorlukAd(z) { return t(z.adKey); }
 
-        let secilenKategori = null, secilenZorluk = null, mevcutSorular = [], mevcutIndex = 0, cevaplar = [], timer, timeLeft, testAktif = false, puan = 0, questionStartTime = 0, timeBonusSeconds = 0;
+        let secilenKategori = null, secilenZorluk = null, mevcutSorular = [], mevcutIndex = 0, cevaplar = [], timer, timeLeft, testAktif = false, puan = 0, questionStartTime = 0, timeBonusSeconds = 0, autoAdvanceTimer = null;
         function id(s) { return document.getElementById(s); } const pScreen = id('profileScreen'), cScreen = id('categoryScreen'), dScreen = id('difficultyScreen'), tScreen = id('testScreen'), rScreen = id('resultScreen');
 
         // Multiplayer room functions removed
@@ -7591,142 +7326,206 @@
         window.startTest = function () {
             isInTest = true;
             stopBgMusic();
-            if (!secilenKategori || !secilenZorluk) { alert('Kategori ve zorluk seçilmeli!'); return; }
-            const havuz = getQuestionPoolByCategoryId(secilenKategori.id);
-            if (!havuz || havuz.length === 0) { alert('Bu kategoride soru yok!'); return; }
-            mevcutSorular = [...havuz].sort(function() { return Math.random() - 0.5; }).slice(0, 10);
-            mevcutSorular.forEach(function(s) { if (!s.aciklama) s.aciklama = getCatName(secilenKategori.id) + ' — ' + t('soru'); });
+            
+            // Get questions
+            var havuz = getQuestionPoolByCategoryId(secilenKategori.id);
+            mevcutSorular = [];
+            var shuffled = havuz.slice().sort(function() { return 0.5 - Math.random(); });
+            for (var qi = 0; qi < Math.min(10, shuffled.length); qi++) {
+                mevcutSorular.push(shuffled[qi]);
+            }
+            
             mevcutIndex = 0;
-            cevaplar = Array(10).fill(null);
-            timeLeft = secilenZorluk.sure || 60;
+            cevaplar = [];
+            for (var ci = 0; ci < 10; ci++) cevaplar.push(null);
             testAktif = true;
             puan = 0;
-            const userNameEl = document.getElementById('testUserName');
-            const userDetailsEl = document.getElementById('testUserDetails');
-            if (userNameEl) userNameEl.textContent = kullaniciAdi;
-            if (userDetailsEl) userDetailsEl.textContent = kullaniciYas + ' ' + t('yas') + ' • ' + secilenCinsiyet;
-            const avEl = document.getElementById('testUserAvatar');
-            if (avEl) { if (uploadedImage) avEl.innerHTML = '<img src="' + uploadedImage + '">'; else avEl.textContent = secilenAvatar; }
-            const diffEl = document.getElementById('difficultyDisplay');
+            
+            // Set user info
+            var nameEl = document.getElementById('testUserName');
+            if (nameEl) nameEl.textContent = kullaniciAdi;
+            var detailsEl = document.getElementById('testUserDetails');
+            if (detailsEl) detailsEl.textContent = kullaniciYas + ' ' + t('yas');
+            var avatarEl = document.getElementById('testUserAvatar');
+            if (avatarEl) {
+                if (uploadedImage) avatarEl.innerHTML = '<img src="' + uploadedImage + '">';
+                else avatarEl.textContent = secilenAvatar;
+            }
+            var diffEl = document.getElementById('difficultyDisplay');
             if (diffEl) diffEl.textContent = getZorlukAd(secilenZorluk);
-            if (dScreen) dScreen.style.display = 'none';
-            if (tScreen) tScreen.style.display = 'block';
-            setTimeout(function() { soruyuGoster(); }, 100);
+            
+            // Show test screen
+            dScreen.style.display = 'none';
+            tScreen.style.display = 'block';
+            
+            // Start first question
+            soruyuGoster();
         };
 
         function soruyuGoster() {
             if (!testAktif) return;
-            if (!mevcutSorular || mevcutSorular.length === 0) return;
-            if (mevcutIndex >= mevcutSorular.length) { testiBitir(); return; }
-            // Reset option styles
-            document.querySelectorAll('.option-btn').forEach(b => { b.classList.remove('selected'); b.style.borderColor = ''; b.style.background = ''; b.style.boxShadow = ''; b.style.pointerEvents = ''; b.style.opacity = ''; });
-            // Hide inline feedback
-            const fbEl = document.getElementById('inlineFeedback');
-            if (fbEl) { fbEl.style.display = 'none'; fbEl.className = 'inline-feedback'; fbEl.innerHTML = ''; }
-            // Clear auto-advance timer
-            if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
-            let s = mevcutSorular[mevcutIndex];
-            if (!s) return;
+            
+            var s = mevcutSorular[mevcutIndex];
+            if (!s) { testiBitir(); return; }
+            
             questionStartTime = Date.now();
-            // Show question text
-            const qText = document.getElementById('questionText');
-            if (qText) qText.textContent = (mevcutIndex + 1) + '. ' + s.soru;
-            // Show counter
-            const qCounter = document.getElementById('questionCounter');
-            if (qCounter) qCounter.textContent = (mevcutIndex + 1) + '/10';
-            // Build options
-            let h = '';
-            ['A', 'B', 'C', 'D', 'E'].forEach(function(l) {
-                if (s[l]) h += '<button class="option-btn" onclick="selectAnswer(\'' + l + '\')" id="opt' + l + '">' + l + ') ' + s[l] + '</button>';
-            });
-            const optContainer = document.getElementById('optionsContainer');
-            if (optContainer) optContainer.innerHTML = h;
-            // Restore previous answer if exists
-            if (cevaplar[mevcutIndex] && cevaplar[mevcutIndex] !== 'B' && cevaplar[mevcutIndex] !== 'Z') {
-                const prevOpt = document.getElementById('opt' + cevaplar[mevcutIndex]);
-                if (prevOpt) prevOpt.classList.add('selected');
+            
+            // Set question text
+            document.getElementById('questionText').textContent = (mevcutIndex + 1) + '. ' + s.soru;
+            document.getElementById('questionCounter').textContent = (mevcutIndex + 1) + '/10';
+            
+            // Build option buttons
+            var html = '';
+            var letters = ['A', 'B', 'C', 'D', 'E'];
+            for (var li = 0; li < letters.length; li++) {
+                var letter = letters[li];
+                if (s[letter]) {
+                    html += '<button class="option-btn" onclick="selectAnswer(\'' + letter + '\')" id="opt' + letter + '">' + letter + ') ' + s[letter] + '</button>';
+                }
             }
+            document.getElementById('optionsContainer').innerHTML = html;
+            
+            // If previously answered, highlight the selected option
+            if (cevaplar[mevcutIndex] && cevaplar[mevcutIndex] !== 'B' && cevaplar[mevcutIndex] !== 'Z') {
+                var prevBtn = document.getElementById('opt' + cevaplar[mevcutIndex]);
+                if (prevBtn) prevBtn.classList.add('selected');
+            }
+            
+            // Reset feedback
+            var fbEl = document.getElementById('inlineFeedback');
+            if (fbEl) { fbEl.style.display = 'none'; fbEl.innerHTML = ''; }
+            
+            // Clear any auto-advance timer
+            if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+            
+            // Update navigation buttons
             updateQuestionNavigationButtons();
-            // Timer
+            
+            // Start timer
             clearInterval(timer);
+            var tText = document.getElementById('timerText');
+            var tProg = document.getElementById('timerProgress');
+            
             if (secilenZorluk && secilenZorluk.id === 'suretsiz') {
-                const tText = document.getElementById('timerText');
-                const tProg = document.getElementById('timerProgress');
                 if (tText) tText.textContent = '∞';
                 if (tProg) tProg.style.width = '100%';
             } else {
-                timeLeft = secilenZorluk ? secilenZorluk.sure : 60;
-                updateTimer();
-                timer = setInterval(function() {
+                // Use secilenZorluk.sure directly (60, 45, or 30)
+                var maxTime = 60;
+                if (secilenZorluk && secilenZorluk.sure) {
+                    maxTime = secilenZorluk.sure;
+                }
+                timeLeft = maxTime;
+                
+                // Show initial time
+                function showTime() {
+                    var mins = Math.floor(timeLeft / 60);
+                    var secs = timeLeft % 60;
+                    var display = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+                    var el = document.getElementById('timerText');
+                    if (el) el.textContent = display;
+                    var bar = document.getElementById('timerProgress');
+                    if (bar) bar.style.width = ((timeLeft / maxTime) * 100) + '%';
+                }
+                
+                showTime();
+                
+                function tickDown() {
                     if (!testAktif) return;
-                    timeLeft--;
-                    updateTimer();
+                    timeLeft = timeLeft - 1;
+                    showTime();
                     if (timeLeft <= 0) {
                         clearInterval(timer);
                         if (!cevaplar[mevcutIndex]) cevaplar[mevcutIndex] = 'Z';
-                        if (mevcutIndex < 9) { mevcutIndex++; soruyuGoster(); }
-                        else testiBitir();
-                    }
-                }, 1000);
-            }
-        }
-        function updateTimer() { let m = Math.floor(timeLeft / 60), s = timeLeft % 60; id('timerText').textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`; id('timerProgress').style.width = `${(timeLeft / secilenZorluk.sure) * 100}%`; }
-        function getNextQuestionIndex(fromIndex) { for (let i = fromIndex + 1; i < cevaplar.length; i++) { if (cevaplar[i] == null || cevaplar[i] === 'B') return i; } return -1; }
-        function getLastSkippedQuestionIndex() { for (let i = cevaplar.length - 1; i >= 0; i--) { if (cevaplar[i] === 'B') return i; } return -1; }
-        function updateQuestionNavigationButtons() { const skippedIndex = getLastSkippedQuestionIndex(); const canReturn = skippedIndex !== -1 && skippedIndex !== mevcutIndex; id('returnSkippedBtn').disabled = !canReturn; id('prevBtn').disabled = mevcutIndex === 0; id('testNextBtn').disabled = !cevaplar[mevcutIndex]; }
-        window.selectAnswer = function (l) {
-            // Disable all options first (prevent clicking other answers)
-            const allOpts = document.querySelectorAll('.option-btn');
-            allOpts.forEach(b => { b.classList.remove('selected'); b.style.pointerEvents = 'none'; b.style.opacity = '0.7'; });
-            id(`opt${l}`).classList.add('selected');
-            id(`opt${l}`).style.opacity = '1';
-            cevaplar[mevcutIndex] = l;
-            const elapsed = (Date.now() - questionStartTime) / 1000;
-            if (elapsed < 10 && timeLeft < secilenZorluk.sure) { timeBonusSeconds += 3; timeLeft += 3; updateTimer(); }
-
-            const s = mevcutSorular[mevcutIndex];
-            const isCorrect = l === s.dogru;
-            const fb = document.getElementById('inlineFeedback');
-
-            if (answerMode === 'instant') {
-                // Show correct answer highlighted green always
-                id(`opt${l}`).style.opacity = '1';
-                if (isCorrect) {
-                    id(`opt${l}`).style.borderColor = '#4caf50';
-                    id(`opt${l}`).style.background = 'rgba(76, 175, 80, 0.25)';
-                    id(`opt${l}`).style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
-                    fb.className = 'inline-feedback correct';
-                    fb.innerHTML = '✅ ' + t('harika');
-                    playCorrectSound();
-                } else {
-                    // Wrong: red on selected, green on correct
-                    id(`opt${l}`).style.borderColor = '#ff6b6b';
-                    id(`opt${l}`).style.background = 'rgba(255, 107, 107, 0.25)';
-                    id(`opt${l}`).style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
-                    if (id(`opt${s.dogru}`)) {
-                        id(`opt${s.dogru}`).style.borderColor = '#4caf50';
-                        id(`opt${s.dogru}`).style.background = 'rgba(76, 175, 80, 0.25)';
-                        id(`opt${s.dogru}`).style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
-                        id(`opt${s.dogru}`).style.opacity = '1';
-                    }
-                    fb.className = 'inline-feedback wrong';
-                    fb.innerHTML = '❌ ' + t('dogruCevap') + ' <span style="color:#4caf50;font-weight:800;">' + s.dogru + ') ' + s[s.dogru] + '</span>';
-                    playWrongSound();
-                    // Screen shake on wrong answer
-                    const mainContainer = document.getElementById('mainContainer');
-                    if (mainContainer) {
-                        mainContainer.classList.remove('shake');
-                        void mainContainer.offsetWidth; // force reflow
-                        mainContainer.classList.add('shake');
-                        setTimeout(() => mainContainer.classList.remove('shake'), 600);
+                        if (mevcutIndex < 9) {
+                            mevcutIndex = mevcutIndex + 1;
+                            soruyuGoster();
+                        } else {
+                            testiBitir();
+                        }
                     }
                 }
-                fb.style.display = 'block';
-
+                
+                timer = setInterval(tickDown, 1000);
+            }
+        }
+        /* updateTimer inlined in soruyuGoster */
+        function getNextQuestionIndex(fromIndex) {
+            for (var i = fromIndex + 1; i < cevaplar.length; i++) {
+                if (cevaplar[i] === null || cevaplar[i] === 'B') return i;
+            }
+            return -1;
+        }
+        function getLastSkippedQuestionIndex() {
+            for (var i = cevaplar.length - 1; i >= 0; i--) {
+                if (cevaplar[i] === 'B') return i;
+            }
+            return -1;
+        }
+        function updateQuestionNavigationButtons() {
+            var skippedIndex = getLastSkippedQuestionIndex();
+            var canReturn = (skippedIndex !== -1) && (skippedIndex !== mevcutIndex);
+            document.getElementById('returnSkippedBtn').disabled = !canReturn;
+            document.getElementById('prevBtn').disabled = (mevcutIndex === 0);
+            document.getElementById('testNextBtn').disabled = !cevaplar[mevcutIndex];
+        }
+        window.selectAnswer = function (l) {
+            // Disable all options
+            var allOpts = document.querySelectorAll('.option-btn');
+            for (var i = 0; i < allOpts.length; i++) {
+                allOpts[i].classList.remove('selected');
+                allOpts[i].style.pointerEvents = 'none';
+                allOpts[i].style.opacity = '0.7';
+            }
+            
+            // Highlight selected
+            var selOpt = document.getElementById('opt' + l);
+            if (selOpt) {
+                selOpt.classList.add('selected');
+                selOpt.style.opacity = '1';
+            }
+            
+            cevaplar[mevcutIndex] = l;
+            
+            // Time bonus (only if not suretsiz)
+            var elapsed = (Date.now() - questionStartTime) / 1000;
+            if (elapsed < 10 && secilenZorluk && secilenZorluk.id !== 'suretsiz') {
+                timeBonusSeconds += 3;
+                timeLeft += 3;
+            }
+            
+            var s = mevcutSorular[mevcutIndex];
+            var isCorrect = (l === s.dogru);
+            
+            if (answerMode === 'instant') {
+                // INSTANT MODE - show feedback
+                var fb = document.getElementById('inlineFeedback');
+                if (isCorrect) {
+                    selOpt.style.borderColor = '#4caf50';
+                    selOpt.style.background = 'rgba(76, 175, 80, 0.25)';
+                    selOpt.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
+                    if (fb) { fb.className = 'inline-feedback correct'; fb.innerHTML = '✅ ' + t('harika'); fb.style.display = 'block'; }
+                    playCorrectSound();
+                } else {
+                    selOpt.style.borderColor = '#ff6b6b';
+                    selOpt.style.background = 'rgba(255, 107, 107, 0.25)';
+                    selOpt.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
+                    var correctOpt = document.getElementById('opt' + s.dogru);
+                    if (correctOpt) {
+                        correctOpt.style.borderColor = '#4caf50';
+                        correctOpt.style.background = 'rgba(76, 175, 80, 0.25)';
+                        correctOpt.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
+                        correctOpt.style.opacity = '1';
+                    }
+                    if (fb) { fb.className = 'inline-feedback wrong'; fb.innerHTML = '❌ ' + t('dogruCevap') + ' <span style="color:#4caf50;font-weight:800;">' + s.dogru + ') ' + s[s.dogru] + '</span>'; fb.style.display = 'block'; }
+                    playWrongSound();
+                    var mc = document.getElementById('mainContainer');
+                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(function() { mc.classList.remove('shake'); }, 600); }
+                }
                 // Auto-advance after 5 seconds
                 if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-                autoAdvanceTimer = setTimeout(() => {
-                    const nextIdx = getNextQuestionIndex(mevcutIndex);
+                autoAdvanceTimer = setTimeout(function() {
+                    var nextIdx = getNextQuestionIndex(mevcutIndex);
                     if (nextIdx !== -1) {
                         mevcutIndex = nextIdx;
                         soruyuGoster();
@@ -7734,26 +7533,9 @@
                         testiBitir();
                     }
                 }, 5000);
-            } else {
-                // End mode - just show feedback briefly
-                if (isCorrect) {
-                    id(`opt${l}`).style.borderColor = '#4caf50';
-                    id(`opt${l}`).style.background = 'rgba(76, 175, 80, 0.2)';
-                    playCorrectSound();
-                } else {
-                    id(`opt${l}`).style.borderColor = '#ff6b6b';
-                    id(`opt${l}`).style.background = 'rgba(255, 107, 107, 0.2)';
-                    playWrongSound();
-                    const mainContainer = document.getElementById('mainContainer');
-                    if (mainContainer) {
-                        mainContainer.classList.remove('shake');
-                        void mainContainer.offsetWidth;
-                        mainContainer.classList.add('shake');
-                        setTimeout(() => mainContainer.classList.remove('shake'), 600);
-                    }
-                }
             }
-
+            /* END MODE - no feedback at all: no colors, no sounds, no shake */
+            
             updateQuestionNavigationButtons();
         };
         window.skipCurrentQuestion = function () { cevaplar[mevcutIndex] = 'B'; updateQuestionNavigationButtons(); nextQuestion(); };
@@ -7870,6 +7652,6 @@
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
