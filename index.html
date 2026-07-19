@@ -3239,6 +3239,49 @@
             border-color: #f472b6;
         }
 
+        .category-card--emoji {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.26), rgba(60, 40, 5, 0.95));
+            border-color: #facc15;
+        }
+
+        .category-card--icecek {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.26), rgba(8, 47, 73, 0.95));
+            border-color: #38bdf8;
+        }
+
+        /* ===== EMOJİ & İÇECEK ANİMASYONLU ARKA PLANLARI ===== */
+        .theme-emoji {
+            background: linear-gradient(135deg, #1a1700 0%, #3d2e00 45%, #14101f 100%);
+        }
+
+        .emoji-item {
+            position: absolute;
+            font-size: 40px;
+            animation: emojiFloat 4s ease-in-out infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); }
+            50% { transform: translateY(-32px) rotate(6deg) scale(1.1); }
+        }
+
+        .theme-icecek {
+            background: linear-gradient(135deg, #001a2a 0%, #023d5c 45%, #001523 100%);
+        }
+
+        .drink-item {
+            position: absolute;
+            font-size: 42px;
+            animation: drinkFloat 4s ease-in-out infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes drinkFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
         /* SCREEN SHAKE */
         @keyframes shakeScreen {
             0%, 100% { transform: translateX(0); }
@@ -6271,7 +6314,7 @@
         function changeTheme(catId) {
             const bg = document.getElementById('animatedBg'), cont = document.getElementById('animationContainer');
             bg.className = 'animated-bg';
-            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'oyun': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik', 'mitoloji': 'theme-mitoloji', 'anime': 'theme-anime', 'futbol': 'theme-futbol', 'markalar': 'theme-markalar', 'bayraklar': 'theme-bayraklar', 'matematik': 'theme-matematik', 'dizi': 'theme-dizi', 'moda': 'theme-moda', 'felsefe': 'theme-felsefe', 'doga': 'theme-doga' };
+            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'oyun': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik', 'mitoloji': 'theme-mitoloji', 'anime': 'theme-anime', 'futbol': 'theme-futbol', 'markalar': 'theme-markalar', 'bayraklar': 'theme-bayraklar', 'matematik': 'theme-matematik', 'dizi': 'theme-dizi', 'moda': 'theme-moda', 'felsefe': 'theme-felsefe', 'doga': 'theme-doga', 'emoji': 'theme-emoji', 'icecek': 'theme-icecek' };
             const themeClass = map[catId] || getGenderBaseTheme();
             bg.classList.add(themeClass); cont.innerHTML = '';
             if (catId === 'araba') { for (let i = 0; i < 8; i++) { let c = document.createElement('div'); c.className = 'car-animation'; c.textContent = ['🏎️', '🚗', '🚙', '🚕', '🏎️', '🚓'][i % 6]; c.style.top = (5 + i * 12) + '%'; c.style.animationDelay = (i * 1.5) + 's'; c.style.animationDuration = (7 + Math.random() * 5) + 's'; cont.appendChild(c); } }
@@ -6303,6 +6346,8 @@
             else if (catId === 'moda') { ['👗', '👠', '👜', '🕶️', '💄', '👒', '💍', '🧵'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'fashion-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
             else if (catId === 'felsefe') { ['🧠', '📜', '⚖️', '💭', '🕯️', '📚', '🗿', '🔍'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'philo-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
             else if (catId === 'doga') { ['🌿', '🌳', '🌊', '🦋', '🍃', '🏔️', '🌻', '♻️'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'nature-item'; d.textContent = x; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'emoji') { ['😂', '😍', '🤯', '🥳', '😎', '🤪', '😇', '🤫', '💀', '👻'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'emoji-item'; d.textContent = x; d.style.left = (5 + i * 10) + '%'; d.style.top = (10 + (i % 3) * 26) + '%'; d.style.animationDelay = (i * 0.4) + 's'; cont.appendChild(d); }); }
+            else if (catId === 'icecek') { ['🥤', '🧃', '🧋', '☕', '🍵', '🍺', '🍹', '🥛', '🍷', '🫖'].forEach((x, i) => { let d = document.createElement('div'); d.className = 'drink-item'; d.textContent = x; d.style.left = (5 + i * 10) + '%'; d.style.top = (12 + (i % 3) * 26) + '%'; d.style.animationDelay = (i * 0.45) + 's'; cont.appendChild(d); }); }
             else {
                 for (let i = 0; i < 100; i++) { let s = document.createElement('div'); s.className = 'star'; s.style.width = Math.random() * 3 + 1 + 'px'; s.style.height = s.style.width; s.style.left = Math.random() * 100 + '%'; s.style.top = Math.random() * 100 + '%'; cont.appendChild(s); }
                 if (themeClass === 'theme-male' || themeClass === 'theme-female') {
@@ -6455,22 +6500,27 @@
             { id: 'photo-motor', adKey: 'motor', icon: '🏍️', subtitleKey: 'photoVehicleGuess', theme: 'motor' },
             { id: 'photo-araba', adKey: 'araba', icon: '🏎️', subtitleKey: 'photoVehicleGuess', theme: 'araba' },
             { id: 'photo-oyun', adKey: 'oyun', icon: '🎮', subtitleKey: 'photoGameGuess', theme: 'oyun' },
-            { id: 'photo-meyve', adKey: 'meyve', icon: '🍎', subtitleKey: 'photoFruitGuess', theme: 'yemek' },
             { id: 'photo-tatli', adKey: 'tatli', icon: '🍰', subtitleKey: 'photoDessertGuess', theme: 'yemek' },
+            { id: 'photo-bayraklar', adKey: 'bayraklar', icon: '🚩', subtitleKey: 'photoCountryGuess', theme: 'bayraklar' },
             { id: 'photo-yemekler', adKey: 'yemekler', icon: '🍽️', subtitleKey: 'photoFoodGuess', theme: 'yemek' },
-            { id: 'photo-bayraklar', adKey: 'bayraklar', icon: '🚩', subtitleKey: 'photoCountryGuess', theme: 'bayraklar' }
+            { id: 'photo-meyve', adKey: 'meyve', icon: '🍎', subtitleKey: 'photoFruitGuess', theme: 'yemek', emojiQuiz: true },
+            { id: 'photo-hayvan', adKey: 'hayvan', icon: '🦁', subtitleKey: 'photoAnimalGuess', theme: 'hayvan', emojiQuiz: true },
+            { id: 'photo-emoji', adKey: 'emoji', icon: '😂', subtitleKey: 'photoEmojiGuess', theme: 'emoji', emojiQuiz: true },
+            { id: 'photo-icecek', adKey: 'icecek', icon: '🥤', subtitleKey: 'photoDrinkGuess', theme: 'icecek', emojiQuiz: true },
+            { id: 'photo-spor', adKey: 'spor', icon: '🥊', subtitleKey: 'photoSportGuess', theme: 'spor', emojiQuiz: true },
+            { id: 'photo-kizanime', adKey: 'kizanime', icon: '🌸', subtitleKey: 'photoCharGuess', theme: 'anime' }
         ];
 
         // Photo subtitle translations
         const photoSubTitles = {
-            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin', photoVehicleGuess: 'Araç tahmin', photoGameGuess: 'Oyun tahmin', photoFruitGuess: 'Meyve tahmin', photoDessertGuess: 'Tatlı tahmin', photoFoodGuess: 'Yemek tahmin' },
-            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess', photoVehicleGuess: 'Vehicle guess', photoGameGuess: 'Game guess', photoFruitGuess: 'Fruit guess', photoDessertGuess: 'Dessert guess', photoFoodGuess: 'Dish guess' },
-            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten', photoVehicleGuess: 'Fahrzeug erraten', photoGameGuess: 'Spiel erraten', photoFruitGuess: 'Frucht erraten', photoDessertGuess: 'Dessert erraten', photoFoodGuess: 'Gericht erraten' },
-            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну', photoVehicleGuess: 'Угадай машину', photoGameGuess: 'Угадай игру', photoFruitGuess: 'Угадай фрукт', photoDessertGuess: 'Угадай десерт', photoFoodGuess: 'Угадай блюдо' },
-            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家', photoVehicleGuess: '猜车辆', photoGameGuess: '猜游戏', photoFruitGuess: '猜水果', photoDessertGuess: '猜甜点', photoFoodGuess: '猜菜肴' },
-            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て', photoVehicleGuess: '乗り物当て', photoGameGuess: 'ゲーム当て', photoFruitGuess: 'フルーツ当て', photoDessertGuess: 'デザート当て', photoFoodGuess: '料理当て' },
-            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país', photoVehicleGuess: 'Adivina vehículo', photoGameGuess: 'Adivina juego', photoFruitGuess: 'Adivina fruta', photoDessertGuess: 'Adivina postre', photoFoodGuess: 'Adivina plato' },
-            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد', photoVehicleGuess: 'خمّن المركبة', photoGameGuess: 'خمّن اللعبة', photoFruitGuess: 'خمّن الفاكهة', photoDessertGuess: 'خمّن الحلوى', photoFoodGuess: 'خمّن الطبق' }
+            tr: { photoCharGuess: 'Karakter tahmin', photoPlayerClub: 'Oyuncu / kulüp', photoLogoGuess: 'Logo tahmin', photoFilmChar: 'Film / karakter', photoCreatureGuess: 'Canlı tahmin', photoCountryGuess: 'Ülke tahmin', photoVehicleGuess: 'Araç tahmin', photoGameGuess: 'Oyun tahmin', photoFruitGuess: 'Meyve tahmin', photoDessertGuess: 'Tatlı tahmin', photoFoodGuess: 'Yemek tahmin', photoAnimalGuess: 'Hayvan tahmin', photoEmojiGuess: 'Emoji tahmin', photoDrinkGuess: 'İçecek tahmin', photoSportGuess: 'Spor tahmin' },
+            en: { photoCharGuess: 'Character guess', photoPlayerClub: 'Player / club', photoLogoGuess: 'Logo guess', photoFilmChar: 'Film / character', photoCreatureGuess: 'Creature guess', photoCountryGuess: 'Country guess', photoVehicleGuess: 'Vehicle guess', photoGameGuess: 'Game guess', photoFruitGuess: 'Fruit guess', photoDessertGuess: 'Dessert guess', photoFoodGuess: 'Dish guess', photoAnimalGuess: 'Animal guess', photoEmojiGuess: 'Emoji guess', photoDrinkGuess: 'Drink guess', photoSportGuess: 'Sport guess' },
+            de: { photoCharGuess: 'Charakter erraten', photoPlayerClub: 'Spieler / Verein', photoLogoGuess: 'Logo erraten', photoFilmChar: 'Film / Charakter', photoCreatureGuess: 'Lebewesen erraten', photoCountryGuess: 'Land erraten', photoVehicleGuess: 'Fahrzeug erraten', photoGameGuess: 'Spiel erraten', photoFruitGuess: 'Frucht erraten', photoDessertGuess: 'Dessert erraten', photoFoodGuess: 'Gericht erraten', photoAnimalGuess: 'Tier erraten', photoEmojiGuess: 'Emoji erraten', photoDrinkGuess: 'Getränk erraten', photoSportGuess: 'Sport erraten' },
+            ru: { photoCharGuess: 'Угадай персонажа', photoPlayerClub: 'Игрок / клуб', photoLogoGuess: 'Угадай лого', photoFilmChar: 'Фильм / персонаж', photoCreatureGuess: 'Угадай существо', photoCountryGuess: 'Угадай страну', photoVehicleGuess: 'Угадай машину', photoGameGuess: 'Угадай игру', photoFruitGuess: 'Угадай фрукт', photoDessertGuess: 'Угадай десерт', photoFoodGuess: 'Угадай блюдо', photoAnimalGuess: 'Угадай животное', photoEmojiGuess: 'Угадай эмодзи', photoDrinkGuess: 'Угадай напиток', photoSportGuess: 'Угадай спорт' },
+            zh: { photoCharGuess: '猜角色', photoPlayerClub: '球员 / 俱乐部', photoLogoGuess: '猜标志', photoFilmChar: '电影 / 角色', photoCreatureGuess: '猜生物', photoCountryGuess: '猜国家', photoVehicleGuess: '猜车辆', photoGameGuess: '猜游戏', photoFruitGuess: '猜水果', photoDessertGuess: '猜甜点', photoFoodGuess: '猜菜肴', photoAnimalGuess: '猜动物', photoEmojiGuess: '猜表情', photoDrinkGuess: '猜饮料', photoSportGuess: '猜运动' },
+            ja: { photoCharGuess: 'キャラクター当て', photoPlayerClub: '選手 / クラブ', photoLogoGuess: 'ロゴ当て', photoFilmChar: '映画 / キャラクター', photoCreatureGuess: '生き物当て', photoCountryGuess: '国当て', photoVehicleGuess: '乗り物当て', photoGameGuess: 'ゲーム当て', photoFruitGuess: 'フルーツ当て', photoDessertGuess: 'デザート当て', photoFoodGuess: '料理当て', photoAnimalGuess: '動物当て', photoEmojiGuess: '絵文字当て', photoDrinkGuess: '飲み物当て', photoSportGuess: 'スポーツ当て' },
+            es: { photoCharGuess: 'Adivina personaje', photoPlayerClub: 'Jugador / club', photoLogoGuess: 'Adivina logo', photoFilmChar: 'Película / personaje', photoCreatureGuess: 'Adivina criatura', photoCountryGuess: 'Adivina país', photoVehicleGuess: 'Adivina vehículo', photoGameGuess: 'Adivina juego', photoFruitGuess: 'Adivina fruta', photoDessertGuess: 'Adivina postre', photoFoodGuess: 'Adivina plato', photoAnimalGuess: 'Adivina animal', photoEmojiGuess: 'Adivina emoji', photoDrinkGuess: 'Adivina bebida', photoSportGuess: 'Adivina deporte' },
+            ar: { photoCharGuess: 'خمّن الشخصية', photoPlayerClub: 'لاعب / نادي', photoLogoGuess: 'خمّن الشعار', photoFilmChar: 'فيلم / شخصية', photoCreatureGuess: 'خمّن الكائن', photoCountryGuess: 'خمّن البلد', photoVehicleGuess: 'خمّن المركبة', photoGameGuess: 'خمّن اللعبة', photoFruitGuess: 'خمّن الفاكهة', photoDessertGuess: 'خمّن الحلوى', photoFoodGuess: 'خمّن الطبق', photoAnimalGuess: 'خمّن الحيوان', photoEmojiGuess: 'خمّن الإيموجي', photoDrinkGuess: 'خمّن المشروب', photoSportGuess: 'خمّن الرياضة' }
         };
 
         function getPhotoSubTitle(key) {
@@ -6678,26 +6728,26 @@
                 { prompt: 'Bu tatlının adı nedir?', answers: ['magnolia', 'magnolio', 'magnoly', 'magnolia puding', 'çilekli magnolia', 'kup', 'kup tatlısı'], label: 'Magnolia (Magnolio)', emoji: '🍓', image: 'tatli_10.jpg' }
             ],
             'photo-yemekler': [
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemekler_01.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["biber dolması", "biber dolmasi", "dolma", "zeytinyağlı biber dolması", "zeytinyagli biber dolmasi"], label: "Biber Dolması", emoji: '🫑', image: 'yemekler_02.webp' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["beyti", "beyti kebabı", "beyti kebabi", "beyti kebap"], label: "Beyti Kebabı", emoji: '🌯', image: 'yemekler_03.avif' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["döner", "doner", "döner kebabı", "doner kebabi", "et döner", "et doner", "döner kebap"], label: "Döner Kebabı", emoji: '🥙', image: 'yemekler_04.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["akıtma", "akitma", "krep", "crepe", "pancake"], label: "Akıtma", emoji: '🥞', image: 'yemekler_05.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["şehriye çorbası", "sehriye corbasi", "domatesli şehriye çorbası", "domatesli sehriye corbasi", "şehriye", "sehriye", "domates çorbası", "domates corbasi"], label: "Şehriye Çorbası", emoji: '🍜', image: 'yemekler_06.webp' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["ali nazik", "alinazik", "ali nazik kebabı", "ali nazik kebabi", "alinazik kebap"], label: "Ali Nazik Kebabı", emoji: '🍆', image: 'yemekler_07.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["analı kızlı", "anali kizli", "analı kızlı çorbası", "anali kizli corbasi", "analı kızlı yemeği", "anali kizli yemegi"], label: "Analı Kızlı", emoji: '🍲', image: 'yemekler_08.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["bulgur pilavı", "bulgur pilavi", "bulgur", "bulgur pilav"], label: "Bulgur Pilavı", emoji: '🌾', image: 'yemekler_09.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["çiğ köfte", "cig kofte", "çiğköfte", "cigkofte"], label: "Çiğ Köfte", emoji: '🌶️', image: 'yemekler_10.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["arabaşı", "arabasi", "arabaşı çorbası", "arabasi corbasi", "arabaşı hamuru", "arabasi hamuru"], label: "Arabaşı Çorbası", emoji: '🍲', image: 'yemekler_11.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["bonfile", "antrikot", "biftek", "steak", "dana biftek", "bonfile ızgara", "bonfile izgara"], label: "Bonfile / Antrikot", emoji: '🥩', image: 'yemekler_12.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["boyoz", "izmir boyozu", "İzmir boyozu"], label: "İzmir Boyozu", emoji: '🥐', image: 'yemekler_13.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["cacık", "cacik", "yoğurtlu cacık", "yogurtlu cacik"], label: "Cacık", emoji: '🥒', image: 'yemekler_14.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["akçaabat köftesi", "akcaabat koftesi", "akçaabat köfte", "akcaabat kofte", "ızgara köfte", "izgara kofte"], label: "Akçaabat Köftesi", emoji: '🧆', image: 'yemekler_15.avif' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["elbasan tava", "elbasan tawa", "beşamel soslu et", "besamel soslu et"], label: "Elbasan Tava", emoji: '🍖', image: 'yemekler_16.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli ekmek", "etliekmek", "konya etli ekmek"], label: "Etli Ekmek", emoji: '🫓', image: 'yemekler_17.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli nohut", "nohut", "nohut yemeği", "nohut yemegi", "etli nohut yemeği", "etli nohut yemegi"], label: "Etli Nohut", emoji: '🥣', image: 'yemekler_18.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["lavmaçun", "lavmacun", "lahmaçun", "lahmaç", "lahmac"], label: "lahmacun", emoji: '🍆', image: 'yemekler_19.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["adana kebap", "adana", "adana kebabı", "adana kebabi", "kebap", "kebap adana"], label: "Adana Kebabı", emoji: '🍢', image: 'yemekler_20.jpg' }
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemek_01.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["biber dolması", "biber dolmasi", "dolma", "zeytinyağlı biber dolması", "zeytinyagli biber dolmasi"], label: "Biber Dolması", emoji: '🫑', image: 'yemek_02.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["beyti", "beyti kebabı", "beyti kebabi", "beyti kebap"], label: "Beyti Kebabı", emoji: '🌯', image: 'yemek_03.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["döner", "doner", "döner kebabı", "doner kebabi", "et döner", "et doner", "döner kebap"], label: "Döner Kebabı", emoji: '🥙', image: 'yemek_04.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["akıtma", "akitma", "krep", "crepe", "pancake"], label: "Akıtma", emoji: '🥞', image: 'yemek_05.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["şehriye çorbası", "sehriye corbasi", "domatesli şehriye çorbası", "domatesli sehriye corbasi", "şehriye", "sehriye", "domates çorbası", "domates corbasi"], label: "Şehriye Çorbası", emoji: '🍜', image: 'yemek_06.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["ali nazik", "alinazik", "ali nazik kebabı", "ali nazik kebabi", "alinazik kebap"], label: "Ali Nazik Kebabı", emoji: '🍆', image: 'yemek_07.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["analı kızlı", "anali kizli", "analı kızlı çorbası", "anali kizli corbasi", "analı kızlı yemeği", "anali kizli yemegi"], label: "Analı Kızlı", emoji: '🍲', image: 'yemek_08.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["bulgur pilavı", "bulgur pilavi", "bulgur", "bulgur pilav"], label: "Bulgur Pilavı", emoji: '🌾', image: 'yemek_09.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["çiğ köfte", "cig kofte", "çiğköfte", "cigkofte"], label: "Çiğ Köfte", emoji: '🌶️', image: 'yemek_10.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["arabaşı", "arabasi", "arabaşı çorbası", "arabasi corbasi", "arabaşı hamuru", "arabasi hamuru"], label: "Arabaşı Çorbası", emoji: '🍲', image: 'yemek_11.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["bonfile", "antrikot", "biftek", "steak", "dana biftek", "bonfile ızgara", "bonfile izgara"], label: "Bonfile / Antrikot", emoji: '🥩', image: 'yemek_12.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["boyoz", "izmir boyozu", "İzmir boyozu"], label: "İzmir Boyozu", emoji: '🥐', image: 'yemek_13.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["cacık", "cacik", "yoğurtlu cacık", "yogurtlu cacik"], label: "Cacık", emoji: '🥒', image: 'yemek_14.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["akçaabat köftesi", "akcaabat koftesi", "akçaabat köfte", "akcaabat kofte", "ızgara köfte", "izgara kofte"], label: "Akçaabat Köftesi", emoji: '🧆', image: 'yemek_15.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["elbasan tava", "elbasan tawa", "beşamel soslu et", "besamel soslu et"], label: "Elbasan Tava", emoji: '🍖', image: 'yemek_16.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli ekmek", "etliekmek", "konya etli ekmek"], label: "Etli Ekmek", emoji: '🫓', image: 'yemek_17.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli nohut", "nohut", "nohut yemeği", "nohut yemegi", "etli nohut yemeği", "etli nohut yemegi"], label: "Etli Nohut", emoji: '🥣', image: 'yemek_18.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemek_19.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["adana kebap", "adana", "adana kebabı", "adana kebabi", "kebap", "kebap adana"], label: "Adana Kebabı", emoji: '🍢', image: 'yemek_20.jpg' }
             ],
             'photo-bayraklar': [
                 { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['güney kore', 'guney kore', 'south korea', 'kore cumhuriyeti', 'korea'], label: 'Güney Kore', emoji: '🇰🇷', image: 'bayraklar_01.jpg' },
@@ -6715,6 +6765,138 @@
                 { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['türkmenistan', 'turkmenistan', 'türkmen', 'turkmen'], label: 'Türkmenistan', emoji: '🇹🇲', image: 'bayraklar_13.png' },
                 { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['pakistan'], label: 'Pakistan', emoji: '🇵🇰', image: 'bayraklar_14.png' },
                 { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['almanya', 'germany', 'deutschland', 'alman'], label: 'Almanya', emoji: '🇩🇪', image: 'bayraklar_15.png' }
+            ],
+            'photo-hayvan': [
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['aslan', 'lion'], label: 'Aslan', emoji: '🦁', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kaplan', 'tiger'], label: 'Kaplan', emoji: '🐯', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['ayı', 'bear'], label: 'Ayı', emoji: '🐻', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kurt', 'wolf', 'bozkurt'], label: 'Kurt', emoji: '🐺', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['tilki', 'fox'], label: 'Tilki', emoji: '🦊', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['tavşan', 'rabbit', 'bunny', 'tavsar'], label: 'Tavşan', emoji: '🐰', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['panda', 'dev panda'], label: 'Panda', emoji: '🐼', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['koala', 'kuala'], label: 'Koala', emoji: '🐨', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['maymun', 'monkey'], label: 'Maymun', emoji: '🐵', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['fil', 'elephant'], label: 'Fil', emoji: '🐘', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['zürafa', 'giraffe', 'zirafa'], label: 'Zürafa', emoji: '🦒', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['zebra', 'zibra'], label: 'Zebra', emoji: '🦓', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['gergedan', 'rhino'], label: 'Gergedan', emoji: '🦏', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['su aygırı', 'hipopotam', 'hippo', 'su aygır'], label: 'Su Aygırı (Hipopotam)', emoji: '🦛', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['deve', 'camel'], label: 'Deve', emoji: '🐫', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kanguru', 'kangaroo'], label: 'Kanguru', emoji: '🦘', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['timsah', 'crocodile', 'krokodil', 'aligator'], label: 'Timsah', emoji: '🐊', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['yılan', 'snake', 'ilan'], label: 'Yılan', emoji: '🐍', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kartal', 'eagle'], label: 'Kartal', emoji: '🦅', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['penguen', 'penguin'], label: 'Penguen', emoji: '🐧', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['baykuş', 'owl'], label: 'Baykuş', emoji: '🦉', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['yunus', 'dolphin', 'delfin'], label: 'Yunus', emoji: '🐬', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['köpekbalığı', 'köpek balığı', 'shark', 'köpek balık', 'kopekbaligi'], label: 'Köpekbalığı', emoji: '🦈', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['balina', 'whale'], label: 'Balina', emoji: '🐳', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['ahtapot', 'octopus'], label: 'Ahtapot', emoji: '🐙', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['yengeç', 'crab', 'pavurya'], label: 'Yengeç', emoji: '🦀', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kelebek', 'butterfly'], label: 'Kelebek', emoji: '🦋', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['arı', 'bee', 'bal arısı', 'ari'], label: 'Arı', emoji: '🐝', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kaplumbağa', 'tosbağa', 'turtle', 'kaplumba', 'tosbaga'], label: 'Kaplumbağa', emoji: '🐢', image: '' },
+                { prompt: 'Bu hayvanın adı nedir?', answers: ['kurbağa', 'frog', 'kurba'], label: 'Kurbağa', emoji: '🐸', image: '' }
+            ],
+            'photo-emoji': [
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['kahkaha', 'gülmekten ağlamak', 'çok güldüm', 'gülmek', 'güler yüz', 'gulmekten aglamak'], label: 'Kahkaha', emoji: '😂', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['gülümseme', 'mutluluk', 'mutlu', 'gülümseyen yüz', 'sevimli'], label: 'Gülümseme (Mutluluk)', emoji: '😊', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['aşık', 'aşk', 'kalp gözler', 'kalp gözlü', 'aşık olmak', 'sevmek', 'ask'], label: 'Aşık (Kalp Gözler)', emoji: '😍', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['kızgın', 'sinirli', 'öfke', 'öfkeli', 'kızma', 'sinir'], label: 'Kızgın / Öfkeli', emoji: '😡', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['ağlamak', 'üzgün', 'ağlayan yüz', 'ağlıyor', 'hüzün', 'uzgun'], label: 'Ağlayan / Üzgün', emoji: '😢', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['korku', 'korkmuş', 'şok', 'şaşkın', 'korkan', 'korku çığlığı'], label: 'Korku / Şok', emoji: '😱', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['havalı', 'güneş gözlüklü', 'cool', 'rahat', 'karizma', 'gunes gozluklu'], label: 'Havalı (Cool)', emoji: '😎', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['uyku', 'uyuyan', 'uyumak', 'uykulu', 'horlamak'], label: 'Uyuyan', emoji: '😴', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['mide bulantısı', 'midesi bulanan', 'kusacak', 'kusmak isteyen', 'midesi bozulan'], label: 'Midesi Bulanan', emoji: '🤢', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['parti', 'kutlama', 'kutlamak', 'doğum günü', 'eğlence', 'kutlayan'], label: 'Parti / Kutlama', emoji: '🥳', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['melek', 'masum', 'masum gülüş', 'saf', 'haleli'], label: 'Melek', emoji: '😇', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['şeytan', 'fesat', 'kötü niyetli', 'yaramaz', 'seytan', 'kötü gülüş'], label: 'Şeytan', emoji: '😈', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['düşünen', 'düşünüyor', 'düşünce', 'düşünceli', 'hmm', 'derin düşünce'], label: 'Düşünen', emoji: '🤔', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['kafa patlaması', 'şaşkınlık', 'mind blown', 'patlayan', 'çok şaşırmak', 'beyin yandı'], label: 'Kafa Patlaması (Şok)', emoji: '🤯', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['üşümek', 'üşüyor', 'soğuk', 'donmak', 'donan', 'dondurucu soğuk', 'usumek'], label: 'Üşüyen', emoji: '🥶', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['terlemek', 'terleyen', 'sıcak', 'çok sıcak', 'erimek', 'bunalmak', 'sicak'], label: 'Terleyen (Sıcak)', emoji: '🥵', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['kusmak', 'kusan', 'kusma', 'kusuyor', 'kustu'], label: 'Kusan', emoji: '🤮', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['çılgın', 'deli', 'delilik', 'manyak', 'eğlenceli çılgın', 'cilgin'], label: 'Çılgın / Deli', emoji: '🤪', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['dil çıkarmak', 'dil çıkaran', 'şımarık', 'şaka', 'dil dışarıda', 'nanik'], label: 'Dil Çıkaran', emoji: '😜', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['hıçkıra hıçkıra ağlamak', 'hıçkırık', 'çok ağlamak', 'hüngür hüngür', 'hüngür hüngür ağlamak'], label: 'Hıçkıra Hıçkıra Ağlamak', emoji: '😭', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['sevgi dolu', 'sevgi', 'kalpler', 'romantik', 'mutlu sevgi'], label: 'Sevgi Dolu', emoji: '🥰', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['utanmak', 'utan', 'utangaç', 'kızarmak', 'kızaran yüz', 'utanmış'], label: 'Utanan', emoji: '😳', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['para', 'para gözlü', 'zengin', 'maddiyatçı', 'dolar', 'parayı düşünen'], label: 'Para Gözlü', emoji: '🤑', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['sus', 'sessiz', 'sus işareti', 'gizli', 'sessiz olun', 'ses çıkarma', 'sus isareti'], label: 'Sus İşareti / Sessiz', emoji: '🤫', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['kuru kafa', 'kafatası', 'ölüm', 'gülmekten ölmek', 'kurukafa'], label: 'Kuru Kafa', emoji: '💀', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['hayalet', 'ghost', 'hayaletler', 'korkutma'], label: 'Hayalet', emoji: '👻', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['robot', 'android', 'yapay zeka'], label: 'Robot', emoji: '🤖', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['palyaço', 'palyaco', 'clown', 'soytarı'], label: 'Palyaço', emoji: '🤡', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['maske', 'maskeli', 'hasta', 'maskeli yüz', 'virüs', 'korona'], label: 'Maskeli (Hasta)', emoji: '😷', image: '' },
+                { prompt: 'Bu emojinin anlamı nedir?', answers: ['uzaylı', 'alien', 'uzaylı yaratık', 'marslı'], label: 'Uzaylı', emoji: '👽', image: '' }
+            ],
+            'photo-icecek': [
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['kola', 'cola', 'gazoz', 'gazlı içecek', 'soğuk içecek', 'soda'], label: 'Kola', emoji: '🥤', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['süt', 'süt bardağı', 'milk', 'sut', 'bir bardak süt'], label: 'Süt', emoji: '🥛', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['kahve', 'türk kahvesi', 'coffee', 'espresso'], label: 'Kahve', emoji: '☕', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['çay', 'çay bardağı', 'tea', 'demli çay', 'cay'], label: 'Çay', emoji: '🍵', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['meyve suyu', 'kutu meyve suyu', 'juice'], label: 'Meyve Suyu', emoji: '🧃', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['bubble tea', 'boba', 'inci çayı', 'inci çay', 'baloncuk çayı'], label: 'Bubble Tea (İnci Çayı)', emoji: '🧋', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['bira', 'beer', 'bira bardağı', 'bira kadehi'], label: 'Bira', emoji: '🍺', image: '' },
+                { prompt: 'Bu ne yapılıyor?', answers: ['şerefe', 'kadeh tokuşturma', 'bira kadehleri', 'kadeh tokuşturan biralar', 'cheers'], label: 'Şerefe (Kadeh Tokuşturma)', emoji: '🍻', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['şampanya', 'şampanya kadehi', 'şampanya kadehleri', 'sampanya', 'kadeh tokuşturma'], label: 'Şampanya Kadehi', emoji: '🥂', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['şarap', 'kırmızı şarap', 'şarap kadehi', 'wine', 'sarap'], label: 'Şarap', emoji: '🍷', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['viski', 'viski bardağı', 'whiskey', 'wiski'], label: 'Viski', emoji: '🥃', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['kokteyl', 'martini', 'kokteyl kadehi', 'cocktail', 'koktely'], label: 'Kokteyl', emoji: '🍸', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['tropik kokteyl', 'tropik içecek', 'meyveli kokteyl', 'karışık içecek', 'tropikal içecek'], label: 'Tropik Kokteyl', emoji: '🍹', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['şampanya', 'şampanya şişesi', 'köpüklü şarap', 'şampanya patlatmak', 'sampanya sisesi'], label: 'Şampanya (Şişe)', emoji: '🍾', image: '' },
+                { prompt: 'Bu neyin adı?', answers: ['demlik', 'çaydanlık', 'çaydanlık demlik', 'teapot'], label: 'Demlik / Çaydanlık', emoji: '🫖', image: '' },
+                { prompt: 'Bu neyin adı?', answers: ['biberon', 'bebek şişesi', 'biberon süt', 'bebe biberonu'], label: 'Biberon', emoji: '🍼', image: '' },
+                { prompt: 'Bu içeceğin adı nedir?', answers: ['mate', 'mate çayı', 'mate fincanı'], label: 'Mate Çayı', emoji: '🧉', image: '' }
+            ],
+            'photo-spor': [
+                { prompt: 'Bu sporun adı nedir?', answers: ['futbol', 'futbol topu', 'soccer', 'top oynama'], label: 'Futbol', emoji: '⚽', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['basketbol', 'basketbol topu', 'basket', 'nba'], label: 'Basketbol', emoji: '🏀', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['voleybol', 'voleybol topu', 'volleyball'], label: 'Voleybol', emoji: '🏐', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['tenis', 'tenis topu', 'kort tenisi'], label: 'Tenis', emoji: '🎾', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['masa tenisi', 'ping pong', 'pinpon', 'masa tenis'], label: 'Masa Tenisi', emoji: '🏓', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['badminton', 'tüylü top', 'tüytop'], label: 'Badminton', emoji: '🏸', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['beyzbol', 'baseball', 'beyzbol topu'], label: 'Beyzbol', emoji: '⚾', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['softbol', 'softball', 'softbol topu'], label: 'Softbol', emoji: '🥎', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['amerikan futbolu', 'american football', 'nfl'], label: 'Amerikan Futbolu', emoji: '🏈', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['rugby', 'ragbi', 'ragby'], label: 'Rugby', emoji: '🏉', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['bilardo', '8 top', 'bilardo topu', 'sekiz top', 'snooker'], label: 'Bilardo', emoji: '🎱', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['golf', 'golf deliği', 'golf oynama'], label: 'Golf', emoji: '⛳', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['buz hokeyi', 'hokey', 'ice hockey', 'buz hokeyi sopası'], label: 'Buz Hokeyi', emoji: '🏒', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['çim hokeyi', 'hokey', 'field hockey'], label: 'Çim Hokeyi', emoji: '🏑', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['lakros', 'lacrosse', 'lakroz'], label: 'Lakros', emoji: '🥍', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['kriket', 'cricket', 'kriket sopası'], label: 'Kriket', emoji: '🏏', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['frizbi', 'ultimate frizbi', 'frisbee', 'frisbi', 'uçan disk'], label: 'Frizbi', emoji: '🥏', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['boks', 'boks eldiveni', 'boxing', 'boks maçı'], label: 'Boks', emoji: '🥊', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['karate', 'dövüş sanatları', 'judo', 'taekwondo', 'tekvando', 'aikido'], label: 'Karate / Dövüş Sanatları', emoji: '🥋', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['güreş', 'wrestling', 'grekoromen', 'pehlivan güreşi', 'güreşçi', 'gures'], label: 'Güreş', emoji: '🤼', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['jimnastik', 'gymnastics', 'akrobasi', 'takla', 'artistik jimnastik'], label: 'Jimnastik', emoji: '🤸', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['halter', 'ağırlık kaldırma', 'ağırlık', 'deadlift', 'halterci', 'agirlik kaldirma'], label: 'Halter', emoji: '🏋️', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['yüzme', 'yüzmek', 'swimming', 'yüzücü', 'yuzme'], label: 'Yüzme', emoji: '🏊', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['eskrim', 'fencing', 'kılıç', 'kılıç dövüşü', 'kilic', 'eskrim dövüşü'], label: 'Eskrim', emoji: '🤺', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['okçuluk', 'ok atma', 'yay ve ok', 'archery', 'okçu', 'okculuk'], label: 'Okçuluk', emoji: '🏹', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['balık tutma', 'olta', 'balıkçılık', 'olta balıkçılığı', 'balık avı'], label: 'Olta Balıkçılığı', emoji: '🎣', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['bisiklet', 'bisiklet sürmek', 'cycling', 'bisikletçi', 'bisiklete binme'], label: 'Bisiklet', emoji: '🚴', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['binicilik', 'at yarışı', 'at binme', 'jokey', 'at yarisi'], label: 'Binicilik (At Yarışı)', emoji: '🏇', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['buz pateni', 'paten', 'ice skating', 'buzda kayma'], label: 'Buz Pateni', emoji: '⛸️', image: '' },
+                { prompt: 'Bu sporun adı nedir?', answers: ['kayak', 'kayak yapma', 'ski', 'kaymak', 'kar kayağı'], label: 'Kayak', emoji: '⛷️', image: '' }
+            ],
+            'photo-kizanime': [
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['erza', 'erza scarlet', 'erza skalet', 'elza', 'fairy tail erza', 'scarlet'], label: 'Erza Scarlet (Fairy Tail)', emoji: '🗡️', image: 'kız_01.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['revy', 'revi', 'rebecca lee', 'black lagoon revy', 'black lagoon', 'ritual'], label: 'Revy (Black Lagoon)', emoji: '🔫', image: 'kız_02.webp' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['asuna', 'asuna yuuki', 'yuuki asuna', 'yuuki', 'sword art online asuna'], label: 'Asuna Yuuki (Sword Art Online)', emoji: '🏖️', image: 'kız_03.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['makio', 'makiyo', 'demon slayer makio'], label: 'Makio (Demon Slayer)', emoji: '🌼', image: 'kız_04.webp' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['mizore', 'mizore shirayuki', 'sirayuki mizore', 'rosario vampire mizore'], label: 'Mizore Shirayuki (Rosario + Vampire)', emoji: '❄️', image: 'kız_05.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['shura', 'shura kirigakure', 'sura kirigakure', 'sura', 'blue exorcist shura'], label: 'Shura Kirigakure (Blue Exorcist)', emoji: '⚔️', image: 'kız_06.webp' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rebecca', 'rebecca bluegarden', 'edens zero rebecca', 'rebeka'], label: 'Rebecca Bluegarden (Edens Zero)', emoji: '🌌', image: 'kız_07.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['tama'], label: 'Tama', emoji: '🐱', image: 'kız_08.webp' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['celty', 'celty sturluson', 'durarara celty', 'kelti', 'dullahan', 'selti'], label: 'Celty Sturluson (Durarara!!)', emoji: '🏍️', image: 'kız_09.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['tsunade', 'tsunade senju', 'lady tsunade', 'beşinci hokage', 'besinci hokage'], label: 'Tsunade Senju (Naruto)', emoji: '🐌', image: 'kız_10.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['kagura', 'kagura yato', 'gintama kagura', 'yato kagura'], label: 'Kagura (Gintama)', emoji: '☂️', image: 'kız_11.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['miruko', 'mirko', 'rumi usagiyama', 'usagiyama rumi', 'my hero academia mirko'], label: 'Miruko (My Hero Academia)', emoji: '🐇', image: 'kız_12.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['marin', 'marin kitagawa', 'kitagawa marin', 'my dress up darling marin'], label: 'Marin Kitagawa (My Dress-Up Darling)', emoji: '🌺', image: 'kız_13.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['seras', 'seras victoria', 'seras viktoria', 'hellsing seras'], label: 'Seras Victoria (Hellsing)', emoji: '🧛', image: 'kız_14.jpg' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ['rias', 'rias gremory', 'dxd rias', 'highschool dxd rias'], label: 'Rias Gremory (Highschool DxD)', emoji: '👿', image: 'kız_15.jpg' }
             ]
         };
 
@@ -6809,7 +6991,9 @@
             'photo-marvel': 'marvel', 'photo-dc': 'dc', 'photo-anime': 'anime',
             'photo-futbol': 'futbol', 'photo-motor': 'motor', 'photo-araba': 'araba',
             'photo-oyun': 'oyun', 'photo-meyve': 'meyve', 'photo-tatli': 'tatli',
-            'photo-yemekler': 'yemek', 'photo-bayraklar': 'bayraklar'
+            'photo-yemekler': 'yemek', 'photo-bayraklar': 'bayraklar',
+            'photo-hayvan': 'hayvan', 'photo-emoji': 'emoji', 'photo-icecek': 'icecek', 'photo-spor': 'spor',
+            'photo-kizanime': 'anime'
         };
 
         window.goToPhotoCategorySelect = function () {
@@ -6996,7 +7180,8 @@
             const s = photoSorular[photoIndex];
             document.getElementById('photoQuestionCounter').textContent = `${photoIndex + 1}/${photoSorular.length}`;
             document.getElementById('photoPrompt').textContent = s.prompt || 'Bu görselde ne/kim var?';
-            document.getElementById('photoHint').textContent = s.image ? '' : 'ℹ️ Görsel yakında eklenecek — şimdilik ipucu emojisine bak.';
+            const isEmojiQuiz = !!(secilenPhotoKategori && secilenPhotoKategori.emojiQuiz);
+            document.getElementById('photoHint').textContent = s.image ? '' : (isEmojiQuiz ? '✨ Yukarıdaki emoji neyi temsil ediyor?' : 'ℹ️ Görsel yakında eklenecek — şimdilik ipucu emojisine bak.');
             document.getElementById('photoFeedback').textContent = '';
             document.getElementById('photoFeedback').className = 'photo-feedback';
             const pifb = document.getElementById('photoInlineFeedback');
@@ -7339,14 +7524,14 @@
 
         // Category name translations
         const catNames = {
-            tr: { marvel:'Marvel', dc:'DC', oyun:'Oyun', araba:'Araba', motor:'Motor', yemek:'Yemek', hayvan:'Hayvan', spor:'Spor', teknoloji:'Teknoloji', genelkultur:'Genel Kültür', muzik:'Müzik', sinema:'Sinema', bilim:'Bilim', tarih:'Tarih', sanat:'Sanat', astronomi:'Astronomi', edebiyat:'Edebiyat', cografya:'Coğrafya', siyaset:'Siyaset', saglik:'Sağlık', mitoloji:'Mitoloji', anime:'Anime', futbol:'Futbol', markalar:'Markalar', bayraklar:'Bayraklar', matematik:'Matematik', dizi:'Dizi', moda:'Moda', felsefe:'Felsefe', doga:'Doğa', meyve:'Meyve', tatli:'Tatlı', yemekler:'Yemekler' },
-            en: { marvel:'Marvel', dc:'DC', oyun:'Games', araba:'Cars', motor:'Motorcycles', yemek:'Food', hayvan:'Animals', spor:'Sports', teknoloji:'Technology', genelkultur:'General Knowledge', muzik:'Music', sinema:'Cinema', bilim:'Science', tarih:'History', sanat:'Art', astronomi:'Astronomy', edebiyat:'Literature', cografya:'Geography', siyaset:'Politics', saglik:'Health', mitoloji:'Mythology', anime:'Anime', futbol:'Football', markalar:'Brands', bayraklar:'Flags', matematik:'Mathematics', dizi:'TV Series', moda:'Fashion', felsefe:'Philosophy', doga:'Nature', meyve:'Fruit', tatli:'Dessert', yemekler:'Dishes' },
-            de: { marvel:'Marvel', dc:'DC', oyun:'Spiele', araba:'Autos', motor:'Motorräder', yemek:'Essen', hayvan:'Tiere', spor:'Sport', teknoloji:'Technologie', genelkultur:'Allgemeinwissen', muzik:'Musik', sinema:'Kino', bilim:'Wissenschaft', tarih:'Geschichte', sanat:'Kunst', astronomi:'Astronomie', edebiyat:'Literatur', cografya:'Geographie', siyaset:'Politik', saglik:'Gesundheit', mitoloji:'Mythologie', anime:'Anime', futbol:'Fußball', markalar:'Marken', bayraklar:'Flaggen', matematik:'Mathematik', dizi:'TV-Serien', moda:'Mode', felsefe:'Philosophie', doga:'Natur', meyve:'Obst', tatli:'Nachtisch', yemekler:'Gerichte' },
-            ru: { marvel:'Марвел', dc:'DC', oyun:'Игры', araba:'Авто', motor:'Мотоциклы', yemek:'Еда', hayvan:'Животные', spor:'Спорт', teknoloji:'Технологии', genelkultur:'Общие знания', muzik:'Музыка', sinema:'Кино', bilim:'Наука', tarih:'История', sanat:'Искусство', astronomi:'Астрономия', edebiyat:'Литература', cografya:'География', siyaset:'Политика', saglik:'Здоровье', mitoloji:'Мифология', anime:'Аниме', futbol:'Футбол', markalar:'Бренды', bayraklar:'Флаги', matematik:'Математика', dizi:'Сериалы', moda:'Мода', felsefe:'Философия', doga:'Природа', meyve:'Фрукт', tatli:'Десерт', yemekler:'Блюда' },
-            zh: { marvel:'漫威', dc:'DC', oyun:'游戏', araba:'汽车', motor:'摩托车', yemek:'美食', hayvan:'动物', spor:'体育', teknoloji:'科技', genelkultur:'常识', muzik:'音乐', sinema:'电影', bilim:'科学', tarih:'历史', sanat:'艺术', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神话', anime:'动漫', futbol:'足球', markalar:'品牌', bayraklar:'旗帜', matematik:'数学', dizi:'电视剧', moda:'时尚', felsefe:'哲学', doga:'自然', meyve:'水果', tatli:'甜点', yemekler:'菜肴' },
-            ja: { marvel:'マーベル', dc:'DC', oyun:'ゲーム', araba:'車', motor:'バイク', yemek:'料理', hayvan:'動物', spor:'スポーツ', teknoloji:'テクノロジー', genelkultur:'一般教養', muzik:'音楽', sinema:'映画', bilim:'科学', tarih:'歴史', sanat:'芸術', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神話', anime:'アニメ', futbol:'サッカー', markalar:'ブランド', bayraklar:'国旗', matematik:'数学', dizi:'ドラマ', moda:'ファッション', felsefe:'哲学', doga:'自然', meyve:'フルーツ', tatli:'デザート', yemekler:'料理' },
-            es: { marvel:'Marvel', dc:'DC', oyun:'Juegos', araba:'Coches', motor:'Motos', yemek:'Comida', hayvan:'Animales', spor:'Deportes', teknoloji:'Tecnología', genelkultur:'Cultura General', muzik:'Música', sinema:'Cine', bilim:'Ciencia', tarih:'Historia', sanat:'Arte', astronomi:'Astronomía', edebiyat:'Literatura', cografya:'Geografía', siyaset:'Política', saglik:'Salud', mitoloji:'Mitología', anime:'Anime', futbol:'Fútbol', markalar:'Marcas', bayraklar:'Banderas', matematik:'Matemáticas', dizi:'Series', moda:'Moda', felsefe:'Filosofía', doga:'Naturaleza', meyve:'Fruta', tatli:'Postre', yemekler:'Platos' },
-            ar: { marvel:'مارفل', dc:'DC', oyun:'ألعاب', araba:'سيارات', motor:'دراجات', yemek:'طعام', hayvan:'حيوانات', spor:'رياضة', teknoloji:'تكنولوجيا', genelkultur:'ثقافة عامة', muzik:'موسيقى', sinema:'سينما', bilim:'علوم', tarih:'تاريخ', sanat:'فن', astronomi:'فلك', edebiyat:'أدب', cografya:'جغرافيا', siyaset:'سياسة', saglik:'صحة', mitoloji:'أساطير', anime:'أنمي', futbol:'كرة القدم', markalar:'علامات', bayraklar:'أعلام', matematik:'رياضيات', dizi:'مسلسلات', moda:'أزياء', felsefe:'فلسفة', doga:'طبيعة', meyve:'فاكهة', tatli:'حلوى', yemekler:'أطباق' }
+            tr: { marvel:'Marvel', dc:'DC', oyun:'Oyun', araba:'Araba', motor:'Motor', yemek:'Yemek', hayvan:'Hayvan', spor:'Spor', teknoloji:'Teknoloji', genelkultur:'Genel Kültür', muzik:'Müzik', sinema:'Sinema', bilim:'Bilim', tarih:'Tarih', sanat:'Sanat', astronomi:'Astronomi', edebiyat:'Edebiyat', cografya:'Coğrafya', siyaset:'Siyaset', saglik:'Sağlık', mitoloji:'Mitoloji', anime:'Anime', futbol:'Futbol', markalar:'Markalar', bayraklar:'Bayraklar', matematik:'Matematik', dizi:'Dizi', moda:'Moda', felsefe:'Felsefe', doga:'Doğa', meyve:'Meyve', tatli:'Tatlı', yemekler:'Yemekler', emoji:'Emoji', icecek:'İçecek', kizanime:'Kız Anime' },
+            en: { marvel:'Marvel', dc:'DC', oyun:'Games', araba:'Cars', motor:'Motorcycles', yemek:'Food', hayvan:'Animals', spor:'Sports', teknoloji:'Technology', genelkultur:'General Knowledge', muzik:'Music', sinema:'Cinema', bilim:'Science', tarih:'History', sanat:'Art', astronomi:'Astronomy', edebiyat:'Literature', cografya:'Geography', siyaset:'Politics', saglik:'Health', mitoloji:'Mythology', anime:'Anime', futbol:'Football', markalar:'Brands', bayraklar:'Flags', matematik:'Mathematics', dizi:'TV Series', moda:'Fashion', felsefe:'Philosophy', doga:'Nature', meyve:'Fruit', tatli:'Dessert', yemekler:'Dishes', emoji:'Emoji', icecek:'Drinks', kizanime:'Anime Girls' },
+            de: { marvel:'Marvel', dc:'DC', oyun:'Spiele', araba:'Autos', motor:'Motorräder', yemek:'Essen', hayvan:'Tiere', spor:'Sport', teknoloji:'Technologie', genelkultur:'Allgemeinwissen', muzik:'Musik', sinema:'Kino', bilim:'Wissenschaft', tarih:'Geschichte', sanat:'Kunst', astronomi:'Astronomie', edebiyat:'Literatur', cografya:'Geographie', siyaset:'Politik', saglik:'Gesundheit', mitoloji:'Mythologie', anime:'Anime', futbol:'Fußball', markalar:'Marken', bayraklar:'Flaggen', matematik:'Mathematik', dizi:'TV-Serien', moda:'Mode', felsefe:'Philosophie', doga:'Natur', meyve:'Obst', tatli:'Nachtisch', yemekler:'Gerichte', emoji:'Emoji', icecek:'Getränke', kizanime:'Anime-Mädchen' },
+            ru: { marvel:'Марвел', dc:'DC', oyun:'Игры', araba:'Авто', motor:'Мотоциклы', yemek:'Еда', hayvan:'Животные', spor:'Спорт', teknoloji:'Технологии', genelkultur:'Общие знания', muzik:'Музыка', sinema:'Кино', bilim:'Наука', tarih:'История', sanat:'Искусство', astronomi:'Астрономия', edebiyat:'Литература', cografya:'География', siyaset:'Политика', saglik:'Здоровье', mitoloji:'Мифология', anime:'Аниме', futbol:'Футбол', markalar:'Бренды', bayraklar:'Флаги', matematik:'Математика', dizi:'Сериалы', moda:'Мода', felsefe:'Философия', doga:'Природа', meyve:'Фрукт', tatli:'Десерт', yemekler:'Блюда', emoji:'Эмодзи', icecek:'Напитки', kizanime:'Аниме-девушки' },
+            zh: { marvel:'漫威', dc:'DC', oyun:'游戏', araba:'汽车', motor:'摩托车', yemek:'美食', hayvan:'动物', spor:'体育', teknoloji:'科技', genelkultur:'常识', muzik:'音乐', sinema:'电影', bilim:'科学', tarih:'历史', sanat:'艺术', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神话', anime:'动漫', futbol:'足球', markalar:'品牌', bayraklar:'旗帜', matematik:'数学', dizi:'电视剧', moda:'时尚', felsefe:'哲学', doga:'自然', meyve:'水果', tatli:'甜点', yemekler:'菜肴', emoji:'表情', icecek:'饮料', kizanime:'动漫女孩' },
+            ja: { marvel:'マーベル', dc:'DC', oyun:'ゲーム', araba:'車', motor:'バイク', yemek:'料理', hayvan:'動物', spor:'スポーツ', teknoloji:'テクノロジー', genelkultur:'一般教養', muzik:'音楽', sinema:'映画', bilim:'科学', tarih:'歴史', sanat:'芸術', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神話', anime:'アニメ', futbol:'サッカー', markalar:'ブランド', bayraklar:'国旗', matematik:'数学', dizi:'ドラマ', moda:'ファッション', felsefe:'哲学', doga:'自然', meyve:'フルーツ', tatli:'デザート', yemekler:'料理', emoji:'絵文字', icecek:'飲み物', kizanime:'アニメ女子' },
+            es: { marvel:'Marvel', dc:'DC', oyun:'Juegos', araba:'Coches', motor:'Motos', yemek:'Comida', hayvan:'Animales', spor:'Deportes', teknoloji:'Tecnología', genelkultur:'Cultura General', muzik:'Música', sinema:'Cine', bilim:'Ciencia', tarih:'Historia', sanat:'Arte', astronomi:'Astronomía', edebiyat:'Literatura', cografya:'Geografía', siyaset:'Política', saglik:'Salud', mitoloji:'Mitología', anime:'Anime', futbol:'Fútbol', markalar:'Marcas', bayraklar:'Banderas', matematik:'Matemáticas', dizi:'Series', moda:'Moda', felsefe:'Filosofía', doga:'Naturaleza', meyve:'Fruta', tatli:'Postre', yemekler:'Platos', emoji:'Emojis', icecek:'Bebidas', kizanime:'Chicas Anime' },
+            ar: { marvel:'مارفل', dc:'DC', oyun:'ألعاب', araba:'سيارات', motor:'دراجات', yemek:'طعام', hayvan:'حيوانات', spor:'رياضة', teknoloji:'تكنولوجيا', genelkultur:'ثقافة عامة', muzik:'موسيقى', sinema:'سينما', bilim:'علوم', tarih:'تاريخ', sanat:'فن', astronomi:'فلك', edebiyat:'أدب', cografya:'جغرافيا', siyaset:'سياسة', saglik:'صحة', mitoloji:'أساطير', anime:'أنمي', futbol:'كرة القدم', markalar:'علامات', bayraklar:'أعلام', matematik:'رياضيات', dizi:'مسلسلات', moda:'أزياء', felsefe:'فلسفة', doga:'طبيعة', meyve:'فاكهة', tatli:'حلوى', yemekler:'أطباق', emoji:'إيموجي', icecek:'مشروبات', kizanime:'فتاة أنمي' }
         };
 
         const catSubtitles = {
@@ -7803,6 +7988,6 @@
     </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1d45ebd4aab23f6',t:'MTc4NDQwNzk0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1d45ebd4aab23f6',t:'MTc4NDQwNzk0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1daf05fc9ac1d60',t:'MTc4NDQ3NjgyNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
