@@ -82,9 +82,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .back-btn:hover {
@@ -102,10 +110,12 @@
             background: rgba(0, 210, 255, 0.12);
             filter: brightness(1.15);
         }
+
         .category-card:hover .category-icon {
             filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
             transform: scale(1.1);
         }
+
         .category-card:hover .category-title {
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
@@ -116,10 +126,12 @@
             box-shadow: 0 0 35px rgba(138, 43, 226, 0.5), 0 0 70px rgba(0, 210, 255, 0.2), inset 0 0 30px rgba(138, 43, 226, 0.1);
             background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(138, 43, 226, 0.15));
         }
+
         .difficulty-card:hover .difficulty-icon {
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
             transform: scale(1.15);
         }
+
         .difficulty-card:hover .difficulty-title {
             text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
@@ -370,9 +382,18 @@
             transition: width 0.5s ease;
         }
 
-        .rank-dropdown-item.locked .rank-dropdown-icon { opacity: 0.4; filter: grayscale(0.5); }
-        .rank-dropdown-item.locked .rank-dropdown-name { color: #777; }
-        .rank-dropdown-item.active .rank-dropdown-icon { filter: drop-shadow(0 0 8px currentColor); }
+        .rank-dropdown-item.locked .rank-dropdown-icon {
+            opacity: 0.4;
+            filter: grayscale(0.5);
+        }
+
+        .rank-dropdown-item.locked .rank-dropdown-name {
+            color: #777;
+        }
+
+        .rank-dropdown-item.active .rank-dropdown-icon {
+            filter: drop-shadow(0 0 8px currentColor);
+        }
 
 
         .rank-item {
@@ -1382,8 +1403,17 @@
         }
 
         @keyframes astroFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.35; }
-            50% { transform: translateY(-40px) rotate(12deg) scale(1.15); opacity: 0.55; }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(12deg) scale(1.15);
+                opacity: 0.55;
+            }
         }
 
         .theme-edebiyat {
@@ -1398,8 +1428,15 @@
         }
 
         @keyframes bookFloat {
-            0%, 100% { transform: translateY(0) rotate(-6deg); }
-            50% { transform: translateY(-35px) rotate(6deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-6deg);
+            }
+
+            50% {
+                transform: translateY(-35px) rotate(6deg);
+            }
         }
 
         .theme-cografya {
@@ -1414,9 +1451,19 @@
         }
 
         @keyframes geoDrift {
-            0% { left: -80px; transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(8deg); }
-            100% { left: calc(100% + 80px); transform: translateY(0) rotate(0deg); }
+            0% {
+                left: -80px;
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(8deg);
+            }
+
+            100% {
+                left: calc(100% + 80px);
+                transform: translateY(0) rotate(0deg);
+            }
         }
 
         .theme-siyaset {
@@ -1431,8 +1478,17 @@
         }
 
         @keyframes politicPulse {
-            0%, 100% { transform: scale(1) translateY(0); opacity: 0.3; }
-            50% { transform: scale(1.18) translateY(-25px); opacity: 0.5; }
+
+            0%,
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.18) translateY(-25px);
+                opacity: 0.5;
+            }
         }
 
         .theme-saglik {
@@ -1447,8 +1503,15 @@
         }
 
         @keyframes healthBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-45px) scale(1.12); }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-45px) scale(1.12);
+            }
         }
 
         /* ===== 10 YENİ KATEGORİ ANİMASYONLU ARKA PLANLARI ===== */
@@ -1465,8 +1528,15 @@
         }
 
         @keyframes mythFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-35px) rotate(8deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-35px) rotate(8deg);
+            }
         }
 
         .theme-anime {
@@ -1481,8 +1551,15 @@
         }
 
         @keyframes animeFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-40px) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-40px) scale(1.1);
+            }
         }
 
         .theme-futbol {
@@ -1497,8 +1574,15 @@
         }
 
         @keyframes futbolBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-50px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-50px);
+            }
         }
 
         .theme-markalar {
@@ -1513,8 +1597,17 @@
         }
 
         @keyframes brandPulse {
-            0%, 100% { transform: scale(1); opacity: 0.35; }
-            50% { transform: scale(1.15); opacity: 0.5; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.5;
+            }
         }
 
         .theme-bayraklar {
@@ -1529,8 +1622,15 @@
         }
 
         @keyframes flagWave {
-            0%, 100% { transform: rotate(-5deg) translateY(0); }
-            50% { transform: rotate(5deg) translateY(-25px); }
+
+            0%,
+            100% {
+                transform: rotate(-5deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(5deg) translateY(-25px);
+            }
         }
 
         .theme-matematik {
@@ -1545,9 +1645,17 @@
         }
 
         @keyframes mathSpin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
         }
 
         .theme-dizi {
@@ -1562,8 +1670,15 @@
         }
 
         @keyframes seriesFloat {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(10px) translateY(-30px); }
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            50% {
+                transform: translateX(10px) translateY(-30px);
+            }
         }
 
         .theme-moda {
@@ -1578,8 +1693,15 @@
         }
 
         @keyframes fashionFloat {
-            0%, 100% { transform: translateY(0) rotate(-4deg); }
-            50% { transform: translateY(-35px) rotate(4deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-4deg);
+            }
+
+            50% {
+                transform: translateY(-35px) rotate(4deg);
+            }
         }
 
         .theme-felsefe {
@@ -1594,8 +1716,17 @@
         }
 
         @keyframes philoFloat {
-            0%, 100% { transform: translateY(0); opacity: 0.35; }
-            50% { transform: translateY(-30px); opacity: 0.5; }
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: translateY(-30px);
+                opacity: 0.5;
+            }
         }
 
         .theme-doga {
@@ -1610,8 +1741,15 @@
         }
 
         @keyframes natureFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-40px) scale(1.08); }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-40px) scale(1.08);
+            }
         }
 
 
@@ -1651,6 +1789,7 @@
             border-color: #8a2be2;
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(0, 210, 255, 0.2), 0 20px 45px rgba(0, 0, 0, 0.3);
         }
+
         .mode-card:hover .mode-card-icon {
             filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.5));
             transform: scale(1.1);
@@ -1831,6 +1970,7 @@
             padding: 16px 18px;
             text-align: center;
         }
+
         .photo-count-box label {
             display: block;
             color: #a0d0ff;
@@ -1838,12 +1978,14 @@
             margin-bottom: 10px;
             font-weight: 600;
         }
+
         .photo-count-row {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
         }
+
         .photo-count-input {
             width: 110px;
             background: rgba(0, 0, 0, 0.35);
@@ -1857,16 +1999,19 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             outline: none;
         }
+
         .photo-count-input:focus {
             border-color: #8a2be2;
             box-shadow: 0 0 18px rgba(138, 43, 226, 0.3);
         }
+
         .photo-count-max {
             color: #00d2ff;
             font-size: 16px;
             font-weight: 800;
             white-space: nowrap;
         }
+
         .photo-count-error {
             color: #ff6b6b;
             font-size: 13px;
@@ -2159,6 +2304,7 @@
             box-shadow: 0 0 25px rgba(138, 43, 226, 0.5), 0 0 50px rgba(0, 210, 255, 0.2), 0 18px 40px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.12), rgba(0, 210, 255, 0.08));
         }
+
         .category-card.selected .category-icon {
             filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.5));
         }
@@ -2359,6 +2505,7 @@
             border-color: #8a2be2;
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(0, 210, 255, 0.15), inset 0 0 20px rgba(138, 43, 226, 0.08);
         }
+
         .difficulty-card.selected .difficulty-icon {
             filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.5));
         }
@@ -3032,8 +3179,13 @@
             scrollbar-width: none;
         }
 
-        .lang-dropdown-panel::-webkit-scrollbar { display: none; }
-        .lang-dropdown-panel.show { display: block; }
+        .lang-dropdown-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .lang-dropdown-panel.show {
+            display: block;
+        }
 
         .lang-dropdown-item {
             display: flex;
@@ -3076,10 +3228,12 @@
             transition: all 0.3s;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
+
         .lang-save-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
         }
+
         .lang-save-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
@@ -3106,14 +3260,17 @@
             gap: 8px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
+
         .sound-toggle-btn:hover {
             border-color: #8a2be2;
             transform: translateX(-50%) translateY(-2px);
         }
+
         .sound-toggle-btn.muted {
             color: #ff6b6b;
             border-color: rgba(255, 107, 107, 0.4);
         }
+
         .sound-toggle-label {
             font-size: 13px;
             font-weight: 600;
@@ -3133,11 +3290,13 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .answer-mode-label {
             color: #a0d0ff;
             font-size: 15px;
             font-weight: 600;
         }
+
         .answer-mode-option {
             background: rgba(0, 0, 0, 0.3);
             border: 2px solid #00d2ff;
@@ -3149,10 +3308,12 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .answer-mode-option:hover {
             border-color: #8a2be2;
             background: rgba(0, 210, 255, 0.1);
         }
+
         .answer-mode-option.selected {
             background: linear-gradient(135deg, #00d2ff, #3a7bd5);
             color: #fff;
@@ -3169,11 +3330,13 @@
             text-align: center;
             animation: slideUp 0.3s ease;
         }
+
         .inline-feedback.correct {
             background: rgba(76, 175, 80, 0.15);
             border: 2px solid #4caf50;
             color: #4caf50;
         }
+
         .inline-feedback.wrong {
             background: rgba(255, 107, 107, 0.15);
             border: 2px solid #ff6b6b;
@@ -3185,6 +3348,7 @@
             background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(138, 43, 226, 0.15));
             border-color: #8a2be2;
         }
+
         .difficulty-card--suretextures:hover {
             box-shadow: 0 0 50px rgba(138, 43, 226, 0.5), 0 0 100px rgba(0, 210, 255, 0.2);
         }
@@ -3206,8 +3370,15 @@
         }
 
         @keyframes genderFloat {
-            0%, 100% { transform: translateY(0px) rotate(-4deg); }
-            50% { transform: translateY(-35px) rotate(4deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-4deg);
+            }
+
+            50% {
+                transform: translateY(-35px) rotate(4deg);
+            }
         }
 
         body.gender-male .screen {
@@ -3272,8 +3443,15 @@
         }
 
         @keyframes emojiFloat {
-            0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); }
-            50% { transform: translateY(-32px) rotate(6deg) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-6deg) scale(1);
+            }
+
+            50% {
+                transform: translateY(-32px) rotate(6deg) scale(1.1);
+            }
         }
 
         .theme-icecek {
@@ -3288,8 +3466,15 @@
         }
 
         @keyframes drinkFloat {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
         }
 
         /* ===== YOUTUBER TEMASI ===== */
@@ -3318,17 +3503,49 @@
 
         /* SCREEN SHAKE */
         @keyframes shakeScreen {
-            0%, 100% { transform: translateX(0); }
-            10% { transform: translateX(-8px) rotate(-0.5deg); }
-            20% { transform: translateX(8px) rotate(0.5deg); }
-            30% { transform: translateX(-6px) rotate(-0.3deg); }
-            40% { transform: translateX(6px) rotate(0.3deg); }
-            50% { transform: translateX(-4px); }
-            60% { transform: translateX(4px); }
-            70% { transform: translateX(-2px); }
-            80% { transform: translateX(2px); }
-            90% { transform: translateX(-1px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10% {
+                transform: translateX(-8px) rotate(-0.5deg);
+            }
+
+            20% {
+                transform: translateX(8px) rotate(0.5deg);
+            }
+
+            30% {
+                transform: translateX(-6px) rotate(-0.3deg);
+            }
+
+            40% {
+                transform: translateX(6px) rotate(0.3deg);
+            }
+
+            50% {
+                transform: translateX(-4px);
+            }
+
+            60% {
+                transform: translateX(4px);
+            }
+
+            70% {
+                transform: translateX(-2px);
+            }
+
+            80% {
+                transform: translateX(2px);
+            }
+
+            90% {
+                transform: translateX(-1px);
+            }
         }
+
         .shake {
             animation: shakeScreen 0.5s ease-in-out;
         }
@@ -3359,7 +3576,10 @@
                 <div class="rank-dropdown-info">
                     <div class="rank-dropdown-name" style="color:#cd7f32;" id="rankDropBronzName">BRONZ</div>
                     <div class="rank-dropdown-req" id="rankDropBronzReq">200 Puan</div>
-                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarBronz" style="width:0%;background:linear-gradient(90deg,#cd7f32,#daa520);"></div></div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarBronz"
+                            style="width:0%;background:linear-gradient(90deg,#cd7f32,#daa520);"></div>
+                    </div>
                 </div>
             </div>
             <div class="rank-dropdown-item locked" id="rankDropGumus">
@@ -3367,7 +3587,10 @@
                 <div class="rank-dropdown-info">
                     <div class="rank-dropdown-name" style="color:#c0c0c0;" id="rankDropGumusName">GÜMÜŞ</div>
                     <div class="rank-dropdown-req" id="rankDropGumusReq">400 Puan</div>
-                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarGumus" style="width:0%;background:linear-gradient(90deg,#c0c0c0,#e0e0e0);"></div></div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarGumus"
+                            style="width:0%;background:linear-gradient(90deg,#c0c0c0,#e0e0e0);"></div>
+                    </div>
                 </div>
             </div>
             <div class="rank-dropdown-item locked" id="rankDropAltin">
@@ -3375,7 +3598,10 @@
                 <div class="rank-dropdown-info">
                     <div class="rank-dropdown-name" style="color:#ffd700;" id="rankDropAltinName">ALTIN</div>
                     <div class="rank-dropdown-req" id="rankDropAltinReq">600 Puan</div>
-                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarAltin" style="width:0%;background:linear-gradient(90deg,#ffd700,#ffec80);"></div></div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarAltin"
+                            style="width:0%;background:linear-gradient(90deg,#ffd700,#ffec80);"></div>
+                    </div>
                 </div>
             </div>
             <div class="rank-dropdown-item locked" id="rankDropElmas">
@@ -3383,11 +3609,15 @@
                 <div class="rank-dropdown-info">
                     <div class="rank-dropdown-name" style="color:#00d2ff;" id="rankDropElmasName">ELMAS</div>
                     <div class="rank-dropdown-req" id="rankDropElmasReq">800 Puan</div>
-                    <div class="rank-dropdown-bar"><div class="rank-dropdown-bar-fill" id="rankBarElmas" style="width:0%;background:linear-gradient(90deg,#00d2ff,#8a2be2);"></div></div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarElmas"
+                            style="width:0%;background:linear-gradient(90deg,#00d2ff,#8a2be2);"></div>
+                    </div>
                 </div>
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
-                <span style="color:#7eb8ff;font-size:12px;" id="rankPtsPerLabel">Kolay: 10p • Orta: 20p • Zor: 30p</span>
+                <span style="color:#7eb8ff;font-size:12px;" id="rankPtsPerLabel">Kolay: 10p • Orta: 20p • Zor:
+                    30p</span>
             </div>
         </div>
     </div>
@@ -3574,9 +3804,12 @@
                         </div>
                         <div style="grid-column:span 2;" class="input-wrapper"><label>⚥ Cinsiyet</label>
                             <div class="gender-group" id="genderGroup" role="group" aria-label="Cinsiyet">
-                                <button type="button" class="gender-option" data-gender="erkek" id="genderErkek">👨 Erkek</button>
-                                <button type="button" class="gender-option" data-gender="kadin" id="genderKadin">👩 Kadın</button>
-                                <button type="button" class="gender-option" data-gender="yok" id="genderYok">⚧ Belirtmiyorum</button>
+                                <button type="button" class="gender-option" data-gender="erkek" id="genderErkek">👨
+                                    Erkek</button>
+                                <button type="button" class="gender-option" data-gender="kadin" id="genderKadin">👩
+                                    Kadın</button>
+                                <button type="button" class="gender-option" data-gender="yok" id="genderYok">⚧
+                                    Belirtmiyorum</button>
                             </div>
                             <div class="error-message" id="genderError"></div>
                         </div>
@@ -3588,15 +3821,24 @@
                                 <span style="opacity:0.5;font-size:14px;">▼</span>
                             </div>
                             <div class="lang-dropdown-panel" id="langDropdownPanel">
-                                <div class="lang-dropdown-item selected" onclick="selectLangOption('tr')" data-lang="tr"><span class="lang-flag">🇹🇷</span> Türkçe</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('en')" data-lang="en"><span class="lang-flag">🇬🇧</span> English</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('de')" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('ru')" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('zh')" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('ja')" data-lang="ja"><span class="lang-flag">🇯🇵</span> 日本語</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('es')" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</div>
-                                <div class="lang-dropdown-item" onclick="selectLangOption('ar')" data-lang="ar"><span class="lang-flag">🇸🇦</span> العربية</div>
-                                <div style="padding:8px 10px 4px;"><button class="lang-save-btn" id="langSaveBtn" onclick="saveLanguage()" disabled>💾 Kaydet</button></div>
+                                <div class="lang-dropdown-item selected" onclick="selectLangOption('tr')"
+                                    data-lang="tr"><span class="lang-flag">🇹🇷</span> Türkçe</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('en')" data-lang="en"><span
+                                        class="lang-flag">🇬🇧</span> English</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('de')" data-lang="de"><span
+                                        class="lang-flag">🇩🇪</span> Deutsch</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ru')" data-lang="ru"><span
+                                        class="lang-flag">🇷🇺</span> Русский</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('zh')" data-lang="zh"><span
+                                        class="lang-flag">🇨🇳</span> 中文</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ja')" data-lang="ja"><span
+                                        class="lang-flag">🇯🇵</span> 日本語</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('es')" data-lang="es"><span
+                                        class="lang-flag">🇪🇸</span> Español</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ar')" data-lang="ar"><span
+                                        class="lang-flag">🇸🇦</span> العربية</div>
+                                <div style="padding:8px 10px 4px;"><button class="lang-save-btn" id="langSaveBtn"
+                                        onclick="saveLanguage()" disabled>💾 Kaydet</button></div>
                             </div>
                         </div>
                     </div>
@@ -3645,7 +3887,8 @@
             </div>
             <div class="categories-grid" id="photoCategoryGrid"></div>
             <div class="button-group">
-                <button class="primary-btn" id="photoCategoryNextBtn" onclick="goToPhotoDifficulty()" disabled>Zorluk Seç →</button>
+                <button class="primary-btn" id="photoCategoryNextBtn" onclick="goToPhotoDifficulty()" disabled>Zorluk
+                    Seç →</button>
             </div>
         </div>
 
@@ -3662,18 +3905,22 @@
             <div class="photo-count-box" id="photoCountBox">
                 <label for="photoQuestionCountInput">Soru sayısı seç</label>
                 <div class="photo-count-row">
-                    <input class="photo-count-input" id="photoQuestionCountInput" type="number" min="1" max="30" value="10" inputmode="numeric">
+                    <input class="photo-count-input" id="photoQuestionCountInput" type="number" min="1" max="30"
+                        value="10" inputmode="numeric">
                     <div class="photo-count-max" id="photoCountMaxLabel">/ max 30</div>
                 </div>
                 <div class="photo-count-error" id="photoCountError"></div>
             </div>
             <div class="answer-mode-box" id="photoAnswerModeBox">
                 <span class="answer-mode-label" id="photoAnswerModeLabel">📋 Cevaplar:</span>
-                <div class="answer-mode-option selected" id="photoAnsModeInstant" onclick="setPhotoAnswerMode('instant')">⚡ Hemen Göster</div>
-                <div class="answer-mode-option" id="photoAnsModeEnd" onclick="setPhotoAnswerMode('end')">🏁 Sonda Göster</div>
+                <div class="answer-mode-option selected" id="photoAnsModeInstant"
+                    onclick="setPhotoAnswerMode('instant')">⚡ Hemen Göster</div>
+                <div class="answer-mode-option" id="photoAnsModeEnd" onclick="setPhotoAnswerMode('end')">🏁 Sonda Göster
+                </div>
             </div>
             <div class="button-group">
-                <button class="primary-btn" id="photoDifficultyNextBtn" onclick="startPhotoTest()" disabled>🚀 Teste Başla</button>
+                <button class="primary-btn" id="photoDifficultyNextBtn" onclick="startPhotoTest()" disabled>🚀 Teste
+                    Başla</button>
             </div>
         </div>
 
@@ -3691,7 +3938,8 @@
                         <div style="color:#00d2ff; font-size:28px;" id="photoDifficultyDisplay"></div>
                         <div style="color:#a0d0ff;" id="photoQuestionCounter">1/10</div>
                     </div>
-                    <button class="nav-btn skip-btn" onclick="showPhotoExitConfirm()" title="Testten Çık">🚪 Çık</button>
+                    <button class="nav-btn skip-btn" onclick="showPhotoExitConfirm()" title="Testten Çık">🚪
+                        Çık</button>
                 </div>
             </div>
             <div class="timer-section">
@@ -3707,13 +3955,15 @@
                 </div>
                 <div class="photo-prompt" id="photoPrompt">Bu karakterin ismi nedir?</div>
                 <div class="photo-hint" id="photoHint"></div>
-                <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..." autocomplete="off" autocapitalize="words">
+                <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..."
+                    autocomplete="off" autocapitalize="words">
                 <div class="photo-feedback" id="photoFeedback"></div>
                 <div class="inline-feedback" id="photoInlineFeedback" style="display:none;"></div>
             </div>
             <div class="nav-buttons">
                 <button class="nav-btn" id="photoPrevBtn" onclick="photoPreviousQuestion()" disabled>← Önceki</button>
-                <button class="nav-btn" id="photoReturnSkippedBtn" onclick="photoReturnToSkipped()" disabled>↩️ Boş Bırakılan Soruya Dön</button>
+                <button class="nav-btn" id="photoReturnSkippedBtn" onclick="photoReturnToSkipped()" disabled>↩️ Boş
+                    Bırakılan Soruya Dön</button>
                 <button class="nav-btn skip-btn" id="photoSkipBtn" onclick="photoSkipQuestion()">⏭️ Boş Bırak</button>
                 <button class="primary-btn" id="photoNextBtn" onclick="photoNextQuestion()" disabled>Sonraki →</button>
             </div>
@@ -3758,7 +4008,8 @@
                 <div style="width:80px;"></div>
             </div>
             <div class="categories-grid" id="categoryGrid"></div>
-            <div class="button-group"><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()" disabled>Zorluk Seç →</button></div>
+            <div class="button-group"><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()"
+                    disabled>Zorluk Seç →</button></div>
         </div>
         <div class="screen" id="difficultyScreen" style="display:none;">
             <div style="display:flex; align-items:center; margin-bottom:25px;">
@@ -3770,11 +4021,13 @@
             <div class="difficulty-centered" id="difficultyContainer"></div>
             <div class="answer-mode-box" id="answerModeBox">
                 <span class="answer-mode-label" id="answerModeLabel">📋 Cevaplar:</span>
-                <div class="answer-mode-option selected" id="ansModeInstant" onclick="setAnswerMode('instant')">⚡ Hemen Göster</div>
+                <div class="answer-mode-option selected" id="ansModeInstant" onclick="setAnswerMode('instant')">⚡ Hemen
+                    Göster</div>
                 <div class="answer-mode-option" id="ansModeEnd" onclick="setAnswerMode('end')">🏁 Sonda Göster</div>
             </div>
-            <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">← Kategoriler</button><button
-                    class="primary-btn" id="difficultyNextBtn" onclick="startTest()" disabled>🚀 Teste Başla</button>
+            <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">←
+                    Kategoriler</button><button class="primary-btn" id="difficultyNextBtn" onclick="startTest()"
+                    disabled>🚀 Teste Başla</button>
             </div>
         </div>
         <div class="screen" id="testScreen" style="display:none;">
@@ -4561,7 +4814,7 @@
                 if (soundEnabled && !isInTest && !musicPlaying) {
                     try {
                         audioCtx.resume().then(() => startBgMusic());
-                    } catch(e) {
+                    } catch (e) {
                         // If AudioContext blocked, wait for first interaction
                         document.addEventListener('click', function resumeMusic() {
                             if (soundEnabled && !isInTest && !musicPlaying) {
@@ -4751,7 +5004,7 @@
 
             // Language dropdown label
             const langLabel = document.getElementById('langDropdownLabel');
-            if (langLabel) langLabel.textContent = '🌍 ' + t('dilSecTitle').replace('🌍 ','');
+            if (langLabel) langLabel.textContent = '🌍 ' + t('dilSecTitle').replace('🌍 ', '');
 
             // Sound toggle
             const soundLabel = document.getElementById('soundLabel');
@@ -4791,7 +5044,7 @@
         }
 
         // Load saved language
-        (function() {
+        (function () {
             const saved = localStorage.getItem('matex_language');
             if (saved && T[saved]) {
                 currentLanguage = saved;
@@ -6092,8 +6345,8 @@
         }
 
         let pendingLang = null;
-        const LANG_FLAGS = { tr:'🇹🇷', en:'🇬🇧', de:'🇩🇪', ru:'🇷🇺', zh:'🇨🇳', ja:'🇯🇵', es:'🇪🇸', ar:'🇸🇦' };
-        const LANG_NAMES = { tr:'Türkçe', en:'English', de:'Deutsch', ru:'Русский', zh:'中文', ja:'日本語', es:'Español', ar:'العربية' };
+        const LANG_FLAGS = { tr: '🇹🇷', en: '🇬🇧', de: '🇩🇪', ru: '🇷🇺', zh: '🇨🇳', ja: '🇯🇵', es: '🇪🇸', ar: '🇸🇦' };
+        const LANG_NAMES = { tr: 'Türkçe', en: 'English', de: 'Deutsch', ru: 'Русский', zh: '中文', ja: '日本語', es: 'Español', ar: 'العربية' };
 
         function selectLangOption(langCode) {
             pendingLang = langCode;
@@ -6156,7 +6409,7 @@
                 const el = document.getElementById(dropIds[i]);
                 if (!el) return;
                 const threshold = thresholds[i];
-                const prevThreshold = i > 0 ? thresholds[i-1] : 0;
+                const prevThreshold = i > 0 ? thresholds[i - 1] : 0;
                 const progress = Math.min(100, Math.max(0, ((tp - prevThreshold) / (threshold - prevThreshold)) * 100));
                 const bar = document.getElementById(barIds[i]);
                 if (bar) bar.style.width = (tp >= threshold ? 100 : progress) + '%';
@@ -6239,7 +6492,7 @@
                     osc2.start();
                     osc2.stop(audioCtx.currentTime + 0.7);
                     noteIdx++;
-                } catch(e) {}
+                } catch (e) { }
             }
 
             playNote();
@@ -6286,7 +6539,7 @@
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 osc.start();
                 osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {}
+            } catch (e) { }
         }
 
         function playCorrectSound() {
@@ -6310,7 +6563,7 @@
 
 
         // ===== GLOBAL CLICK SOUND (not during tests) =====
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (isInTest || !soundEnabled) return;
             const target = e.target;
             // Play click for interactive elements
@@ -6326,7 +6579,7 @@
         }, true);
 
         // Load saved sound preference
-        (function() {
+        (function () {
             const saved = localStorage.getItem('matex_sound');
             if (saved === '0') {
                 soundEnabled = false;
@@ -6607,31 +6860,31 @@
                 { prompt: 'Bu karakterin ismi nedir?', answers: ['daredevil', 'dare devil', 'matt murdock', 'kor seytan', 'kör şeytan', 'kor şeytan', 'kör seytan'], label: 'Daredevil', emoji: '🔴', image: 'marvel_30.png' }
             ],
             'photo-dc': [
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["batman", "betmen", "bat man", "bruce wayne", "bruce veyn", "bruce wain"], label: "Batman", emoji: '🦇', image: 'dc_01.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["superman", "süpermen", "supermen", "süper adam", "clark kent", "klark kent"], label: "Superman", emoji: '🦸‍♂️', image: 'dc_02.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["lex luthor", "leks lutır", "leks lutor", "lex luthur"], label: "Lex Luthor", emoji: '🧪', image: 'dc_03.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["joker", "coker", "caker"], label: "Joker", emoji: '🃏', image: 'dc_04.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["green arrow", "grin arov", "yeşil ok", "yesil ok", "oliver queen"], label: "Green Arrow", emoji: '🏹', image: 'dc_05.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["supergirl", "süperkız", "superkiz", "super kiz", "süper kız", "kara zor-el", "kara danvers"], label: "Supergirl", emoji: '🦸‍♀️', image: 'dc_06.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["darkseid", "darkseyd", "dark seid"], label: "Darkseid", emoji: '🌑', image: 'dc_07.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["alfred pennyworth", "alfred", "alfred penniworth"], label: "Alfred Pennyworth", emoji: '🕴️', image: 'dc_08.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["aquaman", "akuamen", "aqua man", "arthur curry"], label: "Aquaman", emoji: '🌊', image: 'dc_09.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["flash", "fılaş", "the flash", "barry allen", "beri alın", "berry allen"], label: "Flash", emoji: '⚡', image: 'dc_10.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["wonder woman", "vonder vuman", "wonderwoman", "diana prince", "diyana prens", "harika kadın", "harika kadin"], label: "Wonder Woman", emoji: '🛡️', image: 'dc_11.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["deathstroke", "det strok", "dedstrok", "slade wilson"], label: "Deathstroke", emoji: '⚔️', image: 'dc_12.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["krypto", "crypto", "superdog", "kripto"], label: "Krypto", emoji: '🐶', image: 'dc_13.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["two-face", "two face", "tu feys", "harvey dent", "iki yüz", "ikiyüz", "ikiyuz"], label: "Two-Face", emoji: '🎭', image: 'dc_14.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["blue beetle", "bluebeetle", "mavi böcek", "mavi bocek", "jaime reyes"], label: "Blue Beetle", emoji: '🪲', image: 'dc_15.png' },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["black adam", "blek adam"], label: "Black Adam", emoji: "⚡", image: "dc_16.png" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["deadshot", "detşot", "det shot", "floyd lawton"], label: "Deadshot", emoji: "🎯", image: "dc_17.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["mr freeze", "mister freeze", "bay freeze", "victor fries"], label: "Mr. Freeze", emoji: "❄️", image: "dc_18.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["catwoman", "cat woman", "kedi kadın", "kedi kadin", "selina kyle"], label: "Catwoman", emoji: "🐈", image: "dc_19.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["penguin", "penguen", "oswald cobblepot"], label: "Penguin", emoji: "🐧", image: "dc_20.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["green lantern", "green latern", "yeşil fener", "yesil fener", "hal jordan"], label: "Green Lantern", emoji: "💚", image: "dc_21.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["king shark", "kingşark", "kral köpekbalığı", "kral kopekbaligi", "nanaue"], label: "King Shark", emoji: "🦈", image: "dc_22.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["peacemaker", "peace maker"], label: "Peacemaker", emoji: "🕊️", image: "dc_23.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["harley quinn", "harley", "harli kvin", "harleen quinzel"], label: "Harley Quinn", emoji: "🃏", image: "dc_24.jpg" },
-{ prompt: 'Bu karakterin ismi nedir?', answers: ["atom", "the atom", "ray palmer"], label: "Atom", emoji: "⚛️", image: "dc_25.jpg" },          
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["batman", "betmen", "bat man", "bruce wayne", "bruce veyn", "bruce wain"], label: "Batman", emoji: '🦇', image: 'dc_01.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["superman", "süpermen", "supermen", "süper adam", "clark kent", "klark kent"], label: "Superman", emoji: '🦸‍♂️', image: 'dc_02.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["lex luthor", "leks lutır", "leks lutor", "lex luthur"], label: "Lex Luthor", emoji: '🧪', image: 'dc_03.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["joker", "coker", "caker"], label: "Joker", emoji: '🃏', image: 'dc_04.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["green arrow", "grin arov", "yeşil ok", "yesil ok", "oliver queen"], label: "Green Arrow", emoji: '🏹', image: 'dc_05.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["supergirl", "süperkız", "superkiz", "super kiz", "süper kız", "kara zor-el", "kara danvers"], label: "Supergirl", emoji: '🦸‍♀️', image: 'dc_06.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["darkseid", "darkseyd", "dark seid"], label: "Darkseid", emoji: '🌑', image: 'dc_07.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["alfred pennyworth", "alfred", "alfred penniworth"], label: "Alfred Pennyworth", emoji: '🕴️', image: 'dc_08.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["aquaman", "akuamen", "aqua man", "arthur curry"], label: "Aquaman", emoji: '🌊', image: 'dc_09.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["flash", "fılaş", "the flash", "barry allen", "beri alın", "berry allen"], label: "Flash", emoji: '⚡', image: 'dc_10.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["wonder woman", "vonder vuman", "wonderwoman", "diana prince", "diyana prens", "harika kadın", "harika kadin"], label: "Wonder Woman", emoji: '🛡️', image: 'dc_11.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["deathstroke", "det strok", "dedstrok", "slade wilson"], label: "Deathstroke", emoji: '⚔️', image: 'dc_12.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["krypto", "crypto", "superdog", "kripto"], label: "Krypto", emoji: '🐶', image: 'dc_13.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["two-face", "two face", "tu feys", "harvey dent", "iki yüz", "ikiyüz", "ikiyuz"], label: "Two-Face", emoji: '🎭', image: 'dc_14.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["blue beetle", "bluebeetle", "mavi böcek", "mavi bocek", "jaime reyes"], label: "Blue Beetle", emoji: '🪲', image: 'dc_15.png' },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["black adam", "blek adam"], label: "Black Adam", emoji: "⚡", image: "dc_16.png" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["deadshot", "detşot", "det shot", "floyd lawton"], label: "Deadshot", emoji: "🎯", image: "dc_17.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["mr freeze", "mister freeze", "bay freeze", "victor fries"], label: "Mr. Freeze", emoji: "❄️", image: "dc_18.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["catwoman", "cat woman", "kedi kadın", "kedi kadin", "selina kyle"], label: "Catwoman", emoji: "🐈", image: "dc_19.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["penguin", "penguen", "oswald cobblepot"], label: "Penguin", emoji: "🐧", image: "dc_20.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["green lantern", "green latern", "yeşil fener", "yesil fener", "hal jordan"], label: "Green Lantern", emoji: "💚", image: "dc_21.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["king shark", "kingşark", "kral köpekbalığı", "kral kopekbaligi", "nanaue"], label: "King Shark", emoji: "🦈", image: "dc_22.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["peacemaker", "peace maker"], label: "Peacemaker", emoji: "🕊️", image: "dc_23.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["harley quinn", "harley", "harli kvin", "harleen quinzel"], label: "Harley Quinn", emoji: "🃏", image: "dc_24.jpg" },
+                { prompt: 'Bu karakterin ismi nedir?', answers: ["atom", "the atom", "ray palmer"], label: "Atom", emoji: "⚛️", image: "dc_25.jpg" },
             ],
             'photo-anime': [
                 { prompt: 'Bu karakterin ismi nedir?', answers: ["naruto", "naruto uzumaki", "naruto uzumakii", "narutö"], label: "Naruto Uzumaki", emoji: '🍜', image: 'anime_01.png' },
@@ -6684,7 +6937,7 @@
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['muslera', 'fernando muslera'], label: 'Fernando Muslera', emoji: '🇺🇾', image: 'futbolcu_11.webp' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['osimhen', 'victor osimhen'], label: 'Victor Osimhen', emoji: '🇳🇬', image: 'futbolcu_12.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['küerejma', 'quarajma'], label: 'querejma', emoji: '🇹🇷', image: 'futbolcu_13.jpg' },
-                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['odegard', 'martin'], label: 'martin odegard', emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', image: 'futbolcu_14.jpg' },
+                { prompt: 'Bu futbolcunun ismi nedir?', answers: ['odegard', 'martin'], label: 'martin odegard', emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', image: 'futbolcu_14.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['haaland', 'erling haaland'], label: 'Erling Haaland', emoji: '🇳🇴', image: 'futbolcu_15.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['bellingham', 'jude bellingham'], label: 'Jude Bellingham', emoji: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', image: 'futbolcu_16.jpg' },
                 { prompt: 'Bu futbolcunun ismi nedir?', answers: ['lamin', 'yamal'], label: 'lamin yamal', emoji: '🇪🇸', image: 'futbolcu_17.jpg' },
@@ -6773,26 +7026,36 @@
                 { prompt: 'Bu tatlının adı nedir?', answers: ['magnolia', 'magnolio', 'magnoly', 'magnolia puding', 'çilekli magnolia', 'kup', 'kup tatlısı'], label: 'Magnolia (Magnolio)', emoji: '🍓', image: 'tatli_10.jpg' }
             ],
             'photo-yemekler': [
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemek_01.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["biber dolması", "biber dolmasi", "dolma", "zeytinyağlı biber dolması", "zeytinyagli biber dolmasi"], label: "Biber Dolması", emoji: '🫑', image: 'yemek_02.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["beyti", "beyti kebabı", "beyti kebabi", "beyti kebap"], label: "Beyti Kebabı", emoji: '🌯', image: 'yemek_03.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["döner", "doner", "döner kebabı", "doner kebabi", "et döner", "et doner", "döner kebap"], label: "Döner Kebabı", emoji: '🥙', image: 'yemek_04.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["akıtma", "akitma", "krep", "crepe", "pancake"], label: "Akıtma", emoji: '🥞', image: 'yemek_05.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["şehriye çorbası", "sehriye corbasi", "domatesli şehriye çorbası", "domatesli sehriye corbasi", "şehriye", "sehriye", "domates çorbası", "domates corbasi"], label: "Şehriye Çorbası", emoji: '🍜', image: 'yemek_06.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["ali nazik", "alinazik", "ali nazik kebabı", "ali nazik kebabi", "alinazik kebap"], label: "Ali Nazik Kebabı", emoji: '🍆', image: 'yemek_07.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["analı kızlı", "anali kizli", "analı kızlı çorbası", "anali kizli corbasi", "analı kızlı yemeği", "anali kizli yemegi"], label: "Analı Kızlı", emoji: '🍲', image: 'yemek_08.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["bulgur pilavı", "bulgur pilavi", "bulgur", "bulgur pilav"], label: "Bulgur Pilavı", emoji: '🌾', image: 'yemek_09.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["çiğ köfte", "cig kofte", "çiğköfte", "cigkofte"], label: "Çiğ Köfte", emoji: '🌶️', image: 'yemek_10.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["arabaşı", "arabasi", "arabaşı çorbası", "arabasi corbasi", "arabaşı hamuru", "arabasi hamuru"], label: "Arabaşı Çorbası", emoji: '🍲', image: 'yemek_11.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["bonfile", "antrikot", "biftek", "steak", "dana biftek", "bonfile ızgara", "bonfile izgara"], label: "Bonfile / Antrikot", emoji: '🥩', image: 'yemek_12.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["boyoz", "izmir boyozu", "İzmir boyozu"], label: "İzmir Boyozu", emoji: '🥐', image: 'yemek_13.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["cacık", "cacik", "yoğurtlu cacık", "yogurtlu cacik"], label: "Cacık", emoji: '🥒', image: 'yemek_14.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["akçaabat köftesi", "akcaabat koftesi", "akçaabat köfte", "akcaabat kofte", "ızgara köfte", "izgara kofte"], label: "Akçaabat Köftesi", emoji: '🧆', image: 'yemek_15.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["elbasan tava", "elbasan tawa", "beşamel soslu et", "besamel soslu et"], label: "Elbasan Tava", emoji: '🍖', image: 'yemek_16.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli ekmek", "etliekmek", "konya etli ekmek"], label: "Etli Ekmek", emoji: '🫓', image: 'yemek_17.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli nohut", "nohut", "nohut yemeği", "nohut yemegi", "etli nohut yemeği", "etli nohut yemegi"], label: "Etli Nohut", emoji: '🥣', image: 'yemek_18.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemek_19.jpg' },
-                { prompt: 'Bu yemeğin adı nedir?', answers: ["adana kebap", "adana", "adana kebabı", "adana kebabi", "kebap", "kebap adana"], label: "Adana Kebabı", emoji: '🍢', image: 'yemek_20.jpg' }
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["babagannuş", "babaganuş", "baba ganuş", "baba ghanoush", "patlıcan salatası", "patlican salatasi", "közlenmiş patlıcan", "kozlenmis patlican", "patlıcan ezmesi"], label: "Babagannuş", emoji: '🍆', image: 'yemekler_01.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["biber dolması", "biber dolmasi", "dolma", "zeytinyağlı biber dolması", "zeytinyagli biber dolmasi"], label: "Biber Dolması", emoji: '🫑', image: 'yemekler_02.webp' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["beyti", "beyti kebabı", "beyti kebabi", "beyti kebap"], label: "Beyti Kebabı", emoji: '🌯', image: 'yemekler_03.avif' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["döner", "doner", "döner kebabı", "doner kebabi", "et döner", "et doner", "döner kebap"], label: "Döner Kebabı", emoji: '🥙', image: 'yemekler_04.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["akıtma", "akitma", "krep", "crepe", "pancake"], label: "Akıtma", emoji: '🥞', image: 'yemekler_05.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["şehriye çorbası", "sehriye corbasi", "domatesli şehriye çorbası", "domatesli sehriye corbasi", "şehriye", "sehriye", "domates çorbası", "domates corbasi"], label: "Şehriye Çorbası", emoji: '🍜', image: 'yemekler_06.webp' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["ali nazik", "alinazik", "ali nazik kebabı", "ali nazik kebabi", "alinazik kebap"], label: "Ali Nazik Kebabı", emoji: '🍆', image: 'yemekler_07.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["analı kızlı", "anali kizli", "analı kızlı çorbası", "anali kizli corbasi", "analı kızlı yemeği", "anali kizli yemegi"], label: "Analı Kızlı", emoji: '🍲', image: 'yemekler_08.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["bulgur pilavı", "bulgur pilavi", "bulgur", "bulgur pilav"], label: "Bulgur Pilavı", emoji: '🌾', image: 'yemekler_09.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["çiğ köfte", "cig kofte", "çiğköfte", "cigkofte"], label: "Çiğ Köfte", emoji: '🌶️', image: 'yemekler_10.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["arabaşı", "arabasi", "arabaşı çorbası", "arabasi corbasi", "arabaşı hamuru", "arabasi hamuru"], label: "Arabaşı Çorbası", emoji: '🍲', image: 'yemekler_11.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["bonfile", "antrikot", "biftek", "steak", "dana biftek", "bonfile ızgara", "bonfile izgara"], label: "Bonfile / Antrikot", emoji: '🥩', image: 'yemekler_12.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["boyoz", "izmir boyozu", "İzmir boyozu"], label: "İzmir Boyozu", emoji: '🥐', image: 'yemekler_13.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["cacık", "cacik", "yoğurtlu cacık", "yogurtlu cacik"], label: "Cacık", emoji: '🥒', image: 'yemekler_14.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["akçaabat köftesi", "akcaabat koftesi", "akçaabat köfte", "akcaabat kofte", "ızgara köfte", "izgara kofte"], label: "Akçaabat Köftesi", emoji: '🧆', image: 'yemekler_15.avif' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["elbasan tava", "elbasan tawa", "beşamel soslu et", "besamel soslu et"], label: "Elbasan Tava", emoji: '🍖', image: 'yemekler_16.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli ekmek", "etliekmek", "konya etli ekmek"], label: "Etli Ekmek", emoji: '🫓', image: 'yemekler_17.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["etli nohut", "nohut", "nohut yemeği", "nohut yemegi", "etli nohut yemeği", "etli nohut yemegi"], label: "Etli Nohut", emoji: '🥣', image: 'yemekler_18.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["lahmacun", "lahmacum", "lamacun", "lahmajun"], label: "Lahmacun", emoji: '🍕', image: 'yemekler_19.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["adana kebap", "adana", "adana kebabı", "adana kebabi", "kebap", "kebap adana"], label: "Adana Kebabı", emoji: '🍢', image: 'yemekler_20.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["iskender", "iskender kebap", "iskender kebabı", "iskender kebabi", "bursa kebabı", "bursa kebabi", "isko"], label: "İskender Kebabı", emoji: '🍖', image: 'yemek_21.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["yaprak sarma", "zeytinyağlı yaprak sarma", "zeytinyagli yaprak sarma", "sarma", "yaprak sarması", "yaprak sarmasi"], label: "Zeytinyağlı Yaprak Sarma", emoji: '🍇', image: 'yemek_22.png' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["mantı", "manti", "kayseri mantısı", "kayseri mantisi", "türk mantısı", "turk mantisi"], label: "Mantı", emoji: '🥟', image: 'yemek_23.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["pide", "kıymalı pide", "kiymali pide", "kaşarlı pide", "kasarli pide"], label: "Kıymalı Pide", emoji: '🫓', image: 'yemek_24.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["kuru fasulye", "fasulye", "kuru fasülye", "kuru", "kuru fasulye yemeği", "kuru fasulye yemegi"], label: "Kuru Fasulye", emoji: '🫘', image: 'yemek_25.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["karnıyarık", "karniyarik", "karni yarık", "karni yarik"], label: "Karnıyarık", emoji: '🍆', image: 'yemek_26.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["mercimek çorbası", "mercimek corbasi", "mercimek", "mercimek çorba", "kırmızı mercimek çorbası", "kirmizi mercimek corbasi"], label: "Mercimek Çorbası", emoji: '🥣', image: 'yemek_27.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["içli köfte", "icli kofte", "içliköfte", "iclikofte", "oruk"], label: "İçli Köfte", emoji: '🧆', image: 'yemek_28.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["tantuni", "tantuni dürüm", "tantuni durum", "tantuni kebabı", "tantuni kebabi"], label: "Tantuni", emoji: '🌯', image: 'yemek_29.jpg' },
+                { prompt: 'Bu yemeğin adı nedir?', answers: ["menemen", "menemen yumurta", "sulu yumurta"], label: "Menemen", emoji: '🍳', image: 'yemek_30.jpg' }
             ],
             'photo-bayraklar': [
                 { prompt: 'Bu hangi ülkenin bayrağı?', answers: ['güney kore', 'guney kore', 'south korea', 'kore cumhuriyeti', 'korea'], label: 'Güney Kore', emoji: '🇰🇷', image: 'bayraklar_01.jpg' },
@@ -7163,7 +7426,7 @@
 
         function hideAllMainScreens() {
             ['profileScreen', 'modeScreen', 'categoryScreen', 'difficultyScreen', 'testScreen', 'resultScreen',
-             'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen']
+                'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen']
                 .forEach(sid => {
                     const el = document.getElementById(sid);
                     if (el) el.style.display = 'none';
@@ -7759,25 +8022,25 @@
 
         // Category name translations
         const catNames = {
-            tr: { marvel:'Marvel', dc:'DC', oyun:'Oyun', araba:'Araba', motor:'Motor', yemek:'Yemek', hayvan:'Hayvan', spor:'Spor', teknoloji:'Teknoloji', genelkultur:'Genel Kültür', muzik:'Müzik', sinema:'Sinema', bilim:'Bilim', tarih:'Tarih', sanat:'Sanat', astronomi:'Astronomi', edebiyat:'Edebiyat', cografya:'Coğrafya', siyaset:'Siyaset', saglik:'Sağlık', mitoloji:'Mitoloji', anime:'Anime', futbol:'Futbol', markalar:'Markalar', bayraklar:'Bayraklar', matematik:'Matematik', dizi:'Dizi', moda:'Moda', felsefe:'Felsefe', doga:'Doğa', meyve:'Meyve', tatli:'Tatlı', yemekler:'Yemekler', emoji:'Emoji', icecek:'İçecek', kizanime:'Kız Anime', unluler:'Ünlü Erkekler', kadinlar:'Ünlü Kadınlar', sebze:'Sebzeler', tanri:'Mitolojik Tanrılar', cicek:'Çiçekler', meslek:'Meslekler', evesyalari:'Ev Eşyaları', youtuber:'YouTuberlar', yayinci:'Yayıncılar' },
-            en: { marvel:'Marvel', dc:'DC', oyun:'Games', araba:'Cars', motor:'Motorcycles', yemek:'Food', hayvan:'Animals', spor:'Sports', teknoloji:'Technology', genelkultur:'General Knowledge', muzik:'Music', sinema:'Cinema', bilim:'Science', tarih:'History', sanat:'Art', astronomi:'Astronomy', edebiyat:'Literature', cografya:'Geography', siyaset:'Politics', saglik:'Health', mitoloji:'Mythology', anime:'Anime', futbol:'Football', markalar:'Brands', bayraklar:'Flags', matematik:'Mathematics', dizi:'TV Series', moda:'Fashion', felsefe:'Philosophy', doga:'Nature', meyve:'Fruit', tatli:'Dessert', yemekler:'Dishes', emoji:'Emoji', icecek:'Drinks', kizanime:'Anime Girls', unluler:'Famous Men', kadinlar:'Famous Women', sebze:'Vegetables', tanri:'Mythological Gods', cicek:'Flowers', meslek:'Professions', evesyalari:'Household Items', youtuber:'YouTubers', yayinci:'Streamers' },
-            de: { marvel:'Marvel', dc:'DC', oyun:'Spiele', araba:'Autos', motor:'Motorräder', yemek:'Essen', hayvan:'Tiere', spor:'Sport', teknoloji:'Technologie', genelkultur:'Allgemeinwissen', muzik:'Musik', sinema:'Kino', bilim:'Wissenschaft', tarih:'Geschichte', sanat:'Kunst', astronomi:'Astronomie', edebiyat:'Literatur', cografya:'Geographie', siyaset:'Politik', saglik:'Gesundheit', mitoloji:'Mythologie', anime:'Anime', futbol:'Fußball', markalar:'Marken', bayraklar:'Flaggen', matematik:'Mathematik', dizi:'TV-Serien', moda:'Mode', felsefe:'Philosophie', doga:'Natur', meyve:'Obst', tatli:'Nachtisch', yemekler:'Gerichte', emoji:'Emoji', icecek:'Getränke', kizanime:'Anime-Mädchen', unluler:'Bekannte Männer', kadinlar:'Bekannte Frauen', sebze:'Gemüse', tanri:'Mythologische Götter', cicek:'Blumen', meslek:'Berufe', evesyalari:'Haushaltsgegenstände', youtuber:'YouTuber', yayinci:'Streamer' },
-            ru: { marvel:'Марвел', dc:'DC', oyun:'Игры', araba:'Авто', motor:'Мотоциклы', yemek:'Еда', hayvan:'Животные', spor:'Спорт', teknoloji:'Технологии', genelkultur:'Общие знания', muzik:'Музыка', sinema:'Кино', bilim:'Наука', tarih:'История', sanat:'Искусство', astronomi:'Астрономия', edebiyat:'Литература', cografya:'География', siyaset:'Политика', saglik:'Здоровье', mitoloji:'Мифология', anime:'Аниме', futbol:'Футбол', markalar:'Бренды', bayraklar:'Флаги', matematik:'Математика', dizi:'Сериалы', moda:'Мода', felsefe:'Философия', doga:'Природа', meyve:'Фрукт', tatli:'Десерт', yemekler:'Блюда', emoji:'Эмодзи', icecek:'Напитки', kizanime:'Аниме-девушки', unluler:'Знаменитые мужчины', kadinlar:'Знаменитые женщины', sebze:'Овощи', tanri:'Мифологические боги', cicek:'Цветы', meslek:'Профессии', evesyalari:'Бытовые вещи', youtuber:'Ютуберы', yayinci:'Стримеры' },
-            zh: { marvel:'漫威', dc:'DC', oyun:'游戏', araba:'汽车', motor:'摩托车', yemek:'美食', hayvan:'动物', spor:'体育', teknoloji:'科技', genelkultur:'常识', muzik:'音乐', sinema:'电影', bilim:'科学', tarih:'历史', sanat:'艺术', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神话', anime:'动漫', futbol:'足球', markalar:'品牌', bayraklar:'旗帜', matematik:'数学', dizi:'电视剧', moda:'时尚', felsefe:'哲学', doga:'自然', meyve:'水果', tatli:'甜点', yemekler:'菜肴', emoji:'表情', icecek:'饮料', kizanime:'动漫女孩', unluler:'著名男星', kadinlar:'著名女星', sebze:'蔬菜', tanri:'神话之神', cicek:'花卉', meslek:'职业', evesyalari:'家居用品', youtuber:'YouTube博主', yayinci:'主播' },
-            ja: { marvel:'マーベル', dc:'DC', oyun:'ゲーム', araba:'車', motor:'バイク', yemek:'料理', hayvan:'動物', spor:'スポーツ', teknoloji:'テクノロジー', genelkultur:'一般教養', muzik:'音楽', sinema:'映画', bilim:'科学', tarih:'歴史', sanat:'芸術', astronomi:'天文学', edebiyat:'文学', cografya:'地理', siyaset:'政治', saglik:'健康', mitoloji:'神話', anime:'アニメ', futbol:'サッカー', markalar:'ブランド', bayraklar:'国旗', matematik:'数学', dizi:'ドラマ', moda:'ファッション', felsefe:'哲学', doga:'自然', meyve:'フルーツ', tatli:'デザート', yemekler:'料理', emoji:'絵文字', icecek:'飲み物', kizanime:'アニメ女子', unluler:'有名男性', kadinlar:'有名女性', sebze:'野菜', tanri:'神話の神々', cicek:'花', meslek:'職業', evesyalari:'家庭用品', youtuber:'ユーチューバー', yayinci:'配信者' },
-            es: { marvel:'Marvel', dc:'DC', oyun:'Juegos', araba:'Coches', motor:'Motos', yemek:'Comida', hayvan:'Animales', spor:'Deportes', teknoloji:'Tecnología', genelkultur:'Cultura General', muzik:'Música', sinema:'Cine', bilim:'Ciencia', tarih:'Historia', sanat:'Arte', astronomi:'Astronomía', edebiyat:'Literatura', cografya:'Geografía', siyaset:'Política', saglik:'Salud', mitoloji:'Mitología', anime:'Anime', futbol:'Fútbol', markalar:'Marcas', bayraklar:'Banderas', matematik:'Matemáticas', dizi:'Series', moda:'Moda', felsefe:'Filosofía', doga:'Naturaleza', meyve:'Fruta', tatli:'Postre', yemekler:'Platos', emoji:'Emojis', icecek:'Bebidas', kizanime:'Chicas Anime', unluler:'Hombres Famosos', kadinlar:'Mujeres Famosas', sebze:'Verduras', tanri:'Dioses Mitológicos', cicek:'Flores', meslek:'Profesiones', evesyalari:'Objetos del Hogar', youtuber:'YouTubers', yayinci:'Streamers' },
-            ar: { marvel:'مارفل', dc:'DC', oyun:'ألعاب', araba:'سيارات', motor:'دراجات', yemek:'طعام', hayvan:'حيوانات', spor:'رياضة', teknoloji:'تكنولوجيا', genelkultur:'ثقافة عامة', muzik:'موسيقى', sinema:'سينما', bilim:'علوم', tarih:'تاريخ', sanat:'فن', astronomi:'فلك', edebiyat:'أدب', cografya:'جغرافيا', siyaset:'سياسة', saglik:'صحة', mitoloji:'أساطير', anime:'أنمي', futbol:'كرة القدم', markalar:'علامات', bayraklar:'أعلام', matematik:'رياضيات', dizi:'مسلسلات', moda:'أزياء', felsefe:'فلسفة', doga:'طبيعة', meyve:'فاكهة', tatli:'حلوى', yemekler:'أطباق', emoji:'إيموجي', icecek:'مشروبات', kizanime:'فتاة أنمي', unluler:'رجال مشهورون', kadinlar:'نساء مشهورات', sebze:'خضروات', tanri:'آلهة الأساطير', cicek:'زهور', meslek:'مهن', evesyalari:'أدوات المنزل', youtuber:'مشاهير يوتيوب', yayinci:'صانعو البث' }
+            tr: { marvel: 'Marvel', dc: 'DC', oyun: 'Oyun', araba: 'Araba', motor: 'Motor', yemek: 'Yemek', hayvan: 'Hayvan', spor: 'Spor', teknoloji: 'Teknoloji', genelkultur: 'Genel Kültür', muzik: 'Müzik', sinema: 'Sinema', bilim: 'Bilim', tarih: 'Tarih', sanat: 'Sanat', astronomi: 'Astronomi', edebiyat: 'Edebiyat', cografya: 'Coğrafya', siyaset: 'Siyaset', saglik: 'Sağlık', mitoloji: 'Mitoloji', anime: 'Anime', futbol: 'Futbol', markalar: 'Markalar', bayraklar: 'Bayraklar', matematik: 'Matematik', dizi: 'Dizi', moda: 'Moda', felsefe: 'Felsefe', doga: 'Doğa', meyve: 'Meyve', tatli: 'Tatlı', yemekler: 'Yemekler', emoji: 'Emoji', icecek: 'İçecek', kizanime: 'Kız Anime', unluler: 'Ünlü Erkekler', kadinlar: 'Ünlü Kadınlar', sebze: 'Sebzeler', tanri: 'Mitolojik Tanrılar', cicek: 'Çiçekler', meslek: 'Meslekler', evesyalari: 'Ev Eşyaları', youtuber: 'YouTuberlar', yayinci: 'Yayıncılar' },
+            en: { marvel: 'Marvel', dc: 'DC', oyun: 'Games', araba: 'Cars', motor: 'Motorcycles', yemek: 'Food', hayvan: 'Animals', spor: 'Sports', teknoloji: 'Technology', genelkultur: 'General Knowledge', muzik: 'Music', sinema: 'Cinema', bilim: 'Science', tarih: 'History', sanat: 'Art', astronomi: 'Astronomy', edebiyat: 'Literature', cografya: 'Geography', siyaset: 'Politics', saglik: 'Health', mitoloji: 'Mythology', anime: 'Anime', futbol: 'Football', markalar: 'Brands', bayraklar: 'Flags', matematik: 'Mathematics', dizi: 'TV Series', moda: 'Fashion', felsefe: 'Philosophy', doga: 'Nature', meyve: 'Fruit', tatli: 'Dessert', yemekler: 'Dishes', emoji: 'Emoji', icecek: 'Drinks', kizanime: 'Anime Girls', unluler: 'Famous Men', kadinlar: 'Famous Women', sebze: 'Vegetables', tanri: 'Mythological Gods', cicek: 'Flowers', meslek: 'Professions', evesyalari: 'Household Items', youtuber: 'YouTubers', yayinci: 'Streamers' },
+            de: { marvel: 'Marvel', dc: 'DC', oyun: 'Spiele', araba: 'Autos', motor: 'Motorräder', yemek: 'Essen', hayvan: 'Tiere', spor: 'Sport', teknoloji: 'Technologie', genelkultur: 'Allgemeinwissen', muzik: 'Musik', sinema: 'Kino', bilim: 'Wissenschaft', tarih: 'Geschichte', sanat: 'Kunst', astronomi: 'Astronomie', edebiyat: 'Literatur', cografya: 'Geographie', siyaset: 'Politik', saglik: 'Gesundheit', mitoloji: 'Mythologie', anime: 'Anime', futbol: 'Fußball', markalar: 'Marken', bayraklar: 'Flaggen', matematik: 'Mathematik', dizi: 'TV-Serien', moda: 'Mode', felsefe: 'Philosophie', doga: 'Natur', meyve: 'Obst', tatli: 'Nachtisch', yemekler: 'Gerichte', emoji: 'Emoji', icecek: 'Getränke', kizanime: 'Anime-Mädchen', unluler: 'Bekannte Männer', kadinlar: 'Bekannte Frauen', sebze: 'Gemüse', tanri: 'Mythologische Götter', cicek: 'Blumen', meslek: 'Berufe', evesyalari: 'Haushaltsgegenstände', youtuber: 'YouTuber', yayinci: 'Streamer' },
+            ru: { marvel: 'Марвел', dc: 'DC', oyun: 'Игры', araba: 'Авто', motor: 'Мотоциклы', yemek: 'Еда', hayvan: 'Животные', spor: 'Спорт', teknoloji: 'Технологии', genelkultur: 'Общие знания', muzik: 'Музыка', sinema: 'Кино', bilim: 'Наука', tarih: 'История', sanat: 'Искусство', astronomi: 'Астрономия', edebiyat: 'Литература', cografya: 'География', siyaset: 'Политика', saglik: 'Здоровье', mitoloji: 'Мифология', anime: 'Аниме', futbol: 'Футбол', markalar: 'Бренды', bayraklar: 'Флаги', matematik: 'Математика', dizi: 'Сериалы', moda: 'Мода', felsefe: 'Философия', doga: 'Природа', meyve: 'Фрукт', tatli: 'Десерт', yemekler: 'Блюда', emoji: 'Эмодзи', icecek: 'Напитки', kizanime: 'Аниме-девушки', unluler: 'Знаменитые мужчины', kadinlar: 'Знаменитые женщины', sebze: 'Овощи', tanri: 'Мифологические боги', cicek: 'Цветы', meslek: 'Профессии', evesyalari: 'Бытовые вещи', youtuber: 'Ютуберы', yayinci: 'Стримеры' },
+            zh: { marvel: '漫威', dc: 'DC', oyun: '游戏', araba: '汽车', motor: '摩托车', yemek: '美食', hayvan: '动物', spor: '体育', teknoloji: '科技', genelkultur: '常识', muzik: '音乐', sinema: '电影', bilim: '科学', tarih: '历史', sanat: '艺术', astronomi: '天文学', edebiyat: '文学', cografya: '地理', siyaset: '政治', saglik: '健康', mitoloji: '神话', anime: '动漫', futbol: '足球', markalar: '品牌', bayraklar: '旗帜', matematik: '数学', dizi: '电视剧', moda: '时尚', felsefe: '哲学', doga: '自然', meyve: '水果', tatli: '甜点', yemekler: '菜肴', emoji: '表情', icecek: '饮料', kizanime: '动漫女孩', unluler: '著名男星', kadinlar: '著名女星', sebze: '蔬菜', tanri: '神话之神', cicek: '花卉', meslek: '职业', evesyalari: '家居用品', youtuber: 'YouTube博主', yayinci: '主播' },
+            ja: { marvel: 'マーベル', dc: 'DC', oyun: 'ゲーム', araba: '車', motor: 'バイク', yemek: '料理', hayvan: '動物', spor: 'スポーツ', teknoloji: 'テクノロジー', genelkultur: '一般教養', muzik: '音楽', sinema: '映画', bilim: '科学', tarih: '歴史', sanat: '芸術', astronomi: '天文学', edebiyat: '文学', cografya: '地理', siyaset: '政治', saglik: '健康', mitoloji: '神話', anime: 'アニメ', futbol: 'サッカー', markalar: 'ブランド', bayraklar: '国旗', matematik: '数学', dizi: 'ドラマ', moda: 'ファッション', felsefe: '哲学', doga: '自然', meyve: 'フルーツ', tatli: 'デザート', yemekler: '料理', emoji: '絵文字', icecek: '飲み物', kizanime: 'アニメ女子', unluler: '有名男性', kadinlar: '有名女性', sebze: '野菜', tanri: '神話の神々', cicek: '花', meslek: '職業', evesyalari: '家庭用品', youtuber: 'ユーチューバー', yayinci: '配信者' },
+            es: { marvel: 'Marvel', dc: 'DC', oyun: 'Juegos', araba: 'Coches', motor: 'Motos', yemek: 'Comida', hayvan: 'Animales', spor: 'Deportes', teknoloji: 'Tecnología', genelkultur: 'Cultura General', muzik: 'Música', sinema: 'Cine', bilim: 'Ciencia', tarih: 'Historia', sanat: 'Arte', astronomi: 'Astronomía', edebiyat: 'Literatura', cografya: 'Geografía', siyaset: 'Política', saglik: 'Salud', mitoloji: 'Mitología', anime: 'Anime', futbol: 'Fútbol', markalar: 'Marcas', bayraklar: 'Banderas', matematik: 'Matemáticas', dizi: 'Series', moda: 'Moda', felsefe: 'Filosofía', doga: 'Naturaleza', meyve: 'Fruta', tatli: 'Postre', yemekler: 'Platos', emoji: 'Emojis', icecek: 'Bebidas', kizanime: 'Chicas Anime', unluler: 'Hombres Famosos', kadinlar: 'Mujeres Famosas', sebze: 'Verduras', tanri: 'Dioses Mitológicos', cicek: 'Flores', meslek: 'Profesiones', evesyalari: 'Objetos del Hogar', youtuber: 'YouTubers', yayinci: 'Streamers' },
+            ar: { marvel: 'مارفل', dc: 'DC', oyun: 'ألعاب', araba: 'سيارات', motor: 'دراجات', yemek: 'طعام', hayvan: 'حيوانات', spor: 'رياضة', teknoloji: 'تكنولوجيا', genelkultur: 'ثقافة عامة', muzik: 'موسيقى', sinema: 'سينما', bilim: 'علوم', tarih: 'تاريخ', sanat: 'فن', astronomi: 'فلك', edebiyat: 'أدب', cografya: 'جغرافيا', siyaset: 'سياسة', saglik: 'صحة', mitoloji: 'أساطير', anime: 'أنمي', futbol: 'كرة القدم', markalar: 'علامات', bayraklar: 'أعلام', matematik: 'رياضيات', dizi: 'مسلسلات', moda: 'أزياء', felsefe: 'فلسفة', doga: 'طبيعة', meyve: 'فاكهة', tatli: 'حلوى', yemekler: 'أطباق', emoji: 'إيموجي', icecek: 'مشروبات', kizanime: 'فتاة أنمي', unluler: 'رجال مشهورون', kadinlar: 'نساء مشهورات', sebze: 'خضروات', tanri: 'آلهة الأساطير', cicek: 'زهور', meslek: 'مهن', evesyalari: 'أدوات المنزل', youtuber: 'مشاهير يوتيوب', yayinci: 'صانعو البث' }
         };
 
         const catSubtitles = {
-            tr: { marvel:'Kahramanlar', dc:'Süper güç', oyun:'Pixel dünyası', araba:'Hız şöleni', motor:'Açık yol', yemek:'Lezzet sınavı', hayvan:'Doğal dünya', spor:'Rekabet', teknoloji:'Gelecek', genelkultur:'Her şey', muzik:'Sesler', sinema:'Film dünyası', bilim:'Keşif', tarih:'Geçmiş', sanat:'İfade', astronomi:'Yıldızlar', edebiyat:'Kelime hazinesi', cografya:'Harita bilgisi', siyaset:'Toplum', saglik:'Yaşam bilgisi', mitoloji:'Efsaneler', anime:'Manga dünyası', futbol:'Saha bilgisi', markalar:'Logo & marka', bayraklar:'Ülke simgeleri', matematik:'Sayılar', dizi:'Ekran keyfi', moda:'Stil & trend', felsefe:'Düşünce', doga:'Çevre & yaşam' },
-            en: { marvel:'Heroes', dc:'Super powers', oyun:'Pixel world', araba:'Speed feast', motor:'Open road', yemek:'Flavor test', hayvan:'Natural world', spor:'Competition', teknoloji:'Future', genelkultur:'Everything', muzik:'Sounds', sinema:'Film world', bilim:'Discovery', tarih:'Past', sanat:'Expression', astronomi:'Stars', edebiyat:'Word power', cografya:'Map knowledge', siyaset:'Society', saglik:'Life knowledge', mitoloji:'Legends', anime:'Manga world', futbol:'Field knowledge', markalar:'Logo & brand', bayraklar:'Country symbols', matematik:'Numbers', dizi:'Screen fun', moda:'Style & trend', felsefe:'Thought', doga:'Environment & life' },
-            de: { marvel:'Helden', dc:'Superkräfte', oyun:'Pixelwelt', araba:'Speed', motor:'Offene Straße', yemek:'Geschmackstest', hayvan:'Tierwelt', spor:'Wettkampf', teknoloji:'Zukunft', genelkultur:'Alles', muzik:'Klänge', sinema:'Filmwelt', bilim:'Entdeckung', tarih:'Vergangenheit', sanat:'Ausdruck', astronomi:'Sterne', edebiyat:'Wortschatz', cografya:'Kartenwissen', siyaset:'Gesellschaft', saglik:'Lebenswissen', mitoloji:'Legenden', anime:'Manga-Welt', futbol:'Feldwissen', markalar:'Logo & Marke', bayraklar:'Landessymbole', matematik:'Zahlen', dizi:'Bildschirm-Spaß', moda:'Stil & Trend', felsefe:'Gedanken', doga:'Umwelt & Leben' },
-            ru: { marvel:'Герои', dc:'Суперсилы', oyun:'Пиксельный мир', araba:'Скорость', motor:'Открытая дорога', yemek:'Тест вкуса', hayvan:'Мир животных', spor:'Соревнование', teknoloji:'Будущее', genelkultur:'Всё', muzik:'Звуки', sinema:'Мир кино', bilim:'Открытия', tarih:'Прошлое', sanat:'Выражение', astronomi:'Звёзды', edebiyat:'Словарный запас', cografya:'Знание карт', siyaset:'Общество', saglik:'Знания о жизни', mitoloji:'Легенды', anime:'Мир манги', futbol:'Знание поля', markalar:'Логотип и бренд', bayraklar:'Символы стран', matematik:'Числа', dizi:'Экранные развлечения', moda:'Стиль и тренд', felsefe:'Мысль', doga:'Окружение и жизнь' },
-            zh: { marvel:'英雄', dc:'超能力', oyun:'像素世界', araba:'速度盛宴', motor:'公路', yemek:'美食考验', hayvan:'自然世界', spor:'竞技', teknoloji:'未来', genelkultur:'万事通', muzik:'声音', sinema:'电影世界', bilim:'发现', tarih:'过去', sanat:'表达', astronomi:'星辰', edebiyat:'词汇量', cografya:'地图知识', siyaset:'社会', saglik:'生活常识', mitoloji:'传说', anime:'漫画世界', futbol:'球场知识', markalar:'标志与品牌', bayraklar:'国家象征', matematik:'数字', dizi:'追剧乐趣', moda:'风格与潮流', felsefe:'思想', doga:'环境与生命' },
-            ja: { marvel:'ヒーロー', dc:'超能力', oyun:'ピクセル世界', araba:'スピード', motor:'オープンロード', yemek:'味覚テスト', hayvan:'自然の世界', spor:'競争', teknoloji:'未来', genelkultur:'全般', muzik:'サウンド', sinema:'映画の世界', bilim:'発見', tarih:'過去', sanat:'表現', astronomi:'星々', edebiyat:'語彙力', cografya:'地図知識', siyaset:'社会', saglik:'生活知識', mitoloji:'伝説', anime:'マンガの世界', futbol:'サッカー知識', markalar:'ロゴ＆ブランド', bayraklar:'国のシンボル', matematik:'数字', dizi:'ドラマ楽し', moda:'スタイル＆トレンド', felsefe:'思考', doga:'環境＆生活' },
-            es: { marvel:'Héroes', dc:'Superpoderes', oyun:'Mundo pixel', araba:'Velocidad', motor:'Carretera', yemek:'Sabor test', hayvan:'Mundo animal', spor:'Competencia', teknoloji:'Futuro', genelkultur:'Todo', muzik:'Sonidos', sinema:'Cine', bilim:'Descubrimiento', tarih:'Pasado', sanat:'Expresión', astronomi:'Estrellas', edebiyat:'Vocabulario', cografya:'Mapas', siyaset:'Sociedad', saglik:'Vida', mitoloji:'Leyendas', anime:'Manga', futbol:'Fútbol', markalar:'Logo y marca', bayraklar:'Símbolos', matematik:'Números', dizi:'Series', moda:'Moda', felsefe:'Pensamiento', doga:'Naturaleza' },
-            ar: { marvel:'أبطال', dc:'قوى خارقة', oyun:'عالم البكسل', araba:'سرعة', motor:'الطريق', yemek:'اختبار النكهة', hayvan:'عالم الحيوانات', spor:'منافسة', teknoloji:'المستقبل', genelkultur:'كل شيء', muzik:'أصوات', sinema:'عالم الأفلام', bilim:'اكتشاف', tarih:'الماضي', sanat:'تعبير', astronomi:'نجوم', edebiyat:'مفردات', cografya:'خرائط', siyaset:'مجتمع', saglik:'حياة', mitoloji:'أساطير', anime:'مانغا', futbol:'كرة القدم', markalar:'شعارات', bayraklar:'رموز الدول', matematik:'أرقام', dizi:'مسلسلات', moda:'أزياء', felsefe:'فكر', doga:'بيئة وحياة' }
+            tr: { marvel: 'Kahramanlar', dc: 'Süper güç', oyun: 'Pixel dünyası', araba: 'Hız şöleni', motor: 'Açık yol', yemek: 'Lezzet sınavı', hayvan: 'Doğal dünya', spor: 'Rekabet', teknoloji: 'Gelecek', genelkultur: 'Her şey', muzik: 'Sesler', sinema: 'Film dünyası', bilim: 'Keşif', tarih: 'Geçmiş', sanat: 'İfade', astronomi: 'Yıldızlar', edebiyat: 'Kelime hazinesi', cografya: 'Harita bilgisi', siyaset: 'Toplum', saglik: 'Yaşam bilgisi', mitoloji: 'Efsaneler', anime: 'Manga dünyası', futbol: 'Saha bilgisi', markalar: 'Logo & marka', bayraklar: 'Ülke simgeleri', matematik: 'Sayılar', dizi: 'Ekran keyfi', moda: 'Stil & trend', felsefe: 'Düşünce', doga: 'Çevre & yaşam' },
+            en: { marvel: 'Heroes', dc: 'Super powers', oyun: 'Pixel world', araba: 'Speed feast', motor: 'Open road', yemek: 'Flavor test', hayvan: 'Natural world', spor: 'Competition', teknoloji: 'Future', genelkultur: 'Everything', muzik: 'Sounds', sinema: 'Film world', bilim: 'Discovery', tarih: 'Past', sanat: 'Expression', astronomi: 'Stars', edebiyat: 'Word power', cografya: 'Map knowledge', siyaset: 'Society', saglik: 'Life knowledge', mitoloji: 'Legends', anime: 'Manga world', futbol: 'Field knowledge', markalar: 'Logo & brand', bayraklar: 'Country symbols', matematik: 'Numbers', dizi: 'Screen fun', moda: 'Style & trend', felsefe: 'Thought', doga: 'Environment & life' },
+            de: { marvel: 'Helden', dc: 'Superkräfte', oyun: 'Pixelwelt', araba: 'Speed', motor: 'Offene Straße', yemek: 'Geschmackstest', hayvan: 'Tierwelt', spor: 'Wettkampf', teknoloji: 'Zukunft', genelkultur: 'Alles', muzik: 'Klänge', sinema: 'Filmwelt', bilim: 'Entdeckung', tarih: 'Vergangenheit', sanat: 'Ausdruck', astronomi: 'Sterne', edebiyat: 'Wortschatz', cografya: 'Kartenwissen', siyaset: 'Gesellschaft', saglik: 'Lebenswissen', mitoloji: 'Legenden', anime: 'Manga-Welt', futbol: 'Feldwissen', markalar: 'Logo & Marke', bayraklar: 'Landessymbole', matematik: 'Zahlen', dizi: 'Bildschirm-Spaß', moda: 'Stil & Trend', felsefe: 'Gedanken', doga: 'Umwelt & Leben' },
+            ru: { marvel: 'Герои', dc: 'Суперсилы', oyun: 'Пиксельный мир', araba: 'Скорость', motor: 'Открытая дорога', yemek: 'Тест вкуса', hayvan: 'Мир животных', spor: 'Соревнование', teknoloji: 'Будущее', genelkultur: 'Всё', muzik: 'Звуки', sinema: 'Мир кино', bilim: 'Открытия', tarih: 'Прошлое', sanat: 'Выражение', astronomi: 'Звёзды', edebiyat: 'Словарный запас', cografya: 'Знание карт', siyaset: 'Общество', saglik: 'Знания о жизни', mitoloji: 'Легенды', anime: 'Мир манги', futbol: 'Знание поля', markalar: 'Логотип и бренд', bayraklar: 'Символы стран', matematik: 'Числа', dizi: 'Экранные развлечения', moda: 'Стиль и тренд', felsefe: 'Мысль', doga: 'Окружение и жизнь' },
+            zh: { marvel: '英雄', dc: '超能力', oyun: '像素世界', araba: '速度盛宴', motor: '公路', yemek: '美食考验', hayvan: '自然世界', spor: '竞技', teknoloji: '未来', genelkultur: '万事通', muzik: '声音', sinema: '电影世界', bilim: '发现', tarih: '过去', sanat: '表达', astronomi: '星辰', edebiyat: '词汇量', cografya: '地图知识', siyaset: '社会', saglik: '生活常识', mitoloji: '传说', anime: '漫画世界', futbol: '球场知识', markalar: '标志与品牌', bayraklar: '国家象征', matematik: '数字', dizi: '追剧乐趣', moda: '风格与潮流', felsefe: '思想', doga: '环境与生命' },
+            ja: { marvel: 'ヒーロー', dc: '超能力', oyun: 'ピクセル世界', araba: 'スピード', motor: 'オープンロード', yemek: '味覚テスト', hayvan: '自然の世界', spor: '競争', teknoloji: '未来', genelkultur: '全般', muzik: 'サウンド', sinema: '映画の世界', bilim: '発見', tarih: '過去', sanat: '表現', astronomi: '星々', edebiyat: '語彙力', cografya: '地図知識', siyaset: '社会', saglik: '生活知識', mitoloji: '伝説', anime: 'マンガの世界', futbol: 'サッカー知識', markalar: 'ロゴ＆ブランド', bayraklar: '国のシンボル', matematik: '数字', dizi: 'ドラマ楽し', moda: 'スタイル＆トレンド', felsefe: '思考', doga: '環境＆生活' },
+            es: { marvel: 'Héroes', dc: 'Superpoderes', oyun: 'Mundo pixel', araba: 'Velocidad', motor: 'Carretera', yemek: 'Sabor test', hayvan: 'Mundo animal', spor: 'Competencia', teknoloji: 'Futuro', genelkultur: 'Todo', muzik: 'Sonidos', sinema: 'Cine', bilim: 'Descubrimiento', tarih: 'Pasado', sanat: 'Expresión', astronomi: 'Estrellas', edebiyat: 'Vocabulario', cografya: 'Mapas', siyaset: 'Sociedad', saglik: 'Vida', mitoloji: 'Leyendas', anime: 'Manga', futbol: 'Fútbol', markalar: 'Logo y marca', bayraklar: 'Símbolos', matematik: 'Números', dizi: 'Series', moda: 'Moda', felsefe: 'Pensamiento', doga: 'Naturaleza' },
+            ar: { marvel: 'أبطال', dc: 'قوى خارقة', oyun: 'عالم البكسل', araba: 'سرعة', motor: 'الطريق', yemek: 'اختبار النكهة', hayvan: 'عالم الحيوانات', spor: 'منافسة', teknoloji: 'المستقبل', genelkultur: 'كل شيء', muzik: 'أصوات', sinema: 'عالم الأفلام', bilim: 'اكتشاف', tarih: 'الماضي', sanat: 'تعبير', astronomi: 'نجوم', edebiyat: 'مفردات', cografya: 'خرائط', siyaset: 'مجتمع', saglik: 'حياة', mitoloji: 'أساطير', anime: 'مانغا', futbol: 'كرة القدم', markalar: 'شعارات', bayraklar: 'رموز الدول', matematik: 'أرقام', dizi: 'مسلسلات', moda: 'أزياء', felsefe: 'فكر', doga: 'بيئة وحياة' }
         };
 
         function getCatName(catId) {
@@ -7897,21 +8160,21 @@
         window.startTest = function () {
             isInTest = true;
             stopBgMusic();
-            
+
             // Get questions
             var havuz = getQuestionPoolByCategoryId(secilenKategori.id);
             mevcutSorular = [];
-            var shuffled = havuz.slice().sort(function() { return 0.5 - Math.random(); });
+            var shuffled = havuz.slice().sort(function () { return 0.5 - Math.random(); });
             for (var qi = 0; qi < Math.min(10, shuffled.length); qi++) {
                 mevcutSorular.push(shuffled[qi]);
             }
-            
+
             mevcutIndex = 0;
             cevaplar = [];
             for (var ci = 0; ci < 10; ci++) cevaplar.push(null);
             testAktif = true;
             puan = 0;
-            
+
             // Set user info
             var nameEl = document.getElementById('testUserName');
             if (nameEl) nameEl.textContent = kullaniciAdi;
@@ -7924,27 +8187,27 @@
             }
             var diffEl = document.getElementById('difficultyDisplay');
             if (diffEl) diffEl.textContent = getZorlukAd(secilenZorluk);
-            
+
             // Show test screen
             dScreen.style.display = 'none';
             tScreen.style.display = 'block';
-            
+
             // Start first question
             soruyuGoster();
         };
 
         function soruyuGoster() {
             if (!testAktif) return;
-            
+
             var s = mevcutSorular[mevcutIndex];
             if (!s) { testiBitir(); return; }
-            
+
             questionStartTime = Date.now();
-            
+
             // Set question text
             document.getElementById('questionText').textContent = (mevcutIndex + 1) + '. ' + s.soru;
             document.getElementById('questionCounter').textContent = (mevcutIndex + 1) + '/10';
-            
+
             // Build option buttons
             var html = '';
             var letters = ['A', 'B', 'C', 'D', 'E'];
@@ -7955,28 +8218,28 @@
                 }
             }
             document.getElementById('optionsContainer').innerHTML = html;
-            
+
             // If previously answered, highlight the selected option
             if (cevaplar[mevcutIndex] && cevaplar[mevcutIndex] !== 'B' && cevaplar[mevcutIndex] !== 'Z') {
                 var prevBtn = document.getElementById('opt' + cevaplar[mevcutIndex]);
                 if (prevBtn) prevBtn.classList.add('selected');
             }
-            
+
             // Reset feedback
             var fbEl = document.getElementById('inlineFeedback');
             if (fbEl) { fbEl.style.display = 'none'; fbEl.innerHTML = ''; }
-            
+
             // Clear any auto-advance timer
             if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
-            
+
             // Update navigation buttons
             updateQuestionNavigationButtons();
-            
+
             // Start timer
             clearInterval(timer);
             var tText = document.getElementById('timerText');
             var tProg = document.getElementById('timerProgress');
-            
+
             if (secilenZorluk && secilenZorluk.id === 'suretsiz') {
                 if (tText) tText.textContent = '∞';
                 if (tProg) tProg.style.width = '100%';
@@ -7987,7 +8250,7 @@
                     maxTime = secilenZorluk.sure;
                 }
                 timeLeft = maxTime;
-                
+
                 // Show initial time
                 function showTime() {
                     var mins = Math.floor(timeLeft / 60);
@@ -7998,9 +8261,9 @@
                     var bar = document.getElementById('timerProgress');
                     if (bar) bar.style.width = ((timeLeft / maxTime) * 100) + '%';
                 }
-                
+
                 showTime();
-                
+
                 function tickDown() {
                     if (!testAktif) return;
                     timeLeft = timeLeft - 1;
@@ -8016,7 +8279,7 @@
                         }
                     }
                 }
-                
+
                 timer = setInterval(tickDown, 1000);
             }
         }
@@ -8048,26 +8311,26 @@
                 allOpts[i].style.pointerEvents = 'none';
                 allOpts[i].style.opacity = '0.7';
             }
-            
+
             // Highlight selected
             var selOpt = document.getElementById('opt' + l);
             if (selOpt) {
                 selOpt.classList.add('selected');
                 selOpt.style.opacity = '1';
             }
-            
+
             cevaplar[mevcutIndex] = l;
-            
+
             // Time bonus (only if not suretsiz)
             var elapsed = (Date.now() - questionStartTime) / 1000;
             if (elapsed < 10 && secilenZorluk && secilenZorluk.id !== 'suretsiz') {
                 timeBonusSeconds += 3;
                 timeLeft += 3;
             }
-            
+
             var s = mevcutSorular[mevcutIndex];
             var isCorrect = (l === s.dogru);
-            
+
             if (answerMode === 'instant') {
                 // INSTANT MODE - show feedback
                 var fb = document.getElementById('inlineFeedback');
@@ -8091,11 +8354,11 @@
                     if (fb) { fb.className = 'inline-feedback wrong'; fb.innerHTML = '❌ ' + t('dogruCevap') + ' <span style="color:#4caf50;font-weight:800;">' + s.dogru + ') ' + s[s.dogru] + '</span>'; fb.style.display = 'block'; }
                     playWrongSound();
                     var mc = document.getElementById('mainContainer');
-                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(function() { mc.classList.remove('shake'); }, 600); }
+                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(function () { mc.classList.remove('shake'); }, 600); }
                 }
                 // Auto-advance after 5 seconds
                 if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-                autoAdvanceTimer = setTimeout(function() {
+                autoAdvanceTimer = setTimeout(function () {
                     var nextIdx = getNextQuestionIndex(mevcutIndex);
                     if (nextIdx !== -1) {
                         mevcutIndex = nextIdx;
@@ -8106,7 +8369,7 @@
                 }, 5000);
             }
             /* END MODE - no feedback at all: no colors, no sounds, no shake */
-            
+
             updateQuestionNavigationButtons();
         };
         window.skipCurrentQuestion = function () { cevaplar[mevcutIndex] = 'B'; updateQuestionNavigationButtons(); nextQuestion(); };
@@ -8210,19 +8473,34 @@
                 }
             });
         }
-        document.addEventListener('keypress', e => { if (e.key === 'Enter' && !autoAdvanceTimer) {
-            const modeScr = document.getElementById('modeScreen');
-            if (pScreen.style.display !== 'none') validateAndContinue();
-            else if (modeScr && modeScr.style.display !== 'none' && !document.getElementById('modeNextBtn').disabled) continueFromMode();
-            else if (cScreen.style.display !== 'none' && !id('categoryNextBtn').disabled) goToDifficultySelect();
-            else if (dScreen.style.display !== 'none' && !id('difficultyNextBtn').disabled) startTest();
-            else if (document.getElementById('photoCategoryScreen')?.style.display !== 'none' && !document.getElementById('photoCategoryNextBtn').disabled) goToPhotoDifficulty();
-            else if (document.getElementById('photoDifficultyScreen')?.style.display !== 'none' && !document.getElementById('photoDifficultyNextBtn').disabled) startPhotoTest();
-        } });
+        document.addEventListener('keypress', e => {
+            if (e.key === 'Enter' && !autoAdvanceTimer) {
+                const modeScr = document.getElementById('modeScreen');
+                if (pScreen.style.display !== 'none') validateAndContinue();
+                else if (modeScr && modeScr.style.display !== 'none' && !document.getElementById('modeNextBtn').disabled) continueFromMode();
+                else if (cScreen.style.display !== 'none' && !id('categoryNextBtn').disabled) goToDifficultySelect();
+                else if (dScreen.style.display !== 'none' && !id('difficultyNextBtn').disabled) startTest();
+                else if (document.getElementById('photoCategoryScreen')?.style.display !== 'none' && !document.getElementById('photoCategoryNextBtn').disabled) goToPhotoDifficulty();
+                else if (document.getElementById('photoDifficultyScreen')?.style.display !== 'none' && !document.getElementById('photoDifficultyNextBtn').disabled) startPhotoTest();
+            }
+        });
         changeTheme('space'); updateRankDisplay();
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1d45ebd4aab23f6',t:'MTc4NDQwNzk0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1e4a32b2b4cc28b',t:'MTc4NDU3ODUyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496"
+        integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496"
+        integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1c89162b9ae0f17',t:'MTc4NDI4NDE5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1c9d4cfb9ffb5a1',t:'MTc4NDI5NzQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1d45ebd4aab23f6',t:'MTc4NDQwNzk0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1fb21b979d9a895',t:'MTc4NDgxNDM5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
 
 </html>
