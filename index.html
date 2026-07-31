@@ -1756,7 +1756,7 @@
         /* ===== OYUN MODU SEÇİM ===== */
         .mode-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 22px;
             margin: 30px 0 20px;
         }
@@ -1826,6 +1826,11 @@
         .mode-card--text {
             background: linear-gradient(135deg, rgba(0, 210, 255, 0.18), rgba(20, 30, 70, 0.95));
             border-color: #00d2ff;
+        }
+
+        .mode-card--ombm {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.15), rgba(50, 40, 5, 0.95));
+            border-color: #facc15;
         }
 
         .category-card--photo-marvel {
@@ -2062,8 +2067,8 @@
             font-weight: 800;
             background: linear-gradient(135deg, #8A2BE2 0%, #A020F0 20%, #C71585 40%, #DA70D6 60%, #FF69B4 80%, #FF1493 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
             text-shadow: 0 0 30px #8A2BE2, 0 0 60px #C71585, 0 0 90px #FF69B4;
             animation: neonPulse 2.5s ease-in-out infinite;
@@ -2457,6 +2462,51 @@
         .category-card--doga {
             background: linear-gradient(135deg, rgba(74, 222, 128, 0.24), rgba(10, 40, 20, 0.95));
             border-color: #4ade80;
+        }
+
+        .category-card--kizanime {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(88, 28, 135, 0.9));
+            border-color: #ec4899;
+        }
+
+        .category-card--erkekanime {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(127, 29, 29, 0.95));
+            border-color: #ef4444;
+        }
+
+        .category-card--aburcubur {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(154, 52, 18, 0.95));
+            border-color: #fb923c;
+        }
+
+        .category-card--oyunkarakterleri {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(88, 28, 135, 0.95));
+            border-color: #a855f7;
+        }
+
+        .category-card--oyunlar {
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.25), rgba(50, 10, 70, 0.95));
+            border-color: #d946ef;
+        }
+
+        .category-card--dckarakterleri {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(12, 20, 40, 0.95));
+            border-color: #60a5fa;
+        }
+
+        .category-card--unluler {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.25), rgba(161, 98, 7, 0.95));
+            border-color: #facc15;
+        }
+
+        .category-card--unlukadinlar {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(190, 24, 93, 0.95));
+            border-color: #f472b6;
+        }
+
+        .category-card--film {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.24), rgba(120, 53, 15, 0.9));
+            border-color: #facc15;
         }
 
         .category-icon {
@@ -3501,6 +3551,289 @@
             opacity: 0.35;
         }
 
+        /* ===== O MU BU MU? (TURNUVA) STİLLERİ ===== */
+        .ombm-tur-banner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ombm-tur-label {
+            font-size: 28px;
+            font-weight: 900;
+            text-align: center;
+            color: #facc15;
+            text-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .ombm-tur-sub {
+            color: #a0d0ff;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .ombm-progress-bar {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .ombm-progress-label {
+            color: #a0d0ff;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .ombm-progress-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ombm-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #facc15, #ff8c00);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .ombm-battle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .ombm-card {
+            flex: 1;
+            max-width: 320px;
+            background: linear-gradient(135deg, rgba(5, 10, 30, 0.96), rgba(30, 35, 70, 0.95));
+            border: 3px solid rgba(250, 204, 21, 0.35);
+            border-radius: 28px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            min-height: 280px;
+            justify-content: center;
+        }
+
+        .ombm-card:hover {
+            transform: scale(1.05);
+            border-color: #8a2be2;
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.5), 0 0 80px rgba(250, 204, 21, 0.2);
+        }
+
+        .ombm-card:active {
+            transform: scale(0.97);
+        }
+
+        .ombm-card.ombm-winner {
+            border-color: #4caf50 !important;
+            box-shadow: 0 0 40px rgba(76, 175, 80, 0.6) !important;
+            animation: winPop 0.5s ease;
+        }
+
+        .ombm-card.ombm-loser {
+            opacity: 0.15;
+            transform: scale(0.82);
+            pointer-events: none;
+        }
+
+        @keyframes winPop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .ombm-card-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .ombm-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ombm-card-name {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .ombm-card-sub {
+            color: #a0d0ff;
+            font-size: 13px;
+        }
+
+        .ombm-vs-badge {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff4444, #ff6b6b, #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: vsPulse 1.5s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes vsPulse {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotate(3deg);
+            }
+        }
+
+        .ombm-champion {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .ombm-champ-emoji {
+            font-size: 90px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .ombm-champ-name {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ombm-champ-label {
+            color: #ffd700;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .ombm-result-list {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .ombm-result-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ombm-result-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 20px;
+            animation: slideUp 0.4s ease;
+            animation-fill-mode: both;
+        }
+
+        .ombm-result-row.ombm-rank-1 {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(255, 165, 0, 0.08));
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .ombm-result-row.ombm-rank-2 {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.14), rgba(180, 180, 180, 0.06));
+            border: 2px solid rgba(192, 192, 192, 0.4);
+        }
+
+        .ombm-result-row.ombm-rank-3 {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.14), rgba(180, 100, 30, 0.06));
+            border: 2px solid rgba(205, 127, 50, 0.4);
+        }
+
+        .ombm-result-row.ombm-rank-other {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ombm-result-medal {
+            font-size: 30px;
+            width: 44px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .ombm-result-emoji {
+            font-size: 32px;
+            width: 44px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .ombm-result-info {
+            flex: 1;
+        }
+
+        .ombm-result-name {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .ombm-result-rank-text {
+            color: #a0d0ff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .ombm-result-number {
+            color: #00d2ff;
+            font-size: 20px;
+            font-weight: 800;
+            width: 36px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
         /* SCREEN SHAKE */
         @keyframes shakeScreen {
 
@@ -3869,6 +4202,11 @@
                     <div class="mode-card-title">Fotoğraflı Soru</div>
                     <div class="mode-card-desc">Görseli gör, ismi yaz. Karakter / logo / bayrak tahmin et.</div>
                 </div>
+                <div class="mode-card mode-card--ombm" id="modeOmbmCard" onclick="selectGameMode('ombm')">
+                    <div class="mode-card-icon">⚔️</div>
+                    <div class="mode-card-title">O mu Bu mu?</div>
+                    <div class="mode-card-desc">Turnuva usulü: İkişer görsel, bir tercih! Şampiyonu seç.</div>
+                </div>
             </div>
             <div class="button-group">
                 <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
@@ -3986,6 +4324,118 @@
             <div id="photoResultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
             <div id="photoExplanationPanel"></div>
             <button class="primary-btn" onclick="goToPhotoCategoriesFromResult()">🔄 Yeniden Başla</button>
+        </div>
+
+        <!-- ===== O MU BU MU? EKRANLARI ===== -->
+        <div class="screen" id="ombmCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromOmbm()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">⚔️ Kategori Seç</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride turnuva yapmak istersin?</p>
+            <div class="categories-grid" id="ombmCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="ombmCategoryNextBtn" onclick="goToOmbmCount()" disabled>Görsel Sayısı
+                    Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Görsel Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Kaç görselle turnuva yapmak istersin?<br><small style="color:#7eb8ff;">(Maksimum: <span
+                        id="ombmMaxLbl">16</span>)</small></p>
+            <div class="count-box"
+                style="max-width:450px;margin:25px auto;background:rgba(0,0,0,0.28);border:2px solid rgba(250,204,21,0.35);border-radius:22px;padding:20px;text-align:center;">
+                <label style="color:#a0d0ff;font-size:16px;margin-bottom:12px;font-weight:600;display:block;">Görsel
+                    sayısı seç</label>
+                <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
+                    <input class="count-input" id="ombmCountInput" type="number" min="4" max="16" value="8"
+                        oninput="validateOmbmCount()"
+                        style="width:110px;background:rgba(0,0,0,0.35);border:2px solid #facc15;border-radius:16px;padding:12px 14px;color:#fff;font-size:22px;font-weight:800;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;outline:none;">
+                    <div style="color:#facc15;font-size:16px;font-weight:800;">/ max <span id="ombmMaxLbl2">16</span>
+                    </div>
+                </div>
+                <div style="color:#ff6b6b;font-size:13px;min-height:20px;margin-top:8px;" id="ombmCountErr"></div>
+            </div>
+            <div
+                style="background:rgba(0,0,0,0.2);border:2px solid rgba(250,204,21,0.2);border-radius:20px;padding:16px;max-width:550px;margin:20px auto;">
+                <div style="color:#a0d0ff;font-size:14px;text-align:center;line-height:1.8;">
+                    <p>⚔️ Tüm görseller <strong style="color:#facc15;">ikişerli</strong> karşı karşıya gelir.</p>
+                    <p>Her turda birini seç → kazananlar sonraki tura geçer.</p>
+                    <p>Son ayakta kalan = <strong style="color:#ffd700;">👑 ŞAMPİYON!</strong></p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" onclick="startOmbmTournament()">⚔️ Kapıştırmaya Başla!</button>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmGameScreen" style="display:none;">
+            <div class="test-header">
+                <div style="display:flex;align-items:center;gap:15px;">
+                    <button class="exit-test-btn" onclick="exitOmbmToCategories()"
+                        style="padding:10px 18px;font-size:14px;">🚪 Çık</button>
+                    <div>
+                        <h3 style="color:#facc15;" id="ombmGameCatInfo">⚔️ Yemek</h3>
+                        <p style="color:#a0d0ff;font-size:14px;" id="ombmGameMatchInfo">Eşleşme 1 / 8</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+                <div class="ombm-progress-bar">
+                    <div class="ombm-progress-label" id="ombmProgressLabel">Tur İlerleme: 0 eşleşme • 16 görsel</div>
+                    <div class="ombm-progress-track">
+                        <div class="ombm-progress-fill" id="ombmProgressFill" style="width:0%"></div>
+                    </div>
+                </div>
+                <div class="ombm-tur-banner">
+                    <div class="ombm-tur-label" id="ombmTurLabel">TUR 1</div>
+                    <div class="ombm-tur-sub" id="ombmTurSub">8 eşleşme • 16 görsel</div>
+                </div>
+                <div class="ombm-battle">
+                    <div class="ombm-card" id="ombmCardLeft" onclick="pickOmbmWinner('left')">
+                        <div class="ombm-card-img" id="ombmImgLeft">🍕</div>
+                        <div class="ombm-card-name" id="ombmNameLeft">Pizza</div>
+                        <div class="ombm-card-sub">Tıkla → Seç</div>
+                    </div>
+                    <div class="ombm-vs-badge">VS</div>
+                    <div class="ombm-card" id="ombmCardRight" onclick="pickOmbmWinner('right')">
+                        <div class="ombm-card-img" id="ombmImgRight">🍔</div>
+                        <div class="ombm-card-name" id="ombmNameRight">Hamburger</div>
+                        <div class="ombm-card-sub">Tıkla → Seç</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmResultScreen" style="display:none;">
+            <div style="text-align:center;margin-bottom:25px;">
+                <div
+                    style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#ffd700,#ff8c00,#ffd700);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    👑 Şampiyon Belli Oldu!
+                </div>
+                <p style="color:#a0d0ff;font-size:15px;margin-top:8px;" id="ombmResultSub"></p>
+            </div>
+            <div class="ombm-champion" id="ombmChampion"></div>
+            <div class="ombm-result-list" id="ombmResultList"></div>
+            <div class="button-group" style="justify-content:center;margin-top:30px;flex-wrap:wrap;">
+                <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
+                <button class="back-btn" onclick="goBackToModeFromOmbm()">🏠 Modlar</button>
+                <button class="back-btn" onclick="goBackToProfileFromOmbm()">👤 Profil</button>
+            </div>
         </div>
 
         <div class="screen" id="categoryScreen" style="display:none;">
@@ -6601,14 +7051,14 @@
         function changeTheme(catId) {
             const bg = document.getElementById('animatedBg'), cont = document.getElementById('animationContainer');
             bg.className = 'animated-bg';
-            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'oyun': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik', 'mitoloji': 'theme-mitoloji', 'anime': 'theme-anime', 'futbol': 'theme-futbol', 'markalar': 'theme-markalar', 'bayraklar': 'theme-bayraklar', 'matematik': 'theme-matematik', 'dizi': 'theme-dizi', 'moda': 'theme-moda', 'felsefe': 'theme-felsefe', 'doga': 'theme-doga', 'emoji': 'theme-emoji', 'icecek': 'theme-icecek', 'youtuber': 'theme-youtuber', 'yayinci': 'theme-yayinci' };
+            const map = { 'araba': 'theme-araba', 'motor': 'theme-motor', 'marvel': 'theme-marvel', 'dc': 'theme-dc', 'dckarakterleri': 'theme-dc', 'oyun': 'theme-oyun', 'oyunlar': 'theme-oyun', 'yemek': 'theme-yemek', 'hayvan': 'theme-hayvan', 'spor': 'theme-spor', 'teknoloji': 'theme-teknoloji', 'genelkultur': 'theme-genelkultur', 'muzik': 'theme-muzik', 'sinema': 'theme-sinema', 'bilim': 'theme-bilim', 'tarih': 'theme-tarih', 'sanat': 'theme-sanat', 'astronomi': 'theme-astronomi', 'edebiyat': 'theme-edebiyat', 'cografya': 'theme-cografya', 'siyaset': 'theme-siyaset', 'saglik': 'theme-saglik', 'mitoloji': 'theme-mitoloji', 'anime': 'theme-anime', 'futbol': 'theme-futbol', 'markalar': 'theme-markalar', 'bayraklar': 'theme-bayraklar', 'matematik': 'theme-matematik', 'dizi': 'theme-dizi', 'moda': 'theme-moda', 'felsefe': 'theme-felsefe', 'doga': 'theme-doga', 'emoji': 'theme-emoji', 'icecek': 'theme-icecek', 'youtuber': 'theme-youtuber', 'yayinci': 'theme-yayinci' };
             const themeClass = map[catId] || getGenderBaseTheme();
             bg.classList.add(themeClass); cont.innerHTML = '';
             if (catId === 'araba') { for (let i = 0; i < 8; i++) { let c = document.createElement('div'); c.className = 'car-animation'; c.textContent = ['🏎️', '🚗', '🚙', '🚕', '🏎️', '🚓'][i % 6]; c.style.top = (5 + i * 12) + '%'; c.style.animationDelay = (i * 1.5) + 's'; c.style.animationDuration = (7 + Math.random() * 5) + 's'; cont.appendChild(c); } }
             else if (catId === 'motor') { for (let i = 0; i < 8; i++) { let c = document.createElement('div'); c.className = 'car-animation'; c.textContent = ['🏍️', '🛵', '🏍️', '🛵', '🏍️', '🛵'][i % 6]; c.style.top = (5 + i * 12) + '%'; c.style.animationDelay = (i * 1.5) + 's'; cont.appendChild(c); } }
             else if (catId === 'marvel') { ['🦸', '🕷️', '🔨', '🛡️', '💪', '🏹', '🦾', '⚡'].forEach((h, i) => { let d = document.createElement('div'); d.className = 'marvel-hero'; d.textContent = h; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 25) + '%'; cont.appendChild(d); }); }
-            else if (catId === 'dc') { ['🦇', '🦸‍♂️', '🃏', '🐧', '⚡', '🌊', '🏹', '💚'].forEach((h, i) => { let d = document.createElement('div'); d.className = 'dc-hero'; d.textContent = h; d.style.left = (5 + i * 12) + '%'; d.style.top = (15 + (i % 3) * 25) + '%'; cont.appendChild(d); }); }
-            else if (catId === 'oyun') { ['🎮', '🕹️', '👾', '🎯', '🎲', '♟️', '🎰', '🎳'].forEach((c, i) => { let d = document.createElement('div'); d.className = 'game-char'; d.textContent = c; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 4) * 20) + '%'; cont.appendChild(d); }); }
+            else if (catId === 'dc' || catId === 'dckarakterleri') { ['🦇', '🦸‍♂️', '🃏', '🐧', '⚡', '🌊', '🏹', '💚'].forEach((h, i) => { let d = document.createElement('div'); d.className = 'dc-hero'; d.textContent = h; d.style.left = (5 + i * 12) + '%'; d.style.top = (15 + (i % 3) * 25) + '%'; cont.appendChild(d); }); }
+            else if (catId === 'oyun' || catId === 'oyunlar') { ['🎮', '🕹️', '👾', '🎯', '🎲', '♟️', '🎰', '🎳'].forEach((c, i) => { let d = document.createElement('div'); d.className = 'game-char'; d.textContent = c; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 4) * 20) + '%'; cont.appendChild(d); }); }
             else if (catId === 'yemek') { ['🍕', '🍔', '🌮', '🍣', '🍜', '🍰', '🍦', '🥗'].forEach((f, i) => { let d = document.createElement('div'); d.className = 'food-item'; d.textContent = f; d.style.left = (5 + i * 12) + '%'; d.style.top = (10 + (i % 3) * 30) + '%'; cont.appendChild(d); }); }
             else if (catId === 'hayvan') { ['🦁', '🐘', '🦒', '🐒', '🦓', '🐅', '🦌', '🐪'].forEach((a, i) => { let d = document.createElement('div'); d.className = 'animal-item'; d.textContent = a; d.style.top = (10 + i * 10) + '%'; d.style.animationDelay = (i * 1.2) + 's'; cont.appendChild(d); }); }
             else if (catId === 'spor') { ['⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏉', '🥎'].forEach((s, i) => { let d = document.createElement('div'); d.className = 'sport-item'; d.textContent = s; d.style.left = (5 + i * 12) + '%'; cont.appendChild(d); }); }
@@ -7426,7 +7876,8 @@
 
         function hideAllMainScreens() {
             ['profileScreen', 'modeScreen', 'categoryScreen', 'difficultyScreen', 'testScreen', 'resultScreen',
-                'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen']
+                'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen',
+                'ombmCategoryScreen', 'ombmCountScreen', 'ombmGameScreen', 'ombmResultScreen']
                 .forEach(sid => {
                     const el = document.getElementById(sid);
                     if (el) el.style.display = 'none';
@@ -7447,12 +7898,14 @@
             document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
             if (mode === 'text') document.getElementById('modeTextCard').classList.add('selected');
             if (mode === 'photo') document.getElementById('modePhotoCard').classList.add('selected');
+            if (mode === 'ombm') document.getElementById('modeOmbmCard').classList.add('selected');
             document.getElementById('modeNextBtn').disabled = false;
         };
 
         window.continueFromMode = function () {
             if (gameMode === 'text') goToCategorySelect();
             else if (gameMode === 'photo') goToPhotoCategorySelect();
+            else if (gameMode === 'ombm') goToOmbmCategorySelect();
         };
 
         window.goBackToProfileFromMode = function () {
@@ -8482,8 +8935,592 @@
                 else if (dScreen.style.display !== 'none' && !id('difficultyNextBtn').disabled) startTest();
                 else if (document.getElementById('photoCategoryScreen')?.style.display !== 'none' && !document.getElementById('photoCategoryNextBtn').disabled) goToPhotoDifficulty();
                 else if (document.getElementById('photoDifficultyScreen')?.style.display !== 'none' && !document.getElementById('photoDifficultyNextBtn').disabled) startPhotoTest();
+                else if (document.getElementById('ombmCategoryScreen')?.style.display !== 'none' && !document.getElementById('ombmCategoryNextBtn').disabled) goToOmbmCount();
+                else if (document.getElementById('ombmCountScreen')?.style.display !== 'none') startOmbmTournament();
             }
         });
+        // ===== O MU BU MU? (TURNUVA) SİSTEMİ =====
+        let ombmSelectedCat = null;
+        let ombmSelectedMax = 0;
+        let ombmAllItems = [];
+        let ombmCurrentRound = [];
+        let ombmMatchQueue = [];
+        let ombmNextRound = [];
+        let ombmCurrentMatch = [null, null];
+        let ombmTurNum = 1;
+        let ombmMatchInTur = 0;
+        let ombmTotalMatchesInTur = 0;
+        let ombmEliminatedAll = [];
+
+        // OBM categories - use photo pools data for images
+        const ombmKategoriler = [
+            { id: 'marvel', icon: '🦸', name: 'Marvel', maxPool: 'photo-marvel' },
+            { id: 'dc', icon: '🦇', name: 'DC', maxPool: 'photo-dc' },
+            { id: 'anime', icon: '🎌', name: 'Anime', maxPool: 'photo-anime' },
+            { id: 'kizanime', icon: '🌸', name: 'Kız Anime', maxPool: 'photo-kizanime' },
+            { id: 'erkekanime', icon: '⚔️', name: 'Erkek Anime', maxPool: 'photo-erkekanime' },
+            { id: 'yemek', icon: '🍳', name: 'Yemek', maxPool: 'photo-yemekler' },
+            { id: 'tatli', icon: '🍰', name: 'Tatlı', maxPool: 'photo-tatli' },
+            { id: 'aburcubur', icon: '🍿', name: 'Abur Cubur', maxPool: 'photo-aburcubur' },
+            { id: 'meyve', icon: '🍎', name: 'Meyve', maxPool: 'photo-meyve' },
+            { id: 'futbol', icon: '⚽', name: 'Futbol', maxPool: 'photo-futbol' },
+            { id: 'araba', icon: '🏎️', name: 'Araba', maxPool: 'photo-araba' },
+            { id: 'motor', icon: '🏍️', name: 'Motor', maxPool: 'photo-motor' },
+            { id: 'oyun', icon: '🎮', name: 'Oyun', maxPool: 'photo-oyun' },
+            { id: 'oyunkarakterleri', icon: '🕹️', name: 'Oyun Karakterleri', maxPool: 'photo-oyunkarakterleri' },
+            { id: 'oyunlar', icon: '💿', name: 'Oyunlar', maxPool: 'photo-oyunlar' },
+            { id: 'dckarakterleri', icon: '🃏', name: 'DC Karakterleri', maxPool: 'photo-dckarakterleri' },
+            { id: 'unluerkekler', icon: '🎬', name: 'Ünlü Erkekler', maxPool: 'photo-unluler' },
+            { id: 'unlukadinlar', icon: '💃', name: 'Ünlü Kadınlar', maxPool: 'photo-kadinlar' },
+            { id: 'bayrak', icon: '🚩', name: 'Bayrak', maxPool: 'photo-bayraklar' },
+            { id: 'hayvan', icon: '🦁', name: 'Hayvan', maxPool: 'photo-hayvan' },
+            { id: 'dizi', icon: '📺', name: 'Dizi', maxPool: 'photo-dizi' },
+            { id: 'film', icon: '🎬', name: 'Film', maxPool: 'photo-sinema' }
+        ];
+
+        // Build OBM pools from photo pools (with emoji fallback)
+        const ombmPools = {};
+        function buildOmbmPools() {
+            ombmKategoriler.forEach(k => {
+                const pool = photoPools[k.maxPool] || [];
+                ombmPools[k.id] = pool.map((item, idx) => ({
+                    emoji: item.emoji || '🖼️',
+                    name: item.label || ('Öğe ' + (idx + 1)),
+                    image: item.image || ''
+                }));
+            });
+
+
+
+            // If no photo pools available, create emoji fallbacks
+            if (!ombmPools['yemek'] || ombmPools['yemek'].length === 0) {
+                ombmPools['yemek'] = [
+                    { emoji: '🍕', name: 'Pizza', image: '' }, { emoji: '🍔', name: 'Hamburger', image: '' },
+                    { emoji: '🌮', name: 'Taco', image: '' }, { emoji: '🍣', name: 'Suşi', image: '' },
+                    { emoji: '🥘', name: 'Güveç', image: '' }, { emoji: '🍝', name: 'Makarna', image: '' },
+                    { emoji: '🥟', name: 'Mantı', image: '' }, { emoji: '🫓', name: 'Pide', image: '' },
+                    { emoji: '🍗', name: 'Tavuk', image: '' }, { emoji: '🥗', name: 'Salata', image: '' },
+                    { emoji: '🍜', name: 'Ramen', image: '' }, { emoji: '🌯', name: 'Dürüm', image: '' },
+                    { emoji: '🥙', name: 'Döner', image: '' }, { emoji: '🍛', name: 'Köri', image: '' },
+                    { emoji: '🫕', name: 'Fondü', image: '' }, { emoji: '🥩', name: 'Biftek', image: '' },
+                    { emoji: '🧆', name: 'Köfte', image: '' }, { emoji: '🍲', name: 'Çorba', image: '' },
+                    { emoji: '🥪', name: 'Sandviç', image: '' }, { emoji: '🌶️', name: 'Acılı Yemek', image: '' },
+                    { emoji: '🍖', name: 'Et', image: '' }, { emoji: '🥘', name: 'Tencere', image: '' },
+                    { emoji: '🫔', name: 'Börek', image: '' }, { emoji: '🥧', name: 'Börek Çeşidi', image: '' },
+                    { emoji: '🍚', name: 'Pilav', image: '' }, { emoji: '🥗', name: 'Meze', image: '' },
+                    { emoji: '🧈', name: 'Tereyağı', image: '' }, { emoji: '🫒', name: 'Zeytin', image: '' },
+                    { emoji: '🧀', name: 'Peynir', image: '' }, { emoji: '🥚', name: 'Yumurta', image: '' }
+                ];
+            }
+            // Ensure all categories have fallback pools
+            ombmKategoriler.forEach(k => {
+                if (!ombmPools[k.id] || ombmPools[k.id].length === 0) {
+                    const fallbacks = {
+                        'yemek': [
+                            { emoji: '', name: 'Ezme', image: 'yemekler_01.jpg' },
+                            { emoji: '', name: 'Biber Dolması', image: 'yemekler_02.webp' },
+                            { emoji: '', name: 'beyti', image: 'yemekler_03.avif' },
+                            { emoji: '🥙', name: 'Döner', image: 'yemekler_04.jpg' },
+                            { emoji: '🥞', name: 'Katmer', image: 'yemekler_05.jpg' },
+                            { emoji: '', name: 'Arpa Şehriye Çorbası', image: 'yemekler_06.webp' },
+                            { emoji: '🍲', name: 'Ali Nazik', image: 'yemekler_07.jpg' },
+                            { emoji: '', name: 'Sulu Köfte', image: 'yemekler_08.jpg' },
+                            { emoji: '🍚', name: 'Bulgur Pilavı', image: 'yemekler_09.jpg' },
+                            { emoji: '🥩', name: 'Çiğ Köfte', image: 'yemekler_10.jpg' },
+                            { emoji: '', name: 'Hummus', image: 'yemekler_11.jpg' },
+                            { emoji: '🥩', name: 'Izgara Et', image: 'yemekler_12.jpg' },
+                            { emoji: '🥐', name: 'Poğaça', image: 'yemekler_13.jpg' },
+                            { emoji: '', name: 'Cacık', image: 'yemekler_14.jpg' },
+                            { emoji: '', name: 'köfte', image: 'yemekler_15.jpg' },
+                            { emoji: '', name: 'Musakka', image: 'yemekler_16.jpg' },
+                            { emoji: '🫓', name: 'Lahmacun', image: 'yemekler_17.jpg' },
+                            { emoji: '', name: 'Nohut Eti', image: 'yemekler_18.jpg' },
+                            { emoji: '🫓', name: 'Acıktır', image: 'yemekler_19.jpg' },
+                            { emoji: '', name: 'Adana Kebab', image: 'yemekler_20.jpg' },
+                            { emoji: '🍽️', name: 'İskender Kebab', image: 'yemekler_21.jpg' },
+                            { emoji: '🥟', name: 'Mantı', image: 'yemekler_22.jpg' },
+                            { emoji: '', name: 'Çökertme', image: 'yemekler_23.jpg' },
+                            { emoji: '', name: 'Hamburger', image: 'yemekler_24.jpg' },
+                            { emoji: '', name: 'Adana Şiş Kebab', image: 'yemekler_25.jpg' },
+                            { emoji: '🍕', name: 'Pizza', image: 'yemekler_26.jpg' }
+                        ],
+
+                        'ünlü erkekler': [
+                            { emoji: '🕴️', name: 'Christian Bale', image: 'erkek_01.jpg' },
+                            { emoji: '🕴️', name: 'Leonardo DiCaprio', image: 'erkek_02.jpg' },
+                            { emoji: '🕴️', name: 'Brad Pitt', image: 'erkek_03.jpg' },
+                            { emoji: '🕴️', name: 'Will Smith', image: 'erkek_04.jpg' },
+                            { emoji: '🕴️', name: 'Nicolas Cage', image: 'erkek_05.jpg' },
+                            { emoji: '🕴️', name: 'Jason Statham', image: 'erkek_06.jpg' },
+                            { emoji: '🕴️', name: 'Robert Downey Jr.', image: 'erkek_07.jpg' },
+                            { emoji: '🕴️', name: 'Hugh Jackman', image: 'erkek_08.jpg' },
+                            { emoji: '🕴️', name: 'Vin Diesel', image: 'erkek_09.jpg' },
+                            { emoji: '🕴️', name: 'Kenan İmirzalıoğlu', image: 'erkek_10.jpg' },
+                            { emoji: '🕴️', name: 'Burak Özçivit', image: 'erkek_11.jpg' },
+                            { emoji: '🕴️', name: 'Aras Bulut İynemli', image: 'erkek_12.jpg' },
+                            { emoji: '🕴️', name: 'Kerem Bürsin', image: 'erkek_13.jpg' },
+                            { emoji: '🕴️', name: 'Çağatay Ulusoy', image: 'erkek_14.jpg' },
+                            { emoji: '🕴️', name: 'Kıvanç Tatlıtuğ', image: 'erkek_15.jpg' },
+                            { emoji: '🕴️', name: 'Barış Arduç', image: 'erkek_16.jpg' },
+                            { emoji: '🕴️', name: 'İlker Kaleli', image: 'erkek_17.jpg' },
+                            { emoji: '🕴️', name: 'Alperen Duymaz', image: 'erkek_18.jpg' },
+                            { emoji: '🕴️', name: 'Engin Öztürk', image: 'erkek_19.jpg' },
+                            { emoji: '🕴️', name: 'Johnny Depp', image: 'erkek_20.jpg' },
+                            { emoji: '🕴️', name: 'Michele Morrone', image: 'erkek_21.jpg' },
+                            { emoji: '🕴️', name: 'Necati Şaşmaz', image: 'erkek_22.jpg' },
+                            { emoji: '🕴️', name: 'Tom Hardy', image: 'erkek_23.jpg' },
+                            { emoji: '🕴️', name: 'Tom Holland', image: 'erkek_24.jpg' },
+                            { emoji: '🕴️', name: 'Robert Pattinson', image: 'erkek_25.jpg' },
+                            { emoji: '🕴️', name: 'Engin Altan Düzyatan', image: 'erkek_26.png' }
+
+                        ],
+                        'motor': [
+                            { emoji: '🏍️', name: 'Yamaha R25', image: 'images(1).jpg' },
+                            { emoji: '🏍️', name: 'Bajaj Pulsar', image: 'images(2).jpg' },
+                            { emoji: '🏍️', name: 'BMW S1000RR', image: 'images(3).jpg' },
+                            { emoji: '️', name: 'Ducati Panigale', image: 'images(4).jpg' },
+                            { emoji: '🏍️', name: 'Suzuki Hayabusa', image: 'images(5).jpg' },
+                            { emoji: '🏍️', name: 'Kawasaki Ninja', image: 'images(6).jpg' },
+                            { emoji: '🏍️', name: 'Honda Africa Twin', image: 'images(7).jpg' },
+                            { emoji: '🏍️', name: 'Bajaj RS200', image: 'images(8).jpg' },
+                            { emoji: '🏍️', name: 'Suzuki GSX-R', image: 'images(9).jpg' },
+                            { emoji: '🏍️', name: 'Okuba GT100', image: 'images (10).jpg' },
+                            { emoji: '🏍️', name: 'TVS Raider', image: 'images (11).jpg' },
+                            { emoji: '🏍️', name: 'Honda PCX', image: 'images (12).jpg' }
+                        ],
+                        'araba': [
+                            { emoji: '🏎️', name: 'Bugatti Chiron', image: 'images(1).jpg' },
+                            { emoji: '🚗', name: 'BMW M4', image: 'images(2).jpg' },
+                            { emoji: '🚙', name: 'BMW i8', image: 'images(3).jpg' },
+                            { emoji: '🚗', name: 'Renault Clio', image: 'images(4).jpg' },
+                            { emoji: '', name: 'Citroen Ami', image: 'images(5).jpg' },
+                            { emoji: '🚙', name: 'Togg T10X', image: 'images(6).jpg' },
+                            { emoji: '🚗', name: 'Fiat Doblo', image: 'images(7).jpg' },
+                            { emoji: '🚗', name: 'Volkswagen Passat', image: 'images(8).jpg' },
+                            { emoji: '🏁', name: 'Lamborghini Centenario', image: 'images(9).jpg' },
+                            { emoji: '🚗', name: 'Rolls Royce Ghost', image: 'images (10).jpg' },
+                            { emoji: '️', name: 'Ferrari LaFerrari', image: 'images (11).jpg' },
+                            { emoji: '🚗', name: 'Nissan Skyline GT-R', image: 'images (12).jpg' },
+                            { emoji: '🏁', name: 'Ford Mustang Shelby', image: 'images (13).jpg' },
+                            { emoji: '🚗', name: 'Dodge Charger 1970', image: 'images (14).jpg' },
+                            { emoji: '🚙', name: 'Toyota Supra', image: 'images (15).jpg' },
+                            { emoji: '🏎️', name: 'Porsche 911 GT3', image: 'images (16).jpg' },
+                            { emoji: '🚗', name: 'Tofaş Şahin', image: 'images (17).jpg' },
+                            { emoji: '🏎️', name: 'Mercedes AMG GT', image: 'images (18).jpg' }
+                        ],
+                        'bayrak': [
+                            { emoji: '🇰🇷', name: 'Güney Kore', image: 'bayraklar_01.jpg' },
+                            { emoji: '🇷', name: 'Fransa', image: 'bayraklar_02.png' },
+                            { emoji: '🇲🇰', name: 'Kuzey Makedonya', image: 'bayraklar_03.jpg' },
+                            { emoji: '🇹🇷', name: 'Türkiye', image: 'bayraklar_04.png' },
+                            { emoji: '🇮🇱', name: 'İsrail', image: 'bayraklar_05.jpg' },
+                            { emoji: '🇩🇰', name: 'Danimarka', image: 'bayraklar_06.png' },
+                            { emoji: '🇺🇸', name: 'Amerika Birleşik Devletleri', image: 'bayraklar_07.jpg' },
+                            { emoji: '🇧🇷', name: 'Brezilya', image: 'bayraklar_08.png' },
+                            { emoji: '🇺🇿', name: 'Özbekistan', image: 'bayraklar_09.jpg' },
+                            { emoji: '🇾', name: 'Suriye', image: 'bayraklar_10.png' },
+                            { emoji: '🇦🇲', name: 'Ermenistan', image: 'bayraklar_11.png' },
+                            { emoji: '🇦🇿', name: 'Azerbaycan', image: 'bayraklar_12.png' },
+                            { emoji: '🇲', name: 'Türkmenistan', image: 'bayraklar_13.png' },
+                            { emoji: '🇵🇰', name: 'Pakistan', image: 'bayraklar_14.png' },
+                            { emoji: '🇩🇪', name: 'Almanya', image: 'bayraklar_15.png' },
+                            { emoji: '🇦', name: 'Güney Afrika', image: 'bayraklar_16.jpg' }
+                        ],
+                        'tatli': [
+                            { emoji: '🍮', name: 'Trileçe', image: 'tatlı_01.jpg' },
+                            { emoji: '🍰', name: 'Çikolatalı Trileçe', image: 'tatlı_02.jpg' },
+                            { emoji: '🧀', name: 'Künefe', image: 'tatlı_03.jpg' },
+                            { emoji: '', name: 'Şekerpare', image: 'tatlı_04.jpg' },
+                            { emoji: '🍮', name: 'Kemalpaşa Tatlısı', image: 'tatlı_05.jpg' },
+                            { emoji: '', name: 'Fıstıklı Baklava', image: 'tatlı_06.jpg' },
+                            { emoji: '🍫', name: 'Supangle', image: 'tatlı_07.jpg' },
+                            { emoji: '', name: 'Aşure', image: 'tatlı_08.jpg' },
+                            { emoji: '🍮', name: 'Fırın Sütlaç', image: 'tatlı_09.jpg' },
+                            { emoji: '', name: 'Çilekli Trileçe', image: 'tatlı_10.jpg' },
+                            { emoji: '🍩', name: 'Halka Tatlısı', image: 'tatlı_11.jpg' },
+                            { emoji: '🥧', name: 'Baklava Dilimi', image: 'tatlı_12.jpg' },
+                            { emoji: '🍪', name: 'Çikolatalı Cookie', image: 'tatlı_13.jpg' },
+                            { emoji: '🥞', name: 'Pankek', image: 'tatlı_14.jpg' },
+                            { emoji: '🧁', name: 'Cupcake', image: 'tatlı_15.jpg' },
+                            { emoji: '🍦', name: 'Dondurma', image: 'tatlı_16.jpg' }
+                        ],
+                        'anime': [
+                            { emoji: '️', name: 'Demon Slayer: Mugen Train', image: 'images(01).jpg' },
+                            { emoji: '📓', name: 'Death Note', image: 'images(02).jpg' },
+                            { emoji: '', name: 'Dragon Ball Z', image: 'images(03).jpg' },
+                            { emoji: '👻', name: 'Spirited Away (Ruhların Kaçışı)', image: 'images(04).jpg' },
+                            { emoji: '📓', name: 'Death Note (Manga)', image: 'images(05).jpg' },
+                            { emoji: '', name: 'Avatar: The Last Airbender', image: 'images(06).jpg' },
+                            { emoji: '🔫', name: 'Black Lagoon', image: 'images(07).jpg' },
+                            { emoji: '💥', name: 'My Hero Academia', image: 'images(08).jpg' }
+                        ],
+                        'oyunkarakterleri': [
+                            { emoji: '🧊', name: 'Sub-Zero', image: 'oyun_01.jpg' },
+                            { emoji: '🤠', name: 'Arthur Morgan', image: 'oyun_02.webp' },
+                            { emoji: '', name: 'Sonic', image: 'oyun_03.jpg' },
+                            { emoji: '🔫', name: 'Dante', image: 'oyun_04.webp' },
+                            { emoji: '🔫', name: 'Agent 47', image: 'oyun_05.jpg' },
+                            { emoji: '🥷', name: 'Scorpion', image: 'oyun_06.jpg' },
+                            { emoji: '👊', name: 'Ryu', image: 'oyun_07.jpg' },
+                            { emoji: '🪓', name: 'Kratos', image: 'oyun_08.jpg' },
+                            { emoji: '⚔️', name: 'Geralt', image: 'oyun_09.jpg' },
+                            { emoji: '🔫', name: 'Master Chief', image: 'oyun_10.jpg' },
+                            { emoji: '⚔️', name: 'Malenia', image: 'oyun_11.jpg' },
+                            { emoji: '🔫', name: 'CJ', image: 'oyun_12.jpg' },
+                            { emoji: '🍄', name: 'Mario', image: 'oyun_13.jpg' },
+                            { emoji: '🔫', name: 'Gordon Freeman', image: 'oyun_14.jpg' },
+                            { emoji: '⛏️', name: 'Steve', image: 'oyun_15.jpg' },
+                            { emoji: '🔫', name: 'Far Cry Karakteri', image: 'oyun_16%20(9).jpg' },
+                            { emoji: '🔫', name: 'Niko Bellic', image: 'oyun_17.jpg' },
+                            { emoji: '', name: 'Aloy', image: 'oyun_18.jpg' },
+                            { emoji: '🗡️', name: 'Ezio', image: 'oyun_19.jpg' },
+                            { emoji: '🏹', name: 'Lara Croft', image: 'oyun_20.jpg' },
+                            { emoji: '🔫', name: 'Sam Fisher', image: 'oyun_21.jpg' },
+                            { emoji: '🏹', name: 'Ellie', image: 'oyun_22.jpg' },
+                            { emoji: '🔫', name: 'Solid Snake', image: 'oyun_23.jpg' },
+                            { emoji: '👊', name: 'Ken', image: 'oyun_24.jpg' }
+                        ],
+                        'oyunlar': [
+                            { emoji: '🪓', name: 'God of War', image: 'images(1).jpg' },
+                            { emoji: '⛏️', name: 'Minecraft', image: 'images(2).jpg' },
+                            { emoji: '🔫', name: 'CS:GO', image: 'images(3).jpg' },
+                            { emoji: '🧙', name: 'League of Legends', image: 'oynlar/images(4).jpg' },
+                            { emoji: '🏎️', name: 'Forza Horizon 5', image: 'images(5).jpg' },
+                            { emoji: '🦾', name: 'Cyberpunk 2077', image: 'images(6).jpg' },
+                            { emoji: '🔺', name: 'Apex Legends', image: 'images(7).jpg' },
+                            { emoji: '🚌', name: 'Fortnite', image: 'images(8).jpg' },
+                            { emoji: '⚔️', name: 'Chivalry 2', image: 'images(9).jpg' },
+                            { emoji: '🎯', name: 'Valorant', image: 'images (10).jpg' },
+                            { emoji: '🧱', name: 'Roblox', image: 'images (11).jpg' },
+                            { emoji: '🪂', name: 'PUBG Mobile', image: 'images (12).jpg' },
+                            { emoji: '🌊', name: 'BioShock', image: 'images (13).jpg' },
+                            { emoji: '💍', name: 'Elden Ring', image: 'images (14).jpg' },
+                            { emoji: '👹', name: 'Doom Eternal', image: 'images (15).jpg' },
+                            { emoji: '☢️', name: 'S.T.A.L.K.E.R. 2', image: 'images (16).jpg' },
+                            { emoji: '🐉', name: 'Baldur\'s Gate 3', image: 'images (17).jpg' },
+                            { emoji: '🚗', name: 'Grand Theft Auto V', image: 'images (18).jpg' },
+                            { emoji: '💥', name: 'Battlefield V', image: 'images (19).jpg' },
+                            { emoji: '🧟', name: 'Resident Evil 2', image: 'images (20).jpg' },
+                            { emoji: '👨‍🚀', name: 'Halo', image: 'images (21).jpg' },
+                            { emoji: '🎖️', name: 'CoD: Modern Warfare III', image: 'images (22).jpg' },
+                            { emoji: '🕴️', name: 'Mafia III', image: 'images (23).jpg' },
+                            { emoji: '🏎️', name: 'Forza Horizon 6', image: 'images (24).jpg' },
+                            { emoji: '🐴', name: 'Mount & Blade: Warband', image: 'images (25).jpg' },
+                            { emoji: '📱', name: 'Mobile Legends', image: 'images (26).jpg' }
+                        ],
+                        'dckarakterleri': [
+                            { emoji: '🦇', name: 'Batman', image: 'dc_01.png' },
+                            { emoji: '🦸‍♂️', name: 'Superman', image: 'dc_02.png' },
+                            { emoji: '🤵', name: 'Lex Luthor', image: 'dc_03.png' },
+                            { emoji: '🃏', name: 'Joker', image: 'dc_04.png' },
+                            { emoji: '🏹', name: 'Green Arrow', image: 'dc_05.png' },
+                            { emoji: '🦸‍♀️', name: 'Supergirl', image: 'dc_06.png' },
+                            { emoji: '🪨', name: 'Darkseid', image: 'dc_07.png' },
+                            { emoji: '🤵‍♂️', name: 'Alfred Pennyworth', image: 'dc_08.png' },
+                            { emoji: '🔱', name: 'Aquaman', image: 'dc_09.png' },
+                            { emoji: '⚡', name: 'Flash', image: 'dc_10.png' },
+                            { emoji: '🛡️', name: 'Wonder Woman', image: 'dc_11.png' },
+                            { emoji: '🗡️', name: 'Deathstroke', image: 'dc_12.png' },
+                            { emoji: '🐕', name: 'Krypto', image: 'dc_13.png' },
+                            { emoji: '🎭', name: 'Two-Face', image: 'dc_14.png' },
+                            { emoji: '🪲', name: 'Blue Beetle', image: 'dc_15.png' },
+                            { emoji: '🌩️', name: 'Black Adam', image: 'dc_16.png' },
+                            { emoji: '🎯', name: 'Deadshot', image: 'dc_17.jpg' },
+                            { emoji: '❄️', name: 'Mr. Freeze', image: 'dc_18.jpg' },
+                            { emoji: '🐱', name: 'Catwoman', image: 'dc_19.jpg' },
+                            { emoji: '🐧', name: 'Penguin', image: 'dc_20.jpg' },
+                            { emoji: '💚', name: 'Green Lantern', image: 'dc_21.jpg' },
+                            { emoji: '🦈', name: 'King Shark', image: 'dc_22.jpg' },
+                            { emoji: '🕊️', name: 'Peacemaker', image: 'dc_23.jpg' },
+                            { emoji: '🔨', name: 'Harley Quinn', image: 'dc_24.jpg' },
+                            { emoji: '⚛️', name: 'The Atom', image: 'dc_25.jpg' },
+                            { emoji: '💛', name: 'Sinestro', image: 'dc_26.jpg' }
+                        ]
+                    };
+                    if (fallbacks[k.id]) {
+                        ombmPools[k.id] = fallbacks[k.id];
+                    } else {
+                        const emojis = ['🎯', '⭐', '🔥', '💎', '🎪', '🏆', '🎵', '🎭', '🌟', '💫', '🎨', '🎬', '🎮', '🏅', '🎲', '🎸', '🎹', '🎺', '🎻', '🎷', '🥁', '🪗', '🪘', '🎑', '🎙️', '💿', '📻', '🪕', '🪈', '🥀'];
+                        ombmPools[k.id] = emojis.map(function (e, i) { return { emoji: e, name: k.name + ' ' + (i + 1), image: '' }; });
+                    }
+                }
+            });
+        }
+        // Build pools when DOM is ready
+        setTimeout(buildOmbmPools, 100);
+
+        window.goToOmbmCategorySelect = function () {
+            buildOmbmPools();
+            const grid = document.getElementById('ombmCategoryGrid');
+            grid.innerHTML = ombmKategoriler.map(k => {
+                const poolSize = (ombmPools[k.id] || []).length;
+                const neonClass = `category-card--${k.id}`;
+                return `<div class="category-card ${neonClass}" onclick="selectOmbmCategory('${k.id}')" id="ombmCat_${k.id}">
+                    <div class="category-icon">${k.icon}</div>
+                    <div class="category-title">${k.name}</div>
+                    <div class="category-subtitle">${poolSize} görsel</div>
+                </div>`;
+            }).join('');
+            hideAllMainScreens();
+            document.getElementById('ombmCategoryScreen').style.display = 'block';
+            document.getElementById('ombmCategoryNextBtn').disabled = true;
+            ombmSelectedCat = null;
+            changeTheme('space');
+        };
+
+        window.selectOmbmCategory = function (catId) {
+            document.querySelectorAll('#ombmCategoryGrid .category-card').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById('ombmCat_' + catId);
+            if (el) el.classList.add('selected');
+            const cat = ombmKategoriler.find(k => k.id === catId);
+            ombmSelectedCat = cat;
+            ombmSelectedMax = Math.min(30, (ombmPools[catId] || []).length);
+            document.getElementById('ombmCategoryNextBtn').disabled = false;
+            document.getElementById('ombmMaxLbl').textContent = ombmSelectedMax;
+            document.getElementById('ombmMaxLbl2').textContent = ombmSelectedMax;
+            const inp = document.getElementById('ombmCountInput');
+            inp.max = ombmSelectedMax;
+            inp.value = Math.min(8, ombmSelectedMax);
+            changeTheme(catId);
+        };
+
+        window.goToOmbmCount = function () {
+            if (!ombmSelectedCat) return;
+            hideAllMainScreens();
+            document.getElementById('ombmCountScreen').style.display = 'block';
+        };
+
+        window.goBackToOmbmCategory = function () {
+            hideAllMainScreens();
+            document.getElementById('ombmCategoryScreen').style.display = 'block';
+        };
+
+        window.goBackToModeFromOmbm = function () {
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        window.goBackToProfileFromOmbm = function () {
+            hideAllMainScreens();
+            document.getElementById('profileScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        window.validateOmbmCount = function () {
+            const inp = document.getElementById('ombmCountInput');
+            const err = document.getElementById('ombmCountErr');
+            const v = parseInt(inp.value);
+            if (!v || v < 4) { err.textContent = 'En az 4 görsel seçmelisin!'; return false; }
+            if (v > ombmSelectedMax) { err.textContent = 'Maksimum ' + ombmSelectedMax + ' görsel seçebilirsin!'; return false; }
+            err.textContent = '';
+            return true;
+        };
+
+        window.startOmbmTournament = function () {
+            if (!validateOmbmCount()) return;
+            if (!ombmSelectedCat) return;
+            isInTest = true;
+            stopBgMusic();
+
+            const count = parseInt(document.getElementById('ombmCountInput').value);
+            const pool = [...(ombmPools[ombmSelectedCat.id] || [])];
+            // Shuffle
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            ombmAllItems = pool.slice(0, count).map(item => ({ ...item, wins: 0, elimRound: 0 }));
+            ombmTurNum = 1;
+            ombmEliminatedAll = [];
+            ombmNextRound = [];
+            ombmCurrentRound = [...ombmAllItems];
+
+            document.getElementById('ombmGameCatInfo').textContent = '⚔️ ' + ombmSelectedCat.name;
+
+            hideAllMainScreens();
+            document.getElementById('ombmGameScreen').style.display = 'block';
+            setupOmbmTur();
+        };
+
+        function setupOmbmTur() {
+            ombmMatchQueue = [];
+            let items = [...ombmCurrentRound];
+            while (items.length >= 2) {
+                ombmMatchQueue.push([items.shift(), items.shift()]);
+            }
+            if (items.length === 1) {
+                ombmNextRound.push(items[0]); // bye
+            }
+
+            ombmTotalMatchesInTur = ombmMatchQueue.length;
+            ombmMatchInTur = 0;
+
+            if (ombmTotalMatchesInTur === 0) {
+                ombmCurrentRound = [...ombmNextRound];
+                ombmNextRound = [];
+                ombmTurNum++;
+                setupOmbmTur();
+                return;
+            }
+
+            updateOmbmTurUI();
+            showOmbmMatch();
+        }
+
+        function getOmbmTurLabel() {
+            const remaining = ombmCurrentRound.length + ombmNextRound.length;
+            if (remaining <= 2) return '🏆 FİNAL';
+            if (remaining <= 4) return '🔥 YARI FİNAL';
+            if (remaining <= 8) return '⚡ ÇEYREK FİNAL';
+            return 'TUR ' + ombmTurNum;
+        }
+
+        function updateOmbmTurUI() {
+            document.getElementById('ombmTurLabel').textContent = getOmbmTurLabel();
+            document.getElementById('ombmTurSub').textContent = ombmTotalMatchesInTur + ' eşleşme • ' + ombmCurrentRound.length + ' görsel';
+            // Reset progress bar
+            document.getElementById('ombmProgressFill').style.width = '0%';
+            document.getElementById('ombmProgressLabel').textContent = 'Tur İlerleme: 0 eşleşme • ' + ombmCurrentRound.length + ' görsel';
+            document.getElementById('ombmGameMatchInfo').textContent = 'Eşleşme 0 / ' + ombmTotalMatchesInTur;
+        }
+
+        function showOmbmMatch() {
+            if (ombmMatchInTur >= ombmTotalMatchesInTur) {
+                ombmCurrentRound = [...ombmNextRound];
+                ombmNextRound = [];
+                ombmTurNum++;
+
+                if (ombmCurrentRound.length < 2) {
+                    finishOmbmTournament();
+                    return;
+                }
+
+                setupOmbmTur();
+                return;
+            }
+
+            ombmCurrentMatch = ombmMatchQueue[ombmMatchInTur];
+            ombmMatchInTur++;
+
+            // Update cards
+            var left = ombmCurrentMatch[0];
+            var right = ombmCurrentMatch[1];
+
+            var imgL = document.getElementById('ombmImgLeft');
+            var imgR = document.getElementById('ombmImgRight');
+
+            if (left.image) {
+                imgL.innerHTML = '<img src="' + left.image + '" alt="' + left.name + '">';
+            } else {
+                imgL.innerHTML = left.emoji;
+            }
+            document.getElementById('ombmNameLeft').textContent = left.name;
+
+            if (right.image) {
+                imgR.innerHTML = '<img src="' + right.image + '" alt="' + right.name + '">';
+            } else {
+                imgR.innerHTML = right.emoji;
+            }
+            document.getElementById('ombmNameRight').textContent = right.name;
+
+            document.getElementById('ombmCardLeft').className = 'ombm-card';
+            document.getElementById('ombmCardRight').className = 'ombm-card';
+            document.getElementById('ombmCardLeft').style.pointerEvents = 'auto';
+            document.getElementById('ombmCardRight').style.pointerEvents = 'auto';
+
+            // Tur bazlı progress
+            var turPct = (ombmMatchInTur / ombmTotalMatchesInTur) * 100;
+            document.getElementById('ombmProgressFill').style.width = turPct + '%';
+            document.getElementById('ombmProgressLabel').textContent = 'Tur İlerleme: ' + ombmMatchInTur + ' eşleşme • ' + ombmCurrentRound.length + ' görsel';
+            document.getElementById('ombmGameMatchInfo').textContent = 'Eşleşme ' + ombmMatchInTur + ' / ' + ombmTotalMatchesInTur;
+        }
+
+        window.pickOmbmWinner = function (side) {
+            var wIdx = side === 'left' ? 0 : 1;
+            var lIdx = side === 'left' ? 1 : 0;
+            var winner = ombmCurrentMatch[wIdx];
+            var loser = ombmCurrentMatch[lIdx];
+
+            winner.wins++;
+            loser.elimRound = ombmTurNum;
+
+            // Visual
+            document.getElementById(side === 'left' ? 'ombmCardLeft' : 'ombmCardRight').classList.add('ombm-winner');
+            document.getElementById(side === 'left' ? 'ombmCardRight' : 'ombmCardLeft').classList.add('ombm-loser');
+
+            document.getElementById('ombmCardLeft').style.pointerEvents = 'none';
+            document.getElementById('ombmCardRight').style.pointerEvents = 'none';
+
+            ombmNextRound.push(winner);
+            ombmEliminatedAll.push(loser);
+
+            if (soundEnabled) playCorrectSound();
+
+            setTimeout(function () { showOmbmMatch(); }, 600);
+        };
+
+        window.exitOmbmToCategories = function () {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+            hideAllMainScreens();
+            document.getElementById('ombmCategoryScreen').style.display = 'block';
+            changeTheme('space');
+        };
+
+        function finishOmbmTournament() {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+
+            var champion = null;
+            if (ombmCurrentRound.length === 1) champion = ombmCurrentRound[0];
+            else if (ombmNextRound.length === 1) champion = ombmNextRound[0];
+            else champion = ombmAllItems.reduce(function (a, b) { return a.wins > b.wins ? a : b; });
+
+            // Ranking: champion first, then eliminated in reverse (last eliminated = 2nd, etc.)
+            var ranking = [champion];
+            var elimReversed = ombmEliminatedAll.slice().reverse();
+            for (var i = 0; i < elimReversed.length; i++) {
+                if (elimReversed[i] !== champion) ranking.push(elimReversed[i]);
+            }
+
+            document.getElementById('ombmResultSub').textContent = ombmAllItems.length + ' görsel arasından şampiyonunu seçtin!';
+            document.getElementById('ombmChampion').innerHTML =
+                '<span class="ombm-champ-emoji">' + champion.emoji + '</span>' +
+                '<div class="ombm-champ-name">' + champion.name + '</div>' +
+                '<div class="ombm-champ-label">👑 ŞAMPİYON</div>';
+
+            var list = document.getElementById('ombmResultList');
+            list.innerHTML = '';
+
+            ranking.forEach(function (item, idx) {
+                var row = document.createElement('div');
+                row.style.animationDelay = (idx * 0.07) + 's';
+
+                var rankClass = 'ombm-rank-other';
+                var medal = '';
+                var rankText = (idx + 1) + '. Sıra';
+
+                if (idx === 0) { rankClass = 'ombm-rank-1'; medal = '🥇'; rankText = 'ŞAMPİYON'; }
+                else if (idx === 1) { rankClass = 'ombm-rank-2'; medal = '🥈'; rankText = '2. Sıra'; }
+                else if (idx === 2) { rankClass = 'ombm-rank-3'; medal = '🥉'; rankText = '3. Sıra'; }
+
+                row.className = 'ombm-result-row ' + rankClass;
+                var emojiHtml = item.image ? '<img src="' + item.image + '" style="width:40px;height:40px;border-radius:10px;object-fit:cover;">' : item.emoji;
+                row.innerHTML =
+                    '<div class="ombm-result-number">' + (idx + 1) + '.</div>' +
+                    '<div class="ombm-result-medal">' + medal + '</div>' +
+                    '<div class="ombm-result-emoji">' + emojiHtml + '</div>' +
+                    '<div class="ombm-result-info"><div class="ombm-result-name">' + item.name + '</div>' +
+                    '<div class="ombm-result-rank-text">' + rankText + '</div></div>';
+                list.appendChild(row);
+            });
+
+            hideAllMainScreens();
+            document.getElementById('ombmResultScreen').style.display = 'block';
+            changeTheme(ombmSelectedCat ? ombmSelectedCat.id : 'space');
+        }
+
         changeTheme('space'); updateRankDisplay();
     </script>
     <script defer
@@ -8501,6 +9538,10 @@
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1cad758bf64d61f',t:'MTc4NDMwODAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1d45ebd4aab23f6',t:'MTc4NDQwNzk0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a1fb21b979d9a895',t:'MTc4NDgxNDM5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a23e6aacdddecdd4',t:'MTc4NTUxOTkyNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a23ee217c9ee0c29',t:'MTc4NTUyNDgxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a23f1c35fed35123',t:'MTc4NTUyNzE5Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a23f63c9a94cd61a',t:'MTc4NTUzMDEyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
