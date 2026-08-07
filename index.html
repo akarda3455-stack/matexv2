@@ -3911,6 +3911,328 @@
         .shake {
             animation: shakeScreen 0.5s ease-in-out;
         }
+
+
+        /* SIRALAMA yeni kategori renkleri */
+        .category-card--lol {
+            background: linear-gradient(135deg, rgba(193, 46, 44, 0.28), rgba(20, 10, 40, 0.95));
+            border-color: #c12e2c;
+        }
+
+        .category-card--mobilelegends {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.28), rgba(10, 20, 50, 0.95));
+            border-color: #3b82f6;
+        }
+
+        .category-card--cips {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.26), rgba(80, 30, 5, 0.95));
+            border-color: #fb923c;
+        }
+
+        .category-card--biskuvi {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.26), rgba(60, 30, 5, 0.95));
+            border-color: #d97706;
+        }
+
+        .category-card--sarkici {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.28), rgba(60, 10, 50, 0.95));
+            border-color: #ec4899;
+        }
+
+        .category-card--oyunkarakteri {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(40, 10, 60, 0.95));
+            border-color: #a855f7;
+        }
+
+        /* ===== SIRALAMA OYUNU STİLLERİ ===== */
+        .mode-card--siralama {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(20, 60, 30, 0.95));
+            border-color: #4ade80;
+        }
+
+        .siralama-game-area {
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .siralama-ranks {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .siralama-rank-slot {
+            border: 2px dashed rgba(74, 222, 128, 0.55);
+            border-radius: 24px;
+            padding: 18px;
+            background: rgba(74, 222, 128, 0.06);
+            min-height: 130px;
+            transition: all 0.2s;
+        }
+
+        .siralama-rank-slot.drag-over {
+            border-color: #4ade80;
+            background: rgba(74, 222, 128, 0.15);
+            box-shadow: 0 0 25px rgba(74, 222, 128, 0.25);
+        }
+
+        .siralama-rank-slot h3 {
+            color: #4ade80;
+            font-weight: 900;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .siralama-rank-name-input {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 14px;
+            border: 2px solid rgba(74, 222, 128, 0.55);
+            background: rgba(0, 0, 0, 0.35);
+            color: #fff;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            text-align: center;
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+
+        .siralama-rank-name-input:focus {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .siralama-rank-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 70px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .siralama-item-card {
+            cursor: grab;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 210, 255, 0.45);
+            border-radius: 16px;
+            padding: 8px;
+            width: 80px;
+            text-align: center;
+            transition: 0.2s;
+            font-size: 12px;
+            color: #fff;
+            position: relative;
+            user-select: none;
+        }
+
+
+        .siralama-item-card:hover {
+            border-color: #8a2be2;
+            transform: scale(1.06);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .siralama-item-card img {
+            width: 62px;
+            height: 62px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #fff;
+            margin-bottom: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .siralama-item-card .siralama-item-emoji {
+            font-size: 40px;
+            line-height: 62px;
+            height: 62px;
+            display: block;
+        }
+
+        .siralama-item-card .siralama-item-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        .siralama-photos {
+            flex: 1.2;
+            min-width: 320px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 24px;
+            border: 2px dashed rgba(0, 210, 255, 0.3);
+            min-height: 300px;
+            align-content: flex-start;
+        }
+
+        .siralama-photo-card {
+            cursor: grab;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            border-radius: 22px;
+            padding: 14px;
+            width: 130px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .siralama-photo-card:hover {
+            border-color: #8a2be2;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(138, 43, 226, 0.25);
+        }
+
+        .siralama-photo-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 14px;
+            background: #fff;
+            margin-bottom: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .siralama-photo-card .siralama-photo-emoji {
+            font-size: 70px;
+            line-height: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        .siralama-photo-card .label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            word-break: break-word;
+        }
+
+        .siralama-note {
+            text-align: center;
+            color: #8de8ff;
+            font-size: 14px;
+            margin-top: 14px;
+            opacity: 0.85;
+        }
+
+        .siralama-count-input {
+            width: 110px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 2px solid #4ade80;
+            border-radius: 16px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .siralama-photo-card,
+        .siralama-item-card {
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .siralama-photo-card img,
+        .siralama-item-card img,
+        .siralama-photo-emoji,
+        .siralama-item-emoji {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .siralama-ranks,
+        .siralama-photos,
+        .siralama-rank-slot,
+        .siralama-rank-items {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .siralama-photo-card.siralama-dragging,
+        .siralama-item-card.siralama-dragging {
+            opacity: 0.35;
+            transform: scale(0.95);
+        }
+
+        #siralamaGhost {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            width: 120px;
+            background: rgba(20, 25, 45, 0.95);
+            border: 2px solid #8a2be2;
+            border-radius: 18px;
+            padding: 8px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        #siralamaGhost img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #fff;
+            display: block;
+            margin: 0 auto 5px;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .siralama-item-card:active,
+        .siralama-photo-card:active {
+            cursor: grabbing;
+        }
+
+        .siralama-rank-name-input {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        #siralamaGhost .siralama-ghost-emoji {
+            font-size: 60px;
+            line-height: 90px;
+            height: 90px;
+            display: block;
+        }
+
+        #siralamaGhost .label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .siralama-count-input:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 18px rgba(138, 43, 226, 0.3);
+        }
     </style>
 </head>
 
@@ -4236,6 +4558,13 @@
                     <div class="mode-card-title">O mu Bu mu?</div>
                     <div class="mode-card-desc">Turnuva usulü: İkişer görsel, bir tercih! Şampiyonu seç.</div>
                 </div>
+
+                <div class="mode-card mode-card--siralama" id="modeSiralamaCard" onclick="selectGameMode('siralama')">
+                    <div class="mode-card-icon">📊</div>
+                    <div class="mode-card-title">Sıralama Oyunu</div>
+                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi → Çok Kötü) yerleştir.
+                    </div>
+                </div>
             </div>
             <div class="button-group">
                 <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
@@ -4464,6 +4793,111 @@
                 <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
                 <button class="back-btn" onclick="goBackToModeFromOmbm()">🏠 Modlar</button>
                 <button class="back-btn" onclick="goBackToProfileFromOmbm()">👤 Profil</button>
+            </div>
+        </div>
+
+        <!-- ===== SIRALAMA OYUNU EKRANLARI ===== -->
+        <div class="screen" id="siralamaCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromSiralama()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">📊 Sıralama Kategorisi</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride sıralama yapmak istersin?</p>
+            <div class="categories-grid" id="siralamaCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="siralamaCategoryNextBtn" onclick="goToSiralamaCount()" disabled>Görsel
+                    Sayısı Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToSiralamaCategoryFromCount()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Görsel Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Kaç görseli sıralamak istersin?<br><small style="color:#7eb8ff;">(Maksimum: <span
+                        id="siralamaMaxLbl">20</span>)</small></p>
+            <div class="count-box"
+                style="max-width:450px;margin:25px auto;background:rgba(0,0,0,0.28);border:2px solid rgba(74,222,128,0.35);border-radius:22px;padding:20px;text-align:center;">
+                <label style="color:#a0d0ff;font-size:16px;margin-bottom:12px;font-weight:600;display:block;">Görsel
+                    sayısı seç</label>
+                <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                    <input class="siralama-count-input" id="siralamaCountInput" type="number" min="4" max="20" value="8"
+                        oninput="validateSiralamaCount()">
+                    <div style="color:#4ade80;font-size:16px;font-weight:800;">/ max <span
+                            id="siralamaMaxLbl2">20</span></div>
+                </div>
+                <div style="color:#ff6b6b;font-size:13px;min-height:20px;margin-top:8px;" id="siralamaCountErr"></div>
+            </div>
+            <div
+                style="background:rgba(0,0,0,0.2);border:2px solid rgba(74,222,128,0.2);border-radius:20px;padding:16px;max-width:550px;margin:20px auto;">
+                <div style="color:#a0d0ff;font-size:14px;text-align:center;line-height:1.8;">
+                    <p>📊 Görseller <strong style="color:#4ade80;">sana karışık</strong> gelecek.</p>
+                    <p>Her görseli sürükleyip 4 seviyeden birine yerleştir.</p>
+                    <p>Bitirince <strong style="color:#4ade80;">sıralaman hazır!</strong></p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="siralamaStartBtn" onclick="startSiralamaGame()">📊 Sıralamaya
+                    Başla</button>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaGameScreen" style="display:none;">
+            <div class="test-header" style="flex-wrap:wrap;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                    <button class="exit-test-btn" onclick="exitSiralamaToCategories()"
+                        style="padding:10px 18px;font-size:14px;">🚪 Çık</button>
+                    <button class="exit-test-btn" onclick="goBackToModeFromSiralama()"
+                        style="padding:10px 18px;font-size:14px;background:rgba(0,210,255,0.18);border-color:#00d2ff;color:#00d2ff;">🎮
+                        Modlar</button>
+                    <button class="exit-test-btn" onclick="goToProfileFromSiralama()"
+                        style="padding:10px 18px;font-size:14px;background:rgba(138,43,226,0.18);border-color:#8a2be2;color:#c9a9ff;">👤
+                        Profil</button>
+                </div>
+                <div style="text-align:center;flex:1;min-width:200px;">
+                    <h3 style="color:#4ade80;" id="siralamaGameCatInfo">📊 Sıralama</h3>
+                    <p style="color:#a0d0ff;font-size:14px;" id="siralamaGameInfo">Görselleri sürükle &amp; seviyelere
+                        bırak</p>
+                </div>
+                <button class="primary-btn" onclick="finishSiralamaGame()"
+                    style="padding:12px 24px;font-size:16px;flex:none;">✅ Bitir</button>
+            </div>
+            <div id="siralamaError"
+                style="color:#ff6b6b;font-size:15px;font-weight:800;text-align:center;min-height:26px;margin:6px 0 2px;text-shadow:0 0 10px rgba(255,107,107,0.3);">
+            </div>
+            <p class="siralama-note">💡 Görselleri aşağıdaki havuzdan alıp üstteki seviye kutularına sürükle. Bir
+                görseli kutudan çıkarmak için üstüne tıkla (veya havuza geri sürükle). Seviye isimlerini
+                değiştirebilirsin.</p>
+            <div class="siralama-game-area">
+                <div class="siralama-ranks" id="siralamaRanks"></div>
+                <div class="siralama-photos" id="siralamaPhotos"></div>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaResultScreen" style="display:none;">
+            <div style="text-align:center;margin-bottom:25px;">
+                <div
+                    style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#4ade80,#00d2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    📊 Sıralaman Hazır!
+                </div>
+                <p style="color:#a0d0ff;font-size:15px;margin-top:8px;" id="siralamaResultSub"></p>
+            </div>
+            <div id="siralamaResultContent" style="max-width:900px;margin:0 auto;"></div>
+            <div class="button-group" style="justify-content:center;margin-top:30px;flex-wrap:wrap;">
+                <button class="primary-btn" onclick="restartSiralamaGame()">🔄 Tekrardan Başla</button>
+                <button class="primary-btn" onclick="goBackToSiralamaCategory()">📂 Kategorilere Dön</button>
+                <button class="back-btn" onclick="goBackToModeFromSiralama()">🎮 Modlar</button>
             </div>
         </div>
 
@@ -7917,7 +8351,8 @@
         function hideAllMainScreens() {
             ['profileScreen', 'modeScreen', 'categoryScreen', 'difficultyScreen', 'testScreen', 'resultScreen',
                 'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen',
-                'ombmCategoryScreen', 'ombmCountScreen', 'ombmGameScreen', 'ombmResultScreen']
+                'ombmCategoryScreen', 'ombmCountScreen', 'ombmGameScreen', 'ombmResultScreen',
+                'siralamaCategoryScreen', 'siralamaCountScreen', 'siralamaGameScreen', 'siralamaResultScreen']
                 .forEach(sid => {
                     const el = document.getElementById(sid);
                     if (el) el.style.display = 'none';
@@ -7939,6 +8374,7 @@
             if (mode === 'text') document.getElementById('modeTextCard').classList.add('selected');
             if (mode === 'photo') document.getElementById('modePhotoCard').classList.add('selected');
             if (mode === 'ombm') document.getElementById('modeOmbmCard').classList.add('selected');
+            if (mode === 'siralama') document.getElementById('modeSiralamaCard').classList.add('selected');
             document.getElementById('modeNextBtn').disabled = false;
         };
 
@@ -7946,6 +8382,7 @@
             if (gameMode === 'text') goToCategorySelect();
             else if (gameMode === 'photo') goToPhotoCategorySelect();
             else if (gameMode === 'ombm') goToOmbmCategorySelect();
+            else if (gameMode === 'siralama') goToSiralamaCategorySelect();
         };
 
         window.goBackToProfileFromMode = function () {
@@ -9775,6 +10212,895 @@
             changeTheme(ombmSelectedCat ? ombmSelectedCat.id : 'space');
         }
 
+
+        // ===== SIRALAMA OYUNU SİSTEMİ =====
+        let siralamaSelectedCat = null;
+        let siralamaSelectedMax = 0;
+        let siralamaAllItems = [];
+        let siralamaRankDefaults = ['Çok İyi', 'İyi', 'Kötü', 'Çok Kötü'];
+
+        // === 15 SIRALAMA KATEGORİSİ ===
+        // Hayvan = emoji, diğer 14 kategori = görsel (görsel yoksa emoji yedeği)
+        const siralamaKategoriler = [
+            { id: 'lol', icon: '🎮', name: 'LoL Kostüm', kind: 'image', folder: 'siralama/lol' },
+            { id: 'mobilelegends', icon: '⚔️', name: 'Mobile Legends Kostüm', kind: 'image', folder: 'siralama/mobilelegends' },
+            { id: 'marvel', icon: '🦸', name: 'Marvel', kind: 'image', folder: 'siralama/marvel' },
+            { id: 'dc', icon: '🦇', name: 'DC', maxPool: 'photo-dc' },
+            { id: 'oyunkarakteri', icon: '🕹️', name: 'Oyun Karakteri', maxPool: 'photo-oyunkarakterleri' },
+            { id: 'erkekanime', icon: '⚔️', name: 'Erkek Anime', maxPool: 'photo-erkekanime' },
+            { id: 'kizanime', icon: '🌸', name: 'Kız Anime', maxPool: 'photo-kizanime' },
+            { id: 'icecek', icon: '🥤', name: 'İçecekler', kind: 'image', folder: 'siralama/icecek' },
+            { id: 'cips', icon: '🍟', name: 'Cipsler', kind: 'image', folder: 'siralama/cips' },
+            { id: 'biskuvi', icon: '🍪', name: 'Bisküviler', kind: 'image', folder: 'siralama/biskuvi' },
+            { id: 'hayvan', icon: '🦁', name: 'Hayvan', kind: 'emoji', items: 'hayvan' },
+            { id: 'erkejoyuncu', icon: '🕴️', name: 'Erkek Oyuncu', maxPool: 'photo-unluler' },
+            { id: 'kizoyuncu', icon: '💃', name: 'Kız Oyuncu', maxPool: 'photo-kadinlar' },
+            { id: 'sarkici', icon: '🎤', name: 'Şarkıcı', kind: 'image', folder: 'siralama/sarkici' },
+            { id: 'futbolcu', icon: '⚽', name: 'Futbolcu', maxPool: 'photo-futbol' }
+        ];
+
+        // ===== SIRALAMA OYUNU: O MU BU MU KAYITLI GORSELLERI =====
+        // Bu 7 kategorinin gorsel verisi O Mu Bu Mu oyunundaki kayitlardan birebir kopyalandi.
+        // O Mu Bu Mu oyununda ve uygulamanin diger bolumlerinde HICBIR degisiklik yapilmamistir.
+        const siralamaImageData = {
+            dc: [
+                { emoji: '🦇', name: 'Batman', image: 'dc_01.png' },
+                { emoji: '🦸‍♂️', name: 'Superman', image: 'dc_02.png' },
+                { emoji: '🤵', name: 'Lex Luthor', image: 'dc_03.png' },
+                { emoji: '🃏', name: 'Joker', image: 'dc_04.png' },
+                { emoji: '🏹', name: 'Green Arrow', image: 'dc_05.png' },
+                { emoji: '🦸‍♀️', name: 'Supergirl', image: 'dc_06.png' },
+                { emoji: '🪨', name: 'Darkseid', image: 'dc_07.png' },
+                { emoji: '🤵‍♂️', name: 'Alfred Pennyworth', image: 'dc_08.png' },
+                { emoji: '🔱', name: 'Aquaman', image: 'dc_09.png' },
+                { emoji: '⚡', name: 'Flash', image: 'dc_10.png' },
+                { emoji: '🛡️', name: 'Wonder Woman', image: 'dc_11.png' },
+                { emoji: '🗡️', name: 'Deathstroke', image: 'dc_12.png' },
+                { emoji: '🐕', name: 'Krypto', image: 'dc_13.png' },
+                { emoji: '🎭', name: 'Two-Face', image: 'dc_14.png' },
+                { emoji: '🪲', name: 'Blue Beetle', image: 'dc_15.png' },
+                { emoji: '🌩️', name: 'Black Adam', image: 'dc_16.png' },
+                { emoji: '🎯', name: 'Deadshot', image: 'dc_17.jpg' },
+                { emoji: '❄️', name: 'Mr. Freeze', image: 'dc_18.jpg' },
+                { emoji: '🐱', name: 'Catwoman', image: 'dc_19.jpg' },
+                { emoji: '🐧', name: 'Penguin', image: 'dc_20.jpg' },
+                { emoji: '💚', name: 'Green Lantern', image: 'dc_21.jpg' },
+                { emoji: '🦈', name: 'King Shark', image: 'dc_22.jpg' },
+                { emoji: '🕊️', name: 'Peacemaker', image: 'dc_23.jpg' },
+                { emoji: '🔨', name: 'Harley Quinn', image: 'dc_24.jpg' },
+                { emoji: '⚛️', name: 'The Atom', image: 'dc_25.jpg' },
+                { emoji: '💛', name: 'Sinestro', image: 'dc_26.jpg' }
+            ],
+            oyunkarakteri: [
+                { emoji: '🧊', name: 'Sub-Zero', image: 'oyun_01.jpg' },
+                { emoji: '🤠', name: 'Arthur Morgan', image: 'oyun_02.webp' },
+                { emoji: '', name: 'Sonic', image: 'oyun_03.jpg' },
+                { emoji: '🔫', name: 'Dante', image: 'oyun_04.webp' },
+                { emoji: '🔫', name: 'Agent 47', image: 'oyun_05.jpg' },
+                { emoji: '🥷', name: 'Scorpion', image: 'oyun_06.jpg' },
+                { emoji: '👊', name: 'Ryu', image: 'oyun_07.jpg' },
+                { emoji: '🪓', name: 'Kratos', image: 'oyun_08.jpg' },
+                { emoji: '⚔️', name: 'Geralt', image: 'oyun_09.jpg' },
+                { emoji: '🔫', name: 'Master Chief', image: 'oyun_10.jpg' },
+                { emoji: '⚔️', name: 'Malenia', image: 'oyun_11.jpg' },
+                { emoji: '🔫', name: 'CJ', image: 'oyun_12.jpg' },
+                { emoji: '🍄', name: 'Mario', image: 'oyun_13.jpg' },
+                { emoji: '🔫', name: 'Gordon Freeman', image: 'oyun_14.jpg' },
+                { emoji: '⛏️', name: 'Steve', image: 'oyun_15.jpg' },
+                { emoji: '🔫', name: 'Cybrpunk Panem', image: 'oyun_16 (9).jpg' },
+                { emoji: '🔫', name: 'Niko Bellic', image: 'oyun_17.jpg' },
+                { emoji: '', name: 'Aloy', image: 'oyun_18.jpg' },
+                { emoji: '🗡️', name: 'Ezio', image: 'oyun_19.jpg' },
+                { emoji: '🏹', name: 'Lara Croft', image: 'oyun_20.jpg' },
+                { emoji: '🔫', name: 'Sam Fisher', image: 'oyun_21.jpg' },
+                { emoji: '🏹', name: 'Ellie', image: 'oyun_22.jpg' },
+                { emoji: '🔫', name: 'Solid Snake', image: 'oyun_23.jpg' },
+                { name: 'Ken', image: 'oyun_24.jpg' },
+                { name: 'king kong', image: 'oyun_25.jpg' },
+                { name: 'noob saibot', image: 'oyun_26.jpg' },
+                { name: 'nate drake', image: 'oyun_27.jpg' },
+                { name: 'atreus', image: 'oyun_28.jpg' },
+                { name: 'rayman', image: 'oyun_29.jpg' },
+                { name: 'max payne', image: 'oyun_30.jpg' }
+            ],
+            erkekanime: [
+                { emoji: '⚔️', name: 'Naruto Uzumaki', image: 'anime_01.png' },
+                { emoji: '⚔️', name: 'Monkey D. Luffy', image: 'anime_02.jpg' },
+                { emoji: '⚔️', name: 'Son Goku', image: 'anime_03.png' },
+                { emoji: '⚔️', name: 'Eren Yeager', image: 'anime_04.jpg' },
+                { emoji: '⚔️', name: 'Light Yagami', image: 'anime_05.jpg' },
+                { emoji: '⚔️', name: 'Satoru Gojo', image: 'anime_06.png' },
+                { emoji: '⚔️', name: 'Gon Freecss', image: 'anime_07.png' },
+                { emoji: '⚔️', name: 'Kakashi Hatake', image: 'anime_08.jpg' },
+                { emoji: '⚔️', name: 'Jotaro Kujo', image: 'anime_09.jpg' },
+                { emoji: '⚔️', name: 'Roronoa Zoro', image: 'anime_10.jpg' },
+                { emoji: '⚔️', name: 'Tanjiro Kamado', image: 'anime_11.jpg' },
+                { emoji: '⚔️', name: 'Vegito', image: 'anime_12.png' },
+                { emoji: '⚔️', name: 'Son Goku', image: 'anime_13.jpg' },
+                { emoji: '⚔️', name: 'Izuku Midoriya', image: 'anime_14.jpg' },
+                { emoji: '⚔️', name: 'Ken Kaneki', image: 'anime_15.jpg' },
+                { emoji: '⚔️', name: 'Devasa Titan', image: 'anime_16.jpg' },
+                { emoji: '⚔️', name: 'Lord Beerus', image: 'anime_17.jpg' },
+                { emoji: '⚔️', name: 'Alucard', image: 'anime_18.png' },
+                { emoji: '⚔️', name: 'Marshall D. Teach', image: 'anime_19.jpg' },
+                { emoji: '⚔️', name: 'Denji', image: 'anime_20.jpg' },
+                { emoji: '⚔️', name: 'Yujiro Hanma', image: 'anime_21.png' },
+                { emoji: '⚔️', name: 'Sung Jin-woo', image: 'anime_22.png' },
+                { emoji: '⚔️', name: 'Saitama', image: 'anime_23.png' },
+                { emoji: '⚔️', name: 'Mikasa Ackerman', image: 'anime_24.png' },
+                { emoji: '⚔️', name: 'Madara Uchiha', image: 'anime_25.png' },
+                { emoji: '⚔️', name: 'Sasuke Uchiha', image: 'anime_26.png' },
+                { emoji: '⚔️', name: 'Shanks', image: 'anime_27.jpg' },
+                { emoji: '⚔️', name: 'Yoruichi Shihouin', image: 'anime_28.jpg' },
+                { emoji: '⚔️', name: 'Zeke Jaeger', image: 'anime_29.jpg' },
+                { emoji: '⚔️', name: 'Dracule Mihawk', image: 'anime_30.jpg' },
+                { emoji: '⚔️', name: 'Baki Hanma', image: 'anime_31.jpg' },
+                { emoji: '⚔️', name: 'Nami', image: 'anime_32.jpg' },
+                { emoji: '⚔️', name: 'Itachi Uchiha', image: 'anime_33.webp' },
+                { emoji: '⚔️', name: 'Dante', image: 'anime_34.jpg' },
+                { emoji: '⚔️', name: 'Sosuke Aizen', image: 'anime_35.jpg' },
+                { emoji: '⚔️', name: 'Tsubasa Ozora', image: 'anime_36.webp' },
+                { emoji: '⚔️', name: 'don kuso', image: 'anime_37.webp' },
+                { emoji: '⚔️', name: 'kojiro huyuga', image: 'anime_38.webp' },
+                { emoji: '⚔️', name: 'ginka hanega', image: 'anime_39.webp' },
+                { emoji: '⚔️', name: 'wakabyashi', image: 'anime_40.jpg' }
+            ],
+            kizanime: [
+                { emoji: '🗡️', name: 'Erza Scarlet', image: 'kız_01.jpg' },
+                { emoji: '🔫', name: 'Revy', image: 'kız_02.webp' },
+                { emoji: '🏖️', name: 'Asuna Yuuki', image: 'kız_03.jpg' },
+                { emoji: '🌼', name: 'Makio', image: 'kız_04.webp' },
+                { emoji: '❄️', name: 'Mizore Shirayuki', image: 'kız_05.jpg' },
+                { emoji: '🎯', name: 'Yoko Littner', image: 'kız_06.webp' },
+                { emoji: '🔑', name: 'Lucy Heartfilia', image: 'kız_07.jpg' },
+                { emoji: '🐱', name: 'Blair', image: 'kız_08.webp' },
+                { emoji: '🏍️', name: 'Celty Sturluson', image: 'kız_09.jpg' },
+                { emoji: '🐌', name: 'Tsunade Senju', image: 'kız_10.jpg' },
+                { emoji: '☂️', name: 'Kagura', image: 'kız_11.jpg' },
+                { emoji: '🐇', name: 'Mirko', image: 'kız_12.jpg' },
+                { emoji: '🌺', name: 'Marin Kitagawa', image: 'kız_13.jpg' },
+                { emoji: '🎖️', name: 'Tanya Degurechaff', image: 'kız_14.jpg' },
+                { emoji: '👿', name: 'Rias Gremory', image: 'kız_15.jpg' },
+                { emoji: '🌙', name: 'Sailor Moon', image: 'kız_16.png' },
+                { emoji: '⚔️', name: 'Mikasa Ackerman', image: 'kız_17.jpg' },
+                { emoji: '⚡', name: 'Yoruichi Shihouin', image: 'kız_18.jpg' },
+                { emoji: '🍊', name: 'Nami', image: 'kız_19.jpg' },
+                { emoji: '🔧', name: 'Winry Rockbell', image: 'kız_20.jpg' },
+                { emoji: '❤️', name: 'Kaguya Shinomiya', image: 'kız_21.jpg' },
+                { emoji: '🎋', name: 'Nezuko Kamado', image: 'kız_22.jpg' },
+                { emoji: '🥜', name: 'Anya Forger', image: 'kız_23.webp' },
+                { emoji: '💙', name: 'Rem', image: 'kız_24.jpg' },
+                { emoji: '🗡️', name: 'Rukia Kuchiki', image: 'kız_25.jpg' },
+                { emoji: '🌸', name: 'Sakura Haruno', image: 'kız_26.jpg' },
+                { emoji: '🩸', name: 'Power', image: 'kız_27.webp' },
+                { emoji: '🗡️', name: 'Yor Forger', image: 'kız_28.webp' },
+                { emoji: '💜', name: 'Hinata Hyuga', image: 'kız_29.webp' },
+                { emoji: '🐶', name: 'Makima', image: 'kız_30.webp' },
+                { emoji: '📚', name: 'Nico Robin', image: 'kız_31.webp' },
+                { emoji: '❄️', name: 'Emilia', image: 'kız_32.jpg' },
+                { emoji: '❤️', name: 'Zero Two', image: 'kız_33.jpg' },
+                { emoji: '🟢', name: 'C.C.', image: 'kız_34.jpg' },
+                { emoji: '🐍', name: 'Boa Hancock', image: 'kız_35.jpg' },
+                { emoji: '👑', name: 'Satsuki Kiryuin', image: 'kız_36.jpg' },
+                { emoji: '👑', name: 'android 18', image: 'kızanime_37.jpg' },
+                { emoji: '👑', name: 'esdaet', image: 'kızanime_38.jpg' },
+                { emoji: '👑', name: 'fubuki', image: 'kızanime_39.jpg' },
+                { emoji: '👑', name: 'matsimuto ranguki', image: 'kızanime_40.jpg' }
+            ],
+            erkejoyuncu: [
+                { emoji: '🕴️', name: 'Christian Bale', image: 'erkek_01.jpg' },
+                { emoji: '🕴️', name: 'Leonardo DiCaprio', image: 'erkek_02.jpg' },
+                { emoji: '🕴️', name: 'Brad Pitt', image: 'erkek_03.jpg' },
+                { emoji: '🕴️', name: 'Will Smith', image: 'erkek_04.jpg' },
+                { emoji: '🕴️', name: 'Nicolas Cage', image: 'erkek_05.jpg' },
+                { emoji: '🕴️', name: 'Jason Statham', image: 'erkek_06.jpg' },
+                { emoji: '🕴️', name: 'Robert Downey Jr.', image: 'erkek_07.jpg' },
+                { emoji: '🕴️', name: 'Hugh Jackman', image: 'erkek_08.jpg' },
+                { emoji: '🕴️', name: 'Vin Diesel', image: 'erkek_09.jpg' },
+                { emoji: '🕴️', name: 'Kenan İmirzalıoğlu', image: 'erkek_10.jpg' },
+                { emoji: '🕴️', name: 'Burak Özçivit', image: 'erkek_11.jpg' },
+                { emoji: '🕴️', name: 'Aras Bulut İynemli', image: 'erkek_12.jpg' },
+                { emoji: '🕴️', name: 'Kerem Bürsin', image: 'erkek_13.jpg' },
+                { emoji: '🕴️', name: 'Çağatay Ulusoy', image: 'erkek_14.jpg' },
+                { emoji: '🕴️', name: 'Kıvanç Tatlıtuğ', image: 'erkek_15.jpg' },
+                { emoji: '🕴️', name: 'Barış Arduç', image: 'erkek_16.jpg' },
+                { emoji: '🕴️', name: 'İlker Kaleli', image: 'erkek_17.jpg' },
+                { emoji: '🕴️', name: 'Alperen Duymaz', image: 'erkek_18.jpg' },
+                { emoji: '🕴️', name: 'Engin Öztürk', image: 'erkek_19.jpg' },
+                { emoji: '🕴️', name: 'Johnny Depp', image: 'erkek_20.jpg' },
+                { emoji: '🕴️', name: 'Michele Morrone', image: 'erkek_21.jpg' },
+                { emoji: '🕴️', name: 'Necati Şaşmaz', image: 'erkek_22.jpg' },
+                { emoji: '🕴️', name: 'Tom Hardy', image: 'erkek_23.jpg' },
+                { emoji: '🕴️', name: 'Tom Holland', image: 'erkek_24.jpg' },
+                { emoji: '🕴️', name: 'Robert Pattinson', image: 'erkek_25.jpg' },
+                { emoji: '🕴️', name: 'Engin Altan Düzyatan', image: 'erkek_26.jpg' },
+                { emoji: '🕴️', name: 'pedro pascal', image: 'erkek_27.jpg' },
+                { emoji: '🕴️', name: 'michel b jordon', image: 'erkek_28.jpg' },
+                { emoji: '🕴️', name: 'ahmet kural', image: 'erkek_29.jpg' },
+                { emoji: '🕴️', name: 'halit erginç', image: 'erkek_30.jpg' }
+            ],
+            kizoyuncu: [
+                { emoji: '💃', name: 'Demet Özdemir', image: 'kızoyuncu_01.jpg' },
+                { emoji: '💃', name: 'Emma Stone', image: 'kızoyuncu_02.webp' },
+                { emoji: '💃', name: 'Serenay Sarıkaya', image: 'kızoyuncu_03.jpg' },
+                { emoji: '💃', name: 'Bensu Soral', image: 'kızoyuncu_04.webp' },
+                { emoji: '💃', name: 'Barbara Palvin', image: 'kızoyuncu_05.jpg' },
+                { emoji: '💃', name: 'Millie Bobby Brown', image: 'kızoyuncu_06.webp' },
+                { emoji: '💃', name: 'Devrim Özkan', image: 'kızoyuncu_07.jpg' },
+                { emoji: '💃', name: 'Natalie Portman', image: 'kızoyuncu_08.webp' },
+                { emoji: '💃', name: 'Elçin Sangu', image: 'kızoyuncu_09.jpg' },
+                { emoji: '💃', name: 'Scarlett Johansson', image: 'kızoyuncu_10.webp' },
+                { emoji: '💃', name: 'Melis Sezen', image: 'kızoyuncu_11.jpg' },
+                { emoji: '💃', name: 'Mine Tugay', image: 'kızoyuncu_12.webp' },
+                { emoji: '💃', name: 'Angelina Jolie', image: 'kızoyuncu_13.jpg' },
+                { emoji: '💃', name: 'Anya Taylor-Joy', image: 'kızoyuncu_14.jpg' },
+                { emoji: '💃', name: 'Sydney Sweeney', image: 'kızoyuncu_15.jpg' },
+                { emoji: '💃', name: 'Hazar Ergüçlü', image: 'kızoyuncu_16.jpg' },
+                { emoji: '💃', name: 'Jenna Ortega', image: 'kızoyuncu_17.jpg' },
+                { emoji: '💃', name: 'Megan Fox', image: 'kızoyuncu_18.jpg' },
+                { emoji: '💃', name: 'Nilperi Şahinkaya', image: 'kızoyuncu_19.jpg' },
+                { emoji: '💃', name: 'Hande Erçel', image: 'kızoyuncu_20.jpg' },
+                { emoji: '💃', name: 'Hazal Kaya', image: 'kızoyuncu_21.jpg' },
+                { emoji: '💃', name: 'Nilsu Berfin Aktaş', image: 'kızoyuncu_22.jpg' },
+                { emoji: '💃', name: 'Penélope Cruz', image: 'kızoyuncu_23.avif' },
+                { emoji: '💃', name: 'Gal Gadot', image: 'kızoyuncu_24.jpg' },
+                { emoji: '💃', name: 'Meryem Uzerli', image: 'kızoyuncu_25.jpg' },
+                { emoji: '💃', name: 'Hande Erçel', image: 'kızoyuncu_26.jpg' },
+                { emoji: '💃', name: 'ezgi mola', image: 'kızoyuncu_27.jpg' },
+                { emoji: '💃', name: 'pınar deniz', image: 'kızoyuncu_28.jpg' },
+                { emoji: '💃', name: 'farah zeynep abdulah', image: 'kızoyuncu_29.jpg' },
+                { emoji: '💃', name: 'öykü karayel', image: 'kızoyuncu_30.jpg' }
+            ],
+            futbolcu: [
+                { emoji: '⚽', name: 'Barış Alper', image: 'futbolcu_01.jpeg' },
+                { emoji: '⚽', name: 'Kylian Mbappé', image: 'futbolcu_02.jpg' },
+                { emoji: '⚽', name: 'Kevin De Bruyne', image: 'futbolcu_03.png' },
+                { emoji: '⚽', name: 'Icardi', image: 'futbolcu_04.webp' },
+                { emoji: '⚽', name: 'Vinicius Jr.', image: 'futbolcu_05.jpg' },
+                { emoji: '⚽', name: 'Lionel Messi', image: 'futbolcu_06.webp' },
+                { emoji: '⚽', name: 'Kenan Yıldız', image: 'futbolcu_07.jpg' },
+                { emoji: '⚽', name: 'Cristiano Ronaldo', image: 'futbolcu_08.jpg' },
+                { emoji: '⚽', name: 'Ronaldinho', image: 'futbolcu_09.webp' },
+                { emoji: '⚽', name: 'Luís Nazário', image: 'futbolcu_10.jpg' },
+                { emoji: '⚽', name: 'Fernando Muslera', image: 'futbolcu_11.webp' },
+                { emoji: '⚽', name: 'Victor Osimhen', image: 'futbolcu_12.jpg' },
+                { emoji: '⚽', name: 'Quarejma', image: 'futbolcu_13.jpg' },
+                { emoji: '⚽', name: 'Martin Ødegaard', image: 'futbolcu_14.jpg' },
+                { emoji: '⚽', name: 'Erling Haaland', image: 'futbolcu_15.jpg' },
+                { emoji: '⚽', name: 'Jude Bellingham', image: 'futbolcu_16.jpg' },
+                { emoji: '⚽', name: 'Lamine Yamal', image: 'futbolcu_17.jpg' },
+                { emoji: '⚽', name: 'Arda Turan', image: 'futbolcu_18.jpg' },
+                { emoji: '⚽', name: 'Neymar', image: 'futbolcu_19.jpg' },
+                { emoji: '⚽', name: 'Arda Güler', image: 'futbolcu_20.jpg' },
+                { emoji: '⚽', name: 'İlkay Gündoğan', image: 'futbolcu_21.jpg' },
+                { emoji: '⚽', name: 'Diego Maradona', image: 'futbolcu_22.jpg' },
+                { emoji: '⚽', name: 'Gianluigi Buffon', image: 'futbolcu_23.jpg' },
+                { emoji: '⚽', name: 'Luis Suárez', image: 'futbolcu_24.jpg' },
+                { emoji: '⚽', name: 'Pelé', image: 'futbolcu_25.jpg' },
+                { emoji: '⚽', name: 'Muhammed Salah', image: 'futbolcu_26.jpg' },
+                { emoji: '⚽', name: 'ferenc puskas', image: 'futbolcu_27.jpg' },
+                { emoji: '⚽', name: 'gerd müller', image: 'futbolcu_28.jpg' },
+                { emoji: '⚽', name: 'poala maldini', image: 'futbolcu_29.jpg' },
+                { emoji: '⚽', name: 'eren elmalı', image: 'futbolcu_30.jpg' }
+            ],
+        };
+
+        // Emoji yedekleri (görseli olmayan kategoriler için + hayvan kategorisi)
+        const siralamaEmojiData = {
+            marvel: [
+                { emoji: '🛡️', name: 'Captain America', file: 'marvel_01.png' },
+                { emoji: '🤖', name: 'Iron Man', file: 'marvel_02.png' },
+                { emoji: '🕷️', name: 'Spider-Man', file: 'marvel_03.png' },
+                { emoji: '💪', name: 'Hulk', file: 'marvel_04.png' },
+                { emoji: '⚡', name: 'Thor', file: 'marvel_05.png' },
+                { emoji: '🕷️', name: 'Black Widow', file: 'marvel_06.png' },
+                { emoji: '🪄', name: 'Doctor Strange', file: 'marvel_07.png' },
+                { emoji: '🐆', name: 'Black Panther', file: 'marvel_08.png' },
+                { emoji: '😈', name: 'Loki', file: 'marvel_09.png' },
+                { emoji: '🫰', name: 'Thanos', file: 'marvel_10.png' },
+                { emoji: '🦝', name: 'Rocket', file: 'marvel_11.png' },
+                { emoji: '⭐', name: 'Star-Lord', file: 'marvel_12.png' },
+                { emoji: '💚', name: 'Gamora', file: 'marvel_13.png' },
+                { emoji: '🌳', name: 'Groot', file: 'marvel_14.png' },
+                { emoji: '🖤', name: 'Venom', file: 'marvel_15.png' },
+                { emoji: '🟢', name: 'Doctor Doom', file: 'marvel_16.png' },
+                { emoji: '⚔️', name: 'Wolverine', file: 'marvel_17.png' },
+                { emoji: '🔴', name: 'Deadpool', file: 'marvel_18.png' },
+                { emoji: '🐜', name: 'Ant-Man', file: 'marvel_19.png' },
+                { emoji: '🐝', name: 'Wasp', file: 'marvel_20.png' },
+                { emoji: '🦂', name: 'Scorpion', file: 'marvel_21.png' },
+                { emoji: '🦏', name: 'Rhino', file: 'marvel_22.png' },
+                { emoji: '🔴', name: 'Scarlet Witch', file: 'marvel_23.png' },
+                { emoji: '🏹', name: 'Hawkeye', file: 'marvel_24.png' },
+                { emoji: '💎', name: 'Vision', file: 'marvel_25.png' },
+                { emoji: '❄️', name: 'Winter Soldier', file: 'marvel_26.png' },
+                { emoji: '🟡', name: 'Juggernaut', file: 'marvel_27.png' },
+                { emoji: '🔴', name: 'Red Hulk', file: 'marvel_28.png' },
+                { emoji: '🌙', name: 'Moon Knight', file: 'marvel_29.png' },
+                { emoji: '🔴', name: 'Daredevil', file: 'marvel_30.png' },
+                { emoji: '🔥', name: 'Phoenix', file: 'marvel_31.webp' },
+                { emoji: '🧲', name: 'Magneto', file: 'marvel_32.webp' },
+                { emoji: '🧠', name: 'Professor X', file: 'marvel_33.webp.' },
+                { emoji: '🌪️', name: 'Storm', file: 'marvel_34.avif' },
+                { emoji: '🐾', name: 'Beast', file: 'marvel_35.webp' },
+                { emoji: '🦸', name: 'Mystique', file: 'marvel_36.jpg' },
+                { emoji: '💪', name: 'Nik Fury', file: 'marvel_37.jpg' },
+                { emoji: '⛓️', name: 'Ghost Rider', file: 'marvel_38.jpg.' },
+                { emoji: '🌟', name: 'Sentry', file: 'marvel_39.jpg' },
+                { emoji: '🔵', name: 'Jessica Jones', file: 'marvel_40.png' }
+            ],
+            lol: [
+                { emoji: '✨', name: 'Lux', file: 'lux' }, { emoji: '🦊', name: 'Ahri', file: 'ahri' },
+                { emoji: '💥', name: 'Jinx', file: 'jinx' }, { emoji: '🌪️', name: 'Yasuo', file: 'yasuo' },
+                { emoji: '🔫', name: 'Miss Fortune', file: 'missfortune' }, { emoji: '⚡', name: 'Zed', file: 'zed' },
+                { emoji: '🗡️', name: 'Yone', file: 'yone' }, { emoji: '🎯', name: 'Caitlyn', file: 'caitlyn' },
+                { emoji: '🧙', name: 'Syndra', file: 'syndra' }, { emoji: '🔥', name: 'Brand', file: 'brand' },
+                { emoji: '❄️', name: 'Ashe', file: 'ashe' }, { emoji: '🐍', name: 'Cassiopeia', file: 'cassiopeia' },
+                { emoji: '🌙', name: 'Diana', file: 'diana' }, { emoji: '☀️', name: 'Leona', file: 'leona' },
+                { emoji: '🎭', name: 'Shaco', file: 'shaco' }, { emoji: '🐉', name: 'Shyvana', file: 'shyvana' },
+                { emoji: '🦂', name: 'Skarner', file: 'skarner' }, { emoji: '👻', name: 'Evelynn', file: 'evelynn' },
+                { emoji: '🧊', name: 'Anivia', file: 'anivia' }, { emoji: '💀', name: 'Karthus', file: 'karthus' }
+            ],
+            mobilelegends: [
+                { emoji: '🗡️', name: 'Alucard', file: 'alucard' }, { emoji: '🏹', name: 'Layla', file: 'layla' },
+                { emoji: '🐉', name: 'Zilong', file: 'zilong' }, { emoji: '⚔️', name: 'Fanny', file: 'fanny' },
+                { emoji: '🔮', name: 'Gusion', file: 'gusion' }, { emoji: '👑', name: 'Lancelot', file: 'lancelot' },
+                { emoji: '🦊', name: 'Nana', file: 'nana' }, { emoji: '🌙', name: 'Miya', file: 'miya' },
+                { emoji: '⚡', name: 'Karina', file: 'karina' }, { emoji: '🎯', name: 'Lesley', file: 'lesley' },
+                { emoji: '🔥', name: 'Valir', file: 'valir' }, { emoji: '❄️', name: 'Eudora', file: 'eudora' },
+                { emoji: '💪', name: 'Balmond', file: 'balmond' }, { emoji: '🛡️', name: 'Tigreal', file: 'tigreal' },
+                { emoji: '💫', name: 'Kagura', file: 'kagura' }, { emoji: '🗡️', name: 'Hayabusa', file: 'hayabusa' },
+                { emoji: '🎭', name: 'Selena', file: 'selena' }, { emoji: '🌊', name: 'Atlas', file: 'atlas' },
+                { emoji: '🌋', name: 'Franco', file: 'franco' }, { emoji: '⚔️', name: 'Chou', file: 'chou' }
+            ],
+            icecek: [
+                { emoji: '🥤', name: 'Kola', file: 'kola' }, { emoji: '☕', name: 'Kahve', file: 'kahve' },
+                { emoji: '🍋', name: 'Limonata', file: 'limonata' }, { emoji: '🍵', name: 'Çay', file: 'cay' },
+                { emoji: '🥛', name: 'Süt', file: 'sut' }, { emoji: '🧃', name: 'Meyve Suyu', file: 'meyvesuyu' },
+                { emoji: '🍺', name: 'Bira', file: 'bira' }, { emoji: '🍷', name: 'Şarap', file: 'sarap' },
+                { emoji: '🍹', name: 'Kokteyl', file: 'kokteyl' }, { emoji: '🧊', name: 'Buzlu Çay', file: 'buzlucay' },
+                { emoji: '💧', name: 'Su', file: 'su' }, { emoji: '🥤', name: 'Ayran', file: 'ayran' },
+                { emoji: '🧋', name: 'Bubble Tea', file: 'bubbletea' }, { emoji: '🥃', name: 'Viski', file: 'viski' },
+                { emoji: '🍸', name: 'Votka', file: 'votka' }, { emoji: '🫖', name: 'Bitki Çayı', file: 'bitkicayi' },
+                { emoji: '🍊', name: 'Portakal Suyu', file: 'portakalsuyu' }, { emoji: '🥂', name: 'Şampanya', file: 'sampanya' },
+                { emoji: '🍶', name: 'Sake', file: 'sake' }, { emoji: '🧉', name: 'Mate', file: 'mate' }
+            ],
+            cips: [
+                { emoji: '🍟', name: 'Patates Cipsi', file: 'patates' }, { emoji: '🌽', name: 'Mısır Cipsi', file: 'misir' },
+                { emoji: '🧀', name: 'Doritos', file: 'doritos' }, { emoji: '🥔', name: 'Pringles', file: 'pringles' },
+                { emoji: '🌶️', name: 'Lays Acılı', file: 'lays' }, { emoji: '🧂', name: 'Ruffles', file: 'ruffles' },
+                { emoji: '🍅', name: 'Çerezza', file: 'cerezza' }, { emoji: '🧄', name: 'Patos', file: 'patos' },
+                { emoji: '🧅', name: 'Soğanlı Cips', file: 'soganli' }, { emoji: '🍋', name: 'Limonlu Cips', file: 'limonlu' },
+                { emoji: '🔥', name: 'Acı Soslu', file: 'acisoslu' }, { emoji: '🍕', name: 'Pizza Cipsi', file: 'pizza' },
+                { emoji: '🌮', name: 'Taco Cipsi', file: 'taco' }, { emoji: '🥜', name: 'Fıstık', file: 'fistik' },
+                { emoji: '🧈', name: 'Tereyağlı', file: 'tereyagli' }, { emoji: '🍔', name: 'Burger Cipsi', file: 'burger' },
+                { emoji: '🥓', name: 'Bacon Cipsi', file: 'bacon' }, { emoji: '🍄', name: 'Mantarlı', file: 'mantarli' },
+                { emoji: '🧀', name: 'Peynirli', file: 'peynirli' }, { emoji: '🌿', name: 'Baharatlı', file: 'baharatli' }
+            ],
+            biskuvi: [
+                { emoji: '🍪', name: 'Oreo', file: 'oreo' }, { emoji: '🥠', name: 'Biskrem', file: 'biskrem' },
+                { emoji: '🧇', name: 'Petibör', file: 'petibor' }, { emoji: '🍫', name: 'Eti Browni', file: 'browni' },
+                { emoji: '🍬', name: 'Ülker Çikolata', file: 'ulker' }, { emoji: '🥮', name: 'Çokoprens', file: 'cokoprens' },
+                { emoji: '🧁', name: 'Halley', file: 'halley' }, { emoji: '🍩', name: 'Çikolatalı Donut', file: 'donut' },
+                { emoji: '🥐', name: 'Kruvasan', file: 'kruvasan' }, { emoji: '🍯', name: 'Ballı Bisküvi', file: 'balli' },
+                { emoji: '🥜', name: 'Fıstıklı', file: 'fistikli' }, { emoji: '🍓', name: 'Çilekli', file: 'cilekli' },
+                { emoji: '🍋', name: 'Limonlu', file: 'limonlub' }, { emoji: '🥥', name: 'Hindistan Cevizli', file: 'hindistan' },
+                { emoji: '🍮', name: 'Karamelli', file: 'karamelli' }, { emoji: '☕', name: 'Kahveli', file: 'kahveli' },
+                { emoji: '🎂', name: 'Pasta', file: 'pasta' }, { emoji: '🍰', name: 'Pasta Dilimi', file: 'pastadilimi' },
+                { emoji: '🥧', name: 'Tart', file: 'tart' }, { emoji: '🍪', name: 'Yulaflı', file: 'yulaflı' }
+            ],
+            sarkici: [
+                { emoji: '👑', name: 'Beyoncé', file: 'beyonce' }, { emoji: '🎤', name: 'Ariana Grande', file: 'ariana' },
+                { emoji: '🎸', name: 'Taylor Swift', file: 'taylor' }, { emoji: '🕺', name: 'Michael Jackson', file: 'michael' },
+                { emoji: '🎹', name: 'Ed Sheeran', file: 'edsheeran' }, { emoji: '🎵', name: 'The Weeknd', file: 'weeknd' },
+                { emoji: '💃', name: 'Shakira', file: 'shakira' }, { emoji: '🎧', name: 'Drake', file: 'drake' },
+                { emoji: '🌟', name: 'Rihanna', file: 'rihanna' }, { emoji: '🔥', name: 'Eminem', file: 'eminem' },
+                { emoji: '🎤', name: 'Lady Gaga', file: 'ladygaga' }, { emoji: '🎶', name: 'Bruno Mars', file: 'bruno' },
+                { emoji: '💫', name: 'Justin Bieber', file: 'justin' }, { emoji: '🎤', name: 'Adele', file: 'adele' },
+                { emoji: '🎸', name: 'Billie Eilish', file: 'billie' }, { emoji: '🎵', name: 'Dua Lipa', file: 'dualipa' },
+                { emoji: '🥁', name: 'Travis Scott', file: 'travis' }, { emoji: '🎤', name: 'Kanye West', file: 'kanye' },
+                { emoji: '🎧', name: 'Post Malone', file: 'postmalone' }, { emoji: '🌟', name: 'Madonna', file: 'madonna' }
+            ],
+            hayvan: [
+                { emoji: '🦁', name: 'Aslan' }, { emoji: '🐘', name: 'Fil' }, { emoji: '🐯', name: 'Kaplan' },
+                { emoji: '🦒', name: 'Zürafa' }, { emoji: '🐧', name: 'Penguen' }, { emoji: '🐼', name: 'Panda' },
+                { emoji: '🦊', name: 'Tilki' }, { emoji: '🐺', name: 'Kurt' }, { emoji: '🐻', name: 'Ayı' },
+                { emoji: '🐨', name: 'Koala' }, { emoji: '🦓', name: 'Zebra' }, { emoji: '🦏', name: 'Gergedan' },
+                { emoji: '🦛', name: 'Su Aygırı' }, { emoji: '🐊', name: 'Timsah' }, { emoji: '🐆', name: 'Leopar' },
+                { emoji: '🐅', name: 'Bengal Kaplanı' }, { emoji: '🦍', name: 'Goril' }, { emoji: '🦧', name: 'Orangutan' },
+                { emoji: '🐘', name: 'Bebek Fil' }, { emoji: '🐕', name: 'Köpek' }, { emoji: '🐈', name: 'Kedi' },
+                { emoji: '🐇', name: 'Tavşan' }, { emoji: '🐿️', name: 'Sincap' }, { emoji: '🦔', name: 'Kirpi' },
+                { emoji: '🐢', name: 'Kaplumbağa' }, { emoji: '🦎', name: 'Kertenkele' }, { emoji: '🐍', name: 'Yılan' },
+                { emoji: '🦜', name: 'Papağan' }, { emoji: '🦅', name: 'Kartal' }, { emoji: '🦉', name: 'Baykuş' }
+            ]
+        };
+
+        // Desteklenen görsel uzantıları (görseli bu sırayla arar)
+        const siralamaImgExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];
+
+        function siralamaFindImage(folder, file) {
+            // Yol: siralama/<kategori>/<dosya>.<uzanti>
+            return folder + '/' + file + '.png';
+        }
+
+        // Gorsel yuklenmezse diger uzantilari dene, o da olmazsa emojiye dus
+        window.siralamaTryExtensions = function (img, folder, file, emoji) {
+            if (!folder || !file) { siralamaImgError(img, emoji); return; }
+            const exts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];
+            let tried = 0;
+            const base = folder + '/' + file + '.';
+            function tryNext() {
+                while (tried < exts.length) {
+                    const ext = exts[tried++];
+                    const candidate = base + ext;
+                    if (img.getAttribute('src') === candidate) continue;
+                    img.onerror = function () { img.onerror = null; tryNext(); };
+                    img.src = candidate;
+                    return;
+                }
+                img.onerror = null;
+                siralamaImgError(img, emoji);
+            }
+            tryNext();
+        };
+
+        const siralamaPools = {};
+        // Resim yuklenmezse emojiye duser
+        window.siralamaImgError = function (img, emoji) {
+            const span = document.createElement('span');
+            span.className = img.getAttribute('data-emoji-class') || 'siralama-photo-emoji';
+            span.textContent = emoji || '🖼️';
+            if (img.parentNode) img.parentNode.replaceChild(span, img);
+        };
+
+        function buildSiralamaPools() {
+            siralamaKategoriler.forEach(k => {
+                if (k.maxPool) {
+                    // Mevcut gorsel havuzundan (Marvel, DC, Anime vs.)
+                    // ONCE O Mu Bu Mu kayitli gorselleri kullanilir (SADECE siralama oyunu icin):
+                    const pool = (typeof siralamaImageData !== 'undefined' && siralamaImageData[k.id] && siralamaImageData[k.id].length) ? siralamaImageData[k.id] : (photoPools[k.maxPool] || []);
+                    siralamaPools[k.id] = pool.map((item, idx) => ({
+                        emoji: item.emoji || '🖼️',
+                        name: item.label || item.name || ('Öğe ' + (idx + 1)),
+                        image: item.image || '',
+                        useEmojiOnly: false
+                    }));
+                    k.max = siralamaPools[k.id].length || 20;
+                } else if (k.kind === 'image' && siralamaEmojiData[k.id]) {
+                    siralamaPools[k.id] = siralamaEmojiData[k.id].map(x => ({
+                        emoji: x.emoji,
+                        name: x.name,
+                        image: siralamaFindImage(k.folder, x.file),
+                        folder: k.folder,
+                        file: x.file,
+                        useEmojiOnly: false
+                    }));
+                    k.max = siralamaPools[k.id].length;
+                } else if (k.kind === 'emoji' && siralamaEmojiData[k.id]) {
+                    // Sadece emoji (Hayvan)
+                    siralamaPools[k.id] = siralamaEmojiData[k.id].map(x => ({
+                        emoji: x.emoji, name: x.name, image: '', useEmojiOnly: true
+                    }));
+                    k.max = siralamaPools[k.id].length;
+                } else {
+                    siralamaPools[k.id] = [];
+                    k.max = 20;
+                }
+            });
+        }
+
+        window.goToSiralamaCategorySelect = function () {
+            buildSiralamaPools();
+            const grid = document.getElementById('siralamaCategoryGrid');
+            grid.innerHTML = siralamaKategoriler.map(k => {
+                const neon = 'category-card--' + k.id;
+                return '<div class="category-card ' + neon + '" onclick="selectSiralamaCategory(\'' + k.id + '\')" id="siralamaCat_' + k.id + '">' +
+                    '<div class="category-icon">' + k.icon + '</div>' +
+                    '<div class="category-title">' + k.name + '</div>' +
+                    '<div class="category-subtitle">' + k.max + ' görsel</div>' +
+                    '</div>';
+            }).join('');
+            hideAllMainScreens();
+            document.getElementById('siralamaCategoryScreen').style.display = 'block';
+            siralamaSelectedCat = null;
+            document.getElementById('siralamaCategoryNextBtn').disabled = true;
+            changeTheme('space');
+        };
+
+        window.selectSiralamaCategory = function (catId) {
+            document.querySelectorAll('#siralamaCategoryGrid .category-card').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById('siralamaCat_' + catId);
+            if (el) el.classList.add('selected');
+            const cat = siralamaKategoriler.find(k => k.id === catId);
+            siralamaSelectedCat = cat;
+            siralamaSelectedMax = cat.max;
+            document.getElementById('siralamaCategoryNextBtn').disabled = false;
+            changeTheme(catId);
+        };
+
+        window.goToSiralamaCount = function () {
+            if (!siralamaSelectedCat) return;
+            const inp = document.getElementById('siralamaCountInput');
+            const err = document.getElementById('siralamaCountErr');
+            const max = Math.min(20, siralamaSelectedMax);
+            inp.max = max;
+            document.getElementById('siralamaMaxLbl').textContent = max;
+            document.getElementById('siralamaMaxLbl2').textContent = max;
+            inp.value = Math.min(8, max);
+            inp.min = 4;
+            if (err) err.textContent = '';
+            hideAllMainScreens();
+            document.getElementById('siralamaCountScreen').style.display = 'block';
+            changeTheme(siralamaSelectedCat.id);
+            window.scrollTo(0, 0);
+        };
+
+        window.goBackToSiralamaCategoryFromCount = function () {
+            hideAllMainScreens();
+            document.getElementById('siralamaCategoryScreen').style.display = 'block';
+            changeTheme(siralamaSelectedCat ? siralamaSelectedCat.id : 'space');
+            window.scrollTo(0, 0);
+        };
+
+        window.validateSiralamaCount = function () {
+            const inp = document.getElementById('siralamaCountInput');
+            const err = document.getElementById('siralamaCountErr');
+            const btn = document.getElementById('siralamaStartBtn');
+            const v = parseInt(inp.value);
+            const max = parseInt(inp.max) || 20;
+            if (!v || v < 4) { if (err) err.textContent = 'En az 4 görsel seçmelisin!'; if (btn) btn.disabled = true; return false; }
+            if (v > max) { if (err) err.textContent = 'Maksimum ' + max + ' görsel seçebilirsin!'; if (btn) btn.disabled = true; return false; }
+            if (err) err.textContent = '';
+            if (btn) btn.disabled = false;
+            return true;
+        };
+
+        window.startSiralamaGame = function () {
+            if (!validateSiralamaCount()) return;
+            if (!siralamaSelectedCat) return;
+            isInTest = true;
+            stopBgMusic();
+
+            const count = parseInt(document.getElementById('siralamaCountInput').value);
+            const pool = (siralamaPools[siralamaSelectedCat.id] || []).slice();
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            siralamaAllItems = pool.slice(0, count);
+
+            document.getElementById('siralamaGameCatInfo').textContent = '📊 ' + siralamaSelectedCat.name;
+            document.getElementById('siralamaGameInfo').textContent = count + ' görsel • 4 seviyeye sürükle';
+            const errBox = document.getElementById('siralamaError');
+            if (errBox) errBox.textContent = '';
+
+            // Ranks
+            document.getElementById('siralamaRanks').innerHTML = siralamaRankDefaults.map((label, i) =>
+                '<div class="siralama-rank-slot" data-rank="' + i + '">' +
+                '<h3>Seviye ' + (i + 1) + '</h3>' +
+                '<input type="text" class="siralama-rank-name-input" data-rank="' + i + '" value="' + label + '" oninput="siralamaUpdateLabels()">' +
+                '<div class="siralama-rank-items" id="siralamaRankItems' + i + '"></div>' +
+                '</div>'
+            ).join('');
+
+            // Photos (all visible in pool)
+            document.getElementById('siralamaPhotos').innerHTML = siralamaAllItems.map((it, idx) => {
+                let visual;
+                if (it.useEmojiOnly || !it.image) {
+                    visual = '<span class="siralama-photo-emoji">' + (it.emoji || '🖼️') + '</span>';
+                } else {
+                    visual = '<img src="' + it.image + '" alt="' + it.name + '" draggable="false" ' +
+                        'onerror="siralamaTryExtensions(this, \'' + (it.folder || '') + '\', \'' + (it.file || '') + '\', \'' + (it.emoji || '🖼️') + '\')" ' +
+                        'data-emoji-class="siralama-photo-emoji">';
+                }
+                return '<div class="siralama-photo-card" id="siralamaPhoto_' + idx + '" data-name="' + it.name.replace(/"/g, '&quot;') + '" data-folder="' + (it.folder || '') + '" data-file="' + (it.file || '') + '">' +
+                    visual +
+                    '<div class="label">' + it.name + '</div>' +
+                    '</div>';
+            }).join('');
+            // Havuzdaki tum fotograflari surukle-birak sistemine bagla
+            document.querySelectorAll('#siralamaPhotos .siralama-photo-card').forEach(siralamaBindCard);
+
+            hideAllMainScreens();
+            document.getElementById('siralamaGameScreen').style.display = 'block';
+            window.scrollTo(0, 0);
+        };
+
+        // ===== Pointer Events tabanli surukle-birak (mouse + dokunmatik) =====
+        let siralamaDrag = null;
+
+        // Tarayicinin resim surukleme kopyasini (native ghost) engelle
+        if (!window.__siralamaNativeDragBlocked) {
+            document.addEventListener('dragstart', function (e) {
+                var t = e.target;
+                if (t && t.closest && t.closest('.siralama-photo-card, .siralama-item-card, #siralamaGhost, .siralama-photos, .siralama-ranks')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+            window.__siralamaNativeDragBlocked = true;
+        }
+
+        function siralamaClearHighlights() {
+            document.querySelectorAll('.siralama-rank-slot.drag-over').forEach(s => s.classList.remove('drag-over'));
+            const pool = document.getElementById('siralamaPhotos');
+            if (pool) pool.classList.remove('drag-over');
+        }
+
+        function siralamaCleanupGhost() {
+            // Kendi hayaletimizi temizle
+            document.querySelectorAll('#siralamaGhost').forEach(g => {
+                if (g.parentNode) g.parentNode.removeChild(g);
+            });
+            // Metin secimini temizle
+            if (window.getSelection) {
+                const sel = window.getSelection();
+                if (sel && sel.removeAllRanges) sel.removeAllRanges();
+            }
+            // Tum surukleme halindeki kartlari sifirla
+            document.querySelectorAll('.siralama-dragging').forEach(c => c.classList.remove('siralama-dragging'));
+            // Vurgulari temizle
+            siralamaClearHighlights();
+        }
+
+        function siralamaStartDrag(e, cardEl) {
+            if (e.target && e.target.tagName === 'INPUT') return;
+            e.preventDefault();
+            try { cardEl.setPointerCapture(e.pointerId); } catch (err) { }
+            const rect = cardEl.getBoundingClientRect();
+            const name = cardEl.getAttribute('data-name') || '';
+            const img = cardEl.querySelector('img');
+            const em = cardEl.querySelector('.siralama-item-emoji, .siralama-photo-emoji');
+
+            siralamaCleanupGhost();
+            const ghost = document.createElement('div');
+            ghost.id = 'siralamaGhost';
+            let visual;
+            if (img) {
+                visual = '<img src="' + img.src + '" alt="" draggable="false" ' +
+                    'onerror="siralamaImgError(this, \'' + (em ? em.textContent : '🖼️') + '\')" ' +
+                    'data-emoji-class="siralama-ghost-emoji">';
+            } else {
+                visual = '<span class="siralama-ghost-emoji">' + (em ? em.textContent : '🖼️') + '</span>';
+            }
+            ghost.innerHTML = visual + '<div class="label">' + name + '</div>';
+            document.body.appendChild(ghost);
+
+            siralamaDrag = {
+                card: cardEl,
+                ghost: ghost,
+                offsetX: e.clientX - rect.left,
+                offsetY: e.clientY - rect.top,
+                fromPool: cardEl.classList.contains('siralama-photo-card'),
+                name: name,
+                imgSrc: img ? img.src : '',
+                emoji: em ? em.textContent : '🖼️',
+                folder: cardEl.getAttribute('data-folder') || '',
+                file: cardEl.getAttribute('data-file') || ''
+            };
+            ghost.style.left = e.clientX + 'px';
+            ghost.style.top = e.clientY + 'px';
+            cardEl.classList.add('siralama-dragging');
+
+            document.addEventListener('pointermove', siralamaOnMove);
+            document.addEventListener('pointerup', siralamaOnUp);
+            document.addEventListener('pointercancel', siralamaOnUp);
+        }
+
+        function siralamaOnMove(e) {
+            if (!siralamaDrag) return;
+            e.preventDefault();
+            siralamaDrag.ghost.style.left = e.clientX + 'px';
+            siralamaDrag.ghost.style.top = e.clientY + 'px';
+
+            // ghost'u gecici gizle ki elementFromPoint alttaki hedefi bulsun
+            siralamaDrag.ghost.style.display = 'none';
+            const below = document.elementFromPoint(e.clientX, e.clientY);
+            siralamaDrag.ghost.style.display = '';
+
+            siralamaClearHighlights();
+            if (!below) return;
+            const slot = below.closest('.siralama-rank-slot');
+            if (slot) { slot.classList.add('drag-over'); return; }
+            const pool = below.closest('.siralama-photos');
+            if (pool) { pool.classList.add('drag-over'); }
+        }
+
+        function siralamaOnUp(e) {
+            if (!siralamaDrag) return;
+            document.removeEventListener('pointermove', siralamaOnMove);
+            document.removeEventListener('pointerup', siralamaOnUp);
+            document.removeEventListener('pointercancel', siralamaOnUp);
+
+            siralamaDrag.ghost.style.display = 'none';
+            const below = document.elementFromPoint(e.clientX, e.clientY);
+            siralamaDrag.ghost.style.display = '';
+
+            siralamaClearHighlights();
+            const d = siralamaDrag;
+            d.card.classList.remove('siralama-dragging');
+            try { d.card.releasePointerCapture(e.pointerId); } catch (err) { }
+
+            let targetSlot = below ? below.closest('.siralama-rank-slot') : null;
+            let targetPool = below ? below.closest('.siralama-photos') : null;
+
+            if (targetSlot) {
+                const idx = parseInt(targetSlot.getAttribute('data-rank'));
+                siralamaPlaceInRank(d, idx);
+            } else if (targetPool && !d.fromPool) {
+                // Level kartini havuza geri surukledi -> karti sil, havuzdaki kopyasini goster
+                if (d.card && d.card.parentNode) d.card.remove();
+                siralamaSyncPool();
+            }
+
+            siralamaCleanupGhost();
+            siralamaDrag = null;
+        }
+
+        function siralamaPlaceInRank(d, rankIndex) {
+            // AYNI isimli baska rank karti varsa kaldir (bir gorsel tek bir level'da olabilir)
+            document.querySelectorAll('.siralama-item-card').forEach(card => {
+                if (card.getAttribute('data-name') === d.name) card.remove();
+            });
+            // Kaynak kart havuzdan geldiyse GIZLE (silme), level kartiniysa sil
+            if (d.card) {
+                if (d.card.classList.contains('siralama-photo-card')) {
+                    d.card.style.display = 'none';
+                } else if (d.card.parentNode) {
+                    d.card.remove();
+                }
+            }
+
+            const container = document.getElementById('siralamaRankItems' + rankIndex);
+            const card = document.createElement('div');
+            card.className = 'siralama-item-card';
+            card.id = 'siralamaCard_' + Math.random().toString(36).slice(2);
+            card.setAttribute('data-name', d.name);
+            card.setAttribute('data-folder', d.folder || '');
+            card.setAttribute('data-file', d.file || '');
+            let visual;
+            if (d.imgSrc) {
+                visual = '<img src="' + d.imgSrc + '" alt="' + d.name + '" draggable="false" ' +
+                    'onerror="siralamaTryExtensions(this, \'' + (d.folder || '') + '\', \'' + (d.file || '') + '\', \'' + (d.emoji || '🖼️') + '\')" ' +
+                    'data-emoji-class="siralama-item-emoji">';
+            } else {
+                visual = '<span class="siralama-item-emoji">' + (d.emoji || '🖼️') + '</span>';
+            }
+            card.innerHTML = visual + '<span class="siralama-item-label">' + d.name + '</span>';
+            container.appendChild(card);
+            siralamaBindCard(card);
+
+            // Hemen senkronize et: havuzda bu isim gorunmesin
+            document.querySelectorAll('#siralamaPhotos .siralama-photo-card').forEach(p => {
+                if (p.getAttribute('data-name') === d.name) p.style.display = 'none';
+            });
+            // Tum hayalet/artiik ogeleri temizle
+            siralamaCleanupGhost();
+        }
+
+        function siralamaBindCard(card) {
+            if (card.__siralamaBound) return;
+            card.__siralamaBound = true;
+            var startX = 0, startY = 0, moved = false, dragging = false, pointerId = null;
+            card.addEventListener('pointerdown', function (ev) {
+                if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+                if (ev.target && ev.target.tagName === 'INPUT') return;
+                startX = ev.clientX; startY = ev.clientY; moved = false; dragging = false;
+                pointerId = ev.pointerId;
+                function onMove(e) {
+                    if (Math.abs(e.clientX - startX) > 5 || Math.abs(e.clientY - startY) > 5) {
+                        moved = true;
+                        if (!dragging) { dragging = true; siralamaStartDrag(ev, card); }
+                    }
+                }
+                function onUp(e) {
+                    document.removeEventListener('pointermove', onMove);
+                    document.removeEventListener('pointerup', onUp);
+                    document.removeEventListener('pointercancel', onUp);
+                    if (!moved && card.classList.contains('siralama-item-card')) {
+                        // kisa tik: karti seviyeden cikar
+                        card.remove();
+                        siralamaSyncPool();
+                    }
+                }
+                document.addEventListener('pointermove', onMove);
+                document.addEventListener('pointerup', onUp);
+                document.addEventListener('pointercancel', onUp);
+            });
+        }
+
+
+        window.siralamaUpdateLabels = function () {
+            document.querySelectorAll('.siralama-rank-name-input').forEach(inp => {
+                const i = parseInt(inp.getAttribute('data-rank'));
+                const h3 = document.querySelector('#siralamaRanks .siralama-rank-slot:nth-child(' + (i + 1) + ') h3');
+                if (h3) {
+                    const val = inp.value.trim();
+                    h3.textContent = 'Seviye ' + (i + 1) + (val ? ' — ' + val : '');
+                }
+            });
+        };
+
+        window.finishSiralamaGame = function () {
+            const placed = document.querySelectorAll('.siralama-item-card').length;
+            const total = siralamaAllItems.length;
+            const errBox = document.getElementById('siralamaError');
+            if (placed < total) {
+                if (errBox) {
+                    errBox.textContent = '⚠️ Önce tüm görselleri seviyelere yerleştir! (' + placed + '/' + total + ' yerleştirildi)';
+                    const mc = document.getElementById('mainContainer');
+                    if (mc) { mc.classList.remove('shake'); void mc.offsetWidth; mc.classList.add('shake'); setTimeout(() => mc.classList.remove('shake'), 600); }
+                }
+                return;
+            }
+            if (errBox) errBox.textContent = '';
+
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+
+            document.getElementById('siralamaResultSub').textContent = total + ' görseli 4 seviyeye ayırdın!';
+
+            let html = '';
+            for (let i = 0; i < 4; i++) {
+                const inp = document.querySelector('.siralama-rank-name-input[data-rank="' + i + '"]');
+                const rankName = inp ? inp.value.trim() : siralamaRankDefaults[i];
+                const items = Array.from(document.querySelectorAll('#siralamaRankItems' + i + ' .siralama-item-card'));
+                const names = items.map(c => c.getAttribute('data-name'));
+                const colors = ['#4ade80', '#22d3ee', '#fbbf24', '#f87171'];
+                html += '<div style="background:rgba(0,0,0,0.25);border:2px solid ' + colors[i] + '55;border-radius:22px;padding:20px;margin-bottom:16px;">';
+                html += '<h3 style="color:' + colors[i] + ';font-size:22px;font-weight:900;margin-bottom:12px;text-align:center;">Seviye ' + (i + 1) + ' — ' + rankName + ' (' + names.length + ')</h3>';
+                if (names.length === 0) {
+                    html += '<p style="color:#7eb8ff;text-align:center;font-style:italic;">Bu seviyeye görsel yerleştirmedin.</p>';
+                } else {
+                    html += '<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">';
+                    names.forEach(n => {
+                        html += '<span style="background:rgba(255,255,255,0.08);border:2px solid ' + colors[i] + '66;border-radius:14px;padding:8px 14px;color:#fff;font-weight:700;font-size:14px;">' + n + '</span>';
+                    });
+                    html += '</div>';
+                }
+                html += '</div>';
+            }
+            document.getElementById('siralamaResultContent').innerHTML = html;
+
+            hideAllMainScreens();
+            document.getElementById('siralamaResultScreen').style.display = 'block';
+            window.scrollTo(0, 0);
+            changeTheme(siralamaSelectedCat ? siralamaSelectedCat.id : 'space');
+        };
+
+        window.restartSiralamaGame = function () { startSiralamaGame(); };
+
+        window.goBackToSiralamaCategory = function () {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+            hideAllMainScreens();
+            document.getElementById('siralamaCategoryScreen').style.display = 'block';
+            changeTheme('space');
+            window.scrollTo(0, 0);
+        };
+        window.goBackToModeFromSiralama = function () {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display = 'block';
+            changeTheme('space');
+        };
+        window.goToProfileFromSiralama = function () {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+            hideAllMainScreens();
+            document.getElementById('profileScreen').style.display = 'block';
+            changeTheme('space');
+        };
+        window.exitSiralamaToCategories = function () {
+            isInTest = false;
+            if (soundEnabled) startBgMusic();
+            hideAllMainScreens();
+            document.getElementById('siralamaCategoryScreen').style.display = 'block';
+            changeTheme('space');
+            window.scrollTo(0, 0);
+        };
+
         changeTheme('space'); updateRankDisplay();
     </script>
     <script defer
@@ -9799,6 +11125,12 @@
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a246403aa92da98c',t:'MTc4NTYwMjA3Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a24769e3ab82c28b',t:'MTc4NTYxNDI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a247e436bc47e324',t:'MTc4NTYxOTI3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a279232b8925dfdf',t:'MTc4NjEzNTY1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496"
+        integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}'
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
