@@ -18,6 +18,34 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -moz-user-drag: none;
+            -ms-user-drag: none;
+            -user-drag: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .category-card,
+        .category-card *,
+        .mode-card,
+        .mode-card * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input,
+        textarea {
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         body {
@@ -2718,6 +2746,7 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .test-header {
             display: flex;
             justify-content: space-between;
@@ -4257,137 +4286,454 @@
             border-color: #8a2be2;
             box-shadow: 0 0 18px rgba(138, 43, 226, 0.3);
         }
-    
+
         /* ===== BLUR GUESS - 5. OYUN ===== */
         .mode-card--blur {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(30, 20, 60, 0.95));
             border-color: #ec4899;
         }
+
         .mode-card--blur:hover {
             box-shadow: 0 0 35px rgba(236, 72, 153, 0.45), 0 0 70px rgba(138, 43, 226, 0.2);
         }
-        .blur-game-top{
-            display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-            padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:20px;
+
+        .blur-game-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
         }
-        .blur-game-badge{
-            background: rgba(138,43,226,0.2);border:1px solid rgba(138,43,226,0.4);
-            padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff;
+
+        .blur-game-badge {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
         }
-        .blur-score-badge{
-            background: linear-gradient(135deg, rgba(250,204,21,0.15), rgba(245,158,11,0.15));
-            border:1px solid rgba(250,204,21,0.4);color:#facc15;
+
+        .blur-score-badge {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            color: #facc15;
         }
-        .blur-levels{display:flex;gap:6px;align-items:center}
-        .blur-dot{width:32px;height:8px;border-radius:999px;background:rgba(255,255,255,0.15);transition:all 0.4s}
-        .blur-dot.active{background:linear-gradient(90deg,#8a2be2,#ec4899);box-shadow:0 0 10px rgba(236,72,153,0.5)}
-        .blur-dot.used{background:#4ade80}
-        .blur-game-area{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;align-items:start}
-        @media(max-width:800px){.blur-game-area{grid-template-columns:1fr}}
-        .blur-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
-        .blur-photo-frame{
-            width:100%;max-width:480px;aspect-ratio:1/1;
-            border-radius:28px;overflow:hidden;
-            border:3px solid rgba(236,72,153,0.5);
+
+        .blur-levels {
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+        .blur-dot {
+            width: 32px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.4s
+        }
+
+        .blur-dot.active {
+            background: linear-gradient(90deg, #8a2be2, #ec4899);
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.5)
+        }
+
+        .blur-dot.used {
+            background: #4ade80
+        }
+
+        .blur-game-area {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            align-items: start
+        }
+
+        @media(max-width:800px) {
+            .blur-game-area {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .blur-photo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px
+        }
+
+        .blur-photo-frame {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1/1;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 3px solid rgba(236, 72, 153, 0.5);
             background: radial-gradient(ellipse at center, #1e1b4b, #0f0a1a);
-            position:relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
-        .blur-photo-frame img{
-            position:absolute;
-            inset:0;
-            width:100%;height:100%;
-            object-fit:cover;
-            object-position:center;
-            display:block;
-            transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+
+        .blur-photo-frame img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
             will-change: filter, opacity;
         }
-        .blur-photo-placeholder{
-          position:absolute;
-            inset:0;
-            width:100%;height:100%;
-            display:flex;flex-direction:column;align-items:center;justify-content:center;
-            font-size:110px;transition: filter 0.7s ease, opacity 0.3s ease;
-        }
-        .blur-photo-frame::after{
-            content:'';position:absolute;inset:0;background:#0f0a1a;opacity:0;pointer-events:none;transition:opacity 0.3s ease;
-        }
-        .blur-photo-frame.loading::after{opacity:1}
-        .blur-photo-frame.loading img, .blur-photo-frame.loading .blur-photo-placeholder{opacity:0 !important}
-        .blur-quality-bar{width:100%;max-width:480px}
-        .blur-quality-label{display:flex;justify-content:space-between;font-size:12px;color:#8a8ab0;font-weight:600;margin-bottom:6px}
-        .blur-quality-track{width:100%;height:10px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden}
-        .blur-quality-fill{height:100%;border-radius:999px;transition:width 0.7s ease, background 0.5s ease}
-        .blur-controls{
-            background: rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);
-            border-radius:24px;padding:20px;
-        }
-        .blur-question-info{font-size:13px;color:#8a8ab0;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
-        .blur-current-points{
-            display:flex;align-items:center;gap:10px;margin-bottom:16px;
-            background: linear-gradient(135deg, rgba(250,204,21,0.12), rgba(138,43,226,0.12));
-            border:1px solid rgba(250,204,21,0.25);border-radius:16px;padding:12px 16px;
-        }
-        .blur-points-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#facc15,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;font-weight:800}
-        .blur-points-text{flex:1}
-        .blur-points-value{font-size:22px;font-weight:800;color:#facc15}
-        .blur-points-label{font-size:11px;color:#a0a0c0;font-weight:600}
-        .blur-input-wrap{position:relative;margin-bottom:12px}
-        .blur-game-input{
-            width:100%;background:rgba(0,0,0,0.4);border:2px solid rgba(138,43,226,0.4);
-            border-radius:16px;padding:16px 18px;color:#fff;font-size:18px;font-weight:600;
-            font-family:inherit;outline:none;transition:0.3s;text-align:center;
-        }
-        .blur-game-input:focus{border-color:#ec4899;box-shadow:0 0 20px rgba(236,72,153,0.25)}
-        .blur-game-input::placeholder{color:#5a5a7a}
-        .blur-suggestions{
-            position:absolute;top:calc(100% + 6px);left:0;right:0;
-            background: rgba(20,15,40,0.98);border:1px solid rgba(138,43,226,0.4);border-radius:16px;
-            max-height:180px;overflow-y:auto;z-index:10;display:none;
-        }
-        .blur-suggestions.show{display:block}
-        .blur-sugg-item{padding:12px 16px;cursor:pointer;color:#c0c0e0;font-weight:600;transition:0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
-        .blur-sugg-item:hover{background:rgba(138,43,226,0.2);color:#fff}
-        .blur-btn-row{display:flex;gap:10px;margin-top:14px}
-        .blur-btn{
-            flex:1;padding:14px;border-radius:14px;border:none;font-weight:800;font-size:15px;cursor:pointer;transition:0.3s;
-            font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;
-        }
-        .blur-btn-primary{background:linear-gradient(135deg,#8a2be2,#ec4899);color:#fff;box-shadow:0 8px 20px rgba(236,72,153,0.3)}
-        .blur-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(236,72,153,0.4)}
-        .blur-btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#a0a0c0}
-        .blur-btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff}
-        .blur-btn-skip{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171}
-        .blur-feedback{
-            margin-top:14px;min-height:44px;padding:12px 16px;border-radius:14px;
-            font-weight:700;font-size:14px;text-align:center;display:none;animation: pop 0.3s ease;
-        }
-        .blur-feedback.show{display:block}
-        .blur-feedback.wrong{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171}
-        .blur-feedback.correct{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#4ade80}
-        .blur-feedback.info{background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);color:#60a5fa}
-        .blur-result-overlay{
-            position:fixed;inset:0;background:rgba(5,3,16,0.88);backdrop-filter:blur(16px);
-            display:none;justify-content:center;align-items:center;z-index:2000;padding:20px;
-        }
-        .blur-result-overlay.show{display:flex}
-        .blur-result-card{
-            background: linear-gradient(135deg, rgba(20,15,40,0.98), rgba(30,20,60,0.98));
-            border:2px solid rgba(138,43,226,0.4);border-radius:28px;
-            padding:28px;max-width:420px;width:100%;text-align:center;
-            box-shadow:0 30px 80px rgba(0,0,0,0.6);animation: slideUp 0.4s ease;
-        }
-        .blur-result-card.correct{border-color:#22c55e;box-shadow:0 0 40px rgba(34,197,94,0.25)}
-        .blur-result-card.wrong{border-color:#ef4444;box-shadow:0 0 40px rgba(239,68,68,0.25)}
-        .blur-final-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-        .blur-stat-box{background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:14px;text-align:center}
-        .blur-progress-dots{display:flex;gap:6px;justify-content:center;margin:16px 0}
-        .blur-p-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.15)}
-        .blur-p-dot.done{background:#4ade80}
-        .blur-p-dot.current{background:#facc15;box-shadow:0 0 10px #facc15}
-        .blur-p-dot.fail{background:#ef4444}
 
+        .blur-photo-placeholder {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 110px;
+            transition: filter 0.7s ease, opacity 0.3s ease;
+        }
+
+        .blur-photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #0f0a1a;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .blur-photo-frame.loading::after {
+            opacity: 1
+        }
+
+        .blur-photo-frame.loading img,
+        .blur-photo-frame.loading .blur-photo-placeholder {
+            opacity: 0 !important
+        }
+
+        .blur-quality-bar {
+            width: 100%;
+            max-width: 480px
+        }
+
+        .blur-quality-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #8a8ab0;
+            font-weight: 600;
+            margin-bottom: 6px
+        }
+
+        .blur-quality-track {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden
+        }
+
+        .blur-quality-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.7s ease, background 0.5s ease
+        }
+
+        .blur-controls {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 20px;
+        }
+
+        .blur-question-info {
+            font-size: 13px;
+            color: #8a8ab0;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px
+        }
+
+        .blur-current-points {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(138, 43, 226, 0.12));
+            border: 1px solid rgba(250, 204, 21, 0.25);
+            border-radius: 16px;
+            padding: 12px 16px;
+        }
+
+        .blur-points-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #000;
+            font-weight: 800
+        }
+
+        .blur-points-text {
+            flex: 1
+        }
+
+        .blur-points-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: #facc15
+        }
+
+        .blur-points-label {
+            font-size: 11px;
+            color: #a0a0c0;
+            font-weight: 600
+        }
+
+        .blur-input-wrap {
+            position: relative;
+            margin-bottom: 12px
+        }
+
+        .blur-game-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(138, 43, 226, 0.4);
+            border-radius: 16px;
+            padding: 16px 18px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: inherit;
+            outline: none;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .blur-game-input:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.25)
+        }
+
+        .blur-game-input::placeholder {
+            color: #5a5a7a
+        }
+
+        .blur-suggestions {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: rgba(20, 15, 40, 0.98);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            border-radius: 16px;
+            max-height: 180px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+
+        .blur-suggestions.show {
+            display: block
+        }
+
+        .blur-sugg-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            color: #c0c0e0;
+            font-weight: 600;
+            transition: 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+        }
+
+        .blur-sugg-item:hover {
+            background: rgba(138, 43, 226, 0.2);
+            color: #fff
+        }
+
+        .blur-btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .blur-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .blur-btn-primary {
+            background: linear-gradient(135deg, #8a2be2, #ec4899);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3)
+        }
+
+        .blur-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.4)
+        }
+
+        .blur-btn-ghost {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #a0a0c0
+        }
+
+        .blur-btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff
+        }
+
+        .blur-btn-skip {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171
+        }
+
+        .blur-feedback {
+            margin-top: 14px;
+            min-height: 44px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+            animation: pop 0.3s ease;
+        }
+
+        .blur-feedback.show {
+            display: block
+        }
+
+        .blur-feedback.wrong {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171
+        }
+
+        .blur-feedback.correct {
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80
+        }
+
+        .blur-feedback.info {
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa
+        }
+
+        .blur-result-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 3, 16, 0.88);
+            backdrop-filter: blur(16px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .blur-result-overlay.show {
+            display: flex
+        }
+
+        .blur-result-card {
+            background: linear-gradient(135deg, rgba(20, 15, 40, 0.98), rgba(30, 20, 60, 0.98));
+            border: 2px solid rgba(138, 43, 226, 0.4);
+            border-radius: 28px;
+            padding: 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            animation: slideUp 0.4s ease;
+        }
+
+        .blur-result-card.correct {
+            border-color: #22c55e;
+            box-shadow: 0 0 40px rgba(34, 197, 94, 0.25)
+        }
+
+        .blur-result-card.wrong {
+            border-color: #ef4444;
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.25)
+        }
+
+        .blur-final-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0
+        }
+
+        .blur-stat-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px;
+            text-align: center
+        }
+
+        .blur-progress-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin: 16px 0
+        }
+
+        .blur-p-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15)
+        }
+
+        .blur-p-dot.done {
+            background: #4ade80
+        }
+
+        .blur-p-dot.current {
+            background: #facc15;
+            box-shadow: 0 0 10px #facc15
+        }
+
+        .blur-p-dot.fail {
+            background: #ef4444
+        }
     </style>
 </head>
 
@@ -4467,95 +4813,15 @@
         <span id="soundIcon">🔊</span>
         <span class="sound-toggle-label" id="soundLabel">Ses Açık</span>
     </div>
-    <!-- SAĞ ÜST PANEL -->
-    <div class="top-right-panel">
-        <div class="developer-credit" onclick="toggleCredits()"><i class="fas fa-code"></i> Yapımcılar</div>
-        <div class="updates-btn" onclick="toggleUpdates()"><i class="fas fa-code-branch"></i> Güncellemeler <span
-                class="new-badge">YENİ</span></div>
-    </div>
 
-    <!-- DEXTER MORGAN PROFİL KARTI -->
-    <div class="dexter-profile-card" id="dexterProfileCard">
-        <div class="dexter-header">
-            <div class="dexter-avatar-large">DM</div>
-            <div class="dexter-info">
-                <h3>Dexter Morgan</h3><span class="dexter-username">nissansky ❤️ 🎵 🌐</span>
-            </div>
-        </div>
-        <div class="dexter-status"><i class="fas fa-circle"
-                style="color: #4caf50; font-size: 12px;"></i><span>Çevrimiçi</span></div>
-        <div class="dexter-badges"><span class="dexter-badge">Nissan-Skyline</span><span class="dexter-badge">JDM</span>
-        </div>
-        <div class="dexter-planes">✈️ ✈️ ✈️ ✈️ ✈️ ✈️ ✈️ ✇️ ✇️ ✇️ ✇️ ✇️ ✇️ ✇️</div>
-        <div class="dexter-join"><i class="fas fa-calendar-alt"></i> Şu Tarihten Beri Üye: 22 Şub 2023</div>
-        <div class="dexter-note" onclick="alert('Not ekleme özelliği yakında!')"><i class="fas fa-pencil-alt"></i> Not
-            (sadece sana görünür)</div>
-    </div>
 
-    <!-- GÜNCELLEME PANELİ - BUTONUN ALTINDA -->
-    <div class="updates-panel" id="updatesPanel">
-        <h3>📋 Güncelleme Geçmişi</h3>
-        <div class="update-item" onclick="toggleUpdateDetails(this)">
-            <div class="update-header"><span class="update-version">v7.0.0</span><span class="update-date">24 Nisan
-                    2026</span></div>
-            <div class="update-desc">Logo ve Panel Güncellemesi</div>
-            <div class="update-details">
-                <ul>
-                    <li>🎨 M logosu eklendi</li>
-                    <li>📋 Paneller butonların altında</li>
-                </ul>
-            </div>
-        </div>
-        <div class="update-item" onclick="toggleUpdateDetails(this)">
-            <div class="update-header"><span class="update-version">v6.0.0</span><span class="update-date">24 Nisan
-                    2026</span></div>
-            <div class="update-desc">15 Kategori Tamamlandı</div>
-            <div class="update-details">
-                <ul>
-                    <li>🎵 Müzik 30 soru</li>
-                    <li>🎬 Sinema 30 soru</li>
-                    <li>🔬 Bilim 30 soru</li>
-                    <li>📜 Tarih 30 soru</li>
-                    <li>🎨 Sanat 30 soru</li>
-                </ul>
-            </div>
-        </div>
-        <div class="update-item" onclick="toggleUpdateDetails(this)">
-            <div class="update-header"><span class="update-version">v5.1.0</span><span class="update-date">23 Nisan
-                    2026</span></div>
-            <div class="update-desc">Beyaz Tema Güncellemesi</div>
-            <div class="update-details">
-                <ul>
-                    <li>📝 Tüm panel yazıları beyaz oldu</li>
-                </ul>
-            </div>
-        </div>
-        <div class="close-updates" onclick="toggleUpdates()">Kapat</div>
-    </div>
 
-    <!-- YAPIMCI PANELİ - BUTONUN ALTINDA -->
-    <div class="credits-panel" id="creditsPanel">
-        <h3>🎬 YAPIM EKİBİ</h3>
-        <div class="credits-item"><i class="fas fa-user-cog"></i><span class="label">Yapımcı:</span><span
-                class="value">Tyrant</span></div>
-        <div class="credits-item clickable" onclick="showDexterProfile()"><i class="fas fa-user-friends"></i><span
-                class="label">Yardımcı Yapımcı:</span><span class="value" style="color: #5865F2;">Dexter Morgan →</span>
-        </div>
-        <div class="credits-item"><i class="fas fa-star"></i><span class="label">Sponsor:</span><span
-                class="value sponsor-badge">MOVYRA</span></div>
-        <div class="credits-item"><i class="fas fa-handshake"></i><span class="label">Ortaklar:</span><span
-                class="value"><span class="partner-badge">MOVYRA</span><span class="partner-badge"
-                    style="margin-left:5px;">AFORYA</span></span></div>
-        <div class="close-credits" onclick="toggleCredits()">Kapat</div>
-    </div>
 
-    <!-- ŞİKAYET/ÖNERİ -->
-    <div class="feedback-box">
-        <div class="feedback-header"><i class="fas fa-comment-dots"></i><span>Şikayet / Öneri</span></div>
-        <textarea class="feedback-input" id="feedbackInput" placeholder="Görüşlerinizi yazın..." rows="2"></textarea>
-        <button class="feedback-btn" onclick="sendFeedback()">Gönder</button>
-        <div class="feedback-success" id="feedbackSuccess">✅ Geri bildiriminiz alındı!</div>
-    </div>
+
+
+
+
+
 
     <div class="social-media-container">
         <a href="https://discord.com/users/tyrant3455" target="_blank" class="social-btn discord"><i
@@ -4577,7 +4843,8 @@
             <span style="font-size:64px;margin-bottom:12px;display:block" id="blurResultEmoji">✅</span>
             <div style="font-size:24px;font-weight:800;margin-bottom:6px;color:#fff" id="blurResultTitle">Doğru!</div>
             <div style="font-size:20px;font-weight:700;color:#a78bfa;margin-bottom:10px" id="blurResultName">Thor</div>
-            <div style="font-size:18px;font-weight:800;color:#facc15;margin-bottom:18px" id="blurResultPoints">+1000 Puan</div>
+            <div style="font-size:18px;font-weight:800;color:#facc15;margin-bottom:18px" id="blurResultPoints">+1000
+                Puan</div>
             <div style="font-size:13px;color:#8a8ab0;margin-bottom:18px" id="blurResultDesc">Süper!</div>
             <button class="primary-btn" style="width:100%" onclick="nextBlurQuestion()">Sonraki Soru →</button>
         </div>
@@ -4730,13 +4997,15 @@
                 <div class="mode-card mode-card--siralama" id="modeSiralamaCard" onclick="selectGameMode('siralama')">
                     <div class="mode-card-icon">📊</div>
                     <div class="mode-card-title">Sıralama Oyunu</div>
-                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi → Çok Kötü) yerleştir.</div>
+                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi → Çok Kötü) yerleştir.
+                    </div>
                 </div>
 
                 <div class="mode-card mode-card--blur" id="modeBlurCard" onclick="selectGameMode('blur')">
                     <div class="mode-card-icon">👁️‍🗨️</div>
                     <div class="mode-card-title">Bulanık Tahmin</div>
-                    <div class="mode-card-desc">Görsel bulanık başlar, erken bil çok puan al! 10 kategori, 5 seviye netleşme.</div>
+                    <div class="mode-card-desc">Görsel bulanık başlar, erken bil çok puan al! 10 kategori, 5 seviye
+                        netleşme.</div>
                 </div>
             </div>
             <div class="button-group">
@@ -5089,7 +5358,8 @@
             <p class="subtitle">Hangi kategoride bulanık tahmin oynamak istersin? Erken bil, çok kazan!</p>
             <div class="categories-grid" id="blurCategoryGrid"></div>
             <div class="button-group">
-                <button class="primary-btn" id="blurCategoryNextBtn" onclick="goToBlurCount()" disabled>Soru Sayısı Seç →</button>
+                <button class="primary-btn" id="blurCategoryNextBtn" onclick="goToBlurCount()" disabled>Soru Sayısı Seç
+                    →</button>
             </div>
         </div>
 
@@ -5107,12 +5377,14 @@
             <div class="photo-count-box" id="blurCountBox">
                 <label>Soru sayısı seç</label>
                 <div class="photo-count-row">
-                    <input class="photo-count-input" id="blurCountInput" type="number" min="1" max="45" value="10" inputmode="numeric" oninput="validateBlurCount()">
+                    <input class="photo-count-input" id="blurCountInput" type="number" min="1" max="45" value="10"
+                        inputmode="numeric" oninput="validateBlurCount()">
                     <div class="photo-count-max" id="blurMaxLabel">/ max 45</div>
                 </div>
                 <div class="photo-count-error" id="blurCountErr"></div>
             </div>
-            <div style="margin:18px auto;max-width:500px;background:rgba(236,72,153,0.08);border:1px dashed rgba(236,72,153,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
+            <div
+                style="margin:18px auto;max-width:500px;background:rgba(236,72,153,0.08);border:1px dashed rgba(236,72,153,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
                 <span>🔥 Seviye 1: 1000 Puan</span><span>👁️ Seviye 5: 50 Puan</span><span>❌ Bilemezsen: 0</span>
             </div>
             <div class="button-group">
@@ -5136,30 +5408,45 @@
                 <div class="blur-photo-wrap">
                     <div class="blur-photo-frame" id="blurPhotoFrame">
                         <img id="blurGameImage" src="" alt="" style="display:none">
-                        <div class="blur-photo-placeholder" id="blurPhotoPlaceholder"><span id="blurPlaceholderEmoji">🦸</span><span class="label" id="blurPlaceholderLabel">Yükleniyor...</span></div>
+                        <div class="blur-photo-placeholder" id="blurPhotoPlaceholder"><span
+                                id="blurPlaceholderEmoji">🦸</span><span class="label"
+                                id="blurPlaceholderLabel">Yükleniyor...</span></div>
                     </div>
                     <div class="blur-quality-bar">
-                        <div class="blur-quality-label"><span id="blurQualityText">Kalite: %10 - Çok Bulanık</span><span id="blurPointsText">1000 Puan</span></div>
-                        <div class="blur-quality-track"><div class="blur-quality-fill" id="blurQualityFill" style="width:20%;background:linear-gradient(90deg,#ef4444,#f59e0b)"></div></div>
+                        <div class="blur-quality-label"><span id="blurQualityText">Kalite: %10 - Çok Bulanık</span><span
+                                id="blurPointsText">1000 Puan</span></div>
+                        <div class="blur-quality-track">
+                            <div class="blur-quality-fill" id="blurQualityFill"
+                                style="width:20%;background:linear-gradient(90deg,#ef4444,#f59e0b)"></div>
+                        </div>
                     </div>
                     <div class="blur-progress-dots" id="blurProgressDots"></div>
                 </div>
                 <div class="blur-controls">
-                    <div class="blur-question-info" id="blurAttemptInfo">1. TAHMİN HAKKI • En yüksek puan için hemen bil!</div>
+                    <div class="blur-question-info" id="blurAttemptInfo">1. TAHMİN HAKKI • En yüksek puan için hemen
+                        bil!</div>
                     <div class="blur-current-points">
                         <div class="blur-points-icon"><i class="fas fa-bolt"></i></div>
-                        <div class="blur-points-text"><div class="blur-points-value" id="blurCurrentPointsVal">1000</div><div class="blur-points-label">Bu sorudan kazanabileceğin puan</div></div>
+                        <div class="blur-points-text">
+                            <div class="blur-points-value" id="blurCurrentPointsVal">1000</div>
+                            <div class="blur-points-label">Bu sorudan kazanabileceğin puan</div>
+                        </div>
                     </div>
                     <div class="blur-input-wrap">
-                        <input type="text" class="blur-game-input" id="blurGuessInput" placeholder="Tahminini yaz..." autocomplete="off" oninput="onBlurInputChange()" onkeydown="if(event.key==='Enter') submitBlurGuess()">
+                        <input type="text" class="blur-game-input" id="blurGuessInput" placeholder="Tahminini yaz..."
+                            autocomplete="off" oninput="onBlurInputChange()"
+                            onkeydown="if(event.key==='Enter') submitBlurGuess()">
                         <div class="blur-suggestions" id="blurSuggestions"></div>
                     </div>
                     <div class="blur-btn-row">
-                        <button class="blur-btn blur-btn-primary" id="blurGuessBtn" onclick="submitBlurGuess()"><i class="fas fa-paper-plane"></i> Tahmin Et</button>
-                        <button class="blur-btn blur-btn-ghost" onclick="useBlurHint()" id="blurHintBtn"><i class="fas fa-lightbulb"></i> İpucu</button>
+                        <button class="blur-btn blur-btn-primary" id="blurGuessBtn" onclick="submitBlurGuess()"><i
+                                class="fas fa-paper-plane"></i> Tahmin Et</button>
+                        <button class="blur-btn blur-btn-ghost" onclick="useBlurHint()" id="blurHintBtn"><i
+                                class="fas fa-lightbulb"></i> İpucu</button>
                     </div>
                     <div class="blur-btn-row">
-                        <button class="blur-btn blur-btn-skip" onclick="skipBlurQuestion()"><i class="fas fa-forward"></i> Pas Geç (0 Puan)</button>
+                        <button class="blur-btn blur-btn-skip" onclick="skipBlurQuestion()"><i
+                                class="fas fa-forward"></i> Pas Geç (0 Puan)</button>
                     </div>
                     <div class="blur-feedback" id="blurFeedback"></div>
                 </div>
@@ -5174,11 +5461,21 @@
             <h1 style="font-size:32px;font-weight:800;margin-bottom:6px">Oyun Bitti!</h1>
             <p style="color:#a0d0ff;margin-bottom:20px" id="blurFinalCat">Filmler • 10 Soru</p>
             <div class="blur-final-stats">
-                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalScore">0</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div></div>
-                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalCorrect">0/10</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">DOĞRU</div></div>
-                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalAvg">0</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">ORT. PUAN</div></div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalScore">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalCorrect">0/10</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">DOĞRU</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalAvg">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">ORT. PUAN</div>
+                </div>
             </div>
-            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:18px;margin:20px 0;text-align:left;max-height:350px;overflow-y:auto" id="blurFinalList"></div>
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:18px;margin:20px 0;text-align:left;max-height:350px;overflow-y:auto"
+                id="blurFinalList"></div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
                 <button class="primary-btn" onclick="replayBlurCategory()">🔄 Tekrar Oyna</button>
                 <button class="back-btn" onclick="goBackToBlurCategoryFromFinal()">📚 Kategoriler</button>
@@ -6037,29 +6334,6 @@
 
             // Ranks - Updated to capsule style
             // Rank names updated via updateRankDisplay()
-
-            // Top right
-            document.querySelector('.developer-credit').innerHTML = `<i class="fas fa-code"></i> ${t('yapimciBtn')}`;
-            document.querySelector('.updates-btn').innerHTML = `<i class="fas fa-code-branch"></i> ${t('guncellemeler')} <span class="new-badge">${t('yeni')}</span>`;
-
-            // Credits panel
-            document.querySelector('#creditsPanel h3').textContent = t('yapimcilar');
-            const creditLabels = document.querySelectorAll('#creditsPanel .label');
-            if (creditLabels[0]) creditLabels[0].textContent = t('yapimci');
-            if (creditLabels[1]) creditLabels[1].textContent = t('yardimciYapimci');
-            if (creditLabels[2]) creditLabels[2].textContent = t('sponsor');
-            if (creditLabels[3]) creditLabels[3].textContent = t('ortaklar');
-            document.querySelector('.close-credits').textContent = t('kapat');
-
-            // Updates panel
-            document.querySelector('#updatesPanel h3').textContent = t('guncellemeGecmisi');
-            document.querySelector('.close-updates').textContent = t('kapat');
-
-            // Feedback
-            document.querySelector('.feedback-header span').textContent = t('sikayetOneri');
-            document.querySelector('.feedback-input').placeholder = t('gorisYazin');
-            document.querySelector('.feedback-btn').textContent = t('gonder');
-            document.querySelector('.feedback-success').textContent = t('feedbackSuccess');
 
             // Profile screen
             const sloganEl = document.querySelector('.slogan');
@@ -7634,22 +7908,8 @@
         window.selectAge = function (a) { document.getElementById('ageInput').value = a; document.getElementById('ageInputDisplay').value = a; document.getElementById('ageScroll').classList.remove('show'); };
         document.addEventListener('click', (e) => { if (!e.target.closest('.age-selector')) document.getElementById('ageScroll')?.classList.remove('show'); });
 
-        window.showDexterProfile = function () { document.getElementById('dexterProfileCard').style.display = 'block'; };
-        document.addEventListener('click', (e) => { if (!e.target.closest('.dexter-profile-card') && !e.target.closest('.clickable')) document.getElementById('dexterProfileCard').style.display = 'none'; });
-
-        // PANEL AÇMA/KAPATMA - İKİSİ AYNI ANDA AÇILABİLİR
-        function toggleCredits() {
-            const p = document.getElementById('creditsPanel');
-            p.style.display = p.style.display === 'none' ? 'block' : 'none';
-        }
-        function toggleUpdates() {
-            const p = document.getElementById('updatesPanel');
-            p.style.display = p.style.display === 'none' ? 'block' : 'none';
-        }
-        window.toggleUpdateDetails = (el) => el.querySelector('.update-details').classList.toggle('show');
-        window.sendFeedback = () => { const i = document.getElementById('feedbackInput'), s = document.getElementById('feedbackSuccess'); if (i.value.trim()) { s.style.display = 'block'; i.value = ''; setTimeout(() => s.style.display = 'none', 3000); } };
-
         document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('dblclick', e => { if (e.target.closest && (e.target.closest('img') || e.target.closest('.category-card') || e.target.closest('.mode-card'))) e.preventDefault(); });
         document.addEventListener('keydown', e => { if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault(); });
 
 
@@ -7771,8 +8031,7 @@
                 target.closest('.primary-btn') || target.closest('.mode-card') || target.closest('.language-card') ||
                 target.closest('.lang-dropdown-item') || target.closest('.answer-mode-option') ||
                 target.closest('.rank-capsule') || target.closest('.social-btn') || target.closest('.avatar-btn') ||
-                target.closest('.gender-option') || target.closest('.avatar-option') || target.closest('.updates-btn') ||
-                target.closest('.developer-credit') || target.closest('.feedback-btn') || target.closest('.sound-toggle-btn')) {
+                target.closest('.gender-option') || target.closest('.avatar-option') || target.closest('.sound-toggle-btn')) {
                 playClickSound();
             }
         }, true);
@@ -11492,403 +11751,403 @@
             marvel: {
                 name: "Marvel", icon: "🦸", color: "#ef4444",
                 items: [
-                  {name:"Captain America", emoji:"🛡️", file:"marvel_01.png"},
-                    {name:"Iron Man", emoji:"🤖", file:"marvel_02.png"},
-                    {name:"Spider-Man", emoji:"🕷️", file:"marvel_03.png"},
-                    {name:"Hulk", emoji:"💪", file:"marvel_04.png"},
-                    {name:"Thor", emoji:"⚡", file:"marvel_05.png"},
-                    {name:"Black Widow", emoji:"🕷️", file:"marvel_06.png"},
-                    {name:"Doctor Strange", emoji:"🪄", file:"marvel_07.png"},
-                    {name:"Black Panther", emoji:"🐆", file:"marvel_08.png"},
-                    {name:"Loki", emoji:"😈", file:"marvel_09.png"},
-                    {name:"Thanos", emoji:"💜", file:"marvel_10.png"},
-                    {name:"Rocket", emoji:"🦝", file:"marvel_11.png"},
-                    {name:"Star-Lord", emoji:"⭐", file:"marvel_12.png"},
-                    {name:"Gamora", emoji:"💚", file:"marvel_13.png"},
-                    {name:"Groot", emoji:"🌳", file:"marvel_14.png"},
-                    {name:"Venom", emoji:"🖤", file:"marvel_15.png"},
-                    {name:"Doctor Doom", emoji:"🟢", file:"marvel_16.png"},
-                    {name:"Wolverine", emoji:"⚔️", file:"marvel_17.png"},
-                    {name:"Deadpool", emoji:"🔴", file:"marvel_18.png"},
-                    {name:"Ant-Man", emoji:"🐜", file:"marvel_19.png"},
-                    {name:"Wasp", emoji:"🐝", file:"marvel_20.png"},
-                    {name:"Scorpion", emoji:"🦂", file:"marvel_21.png"},
-                    {name:"Rhino", emoji:"🦏", file:"marvel_22.png"},
-                    {name:"Scarlet Witch", emoji:"🔴", file:"marvel_23.png"},
-                    {name:"Hawkeye", emoji:"🏹", file:"marvel_24.png"},
-                    {name:"Vision", emoji:"💎", file:"marvel_25.png"},
-                    {name:"Winter Soldier", emoji:"❄️", file:"marvel_26.png"},
-                    {name:"Juggernaut", emoji:"🟡", file:"marvel_27.png"},
-                    {name:"Red Hulk", emoji:"🔴", file:"marvel_28.png"},
-                    {name:"Moon Knight", emoji:"🌙", file:"marvel_29.png"},
-                    {name:"Daredevil", emoji:"🔴", file:"marvel_30.png"},
-                    {name:"Phoenix", emoji:"🔥", file:"marvel_31.webp"},
-                    {name:"Magneto", emoji:"🧲", file:"marvel_32.webp"},
-                    {name:"Professor X", emoji:"🧠", file:"marvel_33.webp"},
-                    {name:"Storm", emoji:"🌪️", file:"marvel_34.avif"},
-                    {name:"Beast", emoji:"🐾", file:"marvel_35.webp"},
-                    {name:"Mystique", emoji:"🔵", file:"marvel_36.jpg"},
-                    {name:"Nick Fury", emoji:"💪", file:"marvel_37.jpg"},
-                    {name:"Ghost Rider", emoji:"🔥", file:"marvel_38.jpg"},
-                    {name:"Sentry", emoji:"🌟", file:"marvel_39.jpg"},
-                    {name:"Jessica Jones", emoji:"🔵", file:"marvel_40.jpg"},
-                    {name:"knull", emoji:"🔵", file:"marvel_41.jpg"},
-                    {name:"şahng chi", emoji:"🔵", file:"marvel_42.jpg"},
-                    {name:"silver surfe", emoji:"🔵", file:"marvel_43.jpg"},
-                    {name:"carnage", emoji:"🔵", file:"marvel_44.jpg"},
-                    {name:"collosus", emoji:"🔵", file:"marvel_45.jpg"}
+                    { name: "Captain America", emoji: "🛡️", file: "marvel_01.png" },
+                    { name: "Iron Man", emoji: "🤖", file: "marvel_02.png" },
+                    { name: "Spider-Man", emoji: "🕷️", file: "marvel_03.png" },
+                    { name: "Hulk", emoji: "💪", file: "marvel_04.png" },
+                    { name: "Thor", emoji: "⚡", file: "marvel_05.png" },
+                    { name: "Black Widow", emoji: "🕷️", file: "marvel_06.png" },
+                    { name: "Doctor Strange", emoji: "🪄", file: "marvel_07.png" },
+                    { name: "Black Panther", emoji: "🐆", file: "marvel_08.png" },
+                    { name: "Loki", emoji: "😈", file: "marvel_09.png" },
+                    { name: "Thanos", emoji: "💜", file: "marvel_10.png" },
+                    { name: "Rocket", emoji: "🦝", file: "marvel_11.png" },
+                    { name: "Star-Lord", emoji: "⭐", file: "marvel_12.png" },
+                    { name: "Gamora", emoji: "💚", file: "marvel_13.png" },
+                    { name: "Groot", emoji: "🌳", file: "marvel_14.png" },
+                    { name: "Venom", emoji: "🖤", file: "marvel_15.png" },
+                    { name: "Doctor Doom", emoji: "🟢", file: "marvel_16.png" },
+                    { name: "Wolverine", emoji: "⚔️", file: "marvel_17.png" },
+                    { name: "Deadpool", emoji: "🔴", file: "marvel_18.png" },
+                    { name: "Ant-Man", emoji: "🐜", file: "marvel_19.png" },
+                    { name: "Wasp", emoji: "🐝", file: "marvel_20.png" },
+                    { name: "Scorpion", emoji: "🦂", file: "marvel_21.png" },
+                    { name: "Rhino", emoji: "🦏", file: "marvel_22.png" },
+                    { name: "Scarlet Witch", emoji: "🔴", file: "marvel_23.png" },
+                    { name: "Hawkeye", emoji: "🏹", file: "marvel_24.png" },
+                    { name: "Vision", emoji: "💎", file: "marvel_25.png" },
+                    { name: "Winter Soldier", emoji: "❄️", file: "marvel_26.png" },
+                    { name: "Juggernaut", emoji: "🟡", file: "marvel_27.png" },
+                    { name: "Red Hulk", emoji: "🔴", file: "marvel_28.png" },
+                    { name: "Moon Knight", emoji: "🌙", file: "marvel_29.png" },
+                    { name: "Daredevil", emoji: "🔴", file: "marvel_30.png" },
+                    { name: "Phoenix", emoji: "🔥", file: "marvel_31.webp" },
+                    { name: "Magneto", emoji: "🧲", file: "marvel_32.webp" },
+                    { name: "Professor X", emoji: "🧠", file: "marvel_33.webp" },
+                    { name: "Storm", emoji: "🌪️", file: "marvel_34.avif" },
+                    { name: "Beast", emoji: "🐾", file: "marvel_35.webp" },
+                    { name: "Mystique", emoji: "🔵", file: "marvel_36.jpg" },
+                    { name: "Nick Fury", emoji: "💪", file: "marvel_37.jpg" },
+                    { name: "Ghost Rider", emoji: "🔥", file: "marvel_38.jpg" },
+                    { name: "Sentry", emoji: "🌟", file: "marvel_39.jpg" },
+                    { name: "Jessica Jones", emoji: "🔵", file: "marvel_40.jpg" },
+                    { name: "knull", emoji: "🔵", file: "marvel_41.jpg" },
+                    { name: "şahng chi", emoji: "🔵", file: "marvel_42.jpg" },
+                    { name: "silver surfe", emoji: "🔵", file: "marvel_43.jpg" },
+                    { name: "carnage", emoji: "🔵", file: "marvel_44.jpg" },
+                    { name: "collosus", emoji: "🔵", file: "marvel_45.jpg" }
                 ]
             },
             dc: {
                 name: "DC", icon: "🦇", color: "#3b82f6",
                 items: [
-                    {name:"Batman", emoji:"🦇", file:"dc_01.png"},
-                    {name:"Superman", emoji:"🦸", file:"dc_02.png"},
-                    {name:"Lex Luthor", emoji:"🤵", file:"dc_03.png"},
-                    {name:"Joker", emoji:"🃏", file:"dc_04.png"},
-                    {name:"Green Arrow", emoji:"🏹", file:"dc_05.png"},
-                    {name:"Supergirl", emoji:"🦸‍♀️", file:"dc_06.png"},
-                    {name:"Darkseid", emoji:"🪨", file:"dc_07.png"},
-                    {name:"Alfred Pennyworth", emoji:"🤵‍♂️", file:"dc_08.png"},
-                    {name:"Aquaman", emoji:"🔱", file:"dc_09.png"},
-                    {name:"Flash", emoji:"⚡", file:"dc_10.png"},
-                    {name:"Wonder Woman", emoji:"🛡️", file:"dc_11.png"},
-                    {name:"Deathstroke", emoji:"🗡️", file:"dc_12.png"},
-                    {name:"Krypto", emoji:"🐕", file:"dc_13.png"},
-                    {name:"Two-Face", emoji:"🎭", file:"dc_14.png"},
-                    {name:"Blue Beetle", emoji:"🪲", file:"dc_15.png"},
-                    {name:"Black Adam", emoji:"🌩️", file:"dc_16.png"},
-                    {name:"Deadshot", emoji:"🎯", file:"dc_17.jpg"},
-                    {name:"Mr. Freeze", emoji:"❄️", file:"dc_18.jpg"},
-                    {name:"Catwoman", emoji:"🐱", file:"dc_19.jpg"},
-                    {name:"Penguin", emoji:"🐧", file:"dc_20.jpg"},
-                    {name:"Green Lantern", emoji:"💚", file:"dc_21.jpg"},
-                    {name:"King Shark", emoji:"🦈", file:"dc_22.jpg"},
-                    {name:"Peacemaker", emoji:"🕊️", file:"dc_23.jpg"},
-                    {name:"Harley Quinn", emoji:"🔨", file:"dc_24.jpg"},
-                    {name:"The Atom", emoji:"⚛️", file:"dc_25.jpg"},
-                    {name:"Sinestro", emoji:"💛", file:"dc_26.jpg"},
-                    {name:"cyborg", emoji:"💛", file:"dc_27.jpg"},
-                    {name:"nıghetwing", emoji:"💛", file:"dc_28.jpg"},
-                    {name:"red hood", emoji:"💛", file:"dc_29.jpg"},
-                    {name:"Martian Manhunter", emoji:"💛", file:"dc_30.jpg"}
+                    { name: "Batman", emoji: "🦇", file: "dc_01.png" },
+                    { name: "Superman", emoji: "🦸", file: "dc_02.png" },
+                    { name: "Lex Luthor", emoji: "🤵", file: "dc_03.png" },
+                    { name: "Joker", emoji: "🃏", file: "dc_04.png" },
+                    { name: "Green Arrow", emoji: "🏹", file: "dc_05.png" },
+                    { name: "Supergirl", emoji: "🦸‍♀️", file: "dc_06.png" },
+                    { name: "Darkseid", emoji: "🪨", file: "dc_07.png" },
+                    { name: "Alfred Pennyworth", emoji: "🤵‍♂️", file: "dc_08.png" },
+                    { name: "Aquaman", emoji: "🔱", file: "dc_09.png" },
+                    { name: "Flash", emoji: "⚡", file: "dc_10.png" },
+                    { name: "Wonder Woman", emoji: "🛡️", file: "dc_11.png" },
+                    { name: "Deathstroke", emoji: "🗡️", file: "dc_12.png" },
+                    { name: "Krypto", emoji: "🐕", file: "dc_13.png" },
+                    { name: "Two-Face", emoji: "🎭", file: "dc_14.png" },
+                    { name: "Blue Beetle", emoji: "🪲", file: "dc_15.png" },
+                    { name: "Black Adam", emoji: "🌩️", file: "dc_16.png" },
+                    { name: "Deadshot", emoji: "🎯", file: "dc_17.jpg" },
+                    { name: "Mr. Freeze", emoji: "❄️", file: "dc_18.jpg" },
+                    { name: "Catwoman", emoji: "🐱", file: "dc_19.jpg" },
+                    { name: "Penguin", emoji: "🐧", file: "dc_20.jpg" },
+                    { name: "Green Lantern", emoji: "💚", file: "dc_21.jpg" },
+                    { name: "King Shark", emoji: "🦈", file: "dc_22.jpg" },
+                    { name: "Peacemaker", emoji: "🕊️", file: "dc_23.jpg" },
+                    { name: "Harley Quinn", emoji: "🔨", file: "dc_24.jpg" },
+                    { name: "The Atom", emoji: "⚛️", file: "dc_25.jpg" },
+                    { name: "Sinestro", emoji: "💛", file: "dc_26.jpg" },
+                    { name: "cyborg", emoji: "💛", file: "dc_27.jpg" },
+                    { name: "nıghetwing", emoji: "💛", file: "dc_28.jpg" },
+                    { name: "red hood", emoji: "💛", file: "dc_29.jpg" },
+                    { name: "Martian Manhunter", emoji: "💛", file: "dc_30.jpg" }
                 ]
             },
             "erkek-anime": {
                 name: "Erkek Anime", icon: "⚔️", color: "#ef4444",
                 items: [
-                     {name:"Naruto Uzumaki", emoji:"🍥", file:"anime_01.png"},
-                    {name:"Monkey D. Luffy", emoji:"👒", file:"anime_02.jpg"},
-                    {name:"Son Goku", emoji:"🐉", file:"anime_03.png"},
-                    {name:"Eren Yeager", emoji:"🗡️", file:"anime_04.jpg"},
-                    {name:"Light Yagami", emoji:"📓", file:"anime_05.jpg"},
-                    {name:"Satoru Gojo", emoji:"👁️", file:"anime_06.png"},
-                    {name:"Gon Freecss", emoji:"🎣", file:"anime_07.png"},
-                    {name:"Kakashi Hatake", emoji:"📖", file:"anime_08.jpg"},
-                    {name:"Jotaro Kujo", emoji:"🎩", file:"anime_09.jpg"},
-                    {name:"Roronoa Zoro", emoji:"🗡️", file:"anime_10.jpg"},
-                    {name:"Tanjiro Kamado", emoji:"🌊", file:"anime_11.jpg"},
-                    {name:"Vegito", emoji:"🔱", file:"anime_12.png"},
-                    {name:"Izuku Midoriya", emoji:"💚", file:"anime_14.jpg"},
-                    {name:"Ken Kaneki", emoji:"👁️", file:"anime_15.jpg"},
-                    {name:"Devasa Titan", emoji:"👹", file:"anime_16.jpg"},
-                    {name:"Lord Beerus", emoji:"😼", file:"anime_17.jpg"},
-                    {name:"Alucard", emoji:"🧛", file:"anime_18.png"},
-                    {name:"Marshall D. Teach", emoji:"🏴‍☠️", file:"anime_19.jpg"},
-                    {name:"Denji", emoji:"🪚", file:"anime_20.jpg"},
-                    {name:"Yujiro Hanma", emoji:"💪", file:"anime_21.png"},
-                    {name:"Sung Jin-woo", emoji:"🗡️", file:"anime_22.png"},
-                    {name:"Saitama", emoji:"👊", file:"anime_23.png"},
-                    {name:"Mikasa Ackerman", emoji:"⚔️", file:"anime_24.jpg"},
-                    {name:"Madara Uchiha", emoji:"🌑", file:"anime_25.png"},
-                    {name:"Sasuke Uchiha", emoji:"⚡", file:"anime_26.png"},
-                    {name:"Shanks", emoji:"🏴‍☠️", file:"anime_27.png"},
-                    {name:"Yoruichi Shihouin", emoji:"🐱", file:"anime_28.jpg"},
-                    {name:"Zeke Jaeger", emoji:"👓", file:"anime_29.jpg"},
-                    {name:"Dracule Mihawk", emoji:"🦅", file:"anime_30.jpg"},
-                    {name:"Baki Hanma", emoji:"🥋", file:"anime_31.jpg"},
-                    {name:"Nami", emoji:"🍊", file:"anime_32.jpg"},
-                    {name:"Itachi Uchiha", emoji:"👁️", file:"anime_33.webp"},
-                    {name:"Dante", emoji:"🔫", file:"anime_34.jpg"},
-                    {name:"Sosuke Aizen", emoji:"😎", file:"anime_35.jpg"},
-                    {name:"Tsubasa Ozora", emoji:"⚽", file:"anime_36.webp"},
-                    {name:"Yugi Muto", emoji:"😎", file:"anime_37.jpg"},
-                    {name:"Kojiro Hyuga", emoji:"😎", file:"anime_38.jpg"},
-                    {name:"Gingka Hagane", emoji:"😎", file:"anime_39.jpg"},
-                    {name:"Genzo Wakabayashi", emoji:"😎", file:"anime_40.jpg"},
-                    {name:"Charmander", emoji:"😎", file:"anime_41.jpg"},
-                    {name:"Bulbasaur", emoji:"😎", file:"anime_42.jpg"},
-                    {name:"Ichigo Kurosaki", emoji:"😎", file:"anime_43.jpg"},
-                    {name:"Inosuke Hashibira", emoji:"😎", file:"anime_44.jpg"},
-                    {name:"Killua Zoldyck", emoji:"😎", file:"anime_45.jpg"},
+                    { name: "Naruto Uzumaki", emoji: "🍥", file: "anime_01.png" },
+                    { name: "Monkey D. Luffy", emoji: "👒", file: "anime_02.jpg" },
+                    { name: "Son Goku", emoji: "🐉", file: "anime_03.png" },
+                    { name: "Eren Yeager", emoji: "🗡️", file: "anime_04.jpg" },
+                    { name: "Light Yagami", emoji: "📓", file: "anime_05.jpg" },
+                    { name: "Satoru Gojo", emoji: "👁️", file: "anime_06.png" },
+                    { name: "Gon Freecss", emoji: "🎣", file: "anime_07.png" },
+                    { name: "Kakashi Hatake", emoji: "📖", file: "anime_08.jpg" },
+                    { name: "Jotaro Kujo", emoji: "🎩", file: "anime_09.jpg" },
+                    { name: "Roronoa Zoro", emoji: "🗡️", file: "anime_10.jpg" },
+                    { name: "Tanjiro Kamado", emoji: "🌊", file: "anime_11.jpg" },
+                    { name: "Vegito", emoji: "🔱", file: "anime_12.png" },
+                    { name: "Izuku Midoriya", emoji: "💚", file: "anime_14.jpg" },
+                    { name: "Ken Kaneki", emoji: "👁️", file: "anime_15.jpg" },
+                    { name: "Devasa Titan", emoji: "👹", file: "anime_16.jpg" },
+                    { name: "Lord Beerus", emoji: "😼", file: "anime_17.jpg" },
+                    { name: "Alucard", emoji: "🧛", file: "anime_18.png" },
+                    { name: "Marshall D. Teach", emoji: "🏴‍☠️", file: "anime_19.jpg" },
+                    { name: "Denji", emoji: "🪚", file: "anime_20.jpg" },
+                    { name: "Yujiro Hanma", emoji: "💪", file: "anime_21.png" },
+                    { name: "Sung Jin-woo", emoji: "🗡️", file: "anime_22.png" },
+                    { name: "Saitama", emoji: "👊", file: "anime_23.png" },
+                    { name: "Mikasa Ackerman", emoji: "⚔️", file: "anime_24.jpg" },
+                    { name: "Madara Uchiha", emoji: "🌑", file: "anime_25.png" },
+                    { name: "Sasuke Uchiha", emoji: "⚡", file: "anime_26.png" },
+                    { name: "Shanks", emoji: "🏴‍☠️", file: "anime_27.png" },
+                    { name: "Yoruichi Shihouin", emoji: "🐱", file: "anime_28.jpg" },
+                    { name: "Zeke Jaeger", emoji: "👓", file: "anime_29.jpg" },
+                    { name: "Dracule Mihawk", emoji: "🦅", file: "anime_30.jpg" },
+                    { name: "Baki Hanma", emoji: "🥋", file: "anime_31.jpg" },
+                    { name: "Nami", emoji: "🍊", file: "anime_32.jpg" },
+                    { name: "Itachi Uchiha", emoji: "👁️", file: "anime_33.webp" },
+                    { name: "Dante", emoji: "🔫", file: "anime_34.jpg" },
+                    { name: "Sosuke Aizen", emoji: "😎", file: "anime_35.jpg" },
+                    { name: "Tsubasa Ozora", emoji: "⚽", file: "anime_36.webp" },
+                    { name: "Yugi Muto", emoji: "😎", file: "anime_37.jpg" },
+                    { name: "Kojiro Hyuga", emoji: "😎", file: "anime_38.jpg" },
+                    { name: "Gingka Hagane", emoji: "😎", file: "anime_39.jpg" },
+                    { name: "Genzo Wakabayashi", emoji: "😎", file: "anime_40.jpg" },
+                    { name: "Charmander", emoji: "😎", file: "anime_41.jpg" },
+                    { name: "Bulbasaur", emoji: "😎", file: "anime_42.jpg" },
+                    { name: "Ichigo Kurosaki", emoji: "😎", file: "anime_43.jpg" },
+                    { name: "Inosuke Hashibira", emoji: "😎", file: "anime_44.jpg" },
+                    { name: "Killua Zoldyck", emoji: "😎", file: "anime_45.jpg" },
                 ]
             },
             "kiz-anime": {
                 name: "Kız Anime", icon: "🌸", color: "#ec4899",
                 items: [
-                     {name:"Erza Scarlet", emoji:"🗡️", file:"kız_01.jpg"},
-                    {name:"Revy", emoji:"🔫", file:"kız_02.webp"},
-                    {name:"Asuna Yuuki", emoji:"🏖️", file:"kız_03.jpg"},
-                    {name:"Makio", emoji:"🌼", file:"kız_04.webp"},
-                    {name:"Mizore Shirayuki", emoji:"❄️", file:"kız_05.jpg"},
-                    {name:"Yoko Littner", emoji:"🎯", file:"kız_06.webp"},
-                    {name:"Lucy Heartfilia", emoji:"🔑", file:"kız_07.jpg"},
-                    {name:"Blair", emoji:"🐱", file:"kız_08.webp"},
-                    {name:"Celty Sturluson", emoji:"🏍️", file:"kız_09.jpg"},
-                    {name:"Tsunade Senju", emoji:"🐌", file:"kız_10.jpg"},
-                    {name:"Kagura", emoji:"☂️", file:"kız_11.jpg"},
-                    {name:"Mirko", emoji:"🐇", file:"kız_12.jpg"},
-                    {name:"Marin Kitagawa", emoji:"🌺", file:"kız_13.jpg"},
-                    {name:"Tanya Degurechaff", emoji:"🎖️", file:"kız_14.jpg"},
-                    {name:"Rias Gremory", emoji:"👿", file:"kız_15.jpg"},
-                    {name:"Sailor Moon", emoji:"🌙", file:"kız_16.png"},
-                    {name:"Mikasa Ackerman", emoji:"⚔️", file:"kız_17.jpg"},
-                    {name:"Yoruichi Shihouin", emoji:"🐱", file:"kız_18.jpg"},
-                    {name:"Nami", emoji:"🍊", file:"kız_19.jpg"},
-                    {name:"Winry Rockbell", emoji:"🔧", file:"kız_20.jpg"},
-                    {name:"Kaguya Shinomiya", emoji:"❤️", file:"kız_21.jpg"},
-                    {name:"Nezuko Kamado", emoji:"🎋", file:"kız_22.jpg"},
-                    {name:"Anya Forger", emoji:"🥜", file:"kız_23.webp"},
-                    {name:"Rem", emoji:"💙", file:"kız_24.jpg"},
-                    {name:"Rukia Kuchiki", emoji:"🗡️", file:"kız_25.jpg"},
-                    {name:"Sakura Haruno", emoji:"🌸", file:"kız_26.jpg"},
-                    {name:"Power", emoji:"🩸", file:"kız_27.webp"},
-                    {name:"Yor Forger", emoji:"🗡️", file:"kız_28.webp"},
-                    {name:"Hinata Hyuga", emoji:"💜", file:"kız_29.webp"},
-                    {name:"Makima", emoji:"🐶", file:"kız_30.webp"},
-                    {name:"Nico Robin", emoji:"📚", file:"kız_31.webp"},
-                    {name:"Emilia", emoji:"❄️", file:"kız_32.jpg"},
-                    {name:"Zero Two", emoji:"❤️", file:"kız_33.jpg"},
-                    {name:"C.C.", emoji:"🟢", file:"kız_34.jpg"},
-                    {name:"Boa Hancock", emoji:"🐍", file:"kız_35.jpg"},
-                    {name:"Satsuki Kiryuin", emoji:"👑", file:"kız_36.jpg"},
-                    {name:"Android 18", emoji:"👑", file:"kızanime_37.jpg"},
-                    {name:"Esdeath", emoji:"❄️", file:"kızanime_38.jpg"},
-                    {name:"Fubuki", emoji:"❄️", file:"kızanime_39.jpg"},
-                    {name:"Matsumoto Rangiku", emoji:"🍈", file:"kızanime_40.jpg"},
-                    {name:"Mereoleona Vermillion", emoji:"🐍", file:"kız_41.jpg"},
-                    {name:"Faye Valentine", emoji:"🐍", file:"kız_42.jpg"},
-                    {name:"Fujiko Mine", emoji:"🐍", file:"kız_43.jpg"},
-                    {name:"Mitsuri Kanroji", emoji:"🐍", file:"kız_44.jpg"},
-                    {name:"Akeno Himejima", emoji:"🐍", file:"kız_45.jpg"}
+                    { name: "Erza Scarlet", emoji: "🗡️", file: "kız_01.jpg" },
+                    { name: "Revy", emoji: "🔫", file: "kız_02.webp" },
+                    { name: "Asuna Yuuki", emoji: "🏖️", file: "kız_03.jpg" },
+                    { name: "Makio", emoji: "🌼", file: "kız_04.webp" },
+                    { name: "Mizore Shirayuki", emoji: "❄️", file: "kız_05.jpg" },
+                    { name: "Yoko Littner", emoji: "🎯", file: "kız_06.webp" },
+                    { name: "Lucy Heartfilia", emoji: "🔑", file: "kız_07.jpg" },
+                    { name: "Blair", emoji: "🐱", file: "kız_08.webp" },
+                    { name: "Celty Sturluson", emoji: "🏍️", file: "kız_09.jpg" },
+                    { name: "Tsunade Senju", emoji: "🐌", file: "kız_10.jpg" },
+                    { name: "Kagura", emoji: "☂️", file: "kız_11.jpg" },
+                    { name: "Mirko", emoji: "🐇", file: "kız_12.jpg" },
+                    { name: "Marin Kitagawa", emoji: "🌺", file: "kız_13.jpg" },
+                    { name: "Tanya Degurechaff", emoji: "🎖️", file: "kız_14.jpg" },
+                    { name: "Rias Gremory", emoji: "👿", file: "kız_15.jpg" },
+                    { name: "Sailor Moon", emoji: "🌙", file: "kız_16.png" },
+                    { name: "Mikasa Ackerman", emoji: "⚔️", file: "kız_17.jpg" },
+                    { name: "Yoruichi Shihouin", emoji: "🐱", file: "kız_18.jpg" },
+                    { name: "Nami", emoji: "🍊", file: "kız_19.jpg" },
+                    { name: "Winry Rockbell", emoji: "🔧", file: "kız_20.jpg" },
+                    { name: "Kaguya Shinomiya", emoji: "❤️", file: "kız_21.jpg" },
+                    { name: "Nezuko Kamado", emoji: "🎋", file: "kız_22.jpg" },
+                    { name: "Anya Forger", emoji: "🥜", file: "kız_23.webp" },
+                    { name: "Rem", emoji: "💙", file: "kız_24.jpg" },
+                    { name: "Rukia Kuchiki", emoji: "🗡️", file: "kız_25.jpg" },
+                    { name: "Sakura Haruno", emoji: "🌸", file: "kız_26.jpg" },
+                    { name: "Power", emoji: "🩸", file: "kız_27.webp" },
+                    { name: "Yor Forger", emoji: "🗡️", file: "kız_28.webp" },
+                    { name: "Hinata Hyuga", emoji: "💜", file: "kız_29.webp" },
+                    { name: "Makima", emoji: "🐶", file: "kız_30.webp" },
+                    { name: "Nico Robin", emoji: "📚", file: "kız_31.webp" },
+                    { name: "Emilia", emoji: "❄️", file: "kız_32.jpg" },
+                    { name: "Zero Two", emoji: "❤️", file: "kız_33.jpg" },
+                    { name: "C.C.", emoji: "🟢", file: "kız_34.jpg" },
+                    { name: "Boa Hancock", emoji: "🐍", file: "kız_35.jpg" },
+                    { name: "Satsuki Kiryuin", emoji: "👑", file: "kız_36.jpg" },
+                    { name: "Android 18", emoji: "👑", file: "kızanime_37.jpg" },
+                    { name: "Esdeath", emoji: "❄️", file: "kızanime_38.jpg" },
+                    { name: "Fubuki", emoji: "❄️", file: "kızanime_39.jpg" },
+                    { name: "Matsumoto Rangiku", emoji: "🍈", file: "kızanime_40.jpg" },
+                    { name: "Mereoleona Vermillion", emoji: "🐍", file: "kız_41.jpg" },
+                    { name: "Faye Valentine", emoji: "🐍", file: "kız_42.jpg" },
+                    { name: "Fujiko Mine", emoji: "🐍", file: "kız_43.jpg" },
+                    { name: "Mitsuri Kanroji", emoji: "🐍", file: "kız_44.jpg" },
+                    { name: "Akeno Himejima", emoji: "🐍", file: "kız_45.jpg" }
                 ]
             },
             "oyun-karakteri": {
                 name: "Oyun Karakteri", icon: "🕹️", color: "#a855f7",
                 items: [
-                    {name:"Sub-Zero", emoji:"🧊", file:"oyun_01.jpg"},
-                    {name:"Arthur Morgan", emoji:"🤠", file:"oyun_02.webp"},
-                    {name:"Sonic", emoji:"🦔", file:"oyun_03.jpg"},
-                    {name:"Dante", emoji:"🔫", file:"oyun_04.webp"},
-                    {name:"Agent 47", emoji:"🔫", file:"oyun_05.jpg"},
-                    {name:"Scorpion", emoji:"🥷", file:"oyun_06.jpg"},
-                    {name:"Ryu", emoji:"👊", file:"oyun_07.jpg"},
-                    {name:"Kratos", emoji:"🪓", file:"oyun_08.jpg"},
-                    {name:"Geralt", emoji:"⚔️", file:"oyun_09.jpg"},
-                    {name:"Master Chief", emoji:"🔫", file:"oyun_10.jpg"},
-                    {name:"Malenia", emoji:"⚔️", file:"oyun_11.jpg"},
-                    {name:"CJ", emoji:"🔫", file:"oyun_12.jpg"},
-                    {name:"Mario", emoji:"🍄", file:"oyun_13.jpg"},
-                    {name:"Gordon Freeman", emoji:"🔧", file:"oyun_14.jpg"},
-                    {name:"Steve", emoji:"⛏️", file:"oyun_15.jpg"},
-                    {name:"Cyberpunk", emoji:"🦾", file:"oyun_16 (9).jpg"},
-                    {name:"Niko Bellic", emoji:"🔫", file:"oyun_17.jpg"},
-                    {name:"Aloy", emoji:"🏹", file:"oyun_18.jpg"},
-                    {name:"Ezio", emoji:"🗡️", file:"oyun_19.jpg"},
-                    {name:"Lara Croft", emoji:"🏹", file:"oyun_20.jpg"},
-                    {name:"Sam Fisher", emoji:"🔫", file:"oyun_21.jpg"},
-                    {name:"Ellie", emoji:"🏹", file:"oyun_22.jpg"},
-                    {name:"Solid Snake", emoji:"🐍", file:"oyun_23.jpg"},
-                    {name:"Ken", emoji:"👊", file:"oyun_24.jpg"},
-                    {name:"King Kong", emoji:"🦍", file:"oyun_25.jpg"},
-                    {name:"Noob Saibot", emoji:"🥷", file:"oyun_26.jpg"},
-                    {name:"Nathan Drake", emoji:"🗺️", file:"oyun_27.jpg"},
-                    {name:"Atreus", emoji:"🏹", file:"oyun_28.jpg"},
-                    {name:"Rayman", emoji:"✊", file:"oyun_29.jpg"},
-                    {name:"Max Payne", emoji:"🔫", file:"oyun_30.jpg"},
-                    {name:"kung lao", emoji:"🔫", file:"oyun_31.jpg"},
-                    {name:"lio kang", emoji:"🔫", file:"oyun_32.jpg"},
-                    {name:"raidan", emoji:"🔫", file:"oyun_33.jpg"},
-                    {name:"luigi", emoji:"🔫", file:"oyun_34.jpg"},
-                    {name:"leon kennedy", emoji:"🔫", file:"oyun_35.jpg"}
+                    { name: "Sub-Zero", emoji: "🧊", file: "oyun_01.jpg" },
+                    { name: "Arthur Morgan", emoji: "🤠", file: "oyun_02.webp" },
+                    { name: "Sonic", emoji: "🦔", file: "oyun_03.jpg" },
+                    { name: "Dante", emoji: "🔫", file: "oyun_04.webp" },
+                    { name: "Agent 47", emoji: "🔫", file: "oyun_05.jpg" },
+                    { name: "Scorpion", emoji: "🥷", file: "oyun_06.jpg" },
+                    { name: "Ryu", emoji: "👊", file: "oyun_07.jpg" },
+                    { name: "Kratos", emoji: "🪓", file: "oyun_08.jpg" },
+                    { name: "Geralt", emoji: "⚔️", file: "oyun_09.jpg" },
+                    { name: "Master Chief", emoji: "🔫", file: "oyun_10.jpg" },
+                    { name: "Malenia", emoji: "⚔️", file: "oyun_11.jpg" },
+                    { name: "CJ", emoji: "🔫", file: "oyun_12.jpg" },
+                    { name: "Mario", emoji: "🍄", file: "oyun_13.jpg" },
+                    { name: "Gordon Freeman", emoji: "🔧", file: "oyun_14.jpg" },
+                    { name: "Steve", emoji: "⛏️", file: "oyun_15.jpg" },
+                    { name: "Cyberpunk", emoji: "🦾", file: "oyun_16 (9).jpg" },
+                    { name: "Niko Bellic", emoji: "🔫", file: "oyun_17.jpg" },
+                    { name: "Aloy", emoji: "🏹", file: "oyun_18.jpg" },
+                    { name: "Ezio", emoji: "🗡️", file: "oyun_19.jpg" },
+                    { name: "Lara Croft", emoji: "🏹", file: "oyun_20.jpg" },
+                    { name: "Sam Fisher", emoji: "🔫", file: "oyun_21.jpg" },
+                    { name: "Ellie", emoji: "🏹", file: "oyun_22.jpg" },
+                    { name: "Solid Snake", emoji: "🐍", file: "oyun_23.jpg" },
+                    { name: "Ken", emoji: "👊", file: "oyun_24.jpg" },
+                    { name: "King Kong", emoji: "🦍", file: "oyun_25.jpg" },
+                    { name: "Noob Saibot", emoji: "🥷", file: "oyun_26.jpg" },
+                    { name: "Nathan Drake", emoji: "🗺️", file: "oyun_27.jpg" },
+                    { name: "Atreus", emoji: "🏹", file: "oyun_28.jpg" },
+                    { name: "Rayman", emoji: "✊", file: "oyun_29.jpg" },
+                    { name: "Max Payne", emoji: "🔫", file: "oyun_30.jpg" },
+                    { name: "kung lao", emoji: "🔫", file: "oyun_31.jpg" },
+                    { name: "lio kang", emoji: "🔫", file: "oyun_32.jpg" },
+                    { name: "raidan", emoji: "🔫", file: "oyun_33.jpg" },
+                    { name: "luigi", emoji: "🔫", file: "oyun_34.jpg" },
+                    { name: "leon kennedy", emoji: "🔫", file: "oyun_35.jpg" }
                 ]
             },
             futbolcu: {
                 name: "Futbolcu", icon: "⚽", color: "#22c55e",
                 items: [
-                    {name:"Barış Alper", emoji:"⚽", file:"futbolcu_01.jpeg"},
-                    {name:"Kylian Mbappé", emoji:"⚽", file:"futbolcu_02.jpg"},
-                    {name:"Kevin De Bruyne", emoji:"⚽", file:"futbolcu_03.png"},
-                    {name:"Icardi", emoji:"⚽", file:"futbolcu_04.webp"},
-                    {name:"Vinicius Jr.", emoji:"⚽", file:"futbolcu_05.jpg"},
-                    {name:"Lionel Messi", emoji:"⚽", file:"futbolcu_06.webp"},
-                    {name:"Kenan Yıldız", emoji:"⚽", file:"futbolcu_07.jpg"},
-                    {name:"Cristiano Ronaldo", emoji:"⚽", file:"futbolcu_08.jpg"},
-                    {name:"Ronaldinho", emoji:"⚽", file:"futbolcu_09.webp"},
-                    {name:"Ronaldo Nazário", emoji:"⚽", file:"futbolcu_10.jpg"},
-                    {name:"Fernando Muslera", emoji:"⚽", file:"futbolcu_11.webp"},
-                    {name:"Victor Osimhen", emoji:"⚽", file:"futbolcu_12.jpg"},
-                    {name:"Quaresma", emoji:"⚽", file:"futbolcu_13.jpg"},
-                    {name:"Martin Ødegaard", emoji:"⚽", file:"futbolcu_14.jpg"},
-                    {name:"Erling Haaland", emoji:"⚽", file:"futbolcu_15.jpg"},
-                    {name:"Jude Bellingham", emoji:"⚽", file:"futbolcu_16.jpg"},
-                    {name:"Lamine Yamal", emoji:"⚽", file:"futbolcu_17.jpg"},
-                    {name:"Arda Turan", emoji:"⚽", file:"futbolcu_18.jpg"},
-                    {name:"Neymar", emoji:"⚽", file:"futbolcu_19.jpg"},
-                    {name:"Arda Güler", emoji:"⚽", file:"futbolcu_20.jpg"},
-                    {name:"İlkay Gündoğan", emoji:"⚽", file:"futbolcu_21.jpg"},
-                    {name:"Diego Maradona", emoji:"⚽", file:"futbolcu_22.jpg"},
-                    {name:"Gianluigi Buffon", emoji:"⚽", file:"futbolcu_23.jpg"},
-                    {name:"Luis Suárez", emoji:"⚽", file:"futbolcu_24.jpg"},
-                    {name:"Pelé", emoji:"⚽", file:"futbolcu_25.jpg"},
-                    {name:"Mohamed Salah", emoji:"⚽", file:"futbolcu_26.jpg"},
-                    {name:"Ferenc Puskás", emoji:"⚽", file:"futbolcu_27.jpg"},
-                    {name:"Gerd Müller", emoji:"⚽", file:"futbolcu_28.jpg"},
-                    {name:"Paolo Maldini", emoji:"⚽", file:"futbolcu_29.jpg"},
-                    {name:"Eren Elmalı", emoji:"⚽", file:"futbolcu_30.jpg"},
-                    {name:"Manuel Neuer", emoji:"⚽", file:"futbolcu_31.jpg"},
-                    {name:"Sergio Ramos", emoji:"⚽", file:"futbolcu_32.jpg"},
-                    {name:"Wayne Rooney", emoji:"⚽", file:"futbolcu_33.jpg"},
-                    {name:"Zlatan Ibrahimović", emoji:"⚽", file:"futbolcu_34.jpg"},
-                    {name:"Thierry Henry", emoji:"⚽", file:"futbolcu_35.jpg"}
+                    { name: "Barış Alper", emoji: "⚽", file: "futbolcu_01.jpeg" },
+                    { name: "Kylian Mbappé", emoji: "⚽", file: "futbolcu_02.jpg" },
+                    { name: "Kevin De Bruyne", emoji: "⚽", file: "futbolcu_03.png" },
+                    { name: "Icardi", emoji: "⚽", file: "futbolcu_04.webp" },
+                    { name: "Vinicius Jr.", emoji: "⚽", file: "futbolcu_05.jpg" },
+                    { name: "Lionel Messi", emoji: "⚽", file: "futbolcu_06.webp" },
+                    { name: "Kenan Yıldız", emoji: "⚽", file: "futbolcu_07.jpg" },
+                    { name: "Cristiano Ronaldo", emoji: "⚽", file: "futbolcu_08.jpg" },
+                    { name: "Ronaldinho", emoji: "⚽", file: "futbolcu_09.webp" },
+                    { name: "Ronaldo Nazário", emoji: "⚽", file: "futbolcu_10.jpg" },
+                    { name: "Fernando Muslera", emoji: "⚽", file: "futbolcu_11.webp" },
+                    { name: "Victor Osimhen", emoji: "⚽", file: "futbolcu_12.jpg" },
+                    { name: "Quaresma", emoji: "⚽", file: "futbolcu_13.jpg" },
+                    { name: "Martin Ødegaard", emoji: "⚽", file: "futbolcu_14.jpg" },
+                    { name: "Erling Haaland", emoji: "⚽", file: "futbolcu_15.jpg" },
+                    { name: "Jude Bellingham", emoji: "⚽", file: "futbolcu_16.jpg" },
+                    { name: "Lamine Yamal", emoji: "⚽", file: "futbolcu_17.jpg" },
+                    { name: "Arda Turan", emoji: "⚽", file: "futbolcu_18.jpg" },
+                    { name: "Neymar", emoji: "⚽", file: "futbolcu_19.jpg" },
+                    { name: "Arda Güler", emoji: "⚽", file: "futbolcu_20.jpg" },
+                    { name: "İlkay Gündoğan", emoji: "⚽", file: "futbolcu_21.jpg" },
+                    { name: "Diego Maradona", emoji: "⚽", file: "futbolcu_22.jpg" },
+                    { name: "Gianluigi Buffon", emoji: "⚽", file: "futbolcu_23.jpg" },
+                    { name: "Luis Suárez", emoji: "⚽", file: "futbolcu_24.jpg" },
+                    { name: "Pelé", emoji: "⚽", file: "futbolcu_25.jpg" },
+                    { name: "Mohamed Salah", emoji: "⚽", file: "futbolcu_26.jpg" },
+                    { name: "Ferenc Puskás", emoji: "⚽", file: "futbolcu_27.jpg" },
+                    { name: "Gerd Müller", emoji: "⚽", file: "futbolcu_28.jpg" },
+                    { name: "Paolo Maldini", emoji: "⚽", file: "futbolcu_29.jpg" },
+                    { name: "Eren Elmalı", emoji: "⚽", file: "futbolcu_30.jpg" },
+                    { name: "Manuel Neuer", emoji: "⚽", file: "futbolcu_31.jpg" },
+                    { name: "Sergio Ramos", emoji: "⚽", file: "futbolcu_32.jpg" },
+                    { name: "Wayne Rooney", emoji: "⚽", file: "futbolcu_33.jpg" },
+                    { name: "Zlatan Ibrahimović", emoji: "⚽", file: "futbolcu_34.jpg" },
+                    { name: "Thierry Henry", emoji: "⚽", file: "futbolcu_35.jpg" }
                 ]
             },
             "kiz-oyuncu": {
                 name: "Kız Oyuncu", icon: "💃", color: "#f472b6",
                 items: [
-                    {name:"Demet Özdemir", emoji:"💃", file:"kızoyuncu_01.jpg"},
-                    {name:"Emma Stone", emoji:"💃", file:"kızoyuncu_02.webp"},
-                    {name:"Serenay Sarıkaya", emoji:"💃", file:"kızoyuncu_03.jpg"},
-                    {name:"Bensu Soral", emoji:"💃", file:"kızoyuncu_04.webp"},
-                    {name:"Barbara Palvin", emoji:"💃", file:"kızoyuncu_05.jpg"},
-                    {name:"Millie Bobby Brown", emoji:"💃", file:"kızoyuncu_06.webp"},
-                    {name:"Devrim Özkan", emoji:"💃", file:"kızoyuncu_07.jpg"},
-                    {name:"Natalie Portman", emoji:"💃", file:"kızoyuncu_08.webp"},
-                    {name:"Elçin Sangu", emoji:"💃", file:"kızoyuncu_09.jpg"},
-                    {name:"Scarlett Johansson", emoji:"💃", file:"kızoyuncu_10.webp"},
-                    {name:"Melis Sezen", emoji:"💃", file:"kızoyuncu_11.jpg"},
-                    {name:"Mine Tugay", emoji:"💃", file:"kızoyuncu_12.webp"},
-                    {name:"Angelina Jolie", emoji:"💃", file:"kızoyuncu_13.jpg"},
-                    {name:"Anya Taylor-Joy", emoji:"💃", file:"kızoyuncu_14.jpg"},
-                    {name:"Sydney Sweeney", emoji:"💃", file:"kızoyuncu_15.jpg"},
-                    {name:"Hazar Ergüçlü", emoji:"💃", file:"kızoyuncu_16.jpg"},
-                    {name:"Jenna Ortega", emoji:"💃", file:"kızoyuncu_17.jpg"},
-                    {name:"Megan Fox", emoji:"💃", file:"kızoyuncu_18.jpg"},
-                    {name:"Nilperi Şahinkaya", emoji:"💃", file:"kızoyuncu_19.jpg"},
-                    {name:"Hande Erçel", emoji:"💃", file:"kızoyuncu_20.jpg"},
-                    {name:"Hazal Kaya", emoji:"💃", file:"kızoyuncu_21.jpg"},
-                    {name:"Nilsu Berfin Aktaş", emoji:"💃", file:"kızoyuncu_22.jpg"},
-                    {name:"Penélope Cruz", emoji:"💃", file:"kızoyuncu_23.avif"},
-                    {name:"Gal Gadot", emoji:"💃", file:"kızoyuncu_24.jpg"},
-                    {name:"Meryem Uzerli", emoji:"💃", file:"kızoyuncu_25.jpg"},
-                    {name:"Ezgi Mola", emoji:"💃", file:"kızoyuncu_27.jpg"},
-                    {name:"Pınar Deniz", emoji:"💃", file:"kızoyuncu_28.jpg"},
-                    {name:"Farah Zeynep Abdullah", emoji:"💃", file:"kızoyuncu_29.jpg"},
-                    {name:"Öykü Karayel", emoji:"💃", file:"kızoyuncu_30.jpg"},
-                    {name:"Jennifer Aniston", emoji:"💃", file:"kızoyuncu_31.jpg"},
-                    {name:"Anya Taylor-Joy", emoji:"💃", file:"kızoyuncu_32.jpg"},
-                    {name:"Zendaya", emoji:"💃", file:"kızoyuncu_33.jpg"},
-                    {name:"Margot Robbie", emoji:"💃", file:"kızoyuncu_34.jpg"},
-                    {name:"elcin zehra", emoji:"💃", file:"kızoyuncu_35.jpg"}
+                    { name: "Demet Özdemir", emoji: "💃", file: "kızoyuncu_01.jpg" },
+                    { name: "Emma Stone", emoji: "💃", file: "kızoyuncu_02.webp" },
+                    { name: "Serenay Sarıkaya", emoji: "💃", file: "kızoyuncu_03.jpg" },
+                    { name: "Bensu Soral", emoji: "💃", file: "kızoyuncu_04.webp" },
+                    { name: "Barbara Palvin", emoji: "💃", file: "kızoyuncu_05.jpg" },
+                    { name: "Millie Bobby Brown", emoji: "💃", file: "kızoyuncu_06.webp" },
+                    { name: "Devrim Özkan", emoji: "💃", file: "kızoyuncu_07.jpg" },
+                    { name: "Natalie Portman", emoji: "💃", file: "kızoyuncu_08.webp" },
+                    { name: "Elçin Sangu", emoji: "💃", file: "kızoyuncu_09.jpg" },
+                    { name: "Scarlett Johansson", emoji: "💃", file: "kızoyuncu_10.webp" },
+                    { name: "Melis Sezen", emoji: "💃", file: "kızoyuncu_11.jpg" },
+                    { name: "Mine Tugay", emoji: "💃", file: "kızoyuncu_12.webp" },
+                    { name: "Angelina Jolie", emoji: "💃", file: "kızoyuncu_13.jpg" },
+                    { name: "Anya Taylor-Joy", emoji: "💃", file: "kızoyuncu_14.jpg" },
+                    { name: "Sydney Sweeney", emoji: "💃", file: "kızoyuncu_15.jpg" },
+                    { name: "Hazar Ergüçlü", emoji: "💃", file: "kızoyuncu_16.jpg" },
+                    { name: "Jenna Ortega", emoji: "💃", file: "kızoyuncu_17.jpg" },
+                    { name: "Megan Fox", emoji: "💃", file: "kızoyuncu_18.jpg" },
+                    { name: "Nilperi Şahinkaya", emoji: "💃", file: "kızoyuncu_19.jpg" },
+                    { name: "Hande Erçel", emoji: "💃", file: "kızoyuncu_20.jpg" },
+                    { name: "Hazal Kaya", emoji: "💃", file: "kızoyuncu_21.jpg" },
+                    { name: "Nilsu Berfin Aktaş", emoji: "💃", file: "kızoyuncu_22.jpg" },
+                    { name: "Penélope Cruz", emoji: "💃", file: "kızoyuncu_23.avif" },
+                    { name: "Gal Gadot", emoji: "💃", file: "kızoyuncu_24.jpg" },
+                    { name: "Meryem Uzerli", emoji: "💃", file: "kızoyuncu_25.jpg" },
+                    { name: "Ezgi Mola", emoji: "💃", file: "kızoyuncu_27.jpg" },
+                    { name: "Pınar Deniz", emoji: "💃", file: "kızoyuncu_28.jpg" },
+                    { name: "Farah Zeynep Abdullah", emoji: "💃", file: "kızoyuncu_29.jpg" },
+                    { name: "Öykü Karayel", emoji: "💃", file: "kızoyuncu_30.jpg" },
+                    { name: "Jennifer Aniston", emoji: "💃", file: "kızoyuncu_31.jpg" },
+                    { name: "Anya Taylor-Joy", emoji: "💃", file: "kızoyuncu_32.jpg" },
+                    { name: "Zendaya", emoji: "💃", file: "kızoyuncu_33.jpg" },
+                    { name: "Margot Robbie", emoji: "💃", file: "kızoyuncu_34.jpg" },
+                    { name: "elcin zehra", emoji: "💃", file: "kızoyuncu_35.jpg" }
                 ]
             },
             oyun: {
                 name: "Oyunlar", icon: "🎮", color: "#22d3ee",
                 items: [
-                    {name:"God of War", emoji:"🪓", file:"oyunlar1.jpg"},
-                    {name:"Minecraft", emoji:"⛏️", file:"oyunlar2.jpg"},
-                    {name:"CS:GO", emoji:"🔫", file:"oyunlar3.jpg"},
-                    {name:"League of Legends", emoji:"🧙", file:"oyunlar4.jpg"},
-                    {name:"Forza Horizon 5", emoji:"🏎️", file:"oyunlar5.jpg"},
-                    {name:"Cyberpunk 2077", emoji:"🦾", file:"oyunlar6.jpg"},
-                    {name:"Apex Legends", emoji:"🔺", file:"oyunlar7.jpg"},
-                    {name:"Fortnite", emoji:"🚌", file:"oyunlar8.jpg"},
-                    {name:"Chivalry 2", emoji:"⚔️", file:"oyunlar9.jpg"},
-                    {name:"Valorant", emoji:"🎯", file:"oyunlar10.jpg"},
-                    {name:"Roblox", emoji:"🧱", file:"oyunlar11.jpg"},
-                    {name:"PUBG Mobile", emoji:"🪂", file:"oyunlar12.jpg"},
-                    {name:"BioShock", emoji:"🌊", file:"oyunlar13.jpg"},
-                    {name:"Elden Ring", emoji:"💍", file:"oyunlar14.jpg"},
-                    {name:"Doom Eternal", emoji:"👹", file:"oyunlar15.jpg"},
-                    {name:"S.T.A.L.K.E.R. 2", emoji:"☢️", file:"oyunlar16.jpg"},
-                    {name:"Baldur's Gate 3", emoji:"🐉", file:"oyunlar17.jpg"},
-                    {name:"Grand Theft Auto V", emoji:"🚗", file:"oyunlar18.jpg"},
-                    {name:"Battlefield V", emoji:"💥", file:"oyunlar19.jpg"},
-                    {name:"Resident Evil 2", emoji:"🧟", file:"oyunlar20.jpg"},
-                    {name:"Halo", emoji:"👨‍🚀", file:"oyunlar21.jpg"},
-                    {name:"CoD: Modern Warfare III", emoji:"🎖️", file:"oyunlar22.jpg"},
-                    {name:"Mafia III", emoji:"🕴️", file:"oyunlar23.jpg"},
-                    {name:"Forza Horizon 6", emoji:"🏎️", file:"oyunlar24.jpg"},
-                    {name:"Mount & Blade: Warband", emoji:"🐴", file:"oyunlar25.jpg"},
-                    {name:"Mobile Legends", emoji:"📱", file:"oyunlar26.jpg"},
-                    {name:"uncherted", emoji:"📱", file:"oyunlar27.jpg"},
-                    {name:"outlas tirilas", emoji:"📱", file:"oyunlar28.jpg"},
-                    {name:"palworld", emoji:"📱", file:"oyunlar29.jpg"},
-                    {name:"ark survıval evolved", emoji:"📱", file:"oyunlar30.jpg"}
+                    { name: "God of War", emoji: "🪓", file: "oyunlar1.jpg" },
+                    { name: "Minecraft", emoji: "⛏️", file: "oyunlar2.jpg" },
+                    { name: "CS:GO", emoji: "🔫", file: "oyunlar3.jpg" },
+                    { name: "League of Legends", emoji: "🧙", file: "oyunlar4.jpg" },
+                    { name: "Forza Horizon 5", emoji: "🏎️", file: "oyunlar5.jpg" },
+                    { name: "Cyberpunk 2077", emoji: "🦾", file: "oyunlar6.jpg" },
+                    { name: "Apex Legends", emoji: "🔺", file: "oyunlar7.jpg" },
+                    { name: "Fortnite", emoji: "🚌", file: "oyunlar8.jpg" },
+                    { name: "Chivalry 2", emoji: "⚔️", file: "oyunlar9.jpg" },
+                    { name: "Valorant", emoji: "🎯", file: "oyunlar10.jpg" },
+                    { name: "Roblox", emoji: "🧱", file: "oyunlar11.jpg" },
+                    { name: "PUBG Mobile", emoji: "🪂", file: "oyunlar12.jpg" },
+                    { name: "BioShock", emoji: "🌊", file: "oyunlar13.jpg" },
+                    { name: "Elden Ring", emoji: "💍", file: "oyunlar14.jpg" },
+                    { name: "Doom Eternal", emoji: "👹", file: "oyunlar15.jpg" },
+                    { name: "S.T.A.L.K.E.R. 2", emoji: "☢️", file: "oyunlar16.jpg" },
+                    { name: "Baldur's Gate 3", emoji: "🐉", file: "oyunlar17.jpg" },
+                    { name: "Grand Theft Auto V", emoji: "🚗", file: "oyunlar18.jpg" },
+                    { name: "Battlefield V", emoji: "💥", file: "oyunlar19.jpg" },
+                    { name: "Resident Evil 2", emoji: "🧟", file: "oyunlar20.jpg" },
+                    { name: "Halo", emoji: "👨‍🚀", file: "oyunlar21.jpg" },
+                    { name: "CoD: Modern Warfare III", emoji: "🎖️", file: "oyunlar22.jpg" },
+                    { name: "Mafia III", emoji: "🕴️", file: "oyunlar23.jpg" },
+                    { name: "Forza Horizon 6", emoji: "🏎️", file: "oyunlar24.jpg" },
+                    { name: "Mount & Blade: Warband", emoji: "🐴", file: "oyunlar25.jpg" },
+                    { name: "Mobile Legends", emoji: "📱", file: "oyunlar26.jpg" },
+                    { name: "uncherted", emoji: "📱", file: "oyunlar27.jpg" },
+                    { name: "outlas tirilas", emoji: "📱", file: "oyunlar28.jpg" },
+                    { name: "palworld", emoji: "📱", file: "oyunlar29.jpg" },
+                    { name: "ark survıval evolved", emoji: "📱", file: "oyunlar30.jpg" }
                 ]
             },
             diziler: {
                 name: "Diziler", icon: "📺", color: "#a855f7",
                 items: [
-                    {name:"Kurtlar Vadisi", emoji:"🐺", file:"dizi_01.jpg"},
-                    {name:"Yasak Elma", emoji:"🍎", file:"dizi_02.jpg"},
-                    {name:"Behzat Ç", emoji:"🚬", file:"dizi_03.jpg"},
-                    {name:"Leyla ile Mecnun", emoji:"❤️", file:"dizi_04.jpg"},
-                    {name:"Arka Sokaklar", emoji:"🚓", file:"dizi_05.jpg"},
-                    {name:"Dexter", emoji:"🔪", file:"dizi_07.jpg"},
-                    {name:"Stranger Things", emoji:"👾", file:"dizi_08.jpg"},
-                    {name:"The Office", emoji:"📎", file:"dizi_09.jpg"},
-                    {name:"Game of Thrones", emoji:"🐉", file:"dizi_10.jpg"},
-                    {name:"Prison Break", emoji:"🔓", file:"dizi_11.jpg"},
-                    {name:"Supernatural", emoji:"😈", file:"dizi_12.jpg"},
-                    {name:"Breaking Bad", emoji:"🧪", file:"dizi_13.jpg"},
-                    {name:"Sherlock", emoji:"🔍", file:"dizi_14.jpg"},
-                    {name:"Mr. Robot", emoji:"💻", file:"dizi_15.jpg"},
-                    {name:"Vikings", emoji:"🪓", file:"dizi_16.jpg"},
-                    {name:"black miror", emoji:"🪓", file:"dizi_17.jpg"},
-                    {name:"ricky and morty", emoji:"🪓", file:"dizi_18.jpg"},
-                    {name:"avatar son hava büküçü", emoji:"🪓", file:"dizi_19.jpg"},
-                    {name:"eşref rüya", emoji:"🪓", file:"dizi_20.jpg"}
+                    { name: "Kurtlar Vadisi", emoji: "🐺", file: "dizi_01.jpg" },
+                    { name: "Yasak Elma", emoji: "🍎", file: "dizi_02.jpg" },
+                    { name: "Behzat Ç", emoji: "🚬", file: "dizi_03.jpg" },
+                    { name: "Leyla ile Mecnun", emoji: "❤️", file: "dizi_04.jpg" },
+                    { name: "Arka Sokaklar", emoji: "🚓", file: "dizi_05.jpg" },
+                    { name: "Dexter", emoji: "🔪", file: "dizi_07.jpg" },
+                    { name: "Stranger Things", emoji: "👾", file: "dizi_08.jpg" },
+                    { name: "The Office", emoji: "📎", file: "dizi_09.jpg" },
+                    { name: "Game of Thrones", emoji: "🐉", file: "dizi_10.jpg" },
+                    { name: "Prison Break", emoji: "🔓", file: "dizi_11.jpg" },
+                    { name: "Supernatural", emoji: "😈", file: "dizi_12.jpg" },
+                    { name: "Breaking Bad", emoji: "🧪", file: "dizi_13.jpg" },
+                    { name: "Sherlock", emoji: "🔍", file: "dizi_14.jpg" },
+                    { name: "Mr. Robot", emoji: "💻", file: "dizi_15.jpg" },
+                    { name: "Vikings", emoji: "🪓", file: "dizi_16.jpg" },
+                    { name: "black miror", emoji: "🪓", file: "dizi_17.jpg" },
+                    { name: "ricky and morty", emoji: "🪓", file: "dizi_18.jpg" },
+                    { name: "avatar son hava büküçü", emoji: "🪓", file: "dizi_19.jpg" },
+                    { name: "eşref rüya", emoji: "🪓", file: "dizi_20.jpg" }
                 ]
             },
             filmler: {
                 name: "Filmler", icon: "🎬", color: "#facc15",
                 items: [
-                    {name:"Tosun Paşa", emoji:"👳", file:"flim_01.jpg"},
-                    {name:"Bekçiler Kralı", emoji:"👮", file:"flim_02.jpg"},
-                    {name:"Vizontele Tuuba", emoji:"📺", file:"flim_03.jpg"},
-                    {name:"Hokkabaz", emoji:"🎩", file:"flim_04.jpg"},
-                    {name:"Organize İşler Sazan Sarmalı", emoji:"😎", file:"flim_05.jpg"},
-                    {name:"Yüzüklerin Efendisi Kralın Dönüşü", emoji:"💍", file:"flim_06.jpg"},
-                    {name:"Esaretin Bedeli", emoji:"🔑", file:"flim_07.jpg"},
-                    {name:"Baba", emoji:"🤵", file:"flim_08.jpg"},
-                    {name:"Kara Şövalye", emoji:"🦇", file:"flim_09.jpg"},
-                    {name:"Dövüş Kulübü", emoji:"👊", file:"flim_10.jpg"},
-                    {name:"Yeşil Yol", emoji:"🟢", file:"flim_11.jpg"},
-                    {name:"Prestij", emoji:"✨", file:"flim_12.jpg"},
-                    {name:"Matrix", emoji:"💊", file:"flim_13.jpg"},
-                    {name:"Geleceğe Dönüş", emoji:"🚗", file:"flim_14.jpg"},
-                    {name:"Yıldızlararası", emoji:"🌌", file:"flim_15.jpg"},
-                    {name:"Terminatör", emoji:"🤖", file:"flim_16.jpg"},
-                    {name:"Can Dostum", emoji:"❤️", file:"flim_17.jpg"},
-                    {name:"Avengers Sonsuzluk Savaşı", emoji:"💥", file:"flim_18.jpg"},
-                    {name:"Dangal", emoji:"🤼", file:"flim_19.jpg"},
-                    {name:"V for Vendetta", emoji:"🎭", file:"flim_20.jpg"},
-                    {name:"Karayip Korsanları", emoji:"🏴‍☠️", file:"flim_21.jpg"},
-                    {name:"Hababam Sınıfı", emoji:"🎓", file:"flim_22.jpg"},
-                    {name:"Kuzuların Sessizliği", emoji:"🦋", file:"flim_23.jpg"},
-                    {name:"X-Men Geçmiş Günler Gelecek", emoji:"⚡", file:"flim_24.jpg"},
-                    {name:"Ip Man", emoji:"🥋", file:"flim_25.jpg"}
+                    { name: "Tosun Paşa", emoji: "👳", file: "flim_01.jpg" },
+                    { name: "Bekçiler Kralı", emoji: "👮", file: "flim_02.jpg" },
+                    { name: "Vizontele Tuuba", emoji: "📺", file: "flim_03.jpg" },
+                    { name: "Hokkabaz", emoji: "🎩", file: "flim_04.jpg" },
+                    { name: "Organize İşler Sazan Sarmalı", emoji: "😎", file: "flim_05.jpg" },
+                    { name: "Yüzüklerin Efendisi Kralın Dönüşü", emoji: "💍", file: "flim_06.jpg" },
+                    { name: "Esaretin Bedeli", emoji: "🔑", file: "flim_07.jpg" },
+                    { name: "Baba", emoji: "🤵", file: "flim_08.jpg" },
+                    { name: "Kara Şövalye", emoji: "🦇", file: "flim_09.jpg" },
+                    { name: "Dövüş Kulübü", emoji: "👊", file: "flim_10.jpg" },
+                    { name: "Yeşil Yol", emoji: "🟢", file: "flim_11.jpg" },
+                    { name: "Prestij", emoji: "✨", file: "flim_12.jpg" },
+                    { name: "Matrix", emoji: "💊", file: "flim_13.jpg" },
+                    { name: "Geleceğe Dönüş", emoji: "🚗", file: "flim_14.jpg" },
+                    { name: "Yıldızlararası", emoji: "🌌", file: "flim_15.jpg" },
+                    { name: "Terminatör", emoji: "🤖", file: "flim_16.jpg" },
+                    { name: "Can Dostum", emoji: "❤️", file: "flim_17.jpg" },
+                    { name: "Avengers Sonsuzluk Savaşı", emoji: "💥", file: "flim_18.jpg" },
+                    { name: "Dangal", emoji: "🤼", file: "flim_19.jpg" },
+                    { name: "V for Vendetta", emoji: "🎭", file: "flim_20.jpg" },
+                    { name: "Karayip Korsanları", emoji: "🏴‍☠️", file: "flim_21.jpg" },
+                    { name: "Hababam Sınıfı", emoji: "🎓", file: "flim_22.jpg" },
+                    { name: "Kuzuların Sessizliği", emoji: "🦋", file: "flim_23.jpg" },
+                    { name: "X-Men Geçmiş Günler Gelecek", emoji: "⚡", file: "flim_24.jpg" },
+                    { name: "Ip Man", emoji: "🥋", file: "flim_25.jpg" }
                 ]
             }
         };
 
         const blurLevels = [
-            {blur:32, brightness:0.7, points:1000, label:"%10 - Çok Bulanık", quality:20, color:"linear-gradient(90deg,#ef4444,#f59e0b)"},
-            {blur:20, brightness:0.8, points:700, label:"%30 - Bulanık", quality:40, color:"linear-gradient(90deg,#f59e0b,#eab308)"},
-            {blur:12, brightness:0.9, points:400, label:"%55 - Orta", quality:60, color:"linear-gradient(90deg,#eab308,#22c55e)"},
-            {blur:5, brightness:1, points:200, label:"%80 - Netleşiyor", quality:80, color:"linear-gradient(90deg,#22c55e,#06b6d4)"},
-            {blur:0, brightness:1, points:50, label:"%100 - Tam Net", quality:100, color:"linear-gradient(90deg,#06b6d4,#8b5cf6)"}
+            { blur: 32, brightness: 0.7, points: 1000, label: "%10 - Çok Bulanık", quality: 20, color: "linear-gradient(90deg,#ef4444,#f59e0b)" },
+            { blur: 20, brightness: 0.8, points: 700, label: "%30 - Bulanık", quality: 40, color: "linear-gradient(90deg,#f59e0b,#eab308)" },
+            { blur: 12, brightness: 0.9, points: 400, label: "%55 - Orta", quality: 60, color: "linear-gradient(90deg,#eab308,#22c55e)" },
+            { blur: 5, brightness: 1, points: 200, label: "%80 - Netleşiyor", quality: 80, color: "linear-gradient(90deg,#22c55e,#06b6d4)" },
+            { blur: 0, brightness: 1, points: 50, label: "%100 - Tam Net", quality: 100, color: "linear-gradient(90deg,#06b6d4,#8b5cf6)" }
         ];
 
         let blurSelectedCategory = null;
@@ -11901,25 +12160,25 @@
         let blurHistory = [];
         let blurHintUsed = false;
 
-        window.goToBlurCategorySelect = function(){
+        window.goToBlurCategorySelect = function () {
             const grid = document.getElementById('blurCategoryGrid');
-            grid.innerHTML = Object.entries(blurCategories).map(([id, cat])=>{
-                const best = localStorage.getItem('blur_best_'+id) || 0;
-                return `<div class="category-card category-card--${id}" onclick="selectBlurCategory('${id}')" id="blurCat_${id}"><div class="category-icon">${cat.icon}</div><div class="category-title">${cat.name}</div><div class="category-subtitle">${cat.items.length} görsel</div>${best>0?`<div style="margin-top:6px;color:#facc15;font-size:11px;font-weight:700">🏆 En iyi: ${best}</div>`:''}</div>`;
+            grid.innerHTML = Object.entries(blurCategories).map(([id, cat]) => {
+                const best = localStorage.getItem('blur_best_' + id) || 0;
+                return `<div class="category-card category-card--${id}" onclick="selectBlurCategory('${id}')" id="blurCat_${id}"><div class="category-icon">${cat.icon}</div><div class="category-title">${cat.name}</div><div class="category-subtitle">${cat.items.length} görsel</div>${best > 0 ? `<div style="margin-top:6px;color:#facc15;font-size:11px;font-weight:700">🏆 En iyi: ${best}</div>` : ''}</div>`;
             }).join('');
             hideAllMainScreens();
-            document.getElementById('blurCategoryScreen').style.display='block';
-            document.getElementById('blurCategoryNextBtn').disabled=true;
-            blurSelectedCategory=null;
+            document.getElementById('blurCategoryScreen').style.display = 'block';
+            document.getElementById('blurCategoryNextBtn').disabled = true;
+            blurSelectedCategory = null;
             changeTheme('space');
         };
 
-        window.selectBlurCategory = function(id){
-            document.querySelectorAll('#blurCategoryGrid .category-card').forEach(c=>c.classList.remove('selected'));
-            const el = document.getElementById('blurCat_'+id);
-            if(el) el.classList.add('selected');
+        window.selectBlurCategory = function (id) {
+            document.querySelectorAll('#blurCategoryGrid .category-card').forEach(c => c.classList.remove('selected'));
+            const el = document.getElementById('blurCat_' + id);
+            if (el) el.classList.add('selected');
             blurSelectedCategory = id;
-            document.getElementById('blurCategoryNextBtn').disabled=false;
+            document.getElementById('blurCategoryNextBtn').disabled = false;
             const cat = blurCategories[id];
             document.getElementById('blurMaxLabel').textContent = '/ max ' + cat.items.length;
             document.getElementById('blurCountInput').max = cat.items.length;
@@ -11928,66 +12187,66 @@
             changeTheme(id);
         };
 
-        window.goToBlurCount = function(){
-            if(!blurSelectedCategory) return;
+        window.goToBlurCount = function () {
+            if (!blurSelectedCategory) return;
             hideAllMainScreens();
-            document.getElementById('blurCountScreen').style.display='block';
+            document.getElementById('blurCountScreen').style.display = 'block';
         };
 
-        window.goBackToBlurCategory = function(){
+        window.goBackToBlurCategory = function () {
             hideAllMainScreens();
-            document.getElementById('blurCategoryScreen').style.display='block';
+            document.getElementById('blurCategoryScreen').style.display = 'block';
         };
 
-        window.goBackToModeFromBlur = function(){
+        window.goBackToModeFromBlur = function () {
             hideAllMainScreens();
-            document.getElementById('modeScreen').style.display='block';
+            document.getElementById('modeScreen').style.display = 'block';
             changeTheme('space');
         };
 
-        window.validateBlurCount = function(){
+        window.validateBlurCount = function () {
             const inp = document.getElementById('blurCountInput');
             const err = document.getElementById('blurCountErr');
             const v = parseInt(inp.value);
             const max = blurCategories[blurSelectedCategory]?.items.length || 45;
-            if(!v || v<1){ err.textContent='En az 1 soru seç!'; return false; }
-            if(v>max){ err.textContent='Maksimum '+max+'!'; return false; }
-            err.textContent='';
+            if (!v || v < 1) { err.textContent = 'En az 1 soru seç!'; return false; }
+            if (v > max) { err.textContent = 'Maksimum ' + max + '!'; return false; }
+            err.textContent = '';
             return true;
         };
 
-        window.startBlurGame = function(){
-            if(!validateBlurCount()) return;
-            if(!blurSelectedCategory) return;
+        window.startBlurGame = function () {
+            if (!validateBlurCount()) return;
+            if (!blurSelectedCategory) return;
             const cat = blurCategories[blurSelectedCategory];
             let pool = [...cat.items];
-            for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+            for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[pool[i], pool[j]] = [pool[j], pool[i]]; }
             blurSelectedCount = parseInt(document.getElementById('blurCountInput').value);
             blurQuestions = pool.slice(0, Math.min(blurSelectedCount, pool.length));
-            blurCurrentQ=0; blurTotalScore=0; blurCorrectCount=0; blurHistory=[];
-            isInTest=true; stopBgMusic();
+            blurCurrentQ = 0; blurTotalScore = 0; blurCorrectCount = 0; blurHistory = [];
+            isInTest = true; stopBgMusic();
             document.getElementById('blurGameCatBadge').innerHTML = `${cat.icon} ${cat.name}`;
-            document.getElementById('blurLevels').innerHTML = blurLevels.map((_,i)=>`<div class="blur-dot" id="blurDot${i}"></div>`).join('');
+            document.getElementById('blurLevels').innerHTML = blurLevels.map((_, i) => `<div class="blur-dot" id="blurDot${i}"></div>`).join('');
             hideAllMainScreens();
-            document.getElementById('blurGameScreen').style.display='block';
+            document.getElementById('blurGameScreen').style.display = 'block';
             loadBlurQuestion();
         };
 
-        function loadBlurQuestion(){
-            if(blurCurrentQ>=blurQuestions.length){ finishBlurGame(); return; }
+        function loadBlurQuestion() {
+            if (blurCurrentQ >= blurQuestions.length) { finishBlurGame(); return; }
             const q = blurQuestions[blurCurrentQ];
-            blurCurrentLevel=0; blurHintUsed=false;
-            document.getElementById('blurGameQBadge').textContent = `Soru ${blurCurrentQ+1} / ${blurQuestions.length}`;
+            blurCurrentLevel = 0; blurHintUsed = false;
+            document.getElementById('blurGameQBadge').textContent = `Soru ${blurCurrentQ + 1} / ${blurQuestions.length}`;
             document.getElementById('blurTotalScore').textContent = blurTotalScore;
-            document.getElementById('blurGuessInput').value='';
-            const fb = document.getElementById('blurFeedback'); fb.className='blur-feedback'; fb.style.display='none';
+            document.getElementById('blurGuessInput').value = '';
+            const fb = document.getElementById('blurFeedback'); fb.className = 'blur-feedback'; fb.style.display = 'none';
             document.getElementById('blurSuggestions').classList.remove('show');
-            document.getElementById('blurHintBtn').disabled=false;
-            document.getElementById('blurGuessBtn').disabled=false;
-            document.getElementById('blurProgressDots').innerHTML = blurQuestions.map((_,i)=>{
-                let cls='blur-p-dot';
-                if(i<blurCurrentQ) cls+= blurHistory[i]?.correct ? ' done' : ' fail';
-                if(i===blurCurrentQ) cls+=' current';
+            document.getElementById('blurHintBtn').disabled = false;
+            document.getElementById('blurGuessBtn').disabled = false;
+            document.getElementById('blurProgressDots').innerHTML = blurQuestions.map((_, i) => {
+                let cls = 'blur-p-dot';
+                if (i < blurCurrentQ) cls += blurHistory[i]?.correct ? ' done' : ' fail';
+                if (i === blurCurrentQ) cls += ' current';
                 return `<div class="${cls}"></div>`;
             }).join('');
 
@@ -11996,212 +12255,212 @@
             const frame = document.getElementById('blurPhotoFrame');
             frame.classList.add('loading');
             imgEl.style.filter = `blur(${blurLevels[0].blur}px) brightness(${blurLevels[0].brightness})`;
-            phEl.style.filter = `blur(${blurLevels[0].blur/2}px)`;
-            imgEl.style.opacity='0'; phEl.style.opacity='0';
+            phEl.style.filter = `blur(${blurLevels[0].blur / 2}px)`;
+            imgEl.style.opacity = '0'; phEl.style.opacity = '0';
             document.getElementById('blurQualityText').textContent = `Kalite: ${blurLevels[0].label}`;
             document.getElementById('blurPointsText').textContent = `${blurLevels[0].points} Puan`;
             document.getElementById('blurCurrentPointsVal').textContent = blurLevels[0].points;
-            document.getElementById('blurQualityFill').style.width = blurLevels[0].quality+'%';
+            document.getElementById('blurQualityFill').style.width = blurLevels[0].quality + '%';
             document.getElementById('blurQualityFill').style.background = blurLevels[0].color;
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 let imgUrl;
-                if(q.file){ imgUrl = q.file; }
+                if (q.file) { imgUrl = q.file; }
                 else {
                     const seed = encodeURIComponent(q.name + blurSelectedCategory + '_' + blurCurrentQ);
                     imgUrl = `https://picsum.photos/seed/${seed}/600/600`;
                 }
-                imgEl.style.display='block'; phEl.style.display='none';
-                imgEl.onload = ()=>{
+                imgEl.style.display = 'block'; phEl.style.display = 'none';
+                imgEl.onload = () => {
                     frame.classList.remove('loading');
-                    imgEl.style.opacity='1'; phEl.style.opacity='1';
+                    imgEl.style.opacity = '1'; phEl.style.opacity = '1';
                     applyBlurBlur();
                 };
-                imgEl.onerror = ()=>{
+                imgEl.onerror = () => {
                     frame.classList.remove('loading');
-                    imgEl.style.display='none'; phEl.style.display='flex';
+                    imgEl.style.display = 'none'; phEl.style.display = 'flex';
                     document.getElementById('blurPlaceholderEmoji').textContent = q.emoji;
-                    document.getElementById('blurPlaceholderLabel').textContent = q.name.charAt(0)+'***';
-                    phEl.style.opacity='1';
+                    document.getElementById('blurPlaceholderLabel').textContent = q.name.charAt(0) + '***';
+                    phEl.style.opacity = '1';
                     applyBlurBlur();
                 };
                 imgEl.src = imgUrl;
             }, 120);
         }
 
-        function applyBlurBlur(){
+        function applyBlurBlur() {
             const lvl = blurLevels[blurCurrentLevel];
             const imgEl = document.getElementById('blurGameImage');
             const phEl = document.getElementById('blurPhotoPlaceholder');
             const filter = `blur(${lvl.blur}px) brightness(${lvl.brightness})`;
-            if(imgEl.style.display!=='none') imgEl.style.filter = filter;
-            if(phEl.style.display!=='none') phEl.style.filter = `blur(${lvl.blur/2}px)`;
+            if (imgEl.style.display !== 'none') imgEl.style.filter = filter;
+            if (phEl.style.display !== 'none') phEl.style.filter = `blur(${lvl.blur / 2}px)`;
             document.getElementById('blurQualityText').textContent = `Kalite: ${lvl.label}`;
             document.getElementById('blurPointsText').textContent = `${lvl.points} Puan`;
             document.getElementById('blurCurrentPointsVal').textContent = lvl.points;
-            document.getElementById('blurQualityFill').style.width = lvl.quality+'%';
+            document.getElementById('blurQualityFill').style.width = lvl.quality + '%';
             document.getElementById('blurQualityFill').style.background = lvl.color;
-            blurLevels.forEach((_,i)=>{
-                const dot = document.getElementById('blurDot'+i);
-                if(!dot) return;
-                dot.className='blur-dot';
-                if(i<blurCurrentLevel) dot.classList.add('used');
-                if(i===blurCurrentLevel) dot.classList.add('active');
+            blurLevels.forEach((_, i) => {
+                const dot = document.getElementById('blurDot' + i);
+                if (!dot) return;
+                dot.className = 'blur-dot';
+                if (i < blurCurrentLevel) dot.classList.add('used');
+                if (i === blurCurrentLevel) dot.classList.add('active');
             });
-            document.getElementById('blurAttemptInfo').textContent = `${blurCurrentLevel+1}. TAHMİN HAKKI • ${lvl.label.toUpperCase()}`;
+            document.getElementById('blurAttemptInfo').textContent = `${blurCurrentLevel + 1}. TAHMİN HAKKI • ${lvl.label.toUpperCase()}`;
         }
 
-        function normalizeBlur(str){
-            return str.toLowerCase().replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ç/g,'c').replace(/[^a-z0-9 ]/g,'').trim();
+        function normalizeBlur(str) {
+            return str.toLowerCase().replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ç/g, 'c').replace(/[^a-z0-9 ]/g, '').trim();
         }
-        function levenshteinBlur(a,b){
-            const matrix=[]; for(let i=0;i<=b.length;i++) matrix[i]=[i]; for(let j=0;j<=a.length;j++) matrix[0][j]=j;
-            for(let i=1;i<=b.length;i++){ for(let j=1;j<=a.length;j++){ if(b.charAt(i-1)===a.charAt(j-1)) matrix[i][j]=matrix[i-1][j-1]; else matrix[i][j]=Math.min(matrix[i-1][j-1]+1,matrix[i][j-1]+1,matrix[i-1][j]+1); } }
+        function levenshteinBlur(a, b) {
+            const matrix = []; for (let i = 0; i <= b.length; i++) matrix[i] = [i]; for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+            for (let i = 1; i <= b.length; i++) { for (let j = 1; j <= a.length; j++) { if (b.charAt(i - 1) === a.charAt(j - 1)) matrix[i][j] = matrix[i - 1][j - 1]; else matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j] + 1); } }
             return matrix[b.length][a.length];
         }
-        function checkBlurAnswer(guess, answer){
-            const g=normalizeBlur(guess); const a=normalizeBlur(answer);
-            if(!g) return false; if(g===a) return true;
-            if(a.includes(g) && g.length>=3) return true;
-            if(g.includes(a) && a.length>=3) return true;
-            const aWords=a.split(' '); if(aWords.some(w=>w===g && w.length>=3)) return true;
-            if(levenshteinBlur(g,a)<=2 && Math.max(g.length,a.length)>4) return true;
-            if(aWords.length>1){ const first=aWords[0]; if(g===first) return true; if(levenshteinBlur(g,first)<=1 && first.length>3) return true; }
+        function checkBlurAnswer(guess, answer) {
+            const g = normalizeBlur(guess); const a = normalizeBlur(answer);
+            if (!g) return false; if (g === a) return true;
+            if (a.includes(g) && g.length >= 3) return true;
+            if (g.includes(a) && a.length >= 3) return true;
+            const aWords = a.split(' '); if (aWords.some(w => w === g && w.length >= 3)) return true;
+            if (levenshteinBlur(g, a) <= 2 && Math.max(g.length, a.length) > 4) return true;
+            if (aWords.length > 1) { const first = aWords[0]; if (g === first) return true; if (levenshteinBlur(g, first) <= 1 && first.length > 3) return true; }
             return false;
         }
 
-        window.onBlurInputChange = function(){
+        window.onBlurInputChange = function () {
             const val = document.getElementById('blurGuessInput').value.toLowerCase();
             const sugBox = document.getElementById('blurSuggestions');
-            if(val.length<2){ sugBox.classList.remove('show'); return; }
+            if (val.length < 2) { sugBox.classList.remove('show'); return; }
             const cat = blurCategories[blurSelectedCategory];
-            const matches = cat.items.filter(it=> normalizeBlur(it.name).includes(normalizeBlur(val))).slice(0,5);
-            if(matches.length===0){ sugBox.classList.remove('show'); return; }
-            sugBox.innerHTML = matches.map(m=>`<div class="blur-sugg-item" onclick="pickBlurSuggestion('${m.name.replace(/'/g,"\\'")}')">${m.emoji} ${m.name}</div>`).join('');
+            const matches = cat.items.filter(it => normalizeBlur(it.name).includes(normalizeBlur(val))).slice(0, 5);
+            if (matches.length === 0) { sugBox.classList.remove('show'); return; }
+            sugBox.innerHTML = matches.map(m => `<div class="blur-sugg-item" onclick="pickBlurSuggestion('${m.name.replace(/'/g, "\\'")}')">${m.emoji} ${m.name}</div>`).join('');
             sugBox.classList.add('show');
         };
-        window.pickBlurSuggestion = function(name){
-            document.getElementById('blurGuessInput').value=name;
+        window.pickBlurSuggestion = function (name) {
+            document.getElementById('blurGuessInput').value = name;
             document.getElementById('blurSuggestions').classList.remove('show');
             submitBlurGuess();
         };
-        function showBlurFeedback(msg,type){
-            const fb=document.getElementById('blurFeedback'); fb.textContent=msg; fb.className='blur-feedback show '+type; fb.style.display='block';
+        function showBlurFeedback(msg, type) {
+            const fb = document.getElementById('blurFeedback'); fb.textContent = msg; fb.className = 'blur-feedback show ' + type; fb.style.display = 'block';
         }
 
-        window.submitBlurGuess = function(){
+        window.submitBlurGuess = function () {
             const guess = document.getElementById('blurGuessInput').value.trim();
-            if(!guess){ showBlurFeedback('⚠️ Bir tahmin yaz!', 'info'); return; }
+            if (!guess) { showBlurFeedback('⚠️ Bir tahmin yaz!', 'info'); return; }
             const q = blurQuestions[blurCurrentQ];
-            if(checkBlurAnswer(guess, q.name)){
-                const points = blurLevels[blurCurrentLevel].points - (blurHintUsed?100:0);
-                const finalPoints = Math.max(points,10);
-                blurTotalScore+=finalPoints; blurCorrectCount++;
-                blurHistory.push({name:q.name, correct:true, level:blurCurrentLevel, points:finalPoints});
-                document.getElementById('blurResultEmoji').textContent = blurCurrentLevel===0?'🔥':'✅';
-                document.getElementById('blurResultCard').className='blur-result-card correct';
-                document.getElementById('blurResultTitle').textContent = blurCurrentLevel===0?'EFSANE!':blurCurrentLevel===1?'SÜPER!':'Doğru!';
-                document.getElementById('blurResultName').textContent=q.name;
-                document.getElementById('blurResultPoints').textContent=`+${finalPoints} Puan`;
-                const msgs=['İnanılmaz! En bulanık halde bildin!','Süper! Çok erken bildin!','Güzel! Orta seviyede bildin.','Doğru! Biraz zorlandın ama bildin.','Son anda bildin!'];
-                document.getElementById('blurResultDesc').textContent=msgs[blurCurrentLevel];
+            if (checkBlurAnswer(guess, q.name)) {
+                const points = blurLevels[blurCurrentLevel].points - (blurHintUsed ? 100 : 0);
+                const finalPoints = Math.max(points, 10);
+                blurTotalScore += finalPoints; blurCorrectCount++;
+                blurHistory.push({ name: q.name, correct: true, level: blurCurrentLevel, points: finalPoints });
+                document.getElementById('blurResultEmoji').textContent = blurCurrentLevel === 0 ? '🔥' : '✅';
+                document.getElementById('blurResultCard').className = 'blur-result-card correct';
+                document.getElementById('blurResultTitle').textContent = blurCurrentLevel === 0 ? 'EFSANE!' : blurCurrentLevel === 1 ? 'SÜPER!' : 'Doğru!';
+                document.getElementById('blurResultName').textContent = q.name;
+                document.getElementById('blurResultPoints').textContent = `+${finalPoints} Puan`;
+                const msgs = ['İnanılmaz! En bulanık halde bildin!', 'Süper! Çok erken bildin!', 'Güzel! Orta seviyede bildin.', 'Doğru! Biraz zorlandın ama bildin.', 'Son anda bildin!'];
+                document.getElementById('blurResultDesc').textContent = msgs[blurCurrentLevel];
                 document.getElementById('blurResultOverlay').classList.add('show');
-                document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
-                document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
-                document.getElementById('blurGameImage').style.opacity='1';
-                document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+                document.getElementById('blurGameImage').style.filter = 'blur(0px) brightness(1)';
+                document.getElementById('blurPhotoPlaceholder').style.filter = 'blur(0px)';
+                document.getElementById('blurGameImage').style.opacity = '1';
+                document.getElementById('blurPhotoPlaceholder').style.opacity = '1';
                 document.getElementById('blurPhotoFrame').classList.remove('loading');
-                if(soundEnabled) playCorrectSound();
+                if (soundEnabled) playCorrectSound();
             } else {
                 blurCurrentLevel++;
-                if(blurCurrentLevel>=blurLevels.length){
-                    blurHistory.push({name:q.name, correct:false, level:blurLevels.length, points:0});
-                    document.getElementById('blurResultEmoji').textContent='❌';
-                    document.getElementById('blurResultCard').className='blur-result-card wrong';
-                    document.getElementById('blurResultTitle').textContent='Bilemedin!';
-                    document.getElementById('blurResultName').textContent=q.name;
-                    document.getElementById('blurResultPoints').textContent='+0 Puan';
-                    document.getElementById('blurResultDesc').textContent=`Doğru cevap: ${q.name}`;
+                if (blurCurrentLevel >= blurLevels.length) {
+                    blurHistory.push({ name: q.name, correct: false, level: blurLevels.length, points: 0 });
+                    document.getElementById('blurResultEmoji').textContent = '❌';
+                    document.getElementById('blurResultCard').className = 'blur-result-card wrong';
+                    document.getElementById('blurResultTitle').textContent = 'Bilemedin!';
+                    document.getElementById('blurResultName').textContent = q.name;
+                    document.getElementById('blurResultPoints').textContent = '+0 Puan';
+                    document.getElementById('blurResultDesc').textContent = `Doğru cevap: ${q.name}`;
                     document.getElementById('blurResultOverlay').classList.add('show');
-                    document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
-                    document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
-                    document.getElementById('blurGameImage').style.opacity='1';
-                    document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+                    document.getElementById('blurGameImage').style.filter = 'blur(0px) brightness(1)';
+                    document.getElementById('blurPhotoPlaceholder').style.filter = 'blur(0px)';
+                    document.getElementById('blurGameImage').style.opacity = '1';
+                    document.getElementById('blurPhotoPlaceholder').style.opacity = '1';
                     document.getElementById('blurPhotoFrame').classList.remove('loading');
-                    if(soundEnabled) playWrongSound();
+                    if (soundEnabled) playWrongSound();
                 } else {
-                    showBlurFeedback(`❌ Yanlış! Görsel netleşiyor... Kalan hak: ${blurLevels.length-blurCurrentLevel}`, 'wrong');
-                    document.getElementById('blurGuessInput').value='';
+                    showBlurFeedback(`❌ Yanlış! Görsel netleşiyor... Kalan hak: ${blurLevels.length - blurCurrentLevel}`, 'wrong');
+                    document.getElementById('blurGuessInput').value = '';
                     applyBlurBlur();
-                    const frame=document.getElementById('blurPhotoFrame'); frame.style.animation='shake 0.4s ease'; setTimeout(()=>frame.style.animation='',400);
-                    if(soundEnabled) playWrongSound();
+                    const frame = document.getElementById('blurPhotoFrame'); frame.style.animation = 'shake 0.4s ease'; setTimeout(() => frame.style.animation = '', 400);
+                    if (soundEnabled) playWrongSound();
                 }
             }
         };
 
-        window.useBlurHint = function(){
-            const q=blurQuestions[blurCurrentQ]; const name=q.name;
-            const hint=name.charAt(0)+'*'.repeat(Math.max(name.length-2,1))+name.charAt(name.length-1);
+        window.useBlurHint = function () {
+            const q = blurQuestions[blurCurrentQ]; const name = q.name;
+            const hint = name.charAt(0) + '*'.repeat(Math.max(name.length - 2, 1)) + name.charAt(name.length - 1);
             showBlurFeedback(`💡 İpucu: ${hint} • Puan -100`, 'info');
-            blurHintUsed=true; document.getElementById('blurHintBtn').disabled=true;
-            if(!document.getElementById('blurGuessInput').value) document.getElementById('blurGuessInput').value=name.charAt(0);
+            blurHintUsed = true; document.getElementById('blurHintBtn').disabled = true;
+            if (!document.getElementById('blurGuessInput').value) document.getElementById('blurGuessInput').value = name.charAt(0);
         };
 
-        window.skipBlurQuestion = function(){
-            const q=blurQuestions[blurCurrentQ];
-            blurHistory.push({name:q.name, correct:false, level:99, points:0});
-            document.getElementById('blurResultEmoji').textContent='⏭️';
-            document.getElementById('blurResultCard').className='blur-result-card wrong';
-            document.getElementById('blurResultTitle').textContent='Pas Geçildi';
-            document.getElementById('blurResultName').textContent=q.name;
-            document.getElementById('blurResultPoints').textContent='+0 Puan';
-            document.getElementById('blurResultDesc').textContent=`Doğru cevap: ${q.name}`;
+        window.skipBlurQuestion = function () {
+            const q = blurQuestions[blurCurrentQ];
+            blurHistory.push({ name: q.name, correct: false, level: 99, points: 0 });
+            document.getElementById('blurResultEmoji').textContent = '⏭️';
+            document.getElementById('blurResultCard').className = 'blur-result-card wrong';
+            document.getElementById('blurResultTitle').textContent = 'Pas Geçildi';
+            document.getElementById('blurResultName').textContent = q.name;
+            document.getElementById('blurResultPoints').textContent = '+0 Puan';
+            document.getElementById('blurResultDesc').textContent = `Doğru cevap: ${q.name}`;
             document.getElementById('blurResultOverlay').classList.add('show');
-            document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
-            document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
-            document.getElementById('blurGameImage').style.opacity='1';
-            document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+            document.getElementById('blurGameImage').style.filter = 'blur(0px) brightness(1)';
+            document.getElementById('blurPhotoPlaceholder').style.filter = 'blur(0px)';
+            document.getElementById('blurGameImage').style.opacity = '1';
+            document.getElementById('blurPhotoPlaceholder').style.opacity = '1';
         };
 
-        window.nextBlurQuestion = function(){
-            const frame=document.getElementById('blurPhotoFrame');
-            const imgEl=document.getElementById('blurGameImage');
-            const phEl=document.getElementById('blurPhotoPlaceholder');
-            frame.classList.add('loading'); imgEl.style.opacity='0'; phEl.style.opacity='0';
+        window.nextBlurQuestion = function () {
+            const frame = document.getElementById('blurPhotoFrame');
+            const imgEl = document.getElementById('blurGameImage');
+            const phEl = document.getElementById('blurPhotoPlaceholder');
+            frame.classList.add('loading'); imgEl.style.opacity = '0'; phEl.style.opacity = '0';
             document.getElementById('blurResultOverlay').classList.remove('show');
-            setTimeout(()=>{ blurCurrentQ++; loadBlurQuestion(); },200);
+            setTimeout(() => { blurCurrentQ++; loadBlurQuestion(); }, 200);
         };
 
-        function finishBlurGame(){
-            isInTest=false; if(soundEnabled) startBgMusic();
-            document.getElementById('blurGameScreen').style.display='none';
-            document.getElementById('blurFinalScreen').style.display='block';
-            const cat=blurCategories[blurSelectedCategory];
-            document.getElementById('blurFinalCat').textContent=`${cat.icon} ${cat.name} • ${blurQuestions.length} Soru`;
-            document.getElementById('blurFinalScore').textContent=blurTotalScore;
-            document.getElementById('blurFinalCorrect').textContent=`${blurCorrectCount}/${blurQuestions.length}`;
-            document.getElementById('blurFinalAvg').textContent= blurQuestions.length? Math.round(blurTotalScore/blurQuestions.length):0;
-            const bestKey='blur_best_'+blurSelectedCategory;
-            const prevBest=parseInt(localStorage.getItem(bestKey)||'0');
-            if(blurTotalScore>prevBest) localStorage.setItem(bestKey, blurTotalScore);
+        function finishBlurGame() {
+            isInTest = false; if (soundEnabled) startBgMusic();
+            document.getElementById('blurGameScreen').style.display = 'none';
+            document.getElementById('blurFinalScreen').style.display = 'block';
+            const cat = blurCategories[blurSelectedCategory];
+            document.getElementById('blurFinalCat').textContent = `${cat.icon} ${cat.name} • ${blurQuestions.length} Soru`;
+            document.getElementById('blurFinalScore').textContent = blurTotalScore;
+            document.getElementById('blurFinalCorrect').textContent = `${blurCorrectCount}/${blurQuestions.length}`;
+            document.getElementById('blurFinalAvg').textContent = blurQuestions.length ? Math.round(blurTotalScore / blurQuestions.length) : 0;
+            const bestKey = 'blur_best_' + blurSelectedCategory;
+            const prevBest = parseInt(localStorage.getItem(bestKey) || '0');
+            if (blurTotalScore > prevBest) localStorage.setItem(bestKey, blurTotalScore);
             // puan ekle rank sistemine
-            const pts = Math.floor(blurTotalScore/100);
+            const pts = Math.floor(blurTotalScore / 100);
             totalPoints += pts; localStorage.setItem('matex_totalPoints', totalPoints); updateRankDisplay();
-            document.getElementById('blurFinalList').innerHTML = blurHistory.map((h,i)=>{
-                const icon=h.correct?'✅':'❌'; const lvlText=h.level===99?'Pas':h.level>=5?'Bilemedi':`Seviye ${h.level+1}`; const color=h.correct?'#4ade80':'#f87171';
-                return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><div style="display:flex;gap:10px;align-items:center"><span>${icon}</span><span style="font-weight:700">${i+1}. ${h.name}</span><span style="font-size:11px;color:#8a8ab0">${lvlText}</span></div><span style="color:${color};font-weight:800">+${h.points}</span></div>`;
+            document.getElementById('blurFinalList').innerHTML = blurHistory.map((h, i) => {
+                const icon = h.correct ? '✅' : '❌'; const lvlText = h.level === 99 ? 'Pas' : h.level >= 5 ? 'Bilemedi' : `Seviye ${h.level + 1}`; const color = h.correct ? '#4ade80' : '#f87171';
+                return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><div style="display:flex;gap:10px;align-items:center"><span>${icon}</span><span style="font-weight:700">${i + 1}. ${h.name}</span><span style="font-size:11px;color:#8a8ab0">${lvlText}</span></div><span style="color:${color};font-weight:800">+${h.points}</span></div>`;
             }).join('');
             changeTheme(blurSelectedCategory);
         }
 
-        window.replayBlurCategory = function(){ startBlurGame(); };
-        window.goBackToBlurCategoryFromFinal = function(){
-            hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display='block'; changeTheme('space');
+        window.replayBlurCategory = function () { startBlurGame(); };
+        window.goBackToBlurCategoryFromFinal = function () {
+            hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display = 'block'; changeTheme('space');
         };
-        window.exitBlurToCategories = function(){
-            if(confirm('Oyundan çıkmak istiyor musun? Skorun kaybolacak.')){
-                isInTest=false; if(soundEnabled) startBgMusic();
-                hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display='block'; changeTheme('space');
+        window.exitBlurToCategories = function () {
+            if (confirm('Oyundan çıkmak istiyor musun? Skorun kaybolacak.')) {
+                isInTest = false; if (soundEnabled) startBgMusic();
+                hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display = 'block'; changeTheme('space');
             }
         };
 
@@ -12236,6 +12495,8 @@
         data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}'
         crossorigin="anonymous"></script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a279c0052816db8b',t:'MTc4NjE0MjA4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a317a258fc16e323',t:'MTc4Nzc5NzYxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a317a258fc16e323',t:'MTc4Nzc5NzYxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a31de883e88993a0',t:'MTc4Nzg2MzQwNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
 
 </html>
