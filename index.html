@@ -19,13 +19,15 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         img {
             -webkit-user-drag: none;
             -moz-user-drag: none;
-            -ms-user-drag: none;
-            -user-drag: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -46,6 +48,12 @@
         textarea {
             -webkit-user-select: text;
             user-select: text;
+        }
+
+        .fav-heart {
+            font-size: 14px;
+            vertical-align: middle;
+            filter: drop-shadow(0 0 6px rgba(255, 82, 120, 0.7));
         }
 
         body {
@@ -2054,6 +2062,7 @@
         }
 
         .screen {
+            position: relative;
             background: rgba(10, 15, 30, 0.75);
             backdrop-filter: blur(25px);
             border: 2px solid rgba(0, 210, 255, 0.4);
@@ -4734,7 +4743,363 @@
         .blur-p-dot.fail {
             background: #ef4444
         }
+
+        /* ===== MAĞAZA ===== */
+        .shop-fab {
+            position: static;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 18px;
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: 2px solid #facc15;
+            background: linear-gradient(135deg, #8a2be2, #C71585);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(138, 43, 226, 0.5), 0 0 18px rgba(250, 204, 21, 0.35);
+            transition: all 0.3s;
+        }
+
+        .shop-fab:hover {
+            transform: scale(1.06) translateY(-2px);
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.7), 0 0 50px rgba(138, 43, 226, 0.5);
+        }
+
+        .shop-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(12px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .shop-modal.open {
+            display: flex;
+        }
+
+        .shop-panel {
+            width: 920px;
+            max-width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(160deg, rgba(20, 22, 45, 0.98), rgba(30, 16, 52, 0.98));
+            border: 2px solid #facc15;
+            border-radius: 32px;
+            padding: 26px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), 0 0 40px rgba(250, 204, 21, 0.2);
+            scrollbar-width: none;
+        }
+
+        .shop-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .shop-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .shop-header h2 {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #facc15, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .shop-points {
+            margin-left: auto;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #facc15;
+            border-radius: 40px;
+            padding: 10px 18px;
+            font-weight: 800;
+            color: #ffd700;
+            font-size: 16px;
+        }
+
+        .shop-close {
+            background: rgba(255, 107, 107, 0.15);
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .shop-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .shop-tab {
+            padding: 12px 16px;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.14);
+            color: #c9d4ff;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .shop-tab:hover {
+            border-color: #facc15;
+        }
+
+        .shop-tab.active {
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.25), rgba(138, 43, 226, 0.25));
+            border-color: #facc15;
+            color: #ffd700;
+            box-shadow: 0 0 16px rgba(250, 204, 21, 0.4);
+        }
+
+        .shop-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .shop-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 22px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(250, 204, 21, 0.5);
+        }
+
+        .shop-item.owned {
+            border-color: #facc15;
+        }
+
+        .shop-item.active {
+            border-color: #4ade80;
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.35);
+        }
+
+        .shop-item-tier {
+            font-size: 12px;
+            color: #facc15;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            min-height: 16px;
+        }
+
+        .shop-prev-avatar {
+            font-size: 56px;
+            line-height: 1.2;
+        }
+
+        .shop-prev-name {
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.3;
+            margin: 12px 0;
+        }
+
+        .shop-prev-music {
+            font-size: 52px;
+            line-height: 1.2;
+        }
+
+        .shop-prev-theme {
+            height: 64px;
+            border-radius: 14px;
+            margin: 6px 0;
+        }
+
+        .shop-prev-frame {
+            width: 64px;
+            height: 64px;
+            margin: 6px auto;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+        }
+
+        .shop-item-name {
+            font-weight: 800;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 6px;
+        }
+
+        .shop-item-price {
+            color: #ffd700;
+            font-weight: 800;
+            font-size: 14px;
+            margin: 6px 0 10px;
+        }
+
+        .shop-btn {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .shop-btn.buy {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            color: #1a1a2e;
+        }
+
+        .shop-btn.buy:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 18px rgba(250, 204, 21, 0.6);
+        }
+
+        .shop-btn.buy.disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: #6b7280;
+            cursor: not-allowed;
+        }
+
+        .shop-btn.own {
+            background: rgba(0, 210, 255, 0.15);
+            border: 2px solid #00d2ff;
+            color: #00d2ff;
+        }
+
+        .shop-btn.active {
+            background: rgba(74, 222, 128, 0.15);
+            border: 2px solid #4ade80;
+            color: #4ade80;
+        }
+
+        /* Çerçeve stilleri */
+        .shop-frame-fr_silver {
+            border-color: #c0c0c0 !important;
+            box-shadow: 0 0 14px rgba(192, 192, 192, 0.6);
+        }
+
+        .shop-frame-fr_blue {
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
+        }
+
+        .shop-frame-fr_gold {
+            border-color: #ffd700 !important;
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+        }
+
+        .shop-frame-fr_neon {
+            border-color: #00ffcc !important;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(255, 0, 204, 0.4);
+        }
+
+        .shop-frame-fr_diamond {
+            border-color: #7dd3fc !important;
+            box-shadow: 0 0 20px rgba(125, 211, 252, 0.9), 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .shop-frame-fr_rainbow {
+            border-color: #ffffff !important;
+            box-shadow: 0 0 14px rgba(255, 0, 0, 0.6), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 26px rgba(0, 0, 255, 0.6);
+        }
+
+        /* Gökkuşağı isim rengi */
+        .name-rainbow {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00aaff, #8b00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 100%;
+            animation: rainbowShift 3s linear infinite;
+        }
+
+        @keyframes rainbowShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        /* Özel temalar */
+        body.shop-theme-th_sunset #animatedBg {
+            background: linear-gradient(135deg, #2d1b4e, #7b2d26, #f59e0b) !important;
+        }
+
+        body.shop-theme-th_ocean #animatedBg {
+            background: linear-gradient(135deg, #021b33, #0b4f6c, #38bdf8) !important;
+        }
+
+        body.shop-theme-th_forest #animatedBg {
+            background: linear-gradient(135deg, #052e16, #166534, #84cc16) !important;
+        }
+
+        body.shop-theme-th_neon #animatedBg {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #ff00cc) !important;
+        }
+
+        body.shop-theme-th_galaxy #animatedBg {
+            background: linear-gradient(135deg, #0b0014, #3b0764, #7c3aed) !important;
+        }
+
+        body.shop-theme-th_rainbow #animatedBg {
+            background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff) !important;
+        }
+
+        body.shop-theme-th_sunset .screen {
+            border-color: rgba(245, 158, 11, 0.6) !important;
+        }
+
+        body.shop-theme-th_ocean .screen {
+            border-color: rgba(56, 189, 248, 0.6) !important;
+        }
+
+        body.shop-theme-th_forest .screen {
+            border-color: rgba(132, 204, 22, 0.6) !important;
+        }
+
+        body.shop-theme-th_neon .screen {
+            border-color: rgba(255, 0, 204, 0.6) !important;
+        }
+
+        body.shop-theme-th_galaxy .screen {
+            border-color: rgba(124, 58, 237, 0.6) !important;
+        }
+
+        body.shop-theme-th_rainbow .screen {
+            border-color: rgba(255, 255, 255, 0.5) !important;
+        }
     </style>
+
 </head>
 
 <body oncontextmenu="return false;" ondragstart="return false;">
@@ -4909,6 +5274,7 @@
                         <div class="avatar-buttons"> <button class="avatar-btn" onclick="openAvatarModal()">🎭
                                 Emoji</button> <button class="avatar-btn"
                                 onclick="document.getElementById('galleryInput').click()">📁 Galeri</button> </div>
+                        <button class="shop-fab" onclick="openShop()" title="Mağaza">🛒 Mağaza</button>
                     </div>
                     <div class="form-section">
                         <div class="input-wrapper"><label>👤 Ad Soyad</label><input class="input-field"
@@ -4963,7 +5329,11 @@
                     </div>
                 </div>
             </div>
-            <button class="primary-btn" onclick="validateAndContinue()">Devam Et →</button>
+            <div class="button-group">
+                <button class="back-btn" onclick="fillRandomProfile()"
+                    style="flex:none; padding:18px 26px; font-size:18px;">🎲 Rastgele</button>
+                <button class="primary-btn" onclick="validateAndContinue()">Devam Et →</button>
+            </div>
         </div>
 
         <div class="screen" id="modeScreen" style="display:none;">
@@ -5123,7 +5493,11 @@
             </div>
             <div id="photoResultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
             <div id="photoExplanationPanel"></div>
-            <button class="primary-btn" onclick="goToPhotoCategoriesFromResult()">🔄 Yeniden Başla</button>
+            <div class="button-group" style="justify-content:center;">
+                <button class="back-btn" onclick="replaySamePhotoCategory()" style="flex:none;">🎮 Tekrar Oyna</button>
+                <button class="primary-btn" onclick="goToPhotoCategoriesFromResult()" style="flex:none;">🔄 Yeniden
+                    Başla</button>
+            </div>
         </div>
 
         <!-- ===== O MU BU MU? EKRANLARI ===== -->
@@ -5232,6 +5606,7 @@
             <div class="ombm-champion" id="ombmChampion"></div>
             <div class="ombm-result-list" id="ombmResultList"></div>
             <div class="button-group" style="justify-content:center;margin-top:30px;flex-wrap:wrap;">
+                <button class="primary-btn" onclick="replayOmbm()" style="flex:none;">🎮 Tekrar Oyna</button>
                 <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
                 <button class="back-btn" onclick="goBackToModeFromOmbm()">🏠 Modlar</button>
                 <button class="back-btn" onclick="goBackToProfileFromOmbm()">👤 Profil</button>
@@ -5477,7 +5852,7 @@
             <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:18px;margin:20px 0;text-align:left;max-height:350px;overflow-y:auto"
                 id="blurFinalList"></div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-                <button class="primary-btn" onclick="replayBlurCategory()">🔄 Tekrar Oyna</button>
+                <button class="primary-btn" onclick="replayBlurCategory()">🎮 Tekrar Oyna</button>
                 <button class="back-btn" onclick="goBackToBlurCategoryFromFinal()">📚 Kategoriler</button>
                 <button class="back-btn" onclick="goBackToModeFromBlur()">🎮 Modlar</button>
             </div>
@@ -5575,8 +5950,12 @@
                 </div>
             </div>
             <div id="resultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
-            <div id="explanationPanel"></div> <button class="primary-btn" onclick="goToCategoriesFromResult()">🔄
-                Yeniden Başla</button>
+            <div id="explanationPanel"></div>
+            <div class="button-group" style="justify-content:center;">
+                <button class="back-btn" onclick="replaySameCategory()" style="flex:none;">🎮 Tekrar Oyna</button>
+                <button class="primary-btn" onclick="goToCategoriesFromResult()" style="flex:none;">🔄 Yeniden
+                    Başla</button>
+            </div>
         </div>
     </div>
     <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
@@ -7793,7 +8172,7 @@
         const allPools = [marvelSorulari, dcSorulari, oyunSorulari, arabaSorulari, motorSorulari, yemekSorulari, hayvanSorulari, sporSorulari, teknolojiSorulari, genelkulturSorulari, muzikSorulari, sinemaSorulari, bilimSorulari, tarihSorulari, sanatSorulari, astronomiSorulari, edebiyatSorulari, cografyaSorulari, siyasetSorulari, saglikSorulari, mitolojiSorulari, animeSorulari, futbolSorulari, markalarSorulari, bayraklarSorulari, matematikSorulari, diziSorulari, modaSorulari, felsefeSorulari, dogaSorulari];
         allPools.forEach(arr => { while (arr.length < 30) arr.push({ ...arr[0] }); });
 
-        localStorage.setItem('matex_totalPoints', '0'); let totalRankPoints = 0;
+        let totalRankPoints = parseInt(localStorage.getItem('matex_totalPoints') || '0', 10) || 0;
         // Rank thresholds
         const RANK_THRESHOLDS = { bronz: 200, gumus: 400, altin: 600, elmas: 800 };
         const RANK_ICONS = { bronz: '🥉', gumus: '🥈', altin: '🥇', elmas: '💎' };
@@ -7863,6 +8242,8 @@
         function updateRankDisplay() {
             const tp = totalRankPoints;
             document.getElementById('totalRankPoints').textContent = tp;
+            const _spd = document.getElementById('shopPointsDisplay');
+            if (_spd) _spd.textContent = tp;
             const rank = getCurrentRank();
 
             // Update capsule
@@ -7911,6 +8292,21 @@
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('dblclick', e => { if (e.target.closest && (e.target.closest('img') || e.target.closest('.category-card') || e.target.closest('.mode-card'))) e.preventDefault(); });
         document.addEventListener('keydown', e => { if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault(); });
+        document.addEventListener('selectstart', function (e) {
+            const t = e.target;
+            if (t && t.closest && (t.closest('input') || t.closest('textarea'))) return;
+            e.preventDefault();
+        });
+        document.addEventListener('copy', function (e) {
+            const t = e.target;
+            if (t && t.closest && (t.closest('input') || t.closest('textarea'))) return;
+            e.preventDefault();
+        });
+        document.addEventListener('cut', function (e) {
+            const t = e.target;
+            if (t && t.closest && (t.closest('input') || t.closest('textarea'))) return;
+            e.preventDefault();
+        });
 
 
         // ===== SOUND SYSTEM =====
@@ -7924,7 +8320,7 @@
         function startBgMusic() {
             if (!soundEnabled || musicPlaying || isInTest) return;
             musicPlaying = true;
-            const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 349.23, 440.00, 523.25, 440.00, 349.23, 329.63];
+            const notes = getActiveMusicNotes();
             let noteIdx = 0;
 
             function playNote() {
@@ -7955,7 +8351,7 @@
             }
 
             playNote();
-            musicInterval = setInterval(playNote, 700);
+            musicInterval = setInterval(playNote, getActiveMusicInterval());
         }
 
         function stopBgMusic() {
@@ -8112,11 +8508,13 @@
                     });
                 }
             }
+            applyShopTheme();
         }
 
         const avatarEmojis = ['👤', '👨', '👩', '🧑', '👶', '👴', '👵', '🦸', '🦹', '🧙', '🧝', '🏎️', '🚗', '🚙', '🚕', '🏍️', '🛵', '🚀', '✈️', '🚁', '🍕', '🍔', '🌮', '🍣', '🍜', '⚽', '🏀', '🎮', '🎵', '🎬', '📱', '💻', '🦁', '🐶', '🐱', '🦊', '🐼', '🐨']; let secilenAvatar = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)]; let uploadedImage = null;
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('avatarPreview').textContent = secilenAvatar;
+            applyShopCustomizations();
             updateRankDisplay();
             document.getElementById('ageInputDisplay').value = '';
             document.getElementById('ageInput').value = '';
@@ -8131,9 +8529,9 @@
             }
             document.getElementById('profileScreen').style.display = 'block';
         });
-        window.handleGalleryUpload = function (e) { const f = e.target.files[0]; if (f) { const r = new FileReader(); r.onload = function (ev) { uploadedImage = ev.target.result; document.getElementById('avatarPreview').innerHTML = `<img src="${uploadedImage}">`; secilenAvatar = 'image'; }; r.readAsDataURL(f); } };
+        window.handleGalleryUpload = function (e) { const f = e.target.files[0]; if (f) { const r = new FileReader(); r.onload = function (ev) { uploadedImage = ev.target.result; document.getElementById('avatarPreview').innerHTML = `<img src="${uploadedImage}">`; secilenAvatar = 'image'; if (typeof shopActive !== 'undefined' && shopActive.avatar) { shopActive.avatar = null; saveShopState(); } }; r.readAsDataURL(f); } };
         window.openAvatarModal = function () { document.getElementById('avatarGrid').innerHTML = avatarEmojis.map(a => `<div class="avatar-option ${secilenAvatar === a ? 'selected' : ''}" onclick="selectAvatar('${a}')">${a}</div>`).join(''); document.getElementById('avatarModal').style.display = 'flex'; };
-        window.selectAvatar = function (a) { secilenAvatar = a; uploadedImage = null; document.querySelectorAll('.avatar-option').forEach(e => e.classList.remove('selected')); event.target.classList.add('selected'); document.getElementById('avatarPreview').textContent = a; };
+        window.selectAvatar = function (a) { secilenAvatar = a; uploadedImage = null; if (typeof shopActive !== 'undefined' && shopActive.avatar) { shopActive.avatar = null; saveShopState(); } document.querySelectorAll('.avatar-option').forEach(e => e.classList.remove('selected')); event.target.classList.add('selected'); document.getElementById('avatarPreview').textContent = a; };
         window.closeAvatarModal = function () { document.getElementById('avatarModal').style.display = 'none'; };
         let secilenCinsiyet = null, kullaniciAdi = '', kullaniciYas = '';
         window.selectGender = function (g) {
@@ -8201,6 +8599,28 @@
                 kullaniciYas = yas;
                 goToModeSelect();
             }
+        };
+
+        window.fillRandomProfile = function () {
+            const adlar = ['Ali', 'Ayşe', 'Mehmet', 'Zeynep', 'Emir', 'Elif', 'Kaan', 'Ece', 'Burak', 'Deniz', 'Selin', 'Mert', 'Buse', 'Can', 'İrem', 'Kerem', 'Yusuf', 'Fatma', 'Okan', 'Aslı', 'Doruk', 'Melis', 'Arda', 'Nazlı', 'Baran', 'Sude'];
+            const soyadlar = ['Yılmaz', 'Kaya', 'Demir', 'Çelik', 'Şahin', 'Aydın', 'Öztürk', 'Arslan', 'Doğan', 'Kılıç', 'Aslan', 'Çetin', 'Koç', 'Kurt', 'Özkan', 'Şimşek', 'Polat', 'Erdoğan', 'Acar', 'Bulut'];
+            const ad = adlar[Math.floor(Math.random() * adlar.length)];
+            const soyad = soyadlar[Math.floor(Math.random() * soyadlar.length)];
+            document.getElementById('fullNameInput').value = ad + ' ' + soyad;
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('fullNameInput').classList.remove('error');
+            const yas = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('ageInput').value = yas;
+            document.getElementById('ageInputDisplay').value = yas;
+            document.getElementById('ageError').textContent = '';
+            const cinsler = ['erkek', 'kadin', 'yok'];
+            window.selectGender(cinsler[Math.floor(Math.random() * cinsler.length)]);
+            const emoji = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)];
+            if (typeof shopActive !== 'undefined' && shopActive.avatar) { shopActive.avatar = null; saveShopState(); }
+            secilenAvatar = emoji;
+            uploadedImage = null;
+            document.getElementById('avatarPreview').textContent = emoji;
+            playClickSound();
         };
 
 
@@ -8940,8 +9360,59 @@
         };
 
         // override classic category entry to come from mode
+        // ===== FAVORİ KATEGORİLER =====
+        let _favCache = null;
+        function getFavList() {
+            if (_favCache) return _favCache;
+            try { _favCache = JSON.parse(localStorage.getItem('matex_favorites') || '[]'); } catch (e) { _favCache = []; }
+            if (!Array.isArray(_favCache)) _favCache = [];
+            return _favCache;
+        }
+        function saveFavList() { try { localStorage.setItem('matex_favorites', JSON.stringify(_favCache)); } catch (e) { } }
+        function favKey(grid, catId) { return grid + ':' + catId; }
+        function isFav(grid, catId) { return getFavList().indexOf(favKey(grid, catId)) !== -1; }
+        function favHeart(grid, catId) { return isFav(grid, catId) ? ' <span class="fav-heart">❤️</span>' : ''; }
+        function resortFavGrid(gridEl) {
+            if (!gridEl) return;
+            const cards = Array.prototype.slice.call(gridEl.children).filter(function (c) { return c.classList && c.classList.contains('category-card'); });
+            cards.sort(function (a, b) {
+                const fa = a.getAttribute('data-fav') === '1' ? 0 : 1;
+                const fb = b.getAttribute('data-fav') === '1' ? 0 : 1;
+                if (fa !== fb) return fa - fb;
+                const oa = parseInt(a.getAttribute('data-orig-order') || '0', 10);
+                const ob = parseInt(b.getAttribute('data-orig-order') || '0', 10);
+                return oa - ob;
+            });
+            cards.forEach(function (c) { gridEl.appendChild(c); });
+        }
+        function toggleFavOnCard(grid, catId, card) {
+            const arr = getFavList(); const k = favKey(grid, catId); const i = arr.indexOf(k);
+            if (i === -1) { arr.push(k); } else { arr.splice(i, 1); }
+            saveFavList();
+            card.setAttribute('data-fav', isFav(grid, catId) ? '1' : '0');
+            const title = card.querySelector('.category-title');
+            if (title) {
+                const h = title.querySelector('.fav-heart');
+                if (isFav(grid, catId)) { if (!h) title.insertAdjacentHTML('beforeend', ' <span class="fav-heart">❤️</span>'); }
+                else { if (h) h.remove(); }
+            }
+            resortFavGrid(card.parentElement);
+            playClickSound();
+        }
+        document.addEventListener('dblclick', function (e) {
+            const card = e.target && e.target.closest ? e.target.closest('.category-card') : null;
+            if (!card) return;
+            const grid = card.getAttribute('data-fav-grid');
+            const catId = card.getAttribute('data-fav-id');
+            if (!grid || !catId) return;
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFavOnCard(grid, catId, card);
+        });
+
         window.goToCategorySelect = function () {
-            id('categoryGrid').innerHTML = kategoriler.map(k => `<div class="category-card category-card--${k.id}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${getCatName(k.id)}</div><div class="category-subtitle">${getCatSubtitle(k.id)}</div></div>`).join('');
+            id('categoryGrid').innerHTML = kategoriler.map((k, idx) => `<div class="category-card category-card--${k.id}" data-fav-grid="text" data-fav-id="${k.id}" data-fav="${isFav('text', k.id) ? 1 : 0}" data-orig-order="${idx}" onclick="selectCategory('${k.id}')" id="cat_${k.id}"><div class="category-icon">${k.icon}</div><div class="category-title">${getCatName(k.id)}${favHeart('text', k.id)}</div><div class="category-subtitle">${getCatSubtitle(k.id)}</div></div>`).join('');
+            resortFavGrid(id('categoryGrid'));
             hideAllMainScreens();
             cScreen.style.display = 'block';
             changeTheme('space');
@@ -8974,14 +9445,15 @@
 
         window.goToPhotoCategorySelect = function () {
             const grid = document.getElementById('photoCategoryGrid');
-            grid.innerHTML = photoKategoriler.map(k => {
+            grid.innerHTML = photoKategoriler.map((k, idx) => {
                 const textCatId = photoToTextCatMap[k.id] || k.id;
-                return `<div class="category-card category-card--${textCatId}" onclick="selectPhotoCategory('${k.id}')" id="pcat_${k.id}">
+                return `<div class="category-card category-card--${textCatId}" data-fav-grid="photo" data-fav-id="${k.id}" data-fav="${isFav('photo', k.id) ? 1 : 0}" data-orig-order="${idx}" onclick="selectPhotoCategory('${k.id}')" id="pcat_${k.id}">
                     <div class="category-icon">${k.icon}</div>
-                    <div class="category-title">${getCatName(k.adKey)}</div>
+                    <div class="category-title">${getCatName(k.adKey)}${favHeart('photo', k.id)}</div>
                     <div class="category-subtitle">${getPhotoSubTitle(k.subtitleKey)}</div>
                 </div>`;
             }).join('');
+            resortFavGrid(grid);
             hideAllMainScreens();
             document.getElementById('photoCategoryScreen').style.display = 'block';
             document.getElementById('photoCategoryNextBtn').disabled = true;
@@ -9381,6 +9853,8 @@
         window.showPhotoExitConfirm = function () {
             if (!photoTestAktif) return;
             exitTarget = 'photo';
+            document.querySelector('.exit-confirm-box h3').textContent = t('testtenCik');
+            document.querySelector('.exit-confirm-box p').textContent = t('testtenCikEmin');
             document.getElementById('exitConfirmModal').style.display = 'flex';
         };
 
@@ -9857,6 +10331,8 @@
         window.showExitConfirm = function () {
             if (!testAktif) return;
             exitTarget = 'text';
+            document.querySelector('.exit-confirm-box h3').textContent = t('testtenCik');
+            document.querySelector('.exit-confirm-box p').textContent = t('testtenCikEmin');
             document.getElementById('exitConfirmModal').style.display = 'flex';
         };
         window.confirmExit = function () {
@@ -9869,6 +10345,25 @@
                 hideAllMainScreens();
                 document.getElementById('photoCategoryScreen').style.display = 'block';
                 changeTheme(secilenPhotoKategori?.theme || 'space');
+            } else if (exitTarget === 'blur') {
+                isInTest = false;
+                if (soundEnabled) startBgMusic();
+                hideAllMainScreens();
+                document.getElementById('blurCategoryScreen').style.display = 'block';
+                changeTheme('space');
+            } else if (exitTarget === 'ombm') {
+                isInTest = false;
+                if (soundEnabled) startBgMusic();
+                hideAllMainScreens();
+                document.getElementById('ombmCategoryScreen').style.display = 'block';
+                changeTheme('space');
+            } else if (exitTarget === 'siralama') {
+                isInTest = false;
+                if (soundEnabled) startBgMusic();
+                hideAllMainScreens();
+                document.getElementById('siralamaCategoryScreen').style.display = 'block';
+                changeTheme('space');
+                window.scrollTo(0, 0);
             } else {
                 clearInterval(timer);
                 testAktif = false;
@@ -9895,6 +10390,27 @@
             </div>`;
         };
         window.goToCategoriesFromResult = function () { clearInterval(timer); rScreen.style.display = 'none'; cScreen.style.display = 'block'; changeTheme('space'); };
+        window.replaySameCategory = function () {
+            clearInterval(timer);
+            rScreen.style.display = 'none';
+            if (secilenKategori) {
+                changeTheme(secilenKategori.id);
+                goToDifficultySelect();
+            } else {
+                cScreen.style.display = 'block';
+                changeTheme('space');
+            }
+        };
+        window.replaySamePhotoCategory = function () {
+            clearInterval(photoTimer);
+            if (secilenPhotoKategori) {
+                goToPhotoDifficulty();
+            } else {
+                hideAllMainScreens();
+                document.getElementById('photoCategoryScreen').style.display = 'block';
+                changeTheme('space');
+            }
+        };
         window.resetToStart = function () { clearInterval(timer); rScreen.style.display = 'none'; pScreen.style.display = 'block'; changeTheme('space'); };
         function renderMultiplayerLobby() {
             const box = document.getElementById('multiplayerLobbyBox');
@@ -10492,14 +11008,15 @@
         window.goToOmbmCategorySelect = function () {
             buildOmbmPools();
             const grid = document.getElementById('ombmCategoryGrid');
-            grid.innerHTML = ombmKategoriler.map(k => {
+            grid.innerHTML = ombmKategoriler.map((k, idx) => {
                 const neonClass = `category-card--${k.id}`;
-                return `<div class="category-card ${neonClass}" onclick="selectOmbmCategory('${k.id}')" id="ombmCat_${k.id}">
+                return `<div class="category-card ${neonClass}" data-fav-grid="ombm" data-fav-id="${k.id}" data-fav="${isFav('ombm', k.id) ? 1 : 0}" data-orig-order="${idx}" onclick="selectOmbmCategory('${k.id}')" id="ombmCat_${k.id}">
                     <div class="category-icon">${k.icon}</div>
-                    <div class="category-title">${k.name}</div>
+                    <div class="category-title">${k.name}${favHeart('ombm', k.id)}</div>
                     <div class="category-subtitle">${k.max} görsel</div>
                 </div>`;
             }).join('');
+            resortFavGrid(grid);
             hideAllMainScreens();
             document.getElementById('ombmCategoryScreen').style.display = 'block';
             document.getElementById('ombmCategoryNextBtn').disabled = true;
@@ -10528,6 +11045,8 @@
             hideAllMainScreens();
             document.getElementById('ombmCountScreen').style.display = 'block';
         };
+
+        window.replayOmbm = function () { goToOmbmCount(); };
 
         window.goBackToOmbmCategory = function () {
             hideAllMainScreens();
@@ -10700,11 +11219,10 @@
         };
 
         window.exitOmbmToCategories = function () {
-            isInTest = false;
-            if (soundEnabled) startBgMusic();
-            hideAllMainScreens();
-            document.getElementById('ombmCategoryScreen').style.display = 'block';
-            changeTheme('space');
+            exitTarget = 'ombm';
+            document.querySelector('.exit-confirm-box h3').textContent = '🚪 Oyundan Çık';
+            document.querySelector('.exit-confirm-box p').textContent = 'Oyundan çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.';
+            document.getElementById('exitConfirmModal').style.display = 'flex';
         };
 
         function finishOmbmTournament() {
@@ -11323,14 +11841,15 @@
         window.goToSiralamaCategorySelect = function () {
             buildSiralamaPools();
             const grid = document.getElementById('siralamaCategoryGrid');
-            grid.innerHTML = siralamaKategoriler.map(k => {
+            grid.innerHTML = siralamaKategoriler.map((k, idx) => {
                 const neon = 'category-card--' + k.id;
-                return '<div class="category-card ' + neon + '" onclick="selectSiralamaCategory(\'' + k.id + '\')" id="siralamaCat_' + k.id + '">' +
+                return '<div class="category-card ' + neon + '" data-fav-grid="siralama" data-fav-id="' + k.id + '" data-fav="' + (isFav('siralama', k.id) ? 1 : 0) + '" data-orig-order="' + idx + '" onclick="selectSiralamaCategory(\'' + k.id + '\')" id="siralamaCat_' + k.id + '">' +
                     '<div class="category-icon">' + k.icon + '</div>' +
-                    '<div class="category-title">' + k.name + '</div>' +
+                    '<div class="category-title">' + k.name + favHeart('siralama', k.id) + '</div>' +
                     '<div class="category-subtitle">' + k.max + ' görsel</div>' +
                     '</div>';
             }).join('');
+            resortFavGrid(grid);
             hideAllMainScreens();
             document.getElementById('siralamaCategoryScreen').style.display = 'block';
             siralamaSelectedCat = null;
@@ -11737,12 +12256,10 @@
             changeTheme('space');
         };
         window.exitSiralamaToCategories = function () {
-            isInTest = false;
-            if (soundEnabled) startBgMusic();
-            hideAllMainScreens();
-            document.getElementById('siralamaCategoryScreen').style.display = 'block';
-            changeTheme('space');
-            window.scrollTo(0, 0);
+            exitTarget = 'siralama';
+            document.querySelector('.exit-confirm-box h3').textContent = '🚪 Oyundan Çık';
+            document.querySelector('.exit-confirm-box p').textContent = 'Oyundan çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.';
+            document.getElementById('exitConfirmModal').style.display = 'flex';
         };
 
 
@@ -12162,10 +12679,11 @@
 
         window.goToBlurCategorySelect = function () {
             const grid = document.getElementById('blurCategoryGrid');
-            grid.innerHTML = Object.entries(blurCategories).map(([id, cat]) => {
+            grid.innerHTML = Object.entries(blurCategories).map(([id, cat], idx) => {
                 const best = localStorage.getItem('blur_best_' + id) || 0;
-                return `<div class="category-card category-card--${id}" onclick="selectBlurCategory('${id}')" id="blurCat_${id}"><div class="category-icon">${cat.icon}</div><div class="category-title">${cat.name}</div><div class="category-subtitle">${cat.items.length} görsel</div>${best > 0 ? `<div style="margin-top:6px;color:#facc15;font-size:11px;font-weight:700">🏆 En iyi: ${best}</div>` : ''}</div>`;
+                return `<div class="category-card category-card--${id}" data-fav-grid="blur" data-fav-id="${id}" data-fav="${isFav('blur', id) ? 1 : 0}" data-orig-order="${idx}" onclick="selectBlurCategory('${id}')" id="blurCat_${id}"><div class="category-icon">${cat.icon}</div><div class="category-title">${cat.name}${favHeart('blur', id)}</div><div class="category-subtitle">${cat.items.length} görsel</div>${best > 0 ? `<div style="margin-top:6px;color:#facc15;font-size:11px;font-weight:700">🏆 En iyi: ${best}</div>` : ''}</div>`;
             }).join('');
+            resortFavGrid(grid);
             hideAllMainScreens();
             document.getElementById('blurCategoryScreen').style.display = 'block';
             document.getElementById('blurCategoryNextBtn').disabled = true;
@@ -12445,7 +12963,7 @@
             if (blurTotalScore > prevBest) localStorage.setItem(bestKey, blurTotalScore);
             // puan ekle rank sistemine
             const pts = Math.floor(blurTotalScore / 100);
-            totalPoints += pts; localStorage.setItem('matex_totalPoints', totalPoints); updateRankDisplay();
+            totalRankPoints += pts; localStorage.setItem('matex_totalPoints', totalRankPoints); updateRankDisplay();
             document.getElementById('blurFinalList').innerHTML = blurHistory.map((h, i) => {
                 const icon = h.correct ? '✅' : '❌'; const lvlText = h.level === 99 ? 'Pas' : h.level >= 5 ? 'Bilemedi' : `Seviye ${h.level + 1}`; const color = h.correct ? '#4ade80' : '#f87171';
                 return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><div style="display:flex;gap:10px;align-items:center"><span>${icon}</span><span style="font-weight:700">${i + 1}. ${h.name}</span><span style="font-size:11px;color:#8a8ab0">${lvlText}</span></div><span style="color:${color};font-weight:800">+${h.points}</span></div>`;
@@ -12453,18 +12971,234 @@
             changeTheme(blurSelectedCategory);
         }
 
-        window.replayBlurCategory = function () { startBlurGame(); };
+        window.replayBlurCategory = function () { goToBlurCount(); };
         window.goBackToBlurCategoryFromFinal = function () {
             hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display = 'block'; changeTheme('space');
         };
         window.exitBlurToCategories = function () {
-            if (confirm('Oyundan çıkmak istiyor musun? Skorun kaybolacak.')) {
-                isInTest = false; if (soundEnabled) startBgMusic();
-                hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display = 'block'; changeTheme('space');
-            }
+            exitTarget = 'blur';
+            document.querySelector('.exit-confirm-box h3').textContent = '🚪 Oyundan Çık';
+            document.querySelector('.exit-confirm-box p').textContent = 'Oyundan çıkmak istediğinize emin misiniz? Skorunuz kaybolacak.';
+            document.getElementById('exitConfirmModal').style.display = 'flex';
         };
 
+
+        // ===== MAĞAZA SİSTEMİ =====
+        const DEFAULT_MUSIC_NOTES = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 349.23, 440.00, 523.25, 440.00, 349.23, 329.63];
+        const SHOP_CATEGORIES = [
+            { id: 'avatar', icon: '👤', name: 'Avatar' },
+            { id: 'nameColor', icon: '🎨', name: 'İsim Rengi' },
+            { id: 'frame', icon: '🖼️', name: 'Profil Çerçevesi' },
+            { id: 'theme', icon: '🌌', name: 'Özel Tema' },
+            { id: 'music', icon: '🎵', name: 'Arka Plan Müziği' }
+        ];
+        const SHOP_ITEMS = {
+            avatar: [
+                { id: 'av_fox', emoji: '🦊', name: 'Tilki', price: 40, tier: 1 },
+                { id: 'av_panda', emoji: '🐼', name: 'Panda', price: 60, tier: 1 },
+                { id: 'av_astronaut', emoji: '👨‍🚀', name: 'Astronot', price: 90, tier: 2 },
+                { id: 'av_ninja', emoji: '🥷', name: 'Ninja', price: 120, tier: 2 },
+                { id: 'av_robot', emoji: '🤖', name: 'Robot', price: 160, tier: 3 },
+                { id: 'av_dragon', emoji: '🐉', name: 'Ejderha', price: 250, tier: 4 },
+                { id: 'av_crown', emoji: '👑', name: 'Altın Taç', price: 350, tier: 5 },
+                { id: 'av_unicorn', emoji: '🦄', name: 'Tek Boynuz', price: 500, tier: 6 }
+            ],
+            nameColor: [
+                { id: 'nc_gray', name: 'Gri', color: '#9ca3af', price: 25, tier: 1 },
+                { id: 'nc_blue', name: 'Mavi', color: '#00d2ff', price: 50, tier: 1 },
+                { id: 'nc_green', name: 'Neon Yeşil', color: '#4ade80', price: 90, tier: 2 },
+                { id: 'nc_pink', name: 'Pembe', color: '#ff6bcb', price: 130, tier: 3 },
+                { id: 'nc_gold', name: 'Altın', color: '#ffd700', price: 260, tier: 4 },
+                { id: 'nc_rainbow', name: 'Gökkuşağı', rainbow: true, price: 600, tier: 6 }
+            ],
+            frame: [
+                { id: 'fr_silver', name: 'Gümüş', price: 60, tier: 1 },
+                { id: 'fr_blue', name: 'Safir Mavi', price: 120, tier: 2 },
+                { id: 'fr_gold', name: 'Altın', price: 200, tier: 3 },
+                { id: 'fr_neon', name: 'Neon', price: 300, tier: 4 },
+                { id: 'fr_diamond', name: 'Elmas', price: 450, tier: 5 },
+                { id: 'fr_rainbow', name: 'Gökkuşağı', price: 600, tier: 6 }
+            ],
+            theme: [
+                { id: 'th_sunset', name: 'Gün Batımı', price: 80, tier: 1, bg: 'linear-gradient(135deg,#2d1b4e,#7b2d26,#f59e0b)' },
+                { id: 'th_ocean', name: 'Okyanus', price: 100, tier: 2, bg: 'linear-gradient(135deg,#021b33,#0b4f6c,#38bdf8)' },
+                { id: 'th_forest', name: 'Orman', price: 120, tier: 2, bg: 'linear-gradient(135deg,#052e16,#166534,#84cc16)' },
+                { id: 'th_neon', name: 'Neon Şehir', price: 250, tier: 4, bg: 'linear-gradient(135deg,#0f0c29,#302b63,#ff00cc)' },
+                { id: 'th_galaxy', name: 'Galaksi', price: 400, tier: 5, bg: 'linear-gradient(135deg,#0b0014,#3b0764,#7c3aed)' },
+                { id: 'th_rainbow', name: 'Gökkuşağı', price: 600, tier: 6, bg: 'linear-gradient(135deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff)' }
+            ],
+            music: [
+                { id: 'mu_happy', name: 'Neşeli', price: 60, tier: 1, notes: [523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 523.25, 659.25, 783.99, 880.00], interval: 300 },
+                { id: 'mu_mystery', name: 'Gizemli', price: 140, tier: 2, notes: [220.00, 233.08, 246.94, 261.63, 246.94, 233.08, 220.00, 196.00, 174.61, 196.00], interval: 600 },
+                { id: 'mu_epic', name: 'Epik', price: 220, tier: 3, notes: [130.81, 196.00, 261.63, 329.63, 392.00, 329.63, 261.63, 196.00, 261.63, 329.63, 392.00, 523.25], interval: 450 },
+                { id: 'mu_retro', name: 'Retro Oyun', price: 300, tier: 4, notes: [392.00, 392.00, 523.25, 392.00, 659.25, 587.33, 392.00, 659.25, 783.99, 659.25], interval: 260 },
+                { id: 'mu_royal', name: 'Kraliyet', price: 500, tier: 5, notes: [261.63, 293.66, 329.63, 392.00, 329.63, 293.66, 261.63, 329.63, 392.00, 440.00, 523.25, 440.00], interval: 500 }
+            ]
+        };
+
+        let shopOwned = [];
+        let shopActive = { avatar: null, nameColor: null, frame: null, theme: null, music: null };
+        let shopCurrentTab = 'avatar';
+
+        function loadShopState() {
+            try { shopOwned = JSON.parse(localStorage.getItem('matex_owned') || '[]'); } catch (e) { shopOwned = []; }
+            if (!Array.isArray(shopOwned)) shopOwned = [];
+            try { shopActive = JSON.parse(localStorage.getItem('matex_active') || 'null'); } catch (e) { shopActive = null; }
+            if (!shopActive || typeof shopActive !== 'object') shopActive = { avatar: null, nameColor: null, frame: null, theme: null, music: null };
+        }
+        function saveShopState() {
+            try { localStorage.setItem('matex_owned', JSON.stringify(shopOwned)); localStorage.setItem('matex_active', JSON.stringify(shopActive)); } catch (e) { }
+        }
+        function isOwned(id) { return shopOwned.indexOf(id) !== -1; }
+        function getShopItem(cat, id) {
+            const list = SHOP_ITEMS[cat] || [];
+            for (let i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+            return null;
+        }
+        function getActiveShopItem(cat) { return getShopItem(cat, shopActive[cat]); }
+        function spendPoints(p) {
+            totalRankPoints -= p;
+            if (totalRankPoints < 0) totalRankPoints = 0;
+            localStorage.setItem('matex_totalPoints', totalRankPoints);
+            updateRankDisplay();
+        }
+        function tierStars(t) { let st = ''; for (let i = 0; i < t; i++) st += '★'; return st; }
+
+        window.openShop = function () {
+            shopCurrentTab = 'avatar';
+            renderShop();
+            document.getElementById('shopModal').classList.add('open');
+            playClickSound();
+        };
+        window.closeShop = function () { document.getElementById('shopModal').classList.remove('open'); };
+
+        function renderShop() {
+            const pts = document.getElementById('shopPointsDisplay');
+            if (pts) pts.textContent = totalRankPoints;
+            const tabs = document.getElementById('shopTabs');
+            if (tabs && !tabs.childElementCount) {
+                tabs.innerHTML = SHOP_CATEGORIES.map(function (c) {
+                    return '<div class="shop-tab" data-cat="' + c.id + '" onclick="shopSelectTab(\'' + c.id + '\')">' + c.icon + ' ' + c.name + '</div>';
+                }).join('');
+            }
+            if (tabs) {
+                tabs.querySelectorAll('.shop-tab').forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-cat') === shopCurrentTab); });
+            }
+            const items = SHOP_ITEMS[shopCurrentTab] || [];
+            const box = document.getElementById('shopItems');
+            box.innerHTML = items.map(function (it) {
+                const owned = isOwned(it.id);
+                const active = shopActive[shopCurrentTab] === it.id;
+                let preview = '';
+                if (shopCurrentTab === 'avatar') preview = '<div class="shop-prev-avatar">' + it.emoji + '</div>';
+                else if (shopCurrentTab === 'nameColor') preview = '<div class="shop-prev-name" style="color:' + (it.rainbow ? '#fff' : it.color) + (it.rainbow ? ';background:linear-gradient(90deg,red,orange,yellow,green,blue,violet);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent' : '') + '">Aa İsim</div>';
+                else if (shopCurrentTab === 'frame') preview = '<div class="shop-prev-frame shop-frame-' + it.id + '">👤</div>';
+                else if (shopCurrentTab === 'theme') preview = '<div class="shop-prev-theme" style="background:' + it.bg + '"></div>';
+                else preview = '<div class="shop-prev-music">🎵</div>';
+                let action = '';
+                if (owned) {
+                    if (active) action = '<button class="shop-btn active" onclick="shopDeactivate(\'' + shopCurrentTab + '\')">✅ Aktif (Kapat)</button>';
+                    else action = '<button class="shop-btn own" onclick="shopActivate(\'' + shopCurrentTab + '\',\'' + it.id + '\')">▶ Aktifleştir</button>';
+                } else {
+                    const afford = totalRankPoints >= it.price;
+                    action = '<button class="shop-btn buy' + (afford ? '' : ' disabled') + '" ' + (afford ? 'onclick="shopBuy(\'' + shopCurrentTab + '\',\'' + it.id + '\')"' : 'disabled') + '>🔓 ' + it.price + ' P</button>';
+                }
+                return '<div class="shop-item' + (owned ? ' owned' : '') + (active ? ' active' : '') + '">' +
+                    '<div class="shop-item-tier">' + tierStars(it.tier) + '</div>' +
+                    preview +
+                    '<div class="shop-item-name">' + it.name + '</div>' +
+                    '<div class="shop-item-price">⭐ ' + it.price + ' Puan</div>' +
+                    action +
+                    '</div>';
+            }).join('');
+        }
+
+        window.shopSelectTab = function (cat) {
+            shopCurrentTab = cat;
+            renderShop();
+            playClickSound();
+        };
+        window.shopBuy = function (cat, id) {
+            const it = getShopItem(cat, id);
+            if (!it || isOwned(id)) return;
+            if (totalRankPoints < it.price) { playWrongSound(); return; }
+            spendPoints(it.price);
+            shopOwned.push(id);
+            saveShopState();
+            renderShop();
+            playCorrectSound();
+        };
+        window.shopActivate = function (cat, id) {
+            if (!isOwned(id)) return;
+            shopActive[cat] = id;
+            saveShopState();
+            applyShopCustomizations();
+            renderShop();
+            playClickSound();
+        };
+        window.shopDeactivate = function (cat) {
+            shopActive[cat] = null;
+            saveShopState();
+            applyShopCustomizations();
+            renderShop();
+            playClickSound();
+        };
+
+        function applyShopAvatar() {
+            const it = getActiveShopItem('avatar');
+            const preview = document.getElementById('avatarPreview');
+            if (it) {
+                secilenAvatar = it.emoji;
+                uploadedImage = null;
+                if (preview) preview.textContent = it.emoji;
+            }
+        }
+        function applyShopNameColor() {
+            const it = getActiveShopItem('nameColor');
+            ['testUserName', 'photoTestUserName'].forEach(function (id) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.classList.remove('name-rainbow');
+                if (!it) { el.style.color = '#00d2ff'; return; }
+                if (it.rainbow) { el.style.color = ''; el.classList.add('name-rainbow'); }
+                else el.style.color = it.color;
+            });
+        }
+        function applyShopFrame() {
+            const it = getActiveShopItem('frame');
+            ['avatarPreview', 'testUserAvatar', 'photoTestUserAvatar'].forEach(function (id) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.classList.forEach(function (c) { if (c.indexOf('shop-frame-') === 0) el.classList.remove(c); });
+                if (it) el.classList.add('shop-frame-' + it.id);
+            });
+        }
+        function applyShopTheme() {
+            document.body.classList.forEach(function (c) { if (c.indexOf('shop-theme-') === 0) document.body.classList.remove(c); });
+            const it = getActiveShopItem('theme');
+            if (it) document.body.classList.add('shop-theme-' + it.id);
+        }
+        function applyShopCustomizations() {
+            applyShopAvatar();
+            applyShopNameColor();
+            applyShopFrame();
+            applyShopTheme();
+        }
+
+        function getActiveMusicNotes() {
+            const it = getActiveShopItem('music');
+            return (it && it.notes && it.notes.length) ? it.notes : DEFAULT_MUSIC_NOTES;
+        }
+        function getActiveMusicInterval() {
+            const it = getActiveShopItem('music');
+            return (it && it.interval) ? it.interval : 700;
+        }
+
+        loadShopState();
+        applyShopCustomizations();
+
         changeTheme('space'); updateRankDisplay();
+
     </script>
     <script defer
         src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496"
@@ -12496,7 +13230,22 @@
         crossorigin="anonymous"></script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a279c0052816db8b',t:'MTc4NjE0MjA4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a317a258fc16e323',t:'MTc4Nzc5NzYxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a31de883e88993a0',t:'MTc4Nzg2MzQwNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+
+    <!-- ===== MAĞAZA MODALI ===== -->
+    <div class="shop-modal" id="shopModal">
+        <div class="shop-panel">
+            <div class="shop-header">
+                <h2>🛒 Mağaza</h2>
+                <div class="shop-points">⭐ <span id="shopPointsDisplay">0</span> Puan</div>
+                <button class="shop-close" onclick="closeShop()">✕</button>
+            </div>
+            <div class="shop-tabs" id="shopTabs"></div>
+            <div class="shop-items" id="shopItems"></div>
+        </div>
+    </div>
+
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a31e55e73ad1e33f',t:'MTc4Nzg2Nzg4NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
+
 
 </html>
