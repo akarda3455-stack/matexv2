@@ -2718,7 +2718,6 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .test-header {
             display: flex;
             justify-content: space-between;
@@ -4295,12 +4294,20 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
         .blur-photo-frame img{
-            width:100%;height:100%;object-fit:cover;display:block;
+            position:absolute;
+            inset:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            object-position:center;
+            display:block;
             transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
             will-change: filter, opacity;
         }
         .blur-photo-placeholder{
-            width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+          position:absolute;
+            inset:0;
+            width:100%;height:100%;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
             font-size:110px;transition: filter 0.7s ease, opacity 0.3s ease;
         }
         .blur-photo-frame::after{
