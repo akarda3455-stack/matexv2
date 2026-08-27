@@ -4258,6 +4258,129 @@
             border-color: #8a2be2;
             box-shadow: 0 0 18px rgba(138, 43, 226, 0.3);
         }
+    
+        /* ===== BLUR GUESS - 5. OYUN ===== */
+        .mode-card--blur {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(30, 20, 60, 0.95));
+            border-color: #ec4899;
+        }
+        .mode-card--blur:hover {
+            box-shadow: 0 0 35px rgba(236, 72, 153, 0.45), 0 0 70px rgba(138, 43, 226, 0.2);
+        }
+        .blur-game-top{
+            display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+            padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:20px;
+        }
+        .blur-game-badge{
+            background: rgba(138,43,226,0.2);border:1px solid rgba(138,43,226,0.4);
+            padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;color:#fff;
+        }
+        .blur-score-badge{
+            background: linear-gradient(135deg, rgba(250,204,21,0.15), rgba(245,158,11,0.15));
+            border:1px solid rgba(250,204,21,0.4);color:#facc15;
+        }
+        .blur-levels{display:flex;gap:6px;align-items:center}
+        .blur-dot{width:32px;height:8px;border-radius:999px;background:rgba(255,255,255,0.15);transition:all 0.4s}
+        .blur-dot.active{background:linear-gradient(90deg,#8a2be2,#ec4899);box-shadow:0 0 10px rgba(236,72,153,0.5)}
+        .blur-dot.used{background:#4ade80}
+        .blur-game-area{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;align-items:start}
+        @media(max-width:800px){.blur-game-area{grid-template-columns:1fr}}
+        .blur-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+        .blur-photo-frame{
+            width:100%;max-width:480px;aspect-ratio:1/1;
+            border-radius:28px;overflow:hidden;
+            border:3px solid rgba(236,72,153,0.5);
+            background: radial-gradient(ellipse at center, #1e1b4b, #0f0a1a);
+            position:relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .blur-photo-frame img{
+            width:100%;height:100%;object-fit:cover;display:block;
+            transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+            will-change: filter, opacity;
+        }
+        .blur-photo-placeholder{
+            width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+            font-size:110px;transition: filter 0.7s ease, opacity 0.3s ease;
+        }
+        .blur-photo-frame::after{
+            content:'';position:absolute;inset:0;background:#0f0a1a;opacity:0;pointer-events:none;transition:opacity 0.3s ease;
+        }
+        .blur-photo-frame.loading::after{opacity:1}
+        .blur-photo-frame.loading img, .blur-photo-frame.loading .blur-photo-placeholder{opacity:0 !important}
+        .blur-quality-bar{width:100%;max-width:480px}
+        .blur-quality-label{display:flex;justify-content:space-between;font-size:12px;color:#8a8ab0;font-weight:600;margin-bottom:6px}
+        .blur-quality-track{width:100%;height:10px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden}
+        .blur-quality-fill{height:100%;border-radius:999px;transition:width 0.7s ease, background 0.5s ease}
+        .blur-controls{
+            background: rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);
+            border-radius:24px;padding:20px;
+        }
+        .blur-question-info{font-size:13px;color:#8a8ab0;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+        .blur-current-points{
+            display:flex;align-items:center;gap:10px;margin-bottom:16px;
+            background: linear-gradient(135deg, rgba(250,204,21,0.12), rgba(138,43,226,0.12));
+            border:1px solid rgba(250,204,21,0.25);border-radius:16px;padding:12px 16px;
+        }
+        .blur-points-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#facc15,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;font-weight:800}
+        .blur-points-text{flex:1}
+        .blur-points-value{font-size:22px;font-weight:800;color:#facc15}
+        .blur-points-label{font-size:11px;color:#a0a0c0;font-weight:600}
+        .blur-input-wrap{position:relative;margin-bottom:12px}
+        .blur-game-input{
+            width:100%;background:rgba(0,0,0,0.4);border:2px solid rgba(138,43,226,0.4);
+            border-radius:16px;padding:16px 18px;color:#fff;font-size:18px;font-weight:600;
+            font-family:inherit;outline:none;transition:0.3s;text-align:center;
+        }
+        .blur-game-input:focus{border-color:#ec4899;box-shadow:0 0 20px rgba(236,72,153,0.25)}
+        .blur-game-input::placeholder{color:#5a5a7a}
+        .blur-suggestions{
+            position:absolute;top:calc(100% + 6px);left:0;right:0;
+            background: rgba(20,15,40,0.98);border:1px solid rgba(138,43,226,0.4);border-radius:16px;
+            max-height:180px;overflow-y:auto;z-index:10;display:none;
+        }
+        .blur-suggestions.show{display:block}
+        .blur-sugg-item{padding:12px 16px;cursor:pointer;color:#c0c0e0;font-weight:600;transition:0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .blur-sugg-item:hover{background:rgba(138,43,226,0.2);color:#fff}
+        .blur-btn-row{display:flex;gap:10px;margin-top:14px}
+        .blur-btn{
+            flex:1;padding:14px;border-radius:14px;border:none;font-weight:800;font-size:15px;cursor:pointer;transition:0.3s;
+            font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;
+        }
+        .blur-btn-primary{background:linear-gradient(135deg,#8a2be2,#ec4899);color:#fff;box-shadow:0 8px 20px rgba(236,72,153,0.3)}
+        .blur-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(236,72,153,0.4)}
+        .blur-btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#a0a0c0}
+        .blur-btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff}
+        .blur-btn-skip{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171}
+        .blur-feedback{
+            margin-top:14px;min-height:44px;padding:12px 16px;border-radius:14px;
+            font-weight:700;font-size:14px;text-align:center;display:none;animation: pop 0.3s ease;
+        }
+        .blur-feedback.show{display:block}
+        .blur-feedback.wrong{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171}
+        .blur-feedback.correct{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#4ade80}
+        .blur-feedback.info{background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);color:#60a5fa}
+        .blur-result-overlay{
+            position:fixed;inset:0;background:rgba(5,3,16,0.88);backdrop-filter:blur(16px);
+            display:none;justify-content:center;align-items:center;z-index:2000;padding:20px;
+        }
+        .blur-result-overlay.show{display:flex}
+        .blur-result-card{
+            background: linear-gradient(135deg, rgba(20,15,40,0.98), rgba(30,20,60,0.98));
+            border:2px solid rgba(138,43,226,0.4);border-radius:28px;
+            padding:28px;max-width:420px;width:100%;text-align:center;
+            box-shadow:0 30px 80px rgba(0,0,0,0.6);animation: slideUp 0.4s ease;
+        }
+        .blur-result-card.correct{border-color:#22c55e;box-shadow:0 0 40px rgba(34,197,94,0.25)}
+        .blur-result-card.wrong{border-color:#ef4444;box-shadow:0 0 40px rgba(239,68,68,0.25)}
+        .blur-final-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+        .blur-stat-box{background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:14px;text-align:center}
+        .blur-progress-dots{display:flex;gap:6px;justify-content:center;margin:16px 0}
+        .blur-p-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.15)}
+        .blur-p-dot.done{background:#4ade80}
+        .blur-p-dot.current{background:#facc15;box-shadow:0 0 10px #facc15}
+        .blur-p-dot.fail{background:#ef4444}
+
     </style>
 </head>
 
@@ -4440,6 +4563,19 @@
     <div class="animated-bg theme-space" id="animatedBg">
         <div id="animationContainer"></div>
     </div>
+
+    <!-- BLUR RESULT OVERLAY -->
+    <div class="blur-result-overlay" id="blurResultOverlay">
+        <div class="blur-result-card" id="blurResultCard">
+            <span style="font-size:64px;margin-bottom:12px;display:block" id="blurResultEmoji">✅</span>
+            <div style="font-size:24px;font-weight:800;margin-bottom:6px;color:#fff" id="blurResultTitle">Doğru!</div>
+            <div style="font-size:20px;font-weight:700;color:#a78bfa;margin-bottom:10px" id="blurResultName">Thor</div>
+            <div style="font-size:18px;font-weight:800;color:#facc15;margin-bottom:18px" id="blurResultPoints">+1000 Puan</div>
+            <div style="font-size:13px;color:#8a8ab0;margin-bottom:18px" id="blurResultDesc">Süper!</div>
+            <button class="primary-btn" style="width:100%" onclick="nextBlurQuestion()">Sonraki Soru →</button>
+        </div>
+    </div>
+
     <div class="exit-confirm-modal" id="exitConfirmModal">
         <div class="exit-confirm-box">
             <h3>🚪 Testten Çık</h3>
@@ -4587,8 +4723,13 @@
                 <div class="mode-card mode-card--siralama" id="modeSiralamaCard" onclick="selectGameMode('siralama')">
                     <div class="mode-card-icon">📊</div>
                     <div class="mode-card-title">Sıralama Oyunu</div>
-                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi → Çok Kötü) yerleştir.
-                    </div>
+                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi → Çok Kötü) yerleştir.</div>
+                </div>
+
+                <div class="mode-card mode-card--blur" id="modeBlurCard" onclick="selectGameMode('blur')">
+                    <div class="mode-card-icon">👁️‍🗨️</div>
+                    <div class="mode-card-title">Bulanık Tahmin</div>
+                    <div class="mode-card-desc">Görsel bulanık başlar, erken bil çok puan al! 10 kategori, 5 seviye netleşme.</div>
                 </div>
             </div>
             <div class="button-group">
@@ -4925,6 +5066,119 @@
                 <button class="back-btn" onclick="goBackToModeFromSiralama()">🎮 Modlar</button>
             </div>
         </div>
+
+
+        <!-- ===== BLUR GUESS - 5. OYUN EKRANLARI ===== -->
+        <div class="screen" id="blurCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromBlur()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">👁️‍🗨️ Bulanık Kategori</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride bulanık tahmin oynamak istersin? Erken bil, çok kazan!</p>
+            <div class="categories-grid" id="blurCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="blurCategoryNextBtn" onclick="goToBlurCount()" disabled>Soru Sayısı Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToBlurCategory()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Soru Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" id="blurCountSub">Kaç soru oynamak istersin?</p>
+            <div class="photo-count-box" id="blurCountBox">
+                <label>Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="blurCountInput" type="number" min="1" max="45" value="10" inputmode="numeric" oninput="validateBlurCount()">
+                    <div class="photo-count-max" id="blurMaxLabel">/ max 45</div>
+                </div>
+                <div class="photo-count-error" id="blurCountErr"></div>
+            </div>
+            <div style="margin:18px auto;max-width:500px;background:rgba(236,72,153,0.08);border:1px dashed rgba(236,72,153,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
+                <span>🔥 Seviye 1: 1000 Puan</span><span>👁️ Seviye 5: 50 Puan</span><span>❌ Bilemezsen: 0</span>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="blurCountNextBtn" onclick="startBlurGame()">🚀 Oyunu Başlat</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurGameScreen" style="display:none;">
+            <div class="blur-game-top">
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                    <div class="blur-game-badge" id="blurGameCatBadge">🦸 Marvel</div>
+                    <div class="blur-game-badge" id="blurGameQBadge">Soru 1 / 10</div>
+                    <div class="blur-game-badge blur-score-badge">⭐ <span id="blurTotalScore">0</span> Puan</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center">
+                    <span style="font-size:11px;color:#8a8ab0;font-weight:700;letter-spacing:1px">KALİTE</span>
+                    <div class="blur-levels" id="blurLevels"></div>
+                </div>
+            </div>
+            <div class="blur-game-area">
+                <div class="blur-photo-wrap">
+                    <div class="blur-photo-frame" id="blurPhotoFrame">
+                        <img id="blurGameImage" src="" alt="" style="display:none">
+                        <div class="blur-photo-placeholder" id="blurPhotoPlaceholder"><span id="blurPlaceholderEmoji">🦸</span><span class="label" id="blurPlaceholderLabel">Yükleniyor...</span></div>
+                    </div>
+                    <div class="blur-quality-bar">
+                        <div class="blur-quality-label"><span id="blurQualityText">Kalite: %10 - Çok Bulanık</span><span id="blurPointsText">1000 Puan</span></div>
+                        <div class="blur-quality-track"><div class="blur-quality-fill" id="blurQualityFill" style="width:20%;background:linear-gradient(90deg,#ef4444,#f59e0b)"></div></div>
+                    </div>
+                    <div class="blur-progress-dots" id="blurProgressDots"></div>
+                </div>
+                <div class="blur-controls">
+                    <div class="blur-question-info" id="blurAttemptInfo">1. TAHMİN HAKKI • En yüksek puan için hemen bil!</div>
+                    <div class="blur-current-points">
+                        <div class="blur-points-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="blur-points-text"><div class="blur-points-value" id="blurCurrentPointsVal">1000</div><div class="blur-points-label">Bu sorudan kazanabileceğin puan</div></div>
+                    </div>
+                    <div class="blur-input-wrap">
+                        <input type="text" class="blur-game-input" id="blurGuessInput" placeholder="Tahminini yaz..." autocomplete="off" oninput="onBlurInputChange()" onkeydown="if(event.key==='Enter') submitBlurGuess()">
+                        <div class="blur-suggestions" id="blurSuggestions"></div>
+                    </div>
+                    <div class="blur-btn-row">
+                        <button class="blur-btn blur-btn-primary" id="blurGuessBtn" onclick="submitBlurGuess()"><i class="fas fa-paper-plane"></i> Tahmin Et</button>
+                        <button class="blur-btn blur-btn-ghost" onclick="useBlurHint()" id="blurHintBtn"><i class="fas fa-lightbulb"></i> İpucu</button>
+                    </div>
+                    <div class="blur-btn-row">
+                        <button class="blur-btn blur-btn-skip" onclick="skipBlurQuestion()"><i class="fas fa-forward"></i> Pas Geç (0 Puan)</button>
+                    </div>
+                    <div class="blur-feedback" id="blurFeedback"></div>
+                </div>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:10px;justify-content:center">
+                <button class="back-btn" onclick="exitBlurToCategories()">🚪 Çıkış</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurFinalScreen" style="display:none;text-align:center">
+            <div style="font-size:72px;margin-bottom:10px">🏆</div>
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:6px">Oyun Bitti!</h1>
+            <p style="color:#a0d0ff;margin-bottom:20px" id="blurFinalCat">Filmler • 10 Soru</p>
+            <div class="blur-final-stats">
+                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalScore">0</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div></div>
+                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalCorrect">0/10</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">DOĞRU</div></div>
+                <div class="blur-stat-box"><div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalAvg">0</div><div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">ORT. PUAN</div></div>
+            </div>
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:18px;margin:20px 0;text-align:left;max-height:350px;overflow-y:auto" id="blurFinalList"></div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <button class="primary-btn" onclick="replayBlurCategory()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="goBackToBlurCategoryFromFinal()">📚 Kategoriler</button>
+                <button class="back-btn" onclick="goBackToModeFromBlur()">🎮 Modlar</button>
+            </div>
+        </div>
+
 
         <div class="screen" id="categoryScreen" style="display:none;">
             <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn"
@@ -8377,7 +8631,8 @@
             ['profileScreen', 'modeScreen', 'categoryScreen', 'difficultyScreen', 'testScreen', 'resultScreen',
                 'photoCategoryScreen', 'photoDifficultyScreen', 'photoTestScreen', 'photoResultScreen',
                 'ombmCategoryScreen', 'ombmCountScreen', 'ombmGameScreen', 'ombmResultScreen',
-                'siralamaCategoryScreen', 'siralamaCountScreen', 'siralamaGameScreen', 'siralamaResultScreen']
+                'siralamaCategoryScreen', 'siralamaCountScreen', 'siralamaGameScreen', 'siralamaResultScreen',
+                'blurCategoryScreen', 'blurCountScreen', 'blurGameScreen', 'blurFinalScreen']
                 .forEach(sid => {
                     const el = document.getElementById(sid);
                     if (el) el.style.display = 'none';
@@ -8400,6 +8655,7 @@
             if (mode === 'photo') document.getElementById('modePhotoCard').classList.add('selected');
             if (mode === 'ombm') document.getElementById('modeOmbmCard').classList.add('selected');
             if (mode === 'siralama') document.getElementById('modeSiralamaCard').classList.add('selected');
+            if (mode === 'blur') document.getElementById('modeBlurCard').classList.add('selected');
             document.getElementById('modeNextBtn').disabled = false;
         };
 
@@ -8408,6 +8664,7 @@
             else if (gameMode === 'photo') goToPhotoCategorySelect();
             else if (gameMode === 'ombm') goToOmbmCategorySelect();
             else if (gameMode === 'siralama') goToSiralamaCategorySelect();
+            else if (gameMode === 'blur') goToBlurCategorySelect();
         };
 
         window.goBackToProfileFromMode = function () {
@@ -11222,6 +11479,514 @@
             window.scrollTo(0, 0);
         };
 
+
+        // ===== BLUR GUESS - 5. OYUN SİSTEMİ (ENTEGRE) =====
+        const blurCategories = {
+            marvel: {
+                name: "Marvel", icon: "🦸", color: "#ef4444",
+                items: [
+                    {name:"Thor", emoji:"⚡"}, {name:"Iron Man", emoji:"🤖"}, {name:"Spider-Man", emoji:"🕷️"},
+                    {name:"Captain America", emoji:"🛡️"}, {name:"Hulk", emoji:"💪"}, {name:"Black Widow", emoji:"🕷️"},
+                    {name:"Doctor Strange", emoji:"🪄"}, {name:"Black Panther", emoji:"🐆"}, {name:"Loki", emoji:"😈"},
+                    {name:"Thanos", emoji:"💜"}, {name:"Wolverine", emoji:"⚔️"}, {name:"Deadpool", emoji:"🔴"},
+                    {name:"Ant-Man", emoji:"🐜"}, {name:"Wasp", emoji:"🐝"}, {name:"Scarlet Witch", emoji:"🔴"},
+                    {name:"Vision", emoji:"💎"}, {name:"Hawkeye", emoji:"🏹"}, {name:"Winter Soldier", emoji:"❄️"},
+                    {name:"Falcon", emoji:"🦅"}, {name:"War Machine", emoji:"🤖"}, {name:"Groot", emoji:"🌳"},
+                    {name:"Rocket", emoji:"🦝"}, {name:"Star-Lord", emoji:"⭐"}, {name:"Gamora", emoji:"💚"},
+                    {name:"Drax", emoji:"💪"}, {name:"Doctor Doom", emoji:"🟢"}, {name:"Venom", emoji:"🖤"},
+                    {name:"Magneto", emoji:"🧲"}, {name:"Professor X", emoji:"🧠"}, {name:"Storm", emoji:"🌪️"},
+                    {name:"Beast", emoji:"🐾"}, {name:"Mystique", emoji:"🔵"}, {name:"Captain Marvel", emoji:"⭐"},
+                    {name:"Ms Marvel", emoji:"⚡"}, {name:"Shang-Chi", emoji:"🥋"}, {name:"Moon Knight", emoji:"🌙"},
+                    {name:"Daredevil", emoji:"🔴"}, {name:"Punisher", emoji:"💀"}, {name:"Ghost Rider", emoji:"🔥"},
+                    {name:"Blade", emoji:"🗡️"}, {name:"Morbius", emoji:"🦇"}, {name:"Carnage", emoji:"🔴"},
+                    {name:"Green Goblin", emoji:"👺"}, {name:"Doctor Octopus", emoji:"🐙"}, {name:"Juggernaut", emoji:"🟡"}
+                ]
+            },
+            dc: {
+                name: "DC", icon: "🦇", color: "#3b82f6",
+                items: [
+                    {name:"Batman", emoji:"🦇"}, {name:"Superman", emoji:"🦸"}, {name:"Joker", emoji:"🃏"},
+                    {name:"Wonder Woman", emoji:"🛡️"}, {name:"Flash", emoji:"⚡"}, {name:"Aquaman", emoji:"🔱"},
+                    {name:"Harley Quinn", emoji:"🔨"}, {name:"Catwoman", emoji:"🐱"}, {name:"Lex Luthor", emoji:"🤵"},
+                    {name:"Darkseid", emoji:"🪨"}, {name:"Green Lantern", emoji:"💚"}, {name:"Cyborg", emoji:"🤖"},
+                    {name:"Shazam", emoji:"⚡"}, {name:"Robin", emoji:"🐦"}, {name:"Nightwing", emoji:"🦇"},
+                    {name:"Batgirl", emoji:"🦇"}, {name:"Supergirl", emoji:"🦸‍♀️"}, {name:"Green Arrow", emoji:"🏹"},
+                    {name:"Deathstroke", emoji:"🗡️"}, {name:"Deadshot", emoji:"🎯"}, {name:"Penguin", emoji:"🐧"},
+                    {name:"Riddler", emoji:"❓"}, {name:"Two-Face", emoji:"🎭"}, {name:"Poison Ivy", emoji:"🌿"},
+                    {name:"Bane", emoji:"💪"}, {name:"Scarecrow", emoji:"😱"}, {name:"Martian Manhunter", emoji:"👽"},
+                    {name:"Black Adam", emoji:"🌩️"}, {name:"Peacemaker", emoji:"🕊️"}, {name:"Blue Beetle", emoji:"🪲"}
+                ]
+            },
+            "erkek-anime": {
+                name: "Erkek Anime", icon: "⚔️", color: "#ef4444",
+                items: [
+                    {name:"Naruto Uzumaki", emoji:"🍥"}, {name:"Goku", emoji:"🐉"}, {name:"Luffy", emoji:"👒"},
+                    {name:"Eren Yeager", emoji:"🗡️"}, {name:"Light Yagami", emoji:"📓"}, {name:"Satoru Gojo", emoji:"👁️"},
+                    {name:"Tanjiro Kamado", emoji:"🌊"}, {name:"Itachi Uchiha", emoji:"👁️"}, {name:"Levi Ackerman", emoji:"⚔️"},
+                    {name:"Zoro", emoji:"🗡️"}, {name:"Sasuke Uchiha", emoji:"⚡"}, {name:"Kakashi Hatake", emoji:"📖"},
+                    {name:"Ichigo Kurosaki", emoji:"🗡️"}, {name:"Edward Elric", emoji:"⚗️"}, {name:"Lelouch Lamperouge", emoji:"👑"},
+                    {name:"Guts", emoji:"🗡️"}, {name:"Saitama", emoji:"👊"}, {name:"Gon Freecss", emoji:"🎣"},
+                    {name:"Killua Zoldyck", emoji:"⚡"}, {name:"Vegeta", emoji:"👑"},
+                    {name:"Deku", emoji:"💚"}, {name:"Bakugo", emoji:"💥"}, {name:"Todoroki", emoji:"🔥"},
+                    {name:"Denji", emoji:"🪚"}, {name:"Asta", emoji:"🍀"}, {name:"Yuji Itadori", emoji:"👊"},
+                    {name:"Megumi Fushiguro", emoji:"🐺"}, {name:"Yuta Okkotsu", emoji:"🗡️"}, {name:"Sukuna", emoji:"👹"},
+                    {name:"Ken Kaneki", emoji:"👁️"}, {name:"Kenshin Himura", emoji:"⚔️"}, {name:"Spike Spiegel", emoji:"🚬"},
+                    {name:"Vash", emoji:"🔫"}, {name:"Alucard", emoji:"🧛"}, {name:"Gintoki Sakata", emoji:"🍓"},
+                    {name:"L", emoji:"🍰"}, {name:"Kira", emoji:"🍎"}, {name:"Jotaro Kujo", emoji:"🎩"},
+                    {name:"Dio Brando", emoji:"🧛"}, {name:"Joseph Joestar", emoji:"🕶️"}, {name:"Giorno Giovanna", emoji:"🐞"},
+                    {name:"Sung Jin-woo", emoji:"🗡️"}, {name:"Rimuru Tempest", emoji:"💧"}
+                ]
+            },
+            "kiz-anime": {
+                name: "Kız Anime", icon: "🌸", color: "#ec4899",
+                items: [
+                    {name:"Nezuko Kamado", emoji:"🎋"}, {name:"Mikasa Ackerman", emoji:"⚔️"}, {name:"Zero Two", emoji:"❤️"},
+                    {name:"Rem", emoji:"💙"}, {name:"Hinata Hyuga", emoji:"💜"}, {name:"Sakura Haruno", emoji:"🌸"},
+                    {name:"Nami", emoji:"🍊"}, {name:"Boa Hancock", emoji:"🐍"}, {name:"Erza Scarlet", emoji:"🗡️"},
+                    {name:"Lucy Heartfilia", emoji:"🔑"}, {name:"Asuna Yuuki", emoji:"🏖️"}, {name:"Sailor Moon", emoji:"🌙"},
+                    {name:"Yor Forger", emoji:"🗡️"}, {name:"Anya Forger", emoji:"🥜"}, {name:"Power", emoji:"🩸"},
+                    {name:"Makima", emoji:"🐶"}, {name:"Marin Kitagawa", emoji:"🌺"}, {name:"Nico Robin", emoji:"📚"},
+                    {name:"Violet Evergarden", emoji:"💌"}, {name:"Emilia", emoji:"❄️"}, {name:"Mai Sakurajima", emoji:"🐰"},
+                    {name:"Mitsuri Kanroji", emoji:"💗"}, {name:"Shinobu Kocho", emoji:"🦋"}, {name:"Nobara Kugisaki", emoji:"🔨"},
+                    {name:"Maki Zenin", emoji:"🗡️"}, {name:"Android 18", emoji:"👑"}, {name:"Bulma", emoji:"💙"},
+                    {name:"Orihime Inoue", emoji:"🧡"}, {name:"Rukia Kuchiki", emoji:"🗡️"}, {name:"Tsunade Senju", emoji:"🐌"},
+                    {name:"Kaguya Shinomiya", emoji:"❤️"}, {name:"Chizuru Mizuhara", emoji:"💖"}, {name:"Kobeni", emoji:"😰"},
+                    {name:"Fubuki", emoji:"❄️"}, {name:"Tatsumaki", emoji:"💚"}, {name:"Nana Osaki", emoji:"🎤"},
+                    {name:"Revy", emoji:"🔫"}, {name:"Yoko Littner", emoji:"🎯"}, {name:"CC", emoji:"🟢"},
+                    {name:"Rias Gremory", emoji:"👿"}, {name:"Akeno Himejima", emoji:"⚡"}, {name:"Yoruichi", emoji:"🐱"},
+                    {name:"Kagura", emoji:"☂️"}, {name:"Satsuki Kiryuin", emoji:"👑"}, {name:"Ryuko Matoi", emoji:"✂️"}
+                ]
+            },
+            "oyun-karakteri": {
+                name: "Oyun Karakteri", icon: "🕹️", color: "#a855f7",
+                items: [
+                    {name:"Kratos", emoji:"🪓"}, {name:"Mario", emoji:"🍄"}, {name:"Master Chief", emoji:"🔫"},
+                    {name:"Geralt", emoji:"⚔️"}, {name:"Lara Croft", emoji:"🏹"}, {name:"Arthur Morgan", emoji:"🤠"},
+                    {name:"Ellie", emoji:"🏹"}, {name:"CJ", emoji:"🔫"}, {name:"Sonic", emoji:"💨"},
+                    {name:"Steve", emoji:"⛏️"}, {name:"Pikachu", emoji:"⚡"}, {name:"Link", emoji:"🗡️"},
+                    {name:"Zelda", emoji:"👑"}, {name:"Ezio", emoji:"🗡️"}, {name:"Solid Snake", emoji:"🐍"},
+                    {name:"Sub-Zero", emoji:"🧊"}, {name:"Scorpion", emoji:"🔥"}, {name:"Ryu", emoji:"👊"},
+                    {name:"Ken", emoji:"👊"}, {name:"Chun-Li", emoji:"🦵"}, {name:"Aloy", emoji:"🏹"},
+                    {name:"Jill Valentine", emoji:"🧟"}, {name:"Leon Kennedy", emoji:"🔫"}, {name:"Gordon Freeman", emoji:"🔧"},
+                    {name:"Doom Slayer", emoji:"😈"}, {name:"Samus Aran", emoji:"🚀"}, {name:"Kirby", emoji:"💗"},
+                    {name:"Pac-Man", emoji:"🟡"}, {name:"Donkey Kong", emoji:"🦍"}, {name:"Crash Bandicoot", emoji:"🦊"}
+                ]
+            },
+            futbolcu: {
+                name: "Futbolcu", icon: "⚽", color: "#22c55e",
+                items: [
+                    {name:"Messi", emoji:"🐐"}, {name:"Ronaldo", emoji:"⚽"}, {name:"Mbappe", emoji:"⚡"},
+                    {name:"Haaland", emoji:"🤖"}, {name:"Neymar", emoji:"💃"}, {name:"Arda Güler", emoji:"🇹🇷"},
+                    {name:"Bellingham", emoji:"🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, {name:"Vinicius Jr", emoji:"🇧🇷"}, {name:"Salah", emoji:"🇪🇬"},
+                    {name:"Lewandowski", emoji:"🇵🇱"}, {name:"Benzema", emoji:"🇫🇷"}, {name:"Modric", emoji:"🇭🇷"},
+                    {name:"De Bruyne", emoji:"🇧🇪"}, {name:"Kane", emoji:"🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, {name:"Icardi", emoji:"🇦🇷"},
+                    {name:"Osimhen", emoji:"🇳🇬"}, {name:"Muslera", emoji:"🇺🇾"}, {name:"Barış Alper", emoji:"🇹🇷"},
+                    {name:"Kenan Yıldız", emoji:"🇹🇷"}, {name:"Arda Turan", emoji:"🇹🇷"}, {name:"Ronaldinho", emoji:"🇧🇷"},
+                    {name:"Pele", emoji:"👑"}, {name:"Maradona", emoji:"🇦🇷"}, {name:"Zidane", emoji:"🇫🇷"},
+                    {name:"Buffon", emoji:"🧤"}, {name:"Maldini", emoji:"🇮🇹"}, {name:"Puskas", emoji:"🇭🇺"},
+                    {name:"Eren Elmalı", emoji:"🇹🇷"}, {name:"Ibrahimovic", emoji:"🇸🇪"}, {name:"Kroos", emoji:"🇩🇪"},
+                    {name:"Lamine Yamal", emoji:"🇪🇸"}, {name:"Saka", emoji:"🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, {name:"Odegaard", emoji:"🇳🇴"},
+                    {name:"Griezmann", emoji:"🇫🇷"}, {name:"Son Heung-min", emoji:"🇰🇷"}
+                ]
+            },
+            "kiz-oyuncu": {
+                name: "Kız Oyuncu", icon: "💃", color: "#f472b6",
+                items: [
+                    {name:"Hande Erçel", emoji:"💃"}, {name:"Serenay Sarıkaya", emoji:"🌟"}, {name:"Demet Özdemir", emoji:"💃"},
+                    {name:"Scarlett Johansson", emoji:"🕷️"}, {name:"Emma Stone", emoji:"💃"}, {name:"Gal Gadot", emoji:"🛡️"},
+                    {name:"Zendaya", emoji:"💃"}, {name:"Margot Robbie", emoji:"💃"}, {name:"Jenna Ortega", emoji:"🖤"},
+                    {name:"Sydney Sweeney", emoji:"💃"}, {name:"Anya Taylor-Joy", emoji:"♟️"}, {name:"Millie Bobby Brown", emoji:"🔍"},
+                    {name:"Natalie Portman", emoji:"🌟"}, {name:"Angelina Jolie", emoji:"💃"}, {name:"Megan Fox", emoji:"💃"},
+                    {name:"Barbara Palvin", emoji:"💃"}, {name:"Melis Sezen", emoji:"💃"}, {name:"Elçin Sangu", emoji:"💃"},
+                    {name:"Hazal Kaya", emoji:"💃"}, {name:"Farah Zeynep", emoji:"💃"}, {name:"Pınar Deniz", emoji:"💃"},
+                    {name:"Ezgi Mola", emoji:"😂"}, {name:"Meryem Uzerli", emoji:"👑"}, {name:"Hazar Ergüçlü", emoji:"💃"},
+                    {name:"Bensu Soral", emoji:"💃"}, {name:"Devrim Özkan", emoji:"💃"}, {name:"Emma Watson", emoji:"🪄"},
+                    {name:"Jennifer Lawrence", emoji:"🔥"}, {name:"Florence Pugh", emoji:"🌸"}, {name:"Penelope Cruz", emoji:"💃"},
+                    {name:"Jessica Alba", emoji:"💃"}, {name:"Mila Kunis", emoji:"💃"}, {name:"Selena Gomez", emoji:"🎤"},
+                    {name:"Taylor Swift", emoji:"🎤"}, {name:"Beyonce", emoji:"👑"}
+                ]
+            },
+            oyun: {
+                name: "Oyunlar", icon: "🎮", color: "#22d3ee",
+                items: [
+                    {name:"Minecraft", emoji:"⛏️"}, {name:"GTA 5", emoji:"🚗"}, {name:"God of War", emoji:"🪓"},
+                    {name:"Elden Ring", emoji:"💍"}, {name:"Valorant", emoji:"🎯"}, {name:"League of Legends", emoji:"🧙"},
+                    {name:"Fortnite", emoji:"🚌"}, {name:"CS GO", emoji:"🔫"}, {name:"PUBG", emoji:"🪂"},
+                    {name:"Roblox", emoji:"🧱"}, {name:"Cyberpunk 2077", emoji:"🦾"}, {name:"The Witcher 3", emoji:"🐺"},
+                    {name:"Red Dead Redemption 2", emoji:"🐴"}, {name:"Forza Horizon 5", emoji:"🏎️"}, {name:"FIFA 24", emoji:"⚽"},
+                    {name:"Call of Duty", emoji:"🎖️"}, {name:"Apex Legends", emoji:"🔺"}, {name:"Resident Evil 4", emoji:"🧟"},
+                    {name:"Halo", emoji:"👨‍🚀"}, {name:"Doom Eternal", emoji:"👹"}, {name:"Baldur's Gate 3", emoji:"🐉"},
+                    {name:"Mobile Legends", emoji:"📱"}, {name:"Clash of Clans", emoji:"🏰"}, {name:"Among Us", emoji:"👨‍🚀"},
+                    {name:"Fall Guys", emoji:"👑"}, {name:"Starfield", emoji:"🚀"}, {name:"Hogwarts Legacy", emoji:"🪄"},
+                    {name:"Spider-Man 2", emoji:"🕷️"}, {name:"Zelda Tears", emoji:"🗡️"}, {name:"Super Mario Odyssey", emoji:"🍄"}
+                ]
+            },
+            diziler: {
+                name: "Diziler", icon: "📺", color: "#a855f7",
+                items: [
+                    {name:"Kurtlar Vadisi", emoji:"🐺"}, {name:"Behzat Ç", emoji:"🚬"}, {name:"Leyla ile Mecnun", emoji:"❤️"},
+                    {name:"Ezel", emoji:"♠️"}, {name:"Stranger Things", emoji:"👾"}, {name:"Breaking Bad", emoji:"🧪"},
+                    {name:"Game of Thrones", emoji:"🐉"}, {name:"Prison Break", emoji:"🔓"}, {name:"Dexter", emoji:"🔪"},
+                    {name:"The Office", emoji:"📎"}, {name:"Vikings", emoji:"🪓"}, {name:"Sherlock", emoji:"🔍"},
+                    {name:"Mr Robot", emoji:"💻"}, {name:"Dark", emoji:"🕳️"}, {name:"La Casa de Papel", emoji:"🎭"},
+                    {name:"Squid Game", emoji:"🦑"}, {name:"Wednesday", emoji:"🖤"}, {name:"The Witcher", emoji:"🐺"},
+                    {name:"Arka Sokaklar", emoji:"🚓"}, {name:"Çukur", emoji:"🕳️"}
+                ]
+            },
+            filmler: {
+                name: "Filmler", icon: "🎬", color: "#facc15",
+                items: [
+                    {name:"Tosun Paşa", emoji:"👳", file:"uploads/flim_01.jpg"},
+                    {name:"Bekçiler Kralı", emoji:"👮", file:"uploads/flim_02.jpg"},
+                    {name:"Vizontele Tuuba", emoji:"📺", file:"uploads/flim_03.jpg"},
+                    {name:"Hokkabaz", emoji:"🎩", file:"uploads/flim_04.jpg"},
+                    {name:"Organize İşler Sazan Sarmalı", emoji:"😎", file:"uploads/flim_05.jpg"},
+                    {name:"Yüzüklerin Efendisi Kralın Dönüşü", emoji:"💍", file:"uploads/flim_06.jpg"},
+                    {name:"Esaretin Bedeli", emoji:"🔑", file:"uploads/flim_07.jpg"},
+                    {name:"Baba", emoji:"🤵", file:"uploads/flim_08.jpg"},
+                    {name:"Kara Şövalye", emoji:"🦇", file:"uploads/flim_09.jpg"},
+                    {name:"Dövüş Kulübü", emoji:"👊", file:"uploads/flim_10.jpg"},
+                    {name:"Yeşil Yol", emoji:"🟢", file:"uploads/flim_11.jpg"},
+                    {name:"Prestij", emoji:"✨", file:"uploads/flim_12.jpg"},
+                    {name:"Matrix", emoji:"💊", file:"uploads/flim_13.jpg"},
+                    {name:"Geleceğe Dönüş", emoji:"🚗", file:"uploads/flim_14.jpg"},
+                    {name:"Yıldızlararası", emoji:"🌌", file:"uploads/flim_15.jpg"},
+                    {name:"Terminatör", emoji:"🤖", file:"uploads/flim_16.jpg"},
+                    {name:"Can Dostum", emoji:"❤️", file:"uploads/flim_17.jpg"},
+                    {name:"Avengers Sonsuzluk Savaşı", emoji:"💥", file:"uploads/flim_18.jpg"},
+                    {name:"Dangal", emoji:"🤼", file:"uploads/flim_19.jpg"},
+                    {name:"V for Vendetta", emoji:"🎭", file:"uploads/flim_20.jpg"},
+                    {name:"Karayip Korsanları", emoji:"🏴‍☠️", file:"uploads/flim_21.jpg"},
+                    {name:"Hababam Sınıfı", emoji:"🎓", file:"uploads/flim_22.jpg"},
+                    {name:"Kuzuların Sessizliği", emoji:"🦋", file:"uploads/flim_23.jpg"},
+                    {name:"X-Men Geçmiş Günler Gelecek", emoji:"⚡", file:"uploads/flim_24.jpg"},
+                    {name:"Ip Man", emoji:"🥋", file:"uploads/flim_25.jpg"}
+                ]
+            }
+        };
+
+        const blurLevels = [
+            {blur:32, brightness:0.7, points:1000, label:"%10 - Çok Bulanık", quality:20, color:"linear-gradient(90deg,#ef4444,#f59e0b)"},
+            {blur:20, brightness:0.8, points:700, label:"%30 - Bulanık", quality:40, color:"linear-gradient(90deg,#f59e0b,#eab308)"},
+            {blur:12, brightness:0.9, points:400, label:"%55 - Orta", quality:60, color:"linear-gradient(90deg,#eab308,#22c55e)"},
+            {blur:5, brightness:1, points:200, label:"%80 - Netleşiyor", quality:80, color:"linear-gradient(90deg,#22c55e,#06b6d4)"},
+            {blur:0, brightness:1, points:50, label:"%100 - Tam Net", quality:100, color:"linear-gradient(90deg,#06b6d4,#8b5cf6)"}
+        ];
+
+        let blurSelectedCategory = null;
+        let blurSelectedCount = 10;
+        let blurQuestions = [];
+        let blurCurrentQ = 0;
+        let blurTotalScore = 0;
+        let blurCurrentLevel = 0;
+        let blurCorrectCount = 0;
+        let blurHistory = [];
+        let blurHintUsed = false;
+
+        window.goToBlurCategorySelect = function(){
+            const grid = document.getElementById('blurCategoryGrid');
+            grid.innerHTML = Object.entries(blurCategories).map(([id, cat])=>{
+                const best = localStorage.getItem('blur_best_'+id) || 0;
+                return `<div class="category-card category-card--${id}" onclick="selectBlurCategory('${id}')" id="blurCat_${id}"><div class="category-icon">${cat.icon}</div><div class="category-title">${cat.name}</div><div class="category-subtitle">${cat.items.length} görsel</div>${best>0?`<div style="margin-top:6px;color:#facc15;font-size:11px;font-weight:700">🏆 En iyi: ${best}</div>`:''}</div>`;
+            }).join('');
+            hideAllMainScreens();
+            document.getElementById('blurCategoryScreen').style.display='block';
+            document.getElementById('blurCategoryNextBtn').disabled=true;
+            blurSelectedCategory=null;
+            changeTheme('space');
+        };
+
+        window.selectBlurCategory = function(id){
+            document.querySelectorAll('#blurCategoryGrid .category-card').forEach(c=>c.classList.remove('selected'));
+            const el = document.getElementById('blurCat_'+id);
+            if(el) el.classList.add('selected');
+            blurSelectedCategory = id;
+            document.getElementById('blurCategoryNextBtn').disabled=false;
+            const cat = blurCategories[id];
+            document.getElementById('blurMaxLabel').textContent = '/ max ' + cat.items.length;
+            document.getElementById('blurCountInput').max = cat.items.length;
+            document.getElementById('blurCountInput').value = Math.min(10, cat.items.length);
+            document.getElementById('blurCountSub').textContent = `${cat.name} - ${cat.items.length} görsel mevcut • Kaç soru oynamak istersin?`;
+            changeTheme(id);
+        };
+
+        window.goToBlurCount = function(){
+            if(!blurSelectedCategory) return;
+            hideAllMainScreens();
+            document.getElementById('blurCountScreen').style.display='block';
+        };
+
+        window.goBackToBlurCategory = function(){
+            hideAllMainScreens();
+            document.getElementById('blurCategoryScreen').style.display='block';
+        };
+
+        window.goBackToModeFromBlur = function(){
+            hideAllMainScreens();
+            document.getElementById('modeScreen').style.display='block';
+            changeTheme('space');
+        };
+
+        window.validateBlurCount = function(){
+            const inp = document.getElementById('blurCountInput');
+            const err = document.getElementById('blurCountErr');
+            const v = parseInt(inp.value);
+            const max = blurCategories[blurSelectedCategory]?.items.length || 45;
+            if(!v || v<1){ err.textContent='En az 1 soru seç!'; return false; }
+            if(v>max){ err.textContent='Maksimum '+max+'!'; return false; }
+            err.textContent='';
+            return true;
+        };
+
+        window.startBlurGame = function(){
+            if(!validateBlurCount()) return;
+            if(!blurSelectedCategory) return;
+            const cat = blurCategories[blurSelectedCategory];
+            let pool = [...cat.items];
+            for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+            blurSelectedCount = parseInt(document.getElementById('blurCountInput').value);
+            blurQuestions = pool.slice(0, Math.min(blurSelectedCount, pool.length));
+            blurCurrentQ=0; blurTotalScore=0; blurCorrectCount=0; blurHistory=[];
+            isInTest=true; stopBgMusic();
+            document.getElementById('blurGameCatBadge').innerHTML = `${cat.icon} ${cat.name}`;
+            document.getElementById('blurLevels').innerHTML = blurLevels.map((_,i)=>`<div class="blur-dot" id="blurDot${i}"></div>`).join('');
+            hideAllMainScreens();
+            document.getElementById('blurGameScreen').style.display='block';
+            loadBlurQuestion();
+        };
+
+        function loadBlurQuestion(){
+            if(blurCurrentQ>=blurQuestions.length){ finishBlurGame(); return; }
+            const q = blurQuestions[blurCurrentQ];
+            blurCurrentLevel=0; blurHintUsed=false;
+            document.getElementById('blurGameQBadge').textContent = `Soru ${blurCurrentQ+1} / ${blurQuestions.length}`;
+            document.getElementById('blurTotalScore').textContent = blurTotalScore;
+            document.getElementById('blurGuessInput').value='';
+            const fb = document.getElementById('blurFeedback'); fb.className='blur-feedback'; fb.style.display='none';
+            document.getElementById('blurSuggestions').classList.remove('show');
+            document.getElementById('blurHintBtn').disabled=false;
+            document.getElementById('blurGuessBtn').disabled=false;
+            document.getElementById('blurProgressDots').innerHTML = blurQuestions.map((_,i)=>{
+                let cls='blur-p-dot';
+                if(i<blurCurrentQ) cls+= blurHistory[i]?.correct ? ' done' : ' fail';
+                if(i===blurCurrentQ) cls+=' current';
+                return `<div class="${cls}"></div>`;
+            }).join('');
+
+            const imgEl = document.getElementById('blurGameImage');
+            const phEl = document.getElementById('blurPhotoPlaceholder');
+            const frame = document.getElementById('blurPhotoFrame');
+            frame.classList.add('loading');
+            imgEl.style.filter = `blur(${blurLevels[0].blur}px) brightness(${blurLevels[0].brightness})`;
+            phEl.style.filter = `blur(${blurLevels[0].blur/2}px)`;
+            imgEl.style.opacity='0'; phEl.style.opacity='0';
+            document.getElementById('blurQualityText').textContent = `Kalite: ${blurLevels[0].label}`;
+            document.getElementById('blurPointsText').textContent = `${blurLevels[0].points} Puan`;
+            document.getElementById('blurCurrentPointsVal').textContent = blurLevels[0].points;
+            document.getElementById('blurQualityFill').style.width = blurLevels[0].quality+'%';
+            document.getElementById('blurQualityFill').style.background = blurLevels[0].color;
+
+            setTimeout(()=>{
+                let imgUrl;
+                if(q.file){ imgUrl = q.file; }
+                else {
+                    const seed = encodeURIComponent(q.name + blurSelectedCategory + '_' + blurCurrentQ);
+                    imgUrl = `https://picsum.photos/seed/${seed}/600/600`;
+                }
+                imgEl.style.display='block'; phEl.style.display='none';
+                imgEl.onload = ()=>{
+                    frame.classList.remove('loading');
+                    imgEl.style.opacity='1'; phEl.style.opacity='1';
+                    applyBlurBlur();
+                };
+                imgEl.onerror = ()=>{
+                    frame.classList.remove('loading');
+                    imgEl.style.display='none'; phEl.style.display='flex';
+                    document.getElementById('blurPlaceholderEmoji').textContent = q.emoji;
+                    document.getElementById('blurPlaceholderLabel').textContent = q.name.charAt(0)+'***';
+                    phEl.style.opacity='1';
+                    applyBlurBlur();
+                };
+                imgEl.src = imgUrl;
+            }, 120);
+        }
+
+        function applyBlurBlur(){
+            const lvl = blurLevels[blurCurrentLevel];
+            const imgEl = document.getElementById('blurGameImage');
+            const phEl = document.getElementById('blurPhotoPlaceholder');
+            const filter = `blur(${lvl.blur}px) brightness(${lvl.brightness})`;
+            if(imgEl.style.display!=='none') imgEl.style.filter = filter;
+            if(phEl.style.display!=='none') phEl.style.filter = `blur(${lvl.blur/2}px)`;
+            document.getElementById('blurQualityText').textContent = `Kalite: ${lvl.label}`;
+            document.getElementById('blurPointsText').textContent = `${lvl.points} Puan`;
+            document.getElementById('blurCurrentPointsVal').textContent = lvl.points;
+            document.getElementById('blurQualityFill').style.width = lvl.quality+'%';
+            document.getElementById('blurQualityFill').style.background = lvl.color;
+            blurLevels.forEach((_,i)=>{
+                const dot = document.getElementById('blurDot'+i);
+                if(!dot) return;
+                dot.className='blur-dot';
+                if(i<blurCurrentLevel) dot.classList.add('used');
+                if(i===blurCurrentLevel) dot.classList.add('active');
+            });
+            document.getElementById('blurAttemptInfo').textContent = `${blurCurrentLevel+1}. TAHMİN HAKKI • ${lvl.label.toUpperCase()}`;
+        }
+
+        function normalizeBlur(str){
+            return str.toLowerCase().replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ç/g,'c').replace(/[^a-z0-9 ]/g,'').trim();
+        }
+        function levenshteinBlur(a,b){
+            const matrix=[]; for(let i=0;i<=b.length;i++) matrix[i]=[i]; for(let j=0;j<=a.length;j++) matrix[0][j]=j;
+            for(let i=1;i<=b.length;i++){ for(let j=1;j<=a.length;j++){ if(b.charAt(i-1)===a.charAt(j-1)) matrix[i][j]=matrix[i-1][j-1]; else matrix[i][j]=Math.min(matrix[i-1][j-1]+1,matrix[i][j-1]+1,matrix[i-1][j]+1); } }
+            return matrix[b.length][a.length];
+        }
+        function checkBlurAnswer(guess, answer){
+            const g=normalizeBlur(guess); const a=normalizeBlur(answer);
+            if(!g) return false; if(g===a) return true;
+            if(a.includes(g) && g.length>=3) return true;
+            if(g.includes(a) && a.length>=3) return true;
+            const aWords=a.split(' '); if(aWords.some(w=>w===g && w.length>=3)) return true;
+            if(levenshteinBlur(g,a)<=2 && Math.max(g.length,a.length)>4) return true;
+            if(aWords.length>1){ const first=aWords[0]; if(g===first) return true; if(levenshteinBlur(g,first)<=1 && first.length>3) return true; }
+            return false;
+        }
+
+        window.onBlurInputChange = function(){
+            const val = document.getElementById('blurGuessInput').value.toLowerCase();
+            const sugBox = document.getElementById('blurSuggestions');
+            if(val.length<2){ sugBox.classList.remove('show'); return; }
+            const cat = blurCategories[blurSelectedCategory];
+            const matches = cat.items.filter(it=> normalizeBlur(it.name).includes(normalizeBlur(val))).slice(0,5);
+            if(matches.length===0){ sugBox.classList.remove('show'); return; }
+            sugBox.innerHTML = matches.map(m=>`<div class="blur-sugg-item" onclick="pickBlurSuggestion('${m.name.replace(/'/g,"\\'")}')">${m.emoji} ${m.name}</div>`).join('');
+            sugBox.classList.add('show');
+        };
+        window.pickBlurSuggestion = function(name){
+            document.getElementById('blurGuessInput').value=name;
+            document.getElementById('blurSuggestions').classList.remove('show');
+            submitBlurGuess();
+        };
+        function showBlurFeedback(msg,type){
+            const fb=document.getElementById('blurFeedback'); fb.textContent=msg; fb.className='blur-feedback show '+type; fb.style.display='block';
+        }
+
+        window.submitBlurGuess = function(){
+            const guess = document.getElementById('blurGuessInput').value.trim();
+            if(!guess){ showBlurFeedback('⚠️ Bir tahmin yaz!', 'info'); return; }
+            const q = blurQuestions[blurCurrentQ];
+            if(checkBlurAnswer(guess, q.name)){
+                const points = blurLevels[blurCurrentLevel].points - (blurHintUsed?100:0);
+                const finalPoints = Math.max(points,10);
+                blurTotalScore+=finalPoints; blurCorrectCount++;
+                blurHistory.push({name:q.name, correct:true, level:blurCurrentLevel, points:finalPoints});
+                document.getElementById('blurResultEmoji').textContent = blurCurrentLevel===0?'🔥':'✅';
+                document.getElementById('blurResultCard').className='blur-result-card correct';
+                document.getElementById('blurResultTitle').textContent = blurCurrentLevel===0?'EFSANE!':blurCurrentLevel===1?'SÜPER!':'Doğru!';
+                document.getElementById('blurResultName').textContent=q.name;
+                document.getElementById('blurResultPoints').textContent=`+${finalPoints} Puan`;
+                const msgs=['İnanılmaz! En bulanık halde bildin!','Süper! Çok erken bildin!','Güzel! Orta seviyede bildin.','Doğru! Biraz zorlandın ama bildin.','Son anda bildin!'];
+                document.getElementById('blurResultDesc').textContent=msgs[blurCurrentLevel];
+                document.getElementById('blurResultOverlay').classList.add('show');
+                document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
+                document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
+                document.getElementById('blurGameImage').style.opacity='1';
+                document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+                document.getElementById('blurPhotoFrame').classList.remove('loading');
+                if(soundEnabled) playCorrectSound();
+            } else {
+                blurCurrentLevel++;
+                if(blurCurrentLevel>=blurLevels.length){
+                    blurHistory.push({name:q.name, correct:false, level:blurLevels.length, points:0});
+                    document.getElementById('blurResultEmoji').textContent='❌';
+                    document.getElementById('blurResultCard').className='blur-result-card wrong';
+                    document.getElementById('blurResultTitle').textContent='Bilemedin!';
+                    document.getElementById('blurResultName').textContent=q.name;
+                    document.getElementById('blurResultPoints').textContent='+0 Puan';
+                    document.getElementById('blurResultDesc').textContent=`Doğru cevap: ${q.name}`;
+                    document.getElementById('blurResultOverlay').classList.add('show');
+                    document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
+                    document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
+                    document.getElementById('blurGameImage').style.opacity='1';
+                    document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+                    document.getElementById('blurPhotoFrame').classList.remove('loading');
+                    if(soundEnabled) playWrongSound();
+                } else {
+                    showBlurFeedback(`❌ Yanlış! Görsel netleşiyor... Kalan hak: ${blurLevels.length-blurCurrentLevel}`, 'wrong');
+                    document.getElementById('blurGuessInput').value='';
+                    applyBlurBlur();
+                    const frame=document.getElementById('blurPhotoFrame'); frame.style.animation='shake 0.4s ease'; setTimeout(()=>frame.style.animation='',400);
+                    if(soundEnabled) playWrongSound();
+                }
+            }
+        };
+
+        window.useBlurHint = function(){
+            const q=blurQuestions[blurCurrentQ]; const name=q.name;
+            const hint=name.charAt(0)+'*'.repeat(Math.max(name.length-2,1))+name.charAt(name.length-1);
+            showBlurFeedback(`💡 İpucu: ${hint} • Puan -100`, 'info');
+            blurHintUsed=true; document.getElementById('blurHintBtn').disabled=true;
+            if(!document.getElementById('blurGuessInput').value) document.getElementById('blurGuessInput').value=name.charAt(0);
+        };
+
+        window.skipBlurQuestion = function(){
+            const q=blurQuestions[blurCurrentQ];
+            blurHistory.push({name:q.name, correct:false, level:99, points:0});
+            document.getElementById('blurResultEmoji').textContent='⏭️';
+            document.getElementById('blurResultCard').className='blur-result-card wrong';
+            document.getElementById('blurResultTitle').textContent='Pas Geçildi';
+            document.getElementById('blurResultName').textContent=q.name;
+            document.getElementById('blurResultPoints').textContent='+0 Puan';
+            document.getElementById('blurResultDesc').textContent=`Doğru cevap: ${q.name}`;
+            document.getElementById('blurResultOverlay').classList.add('show');
+            document.getElementById('blurGameImage').style.filter='blur(0px) brightness(1)';
+            document.getElementById('blurPhotoPlaceholder').style.filter='blur(0px)';
+            document.getElementById('blurGameImage').style.opacity='1';
+            document.getElementById('blurPhotoPlaceholder').style.opacity='1';
+        };
+
+        window.nextBlurQuestion = function(){
+            const frame=document.getElementById('blurPhotoFrame');
+            const imgEl=document.getElementById('blurGameImage');
+            const phEl=document.getElementById('blurPhotoPlaceholder');
+            frame.classList.add('loading'); imgEl.style.opacity='0'; phEl.style.opacity='0';
+            document.getElementById('blurResultOverlay').classList.remove('show');
+            setTimeout(()=>{ blurCurrentQ++; loadBlurQuestion(); },200);
+        };
+
+        function finishBlurGame(){
+            isInTest=false; if(soundEnabled) startBgMusic();
+            document.getElementById('blurGameScreen').style.display='none';
+            document.getElementById('blurFinalScreen').style.display='block';
+            const cat=blurCategories[blurSelectedCategory];
+            document.getElementById('blurFinalCat').textContent=`${cat.icon} ${cat.name} • ${blurQuestions.length} Soru`;
+            document.getElementById('blurFinalScore').textContent=blurTotalScore;
+            document.getElementById('blurFinalCorrect').textContent=`${blurCorrectCount}/${blurQuestions.length}`;
+            document.getElementById('blurFinalAvg').textContent= blurQuestions.length? Math.round(blurTotalScore/blurQuestions.length):0;
+            const bestKey='blur_best_'+blurSelectedCategory;
+            const prevBest=parseInt(localStorage.getItem(bestKey)||'0');
+            if(blurTotalScore>prevBest) localStorage.setItem(bestKey, blurTotalScore);
+            // puan ekle rank sistemine
+            const pts = Math.floor(blurTotalScore/100);
+            totalPoints += pts; localStorage.setItem('matex_totalPoints', totalPoints); updateRankDisplay();
+            document.getElementById('blurFinalList').innerHTML = blurHistory.map((h,i)=>{
+                const icon=h.correct?'✅':'❌'; const lvlText=h.level===99?'Pas':h.level>=5?'Bilemedi':`Seviye ${h.level+1}`; const color=h.correct?'#4ade80':'#f87171';
+                return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><div style="display:flex;gap:10px;align-items:center"><span>${icon}</span><span style="font-weight:700">${i+1}. ${h.name}</span><span style="font-size:11px;color:#8a8ab0">${lvlText}</span></div><span style="color:${color};font-weight:800">+${h.points}</span></div>`;
+            }).join('');
+            changeTheme(blurSelectedCategory);
+        }
+
+        window.replayBlurCategory = function(){ startBlurGame(); };
+        window.goBackToBlurCategoryFromFinal = function(){
+            hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display='block'; changeTheme('space');
+        };
+        window.exitBlurToCategories = function(){
+            if(confirm('Oyundan çıkmak istiyor musun? Skorun kaybolacak.')){
+                isInTest=false; if(soundEnabled) startBgMusic();
+                hideAllMainScreens(); document.getElementById('blurCategoryScreen').style.display='block'; changeTheme('space');
+            }
+        };
+
         changeTheme('space'); updateRankDisplay();
     </script>
     <script defer
@@ -11253,6 +12018,6 @@
         data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}'
         crossorigin="anonymous"></script>
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a279c0052816db8b',t:'MTc4NjE0MjA4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a317a258fc16e323',t:'MTc4Nzc5NzYxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
