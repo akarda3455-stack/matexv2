@@ -5140,10 +5140,23 @@
         }
 
         @keyframes farkRise {
-            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-            8% { opacity: .55; }
-            85% { opacity: .35; }
-            100% { transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6); opacity: 0; }
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0;
+            }
+
+            8% {
+                opacity: .55;
+            }
+
+            85% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6);
+                opacity: 0;
+            }
         }
 
         .fark-panel {
@@ -5159,11 +5172,27 @@
         }
 
         @keyframes farkShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-9px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-9px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-6px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .fark-stat-row {
@@ -5239,8 +5268,15 @@
         }
 
         @keyframes farkBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.18); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
         }
 
         .fark-tbar {
@@ -5267,8 +5303,15 @@
         }
 
         @keyframes farkGlowRed {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
-            50% { box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45);
+            }
         }
 
         #farkGrid {
@@ -5301,9 +5344,19 @@
         }
 
         @keyframes farkTileIn {
-            0% { transform: scale(.3) rotate(-10deg); opacity: 0; }
-            70% { transform: scale(1.08); }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(.3) rotate(-10deg);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .fark-cell:hover {
@@ -5322,9 +5375,17 @@
         }
 
         @keyframes farkPopOk {
-            0% { transform: scale(1); }
-            40% { transform: scale(1.25); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.25);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .fark-cell.err {
@@ -5338,8 +5399,15 @@
         }
 
         @keyframes farkHintP {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
-            50% { box-shadow: 0 0 22px 6px rgba(250, 204, 21, 0.75); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 22px 6px rgba(250, 204, 21, 0.75);
+            }
         }
 
         .fark-splash {
@@ -5360,10 +5428,24 @@
         }
 
         @keyframes farkSpl {
-            0% { opacity: 0; transform: scale(.7); }
-            25% { opacity: 1; transform: scale(1); }
-            75% { opacity: 1; }
-            100% { opacity: 0; transform: scale(1.15); }
+            0% {
+                opacity: 0;
+                transform: scale(.7);
+            }
+
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.15);
+            }
         }
 
         .fark-splash .s1 {
@@ -5437,9 +5519,20 @@
         }
 
         @keyframes farkFup {
-            0% { opacity: 0; transform: translateY(0) scale(.6); }
-            20% { opacity: 1; transform: translateY(-14px) scale(1.15); }
-            100% { opacity: 0; transform: translateY(-64px) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(.6);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(-14px) scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-64px) scale(1);
+            }
         }
 
         .fark-spark {
@@ -5453,8 +5546,15 @@
         }
 
         @keyframes farkSpw {
-            0% { opacity: 1; transform: translate(0, 0) scale(1); }
-            100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.3); }
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(.3);
+            }
         }
 
         .fark-overlay {
@@ -5566,6 +5666,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #c7d8f0;
         }
+
         /* ================= /FARKI BUL OYUNU CSS ================= */
 
         /* ================= HAFIZA OYUNU CSS ================= */
@@ -5609,10 +5710,23 @@
         }
 
         @keyframes hzRise {
-            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-            8% { opacity: .55; }
-            85% { opacity: .35; }
-            100% { transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6); opacity: 0; }
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0;
+            }
+
+            8% {
+                opacity: .55;
+            }
+
+            85% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6);
+                opacity: 0;
+            }
         }
 
         .hz-panel {
@@ -5629,11 +5743,27 @@
         }
 
         @keyframes hzShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-9px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-9px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-6px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .hz-stat-row {
@@ -5705,8 +5835,15 @@
         }
 
         @keyframes hzBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
         }
 
         .hz-tbar {
@@ -5733,8 +5870,15 @@
         }
 
         @keyframes hzGlowRed {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
-            50% { box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45);
+            }
         }
 
         .hz-wrap {
@@ -5804,9 +5948,17 @@
         }
 
         @keyframes hzPadOk {
-            0% { filter: brightness(1.45); }
-            50% { filter: brightness(2.2) saturate(1.4); }
-            100% { filter: brightness(var(--hz-dim, .5)) saturate(.85); }
+            0% {
+                filter: brightness(1.45);
+            }
+
+            50% {
+                filter: brightness(2.2) saturate(1.4);
+            }
+
+            100% {
+                filter: brightness(var(--hz-dim, .5)) saturate(.85);
+            }
         }
 
         .hz-pad.err {
@@ -5814,8 +5966,16 @@
         }
 
         @keyframes hzPadErr {
-            0%, 100% { filter: brightness(var(--hz-dim, .5)); }
-            20%, 60% { filter: brightness(1.8) saturate(.4) hue-rotate(-30deg); }
+
+            0%,
+            100% {
+                filter: brightness(var(--hz-dim, .5));
+            }
+
+            20%,
+            60% {
+                filter: brightness(1.8) saturate(.4) hue-rotate(-30deg);
+            }
         }
 
         .hz-hub {
@@ -5858,8 +6018,15 @@
         }
 
         @keyframes hzHubWatch {
-            0%, 100% { box-shadow: 0 0 26px -6px var(--hz-acc, #00d2ff), inset 0 4px 18px rgba(0, 0, 0, .8); }
-            50% { box-shadow: 0 0 44px 0 var(--hz-acc, #00d2ff), inset 0 4px 18px rgba(0, 0, 0, .8); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 26px -6px var(--hz-acc, #00d2ff), inset 0 4px 18px rgba(0, 0, 0, .8);
+            }
+
+            50% {
+                box-shadow: 0 0 44px 0 var(--hz-acc, #00d2ff), inset 0 4px 18px rgba(0, 0, 0, .8);
+            }
         }
 
         .hz-splash {
@@ -5880,10 +6047,24 @@
         }
 
         @keyframes hzSpl {
-            0% { opacity: 0; transform: scale(.7); }
-            25% { opacity: 1; transform: scale(1); }
-            75% { opacity: 1; }
-            100% { opacity: 0; transform: scale(1.15); }
+            0% {
+                opacity: 0;
+                transform: scale(.7);
+            }
+
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.15);
+            }
         }
 
         .hz-splash .s1 {
@@ -5957,9 +6138,20 @@
         }
 
         @keyframes hzFup {
-            0% { opacity: 0; transform: translateY(0) scale(.6); }
-            20% { opacity: 1; transform: translateY(-14px) scale(1.15); }
-            100% { opacity: 0; transform: translateY(-64px) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(.6);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(-14px) scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-64px) scale(1);
+            }
         }
 
         .hz-overlay {
@@ -6073,6 +6265,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #c7d8f0;
         }
+
         /* ================= /HAFIZA OYUNU CSS ================= */
 
         /* ================= KARMA KELIME OYUNU CSS ================= */
@@ -6116,10 +6309,23 @@
         }
 
         @keyframes klRise {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            8% { opacity: .55; }
-            85% { opacity: .35; }
-            100% { transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+
+            8% {
+                opacity: .55;
+            }
+
+            85% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6);
+                opacity: 0;
+            }
         }
 
         .kl-panel {
@@ -6135,11 +6341,27 @@
         }
 
         @keyframes klShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-9px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-9px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-6px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .kl-stat-row {
@@ -6216,8 +6438,15 @@
         }
 
         @keyframes klBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
         }
 
         .kl-tbar {
@@ -6244,8 +6473,15 @@
         }
 
         @keyframes klGlowRed {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
-            50% { box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45);
+            }
         }
 
         .kl-hint-card {
@@ -6421,9 +6657,19 @@
         }
 
         @keyframes klKaroin {
-            0% { transform: scale(.4) rotate(-12deg); opacity: 0; }
-            70% { transform: scale(1.1); }
-            100% { transform: none; opacity: 1; }
+            0% {
+                transform: scale(.4) rotate(-12deg);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: none;
+                opacity: 1;
+            }
         }
 
         .kl-karo:hover {
@@ -6487,9 +6733,18 @@
         }
 
         @keyframes klRespop {
-            0% { transform: scale(.6); opacity: 0; }
-            60% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(.6);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .kl-splash {
@@ -6510,10 +6765,24 @@
         }
 
         @keyframes klSpl {
-            0% { opacity: 0; transform: scale(.7); }
-            25% { opacity: 1; transform: scale(1); }
-            75% { opacity: 1; }
-            100% { opacity: 0; transform: scale(1.15); }
+            0% {
+                opacity: 0;
+                transform: scale(.7);
+            }
+
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.15);
+            }
         }
 
         .kl-splash .s1 {
@@ -6585,9 +6854,20 @@
         }
 
         @keyframes klFup {
-            0% { opacity: 0; transform: translateY(0) scale(.6); }
-            20% { opacity: 1; transform: translateY(-14px) scale(1.15); }
-            100% { opacity: 0; transform: translateY(-64px) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(.6);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(-14px) scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-64px) scale(1);
+            }
         }
 
         .kl-overlay {
@@ -6701,6 +6981,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #c7d8f0;
         }
+
         /* ================= /KARMA KELIME OYUNU CSS ================= */
 
         /* ================= HIZLI GORSEL OYUNU CSS ================= */
@@ -6744,10 +7025,23 @@
         }
 
         @keyframes hgRise {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            8% { opacity: .55; }
-            85% { opacity: .35; }
-            100% { transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+
+            8% {
+                opacity: .55;
+            }
+
+            85% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translateY(-108vh) translateX(var(--sway, 30px)) scale(.6);
+                opacity: 0;
+            }
         }
 
         .hg-panel {
@@ -6763,11 +7057,27 @@
         }
 
         @keyframes hgShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-9px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-9px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-6px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .hg-stat-row {
@@ -6839,8 +7149,15 @@
         }
 
         @keyframes hgBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
         }
 
         .hg-tbar {
@@ -6867,8 +7184,15 @@
         }
 
         @keyframes hgGlowRed {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
-            50% { box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 14px 2px rgba(255, 107, 107, 0.45);
+            }
         }
 
         .hg-flash-stage {
@@ -6890,8 +7214,15 @@
         }
 
         @keyframes hgWarn {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
-            50% { box-shadow: inset 0 0 34px 4px rgba(250, 204, 21, 0.35); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+            }
+
+            50% {
+                box-shadow: inset 0 0 34px 4px rgba(250, 204, 21, 0.35);
+            }
         }
 
         .hg-flash-stage.flashnow {
@@ -6899,8 +7230,13 @@
         }
 
         @keyframes hgFlashAnim {
-            0% { box-shadow: 0 0 60px 14px rgba(56, 189, 248, 0.5); }
-            100% { box-shadow: none; }
+            0% {
+                box-shadow: 0 0 60px 14px rgba(56, 189, 248, 0.5);
+            }
+
+            100% {
+                box-shadow: none;
+            }
         }
 
         .hg-img-wrap {
@@ -6918,7 +7254,8 @@
         .hg-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: rgba(2, 10, 24, .65);
             display: block;
         }
 
@@ -6990,9 +7327,18 @@
         }
 
         @keyframes hgRespop {
-            0% { transform: scale(.6); opacity: 0; }
-            60% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(.6);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .hg-opts {
@@ -7069,10 +7415,24 @@
         }
 
         @keyframes hgSpl {
-            0% { opacity: 0; transform: scale(.7); }
-            25% { opacity: 1; transform: scale(1); }
-            75% { opacity: 1; }
-            100% { opacity: 0; transform: scale(1.15); }
+            0% {
+                opacity: 0;
+                transform: scale(.7);
+            }
+
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.15);
+            }
         }
 
         .hg-splash .s1 {
@@ -7144,9 +7504,20 @@
         }
 
         @keyframes hgFup {
-            0% { opacity: 0; transform: translateY(0) scale(.6); }
-            20% { opacity: 1; transform: translateY(-14px) scale(1.15); }
-            100% { opacity: 0; transform: translateY(-64px) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(.6);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(-14px) scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-64px) scale(1);
+            }
         }
 
         .hg-overlay {
@@ -7269,6 +7640,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #c7d8f0;
         }
+
         /* ================= /HIZLI GORSEL OYUNU CSS ================= */
 
         /* Hizli gorsel cevap gorunurlugu secimi */
@@ -7778,25 +8150,25 @@
                     </div>
                 </div>
 
-                <div class="mode-card mode-card--hafiza" id="modeHafizaCard" onclick="selectGameMode('hafiza')">
-                    <div class="mode-card-icon">🧠</div>
-                    <div class="mode-card-title">Hafıza Oyunu</div>
-                    <div class="mode-card-desc">Işıklar sırayla yanıp söner! Diziyi ezberle, aynı sırayla tekrarla.
-                        Seviye ilerledikçe zincir uzar, tempo hızlanır.</div>
-                </div>
-
-                <div class="mode-card mode-card--kelime" id="modeKelimeCard" onclick="selectGameMode('kelime')">
-                    <div class="mode-card-icon">🔤</div>
-                    <div class="mode-card-title">Karma Kelime</div>
-                    <div class="mode-card-desc">Karışık harfleri doğru sırayla birleştir! İpucundan yararlan, süre
-                        bitmeden çöz. Her 5 seviyede kelimeler uzar.</div>
-                </div>
-
                 <div class="mode-card mode-card--blur" id="modeBlurCard" onclick="selectGameMode('blur')">
                     <div class="mode-card-icon">👁️‍🗨️</div>
                     <div class="mode-card-title">Bulanık Tahmin</div>
                     <div class="mode-card-desc">Görsel bulanık başlar, erken bil çok puan al! 10 kategori, 5 seviye
                         netleşme.</div>
+                </div>
+
+                <div class="mode-card mode-card--hizli" id="modeHizliCard" onclick="selectGameMode('hizli')">
+                    <div class="mode-card-icon">⚡</div>
+                    <div class="mode-card-title">Hızlı Görsel</div>
+                    <div class="mode-card-desc">Görsel tek anlığına flaşlanır ve kaybolur! 4 seçenekten doğrusunu
+                        bul. 5 kategori, sonda sonuç ekranı.</div>
+                </div>
+
+                <div class="mode-card mode-card--hafiza" id="modeHafizaCard" onclick="selectGameMode('hafiza')">
+                    <div class="mode-card-icon">🧠</div>
+                    <div class="mode-card-title">Hafıza Oyunu</div>
+                    <div class="mode-card-desc">Işıklar sırayla yanıp söner! Diziyi ezberle, aynı sırayla tekrarla.
+                        Seviye ilerledikçe zincir uzar, tempo hızlanır.</div>
                 </div>
 
                 <div class="mode-card mode-card--fark" id="modeFarkCard" onclick="selectGameMode('fark')">
@@ -7806,11 +8178,11 @@
                         büyür, renkler birbirine yaklaşır. Her 5 seviyede rütbe atla!</div>
                 </div>
 
-                <div class="mode-card mode-card--hizli" id="modeHizliCard" onclick="selectGameMode('hizli')">
-                    <div class="mode-card-icon">⚡</div>
-                    <div class="mode-card-title">Hızlı Görsel</div>
-                    <div class="mode-card-desc">Görsel tek anlığına flaşlanır ve kaybolur! 4 seçenekten doğrusunu
-                        bul. 5 kategori, seviye ilerledikçe flaş kısalır.</div>
+                <div class="mode-card mode-card--kelime" id="modeKelimeCard" onclick="selectGameMode('kelime')">
+                    <div class="mode-card-icon">🔤</div>
+                    <div class="mode-card-title">Karma Kelime</div>
+                    <div class="mode-card-desc">Karışık harfleri doğru sırayla birleştir! İpucundan yararlan, süre
+                        bitmeden çöz. Her 5 seviyede kelimeler uzar.</div>
                 </div>
             </div>
             <div class="button-group">
@@ -8537,13 +8909,14 @@
             <div class="photo-count-box" style="margin-top:14px">
                 <label>Cevaplar ne zaman gösterilsin?</label>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-                    <button class="hg-vis-btn selected" id="hgVisYes" onclick="hgSetVis(true)">👁️ Cevap Görünsün</button>
+                    <button class="hg-vis-btn selected" id="hgVisYes" onclick="hgSetVis(true)">👁️ Cevap
+                        Görünsün</button>
                     <button class="hg-vis-btn" id="hgVisNo" onclick="hgSetVis(false)">🙈 Görünmesin</button>
                 </div>
                 <p class="hg-vis-desc" id="hgVisDesc">Her yanlışta doğrusu anında gösterilir</p>
             </div>
 
-        
+
             <div
                 style="margin:18px auto;max-width:500px;background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
                 <span>⚡ Flaş: 0.60 saniye</span><span>🎯 Tüm sorular oynanır</span><span>📊 Sonda sonuç ekranı</span>
@@ -8572,8 +8945,7 @@
             <div id="hgResRec"
                 style="display:none;color:#facc15;font-weight:800;font-size:13px;letter-spacing:1px;margin:10px 0">
                 🏆 YENİ REKOR!</div>
-            <div
-                style="background:rgba(0,0,0,0.25);border-radius:20px;padding:14px;margin:16px 0;text-align:left;max-height:340px;overflow-y:auto;scrollbar-width:none"
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:14px;margin:16px 0;text-align:left;max-height:340px;overflow-y:auto;scrollbar-width:none"
                 id="hgResList"></div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
                 <button class="primary-btn" onclick="hgReplay()">🔄 Tekrar Oyna</button>
@@ -17303,85 +17675,95 @@
            file: '' ise picsum yedek; kullanicinin gorsel dosya adini
            buraya yazmasi yeterli (orn: 'aslan.png') */
         const HG_CATS = {
-            hayvan: { name: 'Hayvan', icon: '🦁', color: '#4ade80', items: [
-                  { name: "kaplan", emoji: "🦁", file: "hayvan_1.jpg" }, { name: "aslan", emoji: "🐘", file: "hayvan_2.jpg" }, { name: "kara panter", emoji: "🐺", file: "hayvan_3.jpg" }, { name: "leopar", emoji: "🦅", file: "hayvan_4.jpg" }, { name: "çita", emoji: "🦉", file: "hayvan_5.jpg" },
-                { name: "vaşak", emoji: "🐢", file: "hayvan_6.jpg" }, { name: "fil", emoji: "🦈", file: "hayvan_7.jpg" }, { name: "zürafa", emoji: "🐬", file: "hayvan_8.jpg" }, { name: "zebra", emoji: "🐍", file: "hayvan_9.jpg" }, { name: "karınca yiyen", emoji: "🦚", file: "hayvan_10.jpg" },
-                { name: "şempanze", emoji: "🐊", file: "hayvan_11.jpg" }, { name: "goril", emoji: "🦓", file: "hayvan_12.jpg" }, { name: "su aygırı", emoji: "🦬", file: "hayvan_13.jpg" }, { name: "boğa", emoji: "🦙", file: "hayvan_14.jpg" }, { name: "lama", emoji: "🦦", file: "hayvan_15.jpg" },
-                { name: "kedi", emoji: "🦩", file: "hayvan_16.jpg" }, { name: "köpek", emoji: "🦔", file: "hayvan_17.jpg" }, { name: "su samuru", emoji: "🦇", file: "hayvan_18.jpg" }, { name: "ornitorenk", emoji: "🐧", file: "hayvan_19.jpg" }, { name: "yarasa", emoji: "🐪", file: "hayvan_20.jpg" }
-            ] },
-            telefon: { name: 'Telefon', icon: '📱', color: '#00d2ff', items: [
-                 { name: "iPhone", emoji: "📱", file: "telefon_01.jpg" }, { name: "Samsung", emoji: "📱", file: "telefon_02.jpg" }, { name: "Xiaomi", emoji: "📱", file: "telefon_03.jpg" }, { name: "lenova", emoji: "📱", file: "telefon_04.jpg" }, { name: "nokia", emoji: "📱", file: "telefon_05.jpg" },
-                { name: "poco", emoji: "📱", file: "telefon_06.jpg" }, { name: "redmi", emoji: "📱", file: "telefon_07.jpg" }, { name: "huwai", emoji: "📱", file: "telefon_08.jpg" }, { name: "honor", emoji: "📱", file: "telefon_09.jpg" }, { name: " oppo", emoji: "📱", file: "telefon_10.jpg" },
-                { name: "realmi", emoji: "📱", file: "telefon_11.jpg" }, { name: "sony", emoji: "📱", file: "telefon_12.jpg" }, { name: "Asus", emoji: "📱", file: "telefon_13.jpg" }, { name: "Honor", emoji: "📱", file: "telefon_14.jpg" }, { name: "tekno dpart", emoji: "📱", file: "telefon_15.jpg" }
-            ] },
-            repci: { name: 'Repçiler', icon: '🎤', color: '#ec4899', items: [
-                { name: "lvbel c5", emoji: "🎤", file: "repçi_1.jpg" }, { name: "uzi", emoji: "🎤", file: "repçi_2.jpg" }, { name: "motive", emoji: "🎤", file: "repçi_3.jpg" }, { name: "ceza", emoji: "🎤", file: "repçi_4.jpg" }, { name: "sagopa kajmer", emoji: "🎤", file: "repçi_5.jpg" },
-                { name: "norm ender", emoji: "🎤", file: "repçi_6.jpg" }, { name: "kila hakan", emoji: "🎤", file: "repçi_7.jpg" }, { name: "blok 3", emoji: "🎤", file: "repçi_8.jpg" }, { name: "batuflex", emoji: "🎤", file: "repçi_9.jpg" }, { name: "ati 242", emoji: "🎤", file: "repçi_10.jpg" },
-                { name: "cakal", emoji: "🎤", file: "repçi_11.jpg" }, { name: "ben fero", emoji: "🎤", file: "repçi_12.jpg" }, { name: "berkcan güven", emoji: "🎤", file: "repçi_13.jpg" }, { name: "reckol", emoji: "🎤", file: "repçi_14.jpg" }, { name: "tepki", emoji: "🎤", file: "repçi_15.jpg" },
-                { name: "era7capone", emoji: "🎤", file: "repçi_16.jpg" }, { name: "khontkar", emoji: "🎤", file: "repçi_17.jpg" }, { name: "ezhel", emoji: "🎤", file: "repçi_18.jpg" }, { name: "murda", emoji: "🎤", file: "repçi_19.jpg" }, { name: "sefo", emoji: "🎤", file: "repçi_20.jpg" },
-                { name: "şanişer", emoji: "🎤", file: "repçi_21.jpg" }, { name: "şehinşah", emoji: "🎤", file: "repçi_22.jpg" }, { name: "allame", emoji: "🎤", file: "repçi_23.jpg" }, { name: "gazapizim", emoji: "🎤", file: "repçi_24.jpg" }, { name: "mero", emoji: "🎤", file: "repçi_25.jpg" }
-            ] },
-            oyuncu: { name: 'Erkek Oyuncu', icon: '🎬', color: '#facc15', items: [
-                { name: "Christian Bale", emoji: "🎬", file: "erkek_01.jpg" }, { name: "Leonardo DiCaprio", emoji: "🎬", file: "erkek_02.jpg" }, { name: "Brad Pitt", emoji: "🎬", file: "erkek_03.jpg" }, { name: "Will Smith", emoji: "🎬", file: "erkek_04.jpg" }, { name: "Nicolas Cage", emoji: "🎬", file: "erkek_05.jpg" },
-                { name: "Jason Statham", emoji: "🎬", file: "erkek_06.jpg" }, { name: "Robert Downey Jr.", emoji: "🎬", file: "erkek_07.jpg" }, { name: "Hugh Jackman", emoji: "🎬", file: "erkek_08.jpg" }, { name: "Vin Diesel", emoji: "🎬", file: "erkek_09.jpg" }, { name: "Kenan İmirzalıoğlu", emoji: "🎬", file: "erkek_10.jpg" },
-                { name: "Burak Özçivit", emoji: "🎬", file: "erkek_11.jpg" }, { name: "Aras Bulut İynemli", emoji: "🎬", file: "erkek_12.jpg" }, { name: "Kerem Bürsin", emoji: "🎬", file: "erkek_13.jpg" }, { name: "Çağatay Ulusoy", emoji: "🎬", file: "erkek_14.jpg" }, { name: "Kıvanç Tatlıtuğ", emoji: "🎬", file: "erkek_15.jpg" },
-                { name: "Barış Arduç", emoji: "🎬", file: "erkek_16.jpg" }, { name: "Deniz Can Aktaş", emoji: "🎬", file: "erkek_17.jpg" }, { name: "Yağız Can Konyalı", emoji: "🎬", file: "erkek_18.jpg" }, { name: "çihangir cehan", emoji: "🎬", file: "erkek_19.jpg" }, { name: "Johnny Depp", emoji: "🎬", file: "erkek_20.jpg" },
-                { name: "Sarp Levendoğlu", emoji: "🎬", file: "erkek_21.jpg" }, { name: "Şevket Çoruh", emoji: "🎬", file: "erkek_22.jpg" }, { name: "Tom Hardy", emoji: "🎬", file: "erkek_23.jpg" }, { name: "Tom Holland", emoji: "🎬", file: "erkek_24.jpg" }, { name: "Robert Pattinson", emoji: "🎬", file: "erkek_25.jpg" },
-                { name: "Çağlar Ertuğrul", emoji: "🎬", file: "erkek_26.png" }, { name: "Pedro Pascal", emoji: "🎬", file: "erkek_27.jpg" }, { name: "Michael B. Jordan", emoji: "🎬", file: "erkek_28.jpg" }, { name: "Ahmet Rıfat Şungar", emoji: "🎬", file: "erkek_29.jpg" }, { name: "Halit Ergenç", emoji: "🎬", file: "erkek_30.jpg" },
-                { name: "Sylvester Stallone", emoji: "🎬", file: "erkek_31.jpg" }, { name: "Jim Carrey", emoji: "🎬", file: "erkek_32.jpg" }, { name: "berk ali çatal", emoji: "🎬", file: "erkek_33.jpg" }, { name: "Jackie Chan", emoji: "🎬", file: "erkek_34.jpg" }, { name: "Bruce Willis", emoji: "🎬", file: "erkek_35.jpg" }
-            ] },
-            anime: { name: 'Kız Anime', icon: '🌸', color: '#c084fc', items: [
-                 { name: "Erza Scarlet", emoji: "🌸", file: "kız_01.jpg" },
-                 { name: "Revy", emoji: "🌸", file: "kız_02.jpg" },
-                 { name: "Asuna Yuuki", emoji: "🌸", file: "kız_03.jpg" },
-                 { name: "Hinatsuru", emoji: "🌸", file: "kız_04.jpg" },
-                 { name: "Mizore Shirayuki", emoji: "🌸", file: "kız_05.jpg" },
-                 { name: "Shura Kirigakure", emoji: "🌸", file: "kız_06.jpg" },
-                 { name: "Lucy Heartfilia", emoji: "🌸", file: "kız_07.jpg" },
-                 { name: "Millianna", emoji: "🌸", file: "kız_08.jpg" },
-                 { name: "Celty Sturluson", emoji: "🌸", file: "kız_09.jpg" },
-                 { name: "Tsunade Senju", emoji: "🌸", file: "kız_10.jpg" }, 
-                 { name: "Kagura", emoji: "🌸", file: "kız_11.jpg" },
-                 { name: "Rumi", emoji: "🌸", file: "kız_12.jpg" },
-                 { name: "Marin Kitagawa", emoji: "🌸", file: "kız_13.jpg" },
-                 { name: "Seras Victoria", emoji: "🌸", file: "kız_14.jpg" },
-                 { name: "Rias Gremory", emoji: "🌸", file: "kız_15.jpg" },
-                 { name: "Usagi Tsukino", emoji: "🌸", file: "kız_16.jpg" },
-                 { name: "Mikasa Ackerman", emoji: "🌸", file: "kız_17.jpg" },
-                 { name: "Yoruichi Shihouin", emoji: "🌸", file: "kız_18.jpg" },
-                 { name: "Nami", emoji: "🌸", file: "kız_19.jpg" },
-                 { name: "Winry Rockbell", emoji: "🌸", file: "kız_20.jpg" },
-                 { name: "Kaguya Shinomiya", emoji: "🌸", file: "kız_21.jpg" },
-                 { name: "Nezuko Kamado", emoji: "🌸", file: "kız_22.jpg" },
-                 { name: "Anya Forger", emoji: "🌸", file: "kız_23.jpg" },
-                 { name: "Rem", emoji: "🌸", file: "kız_24.jpg" },
-                 { name: "Rukia", emoji: "🌸", file: "kız_25.jpg" },
-                 { name: "Sakura", emoji: "🌸", file: "kız_26.jpg" },
-                 { name: "Power", emoji: "🌸", file: "kız_27.jpg" },
-                 { name: "Yor Forger", emoji: "🌸", file: "kız_28.jpg" },
-                 { name: "Hinata Hyuga", emoji: "🌸", file: "kız_29.jpg" },
-                 { name: "Makima", emoji: "🌸", file: "kız_30.jpg" },
-                 { name: "Nico Robin", emoji: "🌸", file: "kız_31.jpg" },
-                 { name: "Emilia", emoji: "🌸", file: "kız_32.jpg" },
-                 { name: "Zero Two", emoji: "🌸", file: "kız_33.jpg" },
-                 { name: "C.C.", emoji: "🌸", file: "kız_34.jpg" },
-                 { name: "Boa Hancock", emoji: "🌸", file: "kız_35.jpg" },
-                 { name: "Satsuki Kiryuin", emoji: "🌸", file: "kız_36.jpg" },
-                 { name: "Android 18", emoji: "🌸", file: "kız_37.jpg" },
-                 { name: "Esdeath", emoji: "🌸", file: "kız_38.jpg" },
-                 { name: "Fubuki", emoji: "🌸", file: "kız_39.jpg" },
-                 { name: "Rangiku Matsumoto", emoji: "🌸", file: "kız_40.jpg" },
-                 { name: "Mereoleona Vermillion", emoji: "🌸", file: "kız_41.jpg" },
-                 { name: "Faye Valentine", emoji: "🌸", file: "kız_42.jpg" },
-                 { name: "Fujiko Mine", emoji: "🌸", file: "kız_43.jpg" },
-                 { name: "Mitsuri Kanroji", emoji: "🌸", file: "kız_44.jpg" },
-                 { name: "Akeno Himejima", emoji: "🌸", file: "kız_45.jpg" },
-                 { name: "YoRHa No.2 Type B (", emoji: "🌸", file: "kız_46.jpg" },
-                 { name: "Lucy Heartfilia", emoji: "🌸", file: "kız_47.jpg" },
-                 { name: ": Mai Sakurajima", emoji: "🌸", file: "kız_48.jpg" },
-                 { name: "Orihime Inoue", emoji: "🌸", file: "kız_49.jpg" },
-                 { name: "Tatsumaki", emoji: "🌸", file: "kız_50.jpg" }
-            ] } 
+            hayvan: {
+                name: 'Hayvan', icon: '🦁', color: '#4ade80', items: [
+                    { name: "kaplan", emoji: "🦁", file: "hayvan_1.jpg" }, { name: "aslan", emoji: "🐘", file: "hayvan_2.jpg" }, { name: "kara panter", emoji: "🐺", file: "hayvan_3.jpg" }, { name: "leopar", emoji: "🦅", file: "hayvan_4.jpg" }, { name: "çita", emoji: "🦉", file: "hayvan_5.jpg" },
+                    { name: "vaşak", emoji: "🐢", file: "hayvan_6.jpg" }, { name: "fil", emoji: "🦈", file: "hayvan_7.jpg" }, { name: "zürafa", emoji: "🐬", file: "hayvan_8.jpg" }, { name: "zebra", emoji: "🐍", file: "hayvan_9.jpg" }, { name: "karınca yiyen", emoji: "🦚", file: "hayvan_10.jpg" },
+                    { name: "şempanze", emoji: "🐊", file: "hayvan_11.jpg" }, { name: "goril", emoji: "🦓", file: "hayvan_12.jpg" }, { name: "su aygırı", emoji: "🦬", file: "hayvan_13.jpg" }, { name: "boğa", emoji: "🦙", file: "hayvan_14.jpg" }, { name: "lama", emoji: "🦦", file: "hayvan_15.jpg" },
+                    { name: "kedi", emoji: "🦩", file: "hayvan_16.jpg" }, { name: "köpek", emoji: "🦔", file: "hayvan_17.jpg" }, { name: "su samuru", emoji: "🦇", file: "hayvan_18.jpg" }, { name: "ornitorenk", emoji: "🐧", file: "hayvan_19.jpg" }, { name: "yarasa", emoji: "🐪", file: "hayvan_20.jpg" }
+                ]
+            },
+            telefon: {
+                name: 'Telefon', icon: '📱', color: '#00d2ff', items: [
+                    { name: "iPhone", emoji: "📱", file: "telefon_01.jpg" }, { name: "Samsung", emoji: "📱", file: "telefon_02.jpg" }, { name: "Xiaomi", emoji: "📱", file: "telefon_03.jpg" }, { name: "lenova", emoji: "📱", file: "telefon_04.jpg" }, { name: "nokia", emoji: "📱", file: "telefon_05.jpg" },
+                    { name: "poco", emoji: "📱", file: "telefon_06.jpg" }, { name: "redmi", emoji: "📱", file: "telefon_07.jpg" }, { name: "huwai", emoji: "📱", file: "telefon_08.jpg" }, { name: "honor", emoji: "📱", file: "telefon_09.jpg" }, { name: " oppo", emoji: "📱", file: "telefon_10.jpg" },
+                    { name: "realmi", emoji: "📱", file: "telefon_11.jpg" }, { name: "sony", emoji: "📱", file: "telefon_12.jpg" }, { name: "Asus", emoji: "📱", file: "telefon_13.jpg" }, { name: "Honor", emoji: "📱", file: "telefon_14.jpg" }, { name: "tekno dpart", emoji: "📱", file: "telefon_15.jpg" }
+                ]
+            },
+            repci: {
+                name: 'Repçiler', icon: '🎤', color: '#ec4899', items: [
+                    { name: "lvbel c5", emoji: "🎤", file: "repçi_1.jpg" }, { name: "uzi", emoji: "🎤", file: "repçi_2.jpg" }, { name: "motive", emoji: "🎤", file: "repçi_3.jpg" }, { name: "ceza", emoji: "🎤", file: "repçi_4.jpg" }, { name: "sagopa kajmer", emoji: "🎤", file: "repçi_5.jpg" },
+                    { name: "norm ender", emoji: "🎤", file: "repçi_6.jpg" }, { name: "kila hakan", emoji: "🎤", file: "repçi_7.jpg" }, { name: "blok 3", emoji: "🎤", file: "repçi_8.jpg" }, { name: "batuflex", emoji: "🎤", file: "repçi_9.jpg" }, { name: "ati 242", emoji: "🎤", file: "repçi_10.jpg" },
+                    { name: "cakal", emoji: "🎤", file: "repçi_11.jpg" }, { name: "ben fero", emoji: "🎤", file: "repçi_12.jpg" }, { name: "berkcan güven", emoji: "🎤", file: "repçi_13.jpg" }, { name: "reckol", emoji: "🎤", file: "repçi_14.jpg" }, { name: "tepki", emoji: "🎤", file: "repçi_15.jpg" },
+                    { name: "era7capone", emoji: "🎤", file: "repçi_16.jpg" }, { name: "khontkar", emoji: "🎤", file: "repçi_17.jpg" }, { name: "ezhel", emoji: "🎤", file: "repçi_18.jpg" }, { name: "murda", emoji: "🎤", file: "repçi_19.jpg" }, { name: "sefo", emoji: "🎤", file: "repçi_20.jpg" },
+                    { name: "şanişer", emoji: "🎤", file: "repçi_21.jpg" }, { name: "şehinşah", emoji: "🎤", file: "repçi_22.jpg" }, { name: "allame", emoji: "🎤", file: "repçi_23.jpg" }, { name: "gazapizim", emoji: "🎤", file: "repçi_24.jpg" }, { name: "mero", emoji: "🎤", file: "repçi_25.jpg" }
+                ]
+            },
+            oyuncu: {
+                name: 'Erkek Oyuncu', icon: '🎬', color: '#facc15', items: [
+                    { name: "Christian Bale", emoji: "🎬", file: "erkek_01.jpg" }, { name: "Leonardo DiCaprio", emoji: "🎬", file: "erkek_02.jpg" }, { name: "Brad Pitt", emoji: "🎬", file: "erkek_03.jpg" }, { name: "Will Smith", emoji: "🎬", file: "erkek_04.jpg" }, { name: "Nicolas Cage", emoji: "🎬", file: "erkek_05.jpg" },
+                    { name: "Jason Statham", emoji: "🎬", file: "erkek_06.jpg" }, { name: "Robert Downey Jr.", emoji: "🎬", file: "erkek_07.jpg" }, { name: "Hugh Jackman", emoji: "🎬", file: "erkek_08.jpg" }, { name: "Vin Diesel", emoji: "🎬", file: "erkek_09.jpg" }, { name: "Kenan İmirzalıoğlu", emoji: "🎬", file: "erkek_10.jpg" },
+                    { name: "Burak Özçivit", emoji: "🎬", file: "erkek_11.jpg" }, { name: "Aras Bulut İynemli", emoji: "🎬", file: "erkek_12.jpg" }, { name: "Kerem Bürsin", emoji: "🎬", file: "erkek_13.jpg" }, { name: "Çağatay Ulusoy", emoji: "🎬", file: "erkek_14.jpg" }, { name: "Kıvanç Tatlıtuğ", emoji: "🎬", file: "erkek_15.jpg" },
+                    { name: "Barış Arduç", emoji: "🎬", file: "erkek_16.jpg" }, { name: "Deniz Can Aktaş", emoji: "🎬", file: "erkek_17.jpg" }, { name: "Yağız Can Konyalı", emoji: "🎬", file: "erkek_18.jpg" }, { name: "çihangir cehan", emoji: "🎬", file: "erkek_19.jpg" }, { name: "Johnny Depp", emoji: "🎬", file: "erkek_20.jpg" },
+                    { name: "Sarp Levendoğlu", emoji: "🎬", file: "erkek_21.jpg" }, { name: "Şevket Çoruh", emoji: "🎬", file: "erkek_22.jpg" }, { name: "Tom Hardy", emoji: "🎬", file: "erkek_23.jpg" }, { name: "Tom Holland", emoji: "🎬", file: "erkek_24.jpg" }, { name: "Robert Pattinson", emoji: "🎬", file: "erkek_25.jpg" },
+                    { name: "Çağlar Ertuğrul", emoji: "🎬", file: "erkek_26.png" }, { name: "Pedro Pascal", emoji: "🎬", file: "erkek_27.jpg" }, { name: "Michael B. Jordan", emoji: "🎬", file: "erkek_28.jpg" }, { name: "Ahmet Rıfat Şungar", emoji: "🎬", file: "erkek_29.jpg" }, { name: "Halit Ergenç", emoji: "🎬", file: "erkek_30.jpg" },
+                    { name: "Sylvester Stallone", emoji: "🎬", file: "erkek_31.jpg" }, { name: "Jim Carrey", emoji: "🎬", file: "erkek_32.jpg" }, { name: "berk ali çatal", emoji: "🎬", file: "erkek_33.jpg" }, { name: "Jackie Chan", emoji: "🎬", file: "erkek_34.jpg" }, { name: "Bruce Willis", emoji: "🎬", file: "erkek_35.jpg" }
+                ]
+            },
+            anime: {
+                name: 'Kız Anime', icon: '🌸', color: '#c084fc', items: [
+                    { name: "Erza Scarlet", emoji: "🌸", file: "kız_01.jpg" },
+                    { name: "Revy", emoji: "🌸", file: "kız_02.jpg" },
+                    { name: "Asuna Yuuki", emoji: "🌸", file: "kız_03.jpg" },
+                    { name: "Hinatsuru", emoji: "🌸", file: "kız_04.jpg" },
+                    { name: "Mizore Shirayuki", emoji: "🌸", file: "kız_05.jpg" },
+                    { name: "Shura Kirigakure", emoji: "🌸", file: "kız_06.jpg" },
+                    { name: "Lucy Heartfilia", emoji: "🌸", file: "kız_07.jpg" },
+                    { name: "Millianna", emoji: "🌸", file: "kız_08.jpg" },
+                    { name: "Celty Sturluson", emoji: "🌸", file: "kız_09.jpg" },
+                    { name: "Tsunade Senju", emoji: "🌸", file: "kız_10.jpg" },
+                    { name: "Kagura", emoji: "🌸", file: "kız_11.jpg" },
+                    { name: "Rumi", emoji: "🌸", file: "kız_12.jpg" },
+                    { name: "Marin Kitagawa", emoji: "🌸", file: "kız_13.jpg" },
+                    { name: "Seras Victoria", emoji: "🌸", file: "kız_14.jpg" },
+                    { name: "Rias Gremory", emoji: "🌸", file: "kız_15.jpg" },
+                    { name: "Usagi Tsukino", emoji: "🌸", file: "kız_16.jpg" },
+                    { name: "Mikasa Ackerman", emoji: "🌸", file: "kız_17.jpg" },
+                    { name: "Yoruichi Shihouin", emoji: "🌸", file: "kız_18.jpg" },
+                    { name: "Nami", emoji: "🌸", file: "kız_19.jpg" },
+                    { name: "Winry Rockbell", emoji: "🌸", file: "kız_20.jpg" },
+                    { name: "Kaguya Shinomiya", emoji: "🌸", file: "kız_21.jpg" },
+                    { name: "Nezuko Kamado", emoji: "🌸", file: "kız_22.jpg" },
+                    { name: "Anya Forger", emoji: "🌸", file: "kız_23.jpg" },
+                    { name: "Rem", emoji: "🌸", file: "kız_24.jpg" },
+                    { name: "Rukia", emoji: "🌸", file: "kız_25.jpg" },
+                    { name: "Sakura", emoji: "🌸", file: "kız_26.jpg" },
+                    { name: "Power", emoji: "🌸", file: "kız_27.jpg" },
+                    { name: "Yor Forger", emoji: "🌸", file: "kız_28.jpg" },
+                    { name: "Hinata Hyuga", emoji: "🌸", file: "kız_29.jpg" },
+                    { name: "Makima", emoji: "🌸", file: "kız_30.jpg" },
+                    { name: "Nico Robin", emoji: "🌸", file: "kız_31.jpg" },
+                    { name: "Emilia", emoji: "🌸", file: "kız_32.jpg" },
+                    { name: "Zero Two", emoji: "🌸", file: "kız_33.jpg" },
+                    { name: "C.C.", emoji: "🌸", file: "kız_34.jpg" },
+                    { name: "Boa Hancock", emoji: "🌸", file: "kız_35.jpg" },
+                    { name: "Satsuki Kiryuin", emoji: "🌸", file: "kız_36.jpg" },
+                    { name: "Android 18", emoji: "🌸", file: "kız_37.jpg" },
+                    { name: "Esdeath", emoji: "🌸", file: "kız_38.jpg" },
+                    { name: "Fubuki", emoji: "🌸", file: "kız_39.jpg" },
+                    { name: "Rangiku Matsumoto", emoji: "🌸", file: "kız_40.jpg" },
+                    { name: "Mereoleona Vermillion", emoji: "🌸", file: "kız_41.jpg" },
+                    { name: "Faye Valentine", emoji: "🌸", file: "kız_42.jpg" },
+                    { name: "Fujiko Mine", emoji: "🌸", file: "kız_43.jpg" },
+                    { name: "Mitsuri Kanroji", emoji: "🌸", file: "kız_44.jpg" },
+                    { name: "Akeno Himejima", emoji: "🌸", file: "kız_45.jpg" },
+                    { name: "YoRHa No.2 Type B (", emoji: "🌸", file: "kız_46.jpg" },
+                    { name: "Lucy Heartfilia", emoji: "🌸", file: "kız_47.jpg" },
+                    { name: ": Mai Sakurajima", emoji: "🌸", file: "kız_48.jpg" },
+                    { name: "Orihime Inoue", emoji: "🌸", file: "kız_49.jpg" },
+                    { name: "Tatsumaki", emoji: "🌸", file: "kız_50.jpg" }
+                ]
+            }
         };
 
         /* ---- Ses ---- */
@@ -17915,7 +18297,7 @@
             document.getElementById('hizliResultScreen').style.display = 'block';
         }
 
-                /* ESC = cikis onayi */
+        /* ESC = cikis onayi */
         document.addEventListener('keydown', e => {
             const gs = document.getElementById('hizliGameScreen');
             if (e.key === 'Escape' && gs && gs.style.display === 'block' &&
@@ -17967,7 +18349,8 @@
     </div>
 
     <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a31e55e73ad1e33f',t:'MTc4Nzg2Nzg4NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32586376dd48888',t:'MTc4Nzk0MzI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a32586376dd48888',t:'MTc4Nzk0MzI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
 
 
 </html>
