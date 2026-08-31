@@ -7672,7 +7672,6 @@
             line-height: 1.5;
             font-weight: 600;
         }
-
         /* ================= ZOOM TAHMIN OYUNU CSS (10. OYUN) ================= */
 
         .mode-card--zoom {
@@ -8320,7 +8319,44 @@
             }
         }
 
+        /* --- Tam gorunum (seviye 5): gorsel net ve kirpilmamis --- */
+        .zg-frame.full .zg-vignette,
+        .zg-frame.full .zg-reticle {
+            opacity: 0;
+            transition: opacity .45s ease;
+        }
+
+        .zg-vignette,
+        .zg-reticle {
+            transition: opacity .45s ease;
+        }
+
+        .zg-typedesc {
+            max-width: 660px;
+            margin: 9px auto 0;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #8a8ab0;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .zg-typewrap {
+            max-width: 660px;
+        }
+
+        .zg-typeinput {
+            font-size: 16px;
+            padding: 16px 16px;
+        }
+
+        .zg-typebtn {
+            font-size: 15px;
+            padding: 0 22px;
+        }
+
         /* ================= /ZOOM TAHMIN OYUNU CSS ================= */
+
     </style>
 
 </head>
@@ -8852,8 +8888,8 @@
                 <div class="mode-card mode-card--zoom" id="modeZoomCard" onclick="selectGameMode('zoom')">
                     <div class="mode-card-icon">🔍</div>
                     <div class="mode-card-title">Zoom Tahmin</div>
-                    <div class="mode-card-desc">Görselin rastgele bir detayına zoomlanır! Yakından başla, uzaklaştıkça
-                        puan düşer. 15 kategori, 5 seviye.</div>
+                    <div class="mode-card-desc">Görselin rastgele bir detayına zoomlanır! Yazarak tahmin et, her
+                        yanlışta görüntü biraz daha açılsın. 15 kategori, 5 seviye.</div>
                 </div>
             </div>
             <div class="button-group">
@@ -9673,8 +9709,7 @@
                 </div>
                 <div style="width:80px;"></div>
             </div>
-            <p class="subtitle">Görsel çok yakından başlar! Detaydan yola çık ne olduğunu bul — erken bil, çok kazan.
-            </p>
+            <p class="subtitle">Görsel çok yakından başlar! Detaydan yola çık ne olduğunu bul — erken bil, çok kazan.</p>
             <div class="categories-grid" id="zoomCategoryGrid"></div>
         </div>
 
@@ -9704,7 +9739,7 @@
             </div>
             <div
                 style="margin:18px auto;max-width:560px;background:rgba(34,211,238,0.08);border:1px dashed rgba(34,211,238,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:16px;justify-content:center;font-size:12.5px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
-                <span>🔬 Seviye 1: 1000 Puan</span><span>🖼️ Seviye 5: 50 Puan</span><span>❌ Bilemezsen: 0</span>
+                <span>🔬 Seviye 1: 30 Puan</span><span>🖼️ Seviye 5: 2 Puan</span><span>❌ Bilemezsen: 0</span>
             </div>
             <div class="button-group">
                 <button class="primary-btn" id="zgCountNextBtn" onclick="zgLaunchGame()">🚀 Oyunu Başlat</button>
@@ -9794,13 +9829,13 @@
 
                 <div class="zg-hintline" id="zgHintLine">💡 <span id="zgHintText"></span></div>
 
-                <div class="zg-opts" id="zgOpts"></div>
-
                 <div class="zg-typewrap">
-                    <input class="zg-typeinput" id="zgTypeInput" placeholder="veya adı yaz..." autocomplete="off"
-                        onkeydown="if(event.key==='Enter') zgSubmitTyped()">
-                    <button class="zg-typebtn" onclick="zgSubmitTyped()">Yaz</button>
+                    <input class="zg-typeinput" id="zgTypeInput" placeholder="Cevabını yaz..." autocomplete="off"
+                        autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter') zgSubmitTyped()">
+                    <button class="zg-typebtn" onclick="zgSubmitTyped()">Tahmin Et</button>
                 </div>
+                <p class="zg-typedesc">⌨️ Cevabı yazarak ver — her yanlış tahminde görüntü biraz daha açılır,
+                    5. seviyede tamamen görünür.</p>
 
                 <div class="zg-btnrow">
                     <button class="zg-btn hint" id="zgHintBtn" onclick="zgUseHint()">💡 İpucu</button>
@@ -19576,9 +19611,12 @@
            1) Kategori secilir, soru sayisi secilir.
            2) Her soruda gorselin RASTGELE bir noktasina zoomlanilir.
               Anchor her soruda yeniden atilir -> hep ayni yere bakmaz.
-           3) 5 seviye: 7x -> 5x -> 3.4x -> 2.2x -> 1.25x
-              Yanlis cevap / sure bitince bir seviye uzaklasir, puan duser.
+           3) 5 seviye: 7x -> 5x -> 3.4x -> 2.2x -> 1x (TAM GORUNUM)
+              Her YANLIS YAZILAN tahminde bir seviye uzaklasir,
+              gorsel git gide daha fazla ortaya cikar.
+              Son seviyede gorsel HIC KIRPILMADAN tamamin gorunur.
            4) Seviye 5'te de bilemezse 0 puan, dogru cevap gosterilir.
+           5) Cevap SADECE YAZARAK verilir (sik/secenek yoktur).
 
            ZOOM MATEMATIGI (zgApplyZoom)
            -----------------------------
@@ -19592,27 +19630,34 @@
                0.5/z <= ax <= 1 - 0.5/z
            Bu yuzden anchor en yuksek zoom'a gore secilir, dusuk
            seviyelerde zgClampAnchor ile merkeze dogru kisitlanir.
+           z = 1 oldugunda anchor (0.5, 0.5)'e sabitlenir ve tx = ty = 0
+           olur -> gorsel tamamiyle, kirpilmadan gorunur.
         ===================================================== */
 
         const ZG = {
             on: false, paused: false, lock: true, muted: false,
             catId: null, level: 1, score: 0, streak: 0, best: 0,
-            queue: [], cur: null, opts: [], total: 10, answered: 0, history: [],
+            queue: [], cur: null, total: 10, answered: 0, history: [],
             anchor: { x: 0.5, y: 0.5 }, zJit: 1,
             time: 0, timeMax: 0, raf: 0, lastT: 0,
             timers: [], phase: 'idle', themeIdx: 0, hintUsed: false
         };
         try { ZG.bestTotal = parseInt(localStorage.getItem('zoom_best') || '0') || 0; } catch (e) { ZG.bestTotal = 0; }
 
-        /* ---- 5 ZOOM SEVIYESI ---- */
+        /* ---- 5 ZOOM SEVIYESI ----
+           Puanlar magaza fiyatlarina gore ayarlandi:
+             en ucuz magaza urunu 25 puan (isim rengi "Gri"),
+             klas quiz'lerde soru basi 10/20/30 puan.
+           Kusursuz 10 soruluk oyun = 300 puan (zor quiz ile ayni).
+           Son seviyede zoom = 1.0 -> gorsel tamamen gorunur. */
         const ZG_LEVELS = [
-            { zoom: 7.0, points: 1000, label: 'Çok Yakın', sec: 15 },
-            { zoom: 5.0, points: 600, label: 'Yakın', sec: 14 },
-            { zoom: 3.4, points: 350, label: 'Orta', sec: 13 },
-            { zoom: 2.2, points: 150, label: 'Uzak', sec: 12 },
-            { zoom: 1.25, points: 50, label: 'Tam Görünüm', sec: 12 }
+            { zoom: 7.0, points: 30, label: 'Çok Yakın', sec: 15 },
+            { zoom: 5.0, points: 20, label: 'Yakın', sec: 14 },
+            { zoom: 3.4, points: 12, label: 'Orta', sec: 13 },
+            { zoom: 2.2, points: 6, label: 'Uzak', sec: 12 },
+            { zoom: 1.0, points: 2, label: 'Tam Görünüm', sec: 12 }
         ];
-        const ZG_STREAK_BONUS = 50;   // 3+ üst üste dogru bonusu
+        const ZG_STREAK_BONUS = 5;   // 3+ üst üste dogru bonusu
 
         /* ---- Rutbe temalari (ust uste dogru arttikca parlaklasir) ---- */
         const ZG_THEMES = [
@@ -19716,7 +19761,10 @@
         function zgClearTimers() { ZG.timers.forEach(id => clearTimeout(id)); ZG.timers = []; }
         function zgLater(fn, ms) { const id = setTimeout(fn, ms); ZG.timers.push(id); return id; }
 
-        /* ---- Veri erisimi: sadece adi dolu olan gorseller oynanabilir ---- */
+        /* ---- Veri erisimi ----
+           item.file VE item.image alanlarinin ikisi de kabul edilir
+           ("O mu Bu mu" formatinda image:, blur formatinda file: kullaniliyor).
+           Sadece adi dolu olan gorseller oynanabilir. */
         function zgPoolOf(catId) {
             const cat = ZG_CATS[catId];
             if (!cat) return [];
@@ -19724,7 +19772,7 @@
                 .map((it, i) => ({
                     name: (it.name || '').trim(),
                     emoji: (it.emoji || '').trim(),
-                    file: (it.file || '').trim(),
+                    file: (it.file || it.image || '').trim(),
                     _i: i
                 }))
                 .filter(it => it.name.length > 0);
@@ -19830,7 +19878,7 @@
                     'Şu an <b>' + pool.length + '</b> dolu.<br>Kod içinde <b>ZG_CATS.' + id + '.items</b> satırlarını doldur.';
             } else {
                 note.innerHTML = '🔍 Her soruda görselin <b>rastgele bir noktasına</b> zoomlanır — hep aynı yere bakmazsın.<br>' +
-                    '❌ Yanlış cevapta görüntü biraz daha uzaklaşır, puan düşer.';
+                    '⌨️ Cevabı <b>yazarak</b> ver. Her yanlışta görüntü biraz daha açılır, <b>5. seviyede tamamen görünür</b>.';
             }
         };
 
@@ -19882,14 +19930,18 @@
             };
         }
         function zgZoomFor(level) {
-            return +(ZG_LEVELS[level - 1].zoom * ZG.zJit).toFixed(3);
+            const base = ZG_LEVELS[level - 1].zoom;
+            /* Son seviye: zoom tam 1.0 -> gorsel kirpilmadan TAMAMEN gorunur.
+               (jitter uygulanmaz, yoksa 1'in altina duserse siyah bant olur) */
+            if (base <= 1) return 1;
+            return +(base * ZG.zJit).toFixed(3);
         }
+        function zgIsFullView() { return zgZoomFor(ZG.level) <= 1; }
         /* intro=true ise biraz daha yakin baslayip hedefe dogru acilir */
         function zgApplyZoom(animate, intro) {
             const img = zgEl('zgImg');
             if (img.style.display === 'none') return;
             const z = zgZoomFor(ZG.level);
-            const a = zgClampAnchor(ZG.anchor, z);
             const set = (zz) => {
                 const aa = zgClampAnchor(ZG.anchor, zz);
                 const tx = (-zz * (aa.x - 0.5)) * 100;
@@ -19907,7 +19959,10 @@
                 set(z);
                 void img.offsetWidth;
             }
-            zgEl('zgZoomBadge').textContent = '🔬 ' + z.toFixed(1) + 'x';
+            /* Tam gorunumde isaretleyici/karartma kaldirilir, gorsel net gorunur */
+            const full = z <= 1;
+            zgEl('zgFrame').classList.toggle('full', full);
+            zgEl('zgZoomBadge').textContent = full ? '🖼️ TAM GÖRÜNÜM' : '🔬 ' + z.toFixed(1) + 'x';
         }
         function zgUpdateLevelUI() {
             const lv = ZG_LEVELS[ZG.level - 1];
@@ -19947,7 +20002,6 @@
             zgEl('zgStreak').style.display = 'none';
             zgEl('zgCat').textContent = ZG_CATS[catId].icon + ' ' + ZG_CATS[catId].name;
             zgEl('zgMuteBtn').textContent = ZG.muted ? '🔇' : '🔊';
-            zgEl('zgTypeInput').value = '';
             zgApplyTheme(0, true);
             zgStartQuestion();
         }
@@ -19968,7 +20022,9 @@
             zgEl('zgSkipBtn').disabled = false;
             zgEl('zgTypeInput').value = '';
             zgEl('zgTypeInput').disabled = false;
+            zgEl('zgTypeInput').placeholder = 'Cevabını yaz... (' + ZG.cur.name.length + ' harf)';
             zgEl('zgOverlay').classList.remove('show');
+            zgEl('zgFrame').classList.remove('full');
             zgUpdateLevelUI();
 
             const img = zgEl('zgImg'), ph = zgEl('zgPh');
@@ -20000,29 +20056,14 @@
         function zgBeginAnswer() {
             if (!ZG.on) return;
             ZG.lock = false;
-            zgRenderOptions();
             zgStartTimer();
             zgTone(420, .09, 'sine', .08);
+            try { zgEl('zgTypeInput').focus(); } catch (e) { }
         }
 
-        function zgRenderOptions() {
-            const pool = zgPoolOf(ZG.catId).filter(it => it.name !== ZG.cur.name);
-            const wrongs = ZG_SHUFFLE(pool).slice(0, 3);
-            ZG.opts = ZG_SHUFFLE([ZG.cur].concat(wrongs));
-            const box = zgEl('zgOpts');
-            box.classList.remove('hidden');
-            box.innerHTML = ZG.opts.map((o, i) =>
-                '<button class="zg-opt" data-i="' + i + '" onclick="zgPickOption(' + i + ')">' +
-                (o.emoji ? o.emoji + ' ' : '') + zgEsc(o.name) + '</button>').join('');
-        }
         function zgEsc(s) {
             return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
-        window.zgPickOption = function (i) {
-            if (ZG.lock || !ZG.on) return;
-            const btn = zgEl('zgOpts').querySelector('[data-i="' + i + '"]');
-            zgTryAnswer(ZG.opts[i].name, btn);
-        };
 
         /* ---- Yazarak cevap (Turkce karakter + yazim hatasi toleransi) ---- */
         function zgNorm(s) {
@@ -20040,11 +20081,13 @@
                     m[i][j] = b[i - 1] === a[j - 1] ? m[i - 1][j - 1] : Math.min(m[i - 1][j - 1] + 1, m[i][j - 1] + 1, m[i - 1][j] + 1);
             return m[b.length][a.length];
         }
+        /* Yazilan metni kategorideki isimlerle eslestirir.
+           Eslesme yoksa null -> tahmin sayilmaz, seviye dusmez. */
         function zgMatchTyped(text) {
             const n = zgNorm(text);
             if (!n) return null;
             const pool = zgPoolOf(ZG.catId);
-            let hit = pool.find(p => zgNorm(p.name) === n);
+            const hit = pool.find(p => zgNorm(p.name) === n);
             if (hit) return hit.name;
             let bestName = null, bestD = 1e9;
             pool.forEach(p => {
@@ -20057,28 +20100,24 @@
         window.zgSubmitTyped = function () {
             if (ZG.lock || !ZG.on) return;
             const v = zgEl('zgTypeInput').value;
+            if (!v.trim()) return;
             const m = zgMatchTyped(v);
-            if (!m) {
-                zgEl('zgTypeInput').value = '';
-                zgWrongFx('Tanıyamadım, şıklardan dene');
-                return;
-            }
             zgEl('zgTypeInput').value = '';
-            zgTryAnswer(m, null);
+            if (!m) {
+                zgWrongFx('🤔 Tanıyamadım — yazımı kontrol edip tekrar dene');
+                ZG_SFX.wrong();
+                return;                    // seviye dusmez, sadece tekrar dene
+            }
+            zgTryAnswer(m);
         };
 
         /* ---- Cevap degerlendirme ---- */
-        function zgTryAnswer(name, btnEl) {
+        function zgTryAnswer(name) {
             if (ZG.lock || !ZG.on) return;
-            const ok = zgNorm(name) === zgNorm(ZG.cur.name);
-            if (ok) { zgWin(btnEl); return; }
+            if (zgNorm(name) === zgNorm(ZG.cur.name)) { zgWin(); return; }
             ZG_SFX.wrong();
-            zgWrongFx('');
-            const box = zgEl('zgOpts');
-            [...box.querySelectorAll('.zg-opt')].forEach(b => {
-                if (b === btnEl) { b.classList.add('bad'); b.disabled = true; }
-            });
             if (ZG.level < ZG_LEVELS.length) {
+                zgWrongFx('❌ "' + name + '" değil — görüntü biraz daha açılıyor');
                 zgNextLevel();
             } else {
                 zgLose(name);
@@ -20091,7 +20130,6 @@
                 const hl = zgEl('zgHintLine');
                 hl.classList.add('show');
                 zgEl('zgHintText').textContent = msg;
-                zgLater(() => { if (!ZG.hintUsed) hl.classList.remove('show'); }, 1600);
             }
         }
         function zgNextLevel() {
@@ -20099,11 +20137,9 @@
             zgUpdateLevelUI();
             zgApplyZoom(true, true);
             ZG_SFX.zoom();
-            zgEl('zgHintLine').classList.remove('show');
-            zgLater(() => { if (!ZG.hintUsed) zgEl('zgHintLine').classList.remove('show'); }, 1200);
             zgStartTimer();
         }
-        function zgWin(btnEl) {
+        function zgWin() {
             ZG.lock = true;
             cancelAnimationFrame(ZG.raf);
             const base = ZG_LEVELS[ZG.level - 1].points;
@@ -20114,10 +20150,6 @@
             zgEl('zgScore').textContent = '⭐ ' + ZG.score;
             const st = zgEl('zgStreak');
             if (ZG.streak >= 2) { st.style.display = ''; st.textContent = '🔥 x' + ZG.streak; }
-            if (btnEl) {
-                [...zgEl('zgOpts').querySelectorAll('.zg-opt')].forEach(b => { b.disabled = true; if (b !== btnEl) b.classList.add('dim'); });
-                btnEl.classList.add('ok');
-            }
             zgEl('zgTypeInput').disabled = true;
             zgEl('zgHintBtn').disabled = true;
             zgEl('zgSkipBtn').disabled = true;
@@ -20131,14 +20163,6 @@
             ZG.streak = 0;
             zgEl('zgStreak').style.display = 'none';
             cancelAnimationFrame(ZG.raf);
-            const box = zgEl('zgOpts');
-            [...box.querySelectorAll('.zg-opt')].forEach(b => {
-                b.disabled = true;
-                const i = parseInt(b.getAttribute('data-i'), 10);
-                const opt = ZG.opts[i];
-                if (opt && zgNorm(opt.name) === zgNorm(ZG.cur.name)) b.classList.add('ok');
-                else b.classList.add('dim');
-            });
             zgEl('zgTypeInput').disabled = true;
             zgEl('zgHintBtn').disabled = true;
             zgEl('zgSkipBtn').disabled = true;
@@ -20164,7 +20188,7 @@
                 if (!ZG.on) return;
                 if (finished) { zgEndGame(); return; }
                 zgStartQuestion();
-            }, 1700);
+            }, 1900);
         }
 
         /* ---- Sure ---- */
@@ -20221,7 +20245,6 @@
             zgEl('zgTypeInput').disabled = true;
             zgEl('zgHintBtn').disabled = true;
             zgEl('zgSkipBtn').disabled = true;
-            [...zgEl('zgOpts').querySelectorAll('.zg-opt')].forEach(b => { b.disabled = true; b.classList.add('dim'); });
             ZG_SFX.over();
             zgShowOverlay('⏭️', ZG.cur.name, 'Pas geçildi • 0 Puan', false);
             zgRecord(false, null, 0);
@@ -20307,8 +20330,7 @@
             <div class="shop-items" id="shopItems"></div>
         </div>
     </div>
-    <script>(function () { function c() { var b = a.contentDocument || (a.contentWindow && a.contentWindow.document); if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'a33712e7b98d9030',t:'MTc4ODEyNzI4NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a337ca66bcc33655',t:'MTc4ODEzNDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 
 </html>
