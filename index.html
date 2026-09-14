@@ -10975,6 +10975,20 @@
                     <div class="mode-card-desc">Ses kombinasyonunu dinle ("dı da dı dı da") ama notalar gizli! Kulağınla
                         deneyerek aynı sesi oluştur, TAMAM'a bas. Birebir tutturan 500 puan alır.</div>
                 </div>
+
+                <div class="mode-card mode-card--mayin" id="modeMayinCard" onclick="selectGameMode('mayin')">
+                    <div class="mode-card-icon">💣</div>
+                    <div class="mode-card-title">Mayın Tarlası</div>
+                    <div class="mode-card-desc">Kutuları aç, mayınlardan kaç! Sıfırlar otomatik açılır, sayılar komşu
+                        mayını söyler. 🚩 ile işaretle, 5 seviyede ızgara büyür: 8×8 → 12×12.</div>
+                </div>
+
+                <div class="mode-card mode-card--tetris" id="modeTetrisCard" onclick="selectGameMode('tetris')">
+                    <div class="mode-card-icon">🧱</div>
+                    <div class="mode-card-title">Tetris</div>
+                    <div class="mode-card-desc">Klasik blok düşürme! 7 parça (I, O, T, S, Z, J, L) yukarıdan iner;
+                        döndür, sağa sola taşı, satırları tamamla. 4'lü temizleyene TETRİS, her 10 satırda seviye atlar.</div>
+                </div>
             </div>
             <div class="button-group">
                 <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
@@ -15983,7 +15997,9 @@
                 'kostebekGameScreen',
                 'renkGameScreen',
                 'tepkiGameScreen',
-                'mdGameScreen']
+                'mdGameScreen',
+                'mayinGameScreen',
+                'tetrisGameScreen']
                 .forEach(sid => {
                     const el = document.getElementById(sid);
                     if (el) el.style.display = 'none';
@@ -16018,6 +16034,8 @@
             if (mode === 'renk') document.getElementById('modeRenkCard').classList.add('selected');
             if (mode === 'tepki') document.getElementById('modeTepkiCard').classList.add('selected');
             if (mode === 'melodi') document.getElementById('modeMelodiCard').classList.add('selected');
+            if (mode === 'mayin') document.getElementById('modeMayinCard').classList.add('selected');
+            if (mode === 'tetris') document.getElementById('modeTetrisCard').classList.add('selected');
             document.getElementById('modeNextBtn').disabled = false;
         };
 
@@ -16038,6 +16056,8 @@
             else if (gameMode === 'renk') startRenkFromMode();
             else if (gameMode === 'tepki') startTepkiFromMode();
             else if (gameMode === 'melodi') startMelodiFromMode();
+            else if (gameMode === 'mayin') startMayinFromMode();
+            else if (gameMode === 'tetris') startTetrisFromMode();
         };
 
         window.goBackToProfileFromMode = function () {
@@ -25990,6 +26010,1758 @@
             if (n >= 1 && n <= MD_PADS.length) { e.preventDefault(); window.mdTap(n - 1); }
         });
     </script>
+
+    <!-- ===== MAYIN TARLASI EKRANI ===== -->
+    <div class="screen" id="mayinGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:12px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:36px;">💣 Mayın Tarlası</span>
+            </div>
+
+            <div class="my-info-row">
+                <button class="back-btn" onclick="myRequestExit()">← Modlar</button>
+                <div class="blur-game-badge" id="myLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="myScore">⭐ 0</div>
+                <div class="blur-game-badge" id="myFlags">🚩 0/10</div>
+                <div class="blur-game-badge" id="myTime">⏱ 0s</div>
+                <div class="blur-game-badge" id="myStreak" style="display:none;">🔥 x0</div>
+                <button class="zg-icon-btn" id="myMuteBtn" onclick="myToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="kb-timer-bar" style="max-width:520px; width:100%;">
+                <div class="kb-timer-fill" id="myTimerBar"></div>
+            </div>
+
+            <div class="my-board-wrap">
+                <div class="my-board" id="myBoard"></div>
+                <div class="my-countdown" id="myCountdown" style="display:none;">3</div>
+                <div class="my-explode" id="myExplode">💥</div>
+            </div>
+
+            <div class="my-tools">
+                <button class="my-tool-btn" id="myFlagBtn" onclick="myToggleFlagMode()">🚩 Bayrak Modu: KAPALI</button>
+                <button class="my-tool-btn" onclick="myRestartLevel()">🔄 Seviyeyi Yenile</button>
+            </div>
+
+            <div class="my-hint">👆 tıkla = aç &nbsp;·&nbsp; 🚩 uzun bas / sağ tık = bayrak &nbsp;·&nbsp; sayıya tıkla =
+                çevresini aç</div>
+        </div>
+    </div>
+
+    <!-- Mayın Tarlası Çıkış Onayı -->
+    <div class="exit-confirm-modal" id="myExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p id="myExitInfo">Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="myConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="myCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mayın Tarlası Seviye Geçiş Overlay -->
+    <div class="overlay" id="myLevelOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="myLvOvEmoji">🎉</div>
+            <div class="overlay-title" id="myLvOvTitle">Seviye Tamamlandı!</div>
+            <div class="overlay-sub" id="myLvOvSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvTime">0s</div>
+                    <div class="stat-lbl">Süre</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvFlags">0</div>
+                    <div class="stat-lbl">Doğru Bayrak</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvPts">0</div>
+                    <div class="stat-lbl">Seviye Puanı</div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="myNextLevel()" style="width:100%;margin-top:10px;">
+                ➡️ Sonraki Seviye
+            </button>
+        </div>
+    </div>
+
+    <!-- Mayın Tarlası Oyun Sonu Overlay -->
+    <div class="overlay" id="myGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="myGoEmoji">💥</div>
+            <div class="overlay-title" id="myGoTitle">Mayına Bastın!</div>
+            <div class="overlay-sub" id="myGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoLevel">0</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoScore">0</div>
+                    <div class="stat-lbl">Toplam Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoBest">0</div>
+                    <div class="stat-lbl">En İyi</div>
+                </div>
+            </div>
+            <div class="new-record" id="myGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="myRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="myGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="myBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ===== MAYIN TARLASI STİLLERİ ===== */
+        #mayinGameScreen {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            border-radius: 0 !important;
+            padding: 20px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 50;
+        }
+
+        #mayinGameScreen>* {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .my-info-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .my-board-wrap {
+            position: relative;
+            width: min(94vw, 500px);
+            margin: 4px auto 0;
+        }
+
+        .my-board {
+            display: grid;
+            gap: 3px;
+            width: 100%;
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .my-cell {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #3b2f6b, #2a2150);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 900;
+            font-size: clamp(11px, 2.4vw, 17px);
+            line-height: 1;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.08s ease, background 0.12s ease;
+        }
+
+        .my-cell:hover {
+            background: linear-gradient(135deg, #4a3b85, #322861);
+        }
+
+        .my-cell:active {
+            transform: scale(0.93);
+        }
+
+        .my-cell.open {
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            cursor: default;
+        }
+
+        .my-cell.flag {
+            background: linear-gradient(135deg, #7c3aed, #4c1d95);
+        }
+
+        .my-cell.mine {
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+        }
+
+        .my-cell.boom {
+            background: linear-gradient(135deg, #fbbf24, #ef4444);
+            animation: myBoom 0.55s ease;
+        }
+
+        .my-cell.wrong {
+            background: linear-gradient(135deg, #334155, #1e293b);
+            opacity: 0.75;
+        }
+
+        .my-cell.justopened {
+            animation: myPop 0.18s ease;
+        }
+
+        .my-n1 { color: #60a5fa; }
+        .my-n2 { color: #4ade80; }
+        .my-n3 { color: #f87171; }
+        .my-n4 { color: #c084fc; }
+        .my-n5 { color: #fbbf24; }
+        .my-n6 { color: #22d3ee; }
+        .my-n7 { color: #f472b6; }
+        .my-n8 { color: #e2e8f0; }
+
+        @keyframes myBoom {
+            0% { transform: scale(0.6); }
+            40% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes myPop {
+            0% { transform: scale(0.85); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .my-countdown {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 96px;
+            font-weight: 900;
+            color: #fff;
+            background: rgba(5, 3, 16, 0.55);
+            border-radius: 16px;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.9);
+            z-index: 5;
+        }
+
+        .my-explode {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 130px;
+            z-index: 6;
+            pointer-events: none;
+            animation: myBoom 0.6s ease;
+        }
+
+        .my-explode.show {
+            display: flex;
+        }
+
+        .my-tools {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .my-tool-btn {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: #cfe4ff;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 14px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .my-tool-btn:hover {
+            background: rgba(0, 210, 255, 0.16);
+        }
+
+        .my-tool-btn.active {
+            background: linear-gradient(135deg, #7c3aed, #4c1d95);
+            border-color: #c084fc;
+            color: #fff;
+        }
+
+        .my-hint {
+            color: #7eb8ff;
+            font-size: 12.5px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .mode-card--mayin {
+            background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(40, 8, 12, 0.95));
+            border-color: #f87171;
+        }
+
+        .mode-card--mayin:hover {
+            box-shadow: 0 0 35px rgba(248, 113, 113, 0.45), 0 0 70px rgba(251, 191, 36, 0.2);
+        }
+    </style>
+
+    <script>
+        /* ============================================================
+           17. OYUN: MAYIN TARLASI (MINESWEEPER)
+           Akış:
+             1) 5 seviye: 8×8/10 mayın → 12×12/30 mayın
+             2) İlk tıklama ASLA mayın değildir (mayınlar ilk tıklamadan
+                sonra, tıklanan hücre ve komşuları hariç yerleştirilir)
+             3) Sıfır komşulu hücreler otomatik açılır (flood fill)
+             4) Sayıya tıklamak = chord (bayrak sayısı tutuyorsa çevreyi açar)
+             5) Bayrak: uzun bas / sağ tık / 🚩 Bayrak Modu
+           Puan: açılan güvenli kare + seri çarpanı, doğru bayrak, süre
+           bonusu, seviye bonusu. Rekor: localStorage['mayin_best']
+           ============================================================ */
+        (function () {
+            'use strict';
+            const myEl = function (id) { return document.getElementById(id); };
+
+            const MY_LEVELS = [
+                { rows: 8, cols: 8, mines: 10, time: 120 },
+                { rows: 9, cols: 9, mines: 14, time: 135 },
+                { rows: 10, cols: 10, mines: 18, time: 150 },
+                { rows: 11, cols: 11, mines: 24, time: 170 },
+                { rows: 12, cols: 12, mines: 30, time: 190 }
+            ];
+            const MY_MAX_LEVEL = MY_LEVELS.length;
+
+            const MY = {
+                on: false, level: 1, score: 0, best: 0,
+                cells: [], rows: 0, cols: 0, mines: 0,
+                revealed: 0, safeTotal: 0, flags: 0, combo: 0,
+                firstClick: true, dead: false, started: false,
+                timeLeft: 0, timeMax: 0, levelStart: 0, levelPts: 0,
+                correctFlags: 0, wrongFlags: 0,
+                flagMode: false, lpFired: false, lpTimer: null,
+                muted: false, ctx: null, raf: null,
+                cdTimer: null, scored: false
+            };
+            try { MY.best = parseInt(localStorage.getItem('mayin_best') || '0', 10) || 0; } catch (e) { MY.best = 0; }
+
+            /* ---------- SES ---------- */
+            function myTone(freq, dur, type, gain, delay) {
+                if (MY.muted) return;
+                try {
+                    if (!MY.ctx) {
+                        const AC = window.AudioContext || window.webkitAudioContext;
+                        if (!AC) return;
+                        MY.ctx = new AC();
+                    }
+                    if (MY.ctx.state === 'suspended') MY.ctx.resume();
+                    const o = MY.ctx.createOscillator();
+                    const g = MY.ctx.createGain();
+                    o.type = type || 'sine';
+                    o.frequency.value = freq;
+                    const t0 = MY.ctx.currentTime + (delay || 0);
+                    g.gain.setValueAtTime(0.0001, t0);
+                    g.gain.exponentialRampToValueAtTime(gain || 0.1, t0 + 0.012);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+                    o.connect(g); g.connect(MY.ctx.destination);
+                    o.start(t0); o.stop(t0 + dur + 0.03);
+                } catch (e) { }
+            }
+            const MY_SFX = {
+                open: function (n) { myTone(420 + Math.min(n, 12) * 28, 0.07, 'triangle', 0.09); },
+                flag: function () { myTone(760, 0.08, 'square', 0.07); },
+                unflag: function () { myTone(300, 0.07, 'square', 0.06); },
+                boom: function () {
+                    myTone(160, 0.5, 'sawtooth', 0.18);
+                    myTone(80, 0.7, 'sine', 0.2, 0.03);
+                },
+                wrong: function () { myTone(180, 0.18, 'sawtooth', 0.1); },
+                levelUp: function () {
+                    [523.25, 659.25, 783.99, 1046.5].forEach(function (f, i) { myTone(f, 0.14, 'triangle', 0.11, i * 0.09); });
+                },
+                win: function () {
+                    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach(function (f, i) { myTone(f, 0.2, 'triangle', 0.12, i * 0.11); });
+                },
+                tick: function () { myTone(880, 0.05, 'sine', 0.06); }
+            };
+            window.myToggleMute = function () {
+                MY.muted = !MY.muted;
+                const b = myEl('myMuteBtn');
+                if (b) b.textContent = MY.muted ? '🔇' : '🔊';
+                if (!MY.muted) MY_SFX.flag();
+            };
+
+            /* ---------- YARDIMCILAR ---------- */
+            function myIdx(r, c) { return r * MY.cols + c; }
+            function myNeighbors(i) {
+                const r = Math.floor(i / MY.cols), c = i % MY.cols, out = [];
+                for (let dr = -1; dr <= 1; dr++) {
+                    for (let dc = -1; dc <= 1; dc++) {
+                        if (!dr && !dc) continue;
+                        const nr = r + dr, nc = c + dc;
+                        if (nr >= 0 && nr < MY.rows && nc >= 0 && nc < MY.cols) out.push(myIdx(nr, nc));
+                    }
+                }
+                return out;
+            }
+            function myComboTier() { return 1 + Math.min(3, Math.floor(MY.combo / 10)); }
+
+            /* ---------- EKRAN / BAŞLATMA ---------- */
+            window.startMayinFromMode = function () {
+                try { isInTest = true; stopBgMusic(); } catch (e) { }
+                hideAllMainScreens();
+                myEl('mayinGameScreen').style.display = 'block';
+                MY.score = 0; MY.level = 1; MY.scored = false;
+                myStartLevel();
+            };
+
+            function myStartLevel() {
+                const cfg = MY_LEVELS[Math.min(MY.level, MY_MAX_LEVEL) - 1];
+                MY.rows = cfg.rows; MY.cols = cfg.cols; MY.mines = cfg.mines;
+                MY.timeMax = cfg.time; MY.timeLeft = cfg.time;
+                MY.firstClick = true; MY.dead = false; MY.started = false;
+                MY.revealed = 0; MY.flags = 0; MY.combo = 0;
+                MY.levelPts = 0; MY.correctFlags = 0; MY.wrongFlags = 0;
+                MY.safeTotal = cfg.rows * cfg.cols - cfg.mines;
+                MY.levelStart = 0;
+
+                // ızgara verisi
+                MY.cells = [];
+                for (let i = 0; i < cfg.rows * cfg.cols; i++) {
+                    MY.cells.push({ i: i, mine: false, adj: 0, state: 'hidden' });
+                }
+                myBuildBoard();
+                myUpdateUI();
+                myEl('myLevelOverlay').classList.remove('show');
+                myEl('myGameOverOverlay').classList.remove('show');
+                myEl('myExplode').classList.remove('show');
+                myCountdown();
+            }
+
+            function myCountdown() {
+                const cd = myEl('myCountdown');
+                let n = 3;
+                cd.style.display = 'flex';
+                cd.textContent = n;
+                myTone(523.25, 0.1, 'triangle', 0.08);
+                clearInterval(MY.cdTimer);
+                MY.cdTimer = setInterval(function () {
+                    n--;
+                    if (n <= 0) {
+                        clearInterval(MY.cdTimer);
+                        cd.style.display = 'none';
+                        MY.started = true;
+                        MY.levelStart = performance.now();
+                        myStartLoop();
+                        myTone(880, 0.16, 'triangle', 0.1);
+                    } else {
+                        cd.textContent = n;
+                        myTone(523.25, 0.1, 'triangle', 0.08);
+                    }
+                }, 700);
+            }
+
+            function myBuildBoard() {
+                const board = myEl('myBoard');
+                board.innerHTML = '';
+                board.style.gridTemplateColumns = 'repeat(' + MY.cols + ', 1fr)';
+                MY.cells.forEach(function (cell) {
+                    const b = document.createElement('button');
+                    b.className = 'my-cell';
+                    b.type = 'button';
+                    b.setAttribute('data-i', String(cell.i));
+                    b.setAttribute('aria-label', 'Kutu ' + (cell.i + 1));
+                    b.addEventListener('click', function () { myOnCellClick(cell.i); });
+                    b.addEventListener('contextmenu', function (e) {
+                        e.preventDefault();
+                        myToggleFlag(cell.i);
+                    });
+                    b.addEventListener('pointerdown', function (e) {
+                        if (e.button === 2) return; // sağ tık contextmenu'da
+                        MY.lpFired = false;
+                        clearTimeout(MY.lpTimer);
+                        MY.lpTimer = setTimeout(function () {
+                            MY.lpFired = true;
+                            myToggleFlag(cell.i);
+                        }, 380);
+                    });
+                    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+                        b.addEventListener(ev, function () { clearTimeout(MY.lpTimer); });
+                    });
+                    cell.el = b;
+                    board.appendChild(b);
+                });
+            }
+
+            /* ---------- MAYIN YERLEŞTİRME (ilk tıklama güvenli) ---------- */
+            function myPlaceMines(safeIdx) {
+                const banned = { };
+                banned[safeIdx] = true;
+                myNeighbors(safeIdx).forEach(function (n) { banned[n] = true; });
+
+                const free = [];
+                for (let i = 0; i < MY.cells.length; i++) if (!banned[i]) free.push(i);
+                // Fisher-Yates karıştır, ilk N tanesini mayın yap
+                for (let i = free.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const t = free[i]; free[i] = free[j]; free[j] = t;
+                }
+                const need = Math.min(MY.mines, free.length);
+                for (let k = 0; k < need; k++) MY.cells[free[k]].mine = true;
+
+                MY.cells.forEach(function (cell) {
+                    cell.adj = myNeighbors(cell.i).filter(function (n) { return MY.cells[n].mine; }).length;
+                });
+            }
+
+            /* ---------- ETKİLEŞİM ---------- */
+            function myOnCellClick(i) {
+                if (!MY.on || !MY.started || MY.dead) return;
+                if (MY.lpFired) { MY.lpFired = false; return; }   // uzun basış zaten bayrak koydu
+                const cell = MY.cells[i];
+                if (MY.flagMode) { myToggleFlag(i); return; }
+                if (cell.state === 'flag') return;
+                if (cell.state === 'open') { myChord(i); return; }
+                myReveal(i);
+            }
+
+            function myToggleFlag(i) {
+                if (!MY.on || !MY.started || MY.dead) return;
+                const cell = MY.cells[i];
+                if (cell.state === 'open') return;
+                if (cell.state === 'flag') {
+                    cell.state = 'hidden';
+                    cell.el.classList.remove('flag');
+                    cell.el.textContent = '';
+                    MY.flags--;
+                    MY_SFX.unflag();
+                } else {
+                    cell.state = 'flag';
+                    cell.el.classList.add('flag');
+                    cell.el.textContent = '🚩';
+                    MY.flags++;
+                    MY_SFX.flag();
+                }
+                myUpdateUI();
+            }
+            window.myToggleFlagMode = function () {
+                MY.flagMode = !MY.flagMode;
+                const b = myEl('myFlagBtn');
+                if (b) {
+                    b.textContent = MY.flagMode ? '🚩 Bayrak Modu: AÇIK' : '🚩 Bayrak Modu: KAPALI';
+                    b.classList.toggle('active', MY.flagMode);
+                }
+            };
+
+            function myReveal(i) {
+                const cell = MY.cells[i];
+                if (cell.state !== 'hidden') return;
+                if (MY.firstClick) { myPlaceMines(i); MY.firstClick = false; }
+
+                if (cell.mine) { myDie(i); return; }
+
+                let opened = 0;
+                const stack = [i];
+                while (stack.length) {
+                    const cur = stack.pop();
+                    const c = MY.cells[cur];
+                    if (c.state !== 'hidden' || c.mine) continue;
+                    c.state = 'open';
+                    MY.revealed++;
+                    opened++;
+                    if (c.adj > 0) {
+                        c.el.textContent = String(c.adj);
+                        c.el.classList.add('open', 'my-n' + c.adj, 'justopened');
+                    } else {
+                        c.el.textContent = '';
+                        c.el.classList.add('open', 'justopened');
+                        myNeighbors(cur).forEach(function (n) {
+                            if (MY.cells[n].state === 'hidden') stack.push(n);
+                        });
+                    }
+                }
+                MY.combo += opened;
+                const pts = opened * (3 + myComboTier());
+                MY.score += pts; MY.levelPts += pts;
+                MY_SFX.open(opened);
+                myUpdateUI();
+                if (MY.revealed >= MY.safeTotal) myLevelComplete();
+            }
+
+            function myChord(i) {
+                const cell = MY.cells[i];
+                if (cell.state !== 'open' || cell.adj === 0) return;
+                const nb = myNeighbors(i);
+                const flagged = nb.filter(function (n) { return MY.cells[n].state === 'flag'; }).length;
+                if (flagged !== cell.adj) { MY_SFX.wrong(); return; }
+                const hidden = nb.filter(function (n) { return MY.cells[n].state === 'hidden'; });
+                hidden.forEach(function (n) {
+                    if (!MY.dead) myReveal(n);
+                });
+            }
+
+            function myTimeUp() {
+                MY.dead = true;
+                MY.started = false;
+                cancelAnimationFrame(MY.raf);
+                MY.timeLeft = 0;
+                MY_SFX.boom();
+                myEl('myExplode').classList.add('show');
+                MY.cells.forEach(function (c) {
+                    if (c.mine) {
+                        c.el.classList.remove('flag');
+                        c.el.classList.add('mine');
+                        c.el.textContent = '💣';
+                    } else if (c.state === 'flag') {
+                        c.el.classList.remove('flag');
+                        c.el.classList.add('wrong');
+                        c.el.textContent = '❌';
+                    }
+                });
+                setTimeout(function () { myGameOver(false); }, 900);
+            }
+
+            /* ---------- ÖLÜM / BİTİŞ ---------- */
+            function myDie(i) {
+                MY.dead = true;
+                MY.started = false;
+                cancelAnimationFrame(MY.raf);
+                const boomCell = MY.cells[i];
+                boomCell.state = 'open';
+                boomCell.el.classList.add('boom');
+                boomCell.el.textContent = '💣';
+                MY_SFX.boom();
+                myEl('myExplode').classList.add('show');
+
+                // tüm mayınları göster
+                MY.cells.forEach(function (c) {
+                    if (c.mine && c.i !== i) {
+                        c.el.classList.remove('flag');
+                        c.el.classList.add('mine');
+                        c.el.textContent = '💣';
+                    } else if (c.state === 'flag' && !c.mine) {
+                        c.el.classList.remove('flag');
+                        c.el.classList.add('wrong');
+                        c.el.textContent = '❌';
+                    }
+                });
+                setTimeout(function () { myGameOver(false); }, 900);
+            }
+
+            function myLevelComplete() {
+                MY.started = false;
+                cancelAnimationFrame(MY.raf);
+
+                // bayrak doğruluğu
+                let correct = 0, wrong = 0;
+                MY.cells.forEach(function (c) {
+                    if (c.state === 'flag') { if (c.mine) correct++; else wrong++; }
+                });
+                MY.correctFlags = correct; MY.wrongFlags = wrong;
+
+                const used = Math.max(0, (performance.now() - MY.levelStart) / 1000);
+                const timeBonus = Math.max(0, Math.floor(MY.timeLeft)) * 2;
+                const levelBonus = 30 * MY.level;
+                const flagPts = correct * 6 - wrong * 12;
+                const total = timeBonus + levelBonus + flagPts;
+                MY.score += total; MY.levelPts += total;
+
+                MY_SFX.levelUp();
+                myUpdateUI();
+
+                myEl('myLvOvEmoji').textContent = MY.level >= MY_MAX_LEVEL ? '👑' : '🎉';
+                myEl('myLvOvTitle').textContent = 'Seviye ' + MY.level + ' Tamamlandı!';
+                myEl('myLvOvSub').textContent =
+                    'Tüm güvenli kutuları açtın!' +
+                    (timeBonus > 0 ? ' ⏱️ Süre bonusu: +' + timeBonus : '') +
+                    (levelBonus > 0 ? ' 🏁 Seviye bonusu: +' + levelBonus : '') +
+                    (flagPts !== 0 ? ' 🚩 Bayrak: ' + (flagPts > 0 ? '+' : '') + flagPts : '');
+                myEl('myLvOvTime').textContent = used.toFixed(1) + 's';
+                myEl('myLvOvFlags').textContent = correct + '/' + MY.mines;
+                myEl('myLvOvPts').textContent = MY.levelPts;
+                myEl('myLevelOverlay').classList.add('show');
+            }
+
+            window.myNextLevel = function () {
+                myEl('myLevelOverlay').classList.remove('show');
+                if (MY.level >= MY_MAX_LEVEL) { myGameOver(true); return; }
+                MY.level++;
+                myStartLevel();
+            };
+
+            window.myRestartLevel = function () {
+                if (!MY.on) return;
+                MY.score = Math.max(0, MY.score - MY.levelPts);
+                myStartLevel();
+            };
+
+            window.myRestartGame = function () {
+                myEl('myGameOverOverlay').classList.remove('show');
+                MY.score = 0; MY.level = 1; MY.scored = false;
+                myStartLevel();
+            };
+
+            function myGameOver(allClear) {
+                MY.on = false;
+                MY.started = false;
+                cancelAnimationFrame(MY.raf);
+                clearInterval(MY.cdTimer);
+
+                const isRecord = MY.score > MY.best && MY.score > 0;
+                if (isRecord) {
+                    MY.best = MY.score;
+                    try { localStorage.setItem('mayin_best', String(MY.best)); } catch (e) { }
+                }
+                if (!MY.scored) {
+                    MY.scored = true;
+                    try { if (MY.score > 0 && typeof addPoints === 'function') addPoints(MY.score); } catch (e) { }
+                }
+                if (allClear) MY_SFX.win();
+
+                myEl('myGoEmoji').textContent = allClear ? '👑' : (MY.timeLeft <= 0 ? '⏰' : '💥');
+                myEl('myGoTitle').textContent = allClear ? 'TARLAYI TEMİZLEDİN!'
+                    : (MY.timeLeft <= 0 ? 'Süre Doldu!' : 'Mayına Bastın!');
+                myEl('myGoSub').textContent = allClear
+                    ? 'Tüm ' + MY_MAX_LEVEL + ' seviyeyi temizledin. Efsane bir mayın avcısı!'
+                    : 'Ulaştığın seviye: ' + MY.level + ' / ' + MY_MAX_LEVEL;
+                myEl('myGoLevel').textContent = MY.level;
+                myEl('myGoScore').textContent = MY.score;
+                myEl('myGoBest').textContent = MY.best;
+                myEl('myGoRecord').style.display = isRecord ? 'block' : 'none';
+                myEl('myGameOverOverlay').classList.add('show');
+            }
+
+            /* ---------- ZAMANLAYICI ---------- */
+            function myStartLoop() { cancelAnimationFrame(MY.raf); MY.raf = requestAnimationFrame(myLoop); }
+            function myLoop(t) {
+                if (!MY.on || !MY.started) return;
+                const used = (t - MY.levelStart) / 1000;
+                MY.timeLeft = Math.max(0, MY.timeMax - used);
+                const pct = MY.timeLeft / MY.timeMax;
+                const bar = myEl('myTimerBar');
+                if (bar) {
+                    bar.style.transform = 'scaleX(' + pct + ')';
+                    bar.classList.toggle('low', pct < 0.25);
+                }
+                myUpdateUI();
+                if (MY.timeLeft <= 0) { myTimeUp(); return; }
+                MY.raf = requestAnimationFrame(myLoop);
+            }
+
+            /* ---------- ARAYÜZ ---------- */
+            function myUpdateUI() {
+                const lv = myEl('myLevel'); if (lv) lv.textContent = 'SEVİYE ' + MY.level;
+                const sc = myEl('myScore'); if (sc) sc.textContent = '⭐ ' + MY.score;
+                const fl = myEl('myFlags'); if (fl) fl.textContent = '🚩 ' + MY.flags + '/' + MY.mines;
+                const tm = myEl('myTime'); if (tm) tm.textContent = '⏱ ' + Math.ceil(MY.timeLeft) + 's';
+                const st = myEl('myStreak');
+                if (st) {
+                    if (MY.combo >= 10) { st.style.display = ''; st.textContent = '🔥 x' + myComboTier(); }
+                    else st.style.display = 'none';
+                }
+            }
+
+            /* ---------- ÇIKIŞ / NAVİGASYON ---------- */
+            window.myRequestExit = function () {
+                if (!MY.on) return;
+                myEl('myExitInfo').textContent =
+                    'Seviye ' + MY.level + ' • ' + MY.score + ' puanın kaydedilecek.';
+                myEl('myExitModal').style.display = 'flex';
+            };
+            window.myCancelExit = function () { myEl('myExitModal').style.display = 'none'; };
+            window.myConfirmExit = function () {
+                myEl('myExitModal').style.display = 'none';
+                if (!MY.scored) {
+                    MY.scored = true;
+                    try { if (MY.score > 0 && typeof addPoints === 'function') addPoints(MY.score); } catch (e) { }
+                    if (MY.score > MY.best) {
+                        MY.best = MY.score;
+                        try { localStorage.setItem('mayin_best', String(MY.best)); } catch (e) { }
+                    }
+                }
+                myLeaveTo('modeScreen');
+            };
+            window.myBackToMode = function () { myLeaveTo('modeScreen'); };
+            window.myGoProfile = function () { myLeaveTo('profileScreen'); };
+            function myLeaveTo(screenId) {
+                myStop();
+                try { isInTest = false; if (typeof soundEnabled !== 'undefined' && soundEnabled) startBgMusic(); } catch (e) { }
+                hideAllMainScreens();
+                const s = myEl(screenId); if (s) s.style.display = 'block';
+                try { changeTheme('space'); } catch (e) { }
+            }
+            function myStop() {
+                MY.on = false; MY.started = false; MY.dead = false;
+                cancelAnimationFrame(MY.raf);
+                clearInterval(MY.cdTimer);
+                clearTimeout(MY.lpTimer);
+                myEl('myExitModal').style.display = 'none';
+                myEl('myLevelOverlay').classList.remove('show');
+                myEl('myGameOverOverlay').classList.remove('show');
+            }
+
+            /* ---------- KLAVYE ---------- */
+            document.addEventListener('keydown', function (e) {
+                if (!MY.on) return;
+                if (e.key === 'Escape') {
+                    if (myEl('myExitModal').style.display === 'flex') window.myCancelExit();
+                    else window.myRequestExit();
+                    return;
+                }
+                const k = (e.key || '').toLowerCase();
+                if (k === 'm') { e.preventDefault(); window.myToggleMute(); }
+                else if (k === 'f') { e.preventDefault(); window.myToggleFlagMode(); }
+                else if (k === 'r') { e.preventDefault(); window.myRestartLevel(); }
+                else if (e.key === 'Enter' && myEl('myLevelOverlay').classList.contains('show')) {
+                    e.preventDefault(); window.myNextLevel();
+                }
+            });
+
+            /* ---- startLevel dışarıdan çağrıldığında MY.on'u aç ---- */
+            const _myStartLevel = myStartLevel;
+            myStartLevel = function () { MY.on = true; _myStartLevel(); };
+
+            /* TEST KANCASI (jsdom birim testleri için) */
+            window.__MY = {
+                state: MY, levels: MY_LEVELS,
+                reveal: myReveal, toggleFlag: myToggleFlag, chord: myChord,
+                placeMines: myPlaceMines, neighbors: myNeighbors,
+                comboTier: myComboTier, startLevel: myStartLevel, gameOver: myGameOver
+            };
+        })();
+    </script>
+
+
+    <!-- ===== TETRİS EKRANI ===== -->
+    <div class="screen" id="tetrisGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:10px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:34px;">🧱 Tetris</span>
+            </div>
+
+            <div class="tt-info-row">
+                <button class="back-btn" onclick="ttRequestExit()">← Modlar</button>
+                <div class="blur-game-badge" id="ttLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="ttScore">⭐ 0</div>
+                <div class="blur-game-badge" id="ttLines">📏 0 SATIR</div>
+                <div class="blur-game-badge" id="ttBest">🏆 0</div>
+                <button class="zg-icon-btn" id="ttMuteBtn" onclick="ttToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="tt-stage">
+                <div class="tt-board-wrap">
+                    <canvas id="ttCanvas" width="280" height="560"></canvas>
+                    <div class="tt-countdown" id="ttCountdown" style="display:none;">3</div>
+                    <div class="tt-pause-veil" id="ttPauseVeil" style="display:none;">
+                        <div>⏸</div>
+                        <button class="primary-btn" onclick="ttTogglePause()">▶ Devam Et</button>
+                    </div>
+                </div>
+
+                <div class="tt-side">
+                    <div class="tt-side-title">SONRAKİ</div>
+                    <canvas id="ttNext" width="120" height="240"></canvas>
+                    <div class="tt-side-title" style="margin-top:6px;">REKOR</div>
+                    <div class="tt-best-val" id="ttBestVal">0</div>
+                </div>
+            </div>
+
+            <div class="tt-pad">
+                <button class="tt-btn" id="ttBtnLeft" data-act="left">◀</button>
+                <button class="tt-btn tt-btn-rot" id="ttBtnRot" data-act="rot">⟳</button>
+                <button class="tt-btn" id="ttBtnRight" data-act="right">▶</button>
+                <button class="tt-btn" id="ttBtnDown" data-act="down">▼</button>
+                <button class="tt-btn tt-btn-drop" id="ttBtnDrop" data-act="drop">⤓</button>
+                <button class="tt-btn" id="ttBtnPause" data-act="pause">⏸</button>
+            </div>
+
+            <div class="tt-hint">⌨️ ← → taşı · ↑ döndür · ↓ yumuşak düşür · BOŞLUK sert düşür · P duraklat</div>
+        </div>
+    </div>
+
+    <!-- Tetris Çıkış Onayı -->
+    <div class="exit-confirm-modal" id="ttExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p id="ttExitInfo">Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="ttConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="ttCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tetris Oyun Sonu Overlay -->
+    <div class="overlay" id="ttGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="ttGoEmoji">🧱</div>
+            <div class="overlay-title" id="ttGoTitle">Oyun Bitti!</div>
+            <div class="overlay-sub" id="ttGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoScore">0</div>
+                    <div class="stat-lbl">Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoLines">0</div>
+                    <div class="stat-lbl">Satır</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoLevel">1</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+            </div>
+            <div class="new-record" id="ttGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="ttRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="ttGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="ttBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tetris Satır Temizleme Bildirimi -->
+    <div class="tt-toast" id="ttToast"></div>
+
+    <style>
+        /* ===== TETRİS STİLLERİ ===== */
+        #tetrisGameScreen {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            border-radius: 0 !important;
+            padding: 14px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 50;
+        }
+
+        #tetrisGameScreen>* {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .tt-info-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tt-stage {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .tt-board-wrap {
+            position: relative;
+            border: 2px solid rgba(0, 210, 255, 0.35);
+            border-radius: 12px;
+            background: rgba(4, 2, 14, 0.85);
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.6);
+            padding: 4px;
+            line-height: 0;
+        }
+
+        #ttCanvas {
+            height: min(58vh, 520px);
+            aspect-ratio: 1 / 2;
+            width: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .tt-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            min-width: 118px;
+        }
+
+        .tt-side-title {
+            color: #7eb8ff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        #ttNext {
+            width: 108px;
+            height: 216px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.22);
+            border-radius: 10px;
+        }
+
+        .tt-best-val {
+            color: #facc15;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .tt-countdown {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 84px;
+            font-weight: 900;
+            color: #fff;
+            background: rgba(5, 3, 16, 0.6);
+            border-radius: 10px;
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.9);
+            z-index: 5;
+        }
+
+        .tt-pause-veil {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-size: 60px;
+            background: rgba(5, 3, 16, 0.82);
+            border-radius: 10px;
+            z-index: 6;
+        }
+
+        .tt-pad {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .tt-btn {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            width: 54px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            color: #dff0ff;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
+            transition: transform 0.06s ease, background 0.12s ease;
+        }
+
+        .tt-btn:active {
+            transform: scale(0.92);
+            background: rgba(0, 210, 255, 0.28);
+        }
+
+        .tt-btn-rot {
+            border-color: rgba(192, 132, 252, 0.5);
+            color: #e9d5ff;
+        }
+
+        .tt-btn-drop {
+            border-color: rgba(250, 204, 21, 0.5);
+            color: #fde68a;
+        }
+
+        .tt-hint {
+            color: #7eb8ff;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .tt-toast {
+            position: fixed;
+            left: 50%;
+            top: 22%;
+            transform: translate(-50%, 0) scale(0.9);
+            background: linear-gradient(135deg, #facc15, #ff8c00);
+            color: #1a1200;
+            font-weight: 900;
+            font-size: 26px;
+            padding: 10px 26px;
+            border-radius: 30px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 6000;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .tt-toast.show {
+            opacity: 1;
+            transform: translate(-50%, -14px) scale(1);
+        }
+
+        .mode-card--tetris {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(6, 26, 40, 0.95));
+            border-color: #22d3ee;
+        }
+
+        .mode-card--tetris:hover {
+            box-shadow: 0 0 35px rgba(34, 211, 238, 0.45), 0 0 70px rgba(168, 85, 247, 0.22);
+        }
+    </style>
+
+    <script>
+        /* ============================================================
+           18. OYUN: TETRİS
+           Akış:
+             1) 10×20 alan, 7 tetromino (I, O, T, S, Z, J, L)
+             2) 7'li torba (7-bag) rastgeleleştirici: her 7 parçada
+                hepsinden tam birer tane gelir
+             3) ← → taşı · ↑ döndür (duvar tekmesi ile) · ↓ yumuşak
+                düşür · BOŞLUK sert düşür · hayalet parça gösterilir
+             4) Dolu satırlar temizlenir: 100/300/500/800 × seviye
+             5) Her 10 satırda seviye atlar, düşüş hızlanır
+             6) Yeni parça doğamıyorsa oyun biter
+           Rekor: localStorage['tetris_best']
+           ============================================================ */
+        (function () {
+            'use strict';
+            const ttEl = function (id) { return document.getElementById(id); };
+
+            const TT_COLS = 10, TT_ROWS = 20;
+            const TT_TYPES = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+            const TT_SHAPES = {
+                I: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
+                O: [[1, 1], [1, 1]],
+                T: [[0, 1, 0], [1, 1, 1], [0, 0, 0]],
+                S: [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
+                Z: [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
+                J: [[1, 0, 0], [1, 1, 1], [0, 0, 0]],
+                L: [[0, 0, 1], [1, 1, 1], [0, 0, 0]]
+            };
+            const TT_COLORS = {
+                I: '#22d3ee', O: '#facc15', T: '#c084fc',
+                S: '#4ade80', Z: '#f87171', J: '#60a5fa', L: '#fb923c'
+            };
+            const TT_LINE_SCORE = [0, 100, 300, 500, 800];
+            const TT_LINE_NAMES = ['', 'TEK!', 'ÇİFT!', 'ÜÇLÜ!', 'TETRİS!'];
+
+            const TT = {
+                on: false, paused: false, over: false, started: false,
+                grid: [], cur: null, queue: [], bag: [],
+                score: 0, lines: 0, level: 1, best: 0,
+                dropAcc: 0, dropInt: 1000, lastTs: 0, raf: null,
+                clearing: [], clearTimer: 0,
+                muted: false, ctx: null, nctx: null,
+                block: 28, ox: 0, oy: 0,
+                cdTimer: null, toastTimer: null, scored: false,
+                pieces: 0, tetrises: 0
+            };
+            try { TT.best = parseInt(localStorage.getItem('tetris_best') || '0', 10) || 0; } catch (e) { TT.best = 0; }
+
+            /* ---------- SES ---------- */
+            function ttTone(freq, dur, type, gain, delay) {
+                if (TT.muted) return;
+                try {
+                    if (!TT.ctx2) {
+                        const AC = window.AudioContext || window.webkitAudioContext;
+                        if (!AC) return;
+                        TT.ctx2 = new AC();
+                    }
+                    if (TT.ctx2.state === 'suspended') TT.ctx2.resume();
+                    const o = TT.ctx2.createOscillator(), g = TT.ctx2.createGain();
+                    o.type = type || 'square';
+                    o.frequency.value = freq;
+                    const t0 = TT.ctx2.currentTime + (delay || 0);
+                    g.gain.setValueAtTime(0.0001, t0);
+                    g.gain.exponentialRampToValueAtTime(gain || 0.07, t0 + 0.01);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+                    o.connect(g); g.connect(TT.ctx2.destination);
+                    o.start(t0); o.stop(t0 + dur + 0.03);
+                } catch (e) { }
+            }
+            const TT_SFX = {
+                move: function () { ttTone(240, 0.04, 'square', 0.05); },
+                rotate: function () { ttTone(420, 0.05, 'square', 0.06); },
+                lock: function () { ttTone(150, 0.07, 'triangle', 0.08); },
+                drop: function () { ttTone(120, 0.1, 'sawtooth', 0.09); },
+                clear: function (n) {
+                    const base = n >= 4 ? 523.25 : 392;
+                    for (let i = 0; i < n + 1; i++) ttTone(base * (1 + i * 0.25), 0.1, 'triangle', 0.1, i * 0.06);
+                },
+                levelUp: function () {
+                    [523.25, 659.25, 783.99].forEach(function (f, i) { ttTone(f, 0.12, 'triangle', 0.1, i * 0.08); });
+                },
+                over: function () {
+                    [392, 311.13, 261.63, 196].forEach(function (f, i) { ttTone(f, 0.25, 'sawtooth', 0.1, i * 0.14); });
+                },
+                tick: function () { ttTone(700, 0.05, 'sine', 0.06); }
+            };
+            window.ttToggleMute = function () {
+                TT.muted = !TT.muted;
+                const b = ttEl('ttMuteBtn');
+                if (b) b.textContent = TT.muted ? '🔇' : '🔊';
+                if (!TT.muted) TT_SFX.rotate();
+            };
+
+            /* ---------- IZGARA YARDIMCILARI ---------- */
+            function ttEmptyGrid() {
+                const g = [];
+                for (let r = 0; r < TT_ROWS; r++) g.push(new Array(TT_COLS).fill(null));
+                return g;
+            }
+            function ttRotCW(m) {
+                const n = m.length, out = [];
+                for (let c = 0; c < n; c++) {
+                    const row = [];
+                    for (let r = n - 1; r >= 0; r--) row.push(m[r][c]);
+                    out.push(row);
+                }
+                return out;
+            }
+            function ttRotCCW(m) {
+                const n = m.length, out = [];
+                for (let c = n - 1; c >= 0; c--) {
+                    const row = [];
+                    for (let r = 0; r < n; r++) row.push(m[r][c]);
+                    out.push(row);
+                }
+                return out;
+            }
+            function ttCollide(m, x, y, grid) {
+                const g = grid || TT.grid;
+                for (let r = 0; r < m.length; r++) {
+                    for (let c = 0; c < m[r].length; c++) {
+                        if (!m[r][c]) continue;
+                        const nx = x + c, ny = y + r;
+                        if (nx < 0 || nx >= TT_COLS || ny >= TT_ROWS) return true;
+                        if (ny >= 0 && g[ny][nx]) return true;
+                    }
+                }
+                return false;
+            }
+            function ttFullRows(grid) {
+                const g = grid || TT.grid, rows = [];
+                for (let r = 0; r < TT_ROWS; r++) {
+                    let full = true;
+                    for (let c = 0; c < TT_COLS; c++) if (!g[r][c]) { full = false; break; }
+                    if (full) rows.push(r);
+                }
+                return rows;
+            }
+            function ttRemoveRows(rows, grid) {
+                const g = grid || TT.grid;
+                rows.slice().sort(function (a, b) { return a - b; }).forEach(function (r) {
+                    g.splice(r, 1);
+                    g.unshift(new Array(TT_COLS).fill(null));
+                });
+                return rows.length;
+            }
+            function ttScoreForLines(n, level) { return (TT_LINE_SCORE[n] || 0) * level; }
+            function ttDropInterval(level) { return Math.max(70, Math.round(1000 * Math.pow(0.85, level - 1))); }
+
+            /* ---------- 7'Li TORBA ---------- */
+            function ttBagRefill() {
+                const b = TT_TYPES.slice();
+                for (let i = b.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const t = b[i]; b[i] = b[j]; b[j] = t;
+                }
+                TT.bag = b;
+            }
+            function ttNextType() {
+                if (!TT.bag.length) ttBagRefill();
+                return TT.bag.pop();
+            }
+            function ttFillQueue() {
+                while (TT.queue.length < 4) TT.queue.push(ttNextType());
+            }
+
+            /* ---------- PARÇA ---------- */
+            function ttSpawn() {
+                ttFillQueue();
+                const type = TT.queue.shift();
+                ttFillQueue();
+                const m = TT_SHAPES[type].map(function (r) { return r.slice(); });
+                const x = Math.floor((TT_COLS - m[0].length) / 2);
+                const y = type === 'I' ? -1 : 0;
+                TT.cur = { type: type, m: m, x: x, y: y };
+                TT.pieces++;
+                if (ttCollide(m, x, y)) { ttGameOver(); return false; }
+                ttDrawNext();
+                return true;
+            }
+            function ttMove(dx) {
+                if (!TT.on || !TT.started || TT.paused || TT.over || !TT.cur || TT.clearing.length) return false;
+                if (ttCollide(TT.cur.m, TT.cur.x + dx, TT.cur.y)) return false;
+                TT.cur.x += dx;
+                TT_SFX.move();
+                return true;
+            }
+            function ttRotate(dir) {
+                if (!TT.on || !TT.started || TT.paused || TT.over || !TT.cur || TT.clearing.length) return false;
+                const rotated = dir < 0 ? ttRotCCW(TT.cur.m) : ttRotCW(TT.cur.m);
+                // duvar tekmesi: yerinde, ±1, ±2, bir satır yukarı
+                const kicks = [[0, 0], [-1, 0], [1, 0], [-2, 0], [2, 0], [0, -1], [-1, -1], [1, -1]];
+                for (let i = 0; i < kicks.length; i++) {
+                    const nx = TT.cur.x + kicks[i][0], ny = TT.cur.y + kicks[i][1];
+                    if (!ttCollide(rotated, nx, ny)) {
+                        TT.cur.m = rotated; TT.cur.x = nx; TT.cur.y = ny;
+                        TT_SFX.rotate();
+                        return true;
+                    }
+                }
+                return false;
+            }
+            function ttSoftDrop() {
+                if (!TT.on || !TT.started || TT.paused || TT.over || !TT.cur || TT.clearing.length) return false;
+                if (ttCollide(TT.cur.m, TT.cur.x, TT.cur.y + 1)) { ttLock(); return true; }
+                TT.cur.y++;
+                TT.score += 1;
+                TT.dropAcc = 0;
+                ttUpdateUI();
+                return true;
+            }
+            function ttHardDrop() {
+                if (!TT.on || !TT.started || TT.paused || TT.over || !TT.cur || TT.clearing.length) return false;
+                let d = 0;
+                while (!ttCollide(TT.cur.m, TT.cur.x, TT.cur.y + 1)) { TT.cur.y++; d++; }
+                TT.score += d * 2;
+                TT_SFX.drop();
+                ttLock();
+                return true;
+            }
+            function ttGhostY() {
+                if (!TT.cur) return 0;
+                let y = TT.cur.y;
+                while (!ttCollide(TT.cur.m, TT.cur.x, y + 1)) y++;
+                return y;
+            }
+
+            /* ---------- KİLİTLEME / SATIR TEMİZLEME ---------- */
+            function ttLock() {
+                if (!TT.cur) return;
+                const m = TT.cur.m, type = TT.cur.type;
+                for (let r = 0; r < m.length; r++) {
+                    for (let c = 0; c < m[r].length; c++) {
+                        if (!m[r][c]) continue;
+                        const ny = TT.cur.y + r, nx = TT.cur.x + c;
+                        if (ny >= 0 && ny < TT_ROWS && nx >= 0 && nx < TT_COLS) TT.grid[ny][nx] = type;
+                    }
+                }
+                TT.cur = null;
+                TT_SFX.lock();
+
+                const rows = ttFullRows();
+                if (rows.length) {
+                    TT.clearing = rows;
+                    TT.clearTimer = 200;
+                    TT_SFX.clear(rows.length);
+                    if (rows.length === 4) TT.tetrises++;
+                    ttShowToast(TT_LINE_NAMES[rows.length] || (rows.length + ' SATIR!'));
+                } else {
+                    ttAfterLock();
+                }
+            }
+            function ttFinishClear() {
+                const n = ttRemoveRows(TT.clearing);
+                TT.clearing = [];
+                TT.clearTimer = 0;
+                TT.lines += n;
+                TT.score += ttScoreForLines(n, TT.level);
+                const newLevel = Math.floor(TT.lines / 10) + 1;
+                if (newLevel > TT.level) {
+                    TT.level = newLevel;
+                    TT.dropInt = ttDropInterval(TT.level);
+                    TT_SFX.levelUp();
+                    ttShowToast('SEVİYE ' + TT.level);
+                }
+                ttUpdateUI();
+                ttAfterLock();
+            }
+            function ttAfterLock() {
+                if (!TT.on || TT.over) return;
+                ttSpawn();
+            }
+
+            /* ---------- DÖNGÜ ---------- */
+            function ttLoop(ts) {
+                if (!TT.on) return;
+                if (!TT.lastTs) TT.lastTs = ts;
+                const dt = Math.min(100, ts - TT.lastTs);
+                TT.lastTs = ts;
+
+                if (TT.started && !TT.paused && !TT.over) {
+                    if (TT.clearing.length) {
+                        TT.clearTimer -= dt;
+                        if (TT.clearTimer <= 0) ttFinishClear();
+                    } else if (TT.cur) {
+                        TT.dropAcc += dt;
+                        if (TT.dropAcc >= TT.dropInt) {
+                            TT.dropAcc = 0;
+                            if (!ttCollide(TT.cur.m, TT.cur.x, TT.cur.y + 1)) TT.cur.y++;
+                            else ttLock();
+                        }
+                    }
+                }
+                ttDraw();
+                TT.raf = requestAnimationFrame(ttLoop);
+            }
+
+            /* ---------- ÇİZİM ---------- */
+            function ttResizeCanvas() {
+                const cv = ttEl('ttCanvas');
+                if (!cv) return;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const w = cv.clientWidth || 280, h = cv.clientHeight || 560;
+                cv.width = Math.round(w * dpr);
+                cv.height = Math.round(h * dpr);
+                try { TT.ctx = cv.getContext('2d'); } catch (e) { TT.ctx = null; }
+                if (TT.ctx) TT.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                TT.block = Math.min(w / TT_COLS, h / TT_ROWS);
+                TT.ox = (w - TT.block * TT_COLS) / 2;
+                TT.oy = (h - TT.block * TT_ROWS) / 2;
+
+                const nv = ttEl('ttNext');
+                if (nv) {
+                    const nw = nv.clientWidth || 108, nh = nv.clientHeight || 216;
+                    nv.width = Math.round(nw * dpr);
+                    nv.height = Math.round(nh * dpr);
+                    try { TT.nctx = nv.getContext('2d'); } catch (e) { TT.nctx = null; }
+                    if (TT.nctx) TT.nctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+            }
+            function ttCell(ctx, px, py, size, color, ghost) {
+                if (ghost) {
+                    ctx.strokeStyle = color;
+                    ctx.globalAlpha = 0.35;
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(px + 2, py + 2, size - 4, size - 4);
+                    ctx.globalAlpha = 1;
+                    return;
+                }
+                ctx.fillStyle = color;
+                ctx.fillRect(px + 1, py + 1, size - 2, size - 2);
+                ctx.fillStyle = 'rgba(255,255,255,0.28)';
+                ctx.fillRect(px + 1, py + 1, size - 2, Math.max(2, size * 0.18));
+                ctx.fillStyle = 'rgba(0,0,0,0.22)';
+                ctx.fillRect(px + 1, py + size - Math.max(2, size * 0.18), size - 2, Math.max(2, size * 0.18));
+            }
+            function ttDraw() {
+                const ctx = TT.ctx;
+                if (!ctx) return;
+                const cv = ttEl('ttCanvas');
+                const w = cv.clientWidth || 280, h = cv.clientHeight || 560;
+                ctx.clearRect(0, 0, w, h);
+                const b = TT.block;
+
+                // zemin ızgarası
+                ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+                ctx.lineWidth = 1;
+                for (let r = 0; r <= TT_ROWS; r++) {
+                    ctx.beginPath();
+                    ctx.moveTo(TT.ox, TT.oy + r * b);
+                    ctx.lineTo(TT.ox + TT_COLS * b, TT.oy + r * b);
+                    ctx.stroke();
+                }
+                for (let c = 0; c <= TT_COLS; c++) {
+                    ctx.beginPath();
+                    ctx.moveTo(TT.ox + c * b, TT.oy);
+                    ctx.lineTo(TT.ox + c * b, TT.oy + TT_ROWS * b);
+                    ctx.stroke();
+                }
+
+                // yerleşmiş bloklar
+                for (let r = 0; r < TT_ROWS; r++) {
+                    const isClearing = TT.clearing.indexOf(r) !== -1;
+                    for (let c = 0; c < TT_COLS; c++) {
+                        const t = TT.grid[r][c];
+                        if (!t) continue;
+                        if (isClearing) {
+                            ctx.fillStyle = '#ffffff';
+                            ctx.globalAlpha = 0.85;
+                            ctx.fillRect(TT.ox + c * b + 1, TT.oy + r * b + 1, b - 2, b - 2);
+                            ctx.globalAlpha = 1;
+                        } else {
+                            ttCell(ctx, TT.ox + c * b, TT.oy + r * b, b, TT_COLORS[t], false);
+                        }
+                    }
+                }
+
+                // hayalet + aktif parça
+                if (TT.cur && !TT.over) {
+                    const gy = ttGhostY();
+                    const m = TT.cur.m;
+                    for (let r = 0; r < m.length; r++) {
+                        for (let c = 0; c < m[r].length; c++) {
+                            if (!m[r][c]) continue;
+                            const py = gy + r;
+                            if (py >= 0) ttCell(ctx, TT.ox + (TT.cur.x + c) * b, TT.oy + py * b, b, TT_COLORS[TT.cur.type], true);
+                        }
+                    }
+                    for (let r = 0; r < m.length; r++) {
+                        for (let c = 0; c < m[r].length; c++) {
+                            if (!m[r][c]) continue;
+                            const py = TT.cur.y + r;
+                            if (py >= 0) ttCell(ctx, TT.ox + (TT.cur.x + c) * b, TT.oy + py * b, b, TT_COLORS[TT.cur.type], false);
+                        }
+                    }
+                }
+            }
+            function ttDrawNext() {
+                const ctx = TT.nctx;
+                if (!ctx) return;
+                const nv = ttEl('ttNext');
+                const w = nv.clientWidth || 108, h = nv.clientHeight || 216;
+                ctx.clearRect(0, 0, w, h);
+                const slot = h / 3;
+                const b = Math.min(slot / 5, w / 6);
+                for (let i = 0; i < 3; i++) {
+                    const type = TT.queue[i];
+                    if (!type) continue;
+                    const m = TT_SHAPES[type];
+                    const mw = m[0].length * b, mh = m.length * b;
+                    const ox = (w - mw) / 2, oy = slot * i + (slot - mh) / 2;
+                    for (let r = 0; r < m.length; r++) {
+                        for (let c = 0; c < m[r].length; c++) {
+                            if (m[r][c]) ttCell(ctx, ox + c * b, oy + r * b, b, TT_COLORS[type], false);
+                        }
+                    }
+                }
+            }
+            function ttShowToast(txt) {
+                const el = ttEl('ttToast');
+                if (!el) return;
+                el.textContent = txt;
+                el.classList.add('show');
+                clearTimeout(TT.toastTimer);
+                TT.toastTimer = setTimeout(function () { el.classList.remove('show'); }, 900);
+            }
+
+            /* ---------- ARAYÜZ ---------- */
+            function ttUpdateUI() {
+                const lv = ttEl('ttLevel'); if (lv) lv.textContent = 'SEVİYE ' + TT.level;
+                const sc = ttEl('ttScore'); if (sc) sc.textContent = '⭐ ' + TT.score;
+                const ln = ttEl('ttLines'); if (ln) ln.textContent = '📏 ' + TT.lines + ' SATIR';
+                const bs = ttEl('ttBest'); if (bs) bs.textContent = '🏆 ' + TT.best;
+                const bv = ttEl('ttBestVal'); if (bv) bv.textContent = TT.best;
+            }
+
+            /* ---------- BAŞLATMA / BİTİŞ ---------- */
+            window.startTetrisFromMode = function () {
+                try { isInTest = true; stopBgMusic(); } catch (e) { }
+                hideAllMainScreens();
+                ttEl('tetrisGameScreen').style.display = 'block';
+                ttResizeCanvas();
+                ttReset();
+            };
+            function ttReset() {
+                TT.grid = ttEmptyGrid();
+                TT.queue = []; TT.bag = [];
+                TT.score = 0; TT.lines = 0; TT.level = 1;
+                TT.dropInt = ttDropInterval(1); TT.dropAcc = 0;
+                TT.over = false; TT.paused = false; TT.started = false;
+                TT.clearing = []; TT.clearTimer = 0;
+                TT.pieces = 0; TT.tetrises = 0; TT.scored = false;
+                TT.lastTs = 0;
+                TT.on = true;
+                ttEl('ttGameOverOverlay').classList.remove('show');
+                ttEl('ttPauseVeil').style.display = 'none';
+                ttUpdateUI();
+                ttCountdown();
+                cancelAnimationFrame(TT.raf);
+                TT.raf = requestAnimationFrame(ttLoop);
+            }
+            function ttCountdown() {
+                const cd = ttEl('ttCountdown');
+                let n = 3;
+                cd.style.display = 'flex';
+                cd.textContent = n;
+                ttTone(523.25, 0.1, 'triangle', 0.08);
+                clearInterval(TT.cdTimer);
+                TT.cdTimer = setInterval(function () {
+                    n--;
+                    if (n <= 0) {
+                        clearInterval(TT.cdTimer);
+                        cd.style.display = 'none';
+                        TT.started = true;
+                        ttSpawn();
+                        ttTone(880, 0.16, 'triangle', 0.1);
+                    } else {
+                        cd.textContent = n;
+                        ttTone(523.25, 0.1, 'triangle', 0.08);
+                    }
+                }, 650);
+            }
+            function ttGameOver() {
+                if (TT.over) return;
+                TT.over = true;
+                TT.started = false;
+                clearInterval(TT.cdTimer);
+                TT_SFX.over();
+
+                const isRecord = TT.score > TT.best;
+                if (isRecord) {
+                    TT.best = TT.score;
+                    try { localStorage.setItem('tetris_best', String(TT.best)); } catch (e) { }
+                }
+                if (!TT.scored) {
+                    TT.scored = true;
+                    try { if (TT.score > 0 && typeof addPoints === 'function') addPoints(TT.score); } catch (e) { }
+                }
+                ttUpdateUI();
+                ttEl('ttGoEmoji').textContent = TT.lines >= 40 ? '👑' : '🧱';
+                ttEl('ttGoTitle').textContent = TT.lines >= 40 ? 'TETRİS USTASI!' : 'Oyun Bitti!';
+                ttEl('ttGoSub').textContent = TT.pieces + ' parça yerleştirdin' +
+                    (TT.tetrises ? ' • ' + TT.tetrises + ' Tetris (4\'lü)' : '') + '.';
+                ttEl('ttGoScore').textContent = TT.score;
+                ttEl('ttGoLines').textContent = TT.lines;
+                ttEl('ttGoLevel').textContent = TT.level;
+                ttEl('ttGoRecord').style.display = isRecord ? 'block' : 'none';
+                ttEl('ttGameOverOverlay').classList.add('show');
+            }
+            window.ttRestartGame = function () {
+                ttEl('ttGameOverOverlay').classList.remove('show');
+                ttReset();
+            };
+            window.ttTogglePause = function () {
+                if (!TT.on || !TT.started || TT.over) return;
+                TT.paused = !TT.paused;
+                ttEl('ttPauseVeil').style.display = TT.paused ? 'flex' : 'none';
+            };
+
+            /* ---------- ÇIKIŞ / NAVİGASYON ---------- */
+            window.ttRequestExit = function () {
+                if (!TT.on) return;
+                TT.paused = true;
+                ttEl('ttExitInfo').textContent =
+                    TT.score + ' puan • ' + TT.lines + ' satır — puanın kaydedilecek.';
+                ttEl('ttExitModal').style.display = 'flex';
+            };
+            window.ttCancelExit = function () {
+                ttEl('ttExitModal').style.display = 'none';
+                TT.paused = false;
+                ttEl('ttPauseVeil').style.display = 'none';
+            };
+            window.ttConfirmExit = function () {
+                ttEl('ttExitModal').style.display = 'none';
+                if (!TT.scored) {
+                    TT.scored = true;
+                    try { if (TT.score > 0 && typeof addPoints === 'function') addPoints(TT.score); } catch (e) { }
+                    if (TT.score > TT.best) {
+                        TT.best = TT.score;
+                        try { localStorage.setItem('tetris_best', String(TT.best)); } catch (e) { }
+                    }
+                }
+                ttLeaveTo('modeScreen');
+            };
+            window.ttBackToMode = function () { ttLeaveTo('modeScreen'); };
+            window.ttGoProfile = function () { ttLeaveTo('profileScreen'); };
+            function ttLeaveTo(screenId) {
+                ttStop();
+                try { isInTest = false; if (typeof soundEnabled !== 'undefined' && soundEnabled) startBgMusic(); } catch (e) { }
+                hideAllMainScreens();
+                const s = ttEl(screenId); if (s) s.style.display = 'block';
+                try { changeTheme('space'); } catch (e) { }
+            }
+            function ttStop() {
+                TT.on = false; TT.started = false; TT.paused = false;
+                cancelAnimationFrame(TT.raf);
+                clearInterval(TT.cdTimer);
+                clearTimeout(TT.toastTimer);
+                ttEl('ttExitModal').style.display = 'none';
+                ttEl('ttGameOverOverlay').classList.remove('show');
+            }
+
+            /* ---------- GİRDİ: KLAVYE ---------- */
+            document.addEventListener('keydown', function (e) {
+                if (!TT.on) return;
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    if (ttEl('ttExitModal').style.display === 'flex') window.ttCancelExit();
+                    else window.ttRequestExit();
+                    return;
+                }
+                const k = e.key;
+                if (k === 'ArrowLeft') { e.preventDefault(); ttMove(-1); }
+                else if (k === 'ArrowRight') { e.preventDefault(); ttMove(1); }
+                else if (k === 'ArrowDown') { e.preventDefault(); ttSoftDrop(); }
+                else if (k === 'ArrowUp' || k === 'x' || k === 'X') { e.preventDefault(); ttRotate(1); }
+                else if (k === 'z' || k === 'Z') { e.preventDefault(); ttRotate(-1); }
+                else if (k === ' ' || k === 'Spacebar') { e.preventDefault(); ttHardDrop(); }
+                else if (k === 'p' || k === 'P') { e.preventDefault(); window.ttTogglePause(); }
+                else if (k === 'm' || k === 'M') { e.preventDefault(); window.ttToggleMute(); }
+                else if (k === 'r' || k === 'R') { e.preventDefault(); window.ttRestartGame(); }
+                else if (k === 'Enter' && ttEl('ttGameOverOverlay').classList.contains('show')) {
+                    e.preventDefault(); window.ttRestartGame();
+                }
+            });
+
+            /* ---------- GİRDİ: DOKUNMATİK PED (basılı tutunca tekrarlar) ---------- */
+            (function bindPad() {
+                const repeat = { left: 130, right: 130, down: 70 };
+                const btns = document.querySelectorAll('.tt-btn');
+                for (let i = 0; i < btns.length; i++) {
+                    (function (btn) {
+                        const act = btn.getAttribute('data-act');
+                        let timer = null;
+                        function once() {
+                            if (act === 'left') ttMove(-1);
+                            else if (act === 'right') ttMove(1);
+                            else if (act === 'down') ttSoftDrop();
+                            else if (act === 'rot') ttRotate(1);
+                            else if (act === 'drop') ttHardDrop();
+                            else if (act === 'pause') window.ttTogglePause();
+                        }
+                        function stop() { clearInterval(timer); timer = null; }
+                        btn.addEventListener('pointerdown', function (e) {
+                            e.preventDefault();
+                            once();
+                            if (repeat[act]) { stop(); timer = setInterval(once, repeat[act]); }
+                        });
+                        ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+                            btn.addEventListener(ev, stop);
+                        });
+                    })(btns[i]);
+                }
+            })();
+
+            window.addEventListener('resize', function () {
+                if (TT.on) { ttResizeCanvas(); ttDrawNext(); }
+            });
+
+            /* TEST KANCASI (jsdom birim testleri için) */
+            window.__TT = {
+                state: TT, cols: TT_COLS, rows: TT_ROWS, shapes: TT_SHAPES, colors: TT_COLORS,
+                reset: ttReset, spawn: ttSpawn, move: ttMove, rotate: ttRotate,
+                softDrop: ttSoftDrop, hardDrop: ttHardDrop, lock: ttLock,
+                fullRows: ttFullRows, removeRows: ttRemoveRows, scoreForLines: ttScoreForLines,
+                dropInterval: ttDropInterval, collide: ttCollide, emptyGrid: ttEmptyGrid,
+                finishClear: ttFinishClear, rotCW: ttRotCW, rotCCW: ttRotCCW,
+                nextType: ttNextType, gameOver: ttGameOver, ghostY: ttGhostY
+            };
+        })();
+    </script>
+
 
     <!-- ===== MAĞAZA MODALI ===== -->
     <div class="shop-modal" id="shopModal">
