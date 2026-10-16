@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>MATEX</title>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body oncontextmenu="return false;" ondragstart="return false;">
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Sorular Hazırlanıyor...</div>
+        <div class="loading-detail" id="loadingDetail"></div>
+        <div class="loading-actions">
+            <button class="back-btn" id="loadingCancelBtn" onclick="soruYuklemeIptal()">← İptal</button>
+            <button class="primary-btn" id="loadingRetryBtn" onclick="startTest()">🔄 Tekrar Dene</button>
+        </div>
+    </div>
+
+    <!-- arma -->
+    <div class="rank-system-left" id="rankSystemLeft">
+        <div class="rank-capsule" onclick="toggleRankDropdown()">
+            <span class="rank-capsule-icon" id="rankCapsuleIcon">🥉</span>
+            <div class="rank-capsule-info">
+                <span class="rank-capsule-name" id="rankCapsuleName">BRONZ</span>
+                <span style="color:#7eb8ff;font-size:12px;">|</span>
+                <span class="rank-capsule-pts" id="totalRankPoints">0</span>
+                <span class="rank-capsule-pts" style="font-size:11px;opacity:0.7;" id="rankPtsLabel">PUAN</span>
+            </div>
+        </div>
+        <div class="rank-dropdown" id="rankDropdown">
+            <div class="rank-dropdown-title" id="rankDropdownTitle">Arma İlerlemesi</div>
+            <div class="rank-dropdown-item active" id="rankDropBronz">
+                <div class="rank-dropdown-icon">🥉</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#cd7f32;" id="rankDropBronzName">BRONZ</div>
+                    <div class="rank-dropdown-req" id="rankDropBronzReq">200 Puan</div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarBronz"
+                            style="width:0%;background:linear-gradient(90deg,#cd7f32,#daa520);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropGumus">
+                <div class="rank-dropdown-icon">🥈</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#c0c0c0;" id="rankDropGumusName">GÜMÜŞ</div>
+                    <div class="rank-dropdown-req" id="rankDropGumusReq">400 Puan</div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarGumus"
+                            style="width:0%;background:linear-gradient(90deg,#c0c0c0,#e0e0e0);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropAltin">
+                <div class="rank-dropdown-icon">🥇</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#ffd700;" id="rankDropAltinName">ALTIN</div>
+                    <div class="rank-dropdown-req" id="rankDropAltinReq">600 Puan</div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarAltin"
+                            style="width:0%;background:linear-gradient(90deg,#ffd700,#ffec80);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rank-dropdown-item locked" id="rankDropElmas">
+                <div class="rank-dropdown-icon">💎</div>
+                <div class="rank-dropdown-info">
+                    <div class="rank-dropdown-name" style="color:#00d2ff;" id="rankDropElmasName">ELMAS</div>
+                    <div class="rank-dropdown-req" id="rankDropElmasReq">800 Puan</div>
+                    <div class="rank-dropdown-bar">
+                        <div class="rank-dropdown-bar-fill" id="rankBarElmas"
+                            style="width:0%;background:linear-gradient(90deg,#00d2ff,#8a2be2);"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+                <span style="color:#7eb8ff;font-size:12px;" id="rankPtsPerLabel">Kolay: 10p • Orta: 20p • Zor:
+                    30p</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sound-toggle-btn" id="soundToggleBtn" onclick="toggleSound()">
+        <span id="soundIcon">🔊</span>
+        <span class="sound-toggle-label" id="soundLabel">Ses Açık</span>
+    </div>
+
+    <div class="social-media-container">
+        <a href="https://discord.com/users/tyrant3455" target="_blank" class="social-btn discord"><i
+                class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@ardaak3420" target="_blank" class="social-btn youtube"><i
+                class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/ardk.61" target="_blank" class="social-btn instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="https://movyra.com.tr" target="_blank" class="social-btn movyra"><i class="fas fa-film"></i></a>
+    </div>
+
+    <div class="animated-bg theme-space" id="animatedBg">
+        <div id="animationContainer"></div>
+    </div>
+
+    <!-- farkı bul -->
+    <div id="farkBgA"></div>
+    <div id="farkBgB"></div>
+    <div class="fark-fx" id="farkFx"></div>
+    <div class="fark-splash" id="farkSplash">
+        <div class="s1" id="farkSpl1">SEVİYE 1</div>
+        <div class="s2" id="farkSpl2">4 kare | 15.0 saniye</div>
+    </div>
+    <div class="fark-banner" id="farkBanner">
+        <div class="bcard">
+            <div class="b1" id="farkBn1">⚡ ZORLUK ARTTI! ⚡</div>
+            <div class="b2" id="farkBn2">Kademe: Kalfa | Tema: Mor Bulut</div>
+            <div class="b3" id="farkBn3">Süre 13 saniyeye düştü | Renkler yaklaştı, arka plan sönükleşti!</div>
+        </div>
+    </div>
+    <div class="fark-overlay" id="farkOverlay">
+        <div class="fark-ov-card">
+            <div class="fark-ov-emoji" id="farkOvEmoji">💥</div>
+            <div class="fark-ov-title" id="farkOvTitle">Süre Doldu!</div>
+            <div class="fark-newrec" id="farkOvRec" style="display:none">🏆 YENİ REKOR!</div>
+            <div class="fark-ov-score" id="farkOvScore">0</div>
+            <div class="fark-ov-stats">
+                <div class="fark-ov-stat">
+                    <div class="v" id="farkOvLvl">1</div>
+                    <div class="k">SEVİYE</div>
+                </div>
+                <div class="fark-ov-stat">
+                    <div class="v" id="farkOvFind">0</div>
+                    <div class="k">BULUNAN FARK</div>
+                </div>
+                <div class="fark-ov-stat">
+                    <div class="v" id="farkOvRank">Çaylak</div>
+                    <div class="k">KADEME</div>
+                </div>
+                <div class="fark-ov-stat">
+                    <div class="v" id="farkOvBest">0</div>
+                    <div class="k">REKOR</div>
+                </div>
+            </div>
+            <div class="fark-ov-btns" id="farkOvBtns"></div>
+        </div>
+    </div>
+
+    <!-- hafıza -->
+    <div id="hzBgA"></div>
+    <div id="hzBgB"></div>
+    <div class="hz-fx" id="hzFx"></div>
+    <div class="hz-splash" id="hzSplash">
+        <div class="s1" id="hzSpl1">SEVİYE 1</div>
+        <div class="s2" id="hzSpl2">Zincir: 1</div>
+    </div>
+    <div class="hz-banner" id="hzBanner">
+        <div class="bcard">
+            <div class="b1" id="hzBn1">⚡ RÜTBE ATLADIN! ⚡</div>
+            <div class="b2" id="hzBn2">Rütbe: Çırak</div>
+            <div class="b3" id="hzBn3">Işıklar hızlandı | Arka plan sönükleşti!</div>
+        </div>
+    </div>
+    <div class="hz-overlay" id="hzOverlay">
+        <div class="hz-ov-card">
+            <div class="hz-ov-emoji" id="hzOvEmoji">💥</div>
+            <div class="hz-ov-title" id="hzOvTitle">Zincir Koptu!</div>
+            <div class="hz-newrec" id="hzOvRec" style="display:none">🏆 YENİ REKOR!</div>
+            <div class="hz-ov-score" id="hzOvScore">0</div>
+            <div class="hz-ov-stats">
+                <div class="hz-ov-stat">
+                    <div class="v" id="hzOvLvl">1</div>
+                    <div class="k">SEVİYE</div>
+                </div>
+                <div class="hz-ov-stat">
+                    <div class="v" id="hzOvChain">0</div>
+                    <div class="k">EN UZUN ZİNCİR</div>
+                </div>
+                <div class="hz-ov-stat">
+                    <div class="v" id="hzOvRank">Acemi</div>
+                    <div class="k">RÜTBE</div>
+                </div>
+                <div class="hz-ov-stat">
+                    <div class="v" id="hzOvBest">0</div>
+                    <div class="k">REKOR</div>
+                </div>
+            </div>
+            <div class="hz-ov-btns" id="hzOvBtns"></div>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="hzExitModal">
+        <div class="exit-confirm-box">
+            <h3>🧠 Oyundan Çık</h3>
+            <p>Hafıza oyunundan çıkmak istediğine emin misin? İlerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="hzConfirmExit()">Evet,
+                    Çık</button> <button class="exit-confirm-btn no" onclick="hzCancelExit()">İptal</button> </div>
+        </div>
+    </div>
+
+    <!-- karma kelime -->
+    <div id="klBgA"></div>
+    <div id="klBgB"></div>
+    <div class="kl-fx" id="klFx"></div>
+    <div class="kl-splash" id="klSplash">
+        <div class="s1" id="klSpl1">SEVİYE 1</div>
+        <div class="s2" id="klSpl2">4 harf | 15 saniye</div>
+    </div>
+    <div class="kl-banner" id="klBanner">
+        <div class="bcard">
+            <div class="b1" id="klBn1">⚡ RÜTBE ATLADIN! ⚡</div>
+            <div class="b2" id="klBn2">Rütbe: Çırak</div>
+            <div class="b3" id="klBn3">Kelimeler uzuyor | Süre kısılıyor | Arka plan sönükleşti!</div>
+        </div>
+    </div>
+    <div class="kl-overlay" id="klOverlay">
+        <div class="kl-ov-card">
+            <div class="kl-ov-emoji" id="klOvEmoji">⏱️</div>
+            <div class="kl-ov-title" id="klOvTitle">Süre Doldu!</div>
+            <div class="kl-newrec" id="klOvRec" style="display:none">🏆 YENİ REKOR!</div>
+            <div class="kl-ov-score" id="klOvScore">0</div>
+            <div class="kl-ov-stats">
+                <div class="kl-ov-stat">
+                    <div class="v" id="klOvLvl">1</div>
+                    <div class="k">SEVİYE</div>
+                </div>
+                <div class="kl-ov-stat">
+                    <div class="v" id="klOvWord">0</div>
+                    <div class="k">ÇÖZÜLEN</div>
+                </div>
+                <div class="kl-ov-stat">
+                    <div class="v" id="klOvRank">Acemi</div>
+                    <div class="k">RÜTBE</div>
+                </div>
+                <div class="kl-ov-stat">
+                    <div class="v" id="klOvBest">0</div>
+                    <div class="k">REKOR</div>
+                </div>
+            </div>
+            <div class="kl-ov-btns" id="klOvBtns"></div>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="klExitModal">
+        <div class="exit-confirm-box">
+            <h3>🔤 Oyundan Çık</h3>
+            <p>Karma Kelime'den çıkmak istediğine emin misin? İlerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="klConfirmExit()">Evet,
+                    Çık</button> <button class="exit-confirm-btn no" onclick="klCancelExit()">İptal</button> </div>
+        </div>
+    </div>
+
+    <!-- hızlı görsel -->
+    <div id="hgBgA"></div>
+    <div id="hgBgB"></div>
+    <div class="hg-fx" id="hgFx"></div>
+    <div class="hg-splash" id="hgSplash">
+        <div class="s1" id="hgSpl1">SEVİYE 1</div>
+        <div class="s2" id="hgSpl2">0.70 saniye flaş</div>
+    </div>
+    <div class="hg-banner" id="hgBanner">
+        <div class="bcard">
+            <div class="b1" id="hgBn1">⚡ ZORLUK ARTTI! ⚡</div>
+            <div class="b2" id="hgBn2">Kademe: Kalfa</div>
+            <div class="b3" id="hgBn3">Flaş kısalıyor | Arka plan sönükleşti!</div>
+        </div>
+    </div>
+    <div class="hg-overlay" id="hgOverlay">
+        <div class="hg-ov-card">
+            <div class="hg-ov-emoji" id="hgOvEmoji">💥</div>
+            <div class="hg-ov-title" id="hgOvTitle">Yanlış!</div>
+            <div class="hg-newrec" id="hgOvRec" style="display:none">🏆 YENİ REKOR!</div>
+            <div class="hg-ov-score" id="hgOvScore">0</div>
+            <div class="hg-ov-stats">
+                <div class="hg-ov-stat">
+                    <div class="v" id="hgOvLvl">1</div>
+                    <div class="k">DOĞRU</div>
+                </div>
+                <div class="hg-ov-stat">
+                    <div class="v" id="hgOvCat">-</div>
+                    <div class="k">KATEGORİ</div>
+                </div>
+                <div class="hg-ov-stat">
+                    <div class="v" id="hgOvRank">Çaylak</div>
+                    <div class="k">KADEME</div>
+                </div>
+                <div class="hg-ov-stat">
+                    <div class="v" id="hgOvBest">0</div>
+                    <div class="k">REKOR</div>
+                </div>
+            </div>
+            <div id="hgOvList"
+                style="background:rgba(0,0,0,0.25);border-radius:16px;padding:10px;margin:0 0 16px;max-height:240px;overflow-y:auto;scrollbar-width:none;text-align:left">
+            </div>
+            <div class="hg-ov-btns" id="hgOvBtns"></div>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="hgExitModal">
+        <div class="exit-confirm-box">
+            <h3>⚡ Oyundan Çık</h3>
+            <p>Hızlı Görsel'den çıkmak istediğine emin misin? İlerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="hgConfirmExit()">Evet,
+                    Çık</button> <button class="exit-confirm-btn no" onclick="hgCancelExit()">İptal</button> </div>
+        </div>
+    </div>
+
+    <!-- zoom -->
+    <div id="zgBgA"></div>
+    <div id="zgBgB"></div>
+    <div class="zg-fx" id="zgFx"></div>
+
+    <div class="exit-confirm-modal" id="zgExitModal">
+        <div class="exit-confirm-box">
+            <h3>🔍 Oyundan Çık</h3>
+            <p>Zoom Tahmin'den çıkmak istediğine emin misin? İlerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="zgConfirmExit()">Evet,
+                    Çık</button> <button class="exit-confirm-btn no" onclick="zgCancelExit()">İptal</button> </div>
+        </div>
+    </div>
+
+    <div class="blur-result-overlay" id="blurResultOverlay">
+        <div class="blur-result-card" id="blurResultCard">
+            <span style="font-size:64px;margin-bottom:12px;display:block" id="blurResultEmoji">✅</span>
+            <div style="font-size:24px;font-weight:800;margin-bottom:6px;color:#fff" id="blurResultTitle">Doğru!</div>
+            <div style="font-size:20px;font-weight:700;color:#a78bfa;margin-bottom:10px" id="blurResultName">Thor</div>
+            <div style="font-size:18px;font-weight:800;color:#facc15;margin-bottom:18px" id="blurResultPoints">+1000
+                Puan</div>
+            <div style="font-size:13px;color:#8a8ab0;margin-bottom:18px" id="blurResultDesc">Süper!</div>
+            <button class="primary-btn" style="width:100%" onclick="nextBlurQuestion()">Sonraki Soru →</button>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="exitConfirmModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Testten Çık</h3>
+            <p>Testten çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.</p>
+            <div class="exit-confirm-buttons"> <button class="exit-confirm-btn yes" onclick="confirmExit()">Evet,
+                    Çık</button> <button class="exit-confirm-btn no" onclick="cancelExit()">İptal</button> </div>
+        </div>
+    </div>
+    <div class="avatar-modal" id="avatarModal">
+        <div class="avatar-modal-content">
+            <div class="avatar-modal-header">
+                <h2 style="color:#00d2ff; text-align:center;">Profil Seç</h2>
+                <div class="close-modal-btn" onclick="closeAvatarModal()">✕</div>
+            </div>
+            <div class="avatar-grid" id="avatarGrid"></div> <button class="primary-btn"
+                onclick="closeAvatarModal()">Onayla</button>
+        </div>
+    </div>
+    <input type="file" id="galleryInput" accept="image/*" onchange="handleGalleryUpload(event)">
+
+    <div class="main-container" id="mainContainer">
+        <div class="screen" id="profileScreen">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#8A2BE2;stop-opacity:1" />
+                            <stop offset="33%" style="stop-color:#C71585;stop-opacity:1" />
+                            <stop offset="66%" style="stop-color:#DA70D6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF69B4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z" fill="url(#logoGrad)" />
+                    <text x="50" y="92" text-anchor="middle" fill="url(#logoGrad)" font-size="12" font-weight="bold"
+                        font-family="Plus Jakarta Sans">MATEX</text>
+                </svg>
+                <span class="logo-text">MATEX</span>
+            </div>
+            <div class="slogan">"Quizin ve Testin Harman Olduğu Yer"</div>
+            <div class="subtitle">2 MOD • FOTOĞRAFLI + KLASİK QUIZ</div>
+            <div class="profile-shell">
+                <div class="profile-hero">
+                    <div class="hero-badge">✨ Yeni Nesil Quiz</div>
+                    <h1>MATEX ile kendini test et</h1>
+                    <p>Profilini oluştur, kategori seç, zorluk belirle ve hemen oyuna başla. İstersen arkadaşlarınla da
+                        oyna.</p>
+                    <div class="feature-grid">
+                        <div class="feature-pill">⚡ Hızlı Başlangıç</div>
+                        <div class="feature-pill">🧠 30 Kategori</div>
+                        <div class="feature-pill">🖼️ Fotoğraflı + Klasik</div>
+                    </div>
+                </div>
+                <div class="profile-section">
+                    <div class="avatar-section">
+                        <div class="avatar-preview" id="avatarPreview" onclick="openAvatarModal()">👤</div>
+                        <div class="avatar-buttons"> <button class="avatar-btn" onclick="openAvatarModal()">🎭
+                                Emoji</button> <button class="avatar-btn"
+                                onclick="document.getElementById('galleryInput').click()">📁 Galeri</button> </div>
+                        <button class="shop-fab" onclick="openShop()" title="Mağaza">🛒 Mağaza</button>
+                    </div>
+                    <div class="form-section">
+                        <div class="input-wrapper"><label>👤 Ad Soyad</label><input class="input-field"
+                                id="fullNameInput" placeholder="Adınız Soyadınız">
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="input-wrapper age-selector"><label>📅 Yaş (1-100)</label><input type="text"
+                                class="input-field" id="ageInputDisplay" placeholder="Yaşınız" inputmode="numeric"
+                                autocomplete="off"><input type="hidden" id="ageInput">
+                            <div class="age-scroll" id="ageScroll"></div>
+                            <div class="error-message" id="ageError"></div>
+                        </div>
+                        <div style="grid-column:span 2;" class="input-wrapper"><label>⚥ Cinsiyet</label>
+                            <div class="gender-group" id="genderGroup" role="group" aria-label="Cinsiyet">
+                                <button type="button" class="gender-option" data-gender="erkek" id="genderErkek">👨
+                                    Erkek</button>
+                                <button type="button" class="gender-option" data-gender="kadin" id="genderKadin">👩
+                                    Kadın</button>
+                                <button type="button" class="gender-option" data-gender="yok" id="genderYok">⚧
+                                    Belirtmiyorum</button>
+                            </div>
+                            <div class="error-message" id="genderError"></div>
+                        </div>
+                        <div class="input-wrapper lang-dropdown-wrapper" style="grid-column:span 2;">
+                            <label id="langDropdownLabel">🌍 Dil / Language</label>
+                            <div class="lang-dropdown-trigger" id="langDropdownTrigger" onclick="toggleLangDropdown()">
+                                <span id="langDropdownFlag">🇹🇷</span>
+                                <span id="langDropdownName">Türkçe</span>
+                                <span style="opacity:0.5;font-size:14px;">▼</span>
+                            </div>
+                            <div class="lang-dropdown-panel" id="langDropdownPanel">
+                                <div class="lang-dropdown-item selected" onclick="selectLangOption('tr')"
+                                    data-lang="tr"><span class="lang-flag">🇹🇷</span> Türkçe</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('en')" data-lang="en"><span
+                                        class="lang-flag">🇬🇧</span> English</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('de')" data-lang="de"><span
+                                        class="lang-flag">🇩🇪</span> Deutsch</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ru')" data-lang="ru"><span
+                                        class="lang-flag">🇷🇺</span> Русский</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('zh')" data-lang="zh"><span
+                                        class="lang-flag">🇨🇳</span> 中文</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ja')" data-lang="ja"><span
+                                        class="lang-flag">🇯🇵</span> 日本語</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('es')" data-lang="es"><span
+                                        class="lang-flag">🇪🇸</span> Español</div>
+                                <div class="lang-dropdown-item" onclick="selectLangOption('ar')" data-lang="ar"><span
+                                        class="lang-flag">🇸🇦</span> العربية</div>
+                                <div style="padding:8px 10px 4px;"><button class="lang-save-btn" id="langSaveBtn"
+                                        onclick="saveLanguage()" disabled>💾 Kaydet</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="back-btn" onclick="fillRandomProfile()"
+                    style="flex:none; padding:18px 26px; font-size:18px;">🎲 Rastgele</button>
+                <button class="primary-btn" onclick="validateAndContinue()">Devam Et →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="modeScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:10px;">
+                <button class="back-btn" onclick="goBackToProfileFromMode()">← Profil</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:42px;">Oyun Modu</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" style="margin-bottom:10px;">Nasıl oynamak istersin?</p>
+            <div class="mode-grid">
+                <div class="mode-card mode-card--text" id="modeTextCard" onclick="selectGameMode('text')">
+                    <div class="mode-card-icon">📝</div>
+                    <div class="mode-card-title">Fotoğrafsız Soru</div>
+                    <div class="mode-card-desc">Yapay zekâ her oyunda yeni sorular hazırlar. 30 kategori, 5-30 soru.</div>
+                </div>
+                <div class="mode-card mode-card--photo" id="modePhotoCard" onclick="selectGameMode('photo')">
+                    <div class="mode-card-icon">🖼️</div>
+                    <div class="mode-card-title">Fotoğraflı Soru</div>
+                    <div class="mode-card-desc">Görseli gör, ismi yaz. Karakter / logo / bayrak tahmin et.</div>
+                </div>
+                <div class="mode-card mode-card--ombm" id="modeOmbmCard" onclick="selectGameMode('ombm')">
+                    <div class="mode-card-icon">⚔️</div>
+                    <div class="mode-card-title">O mu Bu mu?</div>
+                    <div class="mode-card-desc">Turnuva usulü: İkişer görsel, bir tercih! Şampiyonu seç.</div>
+                </div>
+
+                <div class="mode-card mode-card--siralama" id="modeSiralamaCard" onclick="selectGameMode('siralama')">
+                    <div class="mode-card-icon">📊</div>
+                    <div class="mode-card-title">Sıralama Oyunu</div>
+                    <div class="mode-card-desc">Görselleri sürükle, 4 farklı seviyeye (Çok İyi'den Çok Kötü'ye) yerleştir.
+                    </div>
+                </div>
+
+                <div class="mode-card mode-card--blur" id="modeBlurCard" onclick="selectGameMode('blur')">
+                    <div class="mode-card-icon">👁️‍🗨️</div>
+                    <div class="mode-card-title">Bulanık Tahmin</div>
+                    <div class="mode-card-desc">Görsel bulanık başlar, erken bil çok puan al! 10 kategori, 5 seviye
+                        netleşme.</div>
+                </div>
+
+                <div class="mode-card mode-card--hizli" id="modeHizliCard" onclick="selectGameMode('hizli')">
+                    <div class="mode-card-icon">⚡</div>
+                    <div class="mode-card-title">Hızlı Görsel</div>
+                    <div class="mode-card-desc">Görsel tek anlığına flaşlanır ve kaybolur! 4 seçenekten doğrusunu
+                        bul. 5 kategori, sonda sonuç ekranı.</div>
+                </div>
+
+                <div class="mode-card mode-card--hafiza" id="modeHafizaCard" onclick="selectGameMode('hafiza')">
+                    <div class="mode-card-icon">🧠</div>
+                    <div class="mode-card-title">Hafıza Oyunu</div>
+                    <div class="mode-card-desc">Işıklar sırayla yanıp söner! Diziyi ezberle, aynı sırayla tekrarla.
+                        Seviye ilerledikçe zincir uzar, tempo hızlanır.</div>
+                </div>
+
+                <div class="mode-card mode-card--fark" id="modeFarkCard" onclick="selectGameMode('fark')">
+                    <div class="mode-card-icon">🎯</div>
+                    <div class="mode-card-title">Farkı Bul</div>
+                    <div class="mode-card-desc">Aynı şekiller arasındaki farklı tonu bul! Seviye ilerledikçe ızgara
+                        büyür, renkler birbirine yaklaşır. Her 5 seviyede rütbe atla!</div>
+                </div>
+
+                <div class="mode-card mode-card--kelime" id="modeKelimeCard" onclick="selectGameMode('kelime')">
+                    <div class="mode-card-icon">🔤</div>
+                    <div class="mode-card-title">Karma Kelime</div>
+                    <div class="mode-card-desc">Karışık harfleri doğru sırayla birleştir! İpucundan yararlan, süre
+                        bitmeden çöz. Her 5 seviyede kelimeler uzar.</div>
+                </div>
+
+                <div class="mode-card mode-card--zoom" id="modeZoomCard" onclick="selectGameMode('zoom')">
+                    <div class="mode-card-icon">🔍</div>
+                    <div class="mode-card-title">Zoom Tahmin</div>
+                    <div class="mode-card-desc">Görselin rastgele bir detayına zoomlanır! Yazarak tahmin et, her
+                        yanlışta görüntü biraz daha açılsın. 15 kategori, 5 seviye.</div>
+                </div>
+
+                <div class="mode-card mode-card--eslestirme" id="modeEslestirmeCard"
+                    onclick="selectGameMode('eslestirme')">
+                    <div class="mode-card-icon">🧩</div>
+                    <div class="mode-card-title">Eşleştirme</div>
+                    <div class="mode-card-desc">Kutucukları çevir, aynı emojileri eşleştir! Seviye ilerledikçe
+                        kutucuklar artar. Hafızanı test et!</div>
+                </div>
+
+                <div class="mode-card mode-card--yilan" id="modeYilanCard" onclick="selectGameMode('yilan')">
+                    <div class="mode-card-icon">🐍</div>
+                    <div class="mode-card-title">Yılan Oyunu</div>
+                    <div class="mode-card-desc">Klasik arcade! Yemleri ye, büyü ama duvara ve kendine çarpma. Altın
+                        yemleri kaçırma, her seviye daha hızlı!</div>
+                </div>
+
+                <div class="mode-card mode-card--kostebek" id="modeKostebekCard" onclick="selectGameMode('kostebek')">
+                    <div class="mode-card-icon">🔨</div>
+                    <div class="mode-card-title">Köstebek Vur</div>
+                    <div class="mode-card-desc">Deliklerden çıkan köstebeklere hızlıca tıkla! 💣 bombalara vurma, ⭐
+                        altın köstebekleri kaçırma. Seviye arttıkça tempo çıldırır!</div>
+                </div>
+
+                <div class="mode-card mode-card--renk" id="modeRenkCard" onclick="selectGameMode('renk')">
+                    <div class="mode-card-icon">🎨</div>
+                    <div class="mode-card-title">Renk Oyunu</div>
+                    <div class="mode-card-desc">Hedef renk 5 saniye görünür, sonra kaybolur! Kendi paletinden tonu
+                        yakala, birebir tutturan 500 puan alır. En sert oyun!</div>
+                </div>
+
+                <div class="mode-card mode-card--tepki" id="modeTepkiCard" onclick="selectGameMode('tepki')">
+                    <div class="mode-card-icon">🚦</div>
+                    <div class="mode-card-title">Hızlı Tepki</div>
+                    <div class="mode-card-desc">3-2-1 sayılır ama YEŞİL hemen yanmaz! Bazen 4 saniyede, bazen
+                        10 saniyede, bazen sayı biter bitmez. Yeşili görünce bas, tepkin milisaniye ile ölçülür.</div>
+                </div>
+
+                <div class="mode-card mode-card--melodi" id="modeMelodiCard" onclick="selectGameMode('melodi')">
+                    <div class="mode-card-icon">🎵</div>
+                    <div class="mode-card-title">Melodi Oyunu</div>
+                    <div class="mode-card-desc">Ses kombinasyonunu dinle ("dı da dı dı da") ama notalar gizli! Kulağınla
+                        deneyerek aynı sesi oluştur, TAMAM'a bas. Birebir tutturan 500 puan alır.</div>
+                </div>
+
+                <div class="mode-card mode-card--mayin" id="modeMayinCard" onclick="selectGameMode('mayin')">
+                    <div class="mode-card-icon">💣</div>
+                    <div class="mode-card-title">Mayın Tarlası</div>
+                    <div class="mode-card-desc">Kutuları aç, mayınlardan kaç! Sıfırlar otomatik açılır, sayılar komşu
+                        mayını söyler. 🚩 ile işaretle, 5 seviyede ızgara büyür: 8x8'den 12x12'ye.</div>
+                </div>
+
+                <div class="mode-card mode-card--tetris" id="modeTetrisCard" onclick="selectGameMode('tetris')">
+                    <div class="mode-card-icon">🧱</div>
+                    <div class="mode-card-title">Tetris</div>
+                    <div class="mode-card-desc">Klasik blok düşürme! 7 parça (I, O, T, S, Z, J, L) yukarıdan iner;
+                        döndür, sağa sola taşı, satırları tamamla. 4'lü temizleyene TETRİS, her 10 satırda seviye atlar.</div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="modeNextBtn" onclick="continueFromMode()" disabled>Devam →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromPhotoCats()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">Fotoğraflı Kategori</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <div class="categories-grid" id="photoCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="photoCategoryNextBtn" onclick="goToPhotoDifficulty()" disabled>Zorluk
+                    Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoDifficultyScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToPhotoCategory()">← Kategoriler</button>
+                <div style="flex:1;"></div>
+                <div style="width:80px;"></div>
+            </div>
+            <div class="logo-container">
+                <span class="logo-text" style="font-size:42px;">Zorluk Seviyesi</span>
+            </div>
+            <div class="difficulty-centered" id="photoDifficultyContainer"></div>
+            <div class="photo-count-box" id="photoCountBox">
+                <label for="photoQuestionCountInput">Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="photoQuestionCountInput" type="number" min="1" max="30"
+                        value="10" inputmode="numeric">
+                    <div class="photo-count-max" id="photoCountMaxLabel">/ max 30</div>
+                </div>
+                <div class="photo-count-error" id="photoCountError"></div>
+            </div>
+            <div class="answer-mode-box" id="photoAnswerModeBox">
+                <span class="answer-mode-label" id="photoAnswerModeLabel">📋 Cevaplar:</span>
+                <div class="answer-mode-option selected" id="photoAnsModeInstant"
+                    onclick="setPhotoAnswerMode('instant')">⚡ Hemen Göster</div>
+                <div class="answer-mode-option" id="photoAnsModeEnd" onclick="setPhotoAnswerMode('end')">🏁 Sonda Göster
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="photoDifficultyNextBtn" onclick="startPhotoTest()" disabled>🚀 Teste
+                    Başla</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoTestScreen" style="display:none;">
+            <div class="test-header">
+                <div class="user-badge">
+                    <div class="user-avatar" id="photoTestUserAvatar">👤</div>
+                    <div>
+                        <h3 style="color:#00d2ff;" id="photoTestUserName"></h3>
+                        <p style="color:#a0d0ff;" id="photoTestUserDetails"></p>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:20px;">
+                    <div style="text-align:right;">
+                        <div style="color:#00d2ff; font-size:28px;" id="photoDifficultyDisplay"></div>
+                        <div style="color:#a0d0ff;" id="photoQuestionCounter">1/10</div>
+                    </div>
+                    <button class="nav-btn skip-btn" onclick="showPhotoExitConfirm()" title="Testten Çık">🚪
+                        Çık</button>
+                </div>
+            </div>
+            <div class="timer-section">
+                <div class="timer-bar">
+                    <div class="timer-progress" id="photoTimerProgress"></div>
+                </div>
+                <div class="timer-text" id="photoTimerText">01:00</div>
+            </div>
+            <div class="photo-question-wrap">
+                <div class="photo-frame" id="photoFrame">
+                    <div class="photo-placeholder" id="photoPlaceholder">🖼️</div>
+                    <img id="photoImage" alt="Soru görseli" style="display:none;">
+                </div>
+                <div class="photo-prompt" id="photoPrompt">Bu karakterin ismi nedir?</div>
+                <div class="photo-hint" id="photoHint"></div>
+                <input class="photo-answer-input" id="photoAnswerInput" type="text" placeholder="Cevabını yaz..."
+                    autocomplete="off" autocapitalize="words">
+                <div class="photo-feedback" id="photoFeedback"></div>
+                <div class="inline-feedback" id="photoInlineFeedback" style="display:none;"></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="photoPrevBtn" onclick="photoPreviousQuestion()" disabled>← Önceki</button>
+                <button class="nav-btn" id="photoReturnSkippedBtn" onclick="photoReturnToSkipped()" disabled>↩️ Boş
+                    Bırakılan Soruya Dön</button>
+                <button class="nav-btn skip-btn" id="photoSkipBtn" onclick="photoSkipQuestion()">⏭️ Boş Bırak</button>
+                <button class="primary-btn" id="photoNextBtn" onclick="photoNextQuestion()" disabled>Sonraki →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="photoResultScreen" style="display:none;">
+            <div style="text-align:center; margin-bottom:30px;">
+                <div style="font-size:52px; font-weight:800; color:#00d2ff;" id="photoZekaSeviyesi"></div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
+                <div>
+                    <div style="font-size:58px; color:#00d2ff;" id="photoFinalScore">0</div>
+                    <div style="color:#a0d0ff;" class="t-dogru-label">Doğru</div>
+                </div>
+                <div>
+                    <div style="font-size:58px; color:#8a2be2;" id="photoTotalPoints">0</div>
+                    <div style="color:#a0d0ff;" class="t-puan-label">Puan</div>
+                </div>
+            </div>
+            <div id="photoResultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
+            <div id="photoExplanationPanel"></div>
+            <div class="button-group" style="justify-content:center;">
+                <button class="back-btn" onclick="replaySamePhotoCategory()" style="flex:none;">🎮 Tekrar Oyna</button>
+                <button class="primary-btn" onclick="goToPhotoCategoriesFromResult()" style="flex:none;">🔄 Yeniden
+                    Başla</button>
+            </div>
+        </div>
+
+        <!-- o mu bu mu -->
+        <div class="screen" id="ombmCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromOmbm()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">⚔️ Kategori Seç</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride turnuva yapmak istersin?</p>
+            <div class="categories-grid" id="ombmCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="ombmCategoryNextBtn" onclick="goToOmbmCount()" disabled>Görsel Sayısı
+                    Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Görsel Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Kaç görselle turnuva yapmak istersin?<br><small style="color:#7eb8ff;">(Maksimum: <span
+                        id="ombmMaxLbl">16</span>)</small></p>
+            <div class="count-box"
+                style="max-width:450px;margin:25px auto;background:rgba(0,0,0,0.28);border:2px solid rgba(250,204,21,0.35);border-radius:22px;padding:20px;text-align:center;">
+                <label style="color:#a0d0ff;font-size:16px;margin-bottom:12px;font-weight:600;display:block;">Görsel
+                    sayısı seç</label>
+                <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
+                    <input class="count-input" id="ombmCountInput" type="number" min="4" max="16" value="8"
+                        oninput="validateOmbmCount()"
+                        style="width:110px;background:rgba(0,0,0,0.35);border:2px solid #facc15;border-radius:16px;padding:12px 14px;color:#fff;font-size:22px;font-weight:800;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;outline:none;">
+                    <div style="color:#facc15;font-size:16px;font-weight:800;">/ max <span id="ombmMaxLbl2">16</span>
+                    </div>
+                </div>
+                <div style="color:#ff6b6b;font-size:13px;min-height:20px;margin-top:8px;" id="ombmCountErr"></div>
+            </div>
+            <div
+                style="background:rgba(0,0,0,0.2);border:2px solid rgba(250,204,21,0.2);border-radius:20px;padding:16px;max-width:550px;margin:20px auto;">
+                <div style="color:#a0d0ff;font-size:14px;text-align:center;line-height:1.8;">
+                    <p>⚔️ Tüm görseller <strong style="color:#facc15;">ikişerli</strong> karşı karşıya gelir.</p>
+                    <p>Her turda birini seç, kazananlar sonraki tura geçer.</p>
+                    <p>Son ayakta kalan = <strong style="color:#ffd700;">👑 ŞAMPİYON!</strong></p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" onclick="startOmbmTournament()">⚔️ Kapıştırmaya Başla!</button>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmGameScreen" style="display:none;">
+            <div class="test-header">
+                <div style="display:flex;align-items:center;gap:15px;">
+                    <button class="exit-test-btn" onclick="exitOmbmToCategories()"
+                        style="padding:10px 18px;font-size:14px;">🚪 Çık</button>
+                    <div>
+                        <h3 style="color:#facc15;" id="ombmGameCatInfo">⚔️ Yemek</h3>
+                        <p style="color:#a0d0ff;font-size:14px;" id="ombmGameMatchInfo">Eşleşme 1 / 8</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+                <div class="ombm-progress-bar">
+                    <div class="ombm-progress-label" id="ombmProgressLabel">Tur İlerleme: 0 eşleşme • 16 görsel</div>
+                    <div class="ombm-progress-track">
+                        <div class="ombm-progress-fill" id="ombmProgressFill" style="width:0%"></div>
+                    </div>
+                </div>
+                <div class="ombm-tur-banner">
+                    <div class="ombm-tur-label" id="ombmTurLabel">TUR 1</div>
+                    <div class="ombm-tur-sub" id="ombmTurSub">8 eşleşme • 16 görsel</div>
+                </div>
+                <div class="ombm-battle">
+                    <div class="ombm-card" id="ombmCardLeft" onclick="pickOmbmWinner('left')">
+                        <div class="ombm-card-img" id="ombmImgLeft">🍕</div>
+                        <div class="ombm-card-name" id="ombmNameLeft">Pizza</div>
+                        <div class="ombm-card-sub">Seçmek için tıkla</div>
+                    </div>
+                    <div class="ombm-vs-badge">VS</div>
+                    <div class="ombm-card" id="ombmCardRight" onclick="pickOmbmWinner('right')">
+                        <div class="ombm-card-img" id="ombmImgRight">🍔</div>
+                        <div class="ombm-card-name" id="ombmNameRight">Hamburger</div>
+                        <div class="ombm-card-sub">Seçmek için tıkla</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen" id="ombmResultScreen" style="display:none;">
+            <div style="text-align:center;margin-bottom:25px;">
+                <div
+                    style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#ffd700,#ff8c00,#ffd700);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    👑 Şampiyon Belli Oldu!
+                </div>
+                <p style="color:#a0d0ff;font-size:15px;margin-top:8px;" id="ombmResultSub"></p>
+            </div>
+            <div class="ombm-champion" id="ombmChampion"></div>
+            <div class="ombm-result-list" id="ombmResultList"></div>
+            <div class="button-group" style="justify-content:center;margin-top:30px;flex-wrap:wrap;">
+                <button class="primary-btn" onclick="replayOmbm()" style="flex:none;">🎮 Tekrar Oyna</button>
+                <button class="back-btn" onclick="goBackToOmbmCategory()">← Kategoriler</button>
+                <button class="back-btn" onclick="goBackToModeFromOmbm()">🏠 Modlar</button>
+                <button class="back-btn" onclick="goBackToProfileFromOmbm()">👤 Profil</button>
+            </div>
+        </div>
+
+        <!-- sıralama -->
+        <div class="screen" id="siralamaCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromSiralama()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">📊 Sıralama Kategorisi</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride sıralama yapmak istersin?</p>
+            <div class="categories-grid" id="siralamaCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="siralamaCategoryNextBtn" onclick="goToSiralamaCount()" disabled>Görsel
+                    Sayısı Seç →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToSiralamaCategoryFromCount()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Görsel Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Kaç görseli sıralamak istersin?<br><small style="color:#7eb8ff;">(Maksimum: <span
+                        id="siralamaMaxLbl">20</span>)</small></p>
+            <div class="count-box"
+                style="max-width:450px;margin:25px auto;background:rgba(0,0,0,0.28);border:2px solid rgba(74,222,128,0.35);border-radius:22px;padding:20px;text-align:center;">
+                <label style="color:#a0d0ff;font-size:16px;margin-bottom:12px;font-weight:600;display:block;">Görsel
+                    sayısı seç</label>
+                <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                    <input class="siralama-count-input" id="siralamaCountInput" type="number" min="4" max="20" value="8"
+                        oninput="validateSiralamaCount()">
+                    <div style="color:#4ade80;font-size:16px;font-weight:800;">/ max <span
+                            id="siralamaMaxLbl2">20</span></div>
+                </div>
+                <div style="color:#ff6b6b;font-size:13px;min-height:20px;margin-top:8px;" id="siralamaCountErr"></div>
+            </div>
+            <div
+                style="background:rgba(0,0,0,0.2);border:2px solid rgba(74,222,128,0.2);border-radius:20px;padding:16px;max-width:550px;margin:20px auto;">
+                <div style="color:#a0d0ff;font-size:14px;text-align:center;line-height:1.8;">
+                    <p>📊 Görseller <strong style="color:#4ade80;">sana karışık</strong> gelecek.</p>
+                    <p>Her görseli sürükleyip 4 seviyeden birine yerleştir.</p>
+                    <p>Bitirince <strong style="color:#4ade80;">sıralaman hazır!</strong></p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="siralamaStartBtn" onclick="startSiralamaGame()">📊 Sıralamaya
+                    Başla</button>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaGameScreen" style="display:none;">
+            <div class="test-header" style="flex-wrap:wrap;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                    <button class="exit-test-btn" onclick="exitSiralamaToCategories()"
+                        style="padding:10px 18px;font-size:14px;">🚪 Çık</button>
+                    <button class="exit-test-btn" onclick="goBackToModeFromSiralama()"
+                        style="padding:10px 18px;font-size:14px;background:rgba(0,210,255,0.18);border-color:#00d2ff;color:#00d2ff;">🎮
+                        Modlar</button>
+                    <button class="exit-test-btn" onclick="goToProfileFromSiralama()"
+                        style="padding:10px 18px;font-size:14px;background:rgba(138,43,226,0.18);border-color:#8a2be2;color:#c9a9ff;">👤
+                        Profil</button>
+                </div>
+                <div style="text-align:center;flex:1;min-width:200px;">
+                    <h3 style="color:#4ade80;" id="siralamaGameCatInfo">📊 Sıralama</h3>
+                    <p style="color:#a0d0ff;font-size:14px;" id="siralamaGameInfo">Görselleri sürükle &amp; seviyelere
+                        bırak</p>
+                </div>
+                <button class="primary-btn" onclick="finishSiralamaGame()"
+                    style="padding:12px 24px;font-size:16px;flex:none;">✅ Bitir</button>
+            </div>
+            <div id="siralamaError"
+                style="color:#ff6b6b;font-size:15px;font-weight:800;text-align:center;min-height:26px;margin:6px 0 2px;text-shadow:0 0 10px rgba(255,107,107,0.3);">
+            </div>
+            <p class="siralama-note">💡 Görselleri aşağıdaki havuzdan alıp üstteki seviye kutularına sürükle. Bir
+                görseli kutudan çıkarmak için üstüne tıkla (veya havuza geri sürükle). Seviye isimlerini
+                değiştirebilirsin.</p>
+            <div class="siralama-game-area">
+                <div class="siralama-ranks" id="siralamaRanks"></div>
+                <div class="siralama-photos" id="siralamaPhotos"></div>
+            </div>
+        </div>
+
+        <div class="screen" id="siralamaResultScreen" style="display:none;">
+            <div style="text-align:center;margin-bottom:25px;">
+                <div
+                    style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#4ade80,#00d2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    📊 Sıralaman Hazır!
+                </div>
+                <p style="color:#a0d0ff;font-size:15px;margin-top:8px;" id="siralamaResultSub"></p>
+            </div>
+            <div id="siralamaResultContent" style="max-width:900px;margin:0 auto;"></div>
+            <div class="button-group" style="justify-content:center;margin-top:30px;flex-wrap:wrap;">
+                <button class="primary-btn" onclick="restartSiralamaGame()">🔄 Tekrardan Başla</button>
+                <button class="primary-btn" onclick="goBackToSiralamaCategory()">📂 Kategorilere Dön</button>
+                <button class="back-btn" onclick="goBackToModeFromSiralama()">🎮 Modlar</button>
+            </div>
+        </div>
+
+        <!-- blur -->
+        <div class="screen" id="blurCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToModeFromBlur()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">👁️‍🗨️ Bulanık Kategori</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride bulanık tahmin oynamak istersin? Erken bil, çok kazan!</p>
+            <div class="categories-grid" id="blurCategoryGrid"></div>
+            <div class="button-group">
+                <button class="primary-btn" id="blurCategoryNextBtn" onclick="goToBlurCount()" disabled>Soru Sayısı Seç
+                    →</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="goBackToBlurCategory()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Soru Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" id="blurCountSub">Kaç soru oynamak istersin?</p>
+            <div class="photo-count-box" id="blurCountBox">
+                <label>Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="blurCountInput" type="number" min="1" max="45" value="10"
+                        inputmode="numeric" oninput="validateBlurCount()">
+                    <div class="photo-count-max" id="blurMaxLabel">/ max 45</div>
+                </div>
+                <div class="photo-count-error" id="blurCountErr"></div>
+            </div>
+            <div
+                style="margin:18px auto;max-width:500px;background:rgba(236,72,153,0.08);border:1px dashed rgba(236,72,153,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
+                <span>🔥 Seviye 1: 1000 Puan</span><span>👁️ Seviye 5: 50 Puan</span><span>❌ Bilemezsen: 0</span>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="blurCountNextBtn" onclick="startBlurGame()">🚀 Oyunu Başlat</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurGameScreen" style="display:none;">
+            <div class="blur-game-top">
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                    <div class="blur-game-badge" id="blurGameCatBadge">🦸 Marvel</div>
+                    <div class="blur-game-badge" id="blurGameQBadge">Soru 1 / 10</div>
+                    <div class="blur-game-badge blur-score-badge">⭐ <span id="blurTotalScore">0</span> Puan</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center">
+                    <span style="font-size:11px;color:#8a8ab0;font-weight:700;letter-spacing:1px">KALİTE</span>
+                    <div class="blur-levels" id="blurLevels"></div>
+                </div>
+            </div>
+            <div class="blur-game-area">
+                <div class="blur-photo-wrap">
+                    <div class="blur-photo-frame" id="blurPhotoFrame">
+                        <img id="blurGameImage" src="" alt="" style="display:none">
+                        <div class="blur-photo-placeholder" id="blurPhotoPlaceholder"><span
+                                id="blurPlaceholderEmoji">🦸</span><span class="label"
+                                id="blurPlaceholderLabel">Yükleniyor...</span></div>
+                    </div>
+                    <div class="blur-quality-bar">
+                        <div class="blur-quality-label"><span id="blurQualityText">Kalite: %10 - Çok Bulanık</span><span
+                                id="blurPointsText">1000 Puan</span></div>
+                        <div class="blur-quality-track">
+                            <div class="blur-quality-fill" id="blurQualityFill"
+                                style="width:20%;background:linear-gradient(90deg,#ef4444,#f59e0b)"></div>
+                        </div>
+                    </div>
+                    <div class="blur-progress-dots" id="blurProgressDots"></div>
+                </div>
+                <div class="blur-controls">
+                    <div class="blur-question-info" id="blurAttemptInfo">1. TAHMİN HAKKI • En yüksek puan için hemen
+                        bil!</div>
+                    <div class="blur-current-points">
+                        <div class="blur-points-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="blur-points-text">
+                            <div class="blur-points-value" id="blurCurrentPointsVal">1000</div>
+                            <div class="blur-points-label">Bu sorudan kazanabileceğin puan</div>
+                        </div>
+                    </div>
+                    <div class="blur-input-wrap">
+                        <input type="text" class="blur-game-input" id="blurGuessInput" placeholder="Tahminini yaz..."
+                            autocomplete="off" oninput="onBlurInputChange()"
+                            onkeydown="if(event.key==='Enter') submitBlurGuess()">
+                        <div class="blur-suggestions" id="blurSuggestions"></div>
+                    </div>
+                    <div class="blur-btn-row">
+                        <button class="blur-btn blur-btn-primary" id="blurGuessBtn" onclick="submitBlurGuess()"><i
+                                class="fas fa-paper-plane"></i> Tahmin Et</button>
+                        <button class="blur-btn blur-btn-ghost" onclick="useBlurHint()" id="blurHintBtn"><i
+                                class="fas fa-lightbulb"></i> İpucu</button>
+                    </div>
+                    <div class="blur-btn-row">
+                        <button class="blur-btn blur-btn-skip" onclick="skipBlurQuestion()"><i
+                                class="fas fa-forward"></i> Pas Geç (0 Puan)</button>
+                    </div>
+                    <div class="blur-feedback" id="blurFeedback"></div>
+                </div>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:10px;justify-content:center">
+                <button class="back-btn" onclick="exitBlurToCategories()">🚪 Çıkış</button>
+            </div>
+        </div>
+
+        <div class="screen" id="blurFinalScreen" style="display:none;text-align:center">
+            <div style="font-size:72px;margin-bottom:10px">🏆</div>
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:6px">Oyun Bitti!</h1>
+            <p style="color:#a0d0ff;margin-bottom:20px" id="blurFinalCat">Filmler • 10 Soru</p>
+            <div class="blur-final-stats">
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalScore">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalCorrect">0/10</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">DOĞRU</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="blurFinalAvg">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">ORT. PUAN</div>
+                </div>
+            </div>
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:18px;margin:20px 0;text-align:left;max-height:350px;overflow-y:auto"
+                id="blurFinalList"></div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <button class="primary-btn" onclick="replayBlurCategory()">🎮 Tekrar Oyna</button>
+                <button class="back-btn" onclick="goBackToBlurCategoryFromFinal()">📚 Kategoriler</button>
+                <button class="back-btn" onclick="goBackToModeFromBlur()">🎮 Modlar</button>
+            </div>
+        </div>
+
+        <div class="screen" id="categoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;"><button class="back-btn"
+                    onclick="goBackToProfile()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100" fill="none">
+                            <defs>
+                                <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#8A2BE2" />
+                                    <stop offset="33%" style="stop-color:#C71585" />
+                                    <stop offset="66%" style="stop-color:#DA70D6" />
+                                    <stop offset="100%" style="stop-color:#FF69B4" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 80 L35 20 L50 55 L65 20 L80 80 L65 50 L50 75 L35 50 L20 80 Z"
+                                fill="url(#logoGrad2)" />
+                        </svg><span class="logo-text" style="font-size:42px;">Kategori Seç</span></div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <div class="categories-grid" id="categoryGrid"></div>
+            <div class="button-group"><button class="primary-btn" id="categoryNextBtn" onclick="goToDifficultySelect()"
+                    disabled>Zorluk Seç →</button></div>
+        </div>
+        <div class="screen" id="difficultyScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <div style="flex:1; text-align:center;">
+                    <span class="logo-text" style="font-size:42px;">Zorluk Seviyesi</span>
+                </div>
+            </div>
+
+            <div class="difficulty-centered" id="difficultyContainer"></div>
+            <div class="answer-mode-box" id="answerModeBox">
+                <span class="answer-mode-label" id="answerModeLabel">📋 Cevaplar:</span>
+                <div class="answer-mode-option selected" id="ansModeInstant" onclick="setAnswerMode('instant')">⚡ Hemen
+                    Göster</div>
+                <div class="answer-mode-option" id="ansModeEnd" onclick="setAnswerMode('end')">🏁 Sonda Göster</div>
+            </div>
+            <div class="answer-mode-box" id="soruSayisiBox">
+                <span class="answer-mode-label" id="soruSayisiLabel">🔢 Soru Sayısı:</span>
+                <div class="soru-sayisi-secenekler">
+                    <div class="answer-mode-option soru-sayisi-secenek" data-sayi="5" onclick="soruSayisiSec(5)">5</div>
+                    <div class="answer-mode-option soru-sayisi-secenek selected" data-sayi="10" onclick="soruSayisiSec(10)">10</div>
+                    <div class="answer-mode-option soru-sayisi-secenek" data-sayi="15" onclick="soruSayisiSec(15)">15</div>
+                    <div class="answer-mode-option soru-sayisi-secenek" data-sayi="20" onclick="soruSayisiSec(20)">20</div>
+                    <div class="answer-mode-option soru-sayisi-secenek" data-sayi="25" onclick="soruSayisiSec(25)">25</div>
+                    <div class="answer-mode-option soru-sayisi-secenek" data-sayi="30" onclick="soruSayisiSec(30)">30</div>
+                </div>
+            </div>
+            <div class="button-group"><button class="back-btn" onclick="goBackToCategory()">←
+                    Kategoriler</button><button class="primary-btn" id="difficultyNextBtn" onclick="startTest()"
+                    disabled>🚀 Teste Başla</button>
+            </div>
+        </div>
+        <div class="screen" id="testScreen" style="display:none;">
+            <div class="test-header">
+                <div class="user-badge">
+                    <div class="user-avatar" id="testUserAvatar">👤</div>
+                    <div>
+                        <h3 style="color:#00d2ff;" id="testUserName"></h3>
+                        <p style="color:#a0d0ff;" id="testUserDetails"></p>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:20px;">
+                    <div style="text-align:right;">
+                        <div style="color:#00d2ff; font-size:28px;" id="difficultyDisplay"></div>
+                        <div style="color:#a0d0ff;" id="questionCounter">1/10</div>
+                    </div>
+                    <button class="nav-btn skip-btn" onclick="showExitConfirm()" title="Testten Çık">🚪 Çık</button>
+                </div>
+            </div>
+            <div class="timer-section">
+                <div class="timer-bar">
+                    <div class="timer-progress" id="timerProgress"></div>
+                </div>
+                <div class="timer-text" id="timerText">01:00</div>
+            </div>
+            <div class="question-text" id="questionText"></div>
+            <div class="options-container" id="optionsContainer"></div>
+            <div class="inline-feedback" id="inlineFeedback" style="display:none;"></div>
+            <div class="nav-buttons"><button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>←
+                    Önceki</button><button class="nav-btn" id="returnSkippedBtn" onclick="returnToSkippedQuestion()"
+                    disabled>↩️ Boş
+                    Bırakılan Soruya Dön</button><button class="nav-btn skip-btn" id="skipBtn"
+                    onclick="skipCurrentQuestion()">⏭️ Boş
+                    Bırak</button><button class="primary-btn" id="testNextBtn" onclick="nextQuestion()" disabled>Sonraki
+                    →</button></div>
+        </div>
+        <div class="screen" id="resultScreen" style="display:none;">
+            <div style="text-align:center; margin-bottom:30px;">
+                <div style="font-size:52px; font-weight:800; color:#00d2ff;" id="zekaSeviyesi"></div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
+                <div>
+                    <div style="font-size:58px; color:#00d2ff;" id="finalScore">0</div>
+                    <div style="color:#a0d0ff;" class="t-dogru-label">Doğru</div>
+                </div>
+                <div>
+                    <div style="font-size:58px; color:#8a2be2;" id="totalPoints">0</div>
+                    <div style="color:#a0d0ff;" class="t-puan-label">Puan</div>
+                </div>
+            </div>
+            <div id="resultList" style="max-height:350px; overflow-y:auto; scrollbar-width:none;"></div>
+            <div id="explanationPanel"></div>
+            <div class="button-group" style="justify-content:center;">
+                <button class="back-btn" onclick="replaySameCategory()" style="flex:none;">🎮 Tekrar Oyna</button>
+                <button class="primary-btn" onclick="goToCategoriesFromResult()" style="flex:none;">🔄 Yeniden
+                    Başla</button>
+            </div>
+        </div>
+
+        <div class="screen" id="farkGameScreen" style="display:none;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+                <button class="back-btn" onclick="quitFarkToMode()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🎯 Farkı Bul</span>
+                    </div>
+                </div>
+                <button class="fark-icon-btn" id="farkHintBtn" onclick="farkUseHint()" title="İpucu (-5s)">💡</button>
+                <button class="fark-icon-btn" id="farkMuteBtn" onclick="farkToggleMute()" title="Ses">🔊</button>
+                <button class="fark-icon-btn" onclick="farkPauseGame()" title="Duraklat">⏸</button>
+            </div>
+            <div class="fark-panel" id="farkPanel">
+                <div class="fark-stat-row">
+                    <span class="fark-pill cyan" id="farkLevel">SEVİYE 1</span>
+                    <span class="fark-pill" id="farkColor">🎨 -</span>
+                    <span class="fark-pill" id="farkScore">⭐ 0</span>
+                    <span class="fark-pill" id="farkStreak" style="display:none">🔥 x2</span>
+                    <span class="fark-pill green" id="farkRank">Çaylak</span>
+                </div>
+                <div class="fark-twrap">
+                    <div class="fark-tnum" id="farkTnum">15.0s</div>
+                    <div class="fark-tbar" id="farkTbar">
+                        <div class="fark-tfill" id="farkTfill"></div>
+                    </div>
+                </div>
+                <div id="farkGrid"></div>
+            </div>
+        </div>
+
+        <div class="screen" id="hafizaGameScreen" style="display:none;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+                <button class="back-btn" onclick="hzRequestExit()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🧠 Hafıza Işıkları</span>
+                    </div>
+                </div>
+                <button class="hz-icon-btn" id="hzMuteBtn" onclick="hzToggleMute()" title="Ses">🔊</button>
+                <button class="hz-icon-btn" onclick="hzRequestExit()" title="Duraklat / Çık">⏸</button>
+            </div>
+            <div class="hz-panel" id="hzPanel">
+                <div class="hz-stat-row">
+                    <span class="hz-pill cyan" id="hzLevel">SEVİYE 1</span>
+                    <span class="hz-pill" id="hzScore">⭐ 0</span>
+                    <span class="hz-pill green" id="hzRank">Acemi</span>
+                </div>
+                <div class="hz-twrap">
+                    <div class="hz-tnum" id="hzTnum"></div>
+                    <div class="hz-tbar" id="hzTbar">
+                        <div class="hz-tfill" id="hzTfill"></div>
+                    </div>
+                </div>
+                <div class="hz-wrap">
+                    <div class="hz-body">
+                        <div class="hz-grid">
+                            <button class="hz-pad p0" id="hzPad0" style="--pc:#2ed573" onclick="hzPadTap(0)"></button>
+                            <button class="hz-pad p1" id="hzPad1" style="--pc:#ff4757" onclick="hzPadTap(1)"></button>
+                            <button class="hz-pad p2" id="hzPad2" style="--pc:#facc15" onclick="hzPadTap(2)"></button>
+                            <button class="hz-pad p3" id="hzPad3" style="--pc:#3d8bff" onclick="hzPadTap(3)"></button>
+                        </div>
+                        <div class="hz-hub" id="hzHub">
+                            <div class="h-lvl" id="hzHubLvl">1</div>
+                            <div class="h-st" id="hzHubSt">HAZIR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen" id="kelimeGameScreen" style="display:none;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+                <button class="back-btn" onclick="klRequestExit()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔤 Karma Kelime</span>
+                    </div>
+                </div>
+                <button class="kl-icon-btn" id="klMuteBtn" onclick="klToggleMute()" title="Ses">🔊</button>
+                <button class="kl-icon-btn" onclick="klRequestExit()" title="Duraklat / Çık">⏸</button>
+            </div>
+            <div class="kl-panel" id="klPanel">
+                <div class="kl-stat-row">
+                    <span class="kl-pill cyan" id="klLevel">SEVİYE 1</span>
+                    <span class="kl-pill" id="klScore">⭐ 0</span>
+                    <span class="kl-pill" id="klStreak" style="display:none">🔥 x2</span>
+                    <span class="kl-pill green" id="klRank">Acemi</span>
+                </div>
+                <div class="kl-twrap">
+                    <div class="kl-tnum" id="klTnum">15.0s</div>
+                    <div class="kl-tbar" id="klTbar">
+                        <div class="kl-tfill" id="klTfill"></div>
+                    </div>
+                </div>
+                <div class="kl-hint-card">
+                    <span class="he" id="klHintEmoji">🍎</span>
+                    <span class="ht"><small>İPUCU</small><span id="klHintText">-</span></span>
+                </div>
+                <div class="kl-slots" id="klSlotsRow"></div>
+                <div class="kl-pool" id="klPoolRow"></div>
+                <div class="kl-tools">
+                    <button class="kl-tool-btn" id="klBtnHint" onclick="klUseHint()">💡 Harf Aç (-4s)</button>
+                    <button class="kl-tool-btn" onclick="klUndoLast()">↩ Geri Al</button>
+                    <button class="kl-tool-btn" onclick="klReshuffle()">🔀 Karıştır</button>
+                </div>
+                <div class="kl-result-line" id="klResultLine"></div>
+            </div>
+        </div>
+        <div class="screen" id="hizliCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="hgBackToMode()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">⚡ Hızlı Görsel</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Hangi kategoride oynamak istersin? Görsel tek anlığına flaşlanır, iyi bak!</p>
+            <div class="categories-grid" id="hizliCategoryGrid"></div>
+        </div>
+
+        <div class="screen" id="hizliCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="hgGoCats()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Soru Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" id="hgCountSub">Kaç soru oynamak istersin?</p>
+            <div class="photo-count-box" id="hgCountBox">
+                <label>Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="hgCountInput" type="number" min="1" max="50" value="10"
+                        inputmode="numeric" oninput="hgValidateCount()">
+                    <div class="photo-count-max" id="hgCountMax">/ max 50</div>
+                </div>
+                <div class="photo-count-error" id="hgCountErr"></div>
+            </div>
+            <div class="photo-count-box" style="margin-top:14px">
+                <label>Cevaplar ne zaman gösterilsin?</label>
+                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                    <button class="hg-vis-btn selected" id="hgVisYes" onclick="hgSetVis(true)">👁️ Cevap
+                        Görünsün</button>
+                    <button class="hg-vis-btn" id="hgVisNo" onclick="hgSetVis(false)">🙈 Görünmesin</button>
+                </div>
+                <p class="hg-vis-desc" id="hgVisDesc">Her yanlışta doğrusu anında gösterilir</p>
+            </div>
+
+            <div
+                style="margin:18px auto;max-width:500px;background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:18px;justify-content:center;font-size:13px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
+                <span>⚡ Flaş: 0.60 saniye</span><span>🎯 Tüm sorular oynanır</span><span>📊 Sonda sonuç ekranı</span>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="hgCountNextBtn" onclick="hgLaunchGame()">🚀 Oyunu Başlat</button>
+            </div>
+        </div>
+
+        <div class="screen" id="hizliResultScreen" style="display:none;text-align:center">
+            <div style="font-size:72px;margin-bottom:10px" id="hgResEmoji">📊</div>
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:6px" id="hgResTitle">Oyun Bitti!</h1>
+            <p style="font-size:19px;font-weight:800;color:#facc15;margin-bottom:6px" id="hgResSub">✅ 0 doğru | ❌ 0
+                yanlış</p>
+            <p style="color:#a0d0ff;margin-bottom:20px" id="hgResCat">-</p>
+            <div class="blur-final-stats">
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="hgResScore">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="hgResBest">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">REKOR</div>
+                </div>
+            </div>
+            <div id="hgResRec"
+                style="display:none;color:#facc15;font-weight:800;font-size:13px;letter-spacing:1px;margin:10px 0">
+                🏆 YENİ REKOR!</div>
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:14px;margin:16px 0;text-align:left;max-height:340px;overflow-y:auto;scrollbar-width:none"
+                id="hgResList"></div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <button class="primary-btn" onclick="hgReplay()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="hgGoCats()">📚 Kategoriler</button>
+                <button class="back-btn" onclick="hgGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="hgBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+
+        <div class="screen" id="hizliGameScreen" style="display:none;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+                <button class="back-btn" onclick="hgQuitGame()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">⚡ Hızlı Görsel</span>
+                    </div>
+                </div>
+                <button class="hg-icon-btn" id="hgMuteBtn" onclick="hgToggleMute()" title="Ses">🔊</button>
+                <button class="hg-icon-btn" onclick="hgQuitGame()" title="Duraklat / Çık">⏸</button>
+            </div>
+            <div class="hg-panel" id="hgPanel">
+                <div class="hg-stat-row">
+                    <span class="hg-pill cyan" id="hgLevel">SEVİYE 1</span>
+                    <span class="hg-pill" id="hgCat">-</span>
+                    <span class="hg-pill" id="hgScore">⭐ 0</span>
+                    <span class="hg-pill" id="hgStreak" style="display:none">🔥 x2</span>
+                </div>
+                <div class="hg-twrap">
+                    <div class="hg-tnum" id="hgTnum"></div>
+                    <div class="hg-tbar">
+                        <div class="hg-tfill" id="hgTfill"></div>
+                    </div>
+                </div>
+                <div class="hg-flash-stage warn" id="hgStage">
+                    <span class="hg-tag" id="hgTag">👁️ DİKKAT</span>
+                    <div class="hg-warn" id="hgWarn">👁️ GÖRSEL GELİYOR!<small>iyi bak, tek şansın var</small></div>
+                    <div class="hg-img-wrap" id="hgImgWrap" style="display:none"><img id="hgFlashImg" alt=""></div>
+                    <div class="hg-name-flash" id="hgNameFlash" style="display:none">-</div>
+                    <div class="hg-qmark" id="hgQ" style="display:none">?</div>
+                    <div class="hg-fb" id="hgFb" style="display:none">-</div>
+                </div>
+                <div class="hg-opts hidden" id="hgOpts"></div>
+            </div>
+        </div>
+
+        <!-- zoom tahmin -->
+        <div class="screen" id="zoomCategoryScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="zgBackToMode()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔍 Zoom Tahmin</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle">Görsel çok yakından başlar! Detaydan yola çık ne olduğunu bul. Erken bil, çok kazan.
+            </p>
+            <div class="categories-grid" id="zoomCategoryGrid"></div>
+        </div>
+
+        <div class="screen" id="zoomCountScreen" style="display:none;">
+            <div style="display:flex; align-items:center; margin-bottom:25px;">
+                <button class="back-btn" onclick="zgGoCats()">← Kategoriler</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔢 Soru Sayısı</span>
+                    </div>
+                </div>
+                <div style="width:80px;"></div>
+            </div>
+            <p class="subtitle" id="zgCountSub">Kaç soru oynamak istersin?</p>
+            <div class="photo-count-box" id="zgCountBox">
+                <label>Soru sayısı seç</label>
+                <div class="photo-count-row">
+                    <input class="photo-count-input" id="zgCountInput" type="number" min="1" max="45" value="10"
+                        inputmode="numeric" oninput="zgValidateCount()">
+                    <div class="photo-count-max" id="zgCountMax">/ max 45</div>
+                </div>
+                <div class="photo-count-error" id="zgCountErr"></div>
+            </div>
+            <div class="zg-note" id="zgCountNote">
+                🔍 Her soruda görselin <b>rastgele bir noktasına</b> zoomlanır, hep aynı yere bakmazsın.<br>
+                ❌ Yanlış cevapta görüntü biraz daha uzaklaşır, puan düşer.
+            </div>
+            <div
+                style="margin:18px auto;max-width:560px;background:rgba(34,211,238,0.08);border:1px dashed rgba(34,211,238,0.3);border-radius:16px;padding:12px 16px;display:flex;gap:16px;justify-content:center;font-size:12.5px;font-weight:600;color:#8a8ab0;flex-wrap:wrap">
+                <span>🔬 Seviye 1: 30 Puan</span><span>🖼️ Seviye 5: 2 Puan</span><span>❌ Bilemezsen: 0</span>
+            </div>
+            <div class="button-group">
+                <button class="primary-btn" id="zgCountNextBtn" onclick="zgLaunchGame()">🚀 Oyunu Başlat</button>
+            </div>
+        </div>
+
+        <div class="screen" id="zoomResultScreen" style="display:none;text-align:center">
+            <div style="font-size:72px;margin-bottom:10px" id="zgResEmoji">📊</div>
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:6px" id="zgResTitle">Oyun Bitti!</h1>
+            <p style="font-size:19px;font-weight:800;color:#facc15;margin-bottom:6px" id="zgResSub">✅ 0 doğru | ❌ 0
+                yanlış</p>
+            <p style="color:#a0d0ff;margin-bottom:20px" id="zgResCat">-</p>
+            <div class="blur-final-stats">
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="zgResScore">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">TOPLAM PUAN</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="zgResCorrect">0/0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">DOĞRU</div>
+                </div>
+                <div class="blur-stat-box">
+                    <div style="font-size:22px;font-weight:800;color:#fff" id="zgResBest">0</div>
+                    <div style="font-size:11px;color:#8a8ab0;font-weight:600;margin-top:4px">REKOR</div>
+                </div>
+            </div>
+            <div id="zgResRec"
+                style="display:none;color:#facc15;font-weight:800;font-size:13px;letter-spacing:1px;margin:10px 0">
+                🏆 YENİ REKOR!</div>
+            <div style="background:rgba(0,0,0,0.25);border-radius:20px;padding:14px;margin:16px 0;text-align:left;max-height:340px;overflow-y:auto;scrollbar-width:none"
+                id="zgResList"></div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <button class="primary-btn" onclick="zgReplay()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="zgGoCats()">📚 Kategoriler</button>
+                <button class="back-btn" onclick="zgGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="zgBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+
+        <div class="screen" id="zoomGameScreen" style="display:none;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+                <button class="back-btn" onclick="zgRequestExit()">← Modlar</button>
+                <div style="flex:1; text-align:center;">
+                    <div class="logo-container">
+                        <span class="logo-text" style="font-size:36px;">🔍 Zoom Tahmin</span>
+                    </div>
+                </div>
+                <button class="zg-icon-btn" id="zgMuteBtn" onclick="zgToggleMute()" title="Ses">🔊</button>
+                <button class="zg-icon-btn" onclick="zgRequestExit()" title="Çık">⏸</button>
+            </div>
+            <div class="zg-panel" id="zgPanel">
+                <div class="zg-stat-row">
+                    <span class="zg-pill cyan" id="zgQ">SORU 1/10</span>
+                    <span class="zg-pill" id="zgCat">-</span>
+                    <span class="zg-pill gold" id="zgScore">⭐ 0</span>
+                    <span class="zg-pill" id="zgStreak" style="display:none">🔥 x2</span>
+                </div>
+
+                <div class="zg-levelbar">
+                    <div class="zg-level-dots" id="zgLevelDots"></div>
+                    <span class="zg-level-label" id="zgLevelLabel">SEVİYE 1 • ÇOK YAKIN</span>
+                    <span class="zg-level-pts" id="zgLevelPts">1000 Puan</span>
+                </div>
+
+                <div class="zg-twrap">
+                    <div class="zg-tbar">
+                        <div class="zg-tfill" id="zgTfill"></div>
+                    </div>
+                </div>
+
+                <div class="zg-frame" id="zgFrame">
+                    <img class="zg-img" id="zgImg" alt="" style="display:none">
+                    <div class="zg-ph" id="zgPh" style="display:none">
+                        <span class="big" id="zgPhEmoji">🖼️</span>
+                        <span class="lbl" id="zgPhLabel">Görsel yok</span>
+                    </div>
+                    <div class="zg-vignette"></div>
+                    <div class="zg-reticle" id="zgReticle"></div>
+                    <div class="zg-zoombadge" id="zgZoomBadge">🔬 7.0x</div>
+                    <div class="zg-flashfx" id="zgFlashFx"></div>
+                    <div class="zg-overlay" id="zgOverlay">
+                        <div class="em" id="zgOvEm">✅</div>
+                        <div class="ttl" id="zgOvTtl">Doğru!</div>
+                        <div class="sub" id="zgOvSub">+1000 Puan</div>
+                    </div>
+                </div>
+
+                <div class="zg-hintline" id="zgHintLine">💡 <span id="zgHintText"></span></div>
+
+                <div class="zg-typewrap">
+                    <input class="zg-typeinput" id="zgTypeInput" placeholder="Cevabını yaz..." autocomplete="off"
+                        autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter') zgSubmitTyped()">
+                    <button class="zg-typebtn" onclick="zgSubmitTyped()">Tahmin Et</button>
+                </div>
+                <p class="zg-typedesc">⌨️ Cevabı yazarak ver, her yanlış tahminde görüntü biraz daha açılır,
+                    5. seviyede tamamen görünür.</p>
+
+                <div class="zg-btnrow">
+                    <button class="zg-btn hint" id="zgHintBtn" onclick="zgUseHint()">💡 İpucu</button>
+                    <button class="zg-btn skip" id="zgSkipBtn" onclick="zgSkip()">⏭ Pas Geç (0 Puan)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- eşleştirme -->
+    <div class="screen" id="eslestirmeGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:14px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:36px;">🧩 Eşleştirme</span>
+            </div>
+
+            <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px;">
+                <button class="back-btn" onclick="eslRequestExit()">← Modlar</button>
+                <div class="blur-game-badge" id="eslLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="eslScore">⭐ 0</div>
+                <div class="blur-game-badge" id="eslStreak" style="display:none;">🔥 x0</div>
+                <button class="zg-icon-btn" id="eslMuteBtn" onclick="eslToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="timer-bar-wrap" style="max-width:500px; width:100%;">
+                <div class="timer-bar-fill" id="eslTimerBar"></div>
+            </div>
+
+            <div class="esl-game-board" id="eslGameBoard"></div>
+        </div>
+
+        <div class="esl-combo-display" id="eslComboDisplay"></div>
+    </div>
+
+    <div class="exit-confirm-modal" id="eslExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p>Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="eslConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="eslCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="eslLevelOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="eslLvOvEmoji">🎉</div>
+            <div class="overlay-title" id="eslLvOvTitle">Seviye Tamamlandı!</div>
+            <div class="overlay-sub" id="eslLvOvSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="eslLvOvTime">0s</div>
+                    <div class="stat-lbl">Süre</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="eslLvOvMoves">0</div>
+                    <div class="stat-lbl">Hamle</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="eslLvOvPts">0</div>
+                    <div class="stat-lbl">Puan</div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="eslNextLevel()" style="width:100%;margin-top:10px;">
+                ➡️ Sonraki Seviye
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="eslGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="eslGoEmoji">🏆</div>
+            <div class="overlay-title" id="eslGoTitle">Tebrikler!</div>
+            <div class="overlay-sub" id="eslGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="eslGoLevel">0</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="eslGoScore">0</div>
+                    <div class="stat-lbl">Toplam Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="eslGoBest">0</div>
+                    <div class="stat-lbl">En İyi</div>
+                </div>
+            </div>
+            <div class="new-record" id="eslGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="eslRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="eslGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="eslBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- yılan -->
+    <div class="screen" id="yilanGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:12px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:36px;">🐍 Yılan Oyunu</span>
+            </div>
+
+            <div class="yl-info-row">
+                <button class="back-btn" onclick="ylRequestExit()">← Modlar</button>
+                <div class="blur-game-badge yl-food-badge" id="ylLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="ylScore">⭐ 0</div>
+                <div class="blur-game-badge yl-food-badge" id="ylFoodBadge">🍎 0/5</div>
+                <div class="blur-game-badge" id="ylStreak" style="display:none;">🔥 x0</div>
+                <button class="zg-icon-btn" id="ylMuteBtn" onclick="ylToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="yl-timer-bar" style="max-width:520px; width:100%;">
+                <div class="yl-timer-fill" id="ylTimerBar"></div>
+            </div>
+
+            <div class="yl-canvas-wrap" id="ylCanvasWrap">
+                <canvas id="ylCanvas" width="510" height="510"></canvas>
+                <div class="yl-countdown" id="ylCountdown" style="display:none;">3</div>
+            </div>
+
+            <div class="yl-dpad" id="ylDpad">
+                <button class="yl-dpad-btn yl-dpad-up" ontouchstart="ylSetDir(0,-1);event.preventDefault();"
+                    onclick="ylSetDir(0,-1)">▲</button>
+                <button class="yl-dpad-btn yl-dpad-left" ontouchstart="ylSetDir(-1,0);event.preventDefault();"
+                    onclick="ylSetDir(-1,0)">◀</button>
+                <button class="yl-dpad-btn yl-dpad-down" ontouchstart="ylSetDir(0,1);event.preventDefault();"
+                    onclick="ylSetDir(0,1)">▼</button>
+                <button class="yl-dpad-btn yl-dpad-right" ontouchstart="ylSetDir(1,0);event.preventDefault();"
+                    onclick="ylSetDir(1,0)">▶</button>
+            </div>
+        </div>
+
+        <div class="yl-combo-display" id="ylComboDisplay"></div>
+    </div>
+
+    <div class="exit-confirm-modal" id="ylExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p>Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="ylConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="ylCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="ylLevelOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="ylLvOvEmoji">🎉</div>
+            <div class="overlay-title" id="ylLvOvTitle">Seviye Tamamlandı!</div>
+            <div class="overlay-sub" id="ylLvOvSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="ylLvOvTime">0s</div>
+                    <div class="stat-lbl">Süre</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ylLvOvFood">0</div>
+                    <div class="stat-lbl">Yenen Yem</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ylLvOvPts">0</div>
+                    <div class="stat-lbl">Puan</div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="ylNextLevel()" style="width:100%;margin-top:10px;">
+                ➡️ Sonraki Seviye
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="ylGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="ylGoEmoji">🏆</div>
+            <div class="overlay-title" id="ylGoTitle">Tebrikler!</div>
+            <div class="overlay-sub" id="ylGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="ylGoLevel">0</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ylGoScore">0</div>
+                    <div class="stat-lbl">Toplam Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ylGoBest">0</div>
+                    <div class="stat-lbl">En İyi</div>
+                </div>
+            </div>
+            <div class="new-record" id="ylGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="ylRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="ylGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="ylBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- melodi -->
+    <div class="screen" id="mdGameScreen" style="display:none;">
+        <div class="md-topbar">
+            <button class="back-btn" onclick="mdRequestExit()">← Kategoriler</button>
+            <span class="md-logo">🎵 Melodi Oyunu</span>
+            <span style="flex:1"></span>
+            <div class="blur-game-badge" id="mdLevelPill">SEVİYE 1</div>
+            <div class="blur-game-badge" id="mdNotesPill">🎵 3 NOTA</div>
+            <div class="blur-game-badge blur-score-badge" id="mdScorePill">⭐ 0</div>
+            <button class="md-icon-btn" id="mdMuteBtn" onclick="mdToggleMute()" title="Ses">🔊</button>
+        </div>
+
+        <div class="md-status">
+            <div class="md-eq" id="mdEq"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="md-status-title" id="mdStatusTitle">🎧 DİNLE...</div>
+            <div class="md-status-sub" id="mdStatusSub">Ses kombinasyonu çalıyor. Notalar gizli, sadece kulaklarınla ezberle!
+            </div>
+        </div>
+
+        <div class="md-pads" id="mdPads"></div>
+
+        <div class="md-mine-wrap">
+            <div class="md-mine-head">
+                <span>🧑 SENİN MELODİN</span>
+                <span id="mdMineCount">0 / 3 nota</span>
+            </div>
+            <div class="md-mine" id="mdMine"></div>
+            <div class="md-mine-btns">
+                <button class="md-mini-btn" id="mdUndoBtn" onclick="mdUndo()">⌫ Geri Al</button>
+                <button class="md-mini-btn" id="mdClearBtn" onclick="mdClear()">🗑 Temizle</button>
+            </div>
+        </div>
+
+        <div class="md-dots" id="mdDots"></div>
+
+        <div class="md-actions">
+            <button class="back-btn" onclick="mdRequestExit()">🚪 Çık</button>
+            <button class="primary-btn" id="mdOkBtn" onclick="mdSubmit()" disabled>✅ TAMAM - Karşılaştır</button>
+        </div>
+
+        <div class="md-hint-line" id="mdHint">Klavye: 1-6 tuşları pad'ler | Backspace geri al | Enter tamam | ESC çıkış
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="mdExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Emin misiniz?</h3>
+            <p id="mdExitInfo">Puanların kaydedilecek ve kategorilere döneceksin.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="mdConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="mdCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="mdResOv">
+        <div class="overlay-card md-ov-card">
+            <div class="overlay-emoji" id="mdResEmoji">🎯</div>
+            <div class="overlay-title" id="mdResTitle">BİREBİR!</div>
+            <div class="overlay-sub" id="mdResSub">Notaları birebir tutturdun!</div>
+
+            <div class="md-pct-value" id="mdPctValue">%100</div>
+            <div class="md-pct-bar">
+                <div class="md-pct-fill" id="mdPctFill"></div>
+            </div>
+
+            <div class="md-cmp-block">
+                <div class="md-cmp-row">
+                    <div class="md-cmp-label"><span>🎯 HEDEF SES</span><span id="mdCmpTargetInfo"></span></div>
+                    <div class="md-chips" id="mdCmpTarget"></div>
+                    <button class="md-mini-btn" onclick="mdPlayTarget()">▶ Hedefi dinle</button>
+                </div>
+                <div class="md-cmp-row">
+                    <div class="md-cmp-label"><span>🧑 SENİN SESİN</span><span id="mdCmpMineInfo"></span></div>
+                    <div class="md-chips" id="mdCmpMine"></div>
+                    <button class="md-mini-btn" onclick="mdPlayMine()">▶ Kendi sesini dinle</button>
+                </div>
+            </div>
+
+            <div class="md-big-points" id="mdBigPoints">+500</div>
+            <div class="md-table" id="mdTable"></div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="mdStLevel">1</div>
+                    <div class="stat-lbl">SEVİYE</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="mdStScore">0</div>
+                    <div class="stat-lbl">TOPLAM PUAN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="mdStBest">0</div>
+                    <div class="stat-lbl">EN İYİ</div>
+                </div>
+            </div>
+            <div class="new-record" id="mdRecordBadge">🏆 YENİ REKOR!</div>
+
+            <div class="rk-btn-row">
+                <button class="back-btn" onclick="mdGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="mdGoModes()">🎮 Modlar</button>
+                <button class="primary-btn" onclick="mdNextRound()" id="mdNextBtn">➡️ Devam Et</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="mdGoOv">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="mdGoEmoji">👑</div>
+            <div class="overlay-title" id="mdGoTitle">MÜKEMMEL!</div>
+            <div class="overlay-sub" id="mdGoSub">Tüm seviyeleri bitirdin! Kulakların efsane.</div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="mdGoLevel">20</div>
+                    <div class="stat-lbl">SEVİYE</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="mdGoScore">0</div>
+                    <div class="stat-lbl">TOPLAM PUAN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="mdGoBest">0</div>
+                    <div class="stat-lbl">EN İYİ</div>
+                </div>
+            </div>
+            <div class="new-record" id="mdGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="mdRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="mdGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="mdGoModes()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- hızlı tepki -->
+    <div class="screen" id="tepkiGameScreen" style="display:none;">
+        <div class="tp-topbar">
+            <button class="back-btn" onclick="tpRequestExit()">← Kategoriler</button>
+            <span class="tp-logo">🚦 Hızlı Tepki</span>
+            <span style="flex:1"></span>
+            <div class="blur-game-badge" id="tpTurnPill">TUR 1</div>
+            <div class="blur-game-badge blur-score-badge" id="tpScorePill">⭐ 0</div>
+            <div class="blur-game-badge" id="tpBestPill" style="display:none;">⚡ 0 ms</div>
+            <button class="tp-icon-btn" id="tpMuteBtn" onclick="tpToggleMute()" title="Ses">🔊</button>
+        </div>
+
+        <div class="tp-stage" id="tpStage">
+            <div class="tp-big" id="tpBig">🚦</div>
+            <div class="tp-msg" id="tpMsg">HAZIR MISIN?</div>
+            <div class="tp-sub" id="tpSub">3-2-1 sayılacak... ama yeşil ışık hemen yanmaz. Sabırlı ol, hazır ol!
+            </div>
+            <div class="tp-dots" id="tpDots" style="display:none;">
+                <div class="tp-dot"></div>
+                <div class="tp-dot"></div>
+                <div class="tp-dot"></div>
+            </div>
+            <button class="tp-start-btn" id="tpStartBtn" onclick="tpStart()">▶ BAŞLA</button>
+        </div>
+
+        <div class="tp-hint" id="tpHint">Klavye: BOŞLUK / ENTER ile de basabilirsin | ESC = çıkış</div>
+    </div>
+
+    <div class="exit-confirm-modal" id="tpExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Emin misiniz?</h3>
+            <p id="tpExitInfo">Puanların kaydedilecek ve kategorilere döneceksin.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="tpConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="tpCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="tpResultOv">
+        <div class="overlay-card tp-ov-card">
+            <div class="overlay-emoji" id="tpResEmoji">⚡</div>
+            <div class="tp-ms-big" id="tpResMs">0.284</div>
+            <div class="tp-ms-sub" id="tpResMsSub">saniye | 284 ms</div>
+            <div class="overlay-title" id="tpResTitle" style="font-size:26px;margin-top:8px;">🔥 EFSANE</div>
+            <div class="overlay-sub" id="tpResSub">Yıldırım gibisin!</div>
+
+            <div class="tp-scale" id="tpScale">
+                <div class="tp-scale-fill" id="tpScaleFill"></div>
+                <div class="tp-scale-avg" id="tpScaleAvg"></div>
+                <div class="tp-scale-avg-lbl" id="tpScaleAvgLbl">273 ms | insan ortalaması</div>
+                <div class="tp-scale-mark" id="tpScaleMark"></div>
+            </div>
+            <div class="tp-cmp" id="tpCmp">Ortalamadan <b>+11 ms</b> daha hızlı</div>
+
+            <div class="tp-big-points" id="tpBigPoints">+400</div>
+            <div class="tp-stat-note" id="tpStatNote"></div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="tpStTurn">1</div>
+                    <div class="stat-lbl">TUR</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="tpStBest">-</div>
+                    <div class="stat-lbl">EN HIZLI</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="tpStAvg">-</div>
+                    <div class="stat-lbl">ORTALAMA</div>
+                </div>
+            </div>
+            <div class="new-record" id="tpRecordBadge">🏆 YENİ REKOR!</div>
+
+            <div class="rk-btn-row">
+                <button class="back-btn" onclick="tpGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="tpGoModes()">🎮 Modlar</button>
+                <button class="primary-btn" onclick="tpNextTurn()" id="tpAgainBtn">🔄 Tekrar Oyna</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- renk oyunu -->
+    <div class="screen" id="renkGameScreen" style="display:none;">
+        <div class="rk-topbar">
+            <button class="back-btn" onclick="rkRequestExit()">← Modlar</button>
+            <span class="rk-logo">🎨 Renk Oyunu</span>
+            <span style="flex:1"></span>
+            <div class="blur-game-badge" id="rkLevelPill">SEVİYE 1</div>
+            <div class="blur-game-badge" id="rkRoundPill">SORU 1</div>
+            <div class="blur-game-badge blur-score-badge" id="rkScorePill">⭐ 0</div>
+            <div class="blur-game-badge" id="rkStreakPill" style="display:none;">🔥 x0</div>
+            <button class="rk-icon-btn" id="rkMuteBtn" onclick="rkToggleMute()" title="Ses">🔊</button>
+        </div>
+
+        <div class="rk-stage">
+            <div class="rk-panel">
+                <div class="rk-panel-title">🖼️ RENK KARESİ</div>
+                <div class="rk-square-holder">
+                    <div class="rk-square" id="rkSquare">
+                        <div class="rk-count-ring"><span class="rk-count-num" id="rkCountNum">5</span></div>
+                    </div>
+                </div>
+                <div class="rk-phase-note" id="rkPhaseNote">Hedef rengi ezberle!</div>
+                <div class="rk-hint-small" id="rkHint">5 saniye sonra kare kaybolacak</div>
+            </div>
+
+            <div class="rk-panel">
+                <div class="rk-panel-title">🎨 KENDİ RENK PALETİN - tonu sen ayarla</div>
+
+                <div class="rk-readout">
+                    <div class="rk-chip" id="rkChip"></div>
+                    <div class="rk-readout-txt">
+                        <span id="rkHexTxt">#FFFFFF</span>
+                        <small id="rkRgbTxt">hsl(0, 0%, 100%) | rgb(255, 255, 255)</small>
+                    </div>
+                </div>
+                <div class="rk-warn-line" id="rkWarnLine"></div>
+
+                <div class="rk-slider-row">
+                    <div class="rk-slider-head"><span>🌈 Renk Tonu (Hue)</span><b id="rkHueVal">0°</b></div>
+                    <input type="range" class="rk-slider" id="rkHue" min="0" max="359" step="1" value="0" disabled>
+                </div>
+                <div class="rk-slider-row">
+                    <div class="rk-slider-head"><span>💧 Doygunluk (Canlılık)</span><b id="rkSatVal">0%</b></div>
+                    <input type="range" class="rk-slider" id="rkSat" min="0" max="100" step="1" value="0" disabled>
+                </div>
+                <div class="rk-slider-row">
+                    <div class="rk-slider-head"><span>⚪ Açıklık / Koyuluk</span><b id="rkLightVal">100%</b></div>
+                    <input type="range" class="rk-slider" id="rkLight" min="0" max="100" step="1" value="100" disabled>
+                </div>
+
+                <div class="rk-slider-row" style="margin-bottom:0">
+                    <button class="rk-mini-btn" id="rkWhiteBtn" onclick="rkResetWhite()" disabled>⬜ Beyaza dön
+                        (sıfırla)</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="rk-dots" id="rkDots"></div>
+
+        <div class="rk-btn-row">
+            <button class="back-btn" onclick="rkRequestExit()">🚪 Çık</button>
+            <button class="primary-btn" id="rkOkBtn" onclick="rkSubmit()" disabled>✅ Tamam - Rengi Kilitle</button>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="rkExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p>Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="rkConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="rkCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="rkResultOv">
+        <div class="overlay-card rk-ov-card">
+            <div class="overlay-emoji" id="rkResEmoji">🎯</div>
+            <div class="overlay-title" id="rkResTitle">BİREBİR!</div>
+            <div class="overlay-sub" id="rkResSub">Mükemmel eşleşme</div>
+
+            <div class="rk-compare">
+                <div class="rk-cmp-col">
+                    <div class="rk-cmp-sq" id="rkCmpTarget"></div>
+                    <div class="rk-cmp-lbl">🎯 HEDEF RENK</div>
+                    <div class="rk-cmp-hex" id="rkCmpTgtHex"></div>
+                </div>
+                <div class="rk-cmp-col">
+                    <div class="rk-cmp-sq" id="rkCmpUser"></div>
+                    <div class="rk-cmp-lbl">🧑 SENİN RENGİN</div>
+                    <div class="rk-cmp-hex" id="rkCmpUsrHex"></div>
+                </div>
+            </div>
+
+            <div class="rk-pct-value" id="rkPctValue">%100</div>
+            <div class="rk-pct-bar">
+                <div class="rk-pct-fill" id="rkPctFill"></div>
+            </div>
+
+            <div class="rk-big-points" id="rkBigPoints">+500</div>
+            <div class="rk-de-note" id="rkDeNote">Renk farkı (ΔE): 0.0</div>
+            <div class="rk-table" id="rkTable"></div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="rkStLevel">1</div>
+                    <div class="stat-lbl">SEVİYE</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="rkStScore">0</div>
+                    <div class="stat-lbl">TOPLAM PUAN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="rkStBest">0</div>
+                    <div class="stat-lbl">EN İYİ</div>
+                </div>
+            </div>
+            <div class="new-record" id="rkRecordBadge">🏆 YENİ REKOR!</div>
+
+            <div class="rk-btn-row">
+                <button class="back-btn" onclick="rkRequestExit()">🚪 Çık</button>
+                <button class="primary-btn" onclick="rkNextRound()" id="rkNextBtn">➡️ Devam Et</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="rkGoOv">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="rkGoEmoji">👑</div>
+            <div class="overlay-title" id="rkGoTitle">MÜKEMMEL!</div>
+            <div class="overlay-sub" id="rkGoSub">Tüm seviyeleri bitirdin! Renk ustasısın.</div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="rkGoLevel">20</div>
+                    <div class="stat-lbl">SEVİYE</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="rkGoScore">0</div>
+                    <div class="stat-lbl">TOPLAM PUAN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="rkGoBest">0</div>
+                    <div class="stat-lbl">EN İYİ</div>
+                </div>
+            </div>
+            <div class="new-record" id="rkGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="rkRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="rkGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="rkBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- köstebek -->
+    <div class="screen" id="kostebekGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:12px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:36px;">🔨 Köstebek Vur</span>
+            </div>
+
+            <div class="kb-info-row">
+                <button class="back-btn" onclick="kbRequestExit()">← Modlar</button>
+                <div class="blur-game-badge kb-hit-badge" id="kbLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="kbScore">⭐ 0</div>
+                <div class="blur-game-badge kb-hit-badge" id="kbWhackBadge">🎯 0/6</div>
+                <div class="blur-game-badge" id="kbStreak" style="display:none;">🔥 x0</div>
+                <button class="zg-icon-btn" id="kbMuteBtn" onclick="kbToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="kb-timer-bar" style="max-width:520px; width:100%;">
+                <div class="kb-timer-fill" id="kbTimerBar"></div>
+            </div>
+
+            <div class="kb-board-wrap">
+                <div class="kb-board" id="kbBoard"></div>
+                <div class="kb-countdown" id="kbCountdown" style="display:none;">3</div>
+            </div>
+
+            <div style="color:#7eb8ff;font-size:13px;text-align:center;">🐹 vur, ⭐ altın = bonus, 💣 bombadan uzak
+                dur!</div>
+        </div>
+
+        <div class="kb-combo-display" id="kbComboDisplay"></div>
+    </div>
+
+    <div class="exit-confirm-modal" id="kbExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p>Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="kbConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="kbCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="kbLevelOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="kbLvOvEmoji">🎉</div>
+            <div class="overlay-title" id="kbLvOvTitle">Seviye Tamamlandı!</div>
+            <div class="overlay-sub" id="kbLvOvSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="kbLvOvTime">0s</div>
+                    <div class="stat-lbl">Süre</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="kbLvOvWhack">0</div>
+                    <div class="stat-lbl">Vurulan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="kbLvOvPts">0</div>
+                    <div class="stat-lbl">Puan</div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="kbNextLevel()" style="width:100%;margin-top:10px;">
+                ➡️ Sonraki Seviye
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="kbGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="kbGoEmoji">🏆</div>
+            <div class="overlay-title" id="kbGoTitle">Tebrikler!</div>
+            <div class="overlay-sub" id="kbGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="kbGoLevel">0</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="kbGoScore">0</div>
+                    <div class="stat-lbl">Toplam Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="kbGoBest">0</div>
+                    <div class="stat-lbl">En İyi</div>
+                </div>
+            </div>
+            <div class="new-record" id="kbGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="kbRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="kbGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="kbBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/renk.js"></script>
+    <script src="js/tepki.js"></script>
+    <script src="js/melodi.js"></script>
+
+    <!-- mayın tarlası -->
+    <div class="screen" id="mayinGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:12px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:36px;">💣 Mayın Tarlası</span>
+            </div>
+
+            <div class="my-info-row">
+                <button class="back-btn" onclick="myRequestExit()">← Modlar</button>
+                <div class="blur-game-badge" id="myLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="myScore">⭐ 0</div>
+                <div class="blur-game-badge" id="myFlags">🚩 0/10</div>
+                <div class="blur-game-badge" id="myTime">⏱ 0s</div>
+                <div class="blur-game-badge" id="myStreak" style="display:none;">🔥 x0</div>
+                <button class="zg-icon-btn" id="myMuteBtn" onclick="myToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="kb-timer-bar" style="max-width:520px; width:100%;">
+                <div class="kb-timer-fill" id="myTimerBar"></div>
+            </div>
+
+            <div class="my-board-wrap">
+                <div class="my-board" id="myBoard"></div>
+                <div class="my-countdown" id="myCountdown" style="display:none;">3</div>
+                <div class="my-explode" id="myExplode">💥</div>
+            </div>
+
+            <div class="my-tools">
+                <button class="my-tool-btn" id="myFlagBtn" onclick="myToggleFlagMode()">🚩 Bayrak Modu: KAPALI</button>
+                <button class="my-tool-btn" onclick="myRestartLevel()">🔄 Seviyeyi Yenile</button>
+            </div>
+
+            <div class="my-hint">👆 tıkla = aç &nbsp;|&nbsp; 🚩 uzun bas / sağ tık = bayrak &nbsp;|&nbsp; sayıya tıkla =
+                çevresini aç</div>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="myExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p id="myExitInfo">Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="myConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="myCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="myLevelOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="myLvOvEmoji">🎉</div>
+            <div class="overlay-title" id="myLvOvTitle">Seviye Tamamlandı!</div>
+            <div class="overlay-sub" id="myLvOvSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvTime">0s</div>
+                    <div class="stat-lbl">Süre</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvFlags">0</div>
+                    <div class="stat-lbl">Doğru Bayrak</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myLvOvPts">0</div>
+                    <div class="stat-lbl">Seviye Puanı</div>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="myNextLevel()" style="width:100%;margin-top:10px;">
+                ➡️ Sonraki Seviye
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="myGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="myGoEmoji">💥</div>
+            <div class="overlay-title" id="myGoTitle">Mayına Bastın!</div>
+            <div class="overlay-sub" id="myGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoLevel">0</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoScore">0</div>
+                    <div class="stat-lbl">Toplam Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="myGoBest">0</div>
+                    <div class="stat-lbl">En İyi</div>
+                </div>
+            </div>
+            <div class="new-record" id="myGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="myRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="myGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="myBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/mayin.js"></script>
+
+    <!-- tetris -->
+    <div class="screen" id="tetrisGameScreen" style="display:none;">
+        <div class="game-screen-inner"
+            style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:10px;">
+            <div class="logo-container" style="justify-content:center; margin-bottom:0;">
+                <span class="logo-text" style="font-size:34px;">🧱 Tetris</span>
+            </div>
+
+            <div class="tt-info-row">
+                <button class="back-btn" onclick="ttRequestExit()">← Modlar</button>
+                <div class="blur-game-badge" id="ttLevel">SEVİYE 1</div>
+                <div class="blur-game-badge blur-score-badge" id="ttScore">⭐ 0</div>
+                <div class="blur-game-badge" id="ttLines">📏 0 SATIR</div>
+                <div class="blur-game-badge" id="ttBest">🏆 0</div>
+                <button class="zg-icon-btn" id="ttMuteBtn" onclick="ttToggleMute()" title="Ses">🔊</button>
+            </div>
+
+            <div class="tt-stage">
+                <div class="tt-board-wrap">
+                    <canvas id="ttCanvas" width="280" height="560"></canvas>
+                    <div class="tt-countdown" id="ttCountdown" style="display:none;">3</div>
+                    <div class="tt-pause-veil" id="ttPauseVeil" style="display:none;">
+                        <div>⏸</div>
+                        <button class="primary-btn" onclick="ttTogglePause()">▶ Devam Et</button>
+                    </div>
+                </div>
+
+                <div class="tt-side">
+                    <div class="tt-side-title">SONRAKİ</div>
+                    <canvas id="ttNext" width="120" height="240"></canvas>
+                    <div class="tt-side-title" style="margin-top:6px;">REKOR</div>
+                    <div class="tt-best-val" id="ttBestVal">0</div>
+                </div>
+            </div>
+
+            <div class="tt-pad">
+                <button class="tt-btn" id="ttBtnLeft" data-act="left">◀</button>
+                <button class="tt-btn tt-btn-rot" id="ttBtnRot" data-act="rot">⟳</button>
+                <button class="tt-btn" id="ttBtnRight" data-act="right">▶</button>
+                <button class="tt-btn" id="ttBtnDown" data-act="down">▼</button>
+                <button class="tt-btn tt-btn-drop" id="ttBtnDrop" data-act="drop">⤓</button>
+                <button class="tt-btn" id="ttBtnPause" data-act="pause">⏸</button>
+            </div>
+
+            <div class="tt-hint">⌨️ ← → taşı | ↑ döndür | ↓ yumuşak düşür | BOŞLUK sert düşür | P duraklat</div>
+        </div>
+    </div>
+
+    <div class="exit-confirm-modal" id="ttExitModal">
+        <div class="exit-confirm-box">
+            <h3>🚪 Çıkmak İstiyor musun?</h3>
+            <p id="ttExitInfo">Oyun ilerlemen kaybolacak.</p>
+            <div class="exit-confirm-buttons">
+                <button class="exit-confirm-btn yes" onclick="ttConfirmExit()">Evet, Çık</button>
+                <button class="exit-confirm-btn no" onclick="ttCancelExit()">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="ttGameOverOverlay">
+        <div class="overlay-card">
+            <div class="overlay-emoji" id="ttGoEmoji">🧱</div>
+            <div class="overlay-title" id="ttGoTitle">Oyun Bitti!</div>
+            <div class="overlay-sub" id="ttGoSub"></div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoScore">0</div>
+                    <div class="stat-lbl">Puan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoLines">0</div>
+                    <div class="stat-lbl">Satır</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="ttGoLevel">1</div>
+                    <div class="stat-lbl">Seviye</div>
+                </div>
+            </div>
+            <div class="new-record" id="ttGoRecord">🏆 YENİ REKOR!</div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                <button class="primary-btn" onclick="ttRestartGame()">🔄 Tekrar Oyna</button>
+                <button class="back-btn" onclick="ttGoProfile()">👤 Profil</button>
+                <button class="back-btn" onclick="ttBackToMode()">🎮 Modlar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tt-toast" id="ttToast"></div>
+
+    <script src="js/tetris.js"></script>
+
+    <!-- mağaza -->
+    <div class="shop-modal" id="shopModal">
+        <div class="shop-panel">
+            <div class="shop-header">
+                <h2>🛒 Mağaza</h2>
+                <div class="shop-points">⭐ <span id="shopPointsDisplay">0</span> Puan</div>
+                <button class="shop-close" onclick="closeShop()">✕</button>
+            </div>
+            <div class="shop-tabs" id="shopTabs"></div>
+            <div class="shop-items" id="shopItems"></div>
+        </div>
+    </div>
+</body>
+
+</html>
